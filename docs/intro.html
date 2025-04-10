@@ -135,16 +135,16 @@
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Repeat (a) but enter only 5 – and see what happens:</li>
 </ol>
-<p><code>&gt; 5 -</code></p>
-<p><code>&gt; +</code></p>
-<p><code>&gt; +</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb2-1"><a href="intro.html#cb2-1" tabindex="-1"></a>&gt; 5 -</span>
+<span id="cb2-2"><a href="intro.html#cb2-2" tabindex="-1"></a>&gt; +</span>
+<span id="cb2-3"><a href="intro.html#cb2-3" tabindex="-1"></a>&gt; +</span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>The above <code>+</code> is the secondary R prompt. It indicates that an instruction is unfinished. Either respond by completing the instruction or press the <span style="color:#3399FF">Esc</span> key to start all over again from the primary prompt.</p>
 </div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Enter</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xx</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>This instruction creates an R object with name (or label) <code>xx</code> containing the vector
@@ -153,7 +153,7 @@
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Enter</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">yy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">50</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> </span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>This instruction creates an R object with name <code>yy</code> containing a random sample of 20 values from a normal distribution with a mean of 50 and a standard deviation of 15.</p>
@@ -161,7 +161,7 @@
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Enter</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xx</span></span>
 <span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -174,9 +174,9 @@
 <p>How then can an R function be executed i.e. how can an R function be called? Apart from its name an R function has a list of arguments enclosed within parentheses. An R function is called by entering its name followed by a list of arguments enclosed within parentheses. As an example, let us calculate the mean of the object <code>yy</code> created above by calling the function <code>mean</code>:</p>
 </li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] 49.66644</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 49.35197</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Note that the prompt appear followed by the mean of object <code>yy</code>.</p>
 </div>
@@ -185,10 +185,10 @@
 <li><p>Objects can be removed by the following instruction: <code>rm(name1, name2, ... )</code>.</p></li>
 <li><p>Apart from the <em><span style="color:#FF9966">console</span></em> there are several other types of windows available in R e.g. graphs are displayed in graph windows. To illustrate, enter the following instructions at the R prompt in the console or commands window:</p></li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gr.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">gr.data</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>These instructions have resulted in the opening of a graph window containing the required histogram and the user can switch from the console to the graph window and back again to the console.</p>
 </div>
@@ -239,7 +239,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 </h3>
 <div style="color: #80CC99;">
 <p>The <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> function can be used to write a text message to the console. Initialize a new R session and investigate the results of the following R instructions:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"aaa bbb"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"aaa bbb \n"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"aaa \n bbb \n"</span><span class="op">)</span></span>
@@ -250,7 +250,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"1\a\n"</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"2\a\n"</span><span class="op">)</span></span></code></pre></div>
 <p>What is the purpose of the semi-colon in the line above?</p>
 <p>Could you distinguish the two soundings of the bell? Try the following:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"1\a\n"</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"2\a\n"</span><span class="op">)</span> </span></code></pre></div>
 <p>Could you now distinguish the two soundings of the bell?</p>
 <p>What is the purpose of the <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> instruction?</p>
@@ -278,7 +278,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <ol style="list-style-type: lower-alpha">
 <li>Use</li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">mean</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>to obtain help on the usage of the R function <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>.</p>
@@ -286,37 +286,37 @@ Communication with the R evaluator takes place through a set of instructions cal
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Find out what is the difference between the instructions</li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">mean</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>and</p>
 </div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="op">?</span><span class="va">mean</span></span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>What help is available via the instruction</li>
 </ol>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.start.html">help.start</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Use</li>
 </ol>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu"><a href="https://rdrr.io/r/utils/help.search.html">help.search</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>to find out how to obtain help using the R function <code>help.search(xx)</code>. Note: For hep on an operator or reserved word quotes are needed, e.g.</p>
 </div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">matrix</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>but</p>
 </div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="st">"?"</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>or</p>
 </div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="st">"for"</span></span></code></pre></div>
 </div>
 <div id="MoreBasics" class="section level2" number="1.7">
@@ -335,12 +335,12 @@ Communication with the R evaluator takes place through a set of instructions cal
 <li>Usually objects are stored in the current folder called the <em><span style="color:#FF9966">Global environment</span></em>; recognized by R under the name <code>.GlobalEnv</code> and available in the file system under the name <em><span style="color:#CC99FF">.RData</span></em>.</li>
 <li>Objects are created from the console by <em><span style="color:#FF9966">assignment</span></em> through the instruction</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">name</span> <span class="op">&lt;-</span> <span class="va">object</span></span></code></pre></div>
 <div style="margin-left: 32px; margin-right: 20px;">
 <p>or</p>
 </div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="va">name</span></span></code></pre></div>
 <ul>
 <li>In R names are <em><span style="color:#FF9966">case sensitive</span></em> i.e. peter and Peter are two different objects.</li>
@@ -348,17 +348,17 @@ Communication with the R evaluator takes place through a set of instructions cal
 <li>Care must be exercised when creating a new object by assignment: if an object with the name my.object already exists in the Global environment and a new object is created by assigning it to the name my.object then the old my.object is over-written and it is replaced by the new object <em><span style="color:#FF9966">without any warning</span></em>.</li>
 <li>Remember the way the R evaluator operates: if an object name is given at the R prompt the R evaluator responds by displaying the content of the object. Review the difference between the instructions</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q</span></span></code></pre></div>
 <div style="margin-left: 32px; margin-right: 20px;">
 <p>and</p>
 </div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/quit.html">q</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>The symbol <code>#</code> marks a comment. Everything following a <code>#</code> on a line is ignored by the R evaluator. Check for example the result of the instruction</li>
 </ol>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">5</span><span class="op">+</span><span class="fl">8</span> <span class="co"># +12</span></span>
 <span><span class="co">#&gt; [1] 13</span></span></code></pre></div>
 <ol start="6" style="list-style-type: lower-alpha">
@@ -375,8 +375,8 @@ Communication with the R evaluator takes place through a set of instructions cal
 <col width="71%">
 </colgroup>
 <thead><tr class="header">
-<th><strong><span style="color:#FFCC99">Help query</span></strong></th>
-<th><strong><span style="color:#FFCC99">Explanation</span></strong></th>
+<th><em><span style="color:#F7CE21">Help query</span></em></th>
+<th><em><span style="color:#F7CE21">Explanation</span></em></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -457,8 +457,8 @@ Communication with the R evaluator takes place through a set of instructions cal
 <col width="71%">
 </colgroup>
 <thead><tr class="header">
-<th><strong><span style="color:#FFCC99">Modifier</span></strong></th>
-<th><strong><span style="color:#FFCC99">Operation</span></strong></th>
+<th><em><span style="color:#F7CE21">Modifier</span></em></th>
+<th><em><span style="color:#F7CE21">Operation</span></em></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -518,8 +518,8 @@ Communication with the R evaluator takes place through a set of instructions cal
 <col width="71%">
 </colgroup>
 <thead><tr class="header">
-<th><strong><span style="color:#FFCC99">Regular expression</span></strong></th>
-<th><strong><span style="color:#FFCC99">Meaning</span></strong></th>
+<th><em><span style="color:#F7CE21">Regular expression</span></em></th>
+<th><em><span style="color:#F7CE21">Meaning</span></em></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -550,12 +550,12 @@ Communication with the R evaluator takes place through a set of instructions cal
 <ol style="list-style-type: lower-alpha">
 <li>Attach the MASS package in the second (the default) position on the search path by issuing the command</li>
 </ol>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Get a listing of all the objects in package MASS by requesting</li>
 </ol>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span>pos<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Explain the difference between <code>objects(pos=2, pat=".")</code> and <code>objects(pos=2, patt="\\.")</code>.</li>
@@ -566,12 +566,12 @@ Communication with the R evaluator takes place through a set of instructions cal
 </div>
 </div>
 </div>
-<div id="from-single-instructions-to-sets-of-instructions-introducing-r-functions" class="section level2" number="1.9">
+<div id="FunctionIntro" class="section level2" number="1.9">
 <h2>
-<span class="header-section-number">1.9</span> From single instructions to sets of instructions: introducing R functions<a class="anchor" aria-label="anchor" href="#from-single-instructions-to-sets-of-instructions-introducing-r-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.9</span> From single instructions to sets of instructions: introducing R functions<a class="anchor" aria-label="anchor" href="#FunctionIntro"><i class="fas fa-link"></i></a>
 </h2>
 <p>Consider the following problem: the R data set <code>sleep</code> contains the extra hours of sleep of 20 patients after a drug treatment. Suppose this data set can be considered a sample from a normal population. A 95% confidence interval is required for the mean extra hours of sleep. It is known that the confidence interval is given by <span class="math inline">\(\left[ \mathbf{\bar{x}}- \left( \frac{s}{\sqrt(n)} \right) t_{n-1,0.025}; \mathbf{\bar{x}}+ \left( \frac{s}{\sqrt(n)} \right) t_{n-1,0.025} \right]\)</span>. This problem can be solved by entering the following instructions one by one:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sleep.data</span> <span class="op">&lt;-</span> <span class="va">sleep</span><span class="op">[</span> ,<span class="fl">1</span><span class="op">]</span>   </span>
 <span><span class="va">sleep.mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sleep.data</span><span class="op">)</span>   </span>
 <span><span class="va">sleep.sd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">sleep.data</span><span class="op">)</span>    </span>
@@ -600,7 +600,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <li>Script windows can also be used for creating an R function.</li>
 <li>Create an R function by changing the text as shown below.</li>
 </ol>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">conf.int</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span> <span class="op">=</span> <span class="va">sleep</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">{</span></span>
 <span>  <span class="va">x.mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>   </span>
@@ -615,7 +615,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <li>Give the instruction <code><a href="https://rdrr.io/r/base/ls.html">objects()</a></code> at the R prompt. What has happened?</li>
 <li>You can now run the function from the commands window (the console) by typing:</li>
 </ol>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">conf.int</span> <span class="op">(</span>x <span class="op">=</span> <span class="va">sleep</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $lower</span></span>
 <span><span class="co">#&gt; [1] 0.5955845</span></span>
@@ -626,16 +626,16 @@ Communication with the R evaluator takes place through a set of instructions cal
 <li>If you want to create and run the function <code>conf.int</code> in a script window then add the instruction <code>conf.func (x = sleep[,1])</code> as the last line in the script window. Now, select only this line and run it. Check the R console.</li>
 <li>What will happen if a syntax error is made in the script window? Change the code in the script file as follows, deliberately deleting the last closing parenthesis in the last line of the function.</li>
 </ol>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="intro.html#cb28-1" tabindex="-1"></a>conf.int <span class="ot">&lt;-</span> <span class="cf">function</span> (<span class="at">x =</span> sleep[,<span class="dv">1</span>])</span>
-<span id="cb28-2"><a href="intro.html#cb28-2" tabindex="-1"></a>{</span>
-<span id="cb28-3"><a href="intro.html#cb28-3" tabindex="-1"></a>  x.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)   </span>
-<span id="cb28-4"><a href="intro.html#cb28-4" tabindex="-1"></a>  x.sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)    </span>
-<span id="cb28-5"><a href="intro.html#cb28-5" tabindex="-1"></a>  t.perc <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">19</span>) </span>
-<span id="cb28-6"><a href="intro.html#cb28-6" tabindex="-1"></a>  left.boundary <span class="ot">&lt;-</span> x.mean <span class="sc">-</span> (x.sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x)))<span class="sc">*</span>t.perc </span>
-<span id="cb28-7"><a href="intro.html#cb28-7" tabindex="-1"></a>  right.boundary <span class="ot">&lt;-</span> x.mean <span class="sc">+</span> (x.sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x)))<span class="sc">*</span>t.perc</span>
-<span id="cb28-8"><a href="intro.html#cb28-8" tabindex="-1"></a>  <span class="fu">list</span> (<span class="at">lower =</span> left.boundary, <span class="at">upper =</span> right.boundary</span>
-<span id="cb28-9"><a href="intro.html#cb28-9" tabindex="-1"></a><span class="er">}</span></span>
-<span id="cb28-10"><a href="intro.html#cb28-10" tabindex="-1"></a><span class="fu">conf.int</span> (<span class="at">x =</span> sleep[,<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="intro.html#cb29-1" tabindex="-1"></a>conf.int <span class="ot">&lt;-</span> <span class="cf">function</span> (<span class="at">x =</span> sleep[,<span class="dv">1</span>])</span>
+<span id="cb29-2"><a href="intro.html#cb29-2" tabindex="-1"></a>{</span>
+<span id="cb29-3"><a href="intro.html#cb29-3" tabindex="-1"></a>  x.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)   </span>
+<span id="cb29-4"><a href="intro.html#cb29-4" tabindex="-1"></a>  x.sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)    </span>
+<span id="cb29-5"><a href="intro.html#cb29-5" tabindex="-1"></a>  t.perc <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">19</span>) </span>
+<span id="cb29-6"><a href="intro.html#cb29-6" tabindex="-1"></a>  left.boundary <span class="ot">&lt;-</span> x.mean <span class="sc">-</span> (x.sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x)))<span class="sc">*</span>t.perc </span>
+<span id="cb29-7"><a href="intro.html#cb29-7" tabindex="-1"></a>  right.boundary <span class="ot">&lt;-</span> x.mean <span class="sc">+</span> (x.sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x)))<span class="sc">*</span>t.perc</span>
+<span id="cb29-8"><a href="intro.html#cb29-8" tabindex="-1"></a>  <span class="fu">list</span> (<span class="at">lower =</span> left.boundary, <span class="at">upper =</span> right.boundary</span>
+<span id="cb29-9"><a href="intro.html#cb29-9" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb29-10"><a href="intro.html#cb29-10" tabindex="-1"></a><span class="fu">conf.int</span> (<span class="at">x =</span> sleep[,<span class="dv">1</span>])</span></code></pre></div>
 <ol start="14" style="list-style-type: lower-alpha">
 <li>Select <em>only the final line</em> and run it. Check the R console. No problem, the function executed correctly. This is because the code for <code>conf.int</code> in the script file was changed, but the updated object was not created by running it in the console.</li>
 <li>Select <em>all the code</em> in the script and run it. Check the R console. Discuss.</li>
@@ -647,23 +647,23 @@ Communication with the R evaluator takes place through a set of instructions cal
 </h3>
 <p>When using <code><a href="https://rdrr.io/r/utils/fix.html">fix()</a></code> the built-in <em><span style="color:#FF9966">R text editor</span></em> can be used when using script files but in the windows environment <span style="color:#3399FF">notepad</span> or preferably <a href="www.notepad-plus-plus.org/download/">notepad++</a> or <a href="https://tinn-r.org/en/">Tinn-R</a> is preferred.</p>
 <p>The following instruction is necessary for changing the default editor to be used with <code><a href="https://rdrr.io/r/utils/fix.html">fix()</a></code>:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>editor <span class="op">=</span> <span class="st">"notepad"</span><span class="op">)</span></span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>editor <span class="op">=</span> <span class="st">"full path to the relevant exe file"</span><span class="op">)</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Enter <code>fix (my.func)</code> at the R prompt. A text editor will open. Type the instructions as shown below.</li>
 </ol>
-<p><code>function (x = sleep[,1])</code></p>
-<p><code>{</code></p>
-<p><code>x.mean &lt;- mean(x)</code></p>
-<p><code>x.sd &lt;- sd(x)</code></p>
-<p><code>t.perc &lt;- qt(0.975,19)</code></p>
-<p><code>left.boundary &lt;- x.mean - (x.sd/sqrt(length(x)))*t.perc</code></p>
-<p><code>right.boundary &lt;- x.mean + (x.sd/sqrt(length(x)))*t.perc</code></p>
-<p><code>list (lower = left.boundary, upper = right.boundary)</code></p>
-<p><code>}</code></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb32-1"><a href="intro.html#cb32-1" tabindex="-1"></a>function (x = sleep[,1])</span>
+<span id="cb32-2"><a href="intro.html#cb32-2" tabindex="-1"></a>{</span>
+<span id="cb32-3"><a href="intro.html#cb32-3" tabindex="-1"></a>  x.mean &lt;- mean(x)`</span>
+<span id="cb32-4"><a href="intro.html#cb32-4" tabindex="-1"></a>  x.sd &lt;- sd(x)</span>
+<span id="cb32-5"><a href="intro.html#cb32-5" tabindex="-1"></a>  t.perc &lt;- qt(0.975,19)</span>
+<span id="cb32-6"><a href="intro.html#cb32-6" tabindex="-1"></a>  left.boundary &lt;- x.mean - (x.sd/sqrt(length(x)))*t.perc</span>
+<span id="cb32-7"><a href="intro.html#cb32-7" tabindex="-1"></a>  right.boundary &lt;- x.mean + (x.sd/sqrt(length(x)))*t.perc</span>
+<span id="cb32-8"><a href="intro.html#cb32-8" tabindex="-1"></a>  list (lower = left.boundary, upper = right.boundary)</span>
+<span id="cb32-9"><a href="intro.html#cb32-9" tabindex="-1"></a>}</span></code></pre></div>
 <div style="margin-left: 32px; margin-right: 20px;">
 <p>Close the window. Check what happens in the R console.</p>
 <p>You can now run the function from the commands window (the console) similar to in <a href="intro.html#script">1.9.1</a>(l), but changing the name of the function from <code>conf.int</code> to <code>my.func</code>.</p>
@@ -672,15 +672,15 @@ Communication with the R evaluator takes place through a set of instructions cal
 <li><p>What will happen if a syntax error is made when using fix? At the R prompt type fix (my.func). Make a deliberate syntax error, e.g. delete the last closing brace. Close the text editor window. What happens in the console? What is to be done to correct the mistake?</p></li>
 <li><p>Carefully study the message in the R console when a syntax error occurred in a function created by <code><a href="https://rdrr.io/r/utils/fix.html">fix()</a></code>:</p></li>
 </ol>
-<p><code>&gt; Error in edit(name, file, title, editor) :</code></p>
-<p><code>unexpected 'yyy' occurred on line xx</code></p>
-<p><code>use a command like</code></p>
-<p><code>x &lt;- edit()</code></p>
-<p><code>to recover</code></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb33-1"><a href="intro.html#cb33-1" tabindex="-1"></a>&gt; Error in edit(name, file, title, editor) :</span>
+<span id="cb33-2"><a href="intro.html#cb33-2" tabindex="-1"></a>    unexpected 'yyy' occurred on line xx</span>
+<span id="cb33-3"><a href="intro.html#cb33-3" tabindex="-1"></a>    use a command like</span>
+<span id="cb33-4"><a href="intro.html#cb33-4" tabindex="-1"></a>    x &lt;- edit()</span>
+<span id="cb33-5"><a href="intro.html#cb33-5" tabindex="-1"></a>    to recover</span></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>The following is the correct way to respond to the above message from the R evaluator:</li>
 </ol>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/edit.html">edit</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div style="margin-left: 32px; margin-right: 20px;">
 <p>If you simply use <code>fix(my.func)</code> at this point, the R and the editor will revert to the version of the function <em>before</em> the previous edit.</p>
@@ -726,7 +726,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <li><p>In general, the treatment of integers and real numbers for which R uses floating point representation happens at a fundamental level over which R has no control. Real numbers cannot necessarily be exactly represented in a computer – some can only be approximated. Furthermore, there are limitations to the minimum and maximum numbers that can be represented in a computer. This might lead to what is known as <em><span style="color:#FF9966">underflow</span></em> or <em><span style="color:#FF9966">overflow</span></em>. A more detailed discussion appears in a later chapter.</p></li>
 </ul>
 <p>Open an R session and issue the command</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">.Machine</span></span></code></pre></div>
 <p>for details about the numerical environment of your computer.</p>
 </div>
@@ -742,10 +742,10 @@ Communication with the R evaluator takes place through a set of instructions cal
 </h2>
 <p>The function <code>.First()</code> is executed at the beginning of every R session. <em><span style="color:#FFB3B3">This only works in R and not in RStudio</span></em>.</p>
 <p>Instead of having to specify</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>editor <span class="op">=</span> <span class="st">"notepad"</span><span class="op">)</span></span></code></pre></div>
 <p>each time an R session is initialized, create the following function and save in the <span style="color:#CC99FF">.Rdata</span> before exiting R.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">.First</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>editor <span class="op">=</span> <span class="st">"notepad"</span><span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>to ensures that Notepad is the text editor during any subsequent session.</p>
 <p>Similar to <code>.First()</code> the function <code>.Last()</code> can be created for execution at the end of an R session.</p>
@@ -755,7 +755,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 </h3>
 <p>The <code>.First()</code> facility can be used to prevent access to a R workspace by setting a password protection. This can be done as follows:</p>
 <p>Create a new workspace for running the example on security. In this workspace create the following R function</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">password</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span>        <span class="co"># Note the structure of a function</span></span>
 <span><span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Password? \n"</span><span class="op">)</span></span>
 <span>  <span class="va">password</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span><span class="op">)</span>      <span class="co"># What is the usage of readline()? </span></span>
@@ -764,7 +764,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <span>  <span class="kw">else</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"You can proceed \n"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span>               </span></code></pre></div>
 <p>Now create the function:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">.First</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">{</span>   <span class="co">#  What must you be careful of?</span></span>
 <span>   <span class="fu">password</span><span class="op">(</span><span class="op">)</span></span>
@@ -789,75 +789,75 @@ Communication with the R evaluator takes place through a set of instructions cal
 </h2>
 <p>The R package <code>knitr</code> is used to obtain reproducible results from R code in the form of PDF or HTML documents. In addition to <code>knitr</code>, R <strong><span style="color:#3399FF">Markdown</span></strong> can be used to create HTML, PDF or even MS Word documents. Markdown is a so-called markup language with plain-text-formating syntax. An R Markdown document is written in markdown and contains chunks of embedded R code. Although the <code>render()</code> function in the package <code>rmarkdown</code> can be used (similar to the <code>knit()</code> function from the package <code>knitr</code>), to create the output document from the R Markdown <span style="color:#CC99FF">.Rmd</span> file, R Markdown is typically used in conjunction with <span style="color:#3399FF">RStudio</span>. In the top menu, select <em>File, New File, R Markdown…</em> to open the <span style="color:#CC99FF">example.Rmd</span> file providing the user with the structure of an R Markdown file. For our illustration, we will select the output format as HTML.</p>
 <p>Edit the <span style="color:#CC99FF">example.Rmd</span> file to contain the following:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb37-1"><a href="intro.html#cb37-1" tabindex="-1"></a>---</span>
-<span id="cb37-2"><a href="intro.html#cb37-2" tabindex="-1"></a>title: "An Illustration of Some Capabilities of R Markdown"</span>
-<span id="cb37-3"><a href="intro.html#cb37-3" tabindex="-1"></a>author: "Niel le Roux and Sugnet Lubbe"</span>
-<span id="cb37-4"><a href="intro.html#cb37-4" tabindex="-1"></a>date: "22/01/2021"</span>
-<span id="cb37-5"><a href="intro.html#cb37-5" tabindex="-1"></a>output: html_document</span>
-<span id="cb37-6"><a href="intro.html#cb37-6" tabindex="-1"></a>---</span>
-<span id="cb37-7"><a href="intro.html#cb37-7" tabindex="-1"></a></span>
-<span id="cb37-8"><a href="intro.html#cb37-8" tabindex="-1"></a>  </span>
-<span id="cb37-9"><a href="intro.html#cb37-9" tabindex="-1"></a>```{r setup, include=FALSE}</span>
-<span id="cb37-10"><a href="intro.html#cb37-10" tabindex="-1"></a>knitr::opts_chunk$set(echo = TRUE)</span>
-<span id="cb37-11"><a href="intro.html#cb37-11" tabindex="-1"></a>```</span>
-<span id="cb37-12"><a href="intro.html#cb37-12" tabindex="-1"></a></span>
-<span id="cb37-13"><a href="intro.html#cb37-13" tabindex="-1"></a>## Short description</span>
-<span id="cb37-14"><a href="intro.html#cb37-14" tabindex="-1"></a></span>
-<span id="cb37-15"><a href="intro.html#cb37-15" tabindex="-1"></a>Code chunks in .Rmd files are delimited with ` ```{r} ` at the top where a chunk </span>
-<span id="cb37-16"><a href="intro.html#cb37-16" tabindex="-1"></a>label and any chunk options can appear and  ` ``` ` at the end. In-line R code </span>
-<span id="cb37-17"><a href="intro.html#cb37-17" tabindex="-1"></a>chunks are indicated with single ` `r ` on either side.</span>
-<span id="cb37-18"><a href="intro.html#cb37-18" tabindex="-1"></a></span>
-<span id="cb37-19"><a href="intro.html#cb37-19" tabindex="-1"></a>*****</span>
-<span id="cb37-20"><a href="intro.html#cb37-20" tabindex="-1"></a></span>
-<span id="cb37-21"><a href="intro.html#cb37-21" tabindex="-1"></a>Here is an example containing several chunks of code. Note that in the first </span>
-<span id="cb37-22"><a href="intro.html#cb37-22" tabindex="-1"></a>chunk R code is not shown due to the option `echo = FALSE`. In the remaining </span>
-<span id="cb37-23"><a href="intro.html#cb37-23" tabindex="-1"></a>chunks R code is shown due to the option above 'echo = TRUE'.</span>
-<span id="cb37-24"><a href="intro.html#cb37-24" tabindex="-1"></a></span>
-<span id="cb37-25"><a href="intro.html#cb37-25" tabindex="-1"></a>_Note R code not shown for this chunk._</span>
-<span id="cb37-26"><a href="intro.html#cb37-26" tabindex="-1"></a></span>
-<span id="cb37-27"><a href="intro.html#cb37-27" tabindex="-1"></a>```{r y, echo=FALSE}</span>
-<span id="cb37-28"><a href="intro.html#cb37-28" tabindex="-1"></a>y &lt;- 1</span>
-<span id="cb37-29"><a href="intro.html#cb37-29" tabindex="-1"></a>y</span>
-<span id="cb37-30"><a href="intro.html#cb37-30" tabindex="-1"></a>```</span>
-<span id="cb37-31"><a href="intro.html#cb37-31" tabindex="-1"></a></span>
-<span id="cb37-32"><a href="intro.html#cb37-32" tabindex="-1"></a>```{r rnorm}</span>
-<span id="cb37-33"><a href="intro.html#cb37-33" tabindex="-1"></a>require(lattice)</span>
-<span id="cb37-34"><a href="intro.html#cb37-34" tabindex="-1"></a>set.seed(123)</span>
-<span id="cb37-35"><a href="intro.html#cb37-35" tabindex="-1"></a>x &lt;- rnorm(1000, 20, 5)</span>
-<span id="cb37-36"><a href="intro.html#cb37-36" tabindex="-1"></a>```</span>
-<span id="cb37-37"><a href="intro.html#cb37-37" tabindex="-1"></a></span>
-<span id="cb37-38"><a href="intro.html#cb37-38" tabindex="-1"></a>We analyse data drawn from $\mathcal{N}(20,25)$. The mean is </span>
-<span id="cb37-39"><a href="intro.html#cb37-39" tabindex="-1"></a>`r round(mean(x),3)`. The following code shows the distribution via a histogram</span>
-<span id="cb37-40"><a href="intro.html#cb37-40" tabindex="-1"></a></span>
-<span id="cb37-41"><a href="intro.html#cb37-41" tabindex="-1"></a>```{r histexample}</span>
-<span id="cb37-42"><a href="intro.html#cb37-42" tabindex="-1"></a>  hist(x)</span>
-<span id="cb37-43"><a href="intro.html#cb37-43" tabindex="-1"></a>```</span>
-<span id="cb37-44"><a href="intro.html#cb37-44" tabindex="-1"></a></span>
-<span id="cb37-45"><a href="intro.html#cb37-45" tabindex="-1"></a>and the code below via a boxplot.</span>
-<span id="cb37-46"><a href="intro.html#cb37-46" tabindex="-1"></a></span>
-<span id="cb37-47"><a href="intro.html#cb37-47" tabindex="-1"></a>```{r boxexample}</span>
-<span id="cb37-48"><a href="intro.html#cb37-48" tabindex="-1"></a>  boxplot(x)</span>
-<span id="cb37-49"><a href="intro.html#cb37-49" tabindex="-1"></a>```</span>
-<span id="cb37-50"><a href="intro.html#cb37-50" tabindex="-1"></a></span>
-<span id="cb37-51"><a href="intro.html#cb37-51" tabindex="-1"></a>The first element of \texttt{x} is `r x[1]`. Note the usage of ` \texttt{x} ` </span>
-<span id="cb37-52"><a href="intro.html#cb37-52" tabindex="-1"></a>above.</span>
-<span id="cb37-53"><a href="intro.html#cb37-53" tabindex="-1"></a></span>
-<span id="cb37-54"><a href="intro.html#cb37-54" tabindex="-1"></a>*two plots side by side (option fig.show='hold')*</span>
-<span id="cb37-55"><a href="intro.html#cb37-55" tabindex="-1"></a></span>
-<span id="cb37-56"><a href="intro.html#cb37-56" tabindex="-1"></a>```{r side-by-side, fig.show='hold', out.width="50%"}</span>
-<span id="cb37-57"><a href="intro.html#cb37-57" tabindex="-1"></a>  par(mar=c(4,4,0.1,0.1), cex.lab=0.95, cex.axis=0.9, mgp=c(2,0.7,0), tcl=-0.3, </span>
-<span id="cb37-58"><a href="intro.html#cb37-58" tabindex="-1"></a>  las=1)</span>
-<span id="cb37-59"><a href="intro.html#cb37-59" tabindex="-1"></a>  boxplot(x)</span>
-<span id="cb37-60"><a href="intro.html#cb37-60" tabindex="-1"></a>  hist(x,main="")</span>
-<span id="cb37-61"><a href="intro.html#cb37-61" tabindex="-1"></a>```</span>
-<span id="cb37-62"><a href="intro.html#cb37-62" tabindex="-1"></a></span>
-<span id="cb37-63"><a href="intro.html#cb37-63" tabindex="-1"></a>```{r linear_model}</span>
-<span id="cb37-64"><a href="intro.html#cb37-64" tabindex="-1"></a>  n &lt;- 10</span>
-<span id="cb37-65"><a href="intro.html#cb37-65" tabindex="-1"></a>  x &lt;- rnorm(n)</span>
-<span id="cb37-66"><a href="intro.html#cb37-66" tabindex="-1"></a>  y &lt;- 2*x + rnorm(n)</span>
-<span id="cb37-67"><a href="intro.html#cb37-67" tabindex="-1"></a>  out &lt;- lm(y ~ x)</span>
-<span id="cb37-68"><a href="intro.html#cb37-68" tabindex="-1"></a>  summary(out)$coef</span>
-<span id="cb37-69"><a href="intro.html#cb37-69" tabindex="-1"></a>```</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb40-1"><a href="intro.html#cb40-1" tabindex="-1"></a>---</span>
+<span id="cb40-2"><a href="intro.html#cb40-2" tabindex="-1"></a>title: "An Illustration of Some Capabilities of R Markdown"</span>
+<span id="cb40-3"><a href="intro.html#cb40-3" tabindex="-1"></a>author: "Niel le Roux and Sugnet Lubbe"</span>
+<span id="cb40-4"><a href="intro.html#cb40-4" tabindex="-1"></a>date: "22/01/2021"</span>
+<span id="cb40-5"><a href="intro.html#cb40-5" tabindex="-1"></a>output: html_document</span>
+<span id="cb40-6"><a href="intro.html#cb40-6" tabindex="-1"></a>---</span>
+<span id="cb40-7"><a href="intro.html#cb40-7" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="intro.html#cb40-8" tabindex="-1"></a>  </span>
+<span id="cb40-9"><a href="intro.html#cb40-9" tabindex="-1"></a>```{r setup, include=FALSE}</span>
+<span id="cb40-10"><a href="intro.html#cb40-10" tabindex="-1"></a>knitr::opts_chunk$set(echo = TRUE)</span>
+<span id="cb40-11"><a href="intro.html#cb40-11" tabindex="-1"></a>```</span>
+<span id="cb40-12"><a href="intro.html#cb40-12" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="intro.html#cb40-13" tabindex="-1"></a>## Short description</span>
+<span id="cb40-14"><a href="intro.html#cb40-14" tabindex="-1"></a></span>
+<span id="cb40-15"><a href="intro.html#cb40-15" tabindex="-1"></a>Code chunks in .Rmd files are delimited with ` ```{r} ` at the top where a chunk </span>
+<span id="cb40-16"><a href="intro.html#cb40-16" tabindex="-1"></a>label and any chunk options can appear and  ` ``` ` at the end. In-line R code </span>
+<span id="cb40-17"><a href="intro.html#cb40-17" tabindex="-1"></a>chunks are indicated with single ` `r ` on either side.</span>
+<span id="cb40-18"><a href="intro.html#cb40-18" tabindex="-1"></a></span>
+<span id="cb40-19"><a href="intro.html#cb40-19" tabindex="-1"></a>*****</span>
+<span id="cb40-20"><a href="intro.html#cb40-20" tabindex="-1"></a></span>
+<span id="cb40-21"><a href="intro.html#cb40-21" tabindex="-1"></a>Here is an example containing several chunks of code. Note that in the first </span>
+<span id="cb40-22"><a href="intro.html#cb40-22" tabindex="-1"></a>chunk R code is not shown due to the option `echo = FALSE`. In the remaining </span>
+<span id="cb40-23"><a href="intro.html#cb40-23" tabindex="-1"></a>chunks R code is shown due to the option above 'echo = TRUE'.</span>
+<span id="cb40-24"><a href="intro.html#cb40-24" tabindex="-1"></a></span>
+<span id="cb40-25"><a href="intro.html#cb40-25" tabindex="-1"></a>_Note R code not shown for this chunk._</span>
+<span id="cb40-26"><a href="intro.html#cb40-26" tabindex="-1"></a></span>
+<span id="cb40-27"><a href="intro.html#cb40-27" tabindex="-1"></a>```{r y, echo=FALSE}</span>
+<span id="cb40-28"><a href="intro.html#cb40-28" tabindex="-1"></a>y &lt;- 1</span>
+<span id="cb40-29"><a href="intro.html#cb40-29" tabindex="-1"></a>y</span>
+<span id="cb40-30"><a href="intro.html#cb40-30" tabindex="-1"></a>```</span>
+<span id="cb40-31"><a href="intro.html#cb40-31" tabindex="-1"></a></span>
+<span id="cb40-32"><a href="intro.html#cb40-32" tabindex="-1"></a>```{r rnorm}</span>
+<span id="cb40-33"><a href="intro.html#cb40-33" tabindex="-1"></a>require(lattice)</span>
+<span id="cb40-34"><a href="intro.html#cb40-34" tabindex="-1"></a>set.seed(123)</span>
+<span id="cb40-35"><a href="intro.html#cb40-35" tabindex="-1"></a>x &lt;- rnorm(1000, 20, 5)</span>
+<span id="cb40-36"><a href="intro.html#cb40-36" tabindex="-1"></a>```</span>
+<span id="cb40-37"><a href="intro.html#cb40-37" tabindex="-1"></a></span>
+<span id="cb40-38"><a href="intro.html#cb40-38" tabindex="-1"></a>We analyse data drawn from $\mathcal{N}(20,25)$. The mean is </span>
+<span id="cb40-39"><a href="intro.html#cb40-39" tabindex="-1"></a>`r round(mean(x),3)`. The following code shows the distribution via a histogram</span>
+<span id="cb40-40"><a href="intro.html#cb40-40" tabindex="-1"></a></span>
+<span id="cb40-41"><a href="intro.html#cb40-41" tabindex="-1"></a>```{r histexample}</span>
+<span id="cb40-42"><a href="intro.html#cb40-42" tabindex="-1"></a>  hist(x)</span>
+<span id="cb40-43"><a href="intro.html#cb40-43" tabindex="-1"></a>```</span>
+<span id="cb40-44"><a href="intro.html#cb40-44" tabindex="-1"></a></span>
+<span id="cb40-45"><a href="intro.html#cb40-45" tabindex="-1"></a>and the code below via a boxplot.</span>
+<span id="cb40-46"><a href="intro.html#cb40-46" tabindex="-1"></a></span>
+<span id="cb40-47"><a href="intro.html#cb40-47" tabindex="-1"></a>```{r boxexample}</span>
+<span id="cb40-48"><a href="intro.html#cb40-48" tabindex="-1"></a>  boxplot(x)</span>
+<span id="cb40-49"><a href="intro.html#cb40-49" tabindex="-1"></a>```</span>
+<span id="cb40-50"><a href="intro.html#cb40-50" tabindex="-1"></a></span>
+<span id="cb40-51"><a href="intro.html#cb40-51" tabindex="-1"></a>The first element of \texttt{x} is `r x[1]`. Note the usage of ` \texttt{x} ` </span>
+<span id="cb40-52"><a href="intro.html#cb40-52" tabindex="-1"></a>above.</span>
+<span id="cb40-53"><a href="intro.html#cb40-53" tabindex="-1"></a></span>
+<span id="cb40-54"><a href="intro.html#cb40-54" tabindex="-1"></a>*two plots side by side (option fig.show='hold')*</span>
+<span id="cb40-55"><a href="intro.html#cb40-55" tabindex="-1"></a></span>
+<span id="cb40-56"><a href="intro.html#cb40-56" tabindex="-1"></a>```{r side-by-side, fig.show='hold', out.width="50%"}</span>
+<span id="cb40-57"><a href="intro.html#cb40-57" tabindex="-1"></a>  par(mar=c(4,4,0.1,0.1), cex.lab=0.95, cex.axis=0.9, mgp=c(2,0.7,0), tcl=-0.3, </span>
+<span id="cb40-58"><a href="intro.html#cb40-58" tabindex="-1"></a>  las=1)</span>
+<span id="cb40-59"><a href="intro.html#cb40-59" tabindex="-1"></a>  boxplot(x)</span>
+<span id="cb40-60"><a href="intro.html#cb40-60" tabindex="-1"></a>  hist(x,main="")</span>
+<span id="cb40-61"><a href="intro.html#cb40-61" tabindex="-1"></a>```</span>
+<span id="cb40-62"><a href="intro.html#cb40-62" tabindex="-1"></a></span>
+<span id="cb40-63"><a href="intro.html#cb40-63" tabindex="-1"></a>```{r linear_model}</span>
+<span id="cb40-64"><a href="intro.html#cb40-64" tabindex="-1"></a>  n &lt;- 10</span>
+<span id="cb40-65"><a href="intro.html#cb40-65" tabindex="-1"></a>  x &lt;- rnorm(n)</span>
+<span id="cb40-66"><a href="intro.html#cb40-66" tabindex="-1"></a>  y &lt;- 2*x + rnorm(n)</span>
+<span id="cb40-67"><a href="intro.html#cb40-67" tabindex="-1"></a>  out &lt;- lm(y ~ x)</span>
+<span id="cb40-68"><a href="intro.html#cb40-68" tabindex="-1"></a>  summary(out)$coef</span>
+<span id="cb40-69"><a href="intro.html#cb40-69" tabindex="-1"></a>```</span></code></pre></div>
 <p>At the top of the text editor, click on <em>Knit</em> to create the HTML document. Note that with the down arrow, options <em>Knit to PDF</em> and <em>Knit to Word</em> can also be chosen. The output format is also specified in line 5 of the text file with <code>output: html_document</code>. Had we chosen PDF as output format, it would be <code>output: pdf_document</code>. Typically, R Markdown is used for reporting, directly incorporating the R code and output. For more formal documents with Figure and Table caption references, tables of content, etc. the R package <code>bookdown</code> should be used. Install the package and replace the output statement with <code>output:bookdown::pdf_document2</code>. For more information on the use of bookdown, <a href="https://bookdown.org/">click here</a>.</p>
 </div>
 <div id="command-line-editing" class="section level2" number="1.16">
@@ -891,7 +891,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <a class="nav-link" href="#regular-expressions-in-r-the-basics"><span class="header-section-number">1.8</span> Regular expressions in R: the basics</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#exercise-2"><span class="header-section-number">1.8.1</span> Exercise</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#from-single-instructions-to-sets-of-instructions-introducing-r-functions"><span class="header-section-number">1.9</span> From single instructions to sets of instructions: introducing R functions</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#FunctionIntro"><span class="header-section-number">1.9</span> From single instructions to sets of instructions: introducing R functions</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#script"><span class="header-section-number">1.9.1</span> Writing an R function using a script file</a></li>
 <li><a class="nav-link" href="#writing-an-r-function-using-fix"><span class="header-section-number">1.9.2</span> Writing an R function using fix()</a></li>
 </ul>

@@ -11,7 +11,7 @@ h2:accessing-the-help-functionality Accessing the Help functionality
 h2:MoreBasics More R basics
 h2:regular-expressions-in-r-the-basics Regular expressions in R: the basics
 h3:exercise-2 Exercise
-h2:from-single-instructions-to-sets-of-instructions-introducing-r-functions From single instructions to sets of instructions: introducing R functions
+h2:FunctionIntro From single instructions to sets of instructions: introducing R functions
 h3:script Writing an R function using a script file
 h3:writing-an-r-function-using-fix Writing an R function using 
 h2:r-projects R Projects

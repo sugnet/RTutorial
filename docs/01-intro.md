@@ -47,11 +47,12 @@ Click the R icon created on your desktop to open the *<span style="color:#FF9966
 
 (b)	Repeat (a) but enter only 5 – and see what happens:
 
-`> 5 -`
 
-`> +`
-
-`> +`
+``` default
+> 5 -
+> +
+> +
+```
 
 <div style="margin-left: 25px; margin-right: 20px;">
 The above `+` is the secondary R prompt. It indicates that an instruction is unfinished. Either respond by completing the instruction or press the <span style="color:#3399FF">Esc</span> key to start all over again from the primary prompt.
@@ -101,7 +102,7 @@ The above example shows that <span style="color:#FF9966">when the name of an R o
 
 ``` r
 mean(yy) 
-#> [1] 49.66644
+#> [1] 49.35197
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -120,7 +121,7 @@ gr.data <- rnorm(1000)
 hist(gr.data)
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 <div style="margin-left: 25px; margin-right: 20px;">
 These instructions have resulted in the opening of a graph window containing the required histogram and the user can switch from the console to the graph window and back again to the console.
@@ -362,7 +363,7 @@ q()
 
 Table: (\#tab:HelpQueries) Some useful keywords available for help queries.
 
-| **<span style="color:#FFCC99">Help query</span>** | **<span style="color:#FFCC99">Explanation</span>** |
+| *<span style="color:#F7CE21">Help query</span>* | *<span style="color:#F7CE21">Explanation</span>* |
 | ------ | --------------- |
 | `?Arithmetic` |	Unary and binary operators to perform arithmetic on numeric and complex vectors |
 | `?Comparison` |	Binary operators for comparison of values in vectors |
@@ -393,7 +394,7 @@ The modifiers operating on characters or character classes are summarized in Tab
 
 Table: (\#tab:RegExprMod) Modifiers for regular expressions.
 
-| **<span style="color:#FFCC99">Modifier</span>** | **<span style="color:#FFCC99">Operation</span>** |
+| *<span style="color:#F7CE21">Modifier</span>* | *<span style="color:#F7CE21">Operation</span>* |
 | ------ | --------------- |
 | `^` | Expression anchors at beginning of target string |
 | `$` | Expression anchors at end of target string |
@@ -415,7 +416,7 @@ Note that in R this means that whenever one of the above characters needs to be 
 
 Table: (\#tab:RegExpr) Examples of regular expressions.
 
-| **<span style="color:#FFCC99">Regular expression</span>** | **<span style="color:#FFCC99">Meaning</span>** |
+| *<span style="color:#F7CE21">Regular expression</span>* | *<span style="color:#F7CE21">Meaning</span>* |
 | ------ | --------------- |
 | `"[a-z][a-z][0-9]"` |	Matches a string consisting of two lower case letters followed by a digit |
 | `"[a-z][a-z][0-9]$"` | Matches a string ending in two lower case letters followed by a digit |
@@ -447,7 +448,7 @@ objects(pos=2)
 (f)	Obtain a listing of all objects with names ending in a period followed by exactly three or four letters.
 :::
 
-## 	From single instructions to sets of instructions: introducing R functions
+## 	From single instructions to sets of instructions: introducing R functions { #FunctionIntro }
 
 Consider the following problem: the R data set `sleep` contains the extra hours of sleep of 20 patients after a drug treatment. Suppose this data set can be considered a sample from a normal population. A 95% confidence interval is required for the mean extra hours of sleep. It is known that the confidence interval is given by $\left[ \mathbf{\bar{x}}- \left( \frac{s}{\sqrt(n)} \right) t_{n-1,0.025}; \mathbf{\bar{x}}+ \left( \frac{s}{\sqrt(n)} \right) t_{n-1,0.025} \right]$. This problem can be solved by entering the following instructions one by one:
 
@@ -548,23 +549,18 @@ options(editor = "full path to the relevant exe file")
 
 (a)	Enter `fix (my.func)` at the R prompt. A text editor will open. Type the instructions as shown below. 
 
-`function (x = sleep[,1])`
 
-`{`
-
-`  x.mean <- mean(x)` 
-
-`  x.sd <- sd(x)`
-
-`  t.perc <- qt(0.975,19)`
-
-`  left.boundary <- x.mean - (x.sd/sqrt(length(x)))*t.perc`
-
-`  right.boundary <- x.mean + (x.sd/sqrt(length(x)))*t.perc`
-
-`  list (lower = left.boundary, upper = right.boundary)`  
-
-`}`
+``` default
+function (x = sleep[,1])
+{
+  x.mean <- mean(x)`
+  x.sd <- sd(x)
+  t.perc <- qt(0.975,19)
+  left.boundary <- x.mean - (x.sd/sqrt(length(x)))*t.perc
+  right.boundary <- x.mean + (x.sd/sqrt(length(x)))*t.perc
+  list (lower = left.boundary, upper = right.boundary)
+}
+```
 
 <div style="margin-left: 32px; margin-right: 20px;">
 Close the window. Check what happens in the R console.
@@ -576,15 +572,15 @@ You can now run the function from the commands window (the console) similar to i
 
 (c)	Carefully study the message in the R console when a syntax error occurred in a function created by `fix()`:
 
-`> Error in edit(name, file, title, editor) :`
 
-`	unexpected 'yyy' occurred on line xx`
+``` default
+> Error in edit(name, file, title, editor) :
+	unexpected 'yyy' occurred on line xx
+  	use a command like
+  	x <- edit()
+  	to recover
+```
 
-`  	use a command like`
-
-`  	x <- edit()`
-
-`  	to recover`
 
 (d)	The following is the correct way to respond to the above message from the R evaluator:
 

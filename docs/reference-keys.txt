@@ -14,7 +14,7 @@ accessing-the-help-functionality
 MoreBasics
 regular-expressions-in-r-the-basics
 exercise-2
-from-single-instructions-to-sets-of-instructions-introducing-r-functions
+FunctionIntro
 script
 writing-an-r-function-using-fix
 r-projects
@@ -27,6 +27,12 @@ options
 creating-pdf-and-html-documents-from-r-output-r-markdown
 command-line-editing
 objects
+instructions-and-objects-in-r
+general
+objects-in-r
+data-in-r
+generation-of-data
+r-function-basics
 operators
 graphics
 subscripting
