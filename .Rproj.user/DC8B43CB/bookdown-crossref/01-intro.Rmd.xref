@@ -1,0 +1,26 @@
+h1:intro Introducing the R System
+h2:introduction Introduction
+h2:downloading-the-r-system Downloading the R system
+h2:QuickSample A quick sample R session
+h2:working-with-rstudio Working with RStudio
+fig:RStudioLayout The RStudio development environment for R.
+h2:r-an-interpretive-computer-language R: an interpretive computer language
+h3:exercise Exercise
+h3:exercise-1 Exercise
+h2:accessing-the-help-functionality Accessing the Help functionality
+h2:MoreBasics More R basics
+h2:regular-expressions-in-r-the-basics Regular expressions in R: the basics
+h3:exercise-2 Exercise
+h2:from-single-instructions-to-sets-of-instructions-introducing-r-functions From single instructions to sets of instructions: introducing R functions
+h3:script Writing an R function using a script file
+h3:writing-an-r-function-using-fix Writing an R function using 
+h2:r-projects R Projects
+h3:creating-a-project-in-rstudio Creating a project in RStudio
+h2:a-note-on-computations-by-a-computer A note on computations by a computer
+h2:built-in-data-sets-in-r Built-in data sets in R
+h2:the-use-of-.first-and-.last The use of  and 
+h3:security-an-example-of-the-usage-of-.first Security: an example of the usage of 
+h2:options Options
+h2:creating-pdf-and-html-documents-from-r-output-r-markdown Creating PDF and HTML documents from R output: R Markdown
+h2:command-line-editing Command line editing
+

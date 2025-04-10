@@ -1,0 +1,15 @@
+bookdown::bs4_book:
+  css: style.css
+  theme:
+    primary: "#009999"
+    info:    "#FF9966"
+    success: "#00FF99"
+  repo: https://github.com/sugnet/RTutorial
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
+

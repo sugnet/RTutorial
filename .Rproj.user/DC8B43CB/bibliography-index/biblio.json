@@ -1,0 +1,179 @@
+{
+    "sources": [
+        {
+            "URL": "http://bookboon.com/en/a-step-by-step-r-tutorial-ebook",
+            "author": [
+                {
+                    "family": "Roux",
+                    "given": "Niël J.",
+                    "non-dropping-particle": "le"
+                },
+                {
+                    "family": "Lubbe",
+                    "given": "Sugnet"
+                }
+            ],
+            "edition": "2nd",
+            "id": "StepbyStep",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "publisher": "Bookboon",
+            "title": "A step-by-step R tutorial: An introduction into R applications and programming",
+            "title-short": "A step-by-step R tutorial",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Becker",
+                    "given": "Richard A."
+                },
+                {
+                    "family": "Chambers",
+                    "given": "John M."
+                },
+                {
+                    "family": "Wilks",
+                    "given": "Allan R."
+                }
+            ],
+            "id": "BeckerChambersWilks1988",
+            "issued": {
+                "date-parts": [
+                    [
+                        1988
+                    ]
+                ]
+            },
+            "note": "ISBN 0-543-09192-X",
+            "publisher": "Wadsworth & Brooks/Cole",
+            "publisher-place": "Pacific Grove, CA",
+            "title": "The new S language: A programming environment for data analysis and graphics.",
+            "title-short": "The new S language",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Chambers",
+                    "given": "John M."
+                }
+            ],
+            "id": "Chambers1998",
+            "issued": {
+                "date-parts": [
+                    [
+                        1998
+                    ]
+                ]
+            },
+            "note": "ISBN 0-378-98503-4",
+            "publisher": "Springer",
+            "publisher-place": "Berlin",
+            "title": "Programming with data: A guide to the S language",
+            "title-short": "Programming with data",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Chambers",
+                    "given": "John M."
+                }
+            ],
+            "id": "Chambers2008",
+            "issued": {
+                "date-parts": [
+                    [
+                        2008
+                    ]
+                ]
+            },
+            "note": "ISBN 0-378-75935-2",
+            "publisher": "Springer",
+            "publisher-place": "Berlin",
+            "title": "Software for data analysis programming with R",
+            "type": "book"
+        },
+        {
+            "editor": [
+                {
+                    "family": "Chambers",
+                    "given": "John M."
+                },
+                {
+                    "family": "Hastie",
+                    "given": "Trevor J."
+                }
+            ],
+            "id": "ChambersHastie1993",
+            "issued": {
+                "date-parts": [
+                    [
+                        1993
+                    ]
+                ]
+            },
+            "note": "ISBN 0-412-05291-1",
+            "publisher": "Wadsworth & Brooks/Cole",
+            "publisher-place": "Pacific Grove, CA",
+            "title": "Statistical models in S",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Ihaka",
+                    "given": "Ross"
+                },
+                {
+                    "family": "Gentleman",
+                    "given": "Robert"
+                }
+            ],
+            "container-title": "Journal of Computational and Graphical Statistics",
+            "id": "IhakaGentleman1996",
+            "issued": {
+                "date-parts": [
+                    [
+                        1996
+                    ]
+                ]
+            },
+            "page": "299-314",
+            "title": "R: A language for data anlaysis and graphics",
+            "title-short": "R",
+            "type": "article-journal",
+            "volume": "5(3)"
+        },
+        {
+            "author": [
+                {
+                    "family": "Spector",
+                    "given": "Phil"
+                }
+            ],
+            "id": "Spector1994",
+            "issued": {
+                "date-parts": [
+                    [
+                        1994
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1-4398-3176-2",
+            "publisher": "Duxbury Press",
+            "publisher-place": "Pacific Grove, CA",
+            "title": "An introduction to S and s-plus",
+            "type": "book"
+        }
+    ],
+    "project_biblios": [
+        "book.bib"
+    ]
+}
