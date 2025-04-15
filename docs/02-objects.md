@@ -84,9 +84,8 @@ objects()
 
 ``` r
 aa
-#>  [1]  0.01243643 -0.87187737 -0.27415456 -1.49573796
-#>  [5] -0.72263638  1.78316111 -0.49305334 -1.76229820
-#>  [9] -0.82112569 -0.56220066
+#>  [1] -0.2706247 -0.1856922 -0.7276464 -1.1021677 -0.4151107
+#>  [6]  1.8439135  1.4577438 -1.8439103 -0.9168154 -0.8459781
 ```
 
 ``` r
@@ -571,7 +570,7 @@ parent.env(.GlobalEnv)
 #> attr(,"name")
 #> [1] "package:stats"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/stats"
+#> [1] "C:/Program Files/R/R-4.4.2/library/stats"
 ```
 
 ``` r
@@ -580,7 +579,7 @@ parent.env(parent.env(.GlobalEnv))
 #> attr(,"name")
 #> [1] "package:graphics"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/graphics"
+#> [1] "C:/Program Files/R/R-4.4.2/library/graphics"
 ```
 
 ``` r
@@ -589,7 +588,7 @@ parent.env(parent.env(parent.env(.GlobalEnv)))
 #> attr(,"name")
 #> [1] "package:grDevices"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/grDevices"
+#> [1] "C:/Program Files/R/R-4.4.2/library/grDevices"
 ```
 
 ``` r
@@ -686,7 +685,7 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x000001bf1142e960>
+#> <bytecode: 0x00000197bc197b98>
 #> <environment: namespace:base>
 ```
 
@@ -698,19 +697,19 @@ get (mean)
 
 ``` r
 get ("mean") 
-#> [1] 0.02303358
+#> [1] 0.01967994
 ```
 
 ``` r
 get ("mean", pos = 1) 
-#> [1] 0.02303358
+#> [1] 0.01967994
 ```
 
 ``` r
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001bf0f5b7ca0>
+#> <bytecode: 0x00000197ba2a4158>
 #> <environment: namespace:base>
 ```
 
@@ -747,7 +746,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001bf0f5b7ca0>
+#> <bytecode: 0x00000197ba2a4158>
 #> <environment: namespace:base>
 ```
 
@@ -758,7 +757,7 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001bf0f5b7ca0>
+#> <bytecode: 0x00000197ba2a4158>
 #> <environment: namespace:base>
 ```
 
@@ -766,7 +765,7 @@ my.list[[2]]
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001bf0f5b7ca0>
+#> <bytecode: 0x00000197ba2a4158>
 #> <environment: namespace:base>
 ```
 
@@ -841,7 +840,7 @@ sum (c (TRUE, FALSE, TRUE, TRUE, FALSE))
 *	Class of an object and the function  `unclass()` for removing class.
 
 ## Representation of objects
-We have seen already that a representation of an object can be obtained by calling (entering) its name:
+We have already seen that a representation of an object can be obtained by calling (entering) its name:
 
 
 ``` r

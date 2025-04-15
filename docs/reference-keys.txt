@@ -2,6 +2,9 @@ fig:RStudioLayout
 tab:HelpQueries
 tab:RegExprMod
 tab:RegExpr
+tab:ArithOperators
+tab:LogicOperators
+tab:Precedence
 intro
 introduction
 downloading-the-r-system
@@ -46,6 +49,10 @@ exercise-5
 exercise-6
 exercise-7
 operators
+arithmetic-operators
+logical-operators
+the-operators-----and
+operator-precedence
 character
 graphics
 subscripting
