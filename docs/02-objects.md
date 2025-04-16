@@ -84,9 +84,9 @@ objects()
 
 ``` r
 aa
-#>  [1]  0.01243643 -0.87187737 -0.27415456 -1.49573796
-#>  [5] -0.72263638  1.78316111 -0.49305334 -1.76229820
-#>  [9] -0.82112569 -0.56220066
+#>  [1] -1.20308433 -0.35250505 -0.53208458  0.12269365
+#>  [5] -0.14171589 -0.12705789 -0.09979359  3.09734877
+#>  [9] -0.38240962  0.81154015
 ```
 
 ``` r
@@ -336,7 +336,7 @@ library(mvtnorm)
 
 Alternatively, for generating multivariate normally data there is also a function `mvrnorm()` in R package `MASS`.
 
-## R Function Basics
+##	Introduction to functions in R
 
 We introduced R functions in section \@ref(FunctionIntro). The basic structure of an R function is as follows:
 
@@ -348,47 +348,70 @@ func.name <- function(list of arguments)
 }
 ```
 
-When the function `func.name()` is called, the code in `{ }` is executed. Let us have another look at our confidence interval function, with a small change in the list of arguments:
+When the function `func.name()` is called, the code in `{ }` is executed.
+
+The arguments of a function can be inspected by using the command
 
 
 ``` r
-conf.int <- function (x, alpha = 0.95)
-{
-  x.mean <- mean(x)   
-  x.sd <- sd(x)   
-  tail.prob <- 1 - alpha
-  t.perc <- qt(1 - tail.prob/2,19) 
-  left.boundary <- x.mean - (x.sd/sqrt(length(x)))*t.perc 
-  right.boundary <- x.mean + (x.sd/sqrt(length(x)))*t.perc
-  list (lower = left.boundary, upper = right.boundary)  
+args(name of function)
+```
+
+The function `str(x)` provides information on the object `x`.  If `x` is a function its output is similar to that of `args()`. Default values are given to function arguments using the construction (`argument name = value`). It is good programming practice to make extensively use of comments to describe arguments and / or what a particular chunk of code does.
+What is the usage of the following function:
+
+
+``` r
+cube <- function(a) a^3
+```
+
+In the above function the argument a is called a *<span style="color:#FF9966">dummy argument</span>*. What will happen to an object `a` in the working directory?
+
+Functions are called by replacing the *<span style="color:#FF9966">formal arguments</span>* by the *<span style="color:#FF9966">actual arguments</span>*.  This can be done *<span style="color:#FF9966">by position</span>* or *<span style="color:#FF9966">by name</span>*.  *Hint*: It is less error prone to call functions using named arguments. Create the following function
+
+
+``` r
+Demofunc <- function(vec = 1:10, m,k)
+ { # Function to subtract a specified constant from
+   # each element of a given vector and after subtraction
+   # divide each element by a second specified constant.
+   # The result of the above transformation is returned.
+ (vec - m)/ k 
 }
 ```
 
-The argument `x` does not have a default value. The function cannot be executed without specifying a vector of values for `x`. The argument `alpha` has a default value of $0.95$ which means by default a $95\%$ confidence interval will be created. It is however up to the user to specify an alternative confidence level, should they wish.
-
+Execute the following function calls and explain the output
 
 ``` r
-conf.int()
-#> Error in conf.int(): argument "x" is missing, with no default
+Demofunc(3, 2, 5)
+#> [1] 0.2
 ```
 
 ``` r
-conf.int(x = sleep[,1])
-#> $lower
-#> [1] 0.5955845
-#> 
-#> $upper
-#> [1] 2.484416
+Demofunc(2,5)
+#> Error in Demofunc(2, 5): argument "k" is missing, with no default
 ```
 
 ``` r
-conf.int(x = iris[1:50,1], alpha = 0.9)
-#> $lower
-#> [1] 4.919803
-#> 
-#> $upper
-#> [1] 5.092197
+Demofunc(m = 2, k = 5)
+#>  [1] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6
 ```
+
+``` r
+Demofunc(m = 2, k = 5, vec = 1:100)
+#>   [1] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6  1.8
+#>  [12]  2.0  2.2  2.4  2.6  2.8  3.0  3.2  3.4  3.6  3.8  4.0
+#>  [23]  4.2  4.4  4.6  4.8  5.0  5.2  5.4  5.6  5.8  6.0  6.2
+#>  [34]  6.4  6.6  6.8  7.0  7.2  7.4  7.6  7.8  8.0  8.2  8.4
+#>  [45]  8.6  8.8  9.0  9.2  9.4  9.6  9.8 10.0 10.2 10.4 10.6
+#>  [56] 10.8 11.0 11.2 11.4 11.6 11.8 12.0 12.2 12.4 12.6 12.8
+#>  [67] 13.0 13.2 13.4 13.6 13.8 14.0 14.2 14.4 14.6 14.8 15.0
+#>  [78] 15.2 15.4 15.6 15.8 16.0 16.2 16.4 16.6 16.8 17.0 17.2
+#>  [89] 17.4 17.6 17.8 18.0 18.2 18.4 18.6 18.8 19.0 19.2 19.4
+#> [100] 19.6
+```
+
+Note the use of  `prompt()` and `package.skeleton()` to provide a new function with a help-file.
 
 The final expression in an R function is automatically returned when the function completes execution.
 
@@ -686,7 +709,7 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x000001bf1142e960>
+#> <bytecode: 0x0000023ab848f958>
 #> <environment: namespace:base>
 ```
 
@@ -698,19 +721,19 @@ get (mean)
 
 ``` r
 get ("mean") 
-#> [1] 0.02303358
+#> [1] -0.04858364
 ```
 
 ``` r
 get ("mean", pos = 1) 
-#> [1] 0.02303358
+#> [1] -0.04858364
 ```
 
 ``` r
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001bf0f5b7ca0>
+#> <bytecode: 0x0000023ab63bbca0>
 #> <environment: namespace:base>
 ```
 
@@ -747,7 +770,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001bf0f5b7ca0>
+#> <bytecode: 0x0000023ab63bbca0>
 #> <environment: namespace:base>
 ```
 
@@ -758,7 +781,7 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001bf0f5b7ca0>
+#> <bytecode: 0x0000023ab63bbca0>
 #> <environment: namespace:base>
 ```
 
@@ -766,7 +789,7 @@ my.list[[2]]
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001bf0f5b7ca0>
+#> <bytecode: 0x0000023ab63bbca0>
 #> <environment: namespace:base>
 ```
 
@@ -841,7 +864,7 @@ sum (c (TRUE, FALSE, TRUE, TRUE, FALSE))
 *	Class of an object and the function  `unclass()` for removing class.
 
 ## Representation of objects
-We have seen already that a representation of an object can be obtained by calling (entering) its name:
+We have already seen that a representation of an object can be obtained by calling (entering) its name:
 
 
 ``` r

@@ -2,6 +2,11 @@ fig:RStudioLayout
 tab:HelpQueries
 tab:RegExprMod
 tab:RegExpr
+tab:ArithOperators
+tab:LogicOperators
+tab:Precedence
+tab:TrigFunc
+tab:MatrixFunc
 intro
 introduction
 downloading-the-r-system
@@ -32,7 +37,7 @@ general
 objects-in-r
 data-in-r
 generation-of-data
-r-function-basics
+introduction-to-functions-in-r
 how-r-finds-data
 the-organisation-of-data-data-structures
 time-series
@@ -46,6 +51,16 @@ exercise-5
 exercise-6
 exercise-7
 operators
+arithmetic-operators
+logical-operators
+the-operators-----and
+operator-precedence
+some-mathematical-functions
+general-mathematical-functions
+trigonometric-functions
+complex-numbers
+functions-for-rounding-and-truncating
+functions-for-matrices
 character
 graphics
 subscripting

@@ -196,7 +196,7 @@ library(mvtnorm)
 
 Alternatively, for generating multivariate normally data there is also a function `mvrnorm()` in R package `MASS`.
 
-## R Function Basics
+##	Introduction to functions in R
 
 We introduced R functions in section \@ref(FunctionIntro). The basic structure of an R function is as follows:
 
@@ -207,28 +207,44 @@ func.name <- function(list of arguments)
 }
 ```
 
-When the function `func.name()` is called, the code in `{ }` is executed. Let us have another look at our confidence interval function, with a small change in the list of arguments:
+When the function `func.name()` is called, the code in `{ }` is executed.
 
-```{r, confint}
-conf.int <- function (x, alpha = 0.95)
-{
-  x.mean <- mean(x)   
-  x.sd <- sd(x)   
-  tail.prob <- 1 - alpha
-  t.perc <- qt(1 - tail.prob/2,19) 
-  left.boundary <- x.mean - (x.sd/sqrt(length(x)))*t.perc 
-  right.boundary <- x.mean + (x.sd/sqrt(length(x)))*t.perc
-  list (lower = left.boundary, upper = right.boundary)  
+The arguments of a function can be inspected by using the command
+
+```{r, eval = FALSE}
+args(name of function)
+```
+
+The function `str(x)` provides information on the object `x`.  If `x` is a function its output is similar to that of `args()`. Default values are given to function arguments using the construction (`argument name = value`). It is good programming practice to make extensively use of comments to describe arguments and / or what a particular chunk of code does.
+What is the usage of the following function:
+
+```{r, cubeFunc}
+cube <- function(a) a^3
+```
+
+In the above function the argument a is called a *<span style="color:#FF9966">dummy argument</span>*. What will happen to an object `a` in the working directory?
+
+Functions are called by replacing the *<span style="color:#FF9966">formal arguments</span>* by the *<span style="color:#FF9966">actual arguments</span>*.  This can be done *<span style="color:#FF9966">by position</span>* or *<span style="color:#FF9966">by name</span>*.  *Hint*: It is less error prone to call functions using named arguments. Create the following function
+
+```{r, Demofunc}
+Demofunc <- function(vec = 1:10, m,k)
+ { # Function to subtract a specified constant from
+   # each element of a given vector and after subtraction
+   # divide each element by a second specified constant.
+   # The result of the above transformation is returned.
+ (vec - m)/ k 
 }
 ```
 
-The argument `x` does not have a default value. The function cannot be executed without specifying a vector of values for `x`. The argument `alpha` has a default value of $0.95$ which means by default a $95\%$ confidence interval will be created. It is however up to the user to specify an alternative confidence level, should they wish.
-
-```{r, confExample, error = 0}
-conf.int()
-conf.int(x = sleep[,1])
-conf.int(x = iris[1:50,1], alpha = 0.9)
+Execute the following function calls and explain the output
+```{r, DemofuncCall, error = TRUE}
+Demofunc(3, 2, 5)
+Demofunc(2,5)
+Demofunc(m = 2, k = 5)
+Demofunc(m = 2, k = 5, vec = 1:100)
 ```
+
+Note the use of  `prompt()` and `package.skeleton()` to provide a new function with a help-file.
 
 The final expression in an R function is automatically returned when the function completes execution.
 
