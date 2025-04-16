@@ -164,9 +164,14 @@
 <span><span class="co">#&gt; [1] "aa" "Aa" "bb" "cc" "yy"</span></span></code></pre></div>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aa</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt;  [1] -1.20308433 -0.35250505 -0.53208458  0.12269365</span></span>
 <span><span class="co">#&gt;  [5] -0.14171589 -0.12705789 -0.09979359  3.09734877</span></span>
 <span><span class="co">#&gt;  [9] -0.38240962  0.81154015</span></span></code></pre></div>
+=======
+<span><span class="co">#&gt;  [1] -0.2706247 -0.1856922 -0.7276464 -1.1021677 -0.4151107</span></span>
+<span><span class="co">#&gt;  [6]  1.8439135  1.4577438 -1.8439103 -0.9168154 -0.8459781</span></span></code></pre></div>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bb</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div>
@@ -534,22 +539,37 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; attr(,"name")</span></span>
 <span><span class="co">#&gt; [1] "package:stats"</span></span>
 <span><span class="co">#&gt; attr(,"path")</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.3/library/stats"</span></span></code></pre></div>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+=======
+<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.2/library/stats"</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;environment: package:graphics&gt;</span></span>
 <span><span class="co">#&gt; attr(,"name")</span></span>
 <span><span class="co">#&gt; [1] "package:graphics"</span></span>
 <span><span class="co">#&gt; attr(,"path")</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.3/library/graphics"</span></span></code></pre></div>
 <div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+=======
+<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.2/library/graphics"</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;environment: package:grDevices&gt;</span></span>
 <span><span class="co">#&gt; attr(,"name")</span></span>
 <span><span class="co">#&gt; [1] "package:grDevices"</span></span>
 <span><span class="co">#&gt; attr(,"path")</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.3/library/grDevices"</span></span></code></pre></div>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+=======
+<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.2/library/grDevices"</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environmentName</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "package:grDevices"</span></span></code></pre></div>
 <p>When the R evaluator looks for an object and it cannot find the name in the global environment it will search the parent of the global environment. It will carry on the search along the search path until the first occurrence of the name. If the name is not found it will return the message <code>Error: object 'xx' not found</code>. The usage of the double colon <code>::</code> and the triple colon <code>:::</code> is to access the intended object when more than one object with the same name exist on the search path. These two operators use the <em><span style="color:#FF9966">namespace</span></em> facility of R packages. The namespace of a package allow the creator of a package to hide functions and data that are meant only for internal use; it provides a way through the operators <code>::</code> and <code>:::</code> to an object within a particular package. Thus a namespace prevent functions from breaking down when a user selects a name that clashes with one in the package. The double-colon operator <code>::</code> selects objects from a particular namespace. Only functions that are exported from the package can be retrieved in this way. The triple-colon operator <code>:::</code> acts like the double-colon operator but also allows access to hidden objects. Packages are often inter-dependent, and loading one may cause others to be automatically loaded. Such automatically loaded packages are not added to the search list.</p>
@@ -616,7 +636,11 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; &lt;bytecode: 0x0000023ab848f958&gt;</span></span>
+=======
+<span><span class="co">#&gt; &lt;bytecode: 0x00000197bc197b98&gt;</span></span>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
@@ -624,6 +648,7 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span></code></pre></div>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; [1] -0.04858364</span></span></code></pre></div>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
@@ -633,6 +658,17 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
 <span><span class="co">#&gt; &lt;bytecode: 0x0000023ab63bbca0&gt;</span></span>
+=======
+<span><span class="co">#&gt; [1] 0.01967994</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; [1] 0.01967994</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; function (x, ...) </span></span>
+<span><span class="co">#&gt; UseMethod("mean")</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000197ba2a4158&gt;</span></span>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
@@ -661,20 +697,32 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; &lt;bytecode: 0x0000023ab63bbca0&gt;</span></span>
+=======
+<span><span class="co">#&gt; &lt;bytecode: 0x00000197ba2a4158&gt;</span></span>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; &lt;bytecode: 0x0000023ab63bbca0&gt;</span></span>
+=======
+<span><span class="co">#&gt; &lt;bytecode: 0x00000197ba2a4158&gt;</span></span>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
+<<<<<<< HEAD
 <span><span class="co">#&gt; &lt;bytecode: 0x0000023ab63bbca0&gt;</span></span>
+=======
+<span><span class="co">#&gt; &lt;bytecode: 0x00000197ba2a4158&gt;</span></span>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
 <div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
@@ -729,7 +777,11 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span></span>
 <span><span class="co">#&gt; [1] NaN</span></span></code></pre></div>
 <ul>
+<<<<<<< HEAD
 <li><p>Character vectors: see section <a href="operators.html#character">3.5.6</a></p></li>
+=======
+<li><p>Character vectors: see section <a href="operators.html#character">3.4.1</a></p></li>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <li><p>Subscripting vectors: see section <a href="subscripting.html#vectorSubscripting">5.1</a></p></li>
 </ul>
 </div>
@@ -750,7 +802,11 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span class="header-section-number">2.9</span> Representation of objects<a class="anchor" aria-label="anchor" href="#representation-of-objects"><i class="fas fa-link"></i></a>
 </h2>
 <p>We have already seen that a representation of an object can be obtained by calling (entering) its name:</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+=======
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 <code class="sourceCode R"><span><span class="va">cars</span></span>
 <span><span class="co">#&gt;    speed dist</span></span>
 <span><span class="co">#&gt; 1      4    2</span></span>

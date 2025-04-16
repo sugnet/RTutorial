@@ -5,8 +5,11 @@ tab:RegExpr
 tab:ArithOperators
 tab:LogicOperators
 tab:Precedence
+<<<<<<< HEAD
 tab:TrigFunc
 tab:MatrixFunc
+=======
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 intro
 introduction
 downloading-the-r-system
@@ -55,12 +58,15 @@ arithmetic-operators
 logical-operators
 the-operators-----and
 operator-precedence
+<<<<<<< HEAD
 some-mathematical-functions
 general-mathematical-functions
 trigonometric-functions
 complex-numbers
 functions-for-rounding-and-truncating
 functions-for-matrices
+=======
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 character
 graphics
 subscripting

@@ -84,9 +84,14 @@ objects()
 
 ``` r
 aa
+<<<<<<< HEAD
 #>  [1] -1.20308433 -0.35250505 -0.53208458  0.12269365
 #>  [5] -0.14171589 -0.12705789 -0.09979359  3.09734877
 #>  [9] -0.38240962  0.81154015
+=======
+#>  [1] -0.2706247 -0.1856922 -0.7276464 -1.1021677 -0.4151107
+#>  [6]  1.8439135  1.4577438 -1.8439103 -0.9168154 -0.8459781
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 ```
 
 ``` r
@@ -594,7 +599,7 @@ parent.env(.GlobalEnv)
 #> attr(,"name")
 #> [1] "package:stats"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/stats"
+#> [1] "C:/Program Files/R/R-4.4.2/library/stats"
 ```
 
 ``` r
@@ -603,7 +608,7 @@ parent.env(parent.env(.GlobalEnv))
 #> attr(,"name")
 #> [1] "package:graphics"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/graphics"
+#> [1] "C:/Program Files/R/R-4.4.2/library/graphics"
 ```
 
 ``` r
@@ -612,7 +617,7 @@ parent.env(parent.env(parent.env(.GlobalEnv)))
 #> attr(,"name")
 #> [1] "package:grDevices"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/grDevices"
+#> [1] "C:/Program Files/R/R-4.4.2/library/grDevices"
 ```
 
 ``` r
@@ -709,7 +714,11 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
+<<<<<<< HEAD
 #> <bytecode: 0x0000023ab848f958>
+=======
+#> <bytecode: 0x00000197bc197b98>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 #> <environment: namespace:base>
 ```
 
@@ -721,19 +730,31 @@ get (mean)
 
 ``` r
 get ("mean") 
+<<<<<<< HEAD
 #> [1] -0.04858364
+=======
+#> [1] 0.01967994
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 ```
 
 ``` r
 get ("mean", pos = 1) 
+<<<<<<< HEAD
 #> [1] -0.04858364
+=======
+#> [1] 0.01967994
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 ```
 
 ``` r
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
+<<<<<<< HEAD
 #> <bytecode: 0x0000023ab63bbca0>
+=======
+#> <bytecode: 0x00000197ba2a4158>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 #> <environment: namespace:base>
 ```
 
@@ -770,7 +791,11 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
+<<<<<<< HEAD
 #> <bytecode: 0x0000023ab63bbca0>
+=======
+#> <bytecode: 0x00000197ba2a4158>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 #> <environment: namespace:base>
 ```
 
@@ -781,7 +806,11 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
+<<<<<<< HEAD
 #> <bytecode: 0x0000023ab63bbca0>
+=======
+#> <bytecode: 0x00000197ba2a4158>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 #> <environment: namespace:base>
 ```
 
@@ -789,7 +818,11 @@ my.list[[2]]
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
+<<<<<<< HEAD
 #> <bytecode: 0x0000023ab63bbca0>
+=======
+#> <bytecode: 0x00000197ba2a4158>
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 #> <environment: namespace:base>
 ```
 

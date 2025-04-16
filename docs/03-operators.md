@@ -219,7 +219,11 @@ Although floating point representation allows computation with very small (in ma
   
 ##	Logical operators
   
+<<<<<<< HEAD
 Logical operators result in `TRUE`, `FALSE` or `NA`. Study the use of the logical operators in Table \@ref(tab:LogicOperators).  *<span style="color:#FF9966">Warning</span>*:  While it is perfectly legitimate to write
+=======
+Logical operators result in `TRUE`, `FALSE` or `NA`. Study the use of the logical operators in Table \@ref(tab:LogichOperators).  *<span style="color:#FF9966">Warning</span>*:  While it is perfectly legitimate to write
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 
 
 ``` r
@@ -353,6 +357,7 @@ The correct way of extracting the fifth element of a sequence like 1:20 is
 Table: (\#tab:Precedence) Precedence rules.
 
 | *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">What it does</span>*  |
+<<<<<<< HEAD
 | ------ | --------------- |
 | `$`                | List and dataframe subscripting |
 | `[]`, `[[]]`       | Vector and matrix subscripting; list subscripting |
@@ -512,6 +517,12 @@ Explain the use of the argument `list=objects(2)`. To summarize: The constructio
 (p)	The function `lgamma(x)` returns the logarithms of $\Gamma(x)$. Write a function to calculate the value of $f(n) = \frac{\Gamma(\frac{n-1}{2})}{\Gamma(\frac{1}{2})\Gamma(\frac{n-2}{2})}$. Calculate the value of $f(n)$ for $n = -10, 10, 100, 500, 1000$.
 
 :::
+=======
+| ------ | --------------- | ------ | --------------- |
+| `>`   |	Greater than |
+
+
+>>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
 
 
 ### Character vectors { #character }
