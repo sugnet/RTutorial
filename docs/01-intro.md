@@ -102,7 +102,7 @@ The above example shows that <span style="color:#FF9966">when the name of an R o
 
 ``` r
 mean(yy) 
-#> [1] 49.09671
+#> [1] 53.60918
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">

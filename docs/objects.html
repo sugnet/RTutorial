@@ -164,9 +164,8 @@
 <span><span class="co">#&gt; [1] "aa" "Aa" "bb" "cc" "yy"</span></span></code></pre></div>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aa</span></span>
-<span><span class="co">#&gt;  [1] -2.22424875 -0.91985579 -1.71319352 -0.31442638</span></span>
-<span><span class="co">#&gt;  [5] -1.05530386 -0.33041106 -0.51627992  0.57418256</span></span>
-<span><span class="co">#&gt;  [9] -0.09373635  0.30971360</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1]  2.7344874 -0.8050217 -0.1911975  1.4809225 -0.5921975</span></span>
+<span><span class="co">#&gt;  [6]  1.2228841  0.6198252  0.6886155 -0.7965560 -0.8181900</span></span></code></pre></div>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bb</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div>
@@ -616,7 +615,7 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000027e76a8fae0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001de876958e8&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
@@ -624,15 +623,15 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span></code></pre></div>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.02618827</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] -0.01907901</span></span></code></pre></div>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.02618827</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] -0.01907901</span></span></code></pre></div>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000027e739b9ca0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001de855b9ca0&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
@@ -661,20 +660,20 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000027e739b9ca0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001de855b9ca0&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000027e739b9ca0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001de855b9ca0&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000027e739b9ca0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001de855b9ca0&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
 <div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
