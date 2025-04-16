@@ -356,7 +356,7 @@ save(list=objects(2), file = "C:\\MyFunctions")
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
-Explain the use of the argument `list=objects(2)`. To summarize: The construction `> NAME <- object` is a simple way to assign an object to a name. This form of assignment always takes place in the global environment (the workspace).  Assignment can also be performed using the functions `save()` and `assign()` as illustrated above. The latter form of assignment is more complicated but the assignment is not restricted to the global environment.
+Explain the use of the argument `list=objects(2)`. To summarize: The construction `NAME <- object` is a simple way to assign an object to a name. This form of assignment always takes place in the global environment (the workspace).  Assignment can also be performed using the functions `save()` and `assign()` as illustrated above. The latter form of assignment is more complicated but the assignment is not restricted to the global environment.
 </div>
 
 (o)	The result of the function `gamma(x)` is $(x-1)!$ if $x$ is a non-negative whole number. Now write a function `fact()` to calculate $x!$. This function must make provision for $0!$ as well as for a negative number or a fraction that is read in by mistake. *Hint*: First study the usage of the if statement by requesting help `?Control`, recall Table \@ref(tab:HelpQueries). Store this function in your folder of R functions. How will you go about to make `fact()` and `det.own()` available for any R project?
