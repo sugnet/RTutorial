@@ -522,8 +522,6 @@ Explain the use of the argument `list=objects(2)`. To summarize: The constructio
 | `>`   |	Greater than |
 
 
->>>>>>> 1953e42adbba6c7aac55f5953902de2de06642bc
-
 
 ### Character vectors { #character }
   
