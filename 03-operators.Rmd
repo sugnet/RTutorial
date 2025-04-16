@@ -227,7 +227,6 @@ The correct way of extracting the fifth element of a sequence like 1:20 is
 Table: (\#tab:Precedence) Precedence rules.
 
 | *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">What it does</span>*  |
-<<<<<<< HEAD
 | ------ | --------------- |
 | `$`                | List and dataframe subscripting |
 | `[]`, `[[]]`       | Vector and matrix subscripting; list subscripting |
@@ -369,11 +368,6 @@ Explain the use of the argument `list=objects(2)`. To summarize: The constructio
 (p)	The function `lgamma(x)` returns the logarithms of $\Gamma(x)$. Write a function to calculate the value of $f(n) = \frac{\Gamma(\frac{n-1}{2})}{\Gamma(\frac{1}{2})\Gamma(\frac{n-2}{2})}$. Calculate the value of $f(n)$ for $n = -10, 10, 100, 500, 1000$.
 
 :::
-=======
-| ------ | --------------- | ------ | --------------- |
-| `>`   |	Greater than |
-
-
 
 ### Character vectors { #character }
   

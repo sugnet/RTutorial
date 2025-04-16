@@ -436,7 +436,7 @@ Logical operators result in <code>TRUE</code>, <code>FALSE</code> or <code>NA</c
 <h2>
 <span class="header-section-number">3.4</span> Operator precedence<a class="anchor" aria-label="anchor" href="#operator-precedence"><i class="fas fa-link"></i></a>
 </h2>
-<p>Study the precedence rules as summarized in Table 3.4.1. The rules followed are shown in Table <a href="#tab:Precedence">3.3</a> from top to bottom and left to right. Note the use of</p>
+<p>Study the precedence rules as summarized in Table 3.4.1. The rules followed are shown in Table <a href="operators.html#tab:Precedence">3.3</a> from top to bottom and left to right. Note the use of</p>
 <ul>
 <li>parentheses <code>( )</code> for function arguments and changing precedence,</li>
 <li>braces <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code> for demarcating blocks of instructions</li>
@@ -446,21 +446,74 @@ Logical operators result in <code>TRUE</code>, <code>FALSE</code> or <code>NA</c
 <div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] 5</span></span></code></pre></div>
-<p>Table: (#tab:Precedence) Precedence rules.</p>
-<div class="line-block">
-<em><span style="color:#F7CE21">Operator</span></em> | <em><span style="color:#F7CE21">What it does</span></em> |</div>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-| —— | ————— |
-| <code>$</code> | List and dataframe subscripting |
-| <code>[]</code>, <code>[[]]</code> | Vector and matrix subscripting; list subscripting |
-| <code>^</code> | Exponentiation |
-| <code>%*%</code>, <code>%/%</code>, <code>%%</code> | Matrix multiplication; integer divide; modulus |
-| <code>*</code>, <code>/</code> | Multiplication and division |
-| <code>+</code>, <code>-</code> | Addition and subtraction |
-| <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code> | Logical comparisons |
-| <code>!</code> | Unary not |
-| <code>&amp;</code>, <code>|</code>, <code>&amp;&amp;</code>, <code>||</code> | Logical and; logical or; control and; control or |
-| <code>&lt;-</code>, <code>&lt;&lt;-</code> | Assignment |</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:Precedence">Table 3.3: </span> Precedence rules.</caption>
+<colgroup>
+<col width="28%">
+<col width="71%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#F7CE21">Operator</span></em></th>
+<th><em><span style="color:#F7CE21">What it does</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>$</code></td>
+<td>List and dataframe subscripting</td>
+</tr>
+<tr class="even">
+<td>
+<code>[]</code>, <code>[[]]</code>
+</td>
+<td>Vector and matrix subscripting; list subscripting</td>
+</tr>
+<tr class="odd">
+<td><code>^</code></td>
+<td>Exponentiation</td>
+</tr>
+<tr class="even">
+<td>
+<code>%*%</code>, <code>%/%</code>, <code>%%</code>
+</td>
+<td>Matrix multiplication; integer divide; modulus</td>
+</tr>
+<tr class="odd">
+<td>
+<code>*</code>, <code>/</code>
+</td>
+<td>Multiplication and division</td>
+</tr>
+<tr class="even">
+<td>
+<code>+</code>, <code>-</code>
+</td>
+<td>Addition and subtraction</td>
+</tr>
+<tr class="odd">
+<td>
+<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>
+</td>
+<td>Logical comparisons</td>
+</tr>
+<tr class="even">
+<td><code>!</code></td>
+<td>Unary not</td>
+</tr>
+<tr class="odd">
+<td>
+<code>&amp;</code>, <code>|</code>, <code>&amp;&amp;</code>, <code>||</code>
+</td>
+<td>Logical and; logical or; control and; control or</td>
+</tr>
+<tr class="even">
+<td>
+<code>&lt;-</code>, <code>&lt;&lt;-</code>
+</td>
+<td>Assignment</td>
+</tr>
+</tbody>
+</table></div>
 <p>Explain the result of the following R instructions:</p>
 <div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">20</span> <span class="op">/</span> <span class="fl">4</span> <span class="op">*</span> <span class="fl">12</span> <span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">1</span></span>
@@ -668,9 +721,6 @@ Logical operators result in <code>TRUE</code>, <code>FALSE</code> or <code>NA</c
 <li><p>The function <code>lgamma(x)</code> returns the logarithms of <span class="math inline">\(\Gamma(x)\)</span>. Write a function to calculate the value of <span class="math inline">\(f(n) = \frac{\Gamma(\frac{n-1}{2})}{\Gamma(\frac{1}{2})\Gamma(\frac{n-2}{2})}\)</span>. Calculate the value of <span class="math inline">\(f(n)\)</span> for <span class="math inline">\(n = -10, 10, 100, 500, 1000\)</span>.</p></li>
 </ol>
 </div>
-<p>=======
-| —— | ————— | —— | ————— |
-| <code>&gt;</code> | Greater than |</p>
 </div>
 <div id="character" class="section level3" number="3.5.6">
 <h3>
