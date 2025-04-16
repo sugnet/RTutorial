@@ -219,10 +219,7 @@ Although floating point representation allows computation with very small (in ma
   
 ##	Logical operators
   
-<<<<<<< HEAD
 Logical operators result in `TRUE`, `FALSE` or `NA`. Study the use of the logical operators in Table \@ref(tab:LogicOperators).  *<span style="color:#FF9966">Warning</span>*:  While it is perfectly legitimate to write
-=======
-Logical operators result in `TRUE`, `FALSE` or `NA`. Study the use of the logical operators in Table \@ref(tab:LogichOperators).  *<span style="color:#FF9966">Warning</span>*:  While it is perfectly legitimate to write
 
 
 ``` r
