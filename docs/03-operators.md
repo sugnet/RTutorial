@@ -504,12 +504,71 @@ save(list=objects(2), file = "C:\\MyFunctions")
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
-Explain the use of the argument `list=objects(2)`. To summarize: The construction `> NAME <- object` is a simple way to assign an object to a name. This form of assignment always takes place in the global environment (the workspace).  Assignment can also be performed using the functions `save()` and `assign()` as illustrated above. The latter form of assignment is more complicated but the assignment is not restricted to the global environment.
+Explain the use of the argument `list=objects(2)`. To summarize: The construction `NAME <- object` is a simple way to assign an object to a name. This form of assignment always takes place in the global environment (the workspace).  Assignment can also be performed using the functions `save()` and `assign()` as illustrated above. The latter form of assignment is more complicated but the assignment is not restricted to the global environment.
 </div>
 
 (o)	The result of the function `gamma(x)` is $(x-1)!$ if $x$ is a non-negative whole number. Now write a function `fact()` to calculate $x!$. This function must make provision for $0!$ as well as for a negative number or a fraction that is read in by mistake. *Hint*: First study the usage of the if statement by requesting help `?Control`, recall Table \@ref(tab:HelpQueries). Store this function in your folder of R functions. How will you go about to make `fact()` and `det.own()` available for any R project?
 
 (p)	The function `lgamma(x)` returns the logarithms of $\Gamma(x)$. Write a function to calculate the value of $f(n) = \frac{\Gamma(\frac{n-1}{2})}{\Gamma(\frac{1}{2})\Gamma(\frac{n-2}{2})}$. Calculate the value of $f(n)$ for $n = -10, 10, 100, 500, 1000$.
+
+:::
+
+###	Sorting functions
+Note the use of the functions `sort()`, `order()` and `rank()`. First construct `MatX`  using the functions `scan()` and  `matrix()`.  Explain in detail what `order()` does by sorting all the columns of `MatX`  according to the values in the first column of the matrix.
+
+$$
+MatX = \begin{bmatrix}
+         4 & 80 & 12\\
+         5 & 70 & 70\\
+         6 & 30 & 19\\
+         2 & 40 & 80\\
+         4 & 90 & 40\\
+         1 & 60 & 50\\
+         7 & 10 & 20\\
+         3 & 30 & 200
+       \end{bmatrix}
+$$
+
+### Some functions for data manipulation
+
+Study the functions in Table \@ref(tab:DataManipulation).
+
+Table: (\#tab:DataManipulation) Functions for data manipulation.
+
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | 
+| ------ | --------------- |
+| `append()`     | Combine vectors; more flexibility than `c()`  | 
+| `c()`          | Create vectors  | 
+| `duplicated()` | Extract duplicated values  | 
+| `match()`      | Match values in pairs of vectors  | 
+| `pmatch()`     | Partial matching  | 
+| `replace()`    | Replace specified values in vectors  | 
+| `unique()`     | Extract unique values  | 
+
+::: {style="color: #80CC99;"}
+
+(a)	Insert the vector (101, 102, 103, 104, 105) into the vector (10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) after its fifth element by utilising the argument `after` of the function `append()`.
+
+(b)	The function `replace()` requires three arguments `x`, `list` and `vals`. The values in `x` with indices given in `list` is replaced by the successive values in `vals` making use of the recycling principle if needed. Explain this by replacing in the vector (10, 2, 7, 20, 5, 8, 9, 20, 9, 1,1 15), the values 10, 20 and 15 with zeros.
+
+(c)	Find the unique values in the vector (10, 2, 7, 20, 5, 8, 9, 20, 9, 1, 15).
+
+(d)	Find the duplicated values in the vector (10, 2, 7, 20, 5, 8, 9, 20, 9, 1, 15, 20, 20, 15).
+
+(e)	Explain the usage of `match()` by considering the difference between
+
+
+``` r
+match (c(10,2,7,20,5,8,9,20,9,1,15), c(10,20,15))
+#>  [1]  1 NA NA  2 NA NA NA  2 NA NA  3
+```
+
+``` r
+match (c(10,20,15), c(10,2,7,20,5,8,9,20,9,1,15))
+#> [1]  1  4 11
+```
+
+(f)	Illustrate the difference between `match()` and `pmatch()` by considering the names of the days of the week.
 
 :::
 

@@ -365,6 +365,59 @@ Explain the use of the argument `list=objects(2)`. To summarize: The constructio
 
 :::
 
+###	Sorting functions
+Note the use of the functions `sort()`, `order()` and `rank()`. First construct `MatX`  using the functions `scan()` and  `matrix()`.  Explain in detail what `order()` does by sorting all the columns of `MatX`  according to the values in the first column of the matrix.
+
+$$
+MatX = \begin{bmatrix}
+         4 & 80 & 12\\
+         5 & 70 & 70\\
+         6 & 30 & 19\\
+         2 & 40 & 80\\
+         4 & 90 & 40\\
+         1 & 60 & 50\\
+         7 & 10 & 20\\
+         3 & 30 & 200
+       \end{bmatrix}
+$$
+
+### Some functions for data manipulation
+
+Study the functions in Table \@ref(tab:DataManipulation).
+
+Table: (\#tab:DataManipulation) Functions for data manipulation.
+
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | 
+| ------ | --------------- |
+| `append()`     | Combine vectors; more flexibility than `c()`  | 
+| `c()`          | Create vectors  | 
+| `duplicated()` | Extract duplicated values  | 
+| `match()`      | Match values in pairs of vectors  | 
+| `pmatch()`     | Partial matching  | 
+| `replace()`    | Replace specified values in vectors  | 
+| `unique()`     | Extract unique values  | 
+
+::: {style="color: #80CC99;"}
+
+(a)	Insert the vector (101, 102, 103, 104, 105) into the vector (10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20) after its fifth element by utilising the argument `after` of the function `append()`.
+
+(b)	The function `replace()` requires three arguments `x`, `list` and `vals`. The values in `x` with indices given in `list` is replaced by the successive values in `vals` making use of the recycling principle if needed. Explain this by replacing in the vector (10, 2, 7, 20, 5, 8, 9, 20, 9, 1,1 15), the values 10, 20 and 15 with zeros.
+
+(c)	Find the unique values in the vector (10, 2, 7, 20, 5, 8, 9, 20, 9, 1, 15).
+
+(d)	Find the duplicated values in the vector (10, 2, 7, 20, 5, 8, 9, 20, 9, 1, 15, 20, 20, 15).
+
+(e)	Explain the usage of `match()` by considering the difference between
+
+```{r, matchDiff}
+match (c(10,2,7,20,5,8,9,20,9,1,15), c(10,20,15))
+match (c(10,20,15), c(10,2,7,20,5,8,9,20,9,1,15))
+```
+
+(f)	Illustrate the difference between `match()` and `pmatch()` by considering the names of the days of the week.
+
+:::
+
 ### Character vectors { #character }
   
   
