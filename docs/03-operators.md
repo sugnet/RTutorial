@@ -572,6 +572,64 @@ match (c(10,20,15), c(10,2,7,20,5,8,9,20,9,1,15))
 
 :::
 
+###	Basic statistical functions
+
+Study the functions in detail in  Table \@ref(tab:StatFunc).
+
+Table: (\#tab:StatFunc) Basic statistical functions.
+
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | *<span style="color:#F7CE21">Comments</span>*  | 
+| ------ | --------------- | --------------- |
+| `cor()`      | Correlation  | One or two arguments |
+| `cumsum()`   | Cumulative sum of elements of a vector |   |
+| `mean()`     | Arithmetic mean | Optional argument `trim =`  |
+| `median()`   | Median | Accepts variable number of arguments  |
+| `min()`      | Minimum value | Accepts variable number of arguments  |
+| `max()`      | Maximum value | Accepts variable number of arguments  |
+| `prod()`     | Product of elements of a vector | Accepts variable number of arguments  |
+| `cumprod()`  | Cumulative product of elements of a vector |    |
+| `quantile()` | Returns specified quantiles |    |
+| `range()`    | Minimum and maximum of a vector |  Accepts variable number of arguments  |
+| `sample()`   | Random sample |  With or without replacement  |
+| `sum()`      | Arithmetic sum |  Also used for counting  |
+| `var()`      | Variance and covariance; uses n-1 as denominator |  Accepts vectors or matrices  |
+| `sd()`       | Standard deviation; uses n-1 as denominator |  Accept a vector as argument  |
+
+Note also the functions `pmax()` and `pmin()`.
+
+::: {style="color: #80CC99;"}
+
+(a)	Find the average Life Expectancy of the states in the `state.x77` data set.
+(b)	Find the 5% trimmed mean for Illiteracy of the states in the `state.x77` data set.
+(c)	Find the correlation between the Illiteracy and the `Income` of the states in the `state.x77` data set.
+(d)	Find the covariance matrix of all the variables in the `state.x77` data set.
+(e)	Find the range for Murder in the `state.x77` data set.
+(f)	Obtain the details of a random sample of 10 states in the `state.x77` data set.
+(g)	Obtain two independent random permutations of the numbers $1, 2, \dots, 10$.
+(h)	Write a function for computing the coefficient of kurtosis for a random sample. Test your function on the Frost variable in the `state.x77` data set.
+(i)	Write a function for computing the coefficient of skewness for a random sample. Test your function on the Murder variable in the `state.x77` data set.
+(j)	Write a function to compute the harmonic mean of a numeric vector. Test your function on the Life Expectancy of the states in the `state.x77` data set. Compare your answer to your answer in (a).
+
+:::
+
+###	Probability distributions in R
+
+First, execute the R-instruction
+
+
+``` r
+help.search("distribution")
+```
+
+to obtain a list of available statistical distributions in R.  Each distribution has an identifying name preceded by one of the letters *<span style="color:#FF9966">d</span>*, *<span style="color:#FF9966">p</span>*, *<span style="color:#FF9966">q</span>* or *<span style="color:#FF9966">r</span>*.  In the case of an F-distribution, for example, the identifier is just the letter `f` and for a normal distribution the identifier is `norm`.  Preceding the distribution’s identifier by one of the letters `d`, `p`, `q` or `r` returns a density value, a probability, a quantile or a random sample for the specified distribution (probability density function or probability mass function). See Figure \@ref(fig:Fdist) for an explanation. 
+
+
+<div class="figure">
+<img src="pics/F-distribution.png" alt="Meaning of the letters d, p and q when preceding an R distribution identifier." width="468" />
+<p class="caption">(\#fig:Fdist)Meaning of the letters d, p and q when preceding an R distribution identifier.</p>
+</div>
+
+
 ### Character vectors { #character }
   
   

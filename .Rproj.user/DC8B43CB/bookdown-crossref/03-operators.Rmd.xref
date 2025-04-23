@@ -11,5 +11,8 @@ h3:functions-for-rounding-and-truncating Functions for rounding and truncating
 h3:functions-for-matrices Functions for matrices
 h3:sorting-functions Sorting functions
 h3:some-functions-for-data-manipulation Some functions for data manipulation
+h3:basic-statistical-functions Basic statistical functions
+h3:probability-distributions-in-r Probability distributions in R
+fig:Fdist Meaning of the letters d, p and q when preceding an R distribution identifier.
 h3:character Character vectors
 

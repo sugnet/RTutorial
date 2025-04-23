@@ -8,6 +8,8 @@ tab:Precedence
 tab:TrigFunc
 tab:MatrixFunc
 tab:DataManipulation
+tab:StatFunc
+fig:Fdist
 intro
 introduction
 downloading-the-r-system
@@ -64,6 +66,8 @@ functions-for-rounding-and-truncating
 functions-for-matrices
 sorting-functions
 some-functions-for-data-manipulation
+basic-statistical-functions
+probability-distributions-in-r
 character
 graphics
 subscripting
@@ -75,3 +79,4 @@ data
 graphics2
 modelling
 optimisation
+zetero.orgstyle-for-csl-files

@@ -84,9 +84,9 @@ objects()
 
 ``` r
 aa
-#>  [1]  0.14948022  1.03715910 -0.04934194 -0.48848737
-#>  [5]  1.11530543  0.08623542  1.19341822  1.45239243
-#>  [9]  0.69505178  0.70781432
+#>  [1]  0.40938404  0.02203735 -1.29711258 -0.63631833
+#>  [5]  1.21639626  0.31469634  0.70652545  1.45904304
+#>  [9] -0.22950060  0.84316214
 ```
 
 ``` r
@@ -709,7 +709,7 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x000002a426695ae0>
+#> <bytecode: 0x000001866887f3e8>
 #> <environment: namespace:base>
 ```
 
@@ -721,19 +721,19 @@ get (mean)
 
 ``` r
 get ("mean") 
-#> [1] 0.001079199
+#> [1] -0.02279358
 ```
 
 ``` r
 get ("mean", pos = 1) 
-#> [1] 0.001079199
+#> [1] -0.02279358
 ```
 
 ``` r
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000002a4245bbca0>
+#> <bytecode: 0x0000018665dbfca0>
 #> <environment: namespace:base>
 ```
 
@@ -770,7 +770,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000002a4245bbca0>
+#> <bytecode: 0x0000018665dbfca0>
 #> <environment: namespace:base>
 ```
 
@@ -781,7 +781,7 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000002a4245bbca0>
+#> <bytecode: 0x0000018665dbfca0>
 #> <environment: namespace:base>
 ```
 
@@ -789,7 +789,7 @@ my.list[[2]]
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000002a4245bbca0>
+#> <bytecode: 0x0000018665dbfca0>
 #> <environment: namespace:base>
 ```
 
