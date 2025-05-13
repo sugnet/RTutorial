@@ -474,7 +474,137 @@ library(knitr)
 knitr::include_graphics("pics/F-distribution.png")
 ```
 
+### Functions for categorical variables { #areagrp }
 
-### Character vectors { #character }
-  
-  
+Apart from being *<span style="color:#FF9966">numeric</span>* or *<span style="color:#FF9966">logical</span>*, data in R can also be *<span style="color:#FF9966">categorical</span>* (*<span style="color:#FF9966">factor</span>* in R) or character strings. Study in detail the functions operating on factor data in Table \@ref(tab:CatFunc).
+
+(a)	Use `cut()` to create an object `areagrp` to divide the `state.x77` data set into three groups representing the states with area within the intervals $(0, 10 000]$,$(10 000, 100 000]$ and $(100 000, Inf]$, respectively. *Hint*: First study the arguments of `cut()`.
+
+(b)	Repeat (a) with argument `labels = ??` to specify each state as being *Small*, *Medium* or *Large* with respect to its area.
+
+(c)	Use `unclass()` to obtain the numeric codes associated with each level of `areagrp`.
+
+(d)	Repeat (a) to obtain `areagrp2` containing five equally spaced categories.
+
+(e)	Repeat (a) to obtain `areagrp3` containing five groups with each containing $20\%$ of the data.
+
+(f)	Use `cut()` to create an object `illitgrp` to divide the `state.x77` data set into five groups representing the states with illiteracy within the interval $[0, 0.50)$, $[0.50, 1.00)$, $[1.00, 1.50)$, $[1.50, 2.00)$ and $[2.00, 5.00)$, respectively.
+
+(g)	Obtain a two-way table of the `state.x77` data set according to `areagrp` and `illitgrp`.
+
+Table: (\#tab:CatFunc) Basic functions for categorical variables.
+
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  |
+| ------ | --------------- |
+| `cut()`      | Creates categories out of a continuous variable |
+| `factor()`   | Encodes a vector as a **_nominal_** categorical variable  |
+| `ordered()`  | Encodes a vector as a **_ordinal_** categorical variable when argument ordered is set to TRUE  |
+| `levels()`   | Displays or sets the levels of  a factor variable  |
+| `pretty()`   | Creates convenient break points for a categorical variable  |
+| `split()`    | Breaks up an array according to the value of a categorical variable  |
+| `table()`    | Counts the number of observations cross-classified by categories  |
+| `unclass()` | Returns the numeric codes for representing the levels of a factor variable  |
+
+
+### Functions for character manipulation { #character }
+
+Study the functions in Table \@ref(tab:CharFunc) in detail.
+
+Table: (\#tab:CharFunc) Basic functions for character manipulation.
+
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  |
+| ------ | --------------- |
+| `abbreviate()` | Generates abbreviations of character values |
+| `cat()`        | Display,messages and/or values on screen or send to file  |
+| `grep()`       | Search for patterns in characters |
+| `nchar()`      | Number of characters in a string |
+| `paste()`      | Combine values into character strings |
+| `strsplit()`   | Split the elements of a character vector $\times$ into substrings |
+| `substring()`  | Extracts parts of character strings |
+
+(a)	What is the returned value of `grep ("ia", state.name)`?
+
+(b)	Discuss the usage of `grep ("ia", state.name)`.
+
+(c)	Discuss the output of `objects (pos = grep("stats", search()))`.
+
+(d)	Use `paste()` to create variable names: var1, var2, …, var100.
+
+(e)	Repeat (d) to create variable names: var_1, var_2, …, var_100.
+
+(f)	Discuss the output of:
+
+````{verbatim}
+substring (paste (letters, collapse = ""),  
+             1:nchar (paste (letters, collapse="")), 
+             1:nchar (paste (letters, collapse="")))
+````
+
+(g)	From the Help menu, select Manuals (in PDF) and open the Introduction to R document. Obtain a copy of the first two paragraphs of the Preface on page 1 of this book in the R commands window. Use this copy to calculate the number of words as well as the total number of characters (including spaces between words) in the passage.
+
+<div style="margin-left: 25px; margin-right: 20px;">
+We are going to use several of the functions in Table \@ref(tab:CharFunc) to perform this task in steps. Proceed as follows in R after copying the relevant passage to the clipboard:
+
+```{r, eval = FALSE}
+TextPar <- scan(file = "clipboard", what = "")
+```
+To obtain  a vector containing each of the words as a separate element.
+
+```{r, eval = FALSE}
+TextPar <- paste (TextPar, collapse = " ")
+```
+To convert `TextPar` into a vector containing one element consisting of all the words concatenated and separated by spaces into a single character string. Add the correct line breaks ("\\n") in `TextPar` using e.g. `fix()`.
+
+```{r, eval = FALSE}
+TextPar <- strsplit(x = TextPar, split = '\n')
+```
+
+````{verbatim}
+mode(TextPar)
+[1] "list"
+
+mode(unlist(TextPar))
+[1] "character" 
+````
+
+```{r, eval = FALSE}
+TextPar <- unlist(TextPar)
+```
+To change `TextPar` into a character vector.
+
+```{r, eval = FALSE}
+nchar(TextPar)
+length(TextPar)
+```
+
+</div>
+
+##	Differentiation and integration
+
+###	Symbolic differentiation
+
+Study the help files of `D()` and `deriv()`.
+
+###	Integration
+
+Study the help file of `integrate()`.
+
+### Exercise
+
+::: {style="color: #80CC99;"}
+
+(1)	It is known from elementary statistics that approximately 68% of data from a normal distribution with a mean of zero and a standard deviation of unity will have an absolute value less than unity. Use the `sum()` and `rnorm()` functions to find the proportion of $n$ random $normal (0, 1)$ variables whose absolute value is less than $1.0$. Repeat with different values for $n$ to investigate how widely the results vary.
+
+(2)	Define: conditional inverse and generalized (Moore-Penrose) inverse for  matrix $\mathbf{X}: p \times q$ and make provision for $p = q$,  $p > q$ and $p < q$.  First, show how the svd of $\mathbf{X}$ can be used to obtain a conditional inverse, $\mathbf{X}^c$ for $\mathbf{X}$. Now use the above information to write an R function for calculating $\mathbf{X}^c$ for any given $\mathbf{X}$. The function must provide a test to check if the calculated conditional inverse is indeed a conditional inverse. Illustrate the usage of your function. 
+
+(3)	Give the necessary instructions to:
+	  (i) read into R an external text data file consisting of $10$ sample observations with each consisting of one character variable and two numerical variables.
+	  (ii) read into R a large external text data file consisting of $50$ numerical variables but unknown number of records. Each record in this data file takes up 5 lines.  The variables in the R object must have the names X1, ..., X50.
+	  
+(4)	Discuss the meaning of the following R instructions:
+    (i) `y <- x[!is.na(x)]`
+    (ii) `z <- (x + y)[!is.na(x) & x >0]`
+    (iii) `a <- x[-(1:5)]`
+    (iv) `x[is.na(x)] <- 0`
+
+:::

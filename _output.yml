@@ -5,6 +5,7 @@ bookdown::bs4_book:
     info:    "#FF9966"
     success: "#00FF99"
   repo: https://github.com/sugnet/RTutorial
+  fig_caption: true
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

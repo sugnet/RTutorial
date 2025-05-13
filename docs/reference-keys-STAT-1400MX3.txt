@@ -9,10 +9,7 @@ tab:TrigFunc
 tab:MatrixFunc
 tab:DataManipulation
 tab:StatFunc
-fig:Fdist
-tab:CatFunc
-tab:CharFunc
-fig:figRegion
+fig:cars
 intro
 introduction
 downloading-the-r-system
@@ -71,15 +68,8 @@ sorting-functions
 some-functions-for-data-manipulation
 basic-statistical-functions
 probability-distributions-in-r
-areagrp
 character
-differentiation-and-integration
-symbolic-differentiation
-integration
-exercise-8
 graphics
-general-1
-high-level-plotting-instructions
 subscripting
 vectorSubscripting
 revision
@@ -89,4 +79,3 @@ data
 graphics2
 modelling
 optimisation
-zetero.orgstyle-for-csl-files

@@ -14,5 +14,10 @@ h3:some-functions-for-data-manipulation Some functions for data manipulation
 h3:basic-statistical-functions Basic statistical functions
 h3:probability-distributions-in-r Probability distributions in R
 fig:Fdist Meaning of the letters d, p and q when preceding an R distribution identifier.
-h3:character Character vectors
+h3:areagrp Functions for categorical variables
+h3:character Functions for character manipulation
+h2:differentiation-and-integration Differentiation and integration
+h3:symbolic-differentiation Symbolic differentiation
+h3:integration Integration
+h3:exercise Exercise
 
