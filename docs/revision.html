@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Revision tasks | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
-<meta name="description" content="Textbook for the R block module.">
+<meta name="description" content="In general, the purpose of writing a program in R is to address some practical problem directly or indirectly. To prepare the student for seriously writing R functions (programs) this chapter...">
 <meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Revision tasks | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/revision.html">
 <meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
-<meta property="og:description" content="Textbook for the R block module.">
+<meta property="og:description" content="In general, the purpose of writing a program in R is to address some practical problem directly or indirectly. To prepare the student for seriously writing R functions (programs) this chapter...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Revision tasks | Introduction into R Applications and Programming: A Tutorial">
-<meta name="twitter:description" content="Textbook for the R block module.">
+<meta name="twitter:description" content="In general, the purpose of writing a program in R is to address some practical problem directly or indirectly. To prepare the student for seriously writing R functions (programs) this chapter...">
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -94,14 +94,115 @@
 <h1>
 <span class="header-section-number">6</span> Revision tasks<a class="anchor" aria-label="anchor" href="#revision"><i class="fas fa-link"></i></a>
 </h1>
+<p>In general, the purpose of writing a program in R is to address some practical problem directly or indirectly. To prepare the student for seriously writing R functions (programs) this chapter consists of a mixture of revision tasks. While some of these tasks are straight forward others need more thought and preparation before starting with the writing of R code. In Section <a href="revision.html#guidelines">6.1</a> some guidelines are considered for writing R code to address a practical problem.</p>
+<div id="guidelines" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Guidelines for problem solving by writing R code<a class="anchor" aria-label="anchor" href="#guidelines"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Make sure the problem is clearly understood. You cannot write good code for something that is not correctly grasped.</p></li>
+<li><p>Break complex problems into simpler components. Formulate these simpler components in terms of specific questions to be answered.</p></li>
+<li><p>Think in terms of the way R operates e.g. vectorized arithmetic, recycling principle, operating on objects as wholes/units, subscripting, R data structures . . .</p></li>
+<li><p>Spend time to prepare your data.</p></li>
+<li><p>Ask yourself the question what information do you need before attempting to write code for coming up with an answer. Then, what facilities are provided in R to get the necessary information and once the information is available what manipulations are needed to code useful output.</p></li>
+<li><p>Write dedicated code for answering the specific questions in (b).</p></li>
+<li><p>Do not neglect the debugging/optimizing phase of code that succeeds in providing a first round answer.</p></li>
+</ol>
+</div>
+<div id="exercise-11" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-11"><i class="fas fa-link"></i></a>
+</h2>
+<div style="color: #80CC99;">
+<ol style="list-style-type: decimal">
+<li><p>Use R to obtain a five-point summary of the variable <code>dpi</code> in the <code>LifeCycleSavings</code> data set. Illustrate the difference between the working of <code><a href="https://rdrr.io/r/stats/fivenum.html">fivenum()</a></code> and <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code>. <em>Hint</em>: See <code><a href="https://rdrr.io/r/grDevices/boxplot.stats.html">boxplot.stats()</a></code> for the definition of hinges.</p></li>
+<li><p>Display the pdf of a <span class="math inline">\(normal (100, 15)\)</span> distribution graphically. The area under the density bounded by the 70th and 90th percentiles must appear in red.</p></li>
+<li>
+<p>Use R to obtain the following graphical representations:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>The pdf as well as the cdf of a <span class="math inline">\(F (15, 10)\)</span> and a <span class="math inline">\(F (10, 15)\)</span> stochastic variable. These graphs must be on one graph window with the same set of axes for both F-distributions and be supplied with suitable titles. Furthermore, they must be line graphs that contain no other plotting characters except lines.</p></li>
+<li><p>Obtain representations as line graphs of the inverses of the above cdfs on a single separate graph page.</p></li>
+</ol>
+</li>
+<li><p>First set the seed to 172389 and then generate a random sample of size 500 from a <span class="math inline">\(normal (100, 20)\)</span> distribution. Give the necessary R instructions to determine the class frequencies in the class intervals “Smaller than 50”, “50 to 75–“, “75 to 90–“, “90 to 100”, “100+ to 110”, “Larger than 110”.</p></li>
+<li>
+<p>Generate a random sample of size 80 from a bivariate normal distribution with mean vector <span class="math inline">\((50, 100)\)</span>. The variances of the two variables are 900 and 2500 respectively with a correlation 0.90. Store the sample in an R matrix object and obtain a scatterplot in the form of</p>
+<ol style="list-style-type: lower-roman">
+<li>a point diagram and</li>
+<li>a line graph of the sample.</li>
+</ol>
+</li>
+<li>
+<p>Define the harmonic mean for a vector of observations. What conditions must be satisfied by the observations?</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Write your own function for calculating a harmonic mean and use it to calculate the harmonic mean of variable <code>dpi</code> in the <code>LifeCycleSavings</code> data set.</p></li>
+<li><p>Calculate the ordinary mean of variable <code>dpi</code> in the <code>LifeCycleSavings</code> data set. Compare the answer with the answer in (a). Which answer would you use in practice? Motivate.</p></li>
+</ol>
+</li>
+<li><p>Fisher’s linear discriminant function in the case of two groups is defined as follows:</p></li>
+</ol>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p><span class="math inline">\(LDF = (\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} \mathbf{x}\)</span> where <span class="math inline">\(\mathbf{S} = [(n_1-1)\mathbf{S}_1 + (n_2-1)\mathbf{S}_2]/(n_1 + n_2 - 2)\)</span> with <span class="math inline">\(\mathbf{\bar{x}}_i\)</span> and <span class="math inline">\(\mathbf{S}_i\)</span> the vector of means and the covariance matrix of the <span class="math inline">\(i\)</span>th group (sample), respectively.</p>
+<p>The corresponding classification function is written as <span class="math inline">\(CF =(\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} \mathbf{x} - \frac{1}{2} (\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} (\mathbf{\bar{x}}_1 + \mathbf{\bar{x}}_2)\)</span>. The expression (_1 - _2)’ ^{-1} is referred to as the discriminant coefficients.</p>
+<p>In agreement with section <a href="revision.html#guidelines">6.1</a> make sure what an <span class="math inline">\(LDF\)</span> and a <span class="math inline">\(CF\)</span> entail. The <code>crabs</code> data set in package <code>MASS</code> consists of 200 rows and 8 columns, describing 5 morphological measurements on 50 crabs each of two colour forms and both sexes, of the species <em>Leptograpsus variegatus</em> collected at Fremantle, Western Australia.</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Obtain the covariance matrix for each of the two species of crabs.</p></li>
+<li><p>Obtain the vector of means for each of the two species of crabs.</p></li>
+<li><p>Use standard R functions operating on matrices to write a function or code that calculates the discriminant coefficients for the given linear discriminant function.</p></li>
+<li>
+<p>Write a function that determines the linear discriminant function and return</p>
+<ul>
+<li><p>the discriminant coefficients;</p></li>
+<li><p>The CF for each observation.</p></li>
+</ul>
+</li>
+<li><p>Repeat the discriminant analysis above, discriminating between male and female crabs, ignoring differences in species.</p></li>
+<li><p>Compare your results to using the <code><a href="https://rdrr.io/pkg/MASS/man/lda.html">lda()</a></code> function in the package <code>MASS</code> with the command</p></li>
+</ol>
+<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lda.html">lda</a></span> <span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">FL</span> <span class="op">+</span> <span class="va">RW</span> <span class="op">+</span> <span class="va">CL</span> <span class="op">+</span> <span class="va">CW</span> <span class="op">+</span> <span class="va">BD</span>, data<span class="op">=</span><span class="va">crabs</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">class</span></span></code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Consider the matrix <span class="math inline">\(\mathbf{A}:n \times m\)</span>. What is understood by the column space <span class="math inline">\(V(\mathbf{A})\)</span> and the orthogonal complement <span class="math inline">\(V^⊥(\mathbf{A})\)</span>? The R function <code><a href="https://rdrr.io/r/base/svd.html">svd()</a></code> can be used to obtain an orthogonal basis for <span class="math inline">\(V(\mathbf{A})\)</span> when the rank of <span class="math inline">\(\mathbf{A}\)</span> is <span class="math inline">\(k\)</span>. We also want to determine an orthogonal basis for <span class="math inline">\(V^⊥(\mathbf{A})\)</span>. How can the function <code><a href="https://rdrr.io/r/base/svd.html">svd()</a></code> be used to simultaneously find a basis for <span class="math inline">\(V(\mathbf{A})\)</span> and for <span class="math inline">\(V^⊥(\mathbf{A})\)</span>?</li>
+</ol>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>The above propositions can be proved as follows: Assume that <span class="math inline">\(n≥m\)</span> and that an orthonormal basis for <span class="math inline">\(V(\mathbf{A})\)</span> as well as for <span class="math inline">\(V^⊥(\mathbf{A})\)</span> must be found. Append <span class="math inline">\(n-m\)</span> zero vectors of size <span class="math inline">\(n\)</span> to the matrix <span class="math inline">\(\mathbf{A}\)</span>. Write <span class="math inline">\(\mathbf{A}^0\)</span> for the appended matrix and perform the function <code><a href="https://rdrr.io/r/base/svd.html">svd()</a></code> on <span class="math inline">\(\mathbf{A}^0\)</span>. It follows that <span class="math inline">\(\mathbf{A}^0 = \mathbf{UDV}'\)</span> so that <span class="math inline">\(\mathbf{A}^0 \mathbf{V} = \mathbf{UD}\)</span>, i.e. </p>
+<p><span class="math display">\[
+\begin{bmatrix}
+\mathbf{A}^0 \mathbf{v}_{(1)} &amp; \mathbf{A}^0 \mathbf{v}_{(2)} &amp; \dots &amp; \mathbf{A}^0 \mathbf{v}_{(n)}
+\end{bmatrix} = \begin{bmatrix}
+d_1 \mathbf{u}_{(1)} &amp; d_2 \mathbf{u}_{(2)} &amp; \dots &amp; d_n \mathbf{u}_{(n)}
+\end{bmatrix}.
+\]</span>
+Now <span class="math inline">\(\mathbf{A}^0 \mathbf{v}_{(i)} \in V(\mathbf{A}^0) = V(\mathbf{A})\)</span>. (<em>Motivate in detail</em>.)</p>
+<p>It follows that <span class="math inline">\(\mathbf{u}_{(i)} \in V(\mathbf{A}), i = 1, 2, \dots, k\)</span> . (<em>Motivate in detail</em>.) Therefore the columns of <span class="math inline">\(\mathbf{U}\)</span> that correspond to the non-zero <span class="math inline">\(d\)</span>s form an orthonormal basis for <span class="math inline">\(V(\mathbf{A})\)</span> while the columns of <span class="math inline">\(\mathbf{U}\)</span> that correspond to the zero <span class="math inline">\(d\)</span>s form an orthonormal basis for the orthogonal complement of <span class="math inline">\(V(\mathbf{A})\)</span>. Motivate the last statement in detail.</p>
+</div>
+<ol start="9" style="list-style-type: decimal">
+<li>Based on the results in (8) above, write an R function that returns <span class="math inline">\(rank(\mathbf{A})\)</span>, an orthogonal basis for <span class="math inline">\(V(\mathbf{A})\)</span> and an orthogonal basis for <span class="math inline">\(V^⊥(\mathbf{A})\)</span>. Test your function on the matrix:</li>
+</ol>
+<p><span class="math display">\[
+\mathbf{A} = \begin{bmatrix}
+                    1 &amp; 1 &amp; 2 \\
+                    2 &amp; 2 &amp; 4 \\
+                    3 &amp; 2 &amp; 7 \\
+                    -1 &amp; -5 &amp; 2 \\
+                    2 &amp; 7 &amp; -1
+              \end{bmatrix}
+\]</span></p>
+</div>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="subscripting.html"><span class="header-section-number">5</span> Subscripting</a></div>
 <div class="next"><a href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#revision"><span class="header-section-number">6</span> Revision tasks</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#revision"><span class="header-section-number">6</span> Revision tasks</a></li>
+<li><a class="nav-link" href="#guidelines"><span class="header-section-number">6.1</span> Guidelines for problem solving by writing R code</a></li>
+<li><a class="nav-link" href="#exercise-11"><span class="header-section-number">6.2</span> Exercise</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

@@ -84,9 +84,9 @@ objects()
 
 ``` r
 aa
-#>  [1] -2.50697715 -1.75137978  0.44098891 -0.61656679
-#>  [5]  0.92292212  0.05272313  0.92800728 -1.08070808
-#>  [9]  0.29635904 -1.06643571
+#>  [1]  2.239405464 -0.817015573 -1.374850095  0.257944639
+#>  [5]  2.817130730 -0.156439021  0.614828334 -0.141391760
+#>  [9]  0.305752373 -0.006634786
 ```
 
 ``` r
@@ -290,7 +290,7 @@ mode(y)
 
 (f)	Objects in R are *<span style="color:#FF9966">vectors</span>*,  *<span style="color:#FF9966">functions</span>* or *<span style="color:#FF9966">lists</span>*.  There are no scalars - instead vectors of length one are used. In addition to the above three types, there are several other types of objects.
 
-(g)	Objects that are created during a session are permanently stored in the <span style="color:#CC99FF">.RData</span> file in the folder containing the workspace (unless not saved at termination).
+(g)	Objects that are created during a session are permanently stored in the <span style="color:#FFB3B3">.RData</span> file in the folder containing the workspace (unless not saved at termination).
 
 (h)	Objects that are created within a function exist only for as long as the function is being executed. 
 
@@ -528,7 +528,7 @@ out
 #> [1] 12.8
 ```
 
-##	How R finds data
+##	How R finds data { #findData }
 
 In order to understand how objects are found by R it is necessary to have some understanding of the concepts
 
@@ -709,7 +709,7 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x00000208d9279308>
+#> <bytecode: 0x00000214c4a78df0>
 #> <environment: namespace:base>
 ```
 
@@ -721,19 +721,19 @@ get (mean)
 
 ``` r
 get ("mean") 
-#> [1] 0.0347726
+#> [1] -0.009513609
 ```
 
 ``` r
 get ("mean", pos = 1) 
-#> [1] 0.0347726
+#> [1] -0.009513609
 ```
 
 ``` r
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000208d71b7ca0>
+#> <bytecode: 0x00000214c19bbca0>
 #> <environment: namespace:base>
 ```
 
@@ -770,7 +770,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000208d71b7ca0>
+#> <bytecode: 0x00000214c19bbca0>
 #> <environment: namespace:base>
 ```
 
@@ -781,7 +781,7 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000208d71b7ca0>
+#> <bytecode: 0x00000214c19bbca0>
 #> <environment: namespace:base>
 ```
 
@@ -789,7 +789,7 @@ my.list[[2]]
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000208d71b7ca0>
+#> <bytecode: 0x00000214c19bbca0>
 #> <environment: namespace:base>
 ```
 

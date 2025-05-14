@@ -7,7 +7,7 @@ h4:examples-1 Examples
 h3:data-in-r Data in R
 h3:generation-of-data Generation of data
 h2:introduction-to-functions-in-r Introduction to functions in R
-h2:how-r-finds-data How R finds data
+h2:findData How R finds data
 h2:the-organisation-of-data-data-structures The organisation of data (data structures)
 h2:time-series Time series
 h2:the-functions-as.xxx-and-is.xxx The functions  and 

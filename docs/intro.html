@@ -176,12 +176,12 @@
 </ol>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] 47.42008</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 50.68715</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Note that the prompt appear followed by the mean of object <code>yy</code>.</p>
 </div>
 <ol start="8" style="list-style-type: lower-alpha">
-<li><p>Objects created during an R session in the workspace are stored in a database <span style="color:#CC99FF">.RData</span> in the current folder. A listing of all the objects in a database can be obtained by calling the functions <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> or <code><a href="https://rdrr.io/r/base/ls.html">objects()</a></code>. Now, first enter, at the R prompt, the instruction <code>objects</code> (or <code>ls</code>) and then the instruction <code><a href="https://rdrr.io/r/base/ls.html">objects()</a></code> (or <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code>). Explain what has happened.</p></li>
+<li><p>Objects created during an R session in the workspace are stored in a database <span style="color:#FFB3B3">.RData</span> in the current folder. A listing of all the objects in a database can be obtained by calling the functions <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> or <code><a href="https://rdrr.io/r/base/ls.html">objects()</a></code>. Now, first enter, at the R prompt, the instruction <code>objects</code> (or <code>ls</code>) and then the instruction <code><a href="https://rdrr.io/r/base/ls.html">objects()</a></code> (or <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code>). Explain what has happened.</p></li>
 <li><p>Objects can be removed by the following instruction: <code>rm(name1, name2, ... )</code>.</p></li>
 <li><p>Apart from the <em><span style="color:#FF9966">console</span></em> there are several other types of windows available in R e.g. graphs are displayed in graph windows. To illustrate, enter the following instructions at the R prompt in the console or commands window:</p></li>
 </ol>
@@ -203,7 +203,7 @@
 <p>Many users of R prefer working with <strong><span style="color:#3399FF">RStudio</span></strong>. RStudio is a free and open source integrated development environment for R which works with the standard version of R available from CRAN. It can be downloaded from the <a href="www.rstudio.com">RStudio</a> home page to be run from your desktop (Windows, Mac or Linux). Full details about the functionality of RStudio are available from its home page. Here, only a brief introduction to RStudio is given.</p>
 <p>When RStudio is installed on your computer the following icon is created on the desktop:</p>
 <div class="inline-figure"><img src="pics/RStudio.jpg"></div>
-<p>Clicking the above icon open the RStudio development environment as shown in Figure <a href="intro.html#fig:RStudioLayout">1.1</a>. In order to open any R workspace with RStudio drag the corresponding <span style="color:#CC99FF">.RData</span> file to the above RStudio icon and drop it as soon as ‘Open with RStudio’ becomes visible.</p>
+<p>Clicking the above icon open the RStudio development environment as shown in Figure <a href="intro.html#fig:RStudioLayout">1.1</a>. In order to open any R workspace with RStudio drag the corresponding <span style="color:#FFB3B3">.RData</span> file to the above RStudio icon and drop it as soon as ‘Open with RStudio’ becomes visible.</p>
 <div class="figure">
 <span style="display:block;" id="fig:RStudioLayout"></span>
 <img src="pics/RStudio_layout.jpg" alt="The RStudio development environment for R." width="640"><p class="caption">
@@ -212,7 +212,7 @@ Figure 1.1: The RStudio development environment for R.
 </div>
 <p>The bottom left-hand panel is the familiar R console.</p>
 <p>The bottom right-hand panel is used for :
-(a) a listing of the files in the folder where the <span style="color:#3399FF">workspace</span> (<span style="color:#CC99FF">.RData</span>) for the active project is kept
+(a) a listing of the files in the folder where the <span style="color:#3399FF">workspace</span> (<span style="color:#FFB3B3">.RData</span>) for the active project is kept
 (b) a listing of all installed packages available to be attached to the search path as well as menus for installing and updating packages
 (c) the graph windows (if any)
 (d) the Help facilities.</p>
@@ -232,7 +232,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <p><code>\a</code> bell</p>
 <p><code>\f</code> form feed</p>
 <p><code>\v</code> vertical tab</p>
-<p>A consequence of the above role of the backslash in R is that a single backslash in a filename will not be properly recognized. Therefore, when referring in R to the following file path <em><span style="color:#CC99FF">“c:\My Documents\myFile.txt”</span></em> all backslashes must be entered as double backslashes i.e. <code>"c:\\My Documents\\myFile.txt"</code> or as <code>"c:/My Documents/myFile.txt"</code>.</p>
+<p>A consequence of the above role of the backslash in R is that a single backslash in a filename will not be properly recognized. Therefore, when referring in R to the following file path <em><span style="color:#FFB3B3">“c:\My Documents\myFile.txt”</span></em> all backslashes must be entered as double backslashes i.e. <code>"c:\\My Documents\\myFile.txt"</code> or as <code>"c:/My Documents/myFile.txt"</code>.</p>
 <div id="exercise" class="section level3" number="1.5.1">
 <h3>
 <span class="header-section-number">1.5.1</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise"><i class="fas fa-link"></i></a>
@@ -332,7 +332,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <ul>
 <li>Everything in R is an object.</li>
 <li>There are different types of objects e.g. function objects, data objects, graphics objects, character objects, numeric objects.</li>
-<li>Usually objects are stored in the current folder called the <em><span style="color:#FF9966">Global environment</span></em>; recognized by R under the name <code>.GlobalEnv</code> and available in the file system under the name <em><span style="color:#CC99FF">.RData</span></em>.</li>
+<li>Usually objects are stored in the current folder called the <em><span style="color:#FF9966">Global environment</span></em>; recognized by R under the name <code>.GlobalEnv</code> and available in the file system under the name <em><span style="color:#FFB3B3">.RData</span></em>.</li>
 <li>Objects are created from the console by <em><span style="color:#FF9966">assignment</span></em> through the instruction</li>
 </ul>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
@@ -375,8 +375,8 @@ Communication with the R evaluator takes place through a set of instructions cal
 <col width="71%">
 </colgroup>
 <thead><tr class="header">
-<th><em><span style="color:#F7CE21">Help query</span></em></th>
-<th><em><span style="color:#F7CE21">Explanation</span></em></th>
+<th><em><span style="color:#CC99FF">Help query</span></em></th>
+<th><em><span style="color:#CC99FF">Explanation</span></em></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -457,8 +457,8 @@ Communication with the R evaluator takes place through a set of instructions cal
 <col width="71%">
 </colgroup>
 <thead><tr class="header">
-<th><em><span style="color:#F7CE21">Modifier</span></em></th>
-<th><em><span style="color:#F7CE21">Operation</span></em></th>
+<th><em><span style="color:#CC99FF">Modifier</span></em></th>
+<th><em><span style="color:#CC99FF">Operation</span></em></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -518,8 +518,8 @@ Communication with the R evaluator takes place through a set of instructions cal
 <col width="71%">
 </colgroup>
 <thead><tr class="header">
-<th><em><span style="color:#F7CE21">Regular expression</span></em></th>
-<th><em><span style="color:#F7CE21">Meaning</span></em></th>
+<th><em><span style="color:#CC99FF">Regular expression</span></em></th>
+<th><em><span style="color:#CC99FF">Meaning</span></em></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -595,7 +595,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <li>Select all the typed text and run the script by clicking the run icon (or Ctrl+R).</li>
 <li>Note what is shown in the R console window.</li>
 <li>Script files are ordinary text files. They can be saved, edited and opened using any text editor.</li>
-<li>By convention R script files have the extension <span style="color:#CC99FF">xxxx.r</span>.</li>
+<li>By convention R script files have the extension <span style="color:#FFB3B3">xxxx.r</span>.</li>
 <li>Next, change the spelling in the last two lines from <code>right.boundary</code> to <code>Right.boundary</code>. Select all the text and run the script. Check the output appearing on the console.</li>
 <li>Script windows can also be used for creating an R function.</li>
 <li>Create an R function by changing the text as shown below.</li>
@@ -695,24 +695,24 @@ Communication with the R evaluator takes place through a set of instructions cal
 <h2>
 <span class="header-section-number">1.10</span> R Projects<a class="anchor" aria-label="anchor" href="#r-projects"><i class="fas fa-link"></i></a>
 </h2>
-<p>The different windows in R are the Data window, Script window, Graph window and Menus and Dialog windows. The current <span style="color:#3399FF">workspace</span> in R is <code>.GlobalEnv</code>. The function <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> is used to obtain the path to the current folder’s <span style="color:#CC99FF">.Rdata</span> and <span style="color:#CC99FF">.Rhistory</span>.</p>
-<p><em>Note</em>: In order to see the files <span style="color:#CC99FF">.Rdata</span> and <span style="color:#CC99FF">.Rhistory</span> being displayed as such, it may be necessary to turn off the option “Hide extensions for known file types” in Windows Explorer.</p>
-<p>It is important to make provision for different <span style="color:#3399FF">workspaces</span> associated with different <em><span style="color:#FF9966">projects</span></em>. In R, different <em><span style="color:#CC99FF">.Rdata</span></em> files in different folders would separate different projects. There is however much to gain in using Projects in RStudio.</p>
+<p>The different windows in R are the Data window, Script window, Graph window and Menus and Dialog windows. The current <span style="color:#3399FF">workspace</span> in R is <code>.GlobalEnv</code>. The function <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> is used to obtain the path to the current folder’s <span style="color:#FFB3B3">.Rdata</span> and <span style="color:#FFB3B3">.Rhistory</span>.</p>
+<p><em>Note</em>: In order to see the files <span style="color:#FFB3B3">.Rdata</span> and <span style="color:#FFB3B3">.Rhistory</span> being displayed as such, it may be necessary to turn off the option “Hide extensions for known file types” in Windows Explorer.</p>
+<p>It is important to make provision for different <span style="color:#3399FF">workspaces</span> associated with different <em><span style="color:#FF9966">projects</span></em>. In R, different <em><span style="color:#FFB3B3">.Rdata</span></em> files in different folders would separate different projects. There is however much to gain in using Projects in RStudio.</p>
 <div id="creating-a-project-in-rstudio" class="section level3" number="1.10.1">
 <h3>
 <span class="header-section-number">1.10.1</span> Creating a project in RStudio<a class="anchor" aria-label="anchor" href="#creating-a-project-in-rstudio"><i class="fas fa-link"></i></a>
 </h3>
-<p>From the top menu, select <em>File, New Project</em>. Follow the prompts to create a new project, either in an existing folder or creating a new folder for your project, say <span style="color:#CC99FF">MyProject</span>.</p>
+<p>From the top menu, select <em>File, New Project</em>. Follow the prompts to create a new project, either in an existing folder or creating a new folder for your project, say <span style="color:#FFB3B3">MyProject</span>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Navigate to the folder <span style="color:#CC99FF">MyProject</span> in Windows Explorer.</li>
-<li>Notice a file <span style="color:#CC99FF">MyProject.Rproj</span> has been created in the folder.</li>
+<li>Navigate to the folder <span style="color:#FFB3B3">MyProject</span> in Windows Explorer.</li>
+<li>Notice a file <span style="color:#FFB3B3">MyProject.Rproj</span> has been created in the folder.</li>
 <li>By double-clicking on this file you open the project in RStudio. The advantages of opening the project this way are:</li>
 </ol>
 <ul>
-<li>your <span style="color:#3399FF">workspace</span> from the file <span style="color:#CC99FF">MyProject.Rdata</span> is automatically loaded</li>
-<li>by placing any related files like data set in the folder <span style="color:#CC99FF">MyProject</span> or a subfolder, say <span style="color:#CC99FF">MyProject\data</span> means that in your code you only have to use relative folder references, i.e. refer to <span style="color:#CC99FF">MyProject\mydata.xlsx</span> or <span style="color:#CC99FF">MyProject\data\mydata.xlsx</span> instead of something like <span style="color:#CC99FF">c:\users\myname\Documents\MyProject\data\mydata.xlsx</span>.</li>
+<li>your <span style="color:#3399FF">workspace</span> from the file <span style="color:#FFB3B3">MyProject.Rdata</span> is automatically loaded</li>
+<li>by placing any related files like data set in the folder <span style="color:#FFB3B3">MyProject</span> or a subfolder, say <span style="color:#FFB3B3">MyProject\data</span> means that in your code you only have to use relative folder references, i.e. refer to <span style="color:#FFB3B3">MyProject\mydata.xlsx</span> or <span style="color:#FFB3B3">MyProject\data\mydata.xlsx</span> instead of something like <span style="color:#FFB3B3">c:\users\myname\Documents\MyProject\data\mydata.xlsx</span>.</li>
 <li>the major advantage of relative references is that it is not specific to the computer and makes porting between devices possible</li>
-<li>sharing your project with a collaborator will simply entail copying the entire contents of the <span style="color:#CC99FF">MyProject</span> folder.</li>
+<li>sharing your project with a collaborator will simply entail copying the entire contents of the <span style="color:#FFB3B3">MyProject</span> folder.</li>
 </ul>
 </div>
 </div>
@@ -744,7 +744,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 <p>Instead of having to specify</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>editor <span class="op">=</span> <span class="st">"notepad"</span><span class="op">)</span></span></code></pre></div>
-<p>each time an R session is initialized, create the following function and save in the <span style="color:#CC99FF">.Rdata</span> before exiting R.</p>
+<p>each time an R session is initialized, create the following function and save in the <span style="color:#FFB3B3">.Rdata</span> before exiting R.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">.First</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>editor <span class="op">=</span> <span class="st">"notepad"</span><span class="op">)</span> <span class="op">}</span></span></code></pre></div>
 <p>to ensures that Notepad is the text editor during any subsequent session.</p>
@@ -787,8 +787,8 @@ Communication with the R evaluator takes place through a set of instructions cal
 <h2>
 <span class="header-section-number">1.15</span> Creating PDF and HTML documents from R output: R Markdown<a class="anchor" aria-label="anchor" href="#creating-pdf-and-html-documents-from-r-output-r-markdown"><i class="fas fa-link"></i></a>
 </h2>
-<p>The R package <code>knitr</code> is used to obtain reproducible results from R code in the form of PDF or HTML documents. In addition to <code>knitr</code>, R <strong><span style="color:#3399FF">Markdown</span></strong> can be used to create HTML, PDF or even MS Word documents. Markdown is a so-called markup language with plain-text-formating syntax. An R Markdown document is written in markdown and contains chunks of embedded R code. Although the <code>render()</code> function in the package <code>rmarkdown</code> can be used (similar to the <code>knit()</code> function from the package <code>knitr</code>), to create the output document from the R Markdown <span style="color:#CC99FF">.Rmd</span> file, R Markdown is typically used in conjunction with <span style="color:#3399FF">RStudio</span>. In the top menu, select <em>File, New File, R Markdown…</em> to open the <span style="color:#CC99FF">example.Rmd</span> file providing the user with the structure of an R Markdown file. For our illustration, we will select the output format as HTML.</p>
-<p>Edit the <span style="color:#CC99FF">example.Rmd</span> file to contain the following:</p>
+<p>The R package <code>knitr</code> is used to obtain reproducible results from R code in the form of PDF or HTML documents. In addition to <code>knitr</code>, R <strong><span style="color:#3399FF">Markdown</span></strong> can be used to create HTML, PDF or even MS Word documents. Markdown is a so-called markup language with plain-text-formating syntax. An R Markdown document is written in markdown and contains chunks of embedded R code. Although the <code>render()</code> function in the package <code>rmarkdown</code> can be used (similar to the <code>knit()</code> function from the package <code>knitr</code>), to create the output document from the R Markdown <span style="color:#FFB3B3">.Rmd</span> file, R Markdown is typically used in conjunction with <span style="color:#3399FF">RStudio</span>. In the top menu, select <em>File, New File, R Markdown…</em> to open the <span style="color:#FFB3B3">example.Rmd</span> file providing the user with the structure of an R Markdown file. For our illustration, we will select the output format as HTML.</p>
+<p>Edit the <span style="color:#FFB3B3">example.Rmd</span> file to contain the following:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb40-1"><a href="intro.html#cb40-1" tabindex="-1"></a>---</span>
 <span id="cb40-2"><a href="intro.html#cb40-2" tabindex="-1"></a>title: "An Illustration of Some Capabilities of R Markdown"</span>
 <span id="cb40-3"><a href="intro.html#cb40-3" tabindex="-1"></a>author: "Niel le Roux and Sugnet Lubbe"</span>
@@ -796,75 +796,74 @@ Communication with the R evaluator takes place through a set of instructions cal
 <span id="cb40-5"><a href="intro.html#cb40-5" tabindex="-1"></a>output: html_document</span>
 <span id="cb40-6"><a href="intro.html#cb40-6" tabindex="-1"></a>---</span>
 <span id="cb40-7"><a href="intro.html#cb40-7" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="intro.html#cb40-8" tabindex="-1"></a>  </span>
-<span id="cb40-9"><a href="intro.html#cb40-9" tabindex="-1"></a>```{r setup, include=FALSE}</span>
-<span id="cb40-10"><a href="intro.html#cb40-10" tabindex="-1"></a>knitr::opts_chunk$set(echo = TRUE)</span>
-<span id="cb40-11"><a href="intro.html#cb40-11" tabindex="-1"></a>```</span>
-<span id="cb40-12"><a href="intro.html#cb40-12" tabindex="-1"></a></span>
-<span id="cb40-13"><a href="intro.html#cb40-13" tabindex="-1"></a>## Short description</span>
-<span id="cb40-14"><a href="intro.html#cb40-14" tabindex="-1"></a></span>
-<span id="cb40-15"><a href="intro.html#cb40-15" tabindex="-1"></a>Code chunks in .Rmd files are delimited with ` ```{r} ` at the top where a chunk </span>
-<span id="cb40-16"><a href="intro.html#cb40-16" tabindex="-1"></a>label and any chunk options can appear and  ` ``` ` at the end. In-line R code </span>
-<span id="cb40-17"><a href="intro.html#cb40-17" tabindex="-1"></a>chunks are indicated with single ` `r ` on either side.</span>
-<span id="cb40-18"><a href="intro.html#cb40-18" tabindex="-1"></a></span>
-<span id="cb40-19"><a href="intro.html#cb40-19" tabindex="-1"></a>*****</span>
-<span id="cb40-20"><a href="intro.html#cb40-20" tabindex="-1"></a></span>
-<span id="cb40-21"><a href="intro.html#cb40-21" tabindex="-1"></a>Here is an example containing several chunks of code. Note that in the first </span>
-<span id="cb40-22"><a href="intro.html#cb40-22" tabindex="-1"></a>chunk R code is not shown due to the option `echo = FALSE`. In the remaining </span>
-<span id="cb40-23"><a href="intro.html#cb40-23" tabindex="-1"></a>chunks R code is shown due to the option above 'echo = TRUE'.</span>
-<span id="cb40-24"><a href="intro.html#cb40-24" tabindex="-1"></a></span>
-<span id="cb40-25"><a href="intro.html#cb40-25" tabindex="-1"></a>_Note R code not shown for this chunk._</span>
-<span id="cb40-26"><a href="intro.html#cb40-26" tabindex="-1"></a></span>
-<span id="cb40-27"><a href="intro.html#cb40-27" tabindex="-1"></a>```{r y, echo=FALSE}</span>
-<span id="cb40-28"><a href="intro.html#cb40-28" tabindex="-1"></a>y &lt;- 1</span>
-<span id="cb40-29"><a href="intro.html#cb40-29" tabindex="-1"></a>y</span>
-<span id="cb40-30"><a href="intro.html#cb40-30" tabindex="-1"></a>```</span>
-<span id="cb40-31"><a href="intro.html#cb40-31" tabindex="-1"></a></span>
-<span id="cb40-32"><a href="intro.html#cb40-32" tabindex="-1"></a>```{r rnorm}</span>
-<span id="cb40-33"><a href="intro.html#cb40-33" tabindex="-1"></a>require(lattice)</span>
-<span id="cb40-34"><a href="intro.html#cb40-34" tabindex="-1"></a>set.seed(123)</span>
-<span id="cb40-35"><a href="intro.html#cb40-35" tabindex="-1"></a>x &lt;- rnorm(1000, 20, 5)</span>
-<span id="cb40-36"><a href="intro.html#cb40-36" tabindex="-1"></a>```</span>
-<span id="cb40-37"><a href="intro.html#cb40-37" tabindex="-1"></a></span>
-<span id="cb40-38"><a href="intro.html#cb40-38" tabindex="-1"></a>We analyse data drawn from $\mathcal{N}(20,25)$. The mean is </span>
-<span id="cb40-39"><a href="intro.html#cb40-39" tabindex="-1"></a>`r round(mean(x),3)`. The following code shows the distribution via a histogram</span>
-<span id="cb40-40"><a href="intro.html#cb40-40" tabindex="-1"></a></span>
-<span id="cb40-41"><a href="intro.html#cb40-41" tabindex="-1"></a>```{r histexample}</span>
-<span id="cb40-42"><a href="intro.html#cb40-42" tabindex="-1"></a>  hist(x)</span>
-<span id="cb40-43"><a href="intro.html#cb40-43" tabindex="-1"></a>```</span>
-<span id="cb40-44"><a href="intro.html#cb40-44" tabindex="-1"></a></span>
-<span id="cb40-45"><a href="intro.html#cb40-45" tabindex="-1"></a>and the code below via a boxplot.</span>
-<span id="cb40-46"><a href="intro.html#cb40-46" tabindex="-1"></a></span>
-<span id="cb40-47"><a href="intro.html#cb40-47" tabindex="-1"></a>```{r boxexample}</span>
-<span id="cb40-48"><a href="intro.html#cb40-48" tabindex="-1"></a>  boxplot(x)</span>
-<span id="cb40-49"><a href="intro.html#cb40-49" tabindex="-1"></a>```</span>
-<span id="cb40-50"><a href="intro.html#cb40-50" tabindex="-1"></a></span>
-<span id="cb40-51"><a href="intro.html#cb40-51" tabindex="-1"></a>The first element of \texttt{x} is `r x[1]`. Note the usage of ` \texttt{x} ` </span>
-<span id="cb40-52"><a href="intro.html#cb40-52" tabindex="-1"></a>above.</span>
-<span id="cb40-53"><a href="intro.html#cb40-53" tabindex="-1"></a></span>
-<span id="cb40-54"><a href="intro.html#cb40-54" tabindex="-1"></a>*two plots side by side (option fig.show='hold')*</span>
-<span id="cb40-55"><a href="intro.html#cb40-55" tabindex="-1"></a></span>
-<span id="cb40-56"><a href="intro.html#cb40-56" tabindex="-1"></a>```{r side-by-side, fig.show='hold', out.width="50%"}</span>
-<span id="cb40-57"><a href="intro.html#cb40-57" tabindex="-1"></a>  par(mar=c(4,4,0.1,0.1), cex.lab=0.95, cex.axis=0.9, mgp=c(2,0.7,0), tcl=-0.3, </span>
-<span id="cb40-58"><a href="intro.html#cb40-58" tabindex="-1"></a>  las=1)</span>
-<span id="cb40-59"><a href="intro.html#cb40-59" tabindex="-1"></a>  boxplot(x)</span>
-<span id="cb40-60"><a href="intro.html#cb40-60" tabindex="-1"></a>  hist(x,main="")</span>
-<span id="cb40-61"><a href="intro.html#cb40-61" tabindex="-1"></a>```</span>
-<span id="cb40-62"><a href="intro.html#cb40-62" tabindex="-1"></a></span>
-<span id="cb40-63"><a href="intro.html#cb40-63" tabindex="-1"></a>```{r linear_model}</span>
-<span id="cb40-64"><a href="intro.html#cb40-64" tabindex="-1"></a>  n &lt;- 10</span>
-<span id="cb40-65"><a href="intro.html#cb40-65" tabindex="-1"></a>  x &lt;- rnorm(n)</span>
-<span id="cb40-66"><a href="intro.html#cb40-66" tabindex="-1"></a>  y &lt;- 2*x + rnorm(n)</span>
-<span id="cb40-67"><a href="intro.html#cb40-67" tabindex="-1"></a>  out &lt;- lm(y ~ x)</span>
-<span id="cb40-68"><a href="intro.html#cb40-68" tabindex="-1"></a>  summary(out)$coef</span>
-<span id="cb40-69"><a href="intro.html#cb40-69" tabindex="-1"></a>```</span></code></pre></div>
+<span id="cb40-8"><a href="intro.html#cb40-8" tabindex="-1"></a>```{r setup, include=FALSE}</span>
+<span id="cb40-9"><a href="intro.html#cb40-9" tabindex="-1"></a>knitr::opts_chunk$set(echo = TRUE)</span>
+<span id="cb40-10"><a href="intro.html#cb40-10" tabindex="-1"></a>```</span>
+<span id="cb40-11"><a href="intro.html#cb40-11" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="intro.html#cb40-12" tabindex="-1"></a>## Short description</span>
+<span id="cb40-13"><a href="intro.html#cb40-13" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="intro.html#cb40-14" tabindex="-1"></a>Code chunks in .Rmd files are delimited with ` ```{r} ` at the top where a chunk </span>
+<span id="cb40-15"><a href="intro.html#cb40-15" tabindex="-1"></a>label and any chunk options can appear and  ` ``` ` at the end. In-line R code </span>
+<span id="cb40-16"><a href="intro.html#cb40-16" tabindex="-1"></a>chunks are indicated with single ` `r ` on either side.</span>
+<span id="cb40-17"><a href="intro.html#cb40-17" tabindex="-1"></a></span>
+<span id="cb40-18"><a href="intro.html#cb40-18" tabindex="-1"></a>*****</span>
+<span id="cb40-19"><a href="intro.html#cb40-19" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="intro.html#cb40-20" tabindex="-1"></a>Here is an example containing several chunks of code. Note that in the first </span>
+<span id="cb40-21"><a href="intro.html#cb40-21" tabindex="-1"></a>chunk R code is not shown due to the option `echo = FALSE`. In the remaining </span>
+<span id="cb40-22"><a href="intro.html#cb40-22" tabindex="-1"></a>chunks R code is shown due to the option above 'echo = TRUE'.</span>
+<span id="cb40-23"><a href="intro.html#cb40-23" tabindex="-1"></a></span>
+<span id="cb40-24"><a href="intro.html#cb40-24" tabindex="-1"></a>_Note R code not shown for this chunk._</span>
+<span id="cb40-25"><a href="intro.html#cb40-25" tabindex="-1"></a></span>
+<span id="cb40-26"><a href="intro.html#cb40-26" tabindex="-1"></a>```{r y, echo=FALSE}</span>
+<span id="cb40-27"><a href="intro.html#cb40-27" tabindex="-1"></a>y &lt;- 1</span>
+<span id="cb40-28"><a href="intro.html#cb40-28" tabindex="-1"></a>y</span>
+<span id="cb40-29"><a href="intro.html#cb40-29" tabindex="-1"></a>```</span>
+<span id="cb40-30"><a href="intro.html#cb40-30" tabindex="-1"></a></span>
+<span id="cb40-31"><a href="intro.html#cb40-31" tabindex="-1"></a>```{r rnorm}</span>
+<span id="cb40-32"><a href="intro.html#cb40-32" tabindex="-1"></a>require(lattice)</span>
+<span id="cb40-33"><a href="intro.html#cb40-33" tabindex="-1"></a>set.seed(123)</span>
+<span id="cb40-34"><a href="intro.html#cb40-34" tabindex="-1"></a>x &lt;- rnorm(1000, 20, 5)</span>
+<span id="cb40-35"><a href="intro.html#cb40-35" tabindex="-1"></a>```</span>
+<span id="cb40-36"><a href="intro.html#cb40-36" tabindex="-1"></a></span>
+<span id="cb40-37"><a href="intro.html#cb40-37" tabindex="-1"></a>We analyse data drawn from $\mathcal{N}(20,25)$. The mean is </span>
+<span id="cb40-38"><a href="intro.html#cb40-38" tabindex="-1"></a>`r round(mean(x),3)`. The following code shows the distribution via a histogram</span>
+<span id="cb40-39"><a href="intro.html#cb40-39" tabindex="-1"></a></span>
+<span id="cb40-40"><a href="intro.html#cb40-40" tabindex="-1"></a>```{r histexample}</span>
+<span id="cb40-41"><a href="intro.html#cb40-41" tabindex="-1"></a>  hist(x)</span>
+<span id="cb40-42"><a href="intro.html#cb40-42" tabindex="-1"></a>```</span>
+<span id="cb40-43"><a href="intro.html#cb40-43" tabindex="-1"></a></span>
+<span id="cb40-44"><a href="intro.html#cb40-44" tabindex="-1"></a>and the code below via a boxplot.</span>
+<span id="cb40-45"><a href="intro.html#cb40-45" tabindex="-1"></a></span>
+<span id="cb40-46"><a href="intro.html#cb40-46" tabindex="-1"></a>```{r boxexample}</span>
+<span id="cb40-47"><a href="intro.html#cb40-47" tabindex="-1"></a>  boxplot(x)</span>
+<span id="cb40-48"><a href="intro.html#cb40-48" tabindex="-1"></a>```</span>
+<span id="cb40-49"><a href="intro.html#cb40-49" tabindex="-1"></a></span>
+<span id="cb40-50"><a href="intro.html#cb40-50" tabindex="-1"></a>The first element of \texttt{x} is `r x[1]`. Note the usage of ` \texttt{x} ` </span>
+<span id="cb40-51"><a href="intro.html#cb40-51" tabindex="-1"></a>above.</span>
+<span id="cb40-52"><a href="intro.html#cb40-52" tabindex="-1"></a></span>
+<span id="cb40-53"><a href="intro.html#cb40-53" tabindex="-1"></a>*two plots side by side (option fig.show='hold')*</span>
+<span id="cb40-54"><a href="intro.html#cb40-54" tabindex="-1"></a></span>
+<span id="cb40-55"><a href="intro.html#cb40-55" tabindex="-1"></a>```{r side-by-side, fig.show='hold', out.width="50%"}</span>
+<span id="cb40-56"><a href="intro.html#cb40-56" tabindex="-1"></a>  par(mar=c(4,4,0.1,0.1), cex.lab=0.95, cex.axis=0.9, mgp=c(2,0.7,0), </span>
+<span id="cb40-57"><a href="intro.html#cb40-57" tabindex="-1"></a>      tcl=-0.3, las=1)</span>
+<span id="cb40-58"><a href="intro.html#cb40-58" tabindex="-1"></a>  boxplot(x)</span>
+<span id="cb40-59"><a href="intro.html#cb40-59" tabindex="-1"></a>  hist(x,main="")</span>
+<span id="cb40-60"><a href="intro.html#cb40-60" tabindex="-1"></a>```</span>
+<span id="cb40-61"><a href="intro.html#cb40-61" tabindex="-1"></a></span>
+<span id="cb40-62"><a href="intro.html#cb40-62" tabindex="-1"></a>```{r linear_model}</span>
+<span id="cb40-63"><a href="intro.html#cb40-63" tabindex="-1"></a>  n &lt;- 10</span>
+<span id="cb40-64"><a href="intro.html#cb40-64" tabindex="-1"></a>  x &lt;- rnorm(n)</span>
+<span id="cb40-65"><a href="intro.html#cb40-65" tabindex="-1"></a>  y &lt;- 2*x + rnorm(n)</span>
+<span id="cb40-66"><a href="intro.html#cb40-66" tabindex="-1"></a>  out &lt;- lm(y ~ x)</span>
+<span id="cb40-67"><a href="intro.html#cb40-67" tabindex="-1"></a>  summary(out)$coef</span>
+<span id="cb40-68"><a href="intro.html#cb40-68" tabindex="-1"></a>```</span></code></pre></div>
 <p>At the top of the text editor, click on <em>Knit</em> to create the HTML document. Note that with the down arrow, options <em>Knit to PDF</em> and <em>Knit to Word</em> can also be chosen. The output format is also specified in line 5 of the text file with <code>output: html_document</code>. Had we chosen PDF as output format, it would be <code>output: pdf_document</code>. Typically, R Markdown is used for reporting, directly incorporating the R code and output. For more formal documents with Figure and Table caption references, tables of content, etc. the R package <code>bookdown</code> should be used. Install the package and replace the output statement with <code>output:bookdown::pdf_document2</code>. For more information on the use of bookdown, <a href="https://bookdown.org/">click here</a>.</p>
 </div>
 <div id="command-line-editing" class="section level2" number="1.16">
 <h2>
 <span class="header-section-number">1.16</span> Command line editing<a class="anchor" aria-label="anchor" href="#command-line-editing"><i class="fas fa-link"></i></a>
 </h2>
-<p>Commands given in an R session are stored together with commands given in previous sessions in a file <span style="color:#CC99FF">.History</span> in the same folder as the <span style="color:#CC99FF">.RData</span> file. In an R session previous commands can be retrieved at the R prompt by pressing the <em>up</em> and <em>down</em> arrow keys. A previous command can then be edited using the <em>backspace</em>, <em>delete</em>, <em>home</em>, <em>end</em> keys as well as the shortcuts for <em>copy</em> and <em>paste</em>.</p>
+<p>Commands given in an R session are stored together with commands given in previous sessions in a file <span style="color:#FFB3B3">.History</span> in the same folder as the <span style="color:#FFB3B3">.RData</span> file. In an R session previous commands can be retrieved at the R prompt by pressing the <em>up</em> and <em>down</em> arrow keys. A previous command can then be edited using the <em>backspace</em>, <em>delete</em>, <em>home</em>, <em>end</em> keys as well as the shortcuts for <em>copy</em> and <em>paste</em>.</p>
 
 </div>
 </div>

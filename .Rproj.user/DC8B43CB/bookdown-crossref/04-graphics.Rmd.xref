@@ -1,5 +1,8 @@
 h1:graphics Introducing traditional R graphics
 h2:general General
 fig:figRegion The main components of a graph window and the parameters for controlling their sizes.  The parameter mai is a numerical vector of the form c(bottom, left, top, right) specifying the margins in inches while the parameter mar has a similar form specifying the respective margins as the number of lines. The default of mar is c(5, 4, 4, 2) + 0.1.
-h2:high-level-plotting-instructions High-level plotting instructions
+h2:highLevelPlotting High-level plotting instructions
+h2:interactive-communication-with-graphs Interactive communication with graphs
+h2:d-graphics-package-rgl 3D graphics: package rgl
+h2:exercise Exercise
 

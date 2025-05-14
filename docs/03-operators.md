@@ -17,7 +17,7 @@ In this chapter we take a closer look at the behaviour of some of the most commo
 
 Table: (\#tab:ArithOperators) Arithmetic operators.
 
-| *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>* |
+| *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>* |
 | ------ | --------------- | ------ | --------------- |
 | `+`   |	Addition              | `^`   | Exponentiation |
 | `-`   |	Subtraction           | `%/%` | Integer divide |
@@ -257,7 +257,7 @@ What is meant by a control logical operator?
 
 Table: (\#tab:LogicOperators) Logical operators.
 
-| *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>*  |
+| *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>*  |
 | ------ | --------------- | 
 | `>`   |	Greater than |
 | `<`   |	Less than |
@@ -352,7 +352,7 @@ The correct way of extracting the fifth element of a sequence like 1:20 is
 
 Table: (\#tab:Precedence) Precedence rules.
 
-| *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">What it does</span>*  |
+| *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">What it does</span>*  |
 | ------ | --------------- |
 | `$`                | List and dataframe subscripting |
 | `[]`, `[[]]`       | Vector and matrix subscripting; list subscripting |
@@ -399,7 +399,7 @@ See Table \@ref(tab:TrigFunc).
 
 Table: (\#tab:TrigFunc) Trigonometric functions.
 
-| *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>*  | | *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>* |
+| *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>*  | | *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>* |
 | ------ | --------------- |------ | --------------- |
 | `cos()`  | cosine             | `acos()`  | arc cosine  |
 | `sin()`  | sine               | `asin()`  | arc sine    |
@@ -423,7 +423,7 @@ Two other functions that play an important role in matrix calculations are the f
 
 Table: (\#tab:MatrixFunc) Functions for matrices.
 
-| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | 
+| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  | 
 | ------ | --------------- |
 | `chol()`  | Cholesky decomposition       | 
 | `crossprod()`  | Matrix crossproduct     | 
@@ -535,7 +535,7 @@ Study the functions in Table \@ref(tab:DataManipulation).
 
 Table: (\#tab:DataManipulation) Functions for data manipulation.
 
-| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | 
+| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  | 
 | ------ | --------------- |
 | `append()`     | Combine vectors; more flexibility than `c()`  | 
 | `c()`          | Create vectors  | 
@@ -578,7 +578,7 @@ Study the functions in detail in  Table \@ref(tab:StatFunc).
 
 Table: (\#tab:StatFunc) Basic statistical functions.
 
-| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | *<span style="color:#F7CE21">Comments</span>*  | 
+| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  | *<span style="color:#CC99FF">Comments</span>*  | 
 | ------ | --------------- | --------------- |
 | `cor()`      | Correlation  | One or two arguments |
 | `cumsum()`   | Cumulative sum of elements of a vector |   |
@@ -649,7 +649,7 @@ Apart from being *<span style="color:#FF9966">numeric</span>* or *<span style="c
 
 Table: (\#tab:CatFunc) Basic functions for categorical variables.
 
-| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  |
+| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  |
 | ------ | --------------- |
 | `cut()`      | Creates categories out of a continuous variable |
 | `factor()`   | Encodes a vector as a **_nominal_** categorical variable  |
@@ -667,7 +667,7 @@ Study the functions in Table \@ref(tab:CharFunc) in detail.
 
 Table: (\#tab:CharFunc) Basic functions for character manipulation.
 
-| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  |
+| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  |
 | ------ | --------------- |
 | `abbreviate()` | Generates abbreviations of character values |
 | `cat()`        | Display,messages and/or values on screen or send to file  |

@@ -102,14 +102,14 @@ The above example shows that <span style="color:#FF9966">when the name of an R o
 
 ``` r
 mean(yy) 
-#> [1] 47.42008
+#> [1] 50.68715
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
 Note that the prompt appear followed by the mean of object `yy`.
 </div>
 
-(h)	Objects created during an R session in the workspace are stored in a database <span style="color:#CC99FF">.RData</span> in the current folder. A listing of all the objects in a database can be obtained by calling the functions `ls()` or `objects()`. Now, first enter, at the R prompt, the instruction `objects` (or `ls`) and then the instruction `objects()` (or `ls()`). Explain what has happened.
+(h)	Objects created during an R session in the workspace are stored in a database <span style="color:#FFB3B3">.RData</span> in the current folder. A listing of all the objects in a database can be obtained by calling the functions `ls()` or `objects()`. Now, first enter, at the R prompt, the instruction `objects` (or `ls`) and then the instruction `objects()` (or `ls()`). Explain what has happened.
 
 (i)	Objects can be removed by the following instruction: `rm(name1, name2, ... )`.
 
@@ -137,7 +137,7 @@ When RStudio is installed on your computer the following icon is created on the 
 
 ![](pics\RStudio.jpg) 
 
-Clicking the above icon open the RStudio development environment as shown in Figure \@ref(fig:RStudioLayout). In order to open any R workspace with RStudio drag the corresponding <span style="color:#CC99FF">.RData</span> file to the above RStudio icon and drop it as soon as  ‘Open with RStudio’ becomes visible.
+Clicking the above icon open the RStudio development environment as shown in Figure \@ref(fig:RStudioLayout). In order to open any R workspace with RStudio drag the corresponding <span style="color:#FFB3B3">.RData</span> file to the above RStudio icon and drop it as soon as  ‘Open with RStudio’ becomes visible.
 
 <div class="figure">
 <img src="pics/RStudio_layout.jpg" alt="The RStudio development environment for R." width="640" />
@@ -147,7 +147,7 @@ Clicking the above icon open the RStudio development environment as shown in Fig
 The bottom left-hand panel is the familiar R console.
 
 The bottom right-hand panel is used for :
-(a)	a listing of the files in the folder where the <span style="color:#3399FF">workspace</span> (<span style="color:#CC99FF">.RData</span>) for the active project is kept
+(a)	a listing of the files in the folder where the <span style="color:#3399FF">workspace</span> (<span style="color:#FFB3B3">.RData</span>) for the active project is kept
 (b)	a listing of all installed packages available to be attached to the search path as well as menus for installing and updating packages
 (c)	the graph windows (if any)
 (d)	the Help facilities.
@@ -175,7 +175,7 @@ Communication with the R evaluator takes place through a set of instructions cal
 
 `\v` 	vertical tab
 
-A consequence of the above role of the backslash in R is that a single backslash in a filename will not be properly recognized. Therefore, when referring in R to the following file path *<span style="color:#CC99FF">"c:\\My Documents\\myFile.txt"</span>* all backslashes must be entered as double backslashes i.e. `"c:\\My Documents\\myFile.txt"` or as `"c:/My Documents/myFile.txt"`.
+A consequence of the above role of the backslash in R is that a single backslash in a filename will not be properly recognized. Therefore, when referring in R to the following file path *<span style="color:#FFB3B3">"c:\\My Documents\\myFile.txt"</span>* all backslashes must be entered as double backslashes i.e. `"c:\\My Documents\\myFile.txt"` or as `"c:/My Documents/myFile.txt"`.
 
 ### Exercise
 
@@ -308,7 +308,7 @@ or
 
 *	Everything in R is an object. 
 * There are different types of objects e.g. function objects, data objects, graphics objects, character objects, numeric objects. 
-* Usually objects are stored in the current folder called the *<span style="color:#FF9966">Global environment</span>*; recognized by R under the name `.GlobalEnv` and available in the file system under the name *<span style="color:#CC99FF">.RData</span>*.
+* Usually objects are stored in the current folder called the *<span style="color:#FF9966">Global environment</span>*; recognized by R under the name `.GlobalEnv` and available in the file system under the name *<span style="color:#FFB3B3">.RData</span>*.
 * Objects are created from the console by *<span style="color:#FF9966">assignment</span>* through the instruction 
 
 
@@ -363,7 +363,7 @@ q()
 
 Table: (\#tab:HelpQueries) Some useful keywords available for help queries.
 
-| *<span style="color:#F7CE21">Help query</span>* | *<span style="color:#F7CE21">Explanation</span>* |
+| *<span style="color:#CC99FF">Help query</span>* | *<span style="color:#CC99FF">Explanation</span>* |
 | ------ | --------------- |
 | `?Arithmetic` |	Unary and binary operators to perform arithmetic on numeric and complex vectors |
 | `?Comparison` |	Binary operators for comparison of values in vectors |
@@ -394,7 +394,7 @@ The modifiers operating on characters or character classes are summarized in Tab
 
 Table: (\#tab:RegExprMod) Modifiers for regular expressions.
 
-| *<span style="color:#F7CE21">Modifier</span>* | *<span style="color:#F7CE21">Operation</span>* |
+| *<span style="color:#CC99FF">Modifier</span>* | *<span style="color:#CC99FF">Operation</span>* |
 | ------ | --------------- |
 | `^` | Expression anchors at beginning of target string |
 | `$` | Expression anchors at end of target string |
@@ -416,7 +416,7 @@ Note that in R this means that whenever one of the above characters needs to be 
 
 Table: (\#tab:RegExpr) Examples of regular expressions.
 
-| *<span style="color:#F7CE21">Regular expression</span>* | *<span style="color:#F7CE21">Meaning</span>* |
+| *<span style="color:#CC99FF">Regular expression</span>* | *<span style="color:#CC99FF">Meaning</span>* |
 | ------ | --------------- |
 | `"[a-z][a-z][0-9]"` |	Matches a string consisting of two lower case letters followed by a digit |
 | `"[a-z][a-z][0-9]$"` | Matches a string ending in two lower case letters followed by a digit |
@@ -476,7 +476,7 @@ In situations like the above, the problem can be addressed using a *<span style=
 (c)	Select all the typed text and run the script by clicking the run icon (or Ctrl+R).
 (d)	Note what is shown in the R console window.
 (e)	Script files are ordinary text files. They can be saved, edited and opened using any text editor.
-(f)	By convention R script files have the extension <span style="color:#CC99FF">xxxx.r</span>.
+(f)	By convention R script files have the extension <span style="color:#FFB3B3">xxxx.r</span>.
 (g)	Next, change the spelling in the last two lines from `right.boundary` to `Right.boundary`. Select all the text and run the script.  Check the output appearing on the console. 
 (h)	Script windows can also be used for creating an R function.
 (i)	Create an R function by changing the text as shown below.
@@ -601,24 +601,24 @@ Before writing a function for solving any problem: make sure the problem is unde
 
 ## R Projects
 
-The different windows in R are the Data window, Script window, Graph window and Menus and Dialog windows. The current <span style="color:#3399FF">workspace</span> in R is `.GlobalEnv`. The function `getwd()` is used to obtain the path to the current folder’s <span style="color:#CC99FF">.Rdata</span> and <span style="color:#CC99FF">.Rhistory</span>.
+The different windows in R are the Data window, Script window, Graph window and Menus and Dialog windows. The current <span style="color:#3399FF">workspace</span> in R is `.GlobalEnv`. The function `getwd()` is used to obtain the path to the current folder’s <span style="color:#FFB3B3">.Rdata</span> and <span style="color:#FFB3B3">.Rhistory</span>.
 
-*Note*: In order to see the files <span style="color:#CC99FF">.Rdata</span> and <span style="color:#CC99FF">.Rhistory</span> being displayed as such, it may be necessary to turn off the option “Hide extensions for known file types” in Windows Explorer.
+*Note*: In order to see the files <span style="color:#FFB3B3">.Rdata</span> and <span style="color:#FFB3B3">.Rhistory</span> being displayed as such, it may be necessary to turn off the option “Hide extensions for known file types” in Windows Explorer.
 
-It is important to make provision for different <span style="color:#3399FF">workspaces</span> associated with different *<span style="color:#FF9966">projects</span>*. In R, different *<span style="color:#CC99FF">.Rdata</span>* files in different folders would separate different projects. There is however much to gain in using Projects in RStudio.
+It is important to make provision for different <span style="color:#3399FF">workspaces</span> associated with different *<span style="color:#FF9966">projects</span>*. In R, different *<span style="color:#FFB3B3">.Rdata</span>* files in different folders would separate different projects. There is however much to gain in using Projects in RStudio.
 
 ### Creating a project in RStudio
 
-From the top menu, select *File, New Project*. Follow the prompts to create a new project, either in an existing folder or creating a new folder for your project, say <span style="color:#CC99FF">MyProject</span>.
+From the top menu, select *File, New Project*. Follow the prompts to create a new project, either in an existing folder or creating a new folder for your project, say <span style="color:#FFB3B3">MyProject</span>.
 
-(a) Navigate to the folder <span style="color:#CC99FF">MyProject</span> in Windows Explorer.
-(b) Notice a file <span style="color:#CC99FF">MyProject.Rproj</span> has been created in the folder.
+(a) Navigate to the folder <span style="color:#FFB3B3">MyProject</span> in Windows Explorer.
+(b) Notice a file <span style="color:#FFB3B3">MyProject.Rproj</span> has been created in the folder.
 (c) By double-clicking on this file you open the project in RStudio. The advantages of opening the project this way are:
 
-* your <span style="color:#3399FF">workspace</span> from the file <span style="color:#CC99FF">MyProject\.Rdata</span> is automatically loaded
-* by placing any related files like data set in the folder <span style="color:#CC99FF">MyProject</span> or a subfolder, say <span style="color:#CC99FF">MyProject\\data</span> means that in your code you only have to use relative folder references, i.e. refer to <span style="color:#CC99FF">MyProject\\mydata.xlsx</span> or <span style="color:#CC99FF">MyProject\\data\\mydata.xlsx</span> instead of something like <span style="color:#CC99FF">c:\\users\\myname\\Documents\\MyProject\\data\\mydata.xlsx</span>.
+* your <span style="color:#3399FF">workspace</span> from the file <span style="color:#FFB3B3">MyProject\.Rdata</span> is automatically loaded
+* by placing any related files like data set in the folder <span style="color:#FFB3B3">MyProject</span> or a subfolder, say <span style="color:#FFB3B3">MyProject\\data</span> means that in your code you only have to use relative folder references, i.e. refer to <span style="color:#FFB3B3">MyProject\\mydata.xlsx</span> or <span style="color:#FFB3B3">MyProject\\data\\mydata.xlsx</span> instead of something like <span style="color:#FFB3B3">c:\\users\\myname\\Documents\\MyProject\\data\\mydata.xlsx</span>.
 * the major advantage of relative references is that it is not specific to the computer and makes porting between devices possible
-* sharing your project with a collaborator will simply entail copying the entire contents of the <span style="color:#CC99FF">MyProject</span> folder.
+* sharing your project with a collaborator will simply entail copying the entire contents of the <span style="color:#FFB3B3">MyProject</span> folder.
 
 ##	A note on computations by a computer
 
@@ -651,7 +651,7 @@ Instead of having to specify
 options(editor = "notepad")
 ```
 
-each time an R session is initialized, create the following function and save in the <span style="color:#CC99FF">.Rdata</span> before exiting R.
+each time an R session is initialized, create the following function and save in the <span style="color:#FFB3B3">.Rdata</span> before exiting R.
 
 
 ``` r
@@ -700,9 +700,9 @@ Study the result of the instruction `> options()` in R.
 
 ## Creating PDF and HTML documents from R output: R Markdown
 
-The R package `knitr` is used to obtain reproducible results from R code in the form of PDF or HTML documents. In addition to `knitr`, R **<span style="color:#3399FF">Markdown</span>** can be used to create HTML, PDF or even MS Word documents. Markdown is a so-called markup language with plain-text-formating syntax. An R Markdown document is written in markdown and contains chunks of embedded R code. Although the `render()` function in the package `rmarkdown` can be used (similar to the `knit()` function from the package `knitr`), to create the output document from the R Markdown <span style="color:#CC99FF">.Rmd</span> file, R Markdown is typically used in conjunction with <span style="color:#3399FF">RStudio</span>. In the top menu, select *File, New File, R Markdown…* to open the <span style="color:#CC99FF">example.Rmd</span> file providing the user with the structure of an R Markdown file. For our illustration, we will select the output format as HTML.
+The R package `knitr` is used to obtain reproducible results from R code in the form of PDF or HTML documents. In addition to `knitr`, R **<span style="color:#3399FF">Markdown</span>** can be used to create HTML, PDF or even MS Word documents. Markdown is a so-called markup language with plain-text-formating syntax. An R Markdown document is written in markdown and contains chunks of embedded R code. Although the `render()` function in the package `rmarkdown` can be used (similar to the `knit()` function from the package `knitr`), to create the output document from the R Markdown <span style="color:#FFB3B3">.Rmd</span> file, R Markdown is typically used in conjunction with <span style="color:#3399FF">RStudio</span>. In the top menu, select *File, New File, R Markdown…* to open the <span style="color:#FFB3B3">example.Rmd</span> file providing the user with the structure of an R Markdown file. For our illustration, we will select the output format as HTML.
 
-Edit the <span style="color:#CC99FF">example.Rmd</span> file to contain the following:
+Edit the <span style="color:#FFB3B3">example.Rmd</span> file to contain the following:
 
 
 ```` default
@@ -713,7 +713,6 @@ date: "22/01/2021"
 output: html_document
 ---
 
-  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -762,8 +761,8 @@ above.
 *two plots side by side (option fig.show='hold')*
 
 ```{r side-by-side, fig.show='hold', out.width="50%"}
-  par(mar=c(4,4,0.1,0.1), cex.lab=0.95, cex.axis=0.9, mgp=c(2,0.7,0), tcl=-0.3, 
-  las=1)
+  par(mar=c(4,4,0.1,0.1), cex.lab=0.95, cex.axis=0.9, mgp=c(2,0.7,0), 
+      tcl=-0.3, las=1)
   boxplot(x)
   hist(x,main="")
 ```
@@ -782,5 +781,5 @@ At the top of the text editor, click on *Knit* to create the HTML document. Note
 
 ## Command line editing
 
-Commands given in an R session are stored together with commands given in previous sessions in a file <span style="color:#CC99FF">.History</span> in the same folder as the <span style="color:#CC99FF">.RData</span> file. In an R session previous commands can be retrieved at the R prompt by pressing the *up* and *down* arrow keys. A previous command can then be edited using the *backspace*, *delete*, *home*, *end* keys as well as the shortcuts for *copy* and *paste*.
+Commands given in an R session are stored together with commands given in previous sessions in a file <span style="color:#FFB3B3">.History</span> in the same folder as the <span style="color:#FFB3B3">.RData</span> file. In an R session previous commands can be retrieved at the R prompt by pressing the *up* and *down* arrow keys. A previous command can then be edited using the *backspace*, *delete*, *home*, *end* keys as well as the shortcuts for *copy* and *paste*.
 

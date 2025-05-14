@@ -152,7 +152,7 @@ mode(y)
 
 (f)	Objects in R are *<span style="color:#FF9966">vectors</span>*,  *<span style="color:#FF9966">functions</span>* or *<span style="color:#FF9966">lists</span>*.  There are no scalars - instead vectors of length one are used. In addition to the above three types, there are several other types of objects.
 
-(g)	Objects that are created during a session are permanently stored in the <span style="color:#CC99FF">.RData</span> file in the folder containing the workspace (unless not saved at termination).
+(g)	Objects that are created during a session are permanently stored in the <span style="color:#FFB3B3">.RData</span> file in the folder containing the workspace (unless not saved at termination).
 
 (h)	Objects that are created within a function exist only for as long as the function is being executed. 
 
@@ -330,7 +330,7 @@ out <- my.func()
 out
 ```
 
-##	How R finds data
+##	How R finds data { #findData }
 
 In order to understand how objects are found by R it is necessary to have some understanding of the concepts
 

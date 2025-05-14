@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 Subscripting | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
-<meta name="description" content="5.1 Subscripting with vectors">
+<meta name="description" content="Vectorized arithmetic and subscripting are two cornerstones of R programming. Review section 4.2 for several examples where subscripting has been used. In this chapter subscripting is studied in...">
 <meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="Chapter 5 Subscripting | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/subscripting.html">
 <meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
-<meta property="og:description" content="5.1 Subscripting with vectors">
+<meta property="og:description" content="Vectorized arithmetic and subscripting are two cornerstones of R programming. Review section 4.2 for several examples where subscripting has been used. In this chapter subscripting is studied in...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 Subscripting | Introduction into R Applications and Programming: A Tutorial">
-<meta name="twitter:description" content="5.1 Subscripting with vectors">
+<meta name="twitter:description" content="Vectorized arithmetic and subscripting are two cornerstones of R programming. Review section 4.2 for several examples where subscripting has been used. In this chapter subscripting is studied in...">
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -94,10 +94,573 @@
 <h1>
 <span class="header-section-number">5</span> Subscripting<a class="anchor" aria-label="anchor" href="#subscripting"><i class="fas fa-link"></i></a>
 </h1>
+<p>Vectorized arithmetic and subscripting are two cornerstones of R programming. Review section <a href="graphics.html#highLevelPlotting">4.2</a> for several examples where subscripting has been used. In this chapter subscripting is studied in detail. Specifically, the following two related topics are studied:</p>
+<ul>
+<li>Extracting parts of an object by using <em><span style="color:#FF9966">subscripting</span></em>.</li>
+<li>The combination and rearranging of data within data structures like matrices, dataframes and lists.</li>
+</ul>
 <div id="vectorSubscripting" class="section level2" number="5.1">
 <h2>
 <span class="header-section-number">5.1</span> Subscripting with vectors<a class="anchor" aria-label="anchor" href="#vectorSubscripting"><i class="fas fa-link"></i></a>
 </h2>
+<p>The different types of subscripting with vectors are summarized in Table <a href="subscripting.html#tab:SubscriptVectorTypes">5.1</a>:</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:SubscriptVectorTypes">Table 5.1: </span> Different types of subscripting vectors.</caption>
+<colgroup>
+<col width="16%">
+<col width="54%">
+<col width="29%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CCFF99">Type</span></em></th>
+<th><em><span style="color:#CCFF99">Effect</span></em></th>
+<th><em><span style="color:#CCFF99">Example</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>empty</td>
+<td>Extract all values</td>
+<td><code>x[ ]</code></td>
+</tr>
+<tr class="even">
+<td>integer, positive</td>
+<td>Extract all values specified by the subscript</td>
+<td><code>x[c(2:5,8,12) ]</code></td>
+</tr>
+<tr class="odd">
+<td>integer, negative</td>
+<td>Extract all values except those specified by the subscript</td>
+<td><code>x[–c(2:5,8,12) ]</code></td>
+</tr>
+<tr class="even">
+<td>logical</td>
+<td>Extract those values for which subscript is TRUE</td>
+<td><code>x[x &gt; 5 ]</code></td>
+</tr>
+<tr class="odd">
+<td>character</td>
+<td>Extract those values whose names attributes correspond to those specified by the subscript</td>
+<td><code>x[c("a","d") ]</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Logical subscripting provides a very powerful operation in R. A logical subscript is a vector of <code>TRUE</code>s and <code>FALSE</code>s that must be of the same length as the object being subscripted e.g.</p>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">state.x77</span><span class="op">[</span> , <span class="st">"Area"</span><span class="op">]</span> <span class="op">&gt;</span> <span class="fl">80000</span>  </span>
+<span><span class="co">#&gt;        Alabama         Alaska        Arizona       Arkansas </span></span>
+<span><span class="co">#&gt;          FALSE           TRUE           TRUE          FALSE </span></span>
+<span><span class="co">#&gt;     California       Colorado    Connecticut       Delaware </span></span>
+<span><span class="co">#&gt;           TRUE           TRUE          FALSE          FALSE </span></span>
+<span><span class="co">#&gt;        Florida        Georgia         Hawaii          Idaho </span></span>
+<span><span class="co">#&gt;          FALSE          FALSE          FALSE           TRUE </span></span>
+<span><span class="co">#&gt;       Illinois        Indiana           Iowa         Kansas </span></span>
+<span><span class="co">#&gt;          FALSE          FALSE          FALSE           TRUE </span></span>
+<span><span class="co">#&gt;       Kentucky      Louisiana          Maine       Maryland </span></span>
+<span><span class="co">#&gt;          FALSE          FALSE          FALSE          FALSE </span></span>
+<span><span class="co">#&gt;  Massachusetts       Michigan      Minnesota    Mississippi </span></span>
+<span><span class="co">#&gt;          FALSE          FALSE          FALSE          FALSE </span></span>
+<span><span class="co">#&gt;       Missouri        Montana       Nebraska         Nevada </span></span>
+<span><span class="co">#&gt;          FALSE           TRUE          FALSE           TRUE </span></span>
+<span><span class="co">#&gt;  New Hampshire     New Jersey     New Mexico       New York </span></span>
+<span><span class="co">#&gt;          FALSE          FALSE           TRUE          FALSE </span></span>
+<span><span class="co">#&gt; North Carolina   North Dakota           Ohio       Oklahoma </span></span>
+<span><span class="co">#&gt;          FALSE          FALSE          FALSE          FALSE </span></span>
+<span><span class="co">#&gt;         Oregon   Pennsylvania   Rhode Island South Carolina </span></span>
+<span><span class="co">#&gt;           TRUE          FALSE          FALSE          FALSE </span></span>
+<span><span class="co">#&gt;   South Dakota      Tennessee          Texas           Utah </span></span>
+<span><span class="co">#&gt;          FALSE          FALSE           TRUE           TRUE </span></span>
+<span><span class="co">#&gt;        Vermont       Virginia     Washington  West Virginia </span></span>
+<span><span class="co">#&gt;          FALSE          FALSE          FALSE          FALSE </span></span>
+<span><span class="co">#&gt;      Wisconsin        Wyoming </span></span>
+<span><span class="co">#&gt;          FALSE           TRUE</span></span></code></pre></div>
+<div class="inline-figure"><img src="pics/matrixSubscripting.jpg" width="396"></div>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">12</span>, <span class="cn">NA</span>, <span class="fl">18</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> <span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE FALSE FALSE  TRUE FALSE FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> <span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> <span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 10 15 12 18 20</span></span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> <span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span> <span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 15</span></span></code></pre></div>
+<p>Logical subscripting allows finding the indices of those elements in a vector that meet a certain condition e.g.</p>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span> <span class="op">(</span><span class="va">state.x77</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="va">state.x77</span><span class="op">[</span> ,<span class="st">"Income"</span><span class="op">]</span> <span class="op">&gt;</span> <span class="fl">5000</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1]  2  5  7 13 20 28 30 34</span></span></code></pre></div>
+<p>and to find the corresponding names of the states</p>
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span><span class="op">[</span></span>
+<span>  <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="va">state.x77</span><span class="op">[</span> ,<span class="st">"Income"</span><span class="op">]</span> <span class="op">&gt;</span> <span class="fl">5000</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "Alaska"       "California"   "Connecticut" </span></span>
+<span><span class="co">#&gt; [4] "Illinois"     "Maryland"     "Nevada"      </span></span>
+<span><span class="co">#&gt; [7] "New Jersey"   "North Dakota"</span></span></code></pre></div>
+<p>In addition to extracting elements, the above subscripting operations can also be used to modify selected elements of a vector e.g. changing NA-values to zero:</p>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 10 15 12 NA 18 20</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> <span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 10 15 12  0 18 20</span></span></code></pre></div>
+<p>When the right-hand side of the assignment above is a scalar value, each of the selected values will be changed to the specified scalar value; if the right-hand side is a vector, the selecting values will be changed in order, <em><span style="color:#FF9966">recycling</span></em> the values if more values were selected on the left-hand side than were available on the right-hand side.</p>
+</div>
+<div id="subscripting-with-matrices" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Subscripting with matrices<a class="anchor" aria-label="anchor" href="#subscripting-with-matrices"><i class="fas fa-link"></i></a>
+</h2>
+<p>Element and submatrix extraction of matrices are discussed below.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Revise the use of <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code>, <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>, <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code> and <code><a href="https://rdrr.io/r/base/dimnames.html">dimnames()</a></code>.</p></li>
+<li><p>A matrix in R is an <em><span style="color:#FF9966">array</span></em> with two indices. Arrays of order two and higher can be constructed with the function <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code> or <code><a href="https://rdrr.io/r/base/array.html">array()</a></code>.</p></li>
+</ol>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Let, for example, <span class="math inline">\(\mathbf{a}\)</span> be a vector consisting of <span class="math inline">\(150\)</span> elements. The instruction</p>
+</div>
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span> </span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>or the instruction</p>
+</div>
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span> <span class="op">(</span><span class="va">a</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>constructs a <span class="math inline">\(3 \times 5 \times 10\)</span> array.</p>
+</div>
+<ul>
+<li>Matrices can therefore be formed as above, but the function <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> is usually easier to use.</li>
+<li>The elements of a <span class="math inline">\(p\)</span>-dimensional array can also be extracted using the one-index or two-index method as described below.</li>
+</ul>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>The subscripting methods described in section <a href="subscripting.html#vectorSubscripting">5.1</a> can also be applied to both the first or second dimension of a matrix where the first dimension refers to the rows and the second dimension to the columns of the matrix.</p></li>
+<li><p>Note that the elements of a matrix can be referred to by the two-index method above or by a one index method. When the one index method is used it is assumed that the matrix has first been strung out <em><span style="color:#FF9966">column</span></em>-wise into a vector.</p></li>
+</ol>
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat.a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">17</span>, <span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">34</span>, <span class="fl">21</span>, <span class="fl">12</span>, <span class="fl">14</span>, <span class="fl">57</span>, </span>
+<span>                        <span class="fl">78</span>, <span class="fl">37</span>, <span class="fl">29</span>, <span class="fl">64</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">testmat.a</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span><span class="co">#&gt; [1,]   17   21   78</span></span>
+<span><span class="co">#&gt; [2,]   40   12   37</span></span>
+<span><span class="co">#&gt; [3,]   20   14   29</span></span>
+<span><span class="co">#&gt; [4,]   34   57   64</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat.b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">17</span>, <span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">34</span>, <span class="fl">21</span>, <span class="fl">12</span>, <span class="fl">14</span>, <span class="fl">57</span>, </span>
+<span>                        <span class="fl">78</span>, <span class="fl">37</span>, <span class="fl">29</span>, <span class="fl">64</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">testmat.b</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span><span class="co">#&gt; [1,]   17   40   20</span></span>
+<span><span class="co">#&gt; [2,]   34   21   12</span></span>
+<span><span class="co">#&gt; [3,]   14   57   78</span></span>
+<span><span class="co">#&gt; [4,]   37   29   64</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Comment on the difference between <code>testmat.a</code> and <code>testmat.b</code>.</p>
+</div>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat.a</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">]</span>   <span class="co"># Two index matrix reference</span></span>
+<span><span class="co">#&gt; [1] 37</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat.a</span><span class="op">[</span><span class="fl">10</span><span class="op">]</span>   <span class="co"># One index matrix reference</span></span>
+<span><span class="co">#&gt; [1] 37</span></span></code></pre></div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>Write a function to convert a one-index to a two-index matrix reference. Give an example of the usage of your function.</p></li>
+<li><p>Write a function to convert a two-index to a one-index matrix reference. Give an example of the usage of your function.</p></li>
+<li><p>Consider the following example to form submatrices:</p></li>
+</ol>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, nrow <span class="op">=</span> <span class="fl">10</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">testmat</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt;      [,1] [,2]</span></span>
+<span><span class="co">#&gt; [1,]    3    5</span></span>
+<span><span class="co">#&gt; [2,]    8   10</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 3 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">3</span>, drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">]</span></span>
+<span><span class="co">#&gt;      [,1]</span></span>
+<span><span class="co">#&gt; [1,]    3</span></span>
+<span><span class="co">#&gt; [2,]    8</span></span></code></pre></div>
+<ol start="8" style="list-style-type: lower-alpha">
+<li><p>Notice the difference between <code>testmat [1:2, 3]</code> and <code>testmat [1:2, 3, drop = FALSE]</code>. The first command results in the output to be given in the form of a vector while the optional <code>drop = FALSE</code> in the second command retains the matrix structure of the output. This distinction can have serious consequences when a procedure expects a matrix argument and not a vector.</p></li>
+<li><p>Notice also that the output of both <code>testmat[1:2,3]</code> and <code>testmat[3, 1:2]</code> has a similar form: R makes no distinction between column vectors and row vectors; all one-dimensional collections of numbers are treated identically.</p></li>
+<li>
+<p>Apart from using vectors as subscripts to a matrix, a matrix can also be used as a subscript to a matrix. There are two cases:</p>
+<ol style="list-style-type: upper-alpha">
+<li>a numeric subscripting matrix and</li>
+<li>a logical subscripting matrix.</li>
+</ol>
+</li>
+</ol>
+<div id="case-a" class="section level4 unnumbered">
+<h4>Case A<a class="anchor" aria-label="anchor" href="#case-a"><i class="fas fa-link"></i></a>
+</h4>
+<p>Here the subscripting numeric matrix must have exactly two columns: the first provide row indices and the second column indices.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>If used on the right-hand side of an expression the result of a <em>case A</em> subscripting is a vector containing the values specified by the subscripting matrix.</p></li>
+<li><p>If used on the left-hand side of an assignment a numeric matrix first selects those elements specified by its row and column indices; then these values are replaced one by one with the objects specified by the right-hand side of the assignment.</p></li>
+</ol>
+<p>Here is an example of <em>case A</em> subscripting with the subscript matrix on the right-hand side of the assignment:</p>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">xmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">25</span>, nrow <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">xmat</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3] [,4] [,5]</span></span>
+<span><span class="co">#&gt; [1,]    1    6   11   16   21</span></span>
+<span><span class="co">#&gt; [2,]    2    7   12   17   22</span></span>
+<span><span class="co">#&gt; [3,]    3    8   13   18   23</span></span>
+<span><span class="co">#&gt; [4,]    4    9   14   19   24</span></span>
+<span><span class="co">#&gt; [5,]    5   10   15   20   25</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">superdiag.index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">superdiag.values</span> <span class="op">&lt;-</span> <span class="va">xmat</span><span class="op">[</span><span class="va">superdiag.index</span><span class="op">]</span></span>
+<span><span class="va">superdiag.values</span></span>
+<span><span class="co">#&gt; [1]  6 12 18 24</span></span></code></pre></div>
+<p><em>Case A</em> subscripting with the numeric subscript matrix on the left-hand side of the assignment:</p>
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">subscript.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>, ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">subscript.mat</span></span>
+<span><span class="co">#&gt;      [,1] [,2]</span></span>
+<span><span class="co">#&gt; [1,]    1    1</span></span>
+<span><span class="co">#&gt; [2,]    2    1</span></span>
+<span><span class="co">#&gt; [3,]    3    1</span></span>
+<span><span class="co">#&gt; [4,]    1    2</span></span>
+<span><span class="co">#&gt; [5,]    2    2</span></span>
+<span><span class="co">#&gt; [6,]    3    2</span></span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">xx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, nrow<span class="op">=</span><span class="fl">3</span>,ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">xx</span> </span>
+<span><span class="co">#&gt;      [,1] [,2]</span></span>
+<span><span class="co">#&gt; [1,]   NA   NA</span></span>
+<span><span class="co">#&gt; [2,]   NA   NA</span></span>
+<span><span class="co">#&gt; [3,]   NA   NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">xx</span><span class="op">[</span><span class="va">subscript.mat</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">12</span>,<span class="fl">14</span>,<span class="fl">100</span>,<span class="fl">120</span>,<span class="fl">140</span><span class="op">)</span></span>
+<span><span class="va">xx</span></span>
+<span><span class="co">#&gt;      [,1] [,2]</span></span>
+<span><span class="co">#&gt; [1,]   10  100</span></span>
+<span><span class="co">#&gt; [2,]   12  120</span></span>
+<span><span class="co">#&gt; [3,]   14  140</span></span></code></pre></div>
+</div>
+<div id="case-b" class="section level4 unnumbered">
+<h4>Case B<a class="anchor" aria-label="anchor" href="#case-b"><i class="fas fa-link"></i></a>
+</h4>
+<p>The logical subscripting matrix must be in size exactly similar to that matrix it is subscripting and will select those values corresponding to a <code>TRUE</code> in the subscripting matrix.</p>
+<p><em>Case B</em> with logical subscripting matrix at right-hand side of assignment:</p>
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat</span></span>
+<span><span class="co">#&gt;       [,1] [,2] [,3] [,4] [,5]</span></span>
+<span><span class="co">#&gt;  [1,]    1    2    3    4    5</span></span>
+<span><span class="co">#&gt;  [2,]    6    7    8    9   10</span></span>
+<span><span class="co">#&gt;  [3,]   11   12   13   14   15</span></span>
+<span><span class="co">#&gt;  [4,]   16   17   18   19   20</span></span>
+<span><span class="co">#&gt;  [5,]   21   22   23   24   25</span></span>
+<span><span class="co">#&gt;  [6,]   26   27   28   29   30</span></span>
+<span><span class="co">#&gt;  [7,]   31   32   33   34   35</span></span>
+<span><span class="co">#&gt;  [8,]   36   37   38   39   40</span></span>
+<span><span class="co">#&gt;  [9,]   41   42   43   44   45</span></span>
+<span><span class="co">#&gt; [10,]   46   47   48   49   50</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="va">testmat</span><span class="op">[</span><span class="va">testmat</span> <span class="op">&lt;</span> <span class="fl">12</span><span class="op">]</span></span>
+<span><span class="va">aa</span></span>
+<span><span class="co">#&gt;  [1]  1  6 11  2  7  3  8  4  9  5 10</span></span></code></pre></div>
+<p>Note that the selected elements are placed column-wise in a vector.</p>
+<p><em>Case B</em> with logical subscripting matrix at left-hand side of assignment:</p>
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat</span><span class="op">[</span><span class="va">testmat</span> <span class="op">&lt;</span> <span class="fl">12</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
+<span><span class="va">testmat</span></span>
+<span><span class="co">#&gt;       [,1] [,2] [,3] [,4] [,5]</span></span>
+<span><span class="co">#&gt;  [1,]   12   12   12   12   12</span></span>
+<span><span class="co">#&gt;  [2,]   12   12   12   12   12</span></span>
+<span><span class="co">#&gt;  [3,]   12   12   13   14   15</span></span>
+<span><span class="co">#&gt;  [4,]   16   17   18   19   20</span></span>
+<span><span class="co">#&gt;  [5,]   21   22   23   24   25</span></span>
+<span><span class="co">#&gt;  [6,]   26   27   28   29   30</span></span>
+<span><span class="co">#&gt;  [7,]   31   32   33   34   35</span></span>
+<span><span class="co">#&gt;  [8,]   36   37   38   39   40</span></span>
+<span><span class="co">#&gt;  [9,]   41   42   43   44   45</span></span>
+<span><span class="co">#&gt; [10,]   46   47   48   49   50</span></span></code></pre></div>
+<p>In order to restrict assignment to a subset of a matrix two sets of subscripts are needed. See example below:</p>
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, nrow<span class="op">=</span><span class="fl">10</span>, byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">testmat</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">]</span><span class="op">[</span><span class="va">testmat</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;</span><span class="fl">12</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
+<span><span class="va">testmat</span></span>
+<span><span class="co">#&gt;       [,1] [,2] [,3] [,4] [,5]</span></span>
+<span><span class="co">#&gt;  [1,]   12    2   12    4    5</span></span>
+<span><span class="co">#&gt;  [2,]   12    7   12    9   10</span></span>
+<span><span class="co">#&gt;  [3,]   12   12   13   14   15</span></span>
+<span><span class="co">#&gt;  [4,]   16   17   18   19   20</span></span>
+<span><span class="co">#&gt;  [5,]   21   22   23   24   25</span></span>
+<span><span class="co">#&gt;  [6,]   26   27   28   29   30</span></span>
+<span><span class="co">#&gt;  [7,]   31   32   33   34   35</span></span>
+<span><span class="co">#&gt;  [8,]   36   37   38   39   40</span></span>
+<span><span class="co">#&gt;  [9,]   41   42   43   44   45</span></span>
+<span><span class="co">#&gt; [10,]   46   47   48   49   50</span></span></code></pre></div>
+<p>Study the use of functions <code><a href="https://rdrr.io/r/base/row.html">row()</a></code> and <code><a href="https://rdrr.io/r/base/col.html">col()</a></code> in constructing logical matrices.</p>
+</div>
+</div>
+<div id="extracting-elements-of-lists" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Extracting elements of lists<a class="anchor" aria-label="anchor" href="#extracting-elements-of-lists"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Note the use of <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> to collect objects into a list while elements are extracted with <code>$</code>
+</li>
+</ol>
+<ul>
+<li><p>the function <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>,</p></li>
+<li><p>the single square brackets <code>[ ]</code> and</p></li>
+<li><p>the double square brackets <code>[[ ]]</code>.</p></li>
+</ul>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Study the following example carefully:</li>
+</ol>
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>el1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, </span>
+<span>                el2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>, </span>
+<span>                el3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, </span>
+<span>                el4 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">17</span>, <span class="fl">23</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">my.list</span></span>
+<span><span class="co">#&gt; $el1</span></span>
+<span><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $el2</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $el3</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span><span class="co">#&gt; [1,]    1    5    9   13</span></span>
+<span><span class="co">#&gt; [2,]    2    6   10   14</span></span>
+<span><span class="co">#&gt; [3,]    3    7   11   15</span></span>
+<span><span class="co">#&gt; [4,]    4    8   12   16</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $el4</span></span>
+<span><span class="co">#&gt; [1] 12 17 23  9</span></span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">$</span><span class="va">el2</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">$</span><span class="va">el2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "character"</span></span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[</span><span class="va">el2</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'el2' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[</span><span class="st">"el2"</span><span class="op">]</span></span>
+<span><span class="co">#&gt; $el2</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">[</span><span class="st">"el2"</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "list"</span></span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="st">"el2"</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">[[</span><span class="st">"el2"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "character"</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Note: The above example shows that using the single pair of square brackets for subscripting a list always result in a list object to be returned. This is often the cause of an error message. See the example below.</p>
+</div>
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="co">#&gt; $el1</span></span>
+<span><span class="co">#&gt; [1] 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "list"</span></span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">]</span></span>
+<span><span class="co">#&gt; Error in my.list[3][2, 4]: incorrect number of dimensions</span></span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 14</span></span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">$</span><span class="va">el3</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 14</span></span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in mean.default(my.list[4]): argument is not</span></span>
+<span><span class="co">#&gt; numeric or logical: returning NA</span></span>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 15.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">$</span><span class="va">el4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 15.25</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Explain the differences and similarities between the symbols <code>[ ]</code>, <code>[[ ]]</code> and <code>$</code> when subscripting lists.</p>
+</div>
+</div>
+<div id="extracting-elements-from-dataframes" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Extracting elements from dataframes<a class="anchor" aria-label="anchor" href="#extracting-elements-from-dataframes"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Note the use of data.frame() for creating dataframes. A dataframe has a rectangular structure similar to a matrix but differs from a matrix in that its columns are not restricted to contain the same type of data. Each of its columns must contain the same sort of data but some columns can be numerical while others are factors for example.</p></li>
+<li><p>Explain the difference between the objects created by the following two instructions:</p></li>
+</ol>
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">17</span>, <span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">34</span>, <span class="fl">21</span>, <span class="fl">12</span>, <span class="fl">14</span>, <span class="fl">57</span>,</span>
+<span>                        <span class="fl">78</span>, <span class="fl">37</span>, <span class="fl">29</span>, <span class="fl">64</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">my.dataframe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span> <span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">34</span>, <span class="fl">21</span>, <span class="fl">12</span>, <span class="fl">14</span>, <span class="fl">57</span>,</span>
+<span>                               <span class="fl">78</span>, <span class="fl">37</span>, <span class="fl">29</span>, <span class="fl">64</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Note the following</li>
+</ol>
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">my.matrix</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "matrix" "array"</span></span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">my.dataframe</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "data.frame"</span></span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html">is.list</a></span><span class="op">(</span><span class="va">data.frame</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">my.matrix</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">data.frame</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "function"</span></span></code></pre></div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>A sample of the behaviour of dataframes</li>
+</ol>
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.dataframe.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span> <span class="op">(</span>C1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span><span class="op">)</span>, </span>
+<span>                              C2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">9</span>, <span class="fl">23</span>, <span class="fl">17</span><span class="op">)</span>, </span>
+<span>                              C3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">my.dataframe.2</span></span>
+<span><span class="co">#&gt;   C1 C2    C3</span></span>
+<span><span class="co">#&gt; 1  a  5  TRUE</span></span>
+<span><span class="co">#&gt; 2  b  9  TRUE</span></span>
+<span><span class="co">#&gt; 3  c 23 FALSE</span></span>
+<span><span class="co">#&gt; 4  d 17  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.dataframe.2</span><span class="op">[</span> ,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span></span>
+<span><span class="co">#&gt;   C1 C2</span></span>
+<span><span class="co">#&gt; 1  a  5</span></span>
+<span><span class="co">#&gt; 2  b  9</span></span>
+<span><span class="co">#&gt; 3  c 23</span></span>
+<span><span class="co">#&gt; 4  d 17</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Dataframe behaves like a matrix</p>
+</div>
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.dataframe.2</span><span class="op">$</span><span class="va">C1</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c" "d"</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Dataframe behaves like a list</p>
+</div>
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">my.dataframe.2</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      C1  C2   C3     </span></span>
+<span><span class="co">#&gt; [1,] "a" " 5" "TRUE" </span></span>
+<span><span class="co">#&gt; [2,] "b" " 9" "TRUE" </span></span>
+<span><span class="co">#&gt; [3,] "c" "23" "FALSE"</span></span>
+<span><span class="co">#&gt; [4,] "d" "17" "TRUE"</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Explain what has happened above.</p>
+</div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>The above examples show that a dataframe can be considered as a cross between a matrix and a list. Therefore, subscripting of dataframes generally can be performed using the basic techniques available for matrices and lists.</p></li>
+<li><p>An alternative technique is to extract the elements of a list by using the functions <code><a href="https://rdrr.io/r/base/attach.html">attach()</a></code> and <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>. This technique is especially of importance in statistical modelling. What is a potential danger of this technique when attaching dataframes? This danger can be avoided by using <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>. Is this also true when modelling is performed?</p></li>
+<li><p>Review section <a href="objects.html#findData">2.3</a>. Study the help file of the function <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>. What important usage has <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>?</p></li>
+</ol>
+</div>
+<div id="combining-vectors-matrices-lists-and-dataframes" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Combining vectors, matrices, lists and dataframes<a class="anchor" aria-label="anchor" href="#combining-vectors-matrices-lists-and-dataframes"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li>What is the result of the command</li>
+</ol>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="subscripting.html#cb277-1" tabindex="-1"></a>my.list <span class="ot">&lt;-</span> <span class="fu">vector</span> (<span class="st">"list"</span>, k)?</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Recall the function <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> for creating vectors. When <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> is used to combine a numeric vector and a character vector the result is a vector of mode “character”. Similarly, using <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> to combine a vector with a list results in a list.</p></li>
+<li><p>If <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> is used to combine two or more vectors or lists the result is a list of all the objects.</p></li>
+<li><p>The function <code><a href="https://rdrr.io/r/base/unlist.html">unlist()</a></code> can be used to convert all the elements of a list into a single vector.</p></li>
+</ol>
+<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span></span>
+<span><span class="co">#&gt; $el1</span></span>
+<span><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $el2</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $el3</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
+<span><span class="co">#&gt; [1,]    1    5    9   13</span></span>
+<span><span class="co">#&gt; [2,]    2    6   10   14</span></span>
+<span><span class="co">#&gt; [3,]    3    7   11   15</span></span>
+<span><span class="co">#&gt; [4,]    4    8   12   16</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $el4</span></span>
+<span><span class="co">#&gt; [1] 12 17 23  9</span></span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">my.list</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  el11  el12  el13  el14  el15  el21  el22  el23  el31  el32 </span></span>
+<span><span class="co">#&gt;   "1"   "2"   "3"   "4"   "5"   "a"   "b"   "c"   "1"   "2" </span></span>
+<span><span class="co">#&gt;  el33  el34  el35  el36  el37  el38  el39 el310 el311 el312 </span></span>
+<span><span class="co">#&gt;   "3"   "4"   "5"   "6"   "7"   "8"   "9"  "10"  "11"  "12" </span></span>
+<span><span class="co">#&gt; el313 el314 el315 el316  el41  el42  el43  el44 </span></span>
+<span><span class="co">#&gt;  "13"  "14"  "15"  "16"  "12"  "17"  "23"   "9"</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Explain the above output.</p>
+</div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Review the functions <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code>, <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>, <code><a href="https://rdrr.io/r/base/append.html">append()</a></code>, <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>, <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code>, <code><a href="https://rdrr.io/r/base/dimnames.html">dimnames()</a></code>, <code><a href="https://rdrr.io/r/base/names.html">names()</a></code>, <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code>, <code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code>, <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> and <code><a href="https://rdrr.io/r/base/nrow.html">ncol()</a></code>.</li>
+</ol>
+</div>
+<div id="rearranging-the-elements-in-a-matrix" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Rearranging the elements in a matrix<a class="anchor" aria-label="anchor" href="#rearranging-the-elements-in-a-matrix"><i class="fas fa-link"></i></a>
+</h2>
+<p>Study the usage of the functions <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code>, <code><a href="https://rdrr.io/r/base/t.html">t()</a></code> and <code><a href="https://rdrr.io/r/base/diag.html">diag()</a></code>. These functions are useful to form submatrices of a matrix or to rearrange matrix elements. Note again the argument <code>byrow =</code> of <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code>.</p>
+</div>
+<div id="exercise-10" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-10"><i class="fas fa-link"></i></a>
+</h2>
+<div style="color: #80CC99;">
+<ol style="list-style-type: decimal">
+<li><p>Write an R function to check if a given matrix is symmetric.</p></li>
+<li><p>Write an R function to extract (i) the row(s) and (ii) the columns containing the maximum value in the matrix. Note that provision must be made that the maximum value can occur in more than one row (column). Furthermore, both the indices and actual values of the rows (columns) must be returned. Illustrate the usage of your function with a suitable example.</p></li>
+<li><p>Describe the variables in the built-in data set <code>LifeCycleSavings</code>. Is this data set in the form of a matrix or a dataframe?</p></li>
+<li><p>Use subscripting to find the largest proportion of over 75 in those countries with a dpi of less than 1000 in the <code>LifeCycleSavings</code> data set. Also determine the country(ies) having this pop75 value.</p></li>
+<li>
+<p>Consider the <code>LifeCycleSavings</code> data set.</p>
+<ol style="list-style-type: lower-roman">
+<li>Use subscripting to find the mean aggregate savings for countries with a percentage of the population younger than 15 at least 10 times the percentage of the population over 75.</li>
+<li>Also find the mean aggregate savings for countries where the above ratio is less than 10.</li>
+<li>Use function <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> to test if mean aggregate savings are different for the above two groups.</li>
+<li>Use notched box plots for an approximate test.</li>
+</ol>
+</li>
+</ol>
+<ol start="22" style="list-style-type: lower-alpha">
+<li>First, carefully study the output obtained in (iii) and (iv). Then interpret/discuss this output in detail.</li>
+</ol>
+<ol start="6" style="list-style-type: decimal">
+<li>Consider the <code>state.x77</code> data set and the variable <code>state.region</code>. Find the state with the minimum income in each of the regions defined in state.region.</li>
+</ol>
+</div>
 
 </div>
 </div>
@@ -109,6 +672,12 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#subscripting"><span class="header-section-number">5</span> Subscripting</a></li>
 <li><a class="nav-link" href="#vectorSubscripting"><span class="header-section-number">5.1</span> Subscripting with vectors</a></li>
+<li><a class="nav-link" href="#subscripting-with-matrices"><span class="header-section-number">5.2</span> Subscripting with matrices</a></li>
+<li><a class="nav-link" href="#extracting-elements-of-lists"><span class="header-section-number">5.3</span> Extracting elements of lists</a></li>
+<li><a class="nav-link" href="#extracting-elements-from-dataframes"><span class="header-section-number">5.4</span> Extracting elements from dataframes</a></li>
+<li><a class="nav-link" href="#combining-vectors-matrices-lists-and-dataframes"><span class="header-section-number">5.5</span> Combining vectors, matrices, lists and dataframes</a></li>
+<li><a class="nav-link" href="#rearranging-the-elements-in-a-matrix"><span class="header-section-number">5.6</span> Rearranging the elements in a matrix</a></li>
+<li><a class="nav-link" href="#exercise-10"><span class="header-section-number">5.7</span> Exercise</a></li>
 </ul>
 
       <div class="book-extra">

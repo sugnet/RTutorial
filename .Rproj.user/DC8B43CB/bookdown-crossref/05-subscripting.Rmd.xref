@@ -1,3 +1,11 @@
 h1:subscripting Subscripting
 h2:vectorSubscripting Subscripting with vectors
+h2:subscripting-with-matrices Subscripting with matrices
+h4:case-a Case A
+h4:case-b Case B
+h2:extracting-elements-of-lists Extracting elements of lists
+h2:extracting-elements-from-dataframes Extracting elements from dataframes
+h2:combining-vectors-matrices-lists-and-dataframes Combining vectors, matrices, lists and dataframes
+h2:rearranging-the-elements-in-a-matrix Rearranging the elements in a matrix
+h2:exercise Exercise
 
