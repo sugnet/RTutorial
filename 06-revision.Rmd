@@ -74,8 +74,7 @@ In agreement with section \@ref(guidelines) make sure what an $LDF$ and a $CF$ e
 </div>
 
 
-
-``` r
+```{r, eval = FALSE}
 predict (lda (sex ~ FL + RW + CL + CW + BD, data=crabs))$class
 ```
 
@@ -113,17 +112,16 @@ $$
 We are going to investigate the effect of the aspect ratio on graphs by writing our own function for drawing a circle. In agreement with section \@ref(guidelines) we will start our project by reviewing some basic concepts regarding coordinates for graphical purposes. Figure \@ref(fig:coordinates) summarizes how to reference a point in geometric space by using (a) Cartesian coordinates and (b) polar coordinates.
 </div>
   
-<div class="figure">
-<img src="pics/coordinates.jpg" alt="Cartesian and polar coordinates for referencing a point on a graph." width="389" />
-<p class="caption">(\#fig:coordinates)Cartesian and polar coordinates for referencing a point on a graph.</p>
-</div>
+```{r, coordinates, echo=FALSE, fig.cap="Cartesian and polar coordinates for referencing a point on a graph."}
+library(knitr)
+knitr::include_graphics("pics/coordinates.jpg")
+```
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (i)	Consider the following function for drawing a circle with a specified radius and centred at the origin:
 </div>
   
-
-``` r
+```{r, eval = FALSE}
 my.circle <- function (r = 1, xrange = -2:2, yrange = -2:2) 
 { plot (x = xrange, y = yrange, type = 'n', xlab = '', ylab = '',
         xaxt = 'n', yaxt = 'n')

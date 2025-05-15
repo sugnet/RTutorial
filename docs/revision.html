@@ -107,23 +107,24 @@
 <p><span class="math inline">\(LDF = (\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} \mathbf{x}\)</span> where <span class="math inline">\(\mathbf{S} = [(n_1-1)\mathbf{S}_1 + (n_2-1)\mathbf{S}_2]/(n_1 + n_2 - 2)\)</span> with <span class="math inline">\(\mathbf{\bar{x}}_i\)</span> and <span class="math inline">\(\mathbf{S}_i\)</span> the vector of means and the covariance matrix of the <span class="math inline">\(i\)</span>th group (sample), respectively.</p>
 <p>The corresponding classification function is written as <span class="math inline">\(CF =(\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} \mathbf{x} - \frac{1}{2} (\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} (\mathbf{\bar{x}}_1 + \mathbf{\bar{x}}_2)\)</span>. The expression (_1 - _2)’ ^{-1} is referred to as the discriminant coefficients.</p>
 <p>In agreement with section <a href="revision.html#guidelines">7.1</a> make sure what an <span class="math inline">\(LDF\)</span> and a <span class="math inline">\(CF\)</span> entail. The <code>crabs</code> data set in package <code>MASS</code> consists of 200 rows and 8 columns, describing 5 morphological measurements on 50 crabs each of two colour forms and both sexes, of the species <em>Leptograpsus variegatus</em> collected at Fremantle, Western Australia.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Obtain the covariance matrix for each of the two species of crabs.</p></li>
+<li><p>Obtain the vector of means for each of the two species of crabs.</p></li>
+<li><p>Use standard R functions operating on matrices to write a function or code that calculates the discriminant coefficients for the given linear discriminant function.</p></li>
+<li><p>Write a function that determines the linear discriminant function and return</p></li>
+</ol>
+<ul>
+<li><p>the discriminant coefficients;</p></li>
+<li><p>The CF for each observation.</p></li>
+</ul>
+<ol start="22" style="list-style-type: lower-alpha">
+<li>Repeat the discriminant analysis above, discriminating between male and female crabs, ignoring differences in species.</li>
+</ol>
+<ol start="6" style="list-style-type: lower-roman">
+<li>Compare your results to using the <code>lda()</code> function in the package <code>MASS</code> with the command</li>
+</ol>
 </div>
-<pre><code>(i) Obtain the covariance matrix for each of the two species of crabs.
-
-(ii)    Obtain the vector of means for each of the two species of crabs.
-
-(iii)   Use standard R functions operating on matrices to write a function or code that calculates the discriminant coefficients for the given linear discriminant function. 
-
-(iv) Write a function that determines the linear discriminant function and return
-
-* the discriminant coefficients;
-
-* The CF for each observation.
-
-(v) Repeat the discriminant analysis above, discriminating between male and female crabs, ignoring differences in species.
-
-(vi) Compare your results to using the `lda()` function in the package `MASS` with the command</code></pre>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span> <span class="op">(</span><span class="fu">lda</span> <span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">FL</span> <span class="op">+</span> <span class="va">RW</span> <span class="op">+</span> <span class="va">CL</span> <span class="op">+</span> <span class="va">CW</span> <span class="op">+</span> <span class="va">BD</span>, data<span class="op">=</span><span class="va">crabs</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">class</span></span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Consider the matrix <span class="math inline">\(\mathbf{A}:n \times m\)</span>. What is understood by the column space <span class="math inline">\(V(\mathbf{A})\)</span> and the orthogonal complement <span class="math inline">\(V^⊥(\mathbf{A})\)</span>? The R function <code><a href="https://rdrr.io/r/base/svd.html">svd()</a></code> can be used to obtain an orthogonal basis for <span class="math inline">\(V(\mathbf{A})\)</span> when the rank of <span class="math inline">\(\mathbf{A}\)</span> is <span class="math inline">\(k\)</span>. We also want to determine an orthogonal basis for <span class="math inline">\(V^⊥(\mathbf{A})\)</span>. How can the function <code><a href="https://rdrr.io/r/base/svd.html">svd()</a></code> be used to simultaneously find a basis for <span class="math inline">\(V(\mathbf{A})\)</span> and for <span class="math inline">\(V^⊥(\mathbf{A})\)</span>?</li>
@@ -155,7 +156,7 @@ Now <span class="math inline">\(\mathbf{A}^0 \mathbf{v}_{(i)} \in V(\mathbf{A}^0
 <li>In many graphical displays whose purpose it is to represent distances in two dimensions, it is essential that the scales of the axes are geometrically accurate. This is called the aspect ratio of the graph and the R graphics parameter <code>par</code> is used for controlling the aspect ratio of graphics in R. The default value of <code>par</code> generally does not ensure that the scales of the horizontal and vertical axes are geometrically accurate. For ensuring geometrically accurate scales the setting <code>asp = 1</code> must be explicitly specified e.g. <code>plot(x =, y =, asp = 1)</code>.</li>
 </ol>
 <div style="margin-left: 25px; margin-right: 20px;">
-<p>We are going to investigate the effect of the aspect ratio on graphs by writing our own function for drawing a circle. In agreement with section <a href="revision.html#guidelines">7.1</a> we will start our project by reviewing some basic concepts regarding coordinates for graphical purposes. <a href="revision.html#fig:coordinates">7.1</a> summarizes how to reference a point in geometric space by using (a) Cartesian coordinates and (b) polar coordinates.</p>
+<p>We are going to investigate the effect of the aspect ratio on graphs by writing our own function for drawing a circle. In agreement with section <a href="revision.html#guidelines">7.1</a> we will start our project by reviewing some basic concepts regarding coordinates for graphical purposes. Figure <a href="revision.html#fig:coordinates">7.1</a> summarizes how to reference a point in geometric space by using (a) Cartesian coordinates and (b) polar coordinates.</p>
 </div>
 <div class="figure">
 <span style="display:block;" id="fig:coordinates"></span>
@@ -163,10 +164,12 @@ Now <span class="math inline">\(\mathbf{A}^0 \mathbf{v}_{(i)} \in V(\mathbf{A}^0
 Figure 7.1: Cartesian and polar coordinates for referencing a point on a graph.
 </p>
 </div>
+<div style="margin-left: 25px; margin-right: 20px;">
 <ol style="list-style-type: lower-roman">
 <li>Consider the following function for drawing a circle with a specified radius and centred at the origin:</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+</div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.circle</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">r</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">xrange</span> <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span>, <span class="va">yrange</span> <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span> </span>
 <span><span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="va">xrange</span>, y <span class="op">=</span> <span class="va">yrange</span>, type <span class="op">=</span> <span class="st">'n'</span>, xlab <span class="op">=</span> <span class="st">''</span>, ylab <span class="op">=</span> <span class="st">''</span>,</span>
 <span>        xaxt <span class="op">=</span> <span class="st">'n'</span>, yaxt <span class="op">=</span> <span class="st">'n'</span><span class="op">)</span></span>
@@ -176,16 +179,18 @@ Figure 7.1: Cartesian and polar coordinates for referencing a point on a graph.
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div style="margin-left: 32px; margin-right: 20px;">
-<p>Run the above function and consider the graph window. Increase and decrease the size of the graph window by dragging its edges. Does the figure look like a circle?</p>
+<div style="margin-left: 52px; margin-right: 20px;">
+Run the above function and consider the graph window. Increase and decrease the size of the graph window by dragging its edges. Does the figure look like a circle?
 </div>
+<div style="margin-left: 25px; margin-right: 20px;">
 <ol start="2" style="list-style-type: lower-roman">
 <li><p>Next, add the argument <code>asp = 1</code> to the call to <code>plot</code> in <code>my.circle</code>. Run the changed function; change the size of the graph window. What happens?</p></li>
 <li><p>What changes are necessary for producing a circle centred at any point in a geometrical space? Make the necessary changes in <code>my.circle()</code> for constructing a circle centred at any user specified point on a graph.</p></li>
 </ol>
+</div>
 <ol start="11" style="list-style-type: decimal">
-<li>What is understood by a p-dimensional ellipsoid?</li>
-</ol>
+<li>
+<p>What is understood by a p-dimensional ellipsoid?</p>
 <ol style="list-style-type: lower-roman">
 <li><p>Give a mathematical expression in matrix notation that describes an ellipsoid in p dimensions.</p></li>
 <li><p>Describe the axes of the ellipsoid in terms of eigenvalues and eigenvectors.</p></li>
@@ -193,7 +198,7 @@ Figure 7.1: Cartesian and polar coordinates for referencing a point on a graph.
 <li><p>Use <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> and write an R-function to draw an ellipse. Make provision for the centre point to be at <span class="math inline">\((0, 0)\)</span> as well as at an arbitrary <span class="math inline">\((x_1,x_2)\)</span> point; for no correlation between the two variables as well as for positive and negative correlation.</p></li>
 <li><p>Use your function written in (iv) to illustrate differences between plot (using the default value of argument <code>asp</code>) and plot with <code>asp=1</code>.</p></li>
 </ol>
-<ol start="12" style="list-style-type: decimal">
+</li>
 <li><p>During experimental design it is often useful to predict the value of the dependent variable at every combination of the levels of the factor variables. Write an R function for this task that makes provision for any number of factor arguments and that also provides a dataframe with the factors as the columns and every combination of levels as the rows. Every levels-combination can only appear once. The function must be user friendly and must test if a given independent variable is a factor variable. <em>Hint</em>: Study the help file of <code><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid()</a></code>.</p></li>
 <li><p>Consider the following game. You are given a computer screen containing a rectangle filled at random with evenly spaced letters. Repetitions of the same letter are allowed. The challenge to the user is to sequentially select the first <span class="math inline">\(n\)</span> letters of the alphabet as quickly as possible. The user must read each line from left to right and from top to bottom. Going backwards is not allowed. The time to complete the task is taken as well as whether the rules have been obeyed. Program an R version of this game.</p></li>
 </ol>
