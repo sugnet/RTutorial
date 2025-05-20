@@ -1,2 +1,12 @@
 h1:functions Writing functions in R
+h2:general General
+h2:writing-a-new-function Writing a new function
+h2:checking-for-object-name-clashes Checking for object name clashes
+h2:returning-multiple-values Returning multiple values
+h3:exercise Exercise
+h2:local-variables-and-evaluation-environments Local variables and evaluation environments
+h2:cleaning-up Cleaning up
+h2:variable-number-of-arguments-argument-... Variable number of arguments: argument 
+h2:retrieving-names-of-arguments-functions-deparse-and-substitute Retrieving names of arguments: functions  and 
+fig:expression Converting text into mathematical expression or mathematical expressions into text.
 
