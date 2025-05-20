@@ -16,7 +16,6 @@ fig:figRegion
 tab:SubscriptVectorTypes
 fig:coordinates
 fig:expression
-fig:expression
 intro
 introduction
 downloading-the-r-system
