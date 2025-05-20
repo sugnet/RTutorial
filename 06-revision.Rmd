@@ -112,7 +112,7 @@ $$
 We are going to investigate the effect of the aspect ratio on graphs by writing our own function for drawing a circle. In agreement with section \@ref(guidelines) we will start our project by reviewing some basic concepts regarding coordinates for graphical purposes. Figure \@ref(fig:coordinates) summarizes how to reference a point in geometric space by using (a) Cartesian coordinates and (b) polar coordinates.
 </div>
   
-```{r, coordinates, echo=FALSE, fig.cap="Cartesian and polar coordinates for referencing a point on a graph."}
+```{r, coordinates, echo=FALSE, fig.cap="Cartesian and polar coordinates for referencing a point on a graph.", out.width="100%"}
 library(knitr)
 knitr::include_graphics("pics/coordinates.jpg")
 ```

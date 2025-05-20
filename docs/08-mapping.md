@@ -1,3 +1,70 @@
 # Vectorized programming and mapping functions {#mapping}
 
+In this chapter we continue the study the art of R programming. An important topic is a set of tools operating on objects like matrices, dataframes and lists as wholes. 
+
+## Mapping functions to a matrix
+
+(a)	What is understood by a mapping function and of what use are such functions?
+
+(b)	The function `apply()`.
+
+    (i)	What three arguments are required?
+    
+    (ii) Suppose the third argument is a function. How are the arguments of this function used within `apply()`?
+
+<div style="margin-left: 40px; margin-right: 20px;">
+* What is the result of the instruction `apply(is.na(x),2,all)`?
+
+* What is the result of the instruction `x[ ,!apply(is.na(x), 2,all)]`?
+
+* What is the result of the instruction `x[ ,!apply(is.na(x), 2,any)]`?
+
+* Set the random seed to 137921. Obtain a matrix $\mathbf{A}:10 \times 6$ of random $n(0, 1)$ values. Use `apply()` to find the $10\%$ trimmed mean of each row.
+</div>    
+    
+(c)	The function `sweep()`.
+
+    (i)	What arguments are required?
+
+    (i)	What are the similarities and differences between the arguments of `sweep()` and `apply()`?
+
+    (iii)	Normalise the columns of a given matrix to have zero means and unit variances using `scale()`, `apply()` and `sweep()`. Which method is the fastest?
+    
+(d)	The function `ifelse()`.
+
+The usage is illustrated in the following diagram.
+
+<img src="pics/ifelse.jpg" width="100%" />
+
+<div style="margin-left: 25px; margin-right: 20px;">
+(i)	Note the difference between the function `ifelse()` and the control statement: `if` - `else`.
+
+(ii)	What arguments are required?
+
+(iii)	Study the help file in detail.
+</div>    
+
+(e)	The function `outer()`.
+
+    (i)	What arguments are required?
+    
+    (ii)	Revise our previous example of `outer()` when constructing a perspective plot with `persp()`.
+    
+(f)	Work through the following examples and note in particular how the above functions are used together:
+
+    (i)	Find the maximum value(s) in each column of the `LifeCycleSavings` data set.
+    
+    (ii) Use `apply()` together with `cut()` to divide each column of the LifeCycleSaving data set  into low, medium and high.
+    
+    (iii) Use `apply()` to plot each column of the `LifeCycleSaving` data set against the ratio of `pop75` to `pop15` on the x-axis. 
+    
+    (iv) Use `apply()` to find the coefficient of variation of each column of the `LifeCycleSaving` data set.
+    
+    (v)	Use `apply()` together with `cbind()` and `rbind()` to obtain a table of the minimum and  the maximum values of each column of the LifeCycleSaving data set. 
+    
+    (vi)	Repeat (v) using the airquality data set with and without the elimination of the NAs by using an appropriate function definition in the call to `apply()`.
+    
+    (vii)	Use `sweep()` to convert the `LifeCycleSaving` data set into standardized scores. Could `apply()` also be used for this task? Discuss.
+    (viii) Use `ifelse()` to  convert negative values in a given vector to zero leaving positive values and missing values unchanged.  Illustrate.                              
+
 

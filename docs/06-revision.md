@@ -114,7 +114,7 @@ We are going to investigate the effect of the aspect ratio on graphs by writing 
 </div>
   
 <div class="figure">
-<img src="pics/coordinates.jpg" alt="Cartesian and polar coordinates for referencing a point on a graph." width="389" />
+<img src="pics/coordinates.jpg" alt="Cartesian and polar coordinates for referencing a point on a graph." width="100%" />
 <p class="caption">(\#fig:coordinates)Cartesian and polar coordinates for referencing a point on a graph.</p>
 </div>
 

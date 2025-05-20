@@ -11,7 +11,7 @@ The different types of subscripting with vectors are summarized in Table \@ref(t
 
 Table: (\#tab:SubscriptVectorTypes) Different types of subscripting vectors.
 
-| *<span style="color:#CCFF99">Type</span>* | *<span style="color:#CCFF99">Effect</span>* | *<span style="color:#CCFF99">Example</span>* | 
+| *<span style="color:#CC99FF">Type</span>* | *<span style="color:#CC99FF">Effect</span>* | *<span style="color:#CC99FF">Example</span>* | 
 | ------ | -------------------- | ----------- | 
 | empty              |	Extract all values  | `x[ ]` | 
 | integer, positive  |	Extract all values specified by the subscript | `x[c(2:5,8,12) ]` | 
@@ -52,7 +52,7 @@ state.x77[ , "Area"] > 80000
 #>          FALSE           TRUE
 ```
 
-<img src="pics/matrixSubscripting.jpg" width="396" />
+<img src="pics/matrixSubscripting.jpg" width="80%" />
 
 
 ``` r

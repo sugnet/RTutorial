@@ -10,7 +10,7 @@ A good way to learn about functions or to write a new function is to look at exi
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x000001dcf0768540>
+#> <bytecode: 0x0000026030762770>
 #> <environment: namespace:base>
 ```
 
@@ -88,7 +88,7 @@ plot.default
 #>             ...)
 #>     invisible()
 #> }
-#> <bytecode: 0x000001dcf211bd90>
+#> <bytecode: 0x0000026032133bd0>
 #> <environment: namespace:graphics>
 ```
 
@@ -135,7 +135,7 @@ getAnywhere(plot.factor)
 #>         boxplot(y ~ x, ...)
 #>     else NextMethod("plot")
 #> }
-#> <bytecode: 0x000001dcf24a63c0>
+#> <bytecode: 0x00000260324963c0>
 #> <environment: namespace:graphics>
 ```
 
@@ -174,26 +174,26 @@ boxplot(rnorm(100), plot = TRUE)
 ``` r
 boxplot(rnorm(100), plot = FALSE)
 #> $stats
-#>             [,1]
-#> [1,] -1.92517633
-#> [2,] -0.79249353
-#> [3,] -0.09581869
-#> [4,]  0.65314530
-#> [5,]  2.39773688
+#>              [,1]
+#> [1,] -2.045014744
+#> [2,] -0.568596232
+#> [3,]  0.007884323
+#> [4,]  0.724829739
+#> [5,]  2.188066325
 #> 
 #> $n
 #> [1] 100
 #> 
 #> $conf
 #>            [,1]
-#> [1,] -0.3242296
-#> [2,]  0.1325922
+#> [1,] -0.1964770
+#> [2,]  0.2122456
 #> 
 #> $out
-#> numeric(0)
+#> [1] 3.362631
 #> 
 #> $group
-#> numeric(0)
+#> [1] 1
 #> 
 #> $names
 #> [1] "1"
@@ -207,7 +207,7 @@ Now look at the end of function `boxplot.default()` to see how `invisible()` has
 
 (o)	Editing an existing function using scripts or `fix()`. (Revise Chapter \@ref(intro)) 
 
-(p)	Note that when writing a function a line can be interrupted at any place and be continued on a next line. *<span style="color:#99FF66">Warning:  Be careful not to put the break point where it marks the completion of an executable statement.</span>* Explain.
+(p)	Note that when writing a function a line can be interrupted at any place and be continued on a next line. *<span style="color:#FF9966">Warning:  Be careful not to put the break point where it marks the completion of an executable statement.</span>* Explain.
 
 ##	Writing a new function
 
@@ -237,7 +237,7 @@ where <- function(x, cond)
 
 (b)	Discuss the usages of the functions `apropos()`, `conflicts()`, `find()` and  `match()` for the naming of objects.
 
-(c)	Remember that when a function is called the R evaluator first looks in the *<span style="color:#3399FF">global environment</span>* for a function with this name and subsequently in each of the attached packages or date bases in the order shown by `search()`. The evaluator generally stops searching when the name is found for the first time. If two attached packages have functions with the same name one of them will *<span style="color:#99FF66">mask</span>* the object in the other.  For example, the function `gam()` exists in two packages: `gam` and `mgcv`. If both were attached the command  
+(c)	Remember that when a function is called the R evaluator first looks in the *<span style="color:#3399FF">global environment</span>* for a function with this name and subsequently in each of the attached packages or date bases in the order shown by `search()`. The evaluator generally stops searching when the name is found for the first time. If two attached packages have functions with the same name one of them will *<span style="color:#FF9966">mask</span>* the object in the other.  For example, the function `gam()` exists in two packages: `gam` and `mgcv`. If both were attached the command  
 
 
 ``` r
@@ -295,7 +295,7 @@ Write an R function that returns the mean, median, variance, minimum, maximum an
 
 (f)	What is understood by the scope of an expression or function? 
 
-The symbols which occur in the body of a function can be divided into three classes: *<span style="color:#99FF66">formal parameters</span>*, *<span style="color:#99FF66">local variables</span>* and *<span style="color:#99FF66">free variables</span>*. The formal parameters of a function are those appearing within the parentheses denoting the argument list of the function. Their values are determined by the process of *<span style="color:#99FF66">binding</span>* the actual function arguments to the formal parameters. Local variables are created by the evaluation of expressions in the body of the functions. Variables which are neither formal parameters nor local variables are called free variables. Free variables become local variables when they are assigned to. Consider the following function definition.
+The symbols which occur in the body of a function can be divided into three classes: *<span style="color:#FF9966">formal parameters</span>*, *<span style="color:#FF9966">local variables</span>* and *<span style="color:#FF9966">free variables</span>*. The formal parameters of a function are those appearing within the parentheses denoting the argument list of the function. Their values are determined by the process of *<span style="color:#FF9966">binding</span>* the actual function arguments to the formal parameters. Local variables are created by the evaluation of expressions in the body of the functions. Variables which are neither formal parameters nor local variables are called free variables. Free variables become local variables when they are assigned to. Consider the following function definition.
 
 
 ``` r
@@ -307,7 +307,7 @@ fun <- function(datvec) {
        }
 ```
 
-In this function, `datvec` is a formal parameter, the object `mean` on the left-hand of the assignment symbol is a local variable (not to be confused with the function `mean()` on the right-hand side of the assignment symbol) while `Traffic` is a free variable. In R the free variable bindings are resolved by first looking in the *<span style="color:#3399FF">environment</span>* in which the function was created. This is called *<span style="color:#99FF66">lexical scope</span>*. 
+In this function, `datvec` is a formal parameter, the object `mean` on the left-hand of the assignment symbol is a local variable (not to be confused with the function `mean()` on the right-hand side of the assignment symbol) while `Traffic` is a free variable. In R the free variable bindings are resolved by first looking in the *<span style="color:#3399FF">environment</span>* in which the function was created. This is called *<span style="color:#FF9966">lexical scope</span>*. 
 
 If the following function call is made from the prompt in the working directory `fun(1:25)` the  formal parameter `datvec` within the body of the function is assigned the value `1:25` (the actual argument) and its mean is assigned to the local object `mean`. If the free parameter `Traffic` is found in the *<span style="color:#3399FF">global environment</span>* or in a data base on the search path the required graph will be created else an error message will be sent to the console. Perform the above call. 
 
@@ -405,7 +405,7 @@ maxlen(mode.use="character", 1:10, 1:15, 1:3, letters)
 There are many practical situations requiring the conversion of mathematical expressions into character strings (text) or, conversely, requiring the conversion of text into mathematical expressions. The tools (functions) provided in R for achieving such conversions are summarized in Figure \@ref(fig:expression).
 
 <div class="figure">
-<img src="pics/expressions.jpg" alt="Converting text into mathematical expression or mathematical expressions into text." width="640" />
+<img src="pics/expressions.jpg" alt="Converting text into mathematical expression or mathematical expressions into text." width="80%" />
 <p class="caption">(\#fig:expression)Converting text into mathematical expression or mathematical expressions into text.</p>
 </div>
 
@@ -454,7 +454,7 @@ objects('package:base')[1:31]
 
 in order to obtain some examples of operators available in R.
 
-(a)	*<span style="color:#99FF66">Operators are special R functions.</span>* Discuss this statement. In what respects do operators differ from ordinary R functions? 
+(a)	*<span style="color:#FF9966">Operators are special R functions.</span>* Discuss this statement. In what respects do operators differ from ordinary R functions? 
 
 (b)	Write an operator `%E%` to determine the Euclidean distance between two vectors and give an example of its usage. *Hint*: when creating operators with `fix()` or using scripts the name must be given as a character string e.g. `fix("%E%")`.
 
@@ -568,7 +568,7 @@ objects('package:base')[300:400]
 #> [101] "dir.create"
 ```
 
-and notice that some object names appear in pairs with the name of one member of the pair ending in `<-`.  Examples are `dim<-`, `levels<-`, `diag<-`, `names<-`, `rownames<-`, `colnames<-` and `dimnames<-`.  Functions having names ending in `<-` are called *<span style="color:#99FF66">replacement</span>* functions. A replacement function appears on the left-hand side of the assignment symbol using the name without the `<-` to replace contents of the objects appearing in its argument list by the contents of the object appearing at the right-hand side of the assignment symbol e.g.:
+and notice that some object names appear in pairs with the name of one member of the pair ending in `<-`.  Examples are `dim<-`, `levels<-`, `diag<-`, `names<-`, `rownames<-`, `colnames<-` and `dimnames<-`.  Functions having names ending in `<-` are called *<span style="color:#FF9966">replacement</span>* functions. A replacement function appears on the left-hand side of the assignment symbol using the name without the `<-` to replace contents of the objects appearing in its argument list by the contents of the object appearing at the right-hand side of the assignment symbol e.g.:
 
 
 ``` r
@@ -648,7 +648,7 @@ choice("xx")
 #> Error in match.arg(method): 'arg' should be one of "PCA", "CVA", "CA", "NONLIN"
 ```
 
-(b)	Functions in the R language are governed by a principle known as *<span style="color:#99FF66">lazy evaluation</span>* which means that a default value is not evaluated until it is actually needed within the function body. As a result of lazy evaluation it might happen in a function call that some default values are never evaluated.
+(b)	Functions in the R language are governed by a principle known as *<span style="color:#FF9966">lazy evaluation</span>* which means that a default value is not evaluated until it is actually needed within the function body. As a result of lazy evaluation it might happen in a function call that some default values are never evaluated.
 
 ## The dynamic loading of external routines
 

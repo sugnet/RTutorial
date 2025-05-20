@@ -16,6 +16,7 @@ fig:figRegion
 tab:SubscriptVectorTypes
 fig:coordinates
 fig:expression
+fig:expression
 intro
 introduction
 downloading-the-r-system
@@ -112,6 +113,7 @@ replacement-functions
 default-values-and-lazy-evaluation
 the-dynamic-loading-of-external-routines
 mapping
+mapping-functions-to-a-matrix
 data
 graphics2
 modelling

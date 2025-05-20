@@ -625,7 +625,7 @@ to obtain a list of available statistical distributions in R.  Each distribution
 
 
 <div class="figure">
-<img src="pics/F-distribution.png" alt="Meaning of the letters d, p and q when preceding an R distribution identifier." width="468" />
+<img src="pics/F-distribution.png" alt="Meaning of the letters d, p and q when preceding an R distribution identifier." width="100%" />
 <p class="caption">(\#fig:Fdist)Meaning of the letters d, p and q when preceding an R distribution identifier.</p>
 </div>
 
