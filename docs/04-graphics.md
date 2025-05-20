@@ -153,7 +153,7 @@ Interpret the above instructions and the resulting plot.
 
 (m)	Use the function `plot()` to plot $sin (\theta)$ as $\theta$ varies from  $–\pi$  to $\pi$.
 
-(n)	Could you explain the different graphs resulting from the two calls to the `plot()` function above?
+(n)	Could you explain the different graphs resulting from the two calls in (l) and (m) to the `plot()` function above?
 
 (o)	Obtain the empirical distribution function of variable `Life Exp` in the `state.x77` data set by using the functions `cut()`, `ecdf()` and `plot()`.
 

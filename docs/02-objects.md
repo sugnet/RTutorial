@@ -84,9 +84,9 @@ objects()
 
 ``` r
 aa
-#>  [1] -1.321632184  1.167763109  1.849497532  0.480411412
-#>  [5] -0.941346372  0.008513105  0.486031027 -1.218183578
-#>  [9]  0.717993131  0.970250192
+#>  [1] -0.03157564 -0.91499548  0.60245168 -0.72637880
+#>  [5]  0.52892947  0.93513996 -0.73023318 -0.19905602
+#>  [9]  1.29646665  0.20362354
 ```
 
 ``` r
@@ -594,7 +594,7 @@ parent.env(.GlobalEnv)
 #> attr(,"name")
 #> [1] "package:stats"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/stats"
+#> [1] "C:/Program Files/R/R-4.4.2/library/stats"
 ```
 
 ``` r
@@ -603,7 +603,7 @@ parent.env(parent.env(.GlobalEnv))
 #> attr(,"name")
 #> [1] "package:graphics"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/graphics"
+#> [1] "C:/Program Files/R/R-4.4.2/library/graphics"
 ```
 
 ``` r
@@ -612,7 +612,7 @@ parent.env(parent.env(parent.env(.GlobalEnv)))
 #> attr(,"name")
 #> [1] "package:grDevices"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.3/library/grDevices"
+#> [1] "C:/Program Files/R/R-4.4.2/library/grDevices"
 ```
 
 ``` r
@@ -709,7 +709,7 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x000002869587f308>
+#> <bytecode: 0x000001c01444f3c0>
 #> <environment: namespace:base>
 ```
 
@@ -721,19 +721,19 @@ get (mean)
 
 ``` r
 get ("mean") 
-#> [1] 0.02199905
+#> [1] -0.06946131
 ```
 
 ``` r
 get ("mean", pos = 1) 
-#> [1] 0.02199905
+#> [1] -0.06946131
 ```
 
 ``` r
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000286937bfca0>
+#> <bytecode: 0x000001c0122c2158>
 #> <environment: namespace:base>
 ```
 
@@ -770,7 +770,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000286937bfca0>
+#> <bytecode: 0x000001c0122c2158>
 #> <environment: namespace:base>
 ```
 
@@ -781,7 +781,7 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000286937bfca0>
+#> <bytecode: 0x000001c0122c2158>
 #> <environment: namespace:base>
 ```
 
@@ -789,7 +789,7 @@ my.list[[2]]
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000286937bfca0>
+#> <bytecode: 0x000001c0122c2158>
 #> <environment: namespace:base>
 ```
 
