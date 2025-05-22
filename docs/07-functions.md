@@ -10,7 +10,7 @@ A good way to learn about functions or to write a new function is to look at exi
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x000002029176a770>
+#> <bytecode: 0x0000016c0a74c770>
 #> <environment: namespace:base>
 ```
 
@@ -88,7 +88,7 @@ plot.default
 #>             ...)
 #>     invisible()
 #> }
-#> <bytecode: 0x000002029313bbd0>
+#> <bytecode: 0x0000016c0c160bd0>
 #> <environment: namespace:graphics>
 ```
 
@@ -135,7 +135,7 @@ getAnywhere(plot.factor)
 #>         boxplot(y ~ x, ...)
 #>     else NextMethod("plot")
 #> }
-#> <bytecode: 0x00000202934be3c0>
+#> <bytecode: 0x0000016c0c5403c0>
 #> <environment: namespace:graphics>
 ```
 
@@ -174,20 +174,20 @@ boxplot(rnorm(100), plot = TRUE)
 ``` r
 boxplot(rnorm(100), plot = FALSE)
 #> $stats
-#>            [,1]
-#> [1,] -2.3427268
-#> [2,] -0.8548147
-#> [3,] -0.1961302
-#> [4,]  0.6693920
-#> [5,]  2.5588327
+#>             [,1]
+#> [1,] -1.73424561
+#> [2,] -0.51209863
+#> [3,]  0.08149396
+#> [4,]  0.68576831
+#> [5,]  2.19638827
 #> 
 #> $n
 #> [1] 100
 #> 
 #> $conf
-#>             [,1]
-#> [1,] -0.43695486
-#> [2,]  0.04469447
+#>            [,1]
+#> [1,] -0.1077690
+#> [2,]  0.2707569
 #> 
 #> $out
 #> numeric(0)

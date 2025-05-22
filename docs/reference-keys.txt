@@ -113,6 +113,12 @@ default-values-and-lazy-evaluation
 the-dynamic-loading-of-external-routines
 mapping
 mapping-functions-to-a-matrix
+mapping-functions-to-vectors-dataframes-and-lists
+the-functions-mapply-rapply-and-vectorize
+the-mapping-function-tapply-for-grouped-data
+the-control-of-execution-flow-statement-if-else-and-the-control-functions-ifelse-and-switch
+loops-in-r
+the-execution-time-of-r-tasks
 data
 graphics2
 modelling
