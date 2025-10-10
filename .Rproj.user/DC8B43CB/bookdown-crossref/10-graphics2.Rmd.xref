@@ -1,2 +1,31 @@
 h1:graphics2 R graphics: Round II
+h2:graphics-parameters Graphics parameters
+h2:layout-of-graphics Layout of graphics
+fig:fmdeaths Plots of the fdeaths and mdeaths data sets
+h2:low-level-plotting-commands Low-level plotting commands
+h2:using-the-plotting-commands Using the plotting commands
+h3:matplot Multiple lines or groups of points on the same graph
+fig:matplotExample Three methods of performing sort.
+h3:multiple-lines-or-groups-of-points-on-the-same-graph-but-the-lines-points-are-not-all-the-same-length-number Multiple lines or groups of points on the same graph but the lines (points) are not all the same length (number)
+fig:diffLengths Plotting multiple lines of different lenghts
+h3:adding-legends-to-a-graph Adding legends to a graph
+fig:cargrps Illustrating adding a legend to a plot.
+h3:multAxes Multiple plots with identical axes
+h3:providing-a-single-legend-for-multiple-plots Providing a single legend for multiple plots
+h3:changing-the-plotting-character-common-plotting-characters-in-r Changing the plotting character: common plotting characters in R
+fig:pch Some common plotting characters available in R.
+h3:changing-the-colour-in-plots Changing the colour in plots
+fig:colExample Colour selection with rgb().
+fig:col The default colour palette available in R.
+fig:colRamp User specified colour sequence with colorRampPalette().
+h3:logarithmic-axes Logarithmic axes
+h3:graphs-with-character-strings-as-the-scale-on-the-axis Graphs with character strings as the  on the axis
+fig:catAxis Figures with character strings as axis calibrations and other enhancements to plots.
+h3:customizing-bar-charts-and-histograms Customizing bar charts and histograms
+fig:BarHist Enhanced bar charts and histograms.
+h3:three-dimensional-graphical-displays Three-dimensional graphical displays
+fig:persp Annotated 3D perspective plot.
+h3:diagrams Diagrams
+h3:annotating-graphics-with-special-symbols Annotating graphics with special symbols
+h2:quantile-plots Quantile plots
 

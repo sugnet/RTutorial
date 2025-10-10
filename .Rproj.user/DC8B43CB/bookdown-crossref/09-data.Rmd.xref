@@ -10,4 +10,15 @@ h2:formatting-numbers Formatting numbers
 h2:printing-tables Printing tables
 h2:communicating-with-the-operating-system Communicating with the operating system
 h2:exercise Exercise
+h2:tidyverse Tidyverse
+h3:tibbles Tibbles
+h3:pipe-operator Pipe operator
+h3:tidy-data Tidy data
+h4:pivotting Pivotting
+h4:rectangling Rectangling
+h4:nesting Nesting
+h4:splitting-and-combining Splitting and combining
+h4:dealing-with-missing-values Dealing with missing values
+h3:package-dplyr Package 
+h2:exercise-1 Exercise
 
