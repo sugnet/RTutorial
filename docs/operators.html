@@ -7,7 +7,7 @@
 <title>Chapter 3 R operators and functions | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
 <meta name="description" content="After completing Chapters 1 and 2 it is assumed that the following are now familiar: How to communicate with R; How to manage workspaces; How to perform simple tasks using R. In this chapter we...">
-<meta name="generator" content="bookdown 0.39 with bs4_book()">
+<meta name="generator" content="bookdown 0.44 with bs4_book()">
 <meta property="og:title" content="Chapter 3 R operators and functions | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/operators.html">
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -78,7 +78,7 @@
 <li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
 <li><a class="" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
 <li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
-<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatiing and printing</a></li>
+<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
 <li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
 <li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
 <li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
@@ -163,17 +163,14 @@
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Note that the arithmetic operators are also functions. That this is so follows by studying the following examples:</p>
 </div>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">3</span><span class="op">+</span><span class="fl">7</span></span>
-<span><span class="co">#&gt; [1] 10</span></span></code></pre></div>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="st">"+"</span><span class="op">(</span><span class="fl">3</span>,<span class="fl">7</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 10</span></span></code></pre></div>
-<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">17</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">3</span></span>
-<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="st">"%%"</span><span class="op">(</span><span class="fl">17</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 10</span></span>
+<span><span class="st">"+"</span><span class="op">(</span><span class="fl">3</span>,<span class="fl">7</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 10</span></span>
+<span><span class="fl">17</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">3</span></span>
+<span><span class="co">#&gt; [1] 2</span></span>
+<span><span class="st">"%%"</span><span class="op">(</span><span class="fl">17</span>,<span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Rules for operator expressions with vector arguments.</li>
@@ -181,7 +178,7 @@
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Study the results of the following R instructions.</p>
 </div>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cars</span> <span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">*</span> <span class="fl">12</span> <span class="op">*</span> <span class="fl">25.4</span> <span class="op">/</span> <span class="fl">1000</span></span>
 <span><span class="co">#&gt;  [1]  0.6096  3.0480  1.2192  6.7056  4.8768  3.0480  5.4864</span></span>
 <span><span class="co">#&gt;  [8]  7.9248 10.3632  5.1816  8.5344  4.2672  6.0960  7.3152</span></span>
@@ -190,22 +187,18 @@
 <span><span class="co">#&gt; [29]  9.7536 12.1920 15.2400 12.8016 17.0688 23.1648 25.6032</span></span>
 <span><span class="co">#&gt; [36] 10.9728 14.0208 20.7264  9.7536 14.6304 15.8496 17.0688</span></span>
 <span><span class="co">#&gt; [43] 19.5072 20.1168 16.4592 21.3360 28.0416 28.3464 36.5760</span></span>
-<span><span class="co">#&gt; [50] 25.9080</span></span></code></pre></div>
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">7</span><span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span><span class="fl">3</span></span>
-<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">7</span><span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span><span class="fl">3</span></span>
-<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
-<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">3</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [50] 25.9080</span></span>
+<span><span class="fl">7</span><span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%/%</a></span><span class="fl">3</span></span>
+<span><span class="co">#&gt; [1] 2</span></span>
+<span><span class="fl">7</span><span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span><span class="fl">3</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">3</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
 <span><span class="co">#&gt; [1,]    3    3    3    3</span></span>
 <span><span class="co">#&gt; [2,]    3    3    3    3</span></span>
 <span><span class="co">#&gt; [3,]    3    3    3    3</span></span>
-<span><span class="co">#&gt; [4,]    3    3    3    3</span></span></code></pre></div>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">3</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [4,]    3    3    3    3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">3</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      [,1] [,2] [,3] [,4]</span></span>
 <span><span class="co">#&gt; [1,]   12   12   12   12</span></span>
 <span><span class="co">#&gt; [2,]   12   12   12   12</span></span>
@@ -214,14 +207,12 @@
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Explain the following instructions and output from R:</p>
 </div>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
-<span><span class="co">#&gt;  [1]  2  4  6  5  7  9  8 10 12 11 13 15</span></span></code></pre></div>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span></span>
-<span><span class="co">#&gt;  [1]  2  4  4  6  6  8  8 10 10 12</span></span></code></pre></div>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span><span class="co">#&gt;  [1]  2  4  6  5  7  9  8 10 12 11 13 15</span></span>
+<span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span></span>
+<span><span class="co">#&gt;  [1]  2  4  4  6  6  8  8 10 10 12</span></span>
+<span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op">+</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
 <span><span class="co">#&gt; Warning in 1:10 + 1:3: longer object length is not a</span></span>
 <span><span class="co">#&gt; multiple of shorter object length</span></span>
 <span><span class="co">#&gt;  [1]  2  4  6  5  7  9  8 10 12 11</span></span></code></pre></div>
@@ -234,20 +225,16 @@
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>A missing value in R is denoted by NA. The result of a computation involving NAs is always NA e.g.</p>
 </div>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="cn">NA</span>,<span class="fl">12</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
-<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span></span>
-<span><span class="co">#&gt; [1] NaN</span></span></code></pre></div>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">5</span><span class="op">/</span><span class="fl">0</span></span>
-<span><span class="co">#&gt; [1] Inf</span></span></code></pre></div>
-<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">-</span><span class="fl">5</span><span class="op">/</span><span class="fl">0</span></span>
-<span><span class="co">#&gt; [1] -Inf</span></span></code></pre></div>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">5</span><span class="op">/</span><span class="op">(</span><span class="op">-</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span></span>
+<span><span class="co">#&gt; [1] NaN</span></span>
+<span><span class="fl">5</span><span class="op">/</span><span class="fl">0</span></span>
+<span><span class="co">#&gt; [1] Inf</span></span>
+<span><span class="op">-</span><span class="fl">5</span><span class="op">/</span><span class="fl">0</span></span>
+<span><span class="co">#&gt; [1] -Inf</span></span>
+<span><span class="fl">5</span><span class="op">/</span><span class="op">(</span><span class="op">-</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] -Inf</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>The result of a computation that cannot be represented as a number e.g. <code>0/0</code> is denoted by <code>NaN</code>.
@@ -259,17 +246,14 @@ Note: some computational results are differently reported by R as the correspond
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>R uses decimal notation as well as scientific notation for arithmetic calculations. Scientific notation is not to be confused with <span class="math inline">\(exp()\)</span>.</p>
 </div>
-<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">60000000</span></span>
-<span><span class="co">#&gt; [1] 6e+07</span></span></code></pre></div>
-<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">1</span><span class="op">/</span><span class="fl">6000000</span></span>
-<span><span class="co">#&gt; [1] 1.666667e-07</span></span></code></pre></div>
-<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 3269017</span></span></code></pre></div>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">15</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 6e+07</span></span>
+<span><span class="fl">1</span><span class="op">/</span><span class="fl">6000000</span></span>
+<span><span class="co">#&gt; [1] 1.666667e-07</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 3269017</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">15</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 3.059023e-07</span></span></code></pre></div>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>How are numbers represented in a computer’s memory? What are the implications of this?</li>
@@ -277,14 +261,14 @@ Note: some computational results are differently reported by R as the correspond
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Computers use ON/OFF (or 1/0) switches for encoding information. A single switch is called a <em><span style="color:#FF9966">bit</span></em> and a group of eight bits is called a <em><span style="color:#FF9966">byte</span></em>. A single integer is represented exactly in a computer by a fixed number of bytes i.e. 32 or 64 bits. There are several schemes according to which integers are represented by bits in a computer. This representation in a computer takes place at a level where R has no control over it but R stores information about the computing environment in an object <code>.Machine</code>. The element <code>.Machine$integer.max</code> returns the largest integer that can be represented in the computer on which R is running e.g.</p>
 </div>
-<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">.Machine</span><span class="op">$</span><span class="va">integer.max</span></span>
 <span><span class="co">#&gt; [1] 2147483647</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Although the above method of representing integers by strings of bits provides a very efficient way of storing integers in a computer R usually treats integers similar to real numbers by using <em><span style="color:#FF9966">floating point representation</span></em>. In binary floating point notation a number x is written as a sequence of zeros and ones (the <em><span style="color:#FF9966">mantissa</span></em>) times two with an exponent say <span class="math inline">\(m\)</span>: <span class="math inline">\(x=b_0 b_1 b_2…×2^m\)</span> where <span class="math inline">\(b_0=1\)</span> except when <span class="math inline">\(x=0\)</span>.</p>
 <p>In practice there is only a limited number of <span class="math inline">\(b\)</span>’s available and the exponent is also limited therefore, in general, not all real numbers can be represented exactly in a computer – they can at most be approximated. The smallest number <span class="math inline">\(x\)</span> such that <span class="math inline">\(1 + x\)</span> can be distinguished from <span class="math inline">\(1\)</span> in a computer is called <em><span style="color:#FF9966">machine epsilon</span></em>. In R this can be obtained from <code>.Machine$double.eps</code> e.g.</p>
 </div>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span></span>
 <span><span class="co">#&gt; [1] 2.220446e-16</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -296,14 +280,14 @@ Note: some computational results are differently reported by R as the correspond
 <span class="header-section-number">3.2</span> Logical operators<a class="anchor" aria-label="anchor" href="#logical-operators"><i class="fas fa-link"></i></a>
 </h2>
 <p>Logical operators result in <code>TRUE</code>, <code>FALSE</code> or <code>NA</code>. Study the use of the logical operators in Table <a href="operators.html#tab:LogicOperators">3.2</a>. <em><span style="color:#FF9966">Warning</span></em>: While it is perfectly legitimate to write</p>
-<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">==</span> <span class="op">-</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span> </span></code></pre></div>
 <p>it is incorrect to specify</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="operators.html#cb168-1" tabindex="-1"></a>x[x <span class="sc">==</span> <span class="cn">NA</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb168-2"><a href="operators.html#cb168-2" tabindex="-1"></a>x[x <span class="ot">=</span> <span class="er">=</span> <span class="cn">NaN</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> </span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="operators.html#cb94-1" tabindex="-1"></a>x[x <span class="sc">==</span> <span class="cn">NA</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb94-2"><a href="operators.html#cb94-2" tabindex="-1"></a>x[x <span class="ot">=</span> <span class="er">=</span> <span class="cn">NaN</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> </span></code></pre></div>
 <p>The correct code in the latter case is</p>
-<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></code></pre></div>
 <p>What are the consequences of the above code? Also take note of the functions <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> and <code><a href="https://rdrr.io/r/base/all.html">all()</a></code>. These two functions are useful when combining logical objects. Give the necessary instructions to carry out the following tasks:</p>
@@ -378,33 +362,28 @@ Note: some computational results are differently reported by R as the correspond
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Carry out the instructions:</li>
 </ol>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">matb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span>, <span class="fl">40</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">mata</span></span>
 <span><span class="co">#&gt;      [,1] [,2]</span></span>
 <span><span class="co">#&gt; [1,]    1    3</span></span>
-<span><span class="co">#&gt; [2,]    2    4</span></span></code></pre></div>
-<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">matb</span></span>
+<span><span class="co">#&gt; [2,]    2    4</span></span>
+<span><span class="va">matb</span></span>
 <span><span class="co">#&gt;      [,1] [,2]</span></span>
 <span><span class="co">#&gt; [1,]   10   30</span></span>
-<span><span class="co">#&gt; [2,]   20   40</span></span></code></pre></div>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mata</span><span class="op">&gt;</span><span class="fl">1</span> <span class="op">&amp;</span> <span class="va">matb</span><span class="op">&gt;</span><span class="fl">1</span></span>
+<span><span class="co">#&gt; [2,]   20   40</span></span>
+<span><span class="va">mata</span><span class="op">&gt;</span><span class="fl">1</span> <span class="op">&amp;</span> <span class="va">matb</span><span class="op">&gt;</span><span class="fl">1</span></span>
 <span><span class="co">#&gt;       [,1] [,2]</span></span>
 <span><span class="co">#&gt; [1,] FALSE TRUE</span></span>
-<span><span class="co">#&gt; [2,]  TRUE TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mata</span><span class="op">&gt;</span><span class="fl">1</span> <span class="op">|</span> <span class="va">matb</span><span class="op">&gt;</span><span class="fl">1</span></span>
+<span><span class="co">#&gt; [2,]  TRUE TRUE</span></span>
+<span><span class="va">mata</span><span class="op">&gt;</span><span class="fl">1</span> <span class="op">|</span> <span class="va">matb</span><span class="op">&gt;</span><span class="fl">1</span></span>
 <span><span class="co">#&gt;      [,1] [,2]</span></span>
 <span><span class="co">#&gt; [1,] TRUE TRUE</span></span>
-<span><span class="co">#&gt; [2,] TRUE TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mata</span><span class="op">&gt;</span><span class="fl">1</span> <span class="op">&amp;&amp;</span> <span class="va">matb</span><span class="op">&gt;</span><span class="fl">1</span></span>
-<span><span class="co">#&gt; Error in mata &gt; 1 &amp;&amp; matb &gt; 1: 'length = 4' in coercion to 'logical(1)'</span></span></code></pre></div>
-<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mata</span><span class="op">&gt;</span><span class="fl">1</span> <span class="op">||</span> <span class="va">matb</span><span class="op">&gt;</span><span class="fl">1</span></span>
+<span><span class="co">#&gt; [2,] TRUE TRUE</span></span>
+<span><span class="va">mata</span><span class="op">&gt;</span><span class="fl">1</span> <span class="op">&amp;&amp;</span> <span class="va">matb</span><span class="op">&gt;</span><span class="fl">1</span></span>
+<span><span class="co">#&gt; Error in mata &gt; 1 &amp;&amp; matb &gt; 1: 'length = 4' in coercion to 'logical(1)'</span></span>
+<span><span class="va">mata</span><span class="op">&gt;</span><span class="fl">1</span> <span class="op">||</span> <span class="va">matb</span><span class="op">&gt;</span><span class="fl">1</span></span>
 <span><span class="co">#&gt; Error in mata &gt; 1 || matb &gt; 1: 'length = 4' in coercion to 'logical(1)'</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Comment on the above.</p>
@@ -439,7 +418,7 @@ Note: some computational results are differently reported by R as the correspond
 <li>and brackets <code>[ ]</code> for subscripting.</li>
 </ul>
 <p>The correct way of extracting the fifth element of a sequence like 1:20 is</p>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span></span>
 <span><span class="co">#&gt; [1] 5</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
@@ -511,17 +490,14 @@ Note: some computational results are differently reported by R as the correspond
 </tbody>
 </table></div>
 <p>Explain the result of the following R instructions:</p>
-<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">20</span> <span class="op">/</span> <span class="fl">4</span> <span class="op">*</span> <span class="fl">12</span> <span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">1</span></span>
-<span><span class="co">#&gt; [1] 715</span></span></code></pre></div>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="fl">20</span> <span class="op">/</span> <span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">12</span> <span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="op">-</span><span class="fl">6</span> <span class="op">+</span> <span class="fl">14</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 728</span></span></code></pre></div>
-<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">20</span> <span class="op">/</span> <span class="fl">4</span> <span class="op">*</span> <span class="fl">12</span> <span class="op">^</span><span class="op">(</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">14</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 309586821120</span></span></code></pre></div>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">20</span> <span class="op">/</span> <span class="fl">4</span> <span class="op">*</span> <span class="op">(</span><span class="fl">12</span> <span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">14</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 715</span></span>
+<span><span class="op">(</span><span class="fl">20</span> <span class="op">/</span> <span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">12</span> <span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="op">-</span><span class="fl">6</span> <span class="op">+</span> <span class="fl">14</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 728</span></span>
+<span><span class="fl">20</span> <span class="op">/</span> <span class="fl">4</span> <span class="op">*</span> <span class="fl">12</span> <span class="op">^</span><span class="op">(</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">14</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 309586821120</span></span>
+<span><span class="fl">20</span> <span class="op">/</span> <span class="fl">4</span> <span class="op">*</span> <span class="op">(</span><span class="fl">12</span> <span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">14</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 760</span></span></code></pre></div>
 </div>
 <div id="some-mathematical-functions" class="section level2" number="3.5">
@@ -681,7 +657,7 @@ Note: some computational results are differently reported by R as the correspond
 <li><p>The function <code>outer (x, y, f)</code> operates on two vectors <span class="math inline">\(x:n\times 1\)</span> and <span class="math inline">\(y:p\times 1\)</span> to return a matrix of size <span class="math inline">\(n \times p\)</span> with <span class="math inline">\(ij\)</span>th element the result of applying the function <code>f</code> on <code>x[i]</code> and <code>y[j]</code>. The default for <code>f</code> is <code>*</code>.</p></li>
 <li><p>The function <code><a href="https://rdrr.io/r/base/scale.html">scale()</a></code> has three arguments: a matrix as first argument; a second argument <code>center</code> and a third argument <code>scale</code>. If <code>center = FALSE</code>, no centring of the columns of the matrix argument is performed, if set to <code>TRUE</code> (the default), the mean value of each column is subtracted from the respective columns, if given a vector of values these values are subtracted from the respective columns. If <code>scale = FALSE</code>, no scaling of the columns of the matrix argument is performed, if set to <code>TRUE</code> (the default) each column is divided by its standard deviation, if given a vector of values then each column is divided by the corresponding value.</p></li>
 <li><p>The function <code>solve (A, b)</code> is used for solving the equation <span class="math inline">\(\mathbf{Ax=b}\)</span> for <span class="math inline">\(\mathbf{x}\)</span>, where <span class="math inline">\(\mathbf{b}\)</span> can be either a vector or a matrix with <span class="math inline">\(\mathbf{A}\)</span> being a square matrix. If argument <code>b</code> is missing it is taken to be the identity matrix so that the inverse of argument <code>A</code> is returned.</p></li>
-<li><p>The function <code><a href="https://rdrr.io/r/base/svd.html">svd()</a></code> returns the singular value decomposition of its matrix argument <span class="math inline">\(\mathbf{A=UDV}'\)</span>. It returns a list with three components: <code>u</code> the orthogonal or orthonormal matrix <span class="math inline">\(\mathbf{U}\)</span>; <code>d</code> the vector containing the ordered singular values of the rectangular matrix <span class="math inline">\(\mathbf{A}\)</span>; <code>v</code> the orthogonal or orthonormal matrix $.</p></li>
+<li><p>The function <code><a href="https://rdrr.io/r/base/svd.html">svd()</a></code> returns the singular value decomposition of its matrix argument <span class="math inline">\(\mathbf{A=UDV}'\)</span>. It returns a list with three components: <code>u</code> the orthogonal or orthonormal matrix <span class="math inline">\(\mathbf{U}\)</span>; <code>d</code> the vector containing the ordered singular values of the rectangular matrix <span class="math inline">\(\mathbf{A}\)</span>; <code>v</code> the orthogonal or orthonormal matrix <span class="math inline">\(\mathbf{V}\)</span>.</p></li>
 <li><p>The function <code><a href="https://rdrr.io/r/base/qr.html">qr()</a></code> performs a QR decomposition of any arbitrary matrix <span class="math inline">\(\mathbf{M=QR}\)</span> with <span class="math inline">\(\mathbf{Q}\)</span> and orthogonal matrix and <span class="math inline">\(\mathbf{R}\)</span> an upper triangular matrix. Study the help file of <code><a href="https://rdrr.io/r/base/qr.html">qr()</a></code> for full details and usages of the function. Note that the matrices <span class="math inline">\(\mathbf{Q}\)</span> and <span class="math inline">\(\mathbf{R}\)</span> can be obtained directly by calling <code>qr.Q(qr())</code> and <code>qr.R(qr())</code>, respectively.</p></li>
 </ol>
 <div style="color: #80CC99;">
@@ -695,19 +671,19 @@ Note: some computational results are differently reported by R as the correspond
 <li><p>Write a function to calculate the determinant of a square matrix. Name this function <code>det.own()</code> in order to distinguish it from the built in R function <code><a href="https://rdrr.io/r/base/det.html">det()</a></code>.</p></li>
 <li><p>When the user is satisfied with a function, it is often necessary to have it available for all R projects. It is useful to assign all such functions to the same data base or folder. Use the function <code>assign (x, object, pos = , envir = )</code> to store the function <code>det.own()</code> in your own R functions folder. The argument <code>x</code> in <code><a href="https://rdrr.io/r/base/assign.html">assign()</a></code> is a character string for assigning a name to the object. The function <code>remove (list of objects names, pos = , envir = )</code> can be used to remove objects from your own or any other database. <em>Hint</em>: First create a file and then use <code><a href="https://rdrr.io/r/base/attach.html">attach()</a></code> to add it to the R search path.</p></li>
 </ol>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="operators.html#cb181-1" tabindex="-1"></a><span class="fu">save</span>(<span class="at">file=</span> <span class="st">" C:</span><span class="sc">\\</span><span class="st">MyFunctions"</span>).  </span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="operators.html#cb99-1" tabindex="-1"></a><span class="fu">save</span>(<span class="at">file=</span> <span class="st">" C:</span><span class="sc">\\</span><span class="st">MyFunctions"</span>).  </span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Study how <code><a href="https://rdrr.io/r/base/save.html">save()</a></code> works.</p>
 </div>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="operators.html#cb182-1" tabindex="-1"></a><span class="fu">attach</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">MyFunctions"</span>, <span class="at">pos=</span><span class="dv">2</span>). </span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="operators.html#cb100-1" tabindex="-1"></a><span class="fu">attach</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">MyFunctions"</span>, <span class="at">pos=</span><span class="dv">2</span>). </span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Study how <code><a href="https://rdrr.io/r/base/attach.html">attach()</a></code> works.</p>
 </div>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="operators.html#cb183-1" tabindex="-1"></a><span class="fu">assign</span>(<span class="st">"det.own"</span>, det.own, <span class="at">pos=</span><span class="dv">2</span>). </span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="operators.html#cb101-1" tabindex="-1"></a><span class="fu">assign</span>(<span class="st">"det.own"</span>, det.own, <span class="at">pos=</span><span class="dv">2</span>). </span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Study how <code><a href="https://rdrr.io/r/base/assign.html">assign()</a></code> works.</p>
 </div>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, file <span class="op">=</span> <span class="st">"C:\\MyFunctions"</span><span class="op">)</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Explain the use of the argument <code>list=objects(2)</code>. To summarize: The construction <code>NAME &lt;- object</code> is a simple way to assign an object to a name. This form of assignment always takes place in the global environment (the workspace). Assignment can also be performed using the functions <code><a href="https://rdrr.io/r/base/save.html">save()</a></code> and <code><a href="https://rdrr.io/r/base/assign.html">assign()</a></code> as illustrated above. The latter form of assignment is more complicated but the assignment is not restricted to the global environment.</p>
@@ -792,11 +768,10 @@ MatX = \begin{bmatrix}
 <li><p>Find the duplicated values in the vector (10, 2, 7, 20, 5, 8, 9, 20, 9, 1, 15, 20, 20, 15).</p></li>
 <li><p>Explain the usage of <code><a href="https://rdrr.io/r/base/match.html">match()</a></code> by considering the difference between</p></li>
 </ol>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">2</span>,<span class="fl">7</span>,<span class="fl">20</span>,<span class="fl">5</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">20</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">15</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1]  1 NA NA  2 NA NA NA  2 NA NA  3</span></span></code></pre></div>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">15</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">2</span>,<span class="fl">7</span>,<span class="fl">20</span>,<span class="fl">5</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">20</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1]  1 NA NA  2 NA NA NA  2 NA NA  3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">15</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">2</span>,<span class="fl">7</span>,<span class="fl">20</span>,<span class="fl">5</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">20</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1]  1  4 11</span></span></code></pre></div>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>Illustrate the difference between <code><a href="https://rdrr.io/r/base/match.html">match()</a></code> and <code><a href="https://rdrr.io/r/base/pmatch.html">pmatch()</a></code> by considering the names of the days of the week.</li>
@@ -916,7 +891,7 @@ MatX = \begin{bmatrix}
 <span class="header-section-number">3.5.9</span> Probability distributions in R<a class="anchor" aria-label="anchor" href="#probability-distributions-in-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>First, execute the R-instruction</p>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.search.html">help.search</a></span><span class="op">(</span><span class="st">"distribution"</span><span class="op">)</span></span></code></pre></div>
 <p>to obtain a list of available statistical distributions in R. Each distribution has an identifying name preceded by one of the letters <em><span style="color:#FF9966">d</span></em>, <em><span style="color:#FF9966">p</span></em>, <em><span style="color:#FF9966">q</span></em> or <em><span style="color:#FF9966">r</span></em>. In the case of an F-distribution, for example, the identifier is just the letter <code>f</code> and for a normal distribution the identifier is <code>norm</code>. Preceding the distribution’s identifier by one of the letters <code>d</code>, <code>p</code>, <code>q</code> or <code>r</code> returns a density value, a probability, a quantile or a random sample for the specified distribution (probability density function or probability mass function). See Figure <a href="operators.html#fig:Fdist">3.1</a> for an explanation.</p>
 <div class="figure">
@@ -1042,31 +1017,31 @@ Figure 3.1: Meaning of the letters d, p and q when preceding an R distribution i
 <li><p>Repeat (d) to create variable names: var_1, var_2, …, var_100.</p></li>
 <li><p>Discuss the output of:</p></li>
 </ol>
-<div class="sourceCode" id="cb188"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb188-1"><a href="operators.html#cb188-1" tabindex="-1"></a>substring (paste (letters, collapse = ""),  </span>
-<span id="cb188-2"><a href="operators.html#cb188-2" tabindex="-1"></a>             1:nchar (paste (letters, collapse="")), </span>
-<span id="cb188-3"><a href="operators.html#cb188-3" tabindex="-1"></a>             1:nchar (paste (letters, collapse="")))</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb105-1"><a href="operators.html#cb105-1" tabindex="-1"></a>substring (paste (letters, collapse = ""),  </span>
+<span id="cb105-2"><a href="operators.html#cb105-2" tabindex="-1"></a>             1:nchar (paste (letters, collapse="")), </span>
+<span id="cb105-3"><a href="operators.html#cb105-3" tabindex="-1"></a>             1:nchar (paste (letters, collapse="")))</span></code></pre></div>
 <ol start="7" style="list-style-type: lower-alpha">
 <li>From the Help menu, select Manuals (in PDF) and open the Introduction to R document. Obtain a copy of the first two paragraphs of the Preface on page 1 of this book in the R commands window. Use this copy to calculate the number of words as well as the total number of characters (including spaces between words) in the passage.</li>
 </ol>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>We are going to use several of the functions in Table <a href="operators.html#tab:CharFunc">3.9</a> to perform this task in steps. Proceed as follows in R after copying the relevant passage to the clipboard:</p>
-<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">TextPar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scan.html">scan</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"clipboard"</span>, what <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p>To obtain a vector containing each of the words as a separate element.</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">TextPar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span> <span class="op">(</span><span class="va">TextPar</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span></code></pre></div>
 <p>To convert <code>TextPar</code> into a vector containing one element consisting of all the words concatenated and separated by spaces into a single character string. Add the correct line breaks (“\n”) in <code>TextPar</code> using e.g. <code><a href="https://rdrr.io/r/utils/fix.html">fix()</a></code>.</p>
-<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">TextPar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">TextPar</span>, split <span class="op">=</span> <span class="st">'\n'</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb192"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb192-1"><a href="operators.html#cb192-1" tabindex="-1"></a>mode(TextPar)</span>
-<span id="cb192-2"><a href="operators.html#cb192-2" tabindex="-1"></a>[1] "list"</span>
-<span id="cb192-3"><a href="operators.html#cb192-3" tabindex="-1"></a></span>
-<span id="cb192-4"><a href="operators.html#cb192-4" tabindex="-1"></a>mode(unlist(TextPar))</span>
-<span id="cb192-5"><a href="operators.html#cb192-5" tabindex="-1"></a>[1] "character" </span></code></pre></div>
-<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb109-1"><a href="operators.html#cb109-1" tabindex="-1"></a>mode(TextPar)</span>
+<span id="cb109-2"><a href="operators.html#cb109-2" tabindex="-1"></a>[1] "list"</span>
+<span id="cb109-3"><a href="operators.html#cb109-3" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="operators.html#cb109-4" tabindex="-1"></a>mode(unlist(TextPar))</span>
+<span id="cb109-5"><a href="operators.html#cb109-5" tabindex="-1"></a>[1] "character" </span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">TextPar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">TextPar</span><span class="op">)</span></span></code></pre></div>
 <p>To change <code>TextPar</code> into a character vector.</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">TextPar</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">TextPar</span><span class="op">)</span></span></code></pre></div>
 </div>

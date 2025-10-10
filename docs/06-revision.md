@@ -52,7 +52,7 @@ In general, the purpose of writing a program in R is to address some practical p
 <div style="margin-left: 25px; margin-right: 20px;">
 $LDF = (\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} \mathbf{x}$ where $\mathbf{S} = [(n_1-1)\mathbf{S}_1 + (n_2-1)\mathbf{S}_2]/(n_1 + n_2 - 2)$ with $\mathbf{\bar{x}}_i$ and $\mathbf{S}_i$ the vector of means and the covariance matrix of the $i$th group (sample), respectively.
     
-The corresponding classification function is written as $CF =(\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} \mathbf{x} - \frac{1}{2} (\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} (\mathbf{\bar{x}}_1 + \mathbf{\bar{x}}_2)$. The expression (\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} is referred to as the discriminant coefficients.
+The corresponding classification function is written as $CF =(\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} \mathbf{x} - \frac{1}{2} (\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1} (\mathbf{\bar{x}}_1 + \mathbf{\bar{x}}_2)$. The expression $(\mathbf{\bar{x}}_1 - \mathbf{\bar{x}}_2)' \mathbf{S}^{-1}$ is referred to as the discriminant coefficients.
     
 In agreement with section \@ref(guidelines) make sure what an $LDF$ and a $CF$ entail. The `crabs` data set in package `MASS` consists of 200 rows and 8 columns, describing 5 morphological measurements on 50 crabs each of two colour forms and both sexes, of the species *Leptograpsus variegatus* collected at Fremantle, Western Australia.
 
@@ -113,10 +113,9 @@ $$
 We are going to investigate the effect of the aspect ratio on graphs by writing our own function for drawing a circle. In agreement with section \@ref(guidelines) we will start our project by reviewing some basic concepts regarding coordinates for graphical purposes. Figure \@ref(fig:coordinates) summarizes how to reference a point in geometric space by using (a) Cartesian coordinates and (b) polar coordinates.
 </div>
   
-<div class="figure">
-<img src="pics/coordinates.jpg" alt="Cartesian and polar coordinates for referencing a point on a graph." width="100%" />
-<p class="caption">(\#fig:coordinates)Cartesian and polar coordinates for referencing a point on a graph.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{pics/coordinates} \caption{Cartesian and polar coordinates for referencing a point on a graph.}(\#fig:coordinates)
+\end{figure}
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (i)	Consider the following function for drawing a circle with a specified radius and centred at the origin:

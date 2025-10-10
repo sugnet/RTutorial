@@ -4,22 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 9 Reading data files into R, formatiing and printing | Introduction into R Applications and Programming: A Tutorial</title>
+<title>Chapter 9 Reading data files into R, formatting and printing | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
-<meta name="description" content="Textbook for the R block module.">
-<meta name="generator" content="bookdown 0.39 with bs4_book()">
-<meta property="og:title" content="Chapter 9 Reading data files into R, formatiing and printing | Introduction into R Applications and Programming: A Tutorial">
+<meta name="description" content="9.1 Reading Microsoft Excel files into R The following three ways can be used to read an Excel file into R as an object: The file can be stored as a .txt or .csv file and then read.table(), scan()...">
+<meta name="generator" content="bookdown 0.44 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Reading data files into R, formatting and printing | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/data.html">
 <meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
-<meta property="og:description" content="Textbook for the R block module.">
+<meta property="og:description" content="9.1 Reading Microsoft Excel files into R The following three ways can be used to read an Excel file into R as an object: The file can be stored as a .txt or .csv file and then read.table(), scan()...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 9 Reading data files into R, formatiing and printing | Introduction into R Applications and Programming: A Tutorial">
-<meta name="twitter:description" content="Textbook for the R block module.">
+<meta name="twitter:title" content="Chapter 9 Reading data files into R, formatting and printing | Introduction into R Applications and Programming: A Tutorial">
+<meta name="twitter:description" content="9.1 Reading Microsoft Excel files into R The following three ways can be used to read an Excel file into R as an object: The file can be stored as a .txt or .csv file and then read.table(), scan()...">
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -78,7 +78,7 @@
 <li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
 <li><a class="" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
 <li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
-<li><a class="active" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatiing and printing</a></li>
+<li><a class="active" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
 <li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
 <li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
 <li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
@@ -92,16 +92,150 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data" class="section level1" number="9">
 <h1>
-<span class="header-section-number">9</span> Reading data files into R, formatiing and printing<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9</span> Reading data files into R, formatting and printing<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h1>
+<div id="reading-microsoft-excel-files-into-r" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Reading Microsoft Excel files into R<a class="anchor" aria-label="anchor" href="#reading-microsoft-excel-files-into-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>The following three ways can be used to read an Excel file into R as an object:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The file can be stored as a <em><span style="color:#FFB3B3">.txt</span></em> or <em><span style="color:#FFB3B3">.csv</span></em> file and then <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>, <code><a href="https://rdrr.io/r/base/scan.html">scan()</a></code> or <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> can be used to read the file into R.</p></li>
+<li><p>Directly read the <em><span style="color:#FFB3B3">.xlsx</span></em> file into R with the <code>readxl</code> package. List the sheet names with <code>excel_sheets()</code>. Specify a worksheet by name or number with a command like <code>objectname &lt;- read_excel(xlsx_example, sheet = "Sheet1")</code>.</p></li>
+<li><p>The <em><span style="color:#FFB3B3">.xlsx</span></em> file can also be read into R with the <code>xlsx</code> package. The R functions <code>read.xlsx()</code> and <code>read.xlsx2()</code> can be used to read the contents of an Excel worksheet into an R data.frame. The difference between these two functions is that <code>read.xlsx()</code> preserves the data type. It tries to guess the class type of the variable corresponding to each column in the worksheet. Note that, the <code>read.xlsx()</code> function is slow for large data sets (worksheet with more than 100 000 cells). The <code>read.xlsx2()</code> function is faster on big files compared to <code>read.xlsx()</code> function. The commands have the following format: <code>objectname &lt;- read.xlsx (file, sheetIndex, header = TRUE,             colClasses=NA)</code> and <code>objectname &lt;- read.xlsx2 (file, sheetIndex, header = TRUE, colClasses="character")</code>.</p></li>
+<li><p>Select the data in Excel (Data can also be selected in any other application such as Word or a text editor). Copy the selected range. In R:
+<code>objectname &lt;- read.table (file = "clipboard")</code>. <em>Hint</em>: Be careful with empty cells in Excel: some preparation of the Excel file might be needed.</p></li>
+<li><p>To avoid problems with end-of-file characters that can occur when using the method in (d), the package <code>clipr</code> can be used.</p></li>
+</ol>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="https://github.com/mdlincoln/clipr">clipr</a></span><span class="op">)</span></span>
+<span><span class="va">objectname</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://matthewlincoln.net/clipr/reference/read_clip_tbl.html">read_clip_tbl</a></span> <span class="op">(</span>header <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>The functions <code><a href="http://matthewlincoln.net/clipr/reference/clear_clip.html">clear_clip()</a></code> and <code><a href="http://matthewlincoln.net/clipr/reference/write_clip.html">write_clip()</a></code> can also be very useful.</p>
+</div>
+</div>
+<div id="reading-other-data-files-into-r" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Reading other data files into R<a class="anchor" aria-label="anchor" href="#reading-other-data-files-into-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>The R package <code>foreign()</code> provides functions for reading data from other packages into R:</p>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://svn.r-project.org/R-packages/trunk/foreign/">foreign</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span>name<span class="op">=</span><span class="st">"package:foreign"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "data.restore"  "lookup.xport"  "read.arff"    </span></span>
+<span><span class="co">#&gt;  [4] "read.dbf"      "read.dta"      "read.epiinfo" </span></span>
+<span><span class="co">#&gt;  [7] "read.mtp"      "read.octave"   "read.S"       </span></span>
+<span><span class="co">#&gt; [10] "read.spss"     "read.ssd"      "read.systat"  </span></span>
+<span><span class="co">#&gt; [13] "read.xport"    "write.arff"    "write.dbf"    </span></span>
+<span><span class="co">#&gt; [16] "write.dta"     "write.foreign"</span></span></code></pre></div>
+<p>Study the helpfiles of these functions for reading into R binary data, SAS XPORT format, Weka Attribute-Relation File Format, the Xbase family of database languages dBase, Clipper and FoxPro, Stata, Epi Info and EpiData files, Minitab portable worksheets, Octave text files, data.dump files that were produced in S version 3, SPSS save or export files, SAS data sets to be converted to ssd format and Systat files.</p>
+<div id="ssd-format-footnote" class="section level3" number="9.2.1">
+<h3>
+<span class="header-section-number">9.2.1</span> ssd format footnote<a class="anchor" aria-label="anchor" href="#ssd-format-footnote"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="sending-output-to-a-file" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Sending output to a file<a class="anchor" aria-label="anchor" href="#sending-output-to-a-file"><i class="fas fa-link"></i></a>
+</h2>
+<p>The function <code>sink("filename")</code> can be used to divert output that normally appears in the console to a file. The option <code>options (echo = TRUE)</code> ensures that the R instructions will also be included in the file. The instruction <code><a href="https://rdrr.io/r/base/sink.html">sink()</a></code> makes output to appear in the console again.</p>
+<p>How do the functions <code>write(x)</code> and <code>sink("filename")</code> differ? Study the arguments of <code><a href="https://rdrr.io/r/base/write.html">write()</a></code> thoroughly.</p>
+</div>
+<div id="writing-r-objects-for-transport" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Writing R objects for transport<a class="anchor" aria-label="anchor" href="#writing-r-objects-for-transport"><i class="fas fa-link"></i></a>
+</h2>
+<p>The R function <code>save(..., file = )</code> writes an external representation of R objects to the specified file. The names of the objects to be saved should appear either as symbols (or character strings) in <code>...</code> or as a character vector in list. These objects can be read back from the file using the function <code>load (file = )</code>. Study how these two functions work by consulting the help files. The functions <code><a href="https://rdrr.io/r/base/save.html">save()</a></code> and <code><a href="https://rdrr.io/r/base/load.html">load()</a></code> are very useful for transporting R objects between computers.</p>
+<p>The functions <code>saveRDS (object = , file = )</code> and <code>object.name &lt;- readRDS (file = )</code> write a single R object to a file, and restore it named <code>object.name</code>. Care has to be taken with the deprecated functions <code><a href="https://rdrr.io/r/base/dump.html">dump()</a></code> and <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>. If R objects were saved to a file using <code><a href="https://rdrr.io/r/base/dump.html">dump()</a></code>, it should be restored to an R workspace with <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>, not <code><a href="https://rdrr.io/r/base/load.html">load()</a></code>.</p>
+</div>
+<div id="the-use-of-the-file-.rhistory-and-the-function-history" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> The use of the file .Rhistory and the function <code>history()</code><a class="anchor" aria-label="anchor" href="#the-use-of-the-file-.rhistory-and-the-function-history"><i class="fas fa-link"></i></a>
+</h2>
+<p>The file <em><span style="color:#FFB3B3">.Rhistory</span></em> is created in the same folder where the <em><span style="color:#FFB3B3">.Rdata</span></em> exists. It can be inspected with any text editor or with MS Word and as such provides an exact record of all activity in the R console (commands window).</p>
+<p>Study the help file of the function <code><a href="https://rdrr.io/r/utils/savehistory.html">history()</a></code>.</p>
+</div>
+<div id="command-re-editing" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Command re-editing<a class="anchor" aria-label="anchor" href="#command-re-editing"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Use of the up and down arrows to recall previous commands. Delete, Backspace, Home and End keys for editing.</p></li>
+<li><p>Note the use of the script window to execute entire functions or selected instructions only.</p></li>
+</ol>
+</div>
+<div id="customized-printing" class="section level2" number="9.7">
+<h2>
+<span class="header-section-number">9.7</span> Customized printing<a class="anchor" aria-label="anchor" href="#customized-printing"><i class="fas fa-link"></i></a>
+</h2>
+<p>The basic tool for customized printing is the function <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>. This function can be used to output messages to the console or to a file. Note the different arguments that are available for <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>By default output is display on the screen; for output to be directed to a file, use argument <code>file = "file name including path"</code>.</p></li>
+<li><p>By default output directed to a file replaces previous contents of the file; use argument <code>append = TRUE</code> to append new output to previous contents.</p></li>
+<li><p>Use <code>sep = "xx"</code> to automatically insert characters between the unnamed arguments to <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> in the output.</p></li>
+<li><p>To automatically insert new lines in the output use <code>fill = TRUE</code>.</p></li>
+<li><p>The <code>labels =</code> argument allows insertion of a character string at the beginning of each output line. If labels is a vector its values are used cyclically.</p></li>
+</ol>
+<p>Write today’s date as given by the function date() in the form <code>“The date today is:   Day of the week,  xx, month,  20xx.”</code> as an heading to a file. <em>Hint</em>: recall functions <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>, <code><a href="https://rdrr.io/r/base/match.html">match()</a></code>, <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code>, <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>, <code><a href="https://rdrr.io/r/base/replace.html">replace()</a></code>.</p>
+</div>
+<div id="formatting-numbers" class="section level2" number="9.8">
+<h2>
+<span class="header-section-number">9.8</span> Formatting numbers<a class="anchor" aria-label="anchor" href="#formatting-numbers"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Study how the functions <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> and <code><a href="https://rdrr.io/r/base/Round.html">signif()</a></code> together with <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> can be used to set the number of decimals that are printed.</p></li>
+<li><p>Study the use of <code>options(digits=xx)</code>.</p></li>
+<li><p>Study how the function <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> works. Note the use of <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> together with <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> and <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>.</p></li>
+<li><p>What does <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> do?</p></li>
+<li><p>Study the help file of <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code>.</p></li>
+<li><p>The functions <code><a href="https://rdrr.io/r/base/prmatrix.html">prmatrix()</a></code> or <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> can be used to output matrices to the console during execution of a function. This is very convenient for inspecting intermediate results. Determine how the latter function differs from <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>.</p></li>
+<li><p>Note the difference between the following statements:</p></li>
+</ol>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Population" "Income"     "Illiteracy" "Life Exp"  </span></span>
+<span><span class="co">#&gt; [5] "Murder"     "HS Grad"    "Frost"      "Area"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Population" "Income    " "Illiteracy" "Life Exp  "</span></span>
+<span><span class="co">#&gt; [5] "Murder    " "HS Grad   " "Frost     " "Area      "</span></span></code></pre></div>
+<ol start="8" style="list-style-type: lower-alpha">
+<li>Study the following example carefully:</li>
+</ol>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">format.mns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span> <span class="op">(</span><span class="va">state.x77</span>, <span class="fl">2</span>, <span class="va">mean</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">format.names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span> <span class="op">(</span><span class="va">state.x77</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">descrip.mns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Mean for variable"</span>, <span class="va">format.names</span>, <span class="st">" = "</span>, <span class="va">format.mns</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">descrip.mns</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">descrip.mns</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Mean for variable Population  =   4246.4200 </span></span>
+<span><span class="co">#&gt; Mean for variable Income      =   4435.8000 </span></span>
+<span><span class="co">#&gt; Mean for variable Illiteracy  =      1.1700 </span></span>
+<span><span class="co">#&gt; Mean for variable Life Exp    =     70.8786 </span></span>
+<span><span class="co">#&gt; Mean for variable Murder      =      7.3780 </span></span>
+<span><span class="co">#&gt; Mean for variable HS Grad     =     53.1080 </span></span>
+<span><span class="co">#&gt; Mean for variable Frost       =    104.4600 </span></span>
+<span><span class="co">#&gt; Mean for variable Area        =  70735.8800</span></span></code></pre></div>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></div>
 <div class="next"><a href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#data"><span class="header-section-number">9</span> Reading data files into R, formatiing and printing</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
+<li><a class="nav-link" href="#reading-microsoft-excel-files-into-r"><span class="header-section-number">9.1</span> Reading Microsoft Excel files into R</a></li>
+<li>
+<a class="nav-link" href="#reading-other-data-files-into-r"><span class="header-section-number">9.2</span> Reading other data files into R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#ssd-format-footnote"><span class="header-section-number">9.2.1</span> ssd format footnote</a></li></ul>
+</li>
+<li><a class="nav-link" href="#sending-output-to-a-file"><span class="header-section-number">9.3</span> Sending output to a file</a></li>
+<li><a class="nav-link" href="#writing-r-objects-for-transport"><span class="header-section-number">9.4</span> Writing R objects for transport</a></li>
+<li><a class="nav-link" href="#the-use-of-the-file-.rhistory-and-the-function-history"><span class="header-section-number">9.5</span> The use of the file .Rhistory and the function history()</a></li>
+<li><a class="nav-link" href="#command-re-editing"><span class="header-section-number">9.6</span> Command re-editing</a></li>
+<li><a class="nav-link" href="#customized-printing"><span class="header-section-number">9.7</span> Customized printing</a></li>
+<li><a class="nav-link" href="#formatting-numbers"><span class="header-section-number">9.8</span> Formatting numbers</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

@@ -33,19 +33,10 @@ Note that the arithmetic operators are also functions.  That this is so follows 
 ``` r
 3+7
 #> [1] 10
-```
-
-``` r
 "+"(3,7)
 #> [1] 10
-```
-
-``` r
 17 %% 3
 #> [1] 2
-```
-
-``` r
 "%%"(17,3)
 #> [1] 2
 ```
@@ -68,28 +59,16 @@ cars [,2] * 12 * 25.4 / 1000
 #> [36] 10.9728 14.0208 20.7264  9.7536 14.6304 15.8496 17.0688
 #> [43] 19.5072 20.1168 16.4592 21.3360 28.0416 28.3464 36.5760
 #> [50] 25.9080
-```
-
-``` r
 7%/%3
 #> [1] 2
-```
-
-``` r
 7%%3
 #> [1] 1
-```
-
-``` r
 matrix(1,nrow=4,ncol=4) * matrix(3,nrow=4,ncol=4)
 #>      [,1] [,2] [,3] [,4]
 #> [1,]    3    3    3    3
 #> [2,]    3    3    3    3
 #> [3,]    3    3    3    3
 #> [4,]    3    3    3    3
-```
-
-``` r
 matrix(1,nrow=4,ncol=4) %*% matrix(3,nrow=4,ncol=4)
 #>      [,1] [,2] [,3] [,4]
 #> [1,]   12   12   12   12
@@ -106,14 +85,8 @@ matrix(1,nrow=4,ncol=4) %*% matrix(3,nrow=4,ncol=4)
 ``` r
 1:12 + 1:3
 #>  [1]  2  4  6  5  7  9  8 10 12 11 13 15
-```
-
-``` r
 1:10 + 1:2
 #>  [1]  2  4  4  6  6  8  8 10 10 12
-```
-
-``` r
 1:10 + 1:3
 #> Warning in 1:10 + 1:3: longer object length is not a
 #> multiple of shorter object length
@@ -135,24 +108,12 @@ A missing value in R is denoted by NA. The result of a computation involving NAs
 ``` r
 mean(c(1,3,NA,12,5))
 #> [1] NA
-```
-
-``` r
 0/0
 #> [1] NaN
-```
-
-``` r
 5/0
 #> [1] Inf
-```
-
-``` r
 -5/0
 #> [1] -Inf
-```
-
-``` r
 5/(-0)
 #> [1] -Inf
 ```
@@ -172,19 +133,10 @@ R uses decimal notation as well as scientific notation for arithmetic calculatio
 ``` r
 60000000
 #> [1] 6e+07
-```
-
-``` r
 1/6000000
 #> [1] 1.666667e-07
-```
-
-``` r
 exp(15)
 #> [1] 3269017
-```
-
-``` r
 exp(-15)
 #> [1] 3.059023e-07
 ```
@@ -281,35 +233,20 @@ mata
 #>      [,1] [,2]
 #> [1,]    1    3
 #> [2,]    2    4
-```
-
-``` r
 matb
 #>      [,1] [,2]
 #> [1,]   10   30
 #> [2,]   20   40
-```
-
-``` r
 mata>1 & matb>1
 #>       [,1] [,2]
 #> [1,] FALSE TRUE
 #> [2,]  TRUE TRUE
-```
-
-``` r
 mata>1 | matb>1
 #>      [,1] [,2]
 #> [1,] TRUE TRUE
 #> [2,] TRUE TRUE
-```
-
-``` r
 mata>1 && matb>1
 #> Error in mata > 1 && matb > 1: 'length = 4' in coercion to 'logical(1)'
-```
-
-``` r
 mata>1 || matb>1
 #> Error in mata > 1 || matb > 1: 'length = 4' in coercion to 'logical(1)'
 ```
@@ -371,19 +308,10 @@ Explain the result of the following R instructions:
 ``` r
 20 / 4 * 12 ^2 - 6 + 1
 #> [1] 715
-```
-
-``` r
 (20 / 4) * (12 ^2) + (-6 + 14)
 #> [1] 728
-```
-
-``` r
 20 / 4 * 12 ^(2 - 6 + 14)
 #> [1] 309586821120
-```
-
-``` r
 20 / 4 * (12 ^2 - 6 + 14)
 #> [1] 760
 ```
@@ -455,7 +383,7 @@ Table: (\#tab:MatrixFunc) Functions for matrices.
 
 (i)	The function `solve (A, b)` is used for solving the equation $\mathbf{Ax=b}$ for $\mathbf{x}$, where $\mathbf{b}$ can be either a vector or a matrix with $\mathbf{A}$ being a square matrix. If argument `b` is missing it is taken to be the identity matrix so that the inverse of argument `A` is returned.
 
-(j)	The function `svd()` returns the singular value decomposition of its matrix argument $\mathbf{A=UDV}'$. It returns a list with three components: `u` the orthogonal or orthonormal matrix $\mathbf{U}$; `d` the vector containing the ordered singular values of the rectangular matrix $\mathbf{A}$; `v` the orthogonal or orthonormal matrix $\mathbf{V}.
+(j)	The function `svd()` returns the singular value decomposition of its matrix argument $\mathbf{A=UDV}'$. It returns a list with three components: `u` the orthogonal or orthonormal matrix $\mathbf{U}$; `d` the vector containing the ordered singular values of the rectangular matrix $\mathbf{A}$; `v` the orthogonal or orthonormal matrix $\mathbf{V}$.
 
 (k)	The function `qr()` performs a QR decomposition of any arbitrary matrix $\mathbf{M=QR}$ with $\mathbf{Q}$ and orthogonal matrix and $\mathbf{R}$ an upper triangular matrix. Study the help file of `qr()` for full details and usages of the function. Note that the matrices $\mathbf{Q}$ and $\mathbf{R}$ can be obtained directly by calling `qr.Q(qr())` and `qr.R(qr())`, respectively.
 
@@ -561,9 +489,6 @@ Table: (\#tab:DataManipulation) Functions for data manipulation.
 ``` r
 match (c(10,2,7,20,5,8,9,20,9,1,15), c(10,20,15))
 #>  [1]  1 NA NA  2 NA NA NA  2 NA NA  3
-```
-
-``` r
 match (c(10,20,15), c(10,2,7,20,5,8,9,20,9,1,15))
 #> [1]  1  4 11
 ```
@@ -624,10 +549,9 @@ help.search("distribution")
 to obtain a list of available statistical distributions in R.  Each distribution has an identifying name preceded by one of the letters *<span style="color:#FF9966">d</span>*, *<span style="color:#FF9966">p</span>*, *<span style="color:#FF9966">q</span>* or *<span style="color:#FF9966">r</span>*.  In the case of an F-distribution, for example, the identifier is just the letter `f` and for a normal distribution the identifier is `norm`.  Preceding the distribution’s identifier by one of the letters `d`, `p`, `q` or `r` returns a density value, a probability, a quantile or a random sample for the specified distribution (probability density function or probability mass function). See Figure \@ref(fig:Fdist) for an explanation. 
 
 
-<div class="figure">
-<img src="pics/F-distribution.png" alt="Meaning of the letters d, p and q when preceding an R distribution identifier." width="100%" />
-<p class="caption">(\#fig:Fdist)Meaning of the letters d, p and q when preceding an R distribution identifier.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{pics/F-distribution} \caption{Meaning of the letters d, p and q when preceding an R distribution identifier.}(\#fig:Fdist)
+\end{figure}
 
 ### Functions for categorical variables { #areagrp }
 

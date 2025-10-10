@@ -34,7 +34,8 @@ In this chapter we continue the study the art of R programming. An important top
 
 The usage is illustrated in the following diagram.
 
-<img src="pics/ifelse.jpg" width="100%" />
+
+\includegraphics[width=1\linewidth]{pics/ifelse} 
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (i)	Note the difference between the function `ifelse()` and the control statement: `if` - `else`.
@@ -79,7 +80,7 @@ lapply (split (data.frame (state.x77),
                cut (data.frame (state.x77)$Illiteracy, 3)), pairs)
 ```
 
-<img src="08-mapping_files/figure-html/splitExample-1.png" width="672" /><img src="08-mapping_files/figure-html/splitExample-2.png" width="672" /><img src="08-mapping_files/figure-html/splitExample-3.png" width="672" />
+![](08-mapping_files/figure-latex/splitExample-1.pdf)<!-- --> ![](08-mapping_files/figure-latex/splitExample-2.pdf)<!-- --> ![](08-mapping_files/figure-latex/splitExample-3.pdf)<!-- --> 
 
 ```
 #> $`(0.498,1.27]`
@@ -115,9 +116,6 @@ before calling the function `lapply()`.
 ``` r
 mapply (function (x,y,z) {x+y+z}, x = c(2, 3), y = c(4,5), z = c(1,8))
 #> [1]  7 16
-```
-
-``` r
 mapply (function(x,y,z) { list (min (c(x,y,z)), max (c(x,y,z))) }, 
         x = c(2, 3), y = c(4, 5), z = c(1, 8))
 #>      [,1] [,2]
@@ -186,9 +184,6 @@ xx
 #> [3,]    3    8   13   18   23
 #> [4,]    4    9   14   19   24
 #> [5,]    5   10   15   20   25
-```
-
-``` r
 ifelse(xx < 10, 0, 1)
 #>      [,1] [,2] [,3] [,4] [,5]
 #> [1,]    0    0    1    1    1
@@ -204,14 +199,8 @@ ifelse(xx < 10, 0, 1)
 ``` r
 match (c (1:5, 3), c (2, 3))
 #> [1] NA  1  2 NA NA  2
-```
-
-``` r
 match (c (1:5, 3), c (2, 3), nomatch = 0)
 #> [1] 0 1 2 0 0 2
-```
-
-``` r
 match (c (1:5, 3), c (3, 2), nomatch = 0)
 #> [1] 0 2 1 0 0 1
 ```
@@ -253,24 +242,14 @@ centre <- function(x, type)
 
 x <- rcauchy(10)
 x
-#>  [1]  0.06789269  2.34376407  0.18461010 -0.28450567
-#>  [5] -4.03374036  0.21398886 -0.79638326 -1.28803986
-#>  [9]  0.19799170  3.93919518
-```
-
-``` r
+#>  [1] -0.6897862  0.9203964 -3.4916787  8.3234230  0.1589843
+#>  [6] -5.1391375 -2.1279538 -9.5079710  7.2078543 -0.1195617
 centre(x,"mean")
-#> [1] 0.05447735
-```
-
-``` r
+#> [1] -0.4465431
 centre(x,"median")
-#> [1] 0.1262514
-```
-
-``` r
+#> [1] -0.4046739
 centre(x,"trimmed")
-#> [1] 0.07991483
+#> [1] -0.4101104
 ```
 
 (h)	The two logical control operators `&&` and `||` are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators `&` and `|` which operate on vectors/matrices.
@@ -319,9 +298,6 @@ for (i in 1:26) cat(i, letters[i],"\n")
 #> 24 x 
 #> 25 y 
 #> 26 z
-```
-
-``` r
 for (letter in letters) cat(letter, "\n")
 #> a 
 #> b 
@@ -422,7 +398,7 @@ The functions `system.time()` and `proc.time()` provide information regarding th
 ``` r
 proc.time()   # called with no arguments
 #>    user  system elapsed 
-#>    0.92    0.51    1.67
+#>    0.25    0.03    3.42
 ```
 
 (b) `system.time(expr)` calls the function `proc.time()`, evaluates `expr`, and then calls `proc.time()` once more, returning the difference between the two `proc.time()` calls:
@@ -432,11 +408,11 @@ proc.time()   # called with no arguments
 system.time (hist (rev (sort (rnorm (1000000)))))
 ```
 
-<img src="08-mapping_files/figure-html/systemtimeExample-1.png" width="672" />
+![](08-mapping_files/figure-latex/systemtimeExample-1.pdf)<!-- --> 
 
 ```
 #>    user  system elapsed 
-#>    0.11    0.00    0.11
+#>    0.09    0.03    0.21
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -457,8 +433,483 @@ Note that user and system times do not necessarily add up to elapsed time exactl
 Use `var()` and `rnorm()` to compute covariance matrices of different sizes $p$ from samples varying in size $n$. Study the role of $n$ and $p$ in the effectiveness (economy in execution time) of the above three methods. Display the results graphically. Remember that for valid comparisons the three methods must be executed with identical samples.
 </div>   
    
+## The calling of functions with argument lists
+
+(a)	The function `do.call()` provides an alternative to the usual method of calling  functions by name. It allows specifying the name of the function with its arguments in the form of a list:
 
 
+``` r
+mean ( c (1:100, 500), trim=0.1)
+#> [1] 51
+do.call ("mean", list( c (1:100, 500), trim=0.1))
+#> [1] 51
+```
+
+(b)	 How does `do.call()` differ from the function `call()`?
+
+(c)	As an illustration of the usage of `do.call()` study the following example: 
 
 
+``` r
+na.pattern <- function(frame)
+{ nas <- is.na (frame)
+  storage.mode (nas) <- "integer"
+  table (do.call ("paste", c(as.data.frame(nas), sep = "")))
+}
+na.pattern(as.data.frame(airquality))
+#> 
+#> 000000 010000 100000 110000 
+#>    111      5     35      2
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+What can be learned from the above output?
+</div>   
+
+(d)	What is the difference between `as.integer()`, `storage.mode() <– "integer"`, `storage.mode()` and `mode()`?
+
+## Evaluating R strings a commands
+
+Recall from Figure \@ref(fig:expression) that the function `parse(text = "3 + 4")` returns the unevaluated expression `3 + 4`. In order to evaluate the expression use function `eval()`: `eval (parse (text = "3 + 4"))` returns `7`.
+
+## Object oriented programming in R
+
+Suppose we would like to investigate the body of function `plot()`. We know that this can be done by entering the function’s name at the R prompt:
+
+
+``` r
+plot
+#> function (x, y, ...) 
+#> UseMethod("plot")
+#> <bytecode: 0x00000262a8958d80>
+#> <environment: namespace:base>
+```
+
+The presence of `UseMethod("plot")` shows that `plot()` is a *<span style="color:#FF9966">generic</span>* function.  The *<span style="color:#FF9966">class</span>* of an object determines how it will be treated by a generic function i.e. what *<span style="color:#FF9966">method</span>* will be applied to it.  Function `setClass()` is used for setting the class attribute of an object. Function `methods()` is used to find out (a) what is the repertoire of methods of a generic function and (b) what methods are available for a certain class:
+
+
+``` r
+methods(plot) # repertoire of methods for FUNCTION plot()
+#>  [1] plot.acf*           plot.data.frame*   
+#>  [3] plot.decomposed.ts* plot.default       
+#>  [5] plot.dendrogram*    plot.density*      
+#>  [7] plot.ecdf           plot.factor*       
+#>  [9] plot.formula*       plot.function      
+#> [11] plot.hclust*        plot.histogram*    
+#> [13] plot.HoltWinters*   plot.isoreg*       
+#> [15] plot.lm*            plot.medpolish*    
+#> [17] plot.mlm*           plot.ppr*          
+#> [19] plot.prcomp*        plot.princomp*     
+#> [21] plot.profile*       plot.profile.nls*  
+#> [23] plot.raster*        plot.spec*         
+#> [25] plot.stepfun        plot.stl*          
+#> [27] plot.table*         plot.ts            
+#> [29] plot.tskernel*      plot.TukeyHSD*     
+#> see '?methods' for accessing help and source code
+methods(class="lm")  # what methods are available for CLASS lm
+#>  [1] add1           alias          anova         
+#>  [4] case.names     coerce         confint       
+#>  [7] cooks.distance deviance       dfbeta        
+#> [10] dfbetas        drop1          dummy.coef    
+#> [13] effects        extractAIC     family        
+#> [16] formula        hatvalues      influence     
+#> [19] initialize     kappa          labels        
+#> [22] logLik         model.frame    model.matrix  
+#> [25] nobs           plot           predict       
+#> [28] print          proj           qr            
+#> [31] residuals      rstandard      rstudent      
+#> [34] show           simulate       slotsFromS3   
+#> [37] summary        variable.names vcov          
+#> see '?methods' for accessing help and source code
+```
+
+In broad terms there are currently three types of classes in use in R: The old classes or S3 classes and the newer S4 and S5 (also called *<span style="color:#FF9966">reference classes</span>*) classes. The newer classes can contain one or more *<span style="color:#FF9966">slots</span>* which can be accessed using the operator `@`. Central to the concept of object oriented programming is that a method can inherit from another method. The function `NextMethod()` provides a mechanism for *<span style="color:#FF9966">inheritance</span>*.
+
+(a)	As an example of a generic function study the example in the help file of the function `all.equal()`.
+
+(b)	R provides many more facilities for writing object oriented functions. Consult the [R Language Definition Manual](https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf) Chapter 5: Object-Oriented Programming for further details.
+
+(c)	A statistical investigation is often concerned with survey or questionnaire data where respondents must select one of several categorical alternatives. The `questdata` below shows the responses made by 10 respondents on four questions. The alternatives for each question were measured on a five point categorical scale. We can refer to the `questdata dataframe` as the full data. This form of representing the data is not an effective way of storing the data when the number of respondents is large. A more compact way of saving the data without any loss in information is to store the data in the form of a *<span style="color:#FF9966">response pattern</span>* matrix or dataframe.  The first row of `questdata` constitutes one particular response pattern namely `("b" "c" "a" "d")`. A response pattern matrix (dataframe) shows all the unique response patterns together with the frequency with which each of the different response patterns has occurred.  Your challenge is to provide the necessary R functions to convert the full data into a response pattern representation, and conversely to recover the full data from its response pattern representation.  
+
+
+``` r
+questdata <- rbind (c("b", "c", "a", "d"),
+                    c("d", "d", "c", "a"),
+                    c("a", "d", "c", "e"),
+                    c("a", "d", "c", "e"),
+                    c("b", "c", "a", "d"),
+                    c("a", "d", "c", "e"),
+                    c("b", "c", "a", "d"),
+                    c("d", "d", "c", "a"),
+                    c("c", "b", "a", "e"),
+                    c("b", "c", "a", "d"))
+colnames(questdata) <- c("Q1", "Q2", "Q3", "Q4")
+```
+
+<div style="margin-left: 40px; margin-right: 20px;">
+(i)	Create the R object `questdata` and then give the following instructions:
+
+
+``` r
+unique (questdata [,1])
+#> [1] "b" "d" "a" "c"
+duplicated (questdata)
+#>  [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+#> [10]  TRUE
+duplicated (questdata, MARGIN = 1)
+#>  [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+#> [10]  TRUE
+duplicated (questdata, MARGIN = 2)
+#>    Q1    Q2    Q3    Q4 
+#> FALSE FALSE FALSE FALSE
+unique (questdata)
+#>      Q1  Q2  Q3  Q4 
+#> [1,] "b" "c" "a" "d"
+#> [2,] "d" "d" "c" "a"
+#> [3,] "a" "d" "c" "e"
+#> [4,] "c" "b" "a" "e"
+unique (questdata, MARGIN = 1)
+#>      Q1  Q2  Q3  Q4 
+#> [1,] "b" "c" "a" "d"
+#> [2,] "d" "d" "c" "a"
+#> [3,] "a" "d" "c" "e"
+#> [4,] "c" "b" "a" "e"
+unique (questdata, MARGIN = 2)
+#>       Q1  Q2  Q3  Q4 
+#>  [1,] "b" "c" "a" "d"
+#>  [2,] "d" "d" "c" "a"
+#>  [3,] "a" "d" "c" "e"
+#>  [4,] "a" "d" "c" "e"
+#>  [5,] "b" "c" "a" "d"
+#>  [6,] "a" "d" "c" "e"
+#>  [7,] "b" "c" "a" "d"
+#>  [8,] "d" "d" "c" "a"
+#>  [9,] "c" "b" "a" "e"
+#> [10,] "b" "c" "a" "d"
+```
+
+
+(ii)	Examine Table \@ref(tab:MatrixFunc) and carefully describe the behaviour of the functions `duplicated()` and `unique()`.
+
+(iii)	Write an R function, say `full2resp` to obtain the response pattern representation of questionnaire data like those given above. Test your function on `questdata`.
+
+(iv)	Write an R function, say `resp2full` to obtain the full data set given its response pattern representation.  Test your function on the response pattern representation of the `questdata`.
+</div>    
+
+## Recursion
+
+Functions in R can call themselves. This process is called *<span style="color:#FF9966">recursion</span>* and it is implemented in R programming by the function `Recall()`.
+
+(a) As an example we will use recursion to calculate $x(x+1)(x+2)\dots(x+k)$ with $k$ a positive integer: 
+
+
+``` r
+recurs.example <- function (x, k) 
+{ # Function to calculate x(x+1)(x+2).....(x+k)
+  # where k is a positive integer.
+     if (k < 0 ) 
+      stop("k not allowed to be negative or non-integer")
+    else if( k == 0) x
+       else(x+k) * Recall(x,k-1)
+   }
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+Investigate if `recurs.example()` works correctly.
+</div>    
+
+(b)	Explain how recursion works by studying the output of the following function for values of $r = 1, 2, 3, 4, 5, 6$:
+
+
+``` r
+Recursiontest <- function (r)
+{ if (r <= 0) NULL
+  else { cat("Write = ", r, "\n")
+         Recall (r - 1)
+         Recall (r - 2)
+       }
+}
+Recursiontest(1)
+#> Write =  1
+#> NULL
+Recursiontest(2)
+#> Write =  2 
+#> Write =  1
+#> NULL
+Recursiontest(3)
+#> Write =  3 
+#> Write =  2 
+#> Write =  1 
+#> Write =  1
+#> NULL
+Recursiontest(4)
+#> Write =  4 
+#> Write =  3 
+#> Write =  2 
+#> Write =  1 
+#> Write =  1 
+#> Write =  2 
+#> Write =  1
+#> NULL
+Recursiontest(5)
+#> Write =  5 
+#> Write =  4 
+#> Write =  3 
+#> Write =  2 
+#> Write =  1 
+#> Write =  1 
+#> Write =  2 
+#> Write =  1 
+#> Write =  3 
+#> Write =  2 
+#> Write =  1 
+#> Write =  1
+#> NULL
+Recursiontest(6)
+#> Write =  6 
+#> Write =  5 
+#> Write =  4 
+#> Write =  3 
+#> Write =  2 
+#> Write =  1 
+#> Write =  1 
+#> Write =  2 
+#> Write =  1 
+#> Write =  3 
+#> Write =  2 
+#> Write =  1 
+#> Write =  1 
+#> Write =  4 
+#> Write =  3 
+#> Write =  2 
+#> Write =  1 
+#> Write =  1 
+#> Write =  2 
+#> Write =  1
+#> NULL
+```
+
+(c)	Use recursion and the function `Recall()` to write an R function to calculate $x!$.
+
+(d)	Use recursion to write an R function that generates a matrix  whose rows contain subsets of size $r$  of the first $n$ elements of the vector `v`.   Ignore the possibility of repeated values in `v` and give this vector the default value of `1:n`.
+
+##	Environments in R
+
+Study the following parts from the *R Language definition Manual*:  § 3.5 Scope of variables; Chapter 4:  *Functions*.
+
+Consider an R function `xx(argument)`.  Write an R function to add a constant to the correct object (i.e. the object in the correct environment) that corresponds to `argument`.  In order to answer this question, you must determine in which environment `argument` exists and evaluation must take place in this environment.  Possible candidates to consider are the *<span style="color:#3399FF">parent frame</span>*, the *<span style="color:#3399FF">global environment</span>* and the search list.   Assume that only the first data basis on the search list is not read-only so that in cases where argument can be found anywhere in the search list it can be assigned to the first data basis. *Hint*:  Study how the following functions work: `assign()`, `deparse()`, `invisible()`, `exists()`, `substitute()`, `sys.parent()`. 
+
+## “Computing on the language”
+
+Read *R Language Definition Manual Chapter 6: Computing on the language*.
+
+##	Writing user friendly applications: the package shiny
+
+The `shiny` package in R allows one to create an interactive environment inside R. As an example, the code below generates data from a bivariate normal distribution and makes a scatter plot of the two variables. With shiny a sliding bar is added where the user can adjust the correlation between the two variables.
+
+A shiny app consists of a user interface (`ui`) a `server` function and the `shinyApp` function that uses the `ui` object and the `server` function to build a Shiny app object. For the sliding bar, the function `sliderInput()` is used. Table \@ref(tab:InputElements) provides a list of different input elements.
+
+The `server` function uses the `inputs` – the `cor.val` in this example – to produce an `output` – the scatter plot in this example – using a reactive expression – the `plot` command in this example. The `server` function and thus the reactive expression is called with every change in the `input`, i.e. the plot is executed with the updated `cor.val`. The `output` produced by die `server` function – `scatter` in this example – is plotted in the `mainPanel` with the function `plotOutput`.
+
+Table: (\#tab:InputElements) Input elements for shiny apps.
+
+| ------ | ------ | ------ | 
+| `actionButton()`       |	`fileInput()`     | `sliderInput()`    | 
+| `checkboxGroupInput()` |	`numericInput()`  | `submitButton()`   | 
+| `checkboxInput()`      |	`passwordInput()` | `textAreaInput()`  | 
+| `dateInput()`          |	`radioButtons()`  | `textInput()`      | 
+| `dateRangeInput()`     |	`selectInput()`   | `varSelectInput()` |
+
+
+``` r
+library(shiny)
+
+ui <- pageWithSidebar(
+      headerPanel("Bivariate normal plot"),
+      # App title
+
+      sidebarPanel(
+      # Sidebar panel for inputs
+
+          sliderInput(inputId = "cor.val",
+                      label = "Correlation",
+                      min = -1,
+                      max = 1,
+                      value = 0,
+                      step = 0.01
+          )
+      ),
+
+      mainPanel(
+      # Main panel for scatter plot
+
+          textOutput("caption"),
+          plotOutput("scatter")
+      )
+   )
+
+server <- function(input, output) {
+         require(MASS)
+         sigma <- diag(2)
+
+         output$caption <- renderText({ paste ("Bivariate normal data with 
+                                correlation", input$cor.val)
+                           })
+         output$scatter <- renderPlot({  
+                              sigma[1,2] <- sigma[2,1] <- input$cor.val
+                              X <- mvrnorm(1000, mu=c(0,0), sigma)
+                              plot(X,asp=1,col="red",pch=15)
+                           })
+      }
+
+shinyApp(ui, server)
+```
+
+Adjust the shiny app above by adding three more input sources:
+
+i.	The number of observations to be generated.
+
+ii.	Selecting the mean vector for the bivariate normal from the following options
+
+* $\mathbf{\mu}' = [0, 0]$
+* $\mathbf{\mu}' = [10, 2]$
+* $\mathbf{\mu}' = [-3, -3]$
+* $\mathbf{\mu}' = [8, 207]$
+
+iii.	Having a series of radio buttons to choose the colour for the observations in the plot.
+
+## Exercise
+
+::: {style="color: #80CC99;"}
+
+(a)	Write an R function to determine which positive whole number elements $≤10^{10}$  of a given vector are prime and to return these primes.  Test this function with randomly generated vectors.
+
+(b)	Repeat (a) using recursion.
+
+(c)	Write a Shiny App that allows the user to choose between one of the data sets:`LifeCycleSavings` and `state.x77` as a data matrix $\mathbf{X}:n \times p$. The unweighted Minkowski metric for the pairwise distance between observation $i$ and observation $j$ is defined as $d_{ij} = \left( \sum_{k=1}^p{|x_{ik}-x_{jk}|^λ} \right)^{(1/λ)}$, $λ≥1$. Make provision for the user to choose the value of $\lambda$ to be used to calculate the pairwise distances between all the rows of the data matrix. Note that $λ=1$ is the Manhattan distance and $λ=2$ is the Euclidean distance. Use $λ=2$ as your default value.
+
+:::
+
+##	The function on.exit()
+
+What does the function `on.exit()` do?
+
+One use of the special argument `...` together with the `on.exit()`  function is to allow a user to make temporary changes to graphical parameters of a graphical display  within a function.  This can be done as follows:  
+
+
+``` r
+function(...)
+ { oldpar <- par(...)
+   on.exit(par(oldpar))  
+   or on.exit(par(c(par(oldpar),par(mfrow = c(1,1)))))
+   new plot instructions
+   ..............................
+  }
+```
+
+In the above it is assumed that only arguments of `par()` can be substituted when the function concerned is called. A further use of `on.exit()` is for temporarily changing *<span style="color:#FF9966">options</span>*.
+
+## Error tracing
+
+Any error that is generated during the execution of a function will record details of the calls that were being executed at the time.  These details can be shown by using the function `traceback()`.  The function `dump.frames()` gives more detailed information, but it must be used sparingly because it can create very large objects in the *<span style="color:#3399FF">workspace</span>*. The function `options (error = xx)` can be used to specify the action taken when an error occurs. The recommended option during program development is `options(error = recover)`.  This ensures that an error during an interactive session will call `recover()` from  the lowest relevant function call, usually the call that produced the error. You can then browse in this or any of the currently active calls to recover arbitrary information about the state of computation at the time of the error.  An alternative is to set `options(error = dump.frames)`.  This will save all the data in the calls that were active when an error occurred. Calling `debugger()` later on produce a similar result to `recover()`.  
+
+The following is a summary of the most common error tracing facilities in R:
+
+| ------ | ---------------- | 
+| `print()`, `cat()` | The printing of key values within a function is often all that is needed.  |   
+| `traceback()`      | Must be used together with `dump.frames()`.  |   
+| `options(warn=2)`  | Changes warning to an error that causes a dump.  | 
+| `options(error=)`  | Changes the function that is used for the dump action.  |   
+| `last.dump()`      | The object in the *<span style="color:#3399FF">.RData</span>* that contains a list of calls to dump.  |   
+| `debugger()`       | Function to inspect last.dump for an error.  |   
+| `browser()`        | Function that can be used within a function to interrupt the latter’s execution so that variables within the local frame concerned can be inspected.  |   
+| `trace()`          | Places tracing information before or within functions.  Can be used to place calls to the browser at given positions within a function.  |   
+| `untrace()`        | 	Switches all or some of the functions of `trace()` off. |   
+
+(a)	Study the *R Language Manual Definition Chapter 9: Debugging* for a summary of error tracing facilities in R . Note especially how the functions `print()`, `cat()`, `traceback()`, `browser()`, `trace()`, `untrace()`, `debug()`, `undebug()` and `options(warn=2 or error=)` work.
+
+(b)	Study usage of: `options(error = dump.frames);  debugger()`
+
+(c)	Study usage of: `options(error = dump.frames)`
+
+(d)	Study usage of  the objects  `last.dump` and `.Traceback`.
+
+## Error handling: The function `try()`
+
+As an example of the need to be able to handle errors properly consider a simulation study involving a large number of repetitive calculations.
+
+
+``` r
+Example.8.18.a <- function (iter = 500)
+{ select.sample <- function (x) 
+  { temp <- rnorm (100, m = 50, s = 20)
+    if (any (temp < 0)) stop("Negative numbers not allowed")
+    mean(log(temp))                                                         }
+  out <- lapply(1:iter, function(i) select.sample(i))
+  out
+}
+```
+
+With `iter` set to a large value, inevitably a call to `Example.8.18.a()` will result in an error message:
+
+
+``` default
+> Example.8.18.a()
+Error in select.sample(i) : Negative numbers not allowed.
+```
+
+To see how `try()` can be used make the following change in `Example.8.18.a()`:
+
+
+``` r
+Example.8.18.b <- function (iter = 500)
+{ select.sample <- function (x) 
+  { temp <- rnorm (100, m = 50, s = 20)
+    if (any (temp < 0)) stop("Negative numbers not allowed")
+    mean(log(temp))                                                         }
+  out <- lapply(1:iter, function(i) 
+                        try(select.sample(i), silent = TRUE))
+  out
+}
+```
+
+A typical chunk of output from a call to `Example.8.18.b()` is
+
+
+``` default
+> Example.8.18.b(2)
+[[1]]
+[1] 3.804975
+[[2]]
+[1] "Error in select.sample(i) : Negative numbers not allowed\n"
+attr(,"class")
+[1] "try-error"
+attr(,"condition")
+<simpleError in select.sample(i): Negative numbers not allowed>
+```
+
+Notice that execution of `Example.8.18.b` was not halted prematurely. From the above output we can make some final changes to our example function:
+
+
+``` r
+Example.8.18.c <- function (iter = 500)
+{ select.sample <- function (x) 
+  { temp <- rnorm (100, m = 50, s = 20)
+    if (any (temp < 0)) stop("Negative numbers not allowed")
+    mean(log(temp))                                                         }
+  out <- lapply(1:iter, function(i) 
+                        try(select.sample(i), silent = TRUE))
+  out <- lapply(out, function(x)
+                     { if (is.null (attr (x,"condition"))) x <- x
+                       else x <- attr(x, "condition")
+                     })
+  Error.report <- lapply(out, function(x) 
+                              ifelse(!is.numeric(x), x, "No Error"))
+  Numeric.results <- unlist(lapply(out, function(x)   
+                                        ifelse (is.numeric(x), x, NA)))
+  list (Error.report = Error.report, Numeric.results = Numeric.results) 
+}
+```
+
+Study the output of a call to `Example.8.18.c` and comment on the merits of `try()` in this example.
 

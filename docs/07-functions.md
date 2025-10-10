@@ -10,7 +10,7 @@ A good way to learn about functions or to write a new function is to look at exi
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x0000016c0a74c770>
+#> <bytecode: 0x00000107d1c9d028>
 #> <environment: namespace:base>
 ```
 
@@ -30,11 +30,10 @@ methods(plot)
 #> [17] plot.mlm*           plot.ppr*          
 #> [19] plot.prcomp*        plot.princomp*     
 #> [21] plot.profile*       plot.profile.nls*  
-#> [23] plot.R6*            plot.raster*       
-#> [25] plot.spec*          plot.stepfun       
-#> [27] plot.stl*           plot.table*        
-#> [29] plot.ts             plot.tskernel*     
-#> [31] plot.TukeyHSD*     
+#> [23] plot.raster*        plot.spec*         
+#> [25] plot.stepfun        plot.stl*          
+#> [27] plot.table*         plot.ts            
+#> [29] plot.tskernel*      plot.TukeyHSD*     
 #> see '?methods' for accessing help and source code
 ```
 
@@ -88,7 +87,7 @@ plot.default
 #>             ...)
 #>     invisible()
 #> }
-#> <bytecode: 0x0000016c0c160bd0>
+#> <bytecode: 0x00000107d26bbe98>
 #> <environment: namespace:graphics>
 ```
 
@@ -97,7 +96,7 @@ Since our new plotting method is aimed at categorical data we decide rather to t
 
 ``` r
 plot.factor
-#> Error in eval(expr, envir, enclos): object 'plot.factor' not found
+#> Error: object 'plot.factor' not found
 ```
 
 Asterisked functions can be inspected using the following method:
@@ -135,7 +134,7 @@ getAnywhere(plot.factor)
 #>         boxplot(y ~ x, ...)
 #>     else NextMethod("plot")
 #> }
-#> <bytecode: 0x0000016c0c5403c0>
+#> <bytecode: 0x00000107d0aee3b0>
 #> <environment: namespace:graphics>
 ```
 
@@ -169,25 +168,25 @@ getAnywhere(plot.factor)
 boxplot(rnorm(100), plot = TRUE)
 ```
 
-<img src="07-functions_files/figure-html/invisibleExamples-1.png" width="672" />
+![](07-functions_files/figure-latex/invisibleExamples-1.pdf)<!-- --> 
 
 ``` r
 boxplot(rnorm(100), plot = FALSE)
 #> $stats
 #>             [,1]
-#> [1,] -1.73424561
-#> [2,] -0.51209863
-#> [3,]  0.08149396
-#> [4,]  0.68576831
-#> [5,]  2.19638827
+#> [1,] -2.10192730
+#> [2,] -0.58894488
+#> [3,] -0.07732177
+#> [4,]  0.71833192
+#> [5,]  2.39068957
 #> 
 #> $n
 #> [1] 100
 #> 
 #> $conf
 #>            [,1]
-#> [1,] -0.1077690
-#> [2,]  0.2707569
+#> [1,] -0.2838715
+#> [2,]  0.1292280
 #> 
 #> $out
 #> numeric(0)
@@ -243,22 +242,16 @@ where <- function(x, cond)
 ``` r
 library (mgcv)
 #> Loading required package: nlme
-#> This is mgcv 1.9-1. For overview type 'help("mgcv-package")'.
-```
-
-``` r
+#> This is mgcv 1.9-3. For overview type 'help("mgcv-package")'.
 library (gam)
 #> Loading required package: splines
 #> Loading required package: foreach
-#> Loaded gam 1.22-3
+#> Loaded gam 1.22-6
 #> 
 #> Attaching package: 'gam'
 #> The following objects are masked from 'package:mgcv':
 #> 
 #>     gam, gam.control, gam.fit, s
-```
-
-``` r
 find("gam")
 #> [1] "package:gam"  "package:mgcv"
 ```
@@ -371,27 +364,18 @@ maxlen(1:10, 1:15, 1:3, letters)
 #> [1] "numeric"
 #> [1] "character"
 #> [1] 0
-```
-
-``` r
 maxlen(mode.use="numeric", 1:10, 1:15, 1:3, letters)
 #> [1] "numeric"
 #> [1] "numeric"
 #> [1] "numeric"
 #> [1] "character"
 #> [1] 0
-```
-
-``` r
 maxlen(1:10, 1:15, 1:3, letters, mode.use="character")
 #> [1] "numeric"
 #> [1] "numeric"
 #> [1] "numeric"
 #> [1] "character"
 #> [1] 0
-```
-
-``` r
 maxlen(mode.use="character", 1:10, 1:15, 1:3, letters)
 #> [1] "numeric"
 #> [1] "numeric"
@@ -404,10 +388,9 @@ maxlen(mode.use="character", 1:10, 1:15, 1:3, letters)
 
 There are many practical situations requiring the conversion of mathematical expressions into character strings (text) or, conversely, requiring the conversion of text into mathematical expressions. The tools (functions) provided in R for achieving such conversions are summarized in Figure \@ref(fig:expression).
 
-<div class="figure">
-<img src="pics/expressions.jpg" alt="Converting text into mathematical expression or mathematical expressions into text." width="80%" />
-<p class="caption">(\#fig:expression)Converting text into mathematical expression or mathematical expressions into text.</p>
-</div>
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{pics/expressions} \caption{Converting text into mathematical expression or mathematical expressions into text.}(\#fig:expression)
+\end{figure}
 
 * Task:  write an R function that will plot two vectors using as axis labels the names of the objects passed as arguments to the function. 
 
@@ -586,18 +569,15 @@ getAnywhere('diag')
 #> 2 differing objects matching 'diag' were found
 #> in the following places
 #>   package:base
-#>   namespace:base
 #>   namespace:Matrix
+#>   namespace:base
 #> Use [] to view one of them
-```
-
-``` r
 getAnywhere('diag<-')
 #> 2 differing objects matching 'diag<-' were found
 #> in the following places
 #>   package:base
-#>   namespace:base
 #>   namespace:Matrix
+#>   namespace:base
 #> Use [] to view one of them
 ```
 
@@ -636,14 +616,8 @@ choice <- function(method=c("PCA","CVA","CA","NONLIN"))
    { match.arg(method)  }
 choice()
 #> [1] "PCA"
-```
-
-``` r
 choice("CVA")
 #> [1] "CVA"
-```
-
-``` r
 choice("xx")
 #> Error in match.arg(method): 'arg' should be one of "PCA", "CVA", "CA", "NONLIN"
 ```

@@ -7,7 +7,7 @@
 <title>Chapter 7 Writing functions in R | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
 <meta name="description" content="Although we have already written various functions in R, in this chapter the writing of R functions will be approached systematically.  7.1 General A good way to learn about functions or to write...">
-<meta name="generator" content="bookdown 0.39 with bs4_book()">
+<meta name="generator" content="bookdown 0.44 with bs4_book()">
 <meta property="og:title" content="Chapter 7 Writing functions in R | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/functions.html">
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -78,7 +78,7 @@
 <li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
 <li><a class="active" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
 <li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
-<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatiing and printing</a></li>
+<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
 <li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
 <li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
 <li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
@@ -100,14 +100,14 @@
 <span class="header-section-number">7.1</span> General<a class="anchor" aria-label="anchor" href="#general-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>A good way to learn about functions or to write a new function is to look at existing ones. As an example consider that we would like to write a function to implement a novel plotting procedure. So we start by taking a look at the existing <code>plot</code> function.</p>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000016c0a74c770&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002a645b23108&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>This is not very helpful so we give the instruction:</p>
-<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/methods.html">methods</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] plot.acf*           plot.data.frame*   </span></span>
 <span><span class="co">#&gt;  [3] plot.decomposed.ts* plot.default       </span></span>
@@ -127,7 +127,7 @@
 <span><span class="co">#&gt; [31] plot.TukeyHSD*     </span></span>
 <span><span class="co">#&gt; see '?methods' for accessing help and source code</span></span></code></pre></div>
 <p>If we decide to take a look at <code>plot.default</code> we can do so by</p>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot.default</span></span>
 <span><span class="co">#&gt; function (x, y = NULL, type = "p", xlim = NULL, ylim = NULL, </span></span>
 <span><span class="co">#&gt;     log = "", main = NULL, sub = NULL, xlab = NULL, ylab = NULL, </span></span>
@@ -174,14 +174,14 @@
 <span><span class="co">#&gt;             ...)</span></span>
 <span><span class="co">#&gt;     invisible()</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000016c0c160bd0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002a645f48d60&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <p>Since our new plotting method is aimed at categorical data we decide rather to take a look at <code>plot.factor</code>. But this is an asterisked function and hence is not visible:</p>
-<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot.factor</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'plot.factor' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; Error: object 'plot.factor' not found</span></span></code></pre></div>
 <p>Asterisked functions can be inspected using the following method:</p>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/getAnywhere.html">getAnywhere</a></span><span class="op">(</span><span class="va">plot.factor</span><span class="op">)</span></span>
 <span><span class="co">#&gt; A single object matching 'plot.factor' was found</span></span>
 <span><span class="co">#&gt; It was found in the following places</span></span>
@@ -213,7 +213,7 @@
 <span><span class="co">#&gt;         boxplot(y ~ x, ...)</span></span>
 <span><span class="co">#&gt;     else NextMethod("plot")</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000016c0c5403c0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002a6479b0538&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>How are default values assigned to arguments of functions?</p></li>
@@ -229,32 +229,32 @@
 <li><p>The function <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> with a single object or a list of objects is useful to interrupt a function at some intermediate stage and return an object or a list of objects at that particular stage. This is usually done when a function is under development.</p></li>
 <li><p>Sometimes there is no meaningful value to return e.g. when a function is written primarily to produce some plot. In cases like this the function <code><a href="https://rdrr.io/r/base/invisible.html">invisible()</a></code> can be used as the last statement of the function. As an example of the usage of <code><a href="https://rdrr.io/r/base/invisible.html">invisible()</a></code> give the following instructions:</p></li>
 </ol>
-<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="07-functions_files/figure-html/invisibleExamples-1.png" width="672"></div>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $stats</span></span>
 <span><span class="co">#&gt;             [,1]</span></span>
-<span><span class="co">#&gt; [1,] -1.73424561</span></span>
-<span><span class="co">#&gt; [2,] -0.51209863</span></span>
-<span><span class="co">#&gt; [3,]  0.08149396</span></span>
-<span><span class="co">#&gt; [4,]  0.68576831</span></span>
-<span><span class="co">#&gt; [5,]  2.19638827</span></span>
+<span><span class="co">#&gt; [1,] -2.22365138</span></span>
+<span><span class="co">#&gt; [2,] -0.70645289</span></span>
+<span><span class="co">#&gt; [3,] -0.03704162</span></span>
+<span><span class="co">#&gt; [4,]  0.70074177</span></span>
+<span><span class="co">#&gt; [5,]  1.73666031</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $conf</span></span>
 <span><span class="co">#&gt;            [,1]</span></span>
-<span><span class="co">#&gt; [1,] -0.1077690</span></span>
-<span><span class="co">#&gt; [2,]  0.2707569</span></span>
+<span><span class="co">#&gt; [1,] -0.2593784</span></span>
+<span><span class="co">#&gt; [2,]  0.1852951</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $out</span></span>
-<span><span class="co">#&gt; numeric(0)</span></span>
+<span><span class="co">#&gt; [1] 2.945241 2.861065</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group</span></span>
-<span><span class="co">#&gt; numeric(0)</span></span>
+<span><span class="co">#&gt; [1] 1 1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $names</span></span>
 <span><span class="co">#&gt; [1] "1"</span></span></code></pre></div>
@@ -274,7 +274,7 @@
 <ol style="list-style-type: lower-alpha">
 <li>Write the following function:</li>
 </ol>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">where</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">cond</span><span class="op">)</span></span>
 <span><span class="op">{</span> <span class="co"># Argument cond must evaluate to a logical value</span></span>
 <span>     <span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">is.matrix</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
@@ -294,30 +294,28 @@
 <ol style="list-style-type: lower-alpha">
 <li><p>What happens if an R object is given the same name as an existing object?</p></li>
 <li><p>Discuss the usages of the functions <code><a href="https://rdrr.io/r/utils/apropos.html">apropos()</a></code>, <code><a href="https://rdrr.io/r/base/conflicts.html">conflicts()</a></code>, <code><a href="https://rdrr.io/r/utils/apropos.html">find()</a></code> and <code><a href="https://rdrr.io/r/base/match.html">match()</a></code> for the naming of objects.</p></li>
-<li><p>Remember that when a function is called the R evaluator first looks in the <em><span style="color:#3399FF">global environment</span></em> for a function with this name and subsequently in each of the attached packages or date bases in the order shown by <code><a href="https://rdrr.io/r/base/search.html">search()</a></code>. The evaluator generally stops searching when the name is found for the first time. If two attached packages have functions with the same name one of them will <em><span style="color:#FF9966">mask</span></em> the object in the other. For example, the function <code><a href="https://rdrr.io/pkg/gam/man/gam.html">gam()</a></code> exists in two packages: <code>gam</code> and <code>mgcv</code>. If both were attached the command</p></li>
+<li><p>Remember that when a function is called the R evaluator first looks in the <em><span style="color:#3399FF">global environment</span></em> for a function with this name and subsequently in each of the attached packages or date bases in the order shown by <code><a href="https://rdrr.io/r/base/search.html">search()</a></code>. The evaluator generally stops searching when the name is found for the first time. If two attached packages have functions with the same name one of them will <em><span style="color:#FF9966">mask</span></em> the object in the other. For example, the function <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam()</a></code> exists in two packages: <code>gam</code> and <code>mgcv</code>. If both were attached the command</p></li>
 </ol>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va">mgcv</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: nlme</span></span>
-<span><span class="co">#&gt; This is mgcv 1.9-1. For overview type 'help("mgcv-package")'.</span></span></code></pre></div>
-<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va">gam</span><span class="op">)</span></span>
+<span><span class="co">#&gt; This is mgcv 1.9-3. For overview type 'help("mgcv-package")'.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va">gam</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: splines</span></span>
 <span><span class="co">#&gt; Loading required package: foreach</span></span>
-<span><span class="co">#&gt; Loaded gam 1.22-3</span></span>
+<span><span class="co">#&gt; Loaded gam 1.22-6</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Attaching package: 'gam'</span></span>
 <span><span class="co">#&gt; The following objects are masked from 'package:mgcv':</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     gam, gam.control, gam.fit, s</span></span></code></pre></div>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/apropos.html">find</a></span><span class="op">(</span><span class="st">"gam"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     gam, gam.control, gam.fit, s</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/apropos.html">find</a></span><span class="op">(</span><span class="st">"gam"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "package:gam"  "package:mgcv"</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>will return both version.</p>
 </div>
 <ol start="4" style="list-style-type: lower-alpha">
-<li><p>The operator <code>::</code> can be used to access the intended version of <code><a href="https://rdrr.io/pkg/gam/man/gam.html">gam()</a></code> by using the call <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">mgcv::gam()</a></code> or <code><a href="https://rdrr.io/pkg/gam/man/gam.html">gam::gam()</a></code>.</p></li>
+<li><p>The operator <code>::</code> can be used to access the intended version of <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam()</a></code> by using the call <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">mgcv::gam()</a></code> or <code><a href="https://rdrr.io/pkg/gam/man/gam.html">gam::gam()</a></code>.</p></li>
 <li><p>When writing R packages the <em><span style="color:#3399FF">namespace</span></em> of the package provides another mechanism for ensuring that the correct version of a function is used. Note in this regard that the operator <code>:::</code> can be used to access objects that are not exported.</p></li>
 </ol>
 </div>
@@ -347,7 +345,7 @@
 <li><p>What is understood by the scope of an expression or function?</p></li>
 </ol>
 <p>The symbols which occur in the body of a function can be divided into three classes: <em><span style="color:#FF9966">formal parameters</span></em>, <em><span style="color:#FF9966">local variables</span></em> and <em><span style="color:#FF9966">free variables</span></em>. The formal parameters of a function are those appearing within the parentheses denoting the argument list of the function. Their values are determined by the process of <em><span style="color:#FF9966">binding</span></em> the actual function arguments to the formal parameters. Local variables are created by the evaluation of expressions in the body of the functions. Variables which are neither formal parameters nor local variables are called free variables. Free variables become local variables when they are assigned to. Consider the following function definition.</p>
-<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">datvec</span><span class="op">)</span> <span class="op">{</span></span>
 <span>          <span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">datvec</span><span class="op">)</span></span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
@@ -374,25 +372,25 @@
 <ol style="list-style-type: lower-alpha">
 <li>Consider the following situation: You want to write a function for a complex task. At a particular stage a graph of some intermediate results is to be constructed. This requires the calling function to contain a call to the hist function. Here is an example of a chunk of code for executing this task:</li>
 </ol>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">complexfun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">datmat</span>,<span class="va">colgraph</span><span class="op">)</span></span>
 <span>    <span class="op">{</span> <span class="va">datmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">datmat</span><span class="op">)</span> </span>
 <span>       <span class="co"># Several lines of complex code here </span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">datmat</span>, col <span class="op">=</span> <span class="va">colgraph</span><span class="op">)</span>              <span class="op">}</span></span></code></pre></div>
 <p>A call like <code>complexfun(rnorm(1000), 'yellow')</code> can now be executed for the desired result. The problem is that the hist function has several arguments that you would like to be able to access by passing suitable actual values to them through the calling function <code>complexfun</code>. Instead of having to resort to provide a complete set of arguments in the argument list of <code>complexfun</code> R provides a neat way of addressing this situation: The argument <code>...</code> which acts like any other formal argument except that it can represent a variable number of arguments. To see how the argument <code>...</code> works change the above function to:</p>
-<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">complexfun2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">datmat</span>, <span class="va">...</span> <span class="op">)</span></span>
 <span> <span class="op">{</span> <span class="va">datmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">datmat</span><span class="op">)</span> </span>
 <span>       <span class="co"># Several lines of complex code here </span></span>
 <span>   <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">datmat</span>, <span class="va">...</span> <span class="op">)</span>    <span class="op">}</span></span></code></pre></div>
 <p>Arguments represented by argument <code>...</code> in the argument list of hist are passed to hist through the argument <code>...</code> appearing in the arguments list of function <code>complexfun2</code>:</p>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">complexfun2</span><span class="op">(</span>datmat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">'yellow'</span>, </span>
 <span>        probability <span class="op">=</span> <span class="cn">TRUE</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Write a function that will retrieve the maximum length of any of an unspecified number of arguments of a specified mode. This is another example of the use of the <code>...</code> argument:</li>
 </ol>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">maxlen</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">mode.use</span><span class="op">=</span><span class="st">"numeric"</span>, <span class="va">...</span><span class="op">)</span> </span>
 <span>  <span class="op">{</span> <span class="va">my.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
 <span>    <span class="va">out</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
@@ -401,28 +399,25 @@
 <span>    <span class="va">out</span></span>
 <span>  <span class="op">}</span></span></code></pre></div>
 <p>Note that the named argument must be specified as such in the function call:</p>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">maxlen</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">letters</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "character"</span></span>
-<span><span class="co">#&gt; [1] 0</span></span></code></pre></div>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">maxlen</span><span class="op">(</span>mode.use<span class="op">=</span><span class="st">"numeric"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">letters</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0</span></span>
+<span><span class="fu">maxlen</span><span class="op">(</span>mode.use<span class="op">=</span><span class="st">"numeric"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">letters</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "character"</span></span>
-<span><span class="co">#&gt; [1] 0</span></span></code></pre></div>
-<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">maxlen</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">letters</span>, mode.use<span class="op">=</span><span class="st">"character"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0</span></span>
+<span><span class="fu">maxlen</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">letters</span>, mode.use<span class="op">=</span><span class="st">"character"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "character"</span></span>
-<span><span class="co">#&gt; [1] 0</span></span></code></pre></div>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">maxlen</span><span class="op">(</span>mode.use<span class="op">=</span><span class="st">"character"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">letters</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0</span></span>
+<span><span class="fu">maxlen</span><span class="op">(</span>mode.use<span class="op">=</span><span class="st">"character"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">letters</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span>
@@ -444,7 +439,7 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <li>Task: write an R function that will plot two vectors using as axis labels the names of the objects passed as arguments to the function.</li>
 </ul>
 <p>It follows from Figure <a href="functions.html#fig:expression">7.1</a> that the function <code><a href="https://rdrr.io/r/base/substitute.html">substitute()</a></code> takes an expression as argument and returns it unevaluated. In order to evaluate the return value of <code><a href="https://rdrr.io/r/base/substitute.html">substitute()</a></code> the function <code><a href="https://rdrr.io/r/base/eval.html">eval()</a></code> must be used. The function <code><a href="https://rdrr.io/r/base/deparse.html">deparse()</a></code> takes as argument an unevaluated expression and converts it into a character string. Now we are ready to write the following function:</p>
-<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">labplot</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span> </span>
 <span><span class="op">{</span> <span class="va">xname</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html">substitute</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span> <span class="va">yname</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/deparse.html">deparse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substitute.html">substitute</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
@@ -461,7 +456,7 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <span class="header-section-number">7.9</span> Operators<a class="anchor" aria-label="anchor" href="#operators-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Execute the following instruction</p>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="st">'package:base'</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">31</span><span class="op">]</span></span>
 <span><span class="co">#&gt;  [1] "-"                 "-.Date"           </span></span>
 <span><span class="co">#&gt;  [3] "-.POSIXt"          "!"                </span></span>
@@ -490,7 +485,7 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <span class="header-section-number">7.10</span> Replacement functions<a class="anchor" aria-label="anchor" href="#replacement-functions"><i class="fas fa-link"></i></a>
 </h2>
 <p>Execute the following instruction</p>
-<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="st">'package:base'</span><span class="op">)</span><span class="op">[</span><span class="fl">300</span><span class="op">:</span><span class="fl">400</span><span class="op">]</span></span>
 <span><span class="co">#&gt;   [1] "c.factor"                  </span></span>
 <span><span class="co">#&gt;   [2] "c.noquote"                 </span></span>
@@ -594,22 +589,21 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <span><span class="co">#&gt; [100] "dir"                       </span></span>
 <span><span class="co">#&gt; [101] "dir.create"</span></span></code></pre></div>
 <p>and notice that some object names appear in pairs with the name of one member of the pair ending in <code>&lt;-</code>. Examples are <code>dim&lt;-</code>, <code>levels&lt;-</code>, <code>diag&lt;-</code>, <code>names&lt;-</code>, <code>rownames&lt;-</code>, <code>colnames&lt;-</code> and <code>dimnames&lt;-</code>. Functions having names ending in <code>&lt;-</code> are called <em><span style="color:#FF9966">replacement</span></em> functions. A replacement function appears on the left-hand side of the assignment symbol using the name without the <code>&lt;-</code> to replace contents of the objects appearing in its argument list by the contents of the object appearing at the right-hand side of the assignment symbol e.g.:</p>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, ncol <span class="op">=</span> <span class="fl">3</span>, dimnames <span class="op">=</span> </span>
 <span>               <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span> <span class="op">(</span><span class="st">"Row"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span> <span class="op">(</span><span class="st">"X"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="co"># Function rownames in action.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="co"># Replacement function 'rownames&lt;-' in action.</span></span></code></pre></div>
 <p>How can the object <code>diag&lt;-</code> be inspected and is it different from the object <code>diag</code>? Compare the result of the following function calls:</p>
-<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/getAnywhere.html">getAnywhere</a></span><span class="op">(</span><span class="st">'diag'</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 2 differing objects matching 'diag' were found</span></span>
 <span><span class="co">#&gt; in the following places</span></span>
 <span><span class="co">#&gt;   package:base</span></span>
 <span><span class="co">#&gt;   namespace:base</span></span>
 <span><span class="co">#&gt;   namespace:Matrix</span></span>
-<span><span class="co">#&gt; Use [] to view one of them</span></span></code></pre></div>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/getAnywhere.html">getAnywhere</a></span><span class="op">(</span><span class="st">'diag&lt;-'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Use [] to view one of them</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/getAnywhere.html">getAnywhere</a></span><span class="op">(</span><span class="st">'diag&lt;-'</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 2 differing objects matching 'diag&lt;-' were found</span></span>
 <span><span class="co">#&gt; in the following places</span></span>
 <span><span class="co">#&gt;   package:base</span></span>
@@ -625,7 +619,7 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <li><p>usually a companion function exists having the same name without the <code>&lt;-</code>.</p></li>
 </ol>
 <p>As an example, write a replacement function <code>undefined()</code> that will replace missing values in a data object with the values on its right-hand side:</p>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="st">"undefined&lt;-"</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">codes</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">value</span><span class="op">)</span> </span>
 <span>  <span class="op">{</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">codes</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">codes</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
 <span>    <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
@@ -640,16 +634,14 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <ol style="list-style-type: lower-alpha">
 <li>The function <code><a href="https://rdrr.io/r/base/match.arg.html">match.arg()</a></code> is useful for selecting a default value from one of a set of possible values. Consider the following example:</li>
 </ol>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">choice</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">method</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"PCA"</span>,<span class="st">"CVA"</span>,<span class="st">"CA"</span>,<span class="st">"NONLIN"</span><span class="op">)</span><span class="op">)</span></span>
 <span>   <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/match.arg.html">match.arg</a></span><span class="op">(</span><span class="va">method</span><span class="op">)</span>  <span class="op">}</span></span>
 <span><span class="fu">choice</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "PCA"</span></span></code></pre></div>
-<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">choice</span><span class="op">(</span><span class="st">"CVA"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "CVA"</span></span></code></pre></div>
-<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">choice</span><span class="op">(</span><span class="st">"xx"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "PCA"</span></span>
+<span><span class="fu">choice</span><span class="op">(</span><span class="st">"CVA"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "CVA"</span></span>
+<span><span class="fu">choice</span><span class="op">(</span><span class="st">"xx"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in match.arg(method): 'arg' should be one of "PCA", "CVA", "CA", "NONLIN"</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Functions in the R language are governed by a principle known as <em><span style="color:#FF9966">lazy evaluation</span></em> which means that a default value is not evaluated until it is actually needed within the function body. As a result of lazy evaluation it might happen in a function call that some default values are never evaluated.</li>
@@ -661,7 +653,7 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 </h2>
 <p>Compiled code can run in some instances much faster than corresponding code in R. The functions <code><a href="https://rdrr.io/r/base/Foreign.html">.C()</a></code> and <code><a href="https://rdrr.io/r/base/Foreign.html">.Fortran()</a></code> allow users to make use of programs written in <em><span style="color:#3399FF">C</span></em> or <em><span style="color:#3399FF">Fortran</span></em> in their R functions. How this is done is illustrated below. Study this example carefully and consult the help files for more details when needed.
 First an R function is created to compute the matrix product of two matrices:</p>
-<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">matmult</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">A</span>,<span class="va">B</span><span class="op">)</span> </span>
 <span> <span class="op">{</span> <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"A and B not conformable with                 </span></span>
 <span><span class="st">                       respect to matrix multiplication \n"</span><span class="op">)</span></span>
@@ -674,27 +666,27 @@ First an R function is created to compute the matrix product of two matrices:</p
 <span>  <span class="va">Cmat</span></span>
 <span>  <span class="op">}</span></span></code></pre></div>
 <p>Next a Fortran subroutine is written for performing matrix multiplication. The Fortran code for this subroutine is given below:</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb313-1"><a href="functions.html#cb313-1" tabindex="-1"></a>      SUBROUTINE MATM (A1, A2B1, B2, A, B, OUT)</span>
-<span id="cb313-2"><a href="functions.html#cb313-2" tabindex="-1"></a>C     This subroutine performs matrix multiplication.</span>
-<span id="cb313-3"><a href="functions.html#cb313-3" tabindex="-1"></a>C     This should be improved with optimized code (such as </span>
-<span id="cb313-4"><a href="functions.html#cb313-4" tabindex="-1"></a>C     from Linpack, etc.)</span>
-<span id="cb313-5"><a href="functions.html#cb313-5" tabindex="-1"></a>      IMPLICIT NONE</span>
-<span id="cb313-6"><a href="functions.html#cb313-6" tabindex="-1"></a>      INTEGER A1, A2B1, B2</span>
-<span id="cb313-7"><a href="functions.html#cb313-7" tabindex="-1"></a>      DOUBLE PRECISION A(A1,A2B1), B(A2B1,B2), OUT(A1,B2)</span>
-<span id="cb313-8"><a href="functions.html#cb313-8" tabindex="-1"></a>C     DUMMIES</span>
-<span id="cb313-9"><a href="functions.html#cb313-9" tabindex="-1"></a>      INTEGER I, J, K</span>
-<span id="cb313-10"><a href="functions.html#cb313-10" tabindex="-1"></a>      DO 300,J=1,B2</span>
-<span id="cb313-11"><a href="functions.html#cb313-11" tabindex="-1"></a>        DO 200,I=1,A1</span>
-<span id="cb313-12"><a href="functions.html#cb313-12" tabindex="-1"></a>          OUT(I,J)=0</span>
-<span id="cb313-13"><a href="functions.html#cb313-13" tabindex="-1"></a>          DO 100,K=1,A2B1</span>
-<span id="cb313-14"><a href="functions.html#cb313-14" tabindex="-1"></a>            OUT(I,J)=OUT(I,J)+A(I,K)*B(K,J)</span>
-<span id="cb313-15"><a href="functions.html#cb313-15" tabindex="-1"></a>100   CONTINUE</span>
-<span id="cb313-16"><a href="functions.html#cb313-16" tabindex="-1"></a>200   CONTINUE</span>
-<span id="cb313-17"><a href="functions.html#cb313-17" tabindex="-1"></a>300   CONTINUE</span>
-<span id="cb313-18"><a href="functions.html#cb313-18" tabindex="-1"></a>      END</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb184-1"><a href="functions.html#cb184-1" tabindex="-1"></a>      SUBROUTINE MATM (A1, A2B1, B2, A, B, OUT)</span>
+<span id="cb184-2"><a href="functions.html#cb184-2" tabindex="-1"></a>C     This subroutine performs matrix multiplication.</span>
+<span id="cb184-3"><a href="functions.html#cb184-3" tabindex="-1"></a>C     This should be improved with optimized code (such as </span>
+<span id="cb184-4"><a href="functions.html#cb184-4" tabindex="-1"></a>C     from Linpack, etc.)</span>
+<span id="cb184-5"><a href="functions.html#cb184-5" tabindex="-1"></a>      IMPLICIT NONE</span>
+<span id="cb184-6"><a href="functions.html#cb184-6" tabindex="-1"></a>      INTEGER A1, A2B1, B2</span>
+<span id="cb184-7"><a href="functions.html#cb184-7" tabindex="-1"></a>      DOUBLE PRECISION A(A1,A2B1), B(A2B1,B2), OUT(A1,B2)</span>
+<span id="cb184-8"><a href="functions.html#cb184-8" tabindex="-1"></a>C     DUMMIES</span>
+<span id="cb184-9"><a href="functions.html#cb184-9" tabindex="-1"></a>      INTEGER I, J, K</span>
+<span id="cb184-10"><a href="functions.html#cb184-10" tabindex="-1"></a>      DO 300,J=1,B2</span>
+<span id="cb184-11"><a href="functions.html#cb184-11" tabindex="-1"></a>        DO 200,I=1,A1</span>
+<span id="cb184-12"><a href="functions.html#cb184-12" tabindex="-1"></a>          OUT(I,J)=0</span>
+<span id="cb184-13"><a href="functions.html#cb184-13" tabindex="-1"></a>          DO 100,K=1,A2B1</span>
+<span id="cb184-14"><a href="functions.html#cb184-14" tabindex="-1"></a>            OUT(I,J)=OUT(I,J)+A(I,K)*B(K,J)</span>
+<span id="cb184-15"><a href="functions.html#cb184-15" tabindex="-1"></a>100   CONTINUE</span>
+<span id="cb184-16"><a href="functions.html#cb184-16" tabindex="-1"></a>200   CONTINUE</span>
+<span id="cb184-17"><a href="functions.html#cb184-17" tabindex="-1"></a>300   CONTINUE</span>
+<span id="cb184-18"><a href="functions.html#cb184-18" tabindex="-1"></a>      END</span></code></pre></div>
 <p>Next a dynamic link library (<em><span style="color:#3399FF">.dll</span></em>) is made from the Fortran subroutine. The easiest way to do this is to use the command <code>R CMD SHLIB matm.f</code> from the <em><span style="color:#3399FF">Command Prompt</span></em>. The dll is available as <code>C:\matm64.dll</code>.</p>
 <p>Now an R function is to be written where the Fortran code is called:</p>
-<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">matmult.Fortran</span> <span class="op">&lt;-</span><span class="kw">function</span> <span class="op">(</span><span class="va">A</span>,<span class="va">B</span><span class="op">)</span> </span>
 <span> <span class="op">{</span> <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"A and B not conformable with </span></span>
 <span><span class="st">                       respect to matrix multiplication \n"</span><span class="op">)</span></span>
@@ -709,7 +701,7 @@ First an R function is created to compute the matrix product of two matrices:</p
 <span>                          <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">q</span><span class="op">)</span>, <span class="va">A</span>, <span class="va">B</span>, matprod<span class="op">=</span><span class="va">Cmat</span><span class="op">)</span></span>
 <span>    <span class="va">value</span><span class="op">$</span><span class="va">matprod</span>        <span class="op">}</span></span></code></pre></div>
 <p>In order to use <code>matmult.Fortran()</code> the correct dll must be loaded into the current folder using the function <code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>:</p>
-<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dynload.html">dyn.load</a></span><span class="op">(</span><span class="st">"full path\\matm64.dll"</span><span class="op">)</span></span></code></pre></div>
 <p>Compare the answers and execution time of <code>matmult()</code> and <code>matmult.Fortran()</code> for different sized matrices.</p>
 <p>The <code>Rcpp</code> package has made the inclusion of <em><span style="color:#3399FF">C++</span></em> code into R considerably easier and more robust. For a detailed description of the package see <a href="https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf">Rcpp vignette intro</a>.</p>

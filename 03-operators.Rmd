@@ -311,7 +311,7 @@ Table: (\#tab:MatrixFunc) Functions for matrices.
 
 (i)	The function `solve (A, b)` is used for solving the equation $\mathbf{Ax=b}$ for $\mathbf{x}$, where $\mathbf{b}$ can be either a vector or a matrix with $\mathbf{A}$ being a square matrix. If argument `b` is missing it is taken to be the identity matrix so that the inverse of argument `A` is returned.
 
-(j)	The function `svd()` returns the singular value decomposition of its matrix argument $\mathbf{A=UDV}'$. It returns a list with three components: `u` the orthogonal or orthonormal matrix $\mathbf{U}$; `d` the vector containing the ordered singular values of the rectangular matrix $\mathbf{A}$; `v` the orthogonal or orthonormal matrix $\mathbf{V}.
+(j)	The function `svd()` returns the singular value decomposition of its matrix argument $\mathbf{A=UDV}'$. It returns a list with three components: `u` the orthogonal or orthonormal matrix $\mathbf{U}$; `d` the vector containing the ordered singular values of the rectangular matrix $\mathbf{A}$; `v` the orthogonal or orthonormal matrix $\mathbf{V}$.
 
 (k)	The function `qr()` performs a QR decomposition of any arbitrary matrix $\mathbf{M=QR}$ with $\mathbf{Q}$ and orthogonal matrix and $\mathbf{R}$ an upper triangular matrix. Study the help file of `qr()` for full details and usages of the function. Note that the matrices $\mathbf{Q}$ and $\mathbf{R}$ can be obtained directly by calling `qr.Q(qr())` and `qr.R(qr())`, respectively.
 

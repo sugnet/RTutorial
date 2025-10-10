@@ -55,14 +55,14 @@ Note the use of the argument `pos`, " " or ' ' are used for characters. Be caref
 
 ``` r
 c("u",'v',"'w'",""x"",'"y"',''z'') -> cc
-#> Error: <text>:1:19: unexpected symbol
+#> Error in parse(text = input): <text>:1:19: unexpected symbol
 #> 1: c("u",'v',"'w'",""x
 #>                       ^
 ```
 
 ``` r
 c("u",'v',"'w'",'"x"','"y"',''z'') -> cc
-#> Error: <text>:1:31: unexpected symbol
+#> Error in parse(text = input): <text>:1:31: unexpected symbol
 #> 1: c("u",'v',"'w'",'"x"','"y"',''z
 #>                                   ^
 ```
@@ -80,48 +80,24 @@ cc
 ``` r
 objects()
 #> [1] "aa" "Aa" "bb" "cc" "yy"
-```
-
-``` r
 aa
-#>  [1]  1.82473607  0.65650857  0.26683890  0.15230972
-#>  [5]  0.45121360 -1.55932099 -0.02875325  0.03716891
-#>  [9]  0.27740598 -0.70363688
-```
-
-``` r
+#>  [1] -0.23011972  0.43608710 -0.60065975  0.36947189
+#>  [5] -1.31056587  3.25775913 -0.90372152  0.53345207
+#>  [9]  0.06807774  0.43262019
 bb
 #> [1] "a" "b" "c"
-```
-
-``` r
 objects()[3]
 #> [1] "bb"
-```
-
-``` r
 parse(text=objects()[3])
 #> expression(bb)
-```
-
-``` r
 eval(parse(text=objects()[3]))
 #> [1] "a" "b" "c"
-```
-
-``` r
 rm(a,b)
 #> Warning in rm(a, b): object 'a' not found
 #> Warning in rm(a, b): object 'b' not found
-```
-
-``` r
 rm(aa,bb)
 objects()
 #> [1] "Aa" "cc" "yy"
-```
-
-``` r
 rm("cc")
 objects()
 #> [1] "Aa" "yy"
@@ -177,46 +153,22 @@ find("kronecker")
 a <- 1:10
 class(a)
 #> [1] "integer"
-```
-
-``` r
 b <- factor(c("a","b","c"))
 class(b)
 #> [1] "factor"
-```
-
-``` r
 b
 #> [1] a b c
 #> Levels: a b c
-```
-
-``` r
 mode(a)
 #> [1] "numeric"
-```
-
-``` r
 mode(b)
 #> [1] "numeric"
-```
-
-``` r
 length(a)
 #> [1] 10
-```
-
-``` r
 length(b)
 #> [1] 3
-```
-
-``` r
 dim(a)
 #> NULL
-```
-
-``` r
 mat <- matrix(1:12,nrow=4)
 mat
 #>      [,1] [,2] [,3]
@@ -224,25 +176,13 @@ mat
 #> [2,]    2    6   10
 #> [3,]    3    7   11
 #> [4,]    4    8   12
-```
-
-``` r
 dim(mat)
 #> [1] 4 3
-```
-
-``` r
 mode(mat)
 #> [1] "numeric"
-```
-
-``` r
 logic <- c(TRUE,TRUE,FALSE,TRUE)
 mode(logic)
 #> [1] "logical"
-```
-
-``` r
 class(logic)
 #> [1] "logical"
 ```
@@ -261,29 +201,14 @@ x <- 5
 y <- 5L
 typeof(x)
 #> [1] "double"
-```
-
-``` r
 typeof(y)
 #> [1] "integer"
-```
-
-``` r
 class(x)
 #> [1] "numeric"
-```
-
-``` r
 class(y)
 #> [1] "integer"
-```
-
-``` r
 mode(x)
 #> [1] "numeric"
-```
-
-``` r
 mode(y)
 #> [1] "numeric"
 ```
@@ -385,19 +310,10 @@ Execute the following function calls and explain the output
 ``` r
 Demofunc(3, 2, 5)
 #> [1] 0.2
-```
-
-``` r
 Demofunc(2,5)
 #> Error in Demofunc(2, 5): argument "k" is missing, with no default
-```
-
-``` r
 Demofunc(m = 2, k = 5)
 #>  [1] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6
-```
-
-``` r
 Demofunc(m = 2, k = 5, vec = 1:100)
 #>   [1] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6  1.8
 #>  [12]  2.0  2.2  2.4  2.6  2.8  3.0  3.2  3.4  3.6  3.8  4.0
@@ -594,28 +510,19 @@ parent.env(.GlobalEnv)
 #> attr(,"name")
 #> [1] "package:stats"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.2/library/stats"
-```
-
-``` r
+#> [1] "C:/Program Files/R/R-4.5.1/library/stats"
 parent.env(parent.env(.GlobalEnv))
 #> <environment: package:graphics>
 #> attr(,"name")
 #> [1] "package:graphics"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.2/library/graphics"
-```
-
-``` r
+#> [1] "C:/Program Files/R/R-4.5.1/library/graphics"
 parent.env(parent.env(parent.env(.GlobalEnv)))
 #> <environment: package:grDevices>
 #> attr(,"name")
 #> [1] "package:grDevices"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.4.2/library/grDevices"
-```
-
-``` r
+#> [1] "C:/Program Files/R/R-4.5.1/library/grDevices"
 environmentName(parent.env(parent.env(parent.env(.GlobalEnv))))
 #> [1] "package:grDevices"
 ```
@@ -633,9 +540,6 @@ Similarly, when an *<span style="color:#FF9966">expression</span>* is evaluated 
 ``` r
 conflicts()
 #> [1] "body<-"    "kronecker" "plot"
-```
-
-``` r
 conflicts(detail=TRUE)
 #> $`package:graphics`
 #> [1] "plot"
@@ -645,44 +549,20 @@ conflicts(detail=TRUE)
 #> 
 #> $`package:base`
 #> [1] "body<-"    "kronecker" "plot"
-```
-
-``` r
 exists("kronecker")
 #> [1] TRUE
-```
-
-``` r
 exists("kronecker", where = 1)
 #> [1] TRUE
-```
-
-``` r
 exists("kronecker", where = 1, inherits = FALSE)
 #> [1] FALSE
-```
-
-``` r
 exists("kronecker", where = 2)
 #> [1] TRUE
-```
-
-``` r
 exists("kronecker", where = 2, inherits = FALSE)
 #> [1] FALSE
-```
-
-``` r
 exists("kronecker", where = 7, inherits = FALSE)
 #> [1] TRUE
-```
-
-``` r
 exists("kronecker", where = 8, inherits = FALSE)
 #> [1] FALSE
-```
-
-``` r
 exists("kronecker", where = 9, inherits = FALSE)
 #> [1] TRUE
 ```
@@ -709,35 +589,20 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x0000014f5247d3c0>
+#> <bytecode: 0x000002c1b064a990>
 #> <environment: namespace:base>
-```
-
-``` r
 mean <- mean (rnorm (1000))
 get (mean)
 #> Error in get(mean): invalid first argument
-```
-
-``` r
 get ("mean") 
-#> [1] -0.03186329
-```
-
-``` r
+#> [1] 0.02333831
 get ("mean", pos = 1) 
-#> [1] -0.03186329
-```
-
-``` r
+#> [1] 0.02333831
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x0000014f502c2158>
+#> <bytecode: 0x000002c1a7f17530>
 #> <environment: namespace:base>
-```
-
-``` r
 rm (mean)
 ```
 
@@ -747,9 +612,6 @@ rm (mean)
 ``` r
 with (beaver1, mean(time))
 #> [1] 1312.018
-```
-
-``` r
 with (beaver2, mean(time))
 #> [1] 1446.2
 ```
@@ -770,7 +632,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x0000014f502c2158>
+#> <bytecode: 0x000002c1a7f17530>
 #> <environment: namespace:base>
 ```
 
@@ -781,15 +643,12 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x0000014f502c2158>
+#> <bytecode: 0x000002c1a7f17530>
 #> <environment: namespace:base>
-```
-
-``` r
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x0000014f502c2158>
+#> <bytecode: 0x000002c1a7f17530>
 #> <environment: namespace:base>
 ```
 
@@ -845,9 +704,6 @@ sum (c (TRUE, FALSE, TRUE, TRUE, FALSE))
 ``` r
 10/0
 #> [1] Inf
-```
-
-``` r
 0/0
 #> [1] NaN
 ```
@@ -934,9 +790,6 @@ head(cars)
 #> 4     7   22
 #> 5     8   16
 #> 6     9   10
-```
-
-``` r
 summary(cars)
 #>      speed           dist       
 #>  Min.   : 4.0   Min.   :  2.00  
@@ -945,9 +798,6 @@ summary(cars)
 #>  Mean   :15.4   Mean   : 42.98  
 #>  3rd Qu.:19.0   3rd Qu.: 56.00  
 #>  Max.   :25.0   Max.   :120.00
-```
-
-``` r
 str(cars)
 #> 'data.frame':	50 obs. of  2 variables:
 #>  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...
@@ -960,44 +810,20 @@ There are many more R functions provided for getting information of what an R ob
 ``` r
 length(cars) 
 #> [1] 2
-```
-
-``` r
 length(as.matrix(cars))
 #> [1] 100
-```
-
-``` r
 dim(cars)
 #> [1] 50  2
-```
-
-``` r
 is.matrix(cars)
 #> [1] FALSE
-```
-
-``` r
 is.data.frame(cars)
 #> [1] TRUE
-```
-
-``` r
 is.list(cars)
 #> [1] TRUE
-```
-
-``` r
 mode(cars)
 #> [1] "list"
-```
-
-``` r
 class(cars)
 #> [1] "data.frame"
-```
-
-``` r
 levels(cars)
 #> NULL
 ```

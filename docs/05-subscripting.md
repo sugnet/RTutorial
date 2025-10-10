@@ -52,36 +52,22 @@ state.x77[ , "Area"] > 80000
 #>          FALSE           TRUE
 ```
 
-<img src="pics/matrixSubscripting.jpg" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{pics/matrixSubscripting} 
 
 
 ``` r
 x <- c(10, 15, 12, NA, 18, 20)
 is.na (x)
 #> [1] FALSE FALSE FALSE  TRUE FALSE FALSE
-```
-
-``` r
 x[is.na (x)]
 #> [1] NA
-```
-
-``` r
 x[!is.na (x)]
 #> [1] 10 15 12 18 20
-```
-
-``` r
 mean (x)
 #> [1] NA
-```
-
-``` r
 mean (x[!is.na (x)])
 #> [1] 15
-```
-
-``` r
 mean (na.omit (x))
 #> [1] 15
 ```
@@ -111,9 +97,6 @@ In addition to extracting elements, the above subscripting operations can also b
 ``` r
 x
 #> [1] 10 15 12 NA 18 20
-```
-
-``` r
 x[is.na (x)] <- 0
 x
 #> [1] 10 15 12  0 18 20
@@ -168,9 +151,6 @@ testmat.a
 #> [2,]   40   12   37
 #> [3,]   20   14   29
 #> [4,]   34   57   64
-```
-
-``` r
 testmat.b <- matrix (c (17, 40, 20, 34, 21, 12, 14, 57, 
                         78, 37, 29, 64), nrow = 4, byrow = TRUE)
 testmat.b
@@ -189,9 +169,6 @@ Comment on the difference between `testmat.a` and `testmat.b`.
 ``` r
 testmat.a[2,3]   # Two index matrix reference
 #> [1] 37
-```
-
-``` r
 testmat.a[10] 	# One index matrix reference
 #> [1] 37
 ```
@@ -209,14 +186,8 @@ testmat[1:2, c (3, 5)]
 #>      [,1] [,2]
 #> [1,]    3    5
 #> [2,]    8   10
-```
-
-``` r
 testmat[1:2, 3]
 #> [1] 3 8
-```
-
-``` r
 testmat[1:2, 3, drop=FALSE]
 #>      [,1]
 #> [1,]    3
@@ -252,9 +223,6 @@ xmat
 #> [3,]    3    8   13   18   23
 #> [4,]    4    9   14   19   24
 #> [5,]    5   10   15   20   25
-```
-
-``` r
 superdiag.index <- matrix (c (1:4, 2:5), ncol = 2, byrow = FALSE)
 superdiag.values <- xmat[superdiag.index]
 superdiag.values
@@ -274,18 +242,12 @@ subscript.mat
 #> [4,]    1    2
 #> [5,]    2    2
 #> [6,]    3    2
-```
-
-``` r
 xx <- matrix(NA, nrow=3,ncol=2)
 xx 
 #>      [,1] [,2]
 #> [1,]   NA   NA
 #> [2,]   NA   NA
 #> [3,]   NA   NA
-```
-
-``` r
 xx[subscript.mat] <- c(10,12,14,100,120,140)
 xx
 #>      [,1] [,2]
@@ -314,9 +276,6 @@ testmat
 #>  [8,]   36   37   38   39   40
 #>  [9,]   41   42   43   44   45
 #> [10,]   46   47   48   49   50
-```
-
-``` r
 aa <- testmat[testmat < 12]
 aa
 #>  [1]  1  6 11  2  7  3  8  4  9  5 10
@@ -399,40 +358,19 @@ my.list
 #> 
 #> $el4
 #> [1] 12 17 23  9
-```
-
-``` r
 my.list$el2
 #> [1] "a" "b" "c"
-```
-
-``` r
 mode (my.list$el2)
 #> [1] "character"
-```
-
-``` r
 my.list[el2]
-#> Error in eval(expr, envir, enclos): object 'el2' not found
-```
-
-``` r
+#> Error: object 'el2' not found
 my.list["el2"]
 #> $el2
 #> [1] "a" "b" "c"
-```
-
-``` r
 mode (my.list["el2"])
 #> [1] "list"
-```
-
-``` r
 my.list[["el2"]]
 #> [1] "a" "b" "c"
-```
-
-``` r
 mode (my.list[["el2"]])
 #> [1] "character"
 ```
@@ -446,51 +384,24 @@ Note: The above example shows that using the single pair of square brackets for 
 my.list[1]
 #> $el1
 #> [1] 1 2 3 4 5
-```
-
-``` r
 mode (my.list[1])
 #> [1] "list"
-```
-
-``` r
 my.list[[1]]
 #> [1] 1 2 3 4 5
-```
-
-``` r
 mode (my.list[[1]])
 #> [1] "numeric"
-```
-
-``` r
 my.list[3][2,4]
 #> Error in my.list[3][2, 4]: incorrect number of dimensions
-```
-
-``` r
 my.list[[3]][2,4]
 #> [1] 14
-```
-
-``` r
 my.list$el3[2,4]
 #> [1] 14
-```
-
-``` r
 mean (my.list[4])
 #> Warning in mean.default(my.list[4]): argument is not
 #> numeric or logical: returning NA
 #> [1] NA
-```
-
-``` r
 mean (my.list[[4]])
 #> [1] 15.25
-```
-
-``` r
 mean (my.list$el4)
 #> [1] 15.25
 ```
@@ -520,24 +431,12 @@ my.dataframe <- data.frame ( c(17, 40, 20, 34, 21, 12, 14, 57,
 ``` r
 class(my.matrix)
 #> [1] "matrix" "array"
-```
-
-``` r
 class(my.dataframe)
 #> [1] "data.frame"
-```
-
-``` r
 is.list(data.frame)
 #> [1] FALSE
-```
-
-``` r
 mode(my.matrix)
 #> [1] "numeric"
-```
-
-``` r
 mode(data.frame)
 #> [1] "function"
 ```
@@ -555,9 +454,6 @@ my.dataframe.2
 #> 2  b  9  TRUE
 #> 3  c 23 FALSE
 #> 4  d 17  TRUE
-```
-
-``` r
 my.dataframe.2[ ,1:2]
 #>   C1 C2
 #> 1  a  5
@@ -634,9 +530,6 @@ my.list
 #> 
 #> $el4
 #> [1] 12 17 23  9
-```
-
-``` r
 unlist(my.list)
 #>  el11  el12  el13  el14  el15  el21  el22  el23  el31  el32 
 #>   "1"   "2"   "3"   "4"   "5"   "a"   "b"   "c"   "1"   "2" 

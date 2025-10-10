@@ -7,7 +7,7 @@
 <title>Chapter 2 Managing objects | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
 <meta name="description" content="After completing the introductory chapter you now know how to initialize an R session; save your workspace; open an existing project; execute simple tasks in R to obtain numerical, text or...">
-<meta name="generator" content="bookdown 0.39 with bs4_book()">
+<meta name="generator" content="bookdown 0.44 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Managing objects | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/objects.html">
@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -78,7 +78,7 @@
 <li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
 <li><a class="" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
 <li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
-<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatiing and printing</a></li>
+<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
 <li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
 <li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
 <li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
@@ -144,11 +144,11 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/assign.html">assign</a></span><span class="op">(</span><span class="st">"aa"</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Note the use of the argument <code>pos</code>, ” ” or ’ ’ are used for characters. Be careful when mixing single quotes and double quotes. See below.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="objects.html#cb44-1" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"u"</span>,<span class="st">'v'</span>,<span class="st">"'w'"</span>,<span class="st">""</span>x<span class="st">""</span>,<span class="st">'"y"'</span>,<span class="st">''</span>z<span class="st">''</span>) <span class="ot">-&gt;</span> cc</span>
-<span id="cb44-2"><a href="objects.html#cb44-2" tabindex="-1"></a><span class="co">#&gt; Error: &lt;text&gt;:1:19: unexpected symbol</span></span>
+<span id="cb44-2"><a href="objects.html#cb44-2" tabindex="-1"></a><span class="co">#&gt; Error in parse(text = input): &lt;text&gt;:1:19: unexpected symbol</span></span>
 <span id="cb44-3"><a href="objects.html#cb44-3" tabindex="-1"></a><span class="co">#&gt; 1: c("u",'v',"'w'",""x</span></span>
 <span id="cb44-4"><a href="objects.html#cb44-4" tabindex="-1"></a><span class="co">#&gt;                       ^</span></span></code></pre></div>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="objects.html#cb45-1" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"u"</span>,<span class="st">'v'</span>,<span class="st">"'w'"</span>,<span class="st">'"x"'</span>,<span class="st">'"y"'</span>,<span class="st">''</span>z<span class="st">''</span>) <span class="ot">-&gt;</span> cc</span>
-<span id="cb45-2"><a href="objects.html#cb45-2" tabindex="-1"></a><span class="co">#&gt; Error: &lt;text&gt;:1:31: unexpected symbol</span></span>
+<span id="cb45-2"><a href="objects.html#cb45-2" tabindex="-1"></a><span class="co">#&gt; Error in parse(text = input): &lt;text&gt;:1:31: unexpected symbol</span></span>
 <span id="cb45-3"><a href="objects.html#cb45-3" tabindex="-1"></a><span class="co">#&gt; 1: c("u",'v',"'w'",'"x"','"y"',''z</span></span>
 <span id="cb45-4"><a href="objects.html#cb45-4" tabindex="-1"></a><span class="co">#&gt;                                   ^</span></span></code></pre></div>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
@@ -161,34 +161,25 @@
 </ul>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "aa" "Aa" "bb" "cc" "yy"</span></span></code></pre></div>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aa</span></span>
-<span><span class="co">#&gt;  [1]  1.82473607  0.65650857  0.26683890  0.15230972</span></span>
-<span><span class="co">#&gt;  [5]  0.45121360 -1.55932099 -0.02875325  0.03716891</span></span>
-<span><span class="co">#&gt;  [9]  0.27740598 -0.70363688</span></span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bb</span></span>
-<span><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] "bb"</span></span></code></pre></div>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/parse.html">parse</a></span><span class="op">(</span>text<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; expression(bb)</span></span></code></pre></div>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/eval.html">eval</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/parse.html">parse</a></span><span class="op">(</span>text<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "aa" "Aa" "bb" "cc" "yy"</span></span>
+<span><span class="va">aa</span></span>
+<span><span class="co">#&gt;  [1] -1.6780509  1.8419399 -0.6426770  0.3310965 -0.4589118</span></span>
+<span><span class="co">#&gt;  [6] -1.3163047  1.9289852 -0.5278343  0.8822088 -0.4055261</span></span>
+<span><span class="va">bb</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] "bb"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/parse.html">parse</a></span><span class="op">(</span>text<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; expression(bb)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/eval.html">eval</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/parse.html">parse</a></span><span class="op">(</span>text<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in rm(a, b): object 'a' not found</span></span>
-<span><span class="co">#&gt; Warning in rm(a, b): object 'b' not found</span></span></code></pre></div>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">aa</span>,<span class="va">bb</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in rm(a, b): object 'b' not found</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">aa</span>,<span class="va">bb</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Aa" "cc" "yy"</span></span></code></pre></div>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="st">"cc"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Aa" "cc" "yy"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="st">"cc"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Aa" "yy"</span></span></code></pre></div>
 </div>
@@ -211,7 +202,7 @@
 <ol start="3" style="list-style-type: lower-alpha">
 <li>The use of the functions <code><a href="https://rdrr.io/r/base/conflicts.html">conflicts()</a></code> and <code><a href="https://rdrr.io/r/utils/apropos.html">find()</a></code> when naming objects. The instruction <code>conflicts (detail = TRUE)</code> outputs details on whether and where objects with identical names exist on the search path e.g.</li>
 </ol>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/conflicts.html">conflicts</a></span><span class="op">(</span>detail<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`package:graphics`</span></span>
 <span><span class="co">#&gt; [1] "plot"</span></span>
@@ -222,7 +213,7 @@
 <span><span class="co">#&gt; $`package:base`</span></span>
 <span><span class="co">#&gt; [1] "body&lt;-"    "kronecker" "plot"</span></span></code></pre></div>
 <p>The instruction <code>find ("object")</code> outputs details on whether and where objects with the name object exist on the search path e.g.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/apropos.html">find</a></span><span class="op">(</span><span class="st">"kronecker"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "package:methods" "package:base"</span></span></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
@@ -238,53 +229,41 @@
 <div id="examples-1" class="section level4 unnumbered">
 <h4>Examples<a class="anchor" aria-label="anchor" href="#examples-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "integer"</span></span></code></pre></div>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "factor"</span></span></code></pre></div>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">b</span></span>
+<span><span class="co">#&gt; [1] "factor"</span></span>
+<span><span class="va">b</span></span>
 <span><span class="co">#&gt; [1] a b c</span></span>
-<span><span class="co">#&gt; Levels: a b c</span></span></code></pre></div>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 10</span></span></code></pre></div>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>,nrow<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Levels: a b c</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 10</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>,nrow<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">mat</span></span>
 <span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
 <span><span class="co">#&gt; [1,]    1    5    9</span></span>
 <span><span class="co">#&gt; [2,]    2    6   10</span></span>
 <span><span class="co">#&gt; [3,]    3    7   11</span></span>
-<span><span class="co">#&gt; [4,]    4    8   12</span></span></code></pre></div>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 4 3</span></span></code></pre></div>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">logic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [4,]    4    8   12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 4 3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span>
+<span><span class="va">logic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">logic</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "logical"</span></span></code></pre></div>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">logic</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "logical"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">logic</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "logical"</span></span></code></pre></div>
 <div style="margin-left: 30px; margin-right: 20px;">
 <p>Levels show that it is a categorical variable (object).</p>
@@ -293,25 +272,20 @@
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Special attention is given to the class and mode of integers. An object of type integer is stored internally more effectively than an integer represented in double format.</li>
 </ol>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">5L</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "double"</span></span></code></pre></div>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "integer"</span></span></code></pre></div>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "integer"</span></span></code></pre></div>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "double"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "integer"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "numeric"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
 <ol start="6" style="list-style-type: lower-alpha">
 <li><p>Objects in R are <em><span style="color:#FF9966">vectors</span></em>, <em><span style="color:#FF9966">functions</span></em> or <em><span style="color:#FF9966">lists</span></em>. There are no scalars - instead vectors of length one are used. In addition to the above three types, there are several other types of objects.</p></li>
@@ -340,7 +314,7 @@
 <span class="header-section-number">2.1.4</span> Generation of data<a class="anchor" aria-label="anchor" href="#generation-of-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>Study the operators and functions <code>:</code>, <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code>, <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code>, <code><a href="https://rdrr.io/r/base/rev.html">rev()</a></code>, <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>, <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> with the following instructions:</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="fl">8</span><span class="op">:</span><span class="fl">3</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from<span class="op">=</span><span class="fl">1</span>, to<span class="op">=</span><span class="fl">10</span>, length<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
@@ -349,7 +323,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">20</span>, mean<span class="op">=</span><span class="fl">50</span>, sd<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span> <span class="op">(</span><span class="fl">10</span>, min<span class="op">=</span><span class="fl">1</span>, max<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p>The function <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">rmvnorm()</a></code> for generating multivariate normal samples is in the <code>mvtnorm</code> R package. This package must first be loaded by using the instruction</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://mvtnorm.R-forge.R-project.org">mvtnorm</a></span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, for generating multivariate normally data there is also a function <code><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm()</a></code> in R package <code>MASS</code>.</p>
 </div>
@@ -359,20 +333,20 @@
 <span class="header-section-number">2.2</span> Introduction to functions in R<a class="anchor" aria-label="anchor" href="#introduction-to-functions-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>We introduced R functions in section <a href="intro.html#FunctionIntro">1.9</a>. The basic structure of an R function is as follows:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="objects.html#cb79-1" tabindex="-1"></a>func.name <span class="ot">&lt;-</span> <span class="cf">function</span>(list of arguments)</span>
-<span id="cb79-2"><a href="objects.html#cb79-2" tabindex="-1"></a>{</span>
-<span id="cb79-3"><a href="objects.html#cb79-3" tabindex="-1"></a>  <span class="co"># R code</span></span>
-<span id="cb79-4"><a href="objects.html#cb79-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="objects.html#cb54-1" tabindex="-1"></a>func.name <span class="ot">&lt;-</span> <span class="cf">function</span>(list of arguments)</span>
+<span id="cb54-2"><a href="objects.html#cb54-2" tabindex="-1"></a>{</span>
+<span id="cb54-3"><a href="objects.html#cb54-3" tabindex="-1"></a>  <span class="co"># R code</span></span>
+<span id="cb54-4"><a href="objects.html#cb54-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>When the function <code>func.name()</code> is called, the code in <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code> is executed.</p>
 <p>The arguments of a function can be inspected by using the command</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="objects.html#cb80-1" tabindex="-1"></a><span class="fu">args</span>(name of <span class="cf">function</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="objects.html#cb55-1" tabindex="-1"></a><span class="fu">args</span>(name of <span class="cf">function</span>)</span></code></pre></div>
 <p>The function <code>str(x)</code> provides information on the object <code>x</code>. If <code>x</code> is a function its output is similar to that of <code><a href="https://rdrr.io/r/base/args.html">args()</a></code>. Default values are given to function arguments using the construction (<code>argument name = value</code>). It is good programming practice to make extensively use of comments to describe arguments and / or what a particular chunk of code does.
 What is the usage of the following function:</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cube</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="va">a</span><span class="op">^</span><span class="fl">3</span></span></code></pre></div>
 <p>In the above function the argument a is called a <em><span style="color:#FF9966">dummy argument</span></em>. What will happen to an object <code>a</code> in the working directory?</p>
 <p>Functions are called by replacing the <em><span style="color:#FF9966">formal arguments</span></em> by the <em><span style="color:#FF9966">actual arguments</span></em>. This can be done <em><span style="color:#FF9966">by position</span></em> or <em><span style="color:#FF9966">by name</span></em>. <em>Hint</em>: It is less error prone to call functions using named arguments. Create the following function</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Demofunc</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">vec</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="va">m</span>,<span class="va">k</span><span class="op">)</span></span>
 <span> <span class="op">{</span> <span class="co"># Function to subtract a specified constant from</span></span>
 <span>   <span class="co"># each element of a given vector and after subtraction</span></span>
@@ -381,17 +355,14 @@ What is the usage of the following function:</p>
 <span> <span class="op">(</span><span class="va">vec</span> <span class="op">-</span> <span class="va">m</span><span class="op">)</span><span class="op">/</span> <span class="va">k</span> </span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Execute the following function calls and explain the output</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">Demofunc</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.2</span></span></code></pre></div>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">Demofunc</span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in Demofunc(2, 5): argument "k" is missing, with no default</span></span></code></pre></div>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">Demofunc</span><span class="op">(</span>m <span class="op">=</span> <span class="fl">2</span>, k <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6</span></span></code></pre></div>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">Demofunc</span><span class="op">(</span>m <span class="op">=</span> <span class="fl">2</span>, k <span class="op">=</span> <span class="fl">5</span>, vec <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.2</span></span>
+<span><span class="fu">Demofunc</span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in Demofunc(2, 5): argument "k" is missing, with no default</span></span>
+<span><span class="fu">Demofunc</span><span class="op">(</span>m <span class="op">=</span> <span class="fl">2</span>, k <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6</span></span>
+<span><span class="fu">Demofunc</span><span class="op">(</span>m <span class="op">=</span> <span class="fl">2</span>, k <span class="op">=</span> <span class="fl">5</span>, vec <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   [1] -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2  1.4  1.6  1.8</span></span>
 <span><span class="co">#&gt;  [12]  2.0  2.2  2.4  2.6  2.8  3.0  3.2  3.4  3.6  3.8  4.0</span></span>
 <span><span class="co">#&gt;  [23]  4.2  4.4  4.6  4.8  5.0  5.2  5.4  5.6  5.8  6.0  6.2</span></span>
@@ -404,24 +375,24 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; [100] 19.6</span></span></code></pre></div>
 <p>Note the use of <code><a href="https://rdrr.io/r/utils/prompt.html">prompt()</a></code> and <code><a href="https://rdrr.io/r/utils/package.skeleton.html">package.skeleton()</a></code> to provide a new function with a help-file.</p>
 <p>The final expression in an R function is automatically returned when the function completes execution.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span> </span>
 <span><span class="op">{</span>  <span class="va">a</span><span class="op">+</span><span class="fl">2</span></span>
 <span><span class="op">}</span></span>
 <span><span class="fu">my.func</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 7</span></span></code></pre></div>
 <p>When a function consists of a single line, it can be written more succinctly</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span>  <span class="va">a</span><span class="op">+</span><span class="fl">2</span>  <span class="op">}</span></span>
 <span><span class="fu">my.func</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 7</span></span></code></pre></div>
 <p>or even without the <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>:</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span> <span class="va">a</span><span class="op">+</span><span class="fl">2</span></span>
 <span><span class="fu">my.func</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 7</span></span></code></pre></div>
 <p>In general, functions will consist of more lines of code and often multiple outputs are returned. If only a single output object needs to be returned, the object can be created in the last line of the code</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="op">{</span>  <span class="va">number</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="fl">3</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
 <span>     <span class="va">number</span><span class="op">/</span><span class="va">a</span></span>
@@ -429,7 +400,7 @@ What is the usage of the following function:</p>
 <span><span class="fu">my.func</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 12.8</span></span></code></pre></div>
 <p>or with a <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> statement:</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="op">{</span>  <span class="va">number</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="fl">3</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
 <span>     <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">number</span><span class="op">/</span><span class="va">a</span><span class="op">)</span></span>
@@ -437,7 +408,7 @@ What is the usage of the following function:</p>
 <span><span class="fu">my.func</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 12.8</span></span></code></pre></div>
 <p>In general, all the outputs are combined and returned as a <code>list</code>. The final expression in the function creates the list object:</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="op">{</span>  <span class="va">number</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="fl">3</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
 <span>     <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">number</span><span class="op">/</span><span class="va">a</span><span class="op">)</span></span>
@@ -446,7 +417,7 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; [1] 12.8</span></span></code></pre></div>
 <p>To return multiple outputs, the list is simply extended as shown below:</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="op">{</span>  <span class="va">number</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="fl">3</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
 <span>     <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">number</span>, <span class="va">number</span><span class="op">/</span><span class="va">a</span><span class="op">)</span></span>
@@ -458,7 +429,7 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; [[2]]</span></span>
 <span><span class="co">#&gt; [1] 12.8</span></span></code></pre></div>
 <p>It is good practice to name the output objects in the list, such as:</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="op">{</span>  <span class="va">number</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="fl">3</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
 <span>     <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>number <span class="op">=</span> <span class="va">number</span>, ratio <span class="op">=</span> <span class="va">number</span><span class="op">/</span><span class="va">a</span><span class="op">)</span></span>
@@ -470,7 +441,7 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; $ratio</span></span>
 <span><span class="co">#&gt; [1] 12.8</span></span></code></pre></div>
 <p>Finally, to place the output into an object for further processing, the function is assigned to an object name:</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="op">{</span>  <span class="va">number</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="fl">3</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
 <span>     <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>number <span class="op">=</span> <span class="va">number</span>, ratio <span class="op">=</span> <span class="va">number</span><span class="op">/</span><span class="va">a</span><span class="op">)</span></span>
@@ -500,7 +471,7 @@ What is the usage of the following function:</p>
 <li>What is an R <em><span style="color:#FF9966">package</span></em>? What is the difference between <em><span style="color:#FF9966">installing</span></em> and <em><span style="color:#FF9966">loading</span></em> a package?</li>
 <li>Work through the following example:</li>
 </ul>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] ".GlobalEnv"        "package:stats"    </span></span>
 <span><span class="co">#&gt; [3] "package:graphics"  "package:grDevices"</span></span>
@@ -508,10 +479,10 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; [7] "package:methods"   "Autoloads"        </span></span>
 <span><span class="co">#&gt; [9] "package:base"</span></span></code></pre></div>
 <p>To attach the package <code>MASS</code></p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span></code></pre></div>
 <p>By default <code>MASS</code> is attached in the second position in the search path.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] ".GlobalEnv"        "package:MASS"     </span></span>
 <span><span class="co">#&gt;  [3] "package:stats"     "package:graphics" </span></span>
@@ -519,7 +490,7 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt;  [7] "package:datasets"  "package:methods"  </span></span>
 <span><span class="co">#&gt;  [9] "Autoloads"         "package:base"</span></span></code></pre></div>
 <p>We use <code>detach</code> to remove <code>MASS</code> from the search path.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/detach.html">detach</a></span><span class="op">(</span><span class="st">"package:MASS"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] ".GlobalEnv"        "package:stats"    </span></span>
@@ -528,29 +499,26 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; [7] "package:methods"   "Autoloads"        </span></span>
 <span><span class="co">#&gt; [9] "package:base"</span></span></code></pre></div>
 <p>To obtain the parent of the global environment</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;environment: package:stats&gt;</span></span>
 <span><span class="co">#&gt; attr(,"name")</span></span>
 <span><span class="co">#&gt; [1] "package:stats"</span></span>
 <span><span class="co">#&gt; attr(,"path")</span></span>
-<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.2/library/stats"</span></span></code></pre></div>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.5.1/library/stats"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;environment: package:graphics&gt;</span></span>
 <span><span class="co">#&gt; attr(,"name")</span></span>
 <span><span class="co">#&gt; [1] "package:graphics"</span></span>
 <span><span class="co">#&gt; attr(,"path")</span></span>
-<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.2/library/graphics"</span></span></code></pre></div>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.5.1/library/graphics"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;environment: package:grDevices&gt;</span></span>
 <span><span class="co">#&gt; attr(,"name")</span></span>
 <span><span class="co">#&gt; [1] "package:grDevices"</span></span>
 <span><span class="co">#&gt; attr(,"path")</span></span>
-<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.4.2/library/grDevices"</span></span></code></pre></div>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environmentName</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.5.1/library/grDevices"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environmentName</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "package:grDevices"</span></span></code></pre></div>
 <p>When the R evaluator looks for an object and it cannot find the name in the global environment it will search the parent of the global environment. It will carry on the search along the search path until the first occurrence of the name. If the name is not found it will return the message <code>Error: object 'xx' not found</code>. The usage of the double colon <code>::</code> and the triple colon <code>:::</code> is to access the intended object when more than one object with the same name exist on the search path. These two operators use the <em><span style="color:#FF9966">namespace</span></em> facility of R packages. The namespace of a package allow the creator of a package to hide functions and data that are meant only for internal use; it provides a way through the operators <code>::</code> and <code>:::</code> to an object within a particular package. Thus a namespace prevent functions from breaking down when a user selects a name that clashes with one in the package. The double-colon operator <code>::</code> selects objects from a particular namespace. Only functions that are exported from the package can be retrieved in this way. The triple-colon operator <code>:::</code> acts like the double-colon operator but also allows access to hidden objects. Packages are often inter-dependent, and loading one may cause others to be automatically loaded. Such automatically loaded packages are not added to the search list.</p>
 <p>We note that the <em><span style="color:#FF9966">function</span></em> call <code><a href="https://rdrr.io/r/utils/getAnywhere.html">getAnywhere()</a></code>, which searches multiple packages can be used for finding hidden objects. When a function is called, R creates a new (temporary) environment which is enclosed in the current (calling) environment. Objects created in the new environment are not available in the parent environment and dies with it when the function terminates. Objects in the calling environment are available for use in the new environment created when a function is called.</p>
@@ -559,11 +527,10 @@ What is the usage of the following function:</p>
 <li>Study the use of the arguments <code>pos</code>, <code>all.names</code>, and <code>pattern</code> of the function <code><a href="https://rdrr.io/r/base/ls.html">objects()</a></code>.</li>
 <li>Study the behaviour of the functions <code><a href="https://rdrr.io/r/base/conflicts.html">conflicts()</a></code> and <code><a href="https://rdrr.io/r/base/exists.html">exists()</a></code> in the examples below:</li>
 </ul>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/conflicts.html">conflicts</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "body&lt;-"    "kronecker" "plot"</span></span></code></pre></div>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/conflicts.html">conflicts</a></span><span class="op">(</span>detail<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "body&lt;-"    "kronecker" "plot"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/conflicts.html">conflicts</a></span><span class="op">(</span>detail<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`package:graphics`</span></span>
 <span><span class="co">#&gt; [1] "plot"</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -571,36 +538,28 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; [1] "body&lt;-"    "kronecker"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`package:base`</span></span>
-<span><span class="co">#&gt; [1] "body&lt;-"    "kronecker" "plot"</span></span></code></pre></div>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">1</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">2</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">7</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">8</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">9</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "body&lt;-"    "kronecker" "plot"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">1</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">2</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">7</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">8</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="fl">9</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <ul>
 <li>Study the above code carefully and then explain what inheritance does.</li>
 <li>The example below leads to the same conclusion as above but is more complicated at this stage. Its behaviour will become clear as we work through the coming chapters.</li>
 </ul>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"kronecker"</span>, where <span class="op">=</span> <span class="va">x</span>, inherits<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;        .GlobalEnv     package:stats  package:graphics </span></span>
 <span><span class="co">#&gt;             FALSE             FALSE             FALSE </span></span>
@@ -612,38 +571,32 @@ What is the usage of the following function:</p>
 <li>Direct access to objects down the search path can be achieved with the function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code>.
 The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> takes as its first argument the name of an object as a character string. The optional argument <code>pos</code> can be used to specify where on the search list to look for the object. As an illustration explain the outcomes of the following function calls:</li>
 </ul>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000014f5247d3c0&gt;</span></span>
-<span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002a3c8e95f80&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
+<span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span></code></pre></div>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.03186329</span></span></code></pre></div>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.03186329</span></span></code></pre></div>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; [1] -0.04560505</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; [1] -0.04560505</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000014f502c2158&gt;</span></span>
-<span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002a3c6f0b530&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Instead of attaching databases the function <code><a href="https://rdrr.io/r/base/with.html">with()</a></code> is often to be preferred. Discuss the usage of <code><a href="https://rdrr.io/r/base/with.html">with()</a></code> by referring to the instructions:</li>
 </ul>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span> <span class="op">(</span><span class="va">beaver1</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1312.018</span></span></code></pre></div>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span> <span class="op">(</span><span class="va">beaver2</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1312.018</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span> <span class="op">(</span><span class="va">beaver2</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1446.2</span></span></code></pre></div>
 </div>
 <div id="the-organisation-of-data-data-structures" class="section level2" number="2.4">
@@ -652,7 +605,7 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 </h2>
 <p>Study the help files of <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>, <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code>, <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> and <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> carefully.</p>
 <p>A <em><span style="color:#FF9966">list</span></em> is created with the function <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>. A list is the basic means of storing a collection of data objects in R when the modes and/or lengths of the objects are different. List elements are accessed using <code>[[ ]]</code> or <code>$</code> when the objects are named. List objects are named using the construction</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, name2 <span class="op">=</span> <span class="va">mean</span><span class="op">)</span></span>
 <span><span class="va">my.list</span></span>
 <span><span class="co">#&gt; $name1</span></span>
@@ -661,23 +614,22 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000014f502c2158&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002a3c6f0b530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000014f502c2158&gt;</span></span>
-<span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002a3c6f0b530&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
+<span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000014f502c2158&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002a3c6f0b530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, ncol<span class="op">=</span><span class="fl">3</span>, nrow<span class="op">=</span><span class="fl">4</span>, byrow<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">my.matrix</span></span>
 <span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
@@ -708,7 +660,7 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <ul>
 <li>Explain vector calculations and the recycling principle by referring to the example below.</li>
 </ul>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">9</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in c(1, 3, 5, 9) + c(1, 2, 3): longer object length</span></span>
 <span><span class="co">#&gt; is not a multiple of shorter object length</span></span>
@@ -716,17 +668,16 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <ul>
 <li>Logical vectors. Explain the behaviour of the instruction below</li>
 </ul>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <ul>
 <li>Missing values: <code>NA</code> (indicate a missing value in the data), <code>NaN</code> (not a number)</li>
 </ul>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">10</span><span class="op">/</span><span class="fl">0</span></span>
-<span><span class="co">#&gt; [1] Inf</span></span></code></pre></div>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span></span>
+<span><span class="co">#&gt; [1] Inf</span></span>
+<span><span class="fl">0</span><span class="op">/</span><span class="fl">0</span></span>
 <span><span class="co">#&gt; [1] NaN</span></span></code></pre></div>
 <ul>
 <li><p>Character vectors: see section <a href="operators.html#character">3.5.11</a></p></li>
@@ -750,7 +701,7 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span class="header-section-number">2.9</span> Representation of objects<a class="anchor" aria-label="anchor" href="#representation-of-objects"><i class="fas fa-link"></i></a>
 </h2>
 <p>We have already seen that a representation of an object can be obtained by calling (entering) its name:</p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cars</span></span>
 <span><span class="co">#&gt;    speed dist</span></span>
 <span><span class="co">#&gt; 1      4    2</span></span>
@@ -804,7 +755,7 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; 49    24  120</span></span>
 <span><span class="co">#&gt; 50    25   85</span></span></code></pre></div>
 <p>It is often not convenient to have a full representation returned of an object as above. The functions <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> and <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> are available for extracting a partial representation of an object:</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   speed dist</span></span>
 <span><span class="co">#&gt; 1     4    2</span></span>
@@ -812,48 +763,38 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; 3     7    4</span></span>
 <span><span class="co">#&gt; 4     7   22</span></span>
 <span><span class="co">#&gt; 5     8   16</span></span>
-<span><span class="co">#&gt; 6     9   10</span></span></code></pre></div>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 6     9   10</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      speed           dist       </span></span>
 <span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
 <span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
 <span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
 <span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
 <span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    50 obs. of  2 variables:</span></span>
 <span><span class="co">#&gt;  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...</span></span>
 <span><span class="co">#&gt;  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</span></span></code></pre></div>
 <p>There are many more R functions provided for getting information of what an R object represents. Some of these functions like <code><a href="https://rdrr.io/r/base/mode.html">mode()</a></code>, <code><a href="https://rdrr.io/r/base/class.html">class()</a></code>, <code><a href="https://rdrr.io/r/base/length.html">length()</a></code>, <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code>, <code>is.xxx()</code> and <code>as.xxx()</code> have already been encountered and others will be given in the chapters to come.</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 100</span></span></code></pre></div>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 50  2</span></span></code></pre></div>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">is.matrix</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html">is.list</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "list"</span></span></code></pre></div>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "data.frame"</span></span></code></pre></div>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 100</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 50  2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">is.matrix</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] FALSE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/list.html">is.list</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mode.html">mode</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "list"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "data.frame"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NULL</span></span></code></pre></div>
 </div>
 <div id="exercise-3" class="section level2" number="2.10">
