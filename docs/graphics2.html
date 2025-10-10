@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 10 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial</title>
+<title>Chapter 11 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
-<meta name="description" content="Textbook for the R block module.">
+<meta name="description" content="R offers several different types of graphics: grid graphics is contained in package grid; the package lattice contains trellis graphics; the package ggplot2 introduces ggplot graphics to be...">
 <meta name="generator" content="bookdown 0.44 with bs4_book()">
-<meta property="og:title" content="Chapter 10 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial">
+<meta property="og:title" content="Chapter 11 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/graphics2.html">
 <meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
-<meta property="og:description" content="Textbook for the R block module.">
+<meta property="og:description" content="R offers several different types of graphics: grid graphics is contained in package grid; the package lattice contains trellis graphics; the package ggplot2 introduces ggplot graphics to be...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 10 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial">
-<meta name="twitter:description" content="Textbook for the R block module.">
+<meta name="twitter:title" content="Chapter 11 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial">
+<meta name="twitter:description" content="R offers several different types of graphics: grid graphics is contained in package grid; the package lattice contains trellis graphics; the package ggplot2 introduces ggplot graphics to be...">
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -23,29 +23,6 @@
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
-<style type="text/css">
-    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-          margin-bottom: 1em;
-        }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
   </style>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -68,45 +45,557 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introducing the R System</a></li>
-<li><a class="" href="objects.html"><span class="header-section-number">2</span> Managing objects</a></li>
-<li><a class="" href="operators.html"><span class="header-section-number">3</span> R operators and functions</a></li>
-<li><a class="" href="graphics.html"><span class="header-section-number">4</span> Introducing traditional R graphics</a></li>
-<li><a class="" href="subscripting.html"><span class="header-section-number">5</span> Subscripting</a></li>
-<li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
-<li><a class="" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
-<li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
-<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
-<li><a class="active" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
-<li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
-<li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
-<li><a class="" href="references.html">References</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 11</span> R graphics: Round II</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/sugnet/RTutorial">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="graphics2" class="section level1" number="10">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="graphics2" class="section level1" number="11">
 <h1>
-<span class="header-section-number">10</span> R graphics: Round II<a class="anchor" aria-label="anchor" href="#graphics2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11</span> R graphics: Round II<a class="anchor" aria-label="anchor" href="#graphics2"><i class="fas fa-link"></i></a>
 </h1>
+<p>R offers several different types of graphics: <em><span style="color:#FF9966">grid</span></em> graphics is contained in package <code>grid</code>; the package <code>lattice</code> contains <em><span style="color:#FF9966">trellis</span></em> graphics; the package <code>ggplot2</code> introduces <em><span style="color:#FF9966">ggplot</span></em> graphics to be implemented by the function <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. In this chapter, further aspects of what is known as <em>traditional R graphics</em> are studied before moving on to ggplot graphics.</p>
+<div id="graphics-parameters" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> Graphics parameters<a class="anchor" aria-label="anchor" href="#graphics-parameters"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Study the help file of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code>. Execute <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> to obtain a list of all the current values of the graphical parameters.</p></li>
+<li><p>How is <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> used to obtain the current setting of a specific graphics parameter e.g. the parameter <code>fin</code>?</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"fin"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 6.999999 4.999999</span></span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>How is <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> used to change a graphics parameter e.g. <code>mfrow</code>?</p></li>
+<li><p>How do you reset the changed values to their original values? Note the <code>no.readonly</code> argument of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code>. <em>Hint</em>: Study the following instructions and there effects carefully:</p></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">'col'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "black"</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>The current colour for graphics is “black”.</p>
+</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Change colour for graphics to “blue”.</p>
+</div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">temp</span></span>
+<span><span class="co">#&gt; $col</span></span>
+<span><span class="co">#&gt; [1] "black"</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Temp is a list of parameter(s) <strong>BEFORE</strong> change was made.</p>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">'col'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "black"</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Shows that the colour for graphics was indeed changed to “blue”.</p>
+</div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>It is sometimes useful to use <code>par (ask = TRUE)</code> to instruct R to ask you whether an existing graph should be replaced by a new one.</p></li>
+<li><p>Draw a histogram of variable Ozone in the data set <code>airquality</code> where each class interval is randomly represented by a different colour. What happened to the <code>NA</code> values?</p></li>
+</ol>
+</div>
+<div id="layout-of-graphics" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> Layout of graphics<a class="anchor" aria-label="anchor" href="#layout-of-graphics"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Review Figure <a href="#fig:figRegion"><strong>??</strong></a>. Note the parameters that are discussed there.</p></li>
+<li><p>Multiple figures on one page: How do the graphical parameters <code>mfg</code> and <code>mfrow</code> or <code>mfcol</code> differ? What are represented in the R data sets <code>ldeaths</code>, <code>mdeaths</code> and <code>fdeaths</code>? Use <code>mfg</code> and <code>mfrow</code> to obtain Figure <a href="graphics2.html#fig:fmdeaths">11.1</a>. <em>Hint</em>: The graphics parameters <code>mfg</code> and <code>mfrow</code> are used together.</p></li>
+</ol>
+<div class="figure">
+<span style="display:block;" id="fig:fmdeaths"></span>
+<img src="10-graphics2_files/figure-html/fmdeaths-1.png" alt="Plots of the fdeaths and mdeaths data sets" width="100%"><p class="caption">
+Figure 11.1: Plots of the fdeaths and mdeaths data sets
+</p>
+</div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span>, mfg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>The <code>mfrow</code> setting reserves three rows and two columns for graphics to be filled row-wise. The <code>mfg</code> setting specifies that the next graph will be placed in the position defined by row one column one. Once this graph has been constructed the instruction</p>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>mfg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>will result in the next graph to appear in the position defined by row one and column two. Next we need the instruction</p>
+</div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>, mfg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>requesting a graph window having three rows and one column with the next graph to appear at position row two (only one column in row two).</p>
+</div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>Note how the meaning of the margins changes when more than one figure is drawn on a page to make provision for an <em><span style="color:#FF9966">outer margin</span></em> surrounding all figures in addition to the <em><span style="color:#FF9966">margin</span></em> surrounding each separate figure.</p></li>
+<li><p>Study how the functions <code><a href="https://rdrr.io/r/graphics/screen.html">split.screen()</a></code>, <code><a href="https://rdrr.io/r/graphics/screen.html">screen()</a></code> and <code><a href="https://rdrr.io/r/graphics/screen.html">close.screen()</a></code> work as explained in the help facility.</p></li>
+<li><p>Study the usage of the function <code><a href="https://rdrr.io/r/graphics/layout.html">layout()</a></code> in detail for more complicated arrangements of the graph window. An example of its usage is deferred until later in the chapter.</p></li>
+</ol>
+</div>
+<div id="low-level-plotting-commands" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Low-level plotting commands<a class="anchor" aria-label="anchor" href="#low-level-plotting-commands"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>The functions in Table <a href="graphics2.html#tab:lowlevelPlotFuncs">11.1</a> are used to edit existing graphs.<br>
+</li>
+<li>Study these functions carefully.</li>
+<li>Study how the right mouse button is used with R graphs.</li>
+<li>Most plotting tasks require some combination of high-level and low-level plotting commands.</li>
+</ul>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:lowlevelPlotFuncs">Table 11.1: </span> Low-level plotting functions.</caption>
+<colgroup>
+<col width="28%">
+<col width="71%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">Function</span></em></th>
+<th><em><span style="color:#CC99FF">Description</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code></td>
+<td>Add regression lines to a plot; Also for adding a vertical and horizontal lines to a plot</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/graphics/arrows.html">arrows()</a></code></td>
+<td>Draw arrow on plot</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/graphics/axis.html">axis()</a></code></td>
+<td>Add custom axis to plot</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/graphics/box.html">box()</a></code></td>
+<td>Draw box around plot</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/grDevices/chull.html">chull()</a></code></td>
+<td>Compute a convex hull</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/base/jitter.html">jitter()</a></code></td>
+<td>Add a small amount of noise</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code></td>
+<td>Add a legend to a plot</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code></td>
+<td>Add lines to a plot</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/graphics/mtext.html">mtext()</a></code></td>
+<td>Write text in margins</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/graphics/points.html">points()</a></code></td>
+<td>Add points to a plot</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/graphics/polygon.html">polygon()</a></code></td>
+<td>Draw and shade polygons</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/graphics/rug.html">rug()</a></code></td>
+<td>Add data-based marks to an axis</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/graphics/segments.html">segments()</a></code></td>
+<td>Draw disconnected line segments</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/graphics/symbols.html">symbols()</a></code></td>
+<td>Draw symbols on a plot</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/graphics/text.html">text()</a></code></td>
+<td>Add text to a plot</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/graphics/title.html">title()</a></code></td>
+<td>Add titles or axis labels to a plot</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="using-the-plotting-commands" class="section level2" number="11.4">
+<h2>
+<span class="header-section-number">11.4</span> Using the plotting commands<a class="anchor" aria-label="anchor" href="#using-the-plotting-commands"><i class="fas fa-link"></i></a>
+</h2>
+<div id="matplot" class="section level3" number="11.4.1">
+<h3>
+<span class="header-section-number">11.4.1</span> Multiple lines or groups of points on the same graph<a class="anchor" aria-label="anchor" href="#matplot"><i class="fas fa-link"></i></a>
+</h3>
+<p>Study how the function <code><a href="https://rdrr.io/r/graphics/matplot.html">matplot()</a></code> works. Note the functions <code><a href="https://rdrr.io/r/graphics/matplot.html">matlines()</a></code> and <code><a href="https://rdrr.io/r/graphics/matplot.html">matpoints()</a></code>. Study and execute the following example:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="op">)</span> </span>
+<span><span class="op">{</span> <span class="va">times</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span>  <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span></span>
+<span>    <span class="op">{</span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="va">i</span> <span class="op">*</span> <span class="fl">10000</span></span>
+<span>       <span class="va">s1</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span></span>
+<span>       <span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span>       <span class="va">s3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span>       <span class="va">times</span><span class="op">[</span><span class="va">i</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">s1</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>       <span class="va">times</span><span class="op">[</span><span class="va">i</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">s2</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>       <span class="va">times</span><span class="op">[</span><span class="va">i</span>,<span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">s3</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>     <span class="op">}</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html">matplot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span><span class="op">*</span><span class="fl">10000</span>, y<span class="op">=</span> <span class="va">times</span>, type <span class="op">=</span> <span class="st">"l"</span>, lty <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>          col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"green"</span>, <span class="st">"red"</span><span class="op">)</span>, xlab <span class="op">=</span> <span class="st">"Length"</span>,  </span>
+<span>          ylab <span class="op">=</span> <span class="st">"Time in seconds"</span>, main <span class="op">=</span> <span class="st">"Time for sorting"</span><span class="op">)</span>  </span>
+<span><span class="op">}</span></span>
+<span><span class="fu">my.func</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:matplotExample"></span>
+<img src="10-graphics2_files/figure-html/matplotExample-1.png" alt="Three methods of performing sort." width="100%"><p class="caption">
+Figure 11.2: Three methods of performing sort.
+</p>
+</div>
+</div>
+<div id="multiple-lines-or-groups-of-points-on-the-same-graph-but-the-lines-points-are-not-all-the-same-length-number" class="section level3" number="11.4.2">
+<h3>
+<span class="header-section-number">11.4.2</span> Multiple lines or groups of points on the same graph but the lines (points) are not all the same length (number)<a class="anchor" aria-label="anchor" href="#multiple-lines-or-groups-of-points-on-the-same-graph-but-the-lines-points-are-not-all-the-same-length-number"><i class="fas fa-link"></i></a>
+</h3>
+<p>What technique must be followed? First study the <code>Cars93</code> data set in package <code>MASS</code>; then study and execute the code below. Experiment with different values of <code>spar</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">spar</span> <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span>
+<span><span class="op">{</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span>                             <span class="co"># What is the effect of require()?</span></span>
+<span>  <span class="va">oldstate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>       <span class="co"># Describe object 'oldstate'</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span><span class="va">oldstate</span><span class="op">)</span><span class="op">)</span>                   <span class="co"># Of what use is on.exit()?</span></span>
+<span></span>
+<span>  <span class="va">cargrp</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"Type"</span><span class="op">]</span></span>
+<span>  <span class="va">price</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"Price"</span><span class="op">]</span></span>
+<span>  <span class="va">mpg.city</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"MPG.city"</span><span class="op">]</span></span>
+<span>  <span class="va">mpg.highway</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"MPG.highway"</span><span class="op">]</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">price</span>, <span class="va">mpg.city</span>, type <span class="op">=</span> <span class="st">"n"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">mpg.city</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>       main <span class="op">=</span> <span class="st">"Fuel Consumption vs Price for City Drive"</span>, xlab <span class="op">=</span> <span class="st">"Price"</span>, </span>
+<span>       ylab <span class="op">=</span> <span class="st">"Miles per Gallon in City"</span><span class="op">)</span></span>
+<span>  <span class="va">jj</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span>  <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">cargrp</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">{</span>  <span class="va">jj</span> <span class="op">&lt;-</span> <span class="va">jj</span><span class="op">+</span><span class="fl">1</span></span>
+<span>       <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/smooth.spline.html">smooth.spline</a></span> <span class="op">(</span><span class="va">price</span><span class="op">[</span><span class="va">cargrp</span><span class="op">==</span><span class="va">i</span><span class="op">]</span>, <span class="va">mpg.city</span><span class="op">[</span><span class="va">cargrp</span><span class="op">==</span><span class="va">i</span><span class="op">]</span>, spar<span class="op">=</span><span class="va">spar</span><span class="op">)</span>,</span>
+<span>              lty <span class="op">=</span> <span class="va">jj</span>, col <span class="op">=</span> <span class="va">jj</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">price</span>, <span class="va">mpg.highway</span>, type <span class="op">=</span> <span class="st">"n"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">mpg.highway</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>       main <span class="op">=</span> <span class="st">"Fuel Consumption vs Price for Highway Drive"</span>, xlab <span class="op">=</span> <span class="st">"Price"</span>, </span>
+<span>       ylab <span class="op">=</span> <span class="st">"Miles per Gallon on Highway"</span><span class="op">)</span></span>
+<span>  <span class="va">jj</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span>  <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">cargrp</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">{</span>  <span class="va">jj</span> <span class="op">&lt;-</span> <span class="va">jj</span><span class="op">+</span><span class="fl">1</span></span>
+<span>       <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/smooth.spline.html">smooth.spline</a></span> <span class="op">(</span><span class="va">price</span><span class="op">[</span><span class="va">cargrp</span><span class="op">==</span><span class="va">i</span><span class="op">]</span>, <span class="va">mpg.highway</span><span class="op">[</span><span class="va">cargrp</span><span class="op">==</span><span class="va">i</span><span class="op">]</span>, </span>
+<span>                             spar <span class="op">=</span> <span class="va">spar</span><span class="op">)</span>,</span>
+<span>              lty <span class="op">=</span> <span class="va">jj</span>, col <span class="op">=</span> <span class="va">jj</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">my.func</span> <span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: MASS</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:diffLengths-1"></span>
+<img src="10-graphics2_files/figure-html/diffLengths-1.png" alt="Plotting multiple lines of different lenghts" width="100%"><p class="caption">
+Figure 11.3: Plotting multiple lines of different lenghts
+</p>
+</div>
+<div class="figure">
+<span style="display:block;" id="fig:diffLengths-2"></span>
+<img src="10-graphics2_files/figure-html/diffLengths-2.png" alt="Plotting multiple lines of different lenghts" width="100%"><p class="caption">
+Figure 11.4: Plotting multiple lines of different lenghts
+</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Explain the output generated by the above function call.</p></li>
+<li><p>What technique can also be followed in the case of point diagrams?</p></li>
+</ol>
+</div>
+<div id="adding-legends-to-a-graph" class="section level3" number="11.4.3">
+<h3>
+<span class="header-section-number">11.4.3</span> Adding legends to a graph<a class="anchor" aria-label="anchor" href="#adding-legends-to-a-graph"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: lower-alpha">
+<li><p>Study how the function <code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code> and the graphical parameter <code>usr</code> work. Study the code used to obtain Figure <a href="graphics2.html#fig:cargrps">11.5</a>. Revise the <code><a href="https://rdrr.io/r/graphics/locator.html">locator()</a></code> function.</p></li>
+<li><p>Use the facts that one USA gallon of liquid is equal to <span class="math inline">\(0.83267\)</span> UK (imperial) gallon of liquid and one mile is equal to <span class="math inline">\(1.6093\)</span> kilometres to obtain a figure similar to Figure 10.4.1 but with a kilometres per litre scale on the right-hand side that corresponds to the miles per gallon (USA) on highway scale on the left-hand side.</p></li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">{</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span>  </span>
+<span>  <span class="va">oldstate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span><span class="va">oldstate</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span>  <span class="va">cargrp</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"Type"</span><span class="op">]</span></span>
+<span>  <span class="va">price</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"Price"</span><span class="op">]</span></span>
+<span>  <span class="va">mpg.city</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"MPG.city"</span><span class="op">]</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">price</span>, <span class="va">mpg.city</span>, type <span class="op">=</span> <span class="st">"n"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">mpg.city</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>       main <span class="op">=</span> <span class="st">"Fuel Consumption vs Price for City Drive"</span>, xlab <span class="op">=</span> <span class="st">"Price"</span>, </span>
+<span>       ylab <span class="op">=</span> <span class="st">"Miles per Gallon in City"</span><span class="op">)</span></span>
+<span>  <span class="va">char</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span> <span class="op">(</span><span class="va">cargrp</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="va">price</span>, y <span class="op">=</span> <span class="va">mpg.city</span>, labels <span class="op">=</span> <span class="va">char</span>, pos <span class="op">=</span> <span class="fl">1</span>, cex <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
+<span>  <span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span> <span class="op">(</span><span class="va">cargrp</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">cargrp</span><span class="op">)</span>, sep<span class="op">=</span><span class="st">":  "</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">40</span>, y <span class="op">=</span> <span class="fl">42</span>, legend <span class="op">=</span> <span class="va">labs</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">my.func</span> <span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:cargrps"></span>
+<img src="10-graphics2_files/figure-html/cargrps-1.png" alt="Illustrating adding a legend to a plot." width="100%"><p class="caption">
+Figure 11.5: Illustrating adding a legend to a plot.
+</p>
+</div>
+</div>
+<div id="multAxes" class="section level3" number="11.4.4">
+<h3>
+<span class="header-section-number">11.4.4</span> Multiple plots with identical axes<a class="anchor" aria-label="anchor" href="#multAxes"><i class="fas fa-link"></i></a>
+</h3>
+<p>How can various graphs with identical axes be obtained? Show how this can be done by graphing the sorting time for the three procedures considered in <a href="graphics2.html#matplot">11.4.1</a> above in three separate plots in the same graph window.</p>
+</div>
+<div id="providing-a-single-legend-for-multiple-plots" class="section level3" number="11.4.5">
+<h3>
+<span class="header-section-number">11.4.5</span> Providing a single legend for multiple plots<a class="anchor" aria-label="anchor" href="#providing-a-single-legend-for-multiple-plots"><i class="fas fa-link"></i></a>
+</h3>
+<p>Suppose there were two sorting methods for each of the three situations described in<a href="graphics2.html#matplot">11.4.1</a> and <a href="graphics2.html#multAxes">11.4.4</a> above. How can the three graphs be provided with a single legend without the legend appearing in one of the graphs? Explain in detail.</p>
+</div>
+<div id="changing-the-plotting-character-common-plotting-characters-in-r" class="section level3" number="11.4.6">
+<h3>
+<span class="header-section-number">11.4.6</span> Changing the plotting character: common plotting characters in R<a class="anchor" aria-label="anchor" href="#changing-the-plotting-character-common-plotting-characters-in-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>Note the use of graphical parameters <code>pch</code> and <code>mkh</code>. What plotting characters are available? Study the help file of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> and <code><a href="https://rdrr.io/r/graphics/points.html">points()</a></code>. Study the plotting characters displayed in Figure <a href="graphics2.html#fig:pch">11.6</a> and the code used to produce the figure. How can plotting characters be made to appear in legends?</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">19</span>, cex <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>      pty <span class="op">=</span> <span class="st">"p"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3</span><span class="op">)</span>, xlab <span class="op">=</span> <span class="st">""</span>, ylab <span class="op">=</span> <span class="st">""</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, yaxt <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:pch"></span>
+<img src="10-graphics2_files/figure-html/pch-1.png" alt="Some common plotting characters available in R." width="100%"><p class="caption">
+Figure 11.6: Some common plotting characters available in R.
+</p>
+</div>
+</div>
+<div id="changing-the-colour-in-plots" class="section level3" number="11.4.7">
+<h3>
+<span class="header-section-number">11.4.7</span> Changing the colour in plots<a class="anchor" aria-label="anchor" href="#changing-the-colour-in-plots"><i class="fas fa-link"></i></a>
+</h3>
+<p>The graphical parameter <code>col</code> allows the user to specify the colour(s) in number format as given in Figure <a href="graphics2.html#fig:col">11.8</a>. The full list of named colours can be obtained with the command <code><a href="https://rdrr.io/r/grDevices/colors.html">colors()</a></code> in the Console.</p>
+<p>Alternatively, the colour can be specified by hue, saturation and value with <code>hsv (h = , s = , v = )</code>, hue, chroma and luminance with <code>hcl (h = , c = , l = )</code> or red, green and blue with <code>rgb (red = , green = , blue = )</code>. The <code><a href="https://rdrr.io/r/grDevices/rgb.html">rgb()</a></code> function has an argument <code>maxColorValue</code> with default value <code>1</code> which indicates the range known as the gamma-compressed values. Typically, the red, green and blue values range between 0 and 255 or video display or 8-bit graphics. To select a specific shade of light blue, the following command can be used:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span><span class="va">ldeaths</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html">rgb</a></span> <span class="op">(</span>red <span class="op">=</span> <span class="fl">167</span>, green <span class="op">=</span> <span class="fl">227</span>, blue <span class="op">=</span> <span class="fl">227</span>, </span>
+<span>                          maxColorValue <span class="op">=</span> <span class="fl">255</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:colExample"></span>
+<img src="10-graphics2_files/figure-html/colExample-1.png" alt="Colour selection with rgb()." width="100%"><p class="caption">
+Figure 11.7: Colour selection with rgb().
+</p>
+</div>
+<p>The output of the <code><a href="https://rdrr.io/r/grDevices/rgb.html">rgb()</a></code> function is in the hexidemical colour number format, e.g. “#A7E3E3”. The function <code><a href="https://rdrr.io/r/grDevices/col2rgb.html">col2rgb()</a></code> accepts a colour name, hexadecimal colour number format or colour number and provides the red, green and blue values in the 0 to 255 range.</p>
+<div class="figure">
+<span style="display:block;" id="fig:col"></span>
+<img src="10-graphics2_files/figure-html/col-1.png" alt="The default colour palette available in R." width="100%"><p class="caption">
+Figure 11.8: The default colour palette available in R.
+</p>
+</div>
+<p>A sequence of <span class="math inline">\(n\)</span> colours can be generated with the function <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette()</a></code>. As an example, the colour vector used for plotting in Figure <a href="graphics2.html#fig:colRamp">11.9</a> were generated with the call <code>colorRampPalette (c ("red", "green", "white", "gold"))(20)</code>. Study how the following instructions generate colour sequences: <code><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">heat.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">topo.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">cm.colors()</a></code>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:colRamp"></span>
+<img src="10-graphics2_files/figure-html/colRamp-1.png" alt="User specified colour sequence with colorRampPalette()." width="100%"><p class="caption">
+Figure 11.9: User specified colour sequence with colorRampPalette().
+</p>
+</div>
+</div>
+<div id="logarithmic-axes" class="section level3" number="11.4.8">
+<h3>
+<span class="header-section-number">11.4.8</span> Logarithmic axes<a class="anchor" aria-label="anchor" href="#logarithmic-axes"><i class="fas fa-link"></i></a>
+</h3>
+<p>The <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> function and the <code>log</code> argument of the <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> function are useful in this regard. The <code>log</code> argument of the <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> function can be specified as <code>log="x"</code>; or <code>log="y"</code>; or <code>log="xy"</code> depending on whether the x-axis, the y-axis, or both axes should be plotted logarithmically.</p>
+</div>
+<div id="graphs-with-character-strings-as-the-scale-on-the-axis" class="section level3" number="11.4.9">
+<h3>
+<span class="header-section-number">11.4.9</span> Graphs with character strings as the ‘scale’ on the axis<a class="anchor" aria-label="anchor" href="#graphs-with-character-strings-as-the-scale-on-the-axis"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="graphics2.html#fig:catAxis">11.10</a> illustrates how user defined character strings can appear as calibrations on an axis. Furthermore, this figure illustrates several techniques to fine-tune plots. Study the code resulting in Figure <a href="graphics2.html#fig:catAxis">11.10</a> in detail.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">{</span> <span class="va">old.state</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span><span class="va">old.state</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">area</span> <span class="op">&lt;-</span> <span class="va">state.x77</span><span class="op">[</span>, <span class="st">"Area"</span><span class="op">]</span></span>
+<span>  <span class="va">income</span> <span class="op">&lt;-</span> <span class="va">state.x77</span><span class="op">[</span>, <span class="st">"Income"</span><span class="op">]</span></span>
+<span>  <span class="va">area.grp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">area</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span> <span class="op">(</span><span class="va">area</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Small"</span>, <span class="st">"Medium"</span>, <span class="st">"Large"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">income.grp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span> <span class="op">(</span><span class="va">income</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Below Median"</span>, <span class="st">"Above Median"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">mns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">[</span>, <span class="st">"Illiteracy"</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">area.grp</span>, <span class="va">income.grp</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">3.2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">mns</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"n"</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, xlab <span class="op">=</span> <span class="st">"Area Group"</span>, </span>
+<span>       ylab <span class="op">=</span><span class="st">"Mean Illiteracy"</span>, sub <span class="op">=</span> <span class="st">"Function plot() used"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span>side <span class="op">=</span> <span class="fl">1</span>, at <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">area.grp</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">mns</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="va">mns</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>usr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">0.56</span>, <span class="fl">0.96</span>, lty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">income.grp</span><span class="op">)</span>, cex<span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="fl">0.63</span>, <span class="fl">0.98</span>, adj <span class="op">=</span> <span class="fl">0</span>, <span class="st">"Income Group"</span>, cex <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/interaction.plot.html">interaction.plot</a></span><span class="op">(</span><span class="va">area.grp</span>, <span class="va">income.grp</span>, <span class="va">state.x77</span><span class="op">[</span>,<span class="st">"Illiteracy"</span><span class="op">]</span>, </span>
+<span>                     xlab <span class="op">=</span> <span class="st">"Area Group"</span>, ylab <span class="op">=</span> <span class="st">"Mean Illiteracy"</span>, </span>
+<span>                     sub <span class="op">=</span> <span class="st">"Interaction.plot used"</span>, lty <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, xtick <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                     legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>new <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, type<span class="op">=</span><span class="st">"n"</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>,axes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>main <span class="op">=</span> <span class="st">"Illiteracy vs Size for States grouped by Income"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">my.func</span> <span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:catAxis"></span>
+<img src="10-graphics2_files/figure-html/catAxis-1.png" alt="Figures with character strings as axis calibrations and other enhancements to plots." width="100%"><p class="caption">
+Figure 11.10: Figures with character strings as axis calibrations and other enhancements to plots.
+</p>
+</div>
+</div>
+<div id="customizing-bar-charts-and-histograms" class="section level3" number="11.4.10">
+<h3>
+<span class="header-section-number">11.4.10</span> Customizing bar charts and histograms<a class="anchor" aria-label="anchor" href="#customizing-bar-charts-and-histograms"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: lower-alpha">
+<li><p>How can every bar in a bar chart be represented in a different colour and be given separate headings?</p></li>
+<li><p>How can only a line graph without any colours be obtained?</p></li>
+<li><p>How can a probability density function be superimposed on a histogram?</p></li>
+<li><p>How can bar charts be provided with user-defined axes?</p></li>
+</ol>
+<p>Use the <code>Cars93</code> data set to answer the above four questions by constructing a figure similar to the one shown in Figure <a href="graphics2.html#fig:BarHist">11.11</a>. Note: In the Mean MPG plot not all car types are used. If a factor variable is subsetted the original levels will be kept although some of them might not occurr. Hence it might be necessary to create a new factor variable with only the levels that are needed by using <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:BarHist"></span>
+<img src="10-graphics2_files/figure-html/BarHist-1.png" alt="Enhanced bar charts and histograms." width="100%"><p class="caption">
+Figure 11.11: Enhanced bar charts and histograms.
+</p>
+</div>
+</div>
+<div id="three-dimensional-graphical-displays" class="section level3" number="11.4.11">
+<h3>
+<span class="header-section-number">11.4.11</span> Three-dimensional graphical displays<a class="anchor" aria-label="anchor" href="#three-dimensional-graphical-displays"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: lower-alpha">
+<li><p>Study how the function <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> works.</p></li>
+<li><p>Work through the example code that creates Figure <a href="graphics2.html#fig:persp">11.12</a>. Apart from the arrow that points to the maximum, different colours must be used to highlight the different aspects of the graph.</p></li>
+<li><p>Provide horizontally and vertically rotated views of the 3D plot.</p></li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="op">)</span> </span>
+<span><span class="op">{</span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span>, length<span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span></span>
+<span>  <span class="va">ff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span> <span class="op">{</span> <span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="va">y</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>; <span class="fl">10</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span><span class="op">/</span><span class="va">r</span> <span class="op">}</span></span>
+<span>  <span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">ff</span><span class="op">)</span></span>
+<span>  <span class="va">z</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span>  <span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span>
+<span><span class="co">#  persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue")</span></span>
+<span>  <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/persp.html">persp</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span>, theta <span class="op">=</span> <span class="fl">30</span>, phi <span class="op">=</span> <span class="fl">30</span>, expand <span class="op">=</span> <span class="fl">0.5</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, </span>
+<span>               ltheta <span class="op">=</span> <span class="fl">120</span>, shade <span class="op">=</span> <span class="fl">0.75</span>, ticktype <span class="op">=</span> <span class="st">"detailed"</span>, xlab <span class="op">=</span> <span class="st">"X"</span>, </span>
+<span>               ylab <span class="op">=</span> <span class="st">"Y"</span>, zlab <span class="op">=</span> <span class="st">"Z"</span> <span class="op">)</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">res</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co">#--- Add to existing persp plot : ---</span></span>
+<span>  <span class="co">#--- Function trans3d() -------------</span></span>
+<span>    <span class="va">trans3d</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span>, <span class="va">pmat</span><span class="op">)</span> </span>
+<span>    <span class="op">{</span></span>
+<span>      <span class="va">tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,<span class="va">z</span>,<span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">pmat</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tr</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">/</span><span class="va">tr</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span>, y <span class="op">=</span> <span class="va">tr</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">/</span><span class="va">tr</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="co"># ----------------------------------</span></span>
+<span>  <span class="va">z1</span> <span class="op">&lt;-</span> <span class="fu">ff</span><span class="op">(</span><span class="fl">1e-10</span>, <span class="fl">1e-10</span><span class="op">)</span></span>
+<span>  <span class="va">transfrm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/trans3d.html">trans3d</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="op">-</span><span class="fl">2.5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">z1</span>,<span class="va">z1</span><span class="op">)</span>, <span class="va">res</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/arrows.html">arrows</a></span><span class="op">(</span><span class="va">transfrm</span><span class="op">$</span><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">transfrm</span><span class="op">$</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">transfrm</span><span class="op">$</span><span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="va">transfrm</span><span class="op">$</span><span class="va">y</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, </span>
+<span>         length <span class="op">=</span> <span class="fl">0.1</span>, code <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">transfrm</span><span class="op">$</span><span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="va">transfrm</span><span class="op">$</span><span class="va">y</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">+</span><span class="fl">0.02</span>, <span class="st">"Maximum occurs here"</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">z1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">my.func</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:persp"></span>
+<img src="10-graphics2_files/figure-html/persp-1.png" alt="Annotated 3D perspective plot." width="100%"><p class="caption">
+Figure 11.12: Annotated 3D perspective plot.
+</p>
+</div>
+<pre><code>#&gt;       [,1]   [,2]   [,3]   [,4]
+#&gt; [1,] 0.087 -0.025  0.043 -0.043
+#&gt; [2,] 0.050  0.043 -0.075  0.075
+#&gt; [3,] 0.000  0.074  0.042 -0.042
+#&gt; [4,] 0.000 -0.273 -2.890  3.890
+#&gt; [1] 10</code></pre>
+</div>
+<div id="diagrams" class="section level3" number="11.4.12">
+<h3>
+<span class="header-section-number">11.4.12</span> Diagrams<a class="anchor" aria-label="anchor" href="#diagrams"><i class="fas fa-link"></i></a>
+</h3>
+<p>Use R to draw a simple flow diagram. The diagram must contain at least one rectangle, one square, one circle and one triangle. Furthermore, there must be straight and curved lines as well as text describing the different elements. <em>Hint</em>: Study how the functions <code><a href="https://rdrr.io/r/graphics/arrows.html">arrows()</a></code>, <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code>, <code><a href="https://rdrr.io/r/graphics/text.html">text()</a></code> and <code><a href="https://rdrr.io/r/graphics/symbols.html">symbols()</a></code> work as discussed in their respective help facilities.</p>
+</div>
+<div id="annotating-graphics-with-special-symbols" class="section level3" number="11.4.13">
+<h3>
+<span class="header-section-number">11.4.13</span> Annotating graphics with special symbols<a class="anchor" aria-label="anchor" href="#annotating-graphics-with-special-symbols"><i class="fas fa-link"></i></a>
+</h3>
+<p>Construct a graph of a <span class="math inline">\(normal(0, 1)\)</span> density function. Give as a title to the plot the expression “Density of a normal random variable with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma^2 = 1\)</span>.” <em>Hint</em>: Consult the help file of <code>plotmath()</code>. Within the plot draw an arrow to the density and label it <span class="math inline">\(\frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2}x^2}\)</span>.</p>
+<pre><code>Quantile plots</code></pre>
+<p>Consider the histogram of weight in Figure 10.4.6. Does this variable follow a normal distribution? A normal quantile plot, shows the observations vs the corresponding quantiles of a standard normal distribution. If the observations correspond to a normal distribution, this will approximately form a straight line. Use the qqline() function to add a straing line to the plot.
+&gt; qqnorm (Cars93<span class="math inline">\(Weight)
+&gt; qqline (Cars93\)</span>Weight)</p>
+<p>In a similar manner, quantile-quantile plots for other probability distributions can be constructed with the function qqplot().
+&gt; qqplot (qexp(seq(from=0,to=1,len=200), rate=4),
+rexp(200, rate=4))
+&gt; qqline(y, distribution=function(p) qexp(p, rate=4))</p>
+<pre><code>Estimating a density</code></pre>
+<p>The histograms in Figure 10.6.1 show 200 observations generated, 100 from a normal(9,2^2) and 100 from a normal(13,1) distribution. Histograms are very sensitive to the choice of the number of bins and the starting values of the bins. The wider bins do not show any evidence of a bimodal distribution. Using the smaller bins, the location of the bins can suggest either a bimodal or trimodal distribution.</p>
+<p>set.seed (38472)
+x1 &lt;- rnorm(100, 9, 2)
+x2 &lt;- rnorm(100, 13, 1)
+x &lt;- c(x1, x2)
+par(mfcol=c(2,3))
+out1 &lt;- hist(x,right=F)
+out2 &lt;- hist(x,breaks=20,right=F)
+b1 &lt;- out1<span class="math inline">\(breaks
+b11 &lt;- c(b1[1]-0.5,b1+0.5)
+b2 &lt;- out2\)</span>breaks
+b21 &lt;- c(b2[1]-0.5,b2+0.5)
+hist(x,breaks=b11,right=F)
+hist(x,breaks=b21,right=F)
+b12 &lt;- c(b1[1]-0.2,b1+0.2)
+b22 &lt;- c(b2[1]-0.2,b2+0.2)
+hist(x,breaks=b12,right=F)
+hist(x,breaks=b22,right=F)</p>
+<p>Figure 10.6.1: Histograms with different bin sizes and bin locations of the same normal mixture data set.</p>
+<p>One possible solution to the bin selection problem for histograms is the Average Shifted Histogram (ASH). First we define a density histogram. Since we aim to estimate the density (which integrates to one) a density histogram is normalised such that the area in the histogram is equal to one.
+Consider a set of bins B_k=[b_k ┤,├ b_(k+1) ) with fixed bin width λ=b_(k+1)-b_k ∀ k, then the density histogram is defined as f ̂=1/Nλ ∑<em>(i=1)^N▒〖I</em>[b_k,b_(k+1) ) (x_i)〗 for x∈B_k. Consider a collection of m histograms f ̂_1,f ̂_2,…,f ̂_m each with bin width h, but with respective bin origins b_01=0,b_02=h/m,b_03=2h/m,…,b_0m=(m-1)h/m. The average shifted histogram is defined as f ̂<em>ASH=1/m ∑</em>(i=1)^m▒f ̂_i .</p>
+<p>ASH &lt;- function (x, b0=1, bk=15, h=0.5, m=5) # h=lambda
+{
+Bvec &lt;- as.vector((bk-b0)/h+2,“list”)
+fhat &lt;- matrix(nrow=m,ncol=(bk-b0)/h+1)
+for (i in 1:m)
+{ Bvec[[i]] &lt;- seq(from=b0+(i-1)<em>h/m, to=bk+h+(i-1)</em>h/m, by=h)
+fhat[i,] &lt;- hist(x,breaks=Bvec[[i]],right=T,plot=F)$density
+}
+fhat.ASH &lt;- apply(fhat,2,mean)
+x.vec &lt;- seq(from=b0,to=bk+h,length=length(fhat.ASH))
+plot (x.vec, fhat.ASH, type=“l”)
+}
+ASH(x, m=20, h=1, b0=-2, bk=18)</p>
+<p>Figure 10.6.2: Average shifted histogram of normal mixture data.</p>
+<p>The ASH is given in Figure 10.6.2. A more sophisticated method for estimating a density with a kernel density estimate. The density histograms is replaced by a smooth kernel function, leading to a smoother estimate. The R function density() provides a variety of kernels. Using the default kernel, a Gaussian distribution, the kernel density estimate is given in Figure 10.6.3.</p>
+<blockquote>
+<p>plot(density(x), type=“l”)</p>
+</blockquote>
+<p>Experiment with different kernel function and different choices of bandwidth (argument bw) for controlling the amount of smoothing.</p>
+<p>Figure 10.6.3: Guassian kernel density estimate of the normal mixture data.</p>
 
 </div>
+</div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></div>
-<div class="next"><a href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#graphics2"><span class="header-section-number">10</span> R graphics: Round II</a></li></ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/sugnet/RTutorial/blob/master/10-graphics2.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/sugnet/RTutorial/edit/master/10-graphics2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>

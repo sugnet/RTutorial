@@ -318,14 +318,14 @@
 <span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html">rcauchy</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt;  [1]  0.2081698 -4.1076198 -0.8430387 -6.1803125  7.0988985</span></span>
-<span><span class="co">#&gt;  [6]  0.7311272 -0.8521644  0.4671207  1.0375501  1.3957985</span></span>
+<span><span class="co">#&gt;  [1]  0.2888303 -4.4339571  0.2983165  0.6691146  0.5687872</span></span>
+<span><span class="co">#&gt;  [6]  7.5812563  0.2852356 -0.3632230 -0.6364902 -5.5607180</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"mean"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] -0.1044471</span></span>
+<span><span class="co">#&gt; [1] -0.1302848</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"median"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.3376452</span></span>
+<span><span class="co">#&gt; [1] 0.287033</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"trimmed"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] -0.2453821</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] -0.4154233</span></span></code></pre></div>
 <ol start="8" style="list-style-type: lower-alpha">
 <li>The two logical control operators <code>&amp;&amp;</code> and <code>||</code> are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators <code>&amp;</code> and <code>|</code> which operate on vectors/matrices.</li>
 </ol>
@@ -457,7 +457,7 @@
 <div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span>   <span class="co"># called with no arguments</span></span>
 <span><span class="co">#&gt;    user  system elapsed </span></span>
-<span><span class="co">#&gt;    0.87    0.14    8.03</span></span></code></pre></div>
+<span><span class="co">#&gt;    0.71    0.09    8.23</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>
 <code>system.time(expr)</code> calls the function <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code>, evaluates <code>expr</code>, and then calls <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> once more, returning the difference between the two <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> calls:</li>
@@ -466,7 +466,7 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000000</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-mapping_files/figure-html/systemtimeExample-1.png" width="672"></div>
 <pre><code>#&gt;    user  system elapsed 
-#&gt;    0.14    0.01    0.23</code></pre>
+#&gt;    0.16    0.00    0.28</code></pre>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Note that user and system times do not necessarily add up to elapsed time exactly.</p>
 </div>
@@ -533,7 +533,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000014d2ff1a1f0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000180849259c8&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>The presence of <code>UseMethod("plot")</code> shows that <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> is a <em><span style="color:#FF9966">generic</span></em> function. The <em><span style="color:#FF9966">class</span></em> of an object determines how it will be treated by a generic function i.e. what <em><span style="color:#FF9966">method</span></em> will be applied to it. Function <code><a href="https://rdrr.io/r/methods/setClass.html">setClass()</a></code> is used for setting the class attribute of an object. Function <code><a href="https://rdrr.io/r/utils/methods.html">methods()</a></code> is used to find out (a) what is the repertoire of methods of a generic function and (b) what methods are available for a certain class:</p>
 <div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
@@ -747,10 +747,39 @@
 <span class="header-section-number">8.14</span> Writing user friendly applications: the package shiny<a class="anchor" aria-label="anchor" href="#writing-user-friendly-applications-the-package-shiny"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code>shiny</code> package in R allows one to create an interactive environment inside R. As an example, the code below generates data from a bivariate normal distribution and makes a scatter plot of the two variables. With shiny a sliding bar is added where the user can adjust the correlation between the two variables.</p>
-<p>A shiny app consists of a user interface (<code>ui</code>) a <code>server</code> function and the <code>shinyApp</code> function that uses the <code>ui</code> object and the <code>server</code> function to build a Shiny app object. For the sliding bar, the function <code><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html">sliderInput()</a></code> is used. Table <a href="#tab:InputElements">8.1</a> provides a list of different input elements.</p>
+<p>A shiny app consists of a user interface (<code>ui</code>) a <code>server</code> function and the <code>shinyApp</code> function that uses the <code>ui</code> object and the <code>server</code> function to build a Shiny app object. For the sliding bar, the function <code><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html">sliderInput()</a></code> is used. Table <a href="mapping.html#tab:InputElements">8.1</a> provides a list of different input elements.</p>
 <p>The <code>server</code> function uses the <code>inputs</code> – the <code>cor.val</code> in this example – to produce an <code>output</code> – the scatter plot in this example – using a reactive expression – the <code>plot</code> command in this example. The <code>server</code> function and thus the reactive expression is called with every change in the <code>input</code>, i.e. the plot is executed with the updated <code>cor.val</code>. The <code>output</code> produced by die <code>server</code> function – <code>scatter</code> in this example – is plotted in the <code>mainPanel</code> with the function <code>plotOutput</code>.</p>
-<p>Table: (#tab:InputElements) Input elements for shiny apps.</p>
-<div class="line-block">—— | —— | —— |<br><code><a href="https://rdrr.io/pkg/shiny/man/actionButton.html">actionButton()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/fileInput.html">fileInput()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html">sliderInput()</a></code> |<br><code><a href="https://rdrr.io/pkg/shiny/man/checkboxGroupInput.html">checkboxGroupInput()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/numericInput.html">numericInput()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/submitButton.html">submitButton()</a></code> |<br><code><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html">checkboxInput()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/passwordInput.html">passwordInput()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html">textAreaInput()</a></code> |<br><code><a href="https://rdrr.io/pkg/shiny/man/dateInput.html">dateInput()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/radioButtons.html">radioButtons()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput()</a></code> |<br><code><a href="https://rdrr.io/pkg/shiny/man/dateRangeInput.html">dateRangeInput()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput()</a></code> | <code><a href="https://rdrr.io/pkg/shiny/man/varSelectInput.html">varSelectInput()</a></code> |</div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:InputElements">Table 8.1: </span> Input elements for shiny apps.</caption>
+<tbody>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/pkg/shiny/man/actionButton.html">actionButton()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/fileInput.html">fileInput()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html">sliderInput()</a></code></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/pkg/shiny/man/checkboxGroupInput.html">checkboxGroupInput()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/numericInput.html">numericInput()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/submitButton.html">submitButton()</a></code></td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html">checkboxInput()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/passwordInput.html">passwordInput()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html">textAreaInput()</a></code></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/pkg/shiny/man/dateInput.html">dateInput()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/radioButtons.html">radioButtons()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput()</a></code></td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/pkg/shiny/man/dateRangeInput.html">dateRangeInput()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput()</a></code></td>
+<td><code><a href="https://rdrr.io/pkg/shiny/man/varSelectInput.html">varSelectInput()</a></code></td>
+</tr>
+</tbody>
+</table></div>
 <div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/">shiny</a></span><span class="op">)</span></span>
 <span></span>
@@ -841,7 +870,54 @@
 </h2>
 <p>Any error that is generated during the execution of a function will record details of the calls that were being executed at the time. These details can be shown by using the function <code><a href="https://rdrr.io/r/base/traceback.html">traceback()</a></code>. The function <code><a href="https://rdrr.io/r/utils/debugger.html">dump.frames()</a></code> gives more detailed information, but it must be used sparingly because it can create very large objects in the <em><span style="color:#3399FF">workspace</span></em>. The function <code>options (error = xx)</code> can be used to specify the action taken when an error occurs. The recommended option during program development is <code>options(error = recover)</code>. This ensures that an error during an interactive session will call <code><a href="https://rdrr.io/r/utils/recover.html">recover()</a></code> from the lowest relevant function call, usually the call that produced the error. You can then browse in this or any of the currently active calls to recover arbitrary information about the state of computation at the time of the error. An alternative is to set <code>options(error = dump.frames)</code>. This will save all the data in the calls that were active when an error occurred. Calling <code><a href="https://rdrr.io/r/utils/debugger.html">debugger()</a></code> later on produce a similar result to <code><a href="https://rdrr.io/r/utils/recover.html">recover()</a></code>.</p>
 <p>The following is a summary of the most common error tracing facilities in R:</p>
-<div class="line-block">—— | —————- |<br><code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> | The printing of key values within a function is often all that is needed. |<br><code><a href="https://rdrr.io/r/base/traceback.html">traceback()</a></code> | Must be used together with <code><a href="https://rdrr.io/r/utils/debugger.html">dump.frames()</a></code>. |<br><code>options(warn=2)</code> | Changes warning to an error that causes a dump. |<br><code>options(error=)</code> | Changes the function that is used for the dump action. |<br><code>last.dump()</code> | The object in the <em><span style="color:#3399FF">.RData</span></em> that contains a list of calls to dump. |<br><code><a href="https://rdrr.io/r/utils/debugger.html">debugger()</a></code> | Function to inspect last.dump for an error. |<br><code><a href="https://rdrr.io/r/base/browser.html">browser()</a></code> | Function that can be used within a function to interrupt the latter’s execution so that variables within the local frame concerned can be inspected. |<br><code><a href="https://rdrr.io/r/base/trace.html">trace()</a></code> | Places tracing information before or within functions. Can be used to place calls to the browser at given positions within a function. |<br><code><a href="https://rdrr.io/r/base/trace.html">untrace()</a></code> | Switches all or some of the functions of <code><a href="https://rdrr.io/r/base/trace.html">trace()</a></code> off. |</div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:ErrorTracing">Table 8.2: </span> Error tracing facilities.</caption>
+<colgroup>
+<col width="31%">
+<col width="68%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>
+<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>
+</td>
+<td>The printing of key values within a function is often all that is needed.</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/base/traceback.html">traceback()</a></code></td>
+<td>Must be used together with <code><a href="https://rdrr.io/r/utils/debugger.html">dump.frames()</a></code>.</td>
+</tr>
+<tr class="odd">
+<td><code>options(warn=2)</code></td>
+<td>Changes warning to an error that causes a dump.</td>
+</tr>
+<tr class="even">
+<td><code>options(error=)</code></td>
+<td>Changes the function that is used for the dump action.</td>
+</tr>
+<tr class="odd">
+<td><code>last.dump()</code></td>
+<td>The object in the <em><span style="color:#3399FF">.RData</span></em> that contains a list of calls to dump.</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/utils/debugger.html">debugger()</a></code></td>
+<td>Function to inspect last.dump for an error.</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/base/browser.html">browser()</a></code></td>
+<td>Function that can be used within a function to interrupt the latter’s execution so that variables within the local frame concerned can be inspected.</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/base/trace.html">trace()</a></code></td>
+<td>Places tracing information before or within functions. Can be used to place calls to the browser at given positions within a function.</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/base/trace.html">untrace()</a></code></td>
+<td>Switches all or some of the functions of <code><a href="https://rdrr.io/r/base/trace.html">trace()</a></code> off.</td>
+</tr>
+</tbody>
+</table></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>Study the <em>R Language Manual Definition Chapter 9: Debugging</em> for a summary of error tracing facilities in R . Note especially how the functions <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code>, <code><a href="https://rdrr.io/r/base/traceback.html">traceback()</a></code>, <code><a href="https://rdrr.io/r/base/browser.html">browser()</a></code>, <code><a href="https://rdrr.io/r/base/trace.html">trace()</a></code>, <code><a href="https://rdrr.io/r/base/trace.html">untrace()</a></code>, <code><a href="https://rdrr.io/r/base/debug.html">debug()</a></code>, <code><a href="https://rdrr.io/r/base/debug.html">undebug()</a></code> and <code>options(warn=2 or error=)</code> work.</p></li>
 <li><p>Study usage of: <code>options(error = dump.frames);  debugger()</code></p></li>

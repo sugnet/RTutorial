@@ -1,2 +1,20 @@
 h1:mapping Vectorized programming and mapping functions
+h2:mapping-functions-to-a-matrix Mapping functions to a matrix
+h2:mapping-functions-to-vectors-dataframes-and-lists Mapping functions to vectors, dataframes and lists
+h2:the-functions-mapply-rapply-and-vectorize The functions: ,  and 
+h2:the-mapping-function-tapply-for-grouped-data The mapping function tapply() for grouped data
+h2:the-control-of-execution-flow-statement-if-else-and-the-control-functions-ifelse-and-switch The control of execution flow statement if-else and the control functions  and 
+h2:loops-in-r Loops in R
+h2:the-execution-time-of-r-tasks The execution time of R tasks
+h2:the-calling-of-functions-with-argument-lists The calling of functions with argument lists
+h2:evaluating-r-strings-a-commands Evaluating R strings a commands
+h2:object-oriented-programming-in-r Object oriented programming in R
+h2:recursion Recursion
+h2:environments-in-r Environments in R
+h2:computing-on-the-language 
+h2:writing-user-friendly-applications-the-package-shiny Writing user friendly applications: the package shiny
+h2:exercise Exercise
+h2:the-function-on.exit The function on.exit()
+h2:error-tracing Error tracing
+h2:error-handling-the-function-try Error handling: The function 
 

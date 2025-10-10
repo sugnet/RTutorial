@@ -34,8 +34,7 @@ In this chapter we continue the study the art of R programming. An important top
 
 The usage is illustrated in the following diagram.
 
-
-\includegraphics[width=1\linewidth]{pics/ifelse} 
+<img src="pics/ifelse.jpg" width="100%" />
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (i)	Note the difference between the function `ifelse()` and the control statement: `if` - `else`.
@@ -80,7 +79,7 @@ lapply (split (data.frame (state.x77),
                cut (data.frame (state.x77)$Illiteracy, 3)), pairs)
 ```
 
-![](08-mapping_files/figure-latex/splitExample-1.pdf)<!-- --> ![](08-mapping_files/figure-latex/splitExample-2.pdf)<!-- --> ![](08-mapping_files/figure-latex/splitExample-3.pdf)<!-- --> 
+<img src="08-mapping_files/figure-html/splitExample-1.png" width="672" /><img src="08-mapping_files/figure-html/splitExample-2.png" width="672" /><img src="08-mapping_files/figure-html/splitExample-3.png" width="672" />
 
 ```
 #> $`(0.498,1.27]`
@@ -242,14 +241,14 @@ centre <- function(x, type)
 
 x <- rcauchy(10)
 x
-#>  [1] -0.6897862  0.9203964 -3.4916787  8.3234230  0.1589843
-#>  [6] -5.1391375 -2.1279538 -9.5079710  7.2078543 -0.1195617
+#>  [1]  0.2888303 -4.4339571  0.2983165  0.6691146  0.5687872
+#>  [6]  7.5812563  0.2852356 -0.3632230 -0.6364902 -5.5607180
 centre(x,"mean")
-#> [1] -0.4465431
+#> [1] -0.1302848
 centre(x,"median")
-#> [1] -0.4046739
+#> [1] 0.287033
 centre(x,"trimmed")
-#> [1] -0.4101104
+#> [1] -0.4154233
 ```
 
 (h)	The two logical control operators `&&` and `||` are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators `&` and `|` which operate on vectors/matrices.
@@ -398,7 +397,7 @@ The functions `system.time()` and `proc.time()` provide information regarding th
 ``` r
 proc.time()   # called with no arguments
 #>    user  system elapsed 
-#>    0.25    0.03    3.42
+#>    0.71    0.09    8.23
 ```
 
 (b) `system.time(expr)` calls the function `proc.time()`, evaluates `expr`, and then calls `proc.time()` once more, returning the difference between the two `proc.time()` calls:
@@ -408,11 +407,11 @@ proc.time()   # called with no arguments
 system.time (hist (rev (sort (rnorm (1000000)))))
 ```
 
-![](08-mapping_files/figure-latex/systemtimeExample-1.pdf)<!-- --> 
+<img src="08-mapping_files/figure-html/systemtimeExample-1.png" width="672" />
 
 ```
 #>    user  system elapsed 
-#>    0.09    0.03    0.21
+#>    0.16    0.00    0.28
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -481,7 +480,7 @@ Suppose we would like to investigate the body of function `plot()`. We know that
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x00000262a8958d80>
+#> <bytecode: 0x00000180849259c8>
 #> <environment: namespace:base>
 ```
 
@@ -501,10 +500,11 @@ methods(plot) # repertoire of methods for FUNCTION plot()
 #> [17] plot.mlm*           plot.ppr*          
 #> [19] plot.prcomp*        plot.princomp*     
 #> [21] plot.profile*       plot.profile.nls*  
-#> [23] plot.raster*        plot.spec*         
-#> [25] plot.stepfun        plot.stl*          
-#> [27] plot.table*         plot.ts            
-#> [29] plot.tskernel*      plot.TukeyHSD*     
+#> [23] plot.R6*            plot.raster*       
+#> [25] plot.spec*          plot.stepfun       
+#> [27] plot.stl*           plot.table*        
+#> [29] plot.ts             plot.tskernel*     
+#> [31] plot.TukeyHSD*     
 #> see '?methods' for accessing help and source code
 methods(class="lm")  # what methods are available for CLASS lm
 #>  [1] add1           alias          anova         
@@ -713,12 +713,14 @@ The `server` function uses the `inputs` – the `cor.val` in this example – to
 
 Table: (\#tab:InputElements) Input elements for shiny apps.
 
-| ------ | ------ | ------ | 
-| `actionButton()`       |	`fileInput()`     | `sliderInput()`    | 
-| `checkboxGroupInput()` |	`numericInput()`  | `submitButton()`   | 
-| `checkboxInput()`      |	`passwordInput()` | `textAreaInput()`  | 
-| `dateInput()`          |	`radioButtons()`  | `textInput()`      | 
-| `dateRangeInput()`     |	`selectInput()`   | `varSelectInput()` |
+|                 |                 |                 | 
+| --------------- | --------------- | --------------- | 
+| `actionButton()`       |	`fileInput()`      | `sliderInput()`    | 
+| `checkboxGroupInput()` |	`numericInput()`   | `submitButton()`   | 
+| `checkboxInput()`      |	`passwordInput()`  | `textAreaInput()`  | 
+| `dateInput()`          |	`radioButtons()`   | `textInput()`      | 
+| `dateRangeInput()`     |	`selectInput()`    | `varSelectInput()` | 
+
 
 
 ``` r
@@ -815,16 +817,19 @@ Any error that is generated during the execution of a function will record detai
 
 The following is a summary of the most common error tracing facilities in R:
 
-| ------ | ---------------- | 
-| `print()`, `cat()` | The printing of key values within a function is often all that is needed.  |   
-| `traceback()`      | Must be used together with `dump.frames()`.  |   
-| `options(warn=2)`  | Changes warning to an error that causes a dump.  | 
-| `options(error=)`  | Changes the function that is used for the dump action.  |   
-| `last.dump()`      | The object in the *<span style="color:#3399FF">.RData</span>* that contains a list of calls to dump.  |   
-| `debugger()`       | Function to inspect last.dump for an error.  |   
-| `browser()`        | Function that can be used within a function to interrupt the latter’s execution so that variables within the local frame concerned can be inspected.  |   
-| `trace()`          | Places tracing information before or within functions.  Can be used to place calls to the browser at given positions within a function.  |   
-| `untrace()`        | 	Switches all or some of the functions of `trace()` off. |   
+Table: (\#tab:ErrorTracing) Error tracing facilities.
+
+|         |                 | 
+| ------- | --------------- |
+| `print()`, `cat()` | The printing of key values within a function is often all that is needed. | 
+| `traceback()`      | Must be used together with `dump.frames()`. | 
+| `options(warn=2)`  | Changes warning to an error that causes a dump. | 
+| `options(error=)`  | Changes the function that is used for the dump action. |
+| `last.dump()`      | The object in the *<span style="color:#3399FF">.RData</span>* that contains a list of calls to dump. | 
+| `debugger()`       | Function to inspect last.dump for an error. |
+| `browser()`        | Function that can be used within a function to interrupt the latter’s execution so that variables within the local frame concerned can be inspected. |
+| `trace()`          | Places tracing information before or within functions.  Can be used to place calls to the browser at given positions within a function. |
+| `untrace()`        | Switches all or some of the functions of `trace()` off. |
 
 (a)	Study the *R Language Manual Definition Chapter 9: Debugging* for a summary of error tracing facilities in R . Note especially how the functions `print()`, `cat()`, `traceback()`, `browser()`, `trace()`, `untrace()`, `debug()`, `undebug()` and `options(warn=2 or error=)` work.
 

@@ -102,7 +102,7 @@ The above example shows that <span style="color:#FF9966">when the name of an R o
 
 ``` r
 mean(yy) 
-#> [1] 48.93751
+#> [1] 53.72914
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -121,7 +121,7 @@ gr.data <- rnorm(1000)
 hist(gr.data)
 ```
 
-![](01-intro_files/figure-latex/unnamed-chunk-7-1.pdf)<!-- --> 
+<img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 <div style="margin-left: 25px; margin-right: 20px;">
 These instructions have resulted in the opening of a graph window containing the required histogram and the user can switch from the console to the graph window and back again to the console.
@@ -139,7 +139,10 @@ When RStudio is installed on your computer the following icon is created on the 
 
 Clicking the above icon open the RStudio development environment as shown in Figure \@ref(fig:RStudioLayout). In order to open any R workspace with RStudio drag the corresponding <span style="color:#FFB3B3">.RData</span> file to the above RStudio icon and drop it as soon as  ‘Open with RStudio’ becomes visible.
 
-![(\#fig:RStudioLayout)The RStudio development environment for R.](pics/RStudio_layout.jpg) 
+<div class="figure">
+<img src="pics/RStudio_layout.jpg" alt="The RStudio development environment for R."  />
+<p class="caption">(\#fig:RStudioLayout)The RStudio development environment for R.</p>
+</div>
 
 The bottom left-hand panel is the familiar R console.
 

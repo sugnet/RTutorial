@@ -33,9 +33,7 @@ library(foreign)
 objects(name="package:foreign")
 ```
 
-Study the helpfiles of these functions for reading into R binary data, SAS XPORT format, Weka Attribute-Relation File Format, the Xbase family of database languages dBase, Clipper and FoxPro, Stata, Epi Info and EpiData files, Minitab portable worksheets, Octave text files, data.dump files that were produced in S version 3, SPSS save or export files, SAS data sets to be converted to ssd format and Systat files.
-
-### ssd format footnote
+Study the helpfiles of these functions for reading into R binary data, SAS XPORT format, Weka Attribute-Relation File Format, the Xbase family of database languages dBase, Clipper and FoxPro, Stata, Epi Info and EpiData files, Minitab portable worksheets, Octave text files, data.dump files that were produced in S version 3, SPSS save or export files, SAS data sets to be converted to ssd format^[This function requires SAS to be installed since it creates and run a SASA program that converts the data set to ssd format and uses `read.xport()` to obtain a dataframe.] and Systat files.
 
 ## Sending output to a file
 
@@ -107,9 +105,525 @@ descrip.mns <- paste("Mean for variable", format.names, " = ", format.mns)
 cat(descrip.mns, fill = max(nchar(descrip.mns)))
 ```
 
+## Printing tables
+
+Study the example below of how to represent the maximum and minimum value of the variables in the  state.x77 data set in a table with the names of the countries corresponding to the values.
+
+```{r, min_max_table}
+mins <- apply(state.x77, 2, min)
+maxs <- apply(state.x77, 2, max)
+min.name <- character(ncol(state.x77))
+min.name
+for(i in 1:8) min.name[i] <- rownames(state.x77)[state.x77[,i] == mins[i]][1]
+max.name <- character(8)
+for(i in 1:8) max.name[i] <- rownames(state.x77)[state.x77 [,i] == maxs[i]][1]
+my.table <- data.frame(mins, min.name, maxs, max.name)
+dimnames(my.table) <- list(names(mins),c("Minimum", 
+                                         "State with Min",
+                                         "Maximum",
+                                         "State with Max"))
+colnames(my.table)[3] <- paste("     ", colnames(my.table)[3])
+my.table
+```
+
+An alternative version of the above table could be obtained with the following instructions:
+
+```{r, min_max_table_alt}
+cat (paste (format (    c  (" ", "Statistic", " ", names(mins))),
+            format ( paste ("  ", c("  ", "Minimum", " ", format(mins)))),
+            format (    c  ("State having", "Minimum", " ", min.name)),
+            format (paste  ("       ", c(" ", "Maximum", " ", format(maxs)))),
+            format (    c  ("State having","Maximum", " ", max.name))), 
+              fill=TRUE)
+```
+
+Make the necessary changes in the above lines of code to improve the column spacing.
+
+## Communicating with the operating system
+
+Study how the function `system()` works using the DOS instructions:  *“time”*,  *“date”* and *“dir”*.  *Hint*:  First study the help file of the R function `system()` and then the following instructions:
+
+```{r, system, eval = FALSE}
+system (paste (Sys.getenv ("COMSPEC"), "/c", "time \t"),                      
+         show.output.on.console = TRUE, invisible = TRUE)
+system (paste (Sys.getenv ("COMSPEC"), "/c", "date \t"),                  
+         show.output.on.console = TRUE, invisible = TRUE)
+system (paste (Sys.getenv ("COMSPEC"), "/c", "dir c:\\"),                  
+         show.output.on.console = TRUE, invisible = TRUE)
+```
+
+The R function `system()` can also be used together with Notepad  to create a text file during an R session:
+
+```{r, system2, eval = FALSE}
+system (paste (Sys.getenv ("COMSPEC"), "/c", 
+               "notepad c:\\temp\\test.txt"),
+        show.output.on.console = TRUE, invisible = TRUE)
+```
+
+(a)	Use `system()` to create a text file without terminating the R session. 
+(b)	Use `system()` to write a function  `myfile.exists()` that checks if any specified file exists.
+
+##	Exercise
+
+::: {style="color: #80CC99;"}
+
+1.	Construct tables displaying the values of all variables in the state.x77 data set separately for each region as defined in the R object `state.region`.
+
+2.	Print a table from the state.x77 data set such that for each variable, an asterisk is placed after the maximum value for that variable. The numbers must line up correctly.
+
+:::
+
+## Tidyverse
+
+*<span style="color:#FF9966">Tidyverse</span>* is a collection or *ecosystem* of R packages that use the same data structures for data manipulation and exploration. With the command `library (tidyverse)`, the core packages listed in Table \@ref(tab:TidyverseCore) will also be loaded. A selection of other packages from the tidyverse collection is given in Table \@ref(tab:TidyverseOther).
+
+Table: (\#tab:TidyverseCore) Additional core tidyverse packages.
+
+| *<span style="color:#CC99FF">Package</span>* | *<span style="color:#CC99FF">Purpose</span>*  |
+| ------ | --------------- | 
+| `dplyr`   |	Data manipulation |
+| `tidyr`   |	Data tidying |
+| `tibble`  |	Similar to data frames |
+| `readr`   |	Data import |
+| `ggplot2` |	Data visualisation (see Chapter 10) |
+| `stringr` |	String manipulation |
+| `forcats` |	Factor variable manipulation |
+| `purr`    |	Functional programming |
+
+Table: (\#tab:TidyverseOther) Selection of packages from tidyverse.
+
+| *<span style="color:#CC99FF">Package</span>* | *<span style="color:#CC99FF">Purpose</span>*  |
+| ------ | --------------- | 
+| `hms`, `lubridate` |	Working with date/time vectors |
+| `feather`          |	Sharing with Python and other languages |
+| `haven`            |	Importing SPSS, SAS and Stata files |
+| `httr`             |	Sharing with web interfaces |
+| `jsonlite`         |	Java script (JSON) |
+| `rvest`            |	Web scraping |
+| `readxl`           |	Reading *<span style="color:#FFB3B3">.xls</span>* and *<span style="color:#FFB3B3">.xlsx</span>* files |
+| `xml2`             |	XML |
+| `modelr`           |	Modelling within a pipeline |
+| `broom`            |	Turning models into tidy data |
 
 
+### Tibbles
+
+A *<span style="color:#FF9966">tibble</span>* is a new version of a dataframe. Tibbles have an enhanced `print()` method which makes them easier to use with large datasets containing complex objects. To create a tibble from the dataframe iris, we use the commands:
+
+```{r, tibble_iris}
+library ("tidyverse")
+iris.tibble <- tibble(iris)
+iris.tibble
+```
+
+Tibbles can also be formed from vectors automatically creating a column vector.
+
+```{r, tibble_vector}
+tibble(x = fruit)   # data set fruit in package stringr
+```
+
+Matrices are also easily converted to tibbles.
+
+```{r, tibble_matrix}
+X <- matrix (1:12,ncol=3)
+tibble(X)
+```
+
+Even lists can be converted to tibbles.
+
+```{r, tibble_list}
+my.list <- list(a = 1:10, beta = exp(-3:3), 
+                logic = c(TRUE,FALSE,FALSE,TRUE))
+
+my.list
+tibble (my.list)
+```
+
+To create a tibble from scratch we can use the command:
+
+```{r, tibble_scratch}
+my.dat <- tibble(x = 1:5, y = 1, z = y - x ^ 2)
+my.dat
+```
+
+There are three major differences between tibbles and dataframes.
+
+(a) As seen above, the print method for tibbles only shows the first 10 rows and uses fonts and colours for emphasis. It also only shows the columns that fit onto the screen and provides a summary of each column type. You can control the default print behaviour by setting options: `options(tibble.print_max = n, tibble.print_min = m)`. If there are more than $n$ rows, print only $m$ rows. Use `options(tibble.print_min = Inf)` to always show all rows and `options(tibble.width = Inf)` to always print all columns, regardless of the width of the screen.
+
+(b) Tibbles are stricter with subsetting, always returning another tibble.
+
+```{r, tibble_subset}
+my.dat["y"]
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+To extract a column, there are three options:
+</div>
+
+```{r, tibble_extract_col}
+my.dat$x
+my.dat[["y"]]
+my.dat[[3]]
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+Tibbles never do partial matching, and will return NULL with a warning if the column does not exist.
+</div>
+
+(c) Tibbles are also stricter with recycling, only allowing values of length one to be recycled. The first column with length different to one determines the number of rows in the tibble and conflicts will lead to an error. To create a tibble with zero rows, use the first row to have $0 \neq 1$ rows with the command
+
+```{r, tibble_zero}
+tibble(a = integer(), b = 1)
+```
+
+### Pipe operator
+
+The pipe operator, `|>`, pipes an object forward into a function or call expression, something like `x |> f`, rather than $f(x)$.  A simple example to achieve the same result as the three commands with two intermediate objects, `car_data` and `cyl_means` created, would be a single call as shown below:
+
+```{r, pipe_example}
+car_data <- mtcars[mtcars$hp > 100,]
+cyl_means <- apply(car_data, 2, function(x, cyl) 
+                                  { tapply(x, cyl, mean)
+                                  }, cyl=car_data$cyl)
+cyl_means
+  
+mtcars |>
+  filter(hp > 100) |>
+  group_by(cyl) |>
+  summarise(across(everything(), mean))
+```
+
+The first pipe operator `%>%` was created in the package `magrittr`. This package is automatically loaded when `tidyverse` is attached. The following call with therefore have a similar outcome:
+
+```{r, pipe_old}
+mtcars %>%
+  filter(hp > 100) %>%
+  group_by(cyl) %>%
+  summarise(across(everything(), mean))
+```
+
+From R version 4.1.0 the pipe operator `|>` is directly built into R and can therefore be used at any time without having to attach another package.
+
+The dataframe (or tibble) is piped forward to the function `filter()`, i.e. telling R that the variable `hp` belongs to `mtcars` and the sub-tibble with only `hp > 100` values, is piped forward to the `group_by()` function. 
+
+### Tidy data
+
+Tidy data is data where every column represents a single variable, every row is a single observation and in every cell is a single value. The terms ‘variable’ and ‘observation’ are important – a variable contains all values that measure the same feature across units; an observation contains all values on a single unit, across features. For creating a tidy data set there are five main types of operations:
+
+####	Pivotting
+
+The functions `pivot_longer()` and `pivot_wider()` are used to convert data into long or wide format respectively. Consider the long data set Rabbit in package `MASS`.
+
+```{r, Rabbit}
+library (MASS)
+tibble (Rabbit)
+```
+
+The command below, pivots the tibble into a wide format.
+
+```{r, pivot_wider}
+rabbit <- Rabbit |> 
+  pivot_wider(names_from = c(Animal, Treatment, Run), values_from = BPchange)
+rabbit
+```
+
+For the converse, the command below pivots the wide tibble, `rabbit`, to long format. 
+
+```{r, pivot_longer}
+rabbit |> pivot_longer(cols = -Dose, names_to = "Treat.comb", 
+                       values_to = "BPchange")
+```
+
+Note that the column headings now form a single variable. To separate the combination of variables into different columns, we need the following command:
+  
+```{r, pivot_longer2}
+rabbit |> 
+  pivot_longer(cols = -Dose,
+               names_to = c("animal","treatment","run"),
+               names_pattern ="(.*)_(.*)_(.*)",
+               values_to = "BPchange")
+```
+
+#### Rectangling {#rectangling}
+
+Rectangling is used to place lists in clean data rectangular format. Consider the list below:
+  
+```{r, Toothless_Dory_example}
+df <- tibble(
+  character = c("Toothless", "Dory"),
+  metadata = list(
+    list(
+      species = "dragon",
+      color = "black",
+      films = c(
+        "How to Train Your Dragon",
+        "How to Train Your Dragon 2",
+        "How to Train Your Dragon: The Hidden World"
+      )
+    ),
+    list(
+      species = "blue tang",
+      color = "blue",
+      films = c("Finding Nemo", "Finding Dory")
+    )
+  )
+)
+df
+```
+
+The following command places the two list items of metadata in a tibble with two rows, one for Toothless and one for Dory. Each of the three components – species, color and films – forms a column in the new tibble.
+
+```{r, unnest}
+df |> unnest_auto(metadata)
+```
+
+In addition to the function `unnest_auto()`, the functions `unnest_wider()` and `unnest_longer()` places the list components into columns or rows respectively. The `unnest_auto()` selects the most appropriate of `unnest_wider()` or `unnest_longer()`. In the first line of the output above, the `unnest_auto()` function states Using `'unnest_wider(metadata)'`, indicating that the wider application was used for this list.
+
+The function `hoist()` can be used to reach down multiple layers. 
+
+```{r, hoist}
+df |> hoist(metadata, "species", 
+            first_film = list("films", 1L),                
+            third_film = list("films", 3L))
+```
+
+Note that `hoist()` also allows us to extract only certain components.
+
+####	Nesting
+
+In nesting, a tibble of lists are created. In the example below, we create a tibble with three rows – one for each species – and two columns where each element in the second column is a $50 \times 4$ matrix of the four variables measured on $50$ samples from that particular species.
+
+```{r, nest}
+iris |> nest(data = !Species)
+```
+
+We can also create tibbles with three columns where the data is grouped by ‘Petal’ and ‘Sepal’ in the first instance and by ‘width’ and ‘length’ in the second.
+
+```{r, nest2}
+iris |> nest(petal = starts_with("Petal"), sepal = starts_with("Sepal"))
+iris |> nest(width = contains("Width"), length = contains("Length"))
+```
+
+The function `unnest()` is similar to the functions discussed in \@ref(rectangling), and can be used to simultaneously `unlist` several column from a simple table containing lists.
+  
+```{r, unnest2}
+df <- tibble(x = 1:3,
+             y = list(NULL,
+                      tibble(a = 1, b = 2),
+                      tibble(a = 1:3, b = 3:1)))
+df
+  
+df |> unnest(y)
+df %>% unnest(y, keep_empty = TRUE)
+  
+df <- tibble(a = list(c("a", "b"), "c"),
+             b = list(1:2, 3),
+             c = c(11, 22))
+df
+  
+df |> unnest(c(a, b))
+df |> unnest(a) %>% unnest(b)
+```
+  
+#### Splitting and combining
+  
+We use the functions `separate()` and `extract()` for separating columns and `unite()` to combine columns into a single column. The function `separate()` divides the data, while `extract()` picks out a part of the data.
+
+```{r, split_combin}
+df <- data.frame(x = c(NA, "a.b", "a.d", "b.c"))
+df  
+  
+df |> separate(x, c("A", "B"))
+df |> separate(x, c(NA, "B"))
+  
+df |> extract(x, "A")
+df |> extract(x, c("A", "B"),"([[:alnum:]]+).([[:alnum:]]+)")
+  
+df <- expand_grid(x = c("a", NA), y = c("b", NA))
+df
+  
+  df |> unite("z", x:y, remove = FALSE)
+  df |> unite("z", x:y, na.rm = TRUE, remove = FALSE)
+```
+  
+#### Dealing with missing values
+  
+The functions `complete()`, `drop_na()`, `fill()` and `replace_na()` are the most important for treatment of missing values.
+  
+```{r, missingValues}
+df <- tibble(group = c(1:2, 1),
+             item_id = c(1:2, 2),
+             item_name = c("a", "b", "b"),
+             value1 = 1:3,
+             value2 = 4:6)
+df
+  
+df |> complete(group, nesting(item_id, item_name))
+df |> complete(group, nesting(item_id, item_name), 
+                 fill = list(value1 = 0))
+df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
+df
+  
+df |> replace_na(list(x = 0, y = "unknown"))
+  
+df |> drop_na()
+df |> drop_na(x)
+```
+  
+### Package `dplyr`
+
+The main data manipulation functions is found in the package `dplyr`. The functions are referred to as “verbs”, since each performs a particular operation of data manipulation. The verbs are grouped in Table \@ref(tab:dplyr) according to operations on columns, rows or groups of rows.
+
+Table: (\#tab:dplyr) Verbs for data manipulation in dplyr.
+
+| *<span style="color:#CC99FF">Verb</span>* | *<span style="color:#CC99FF">Operates on</span>*  |
+| ------ | --------------- | 
+| `select()`   |	Columns |
+| `rename()`   |	Columns |
+| `mutate()`   |	Columns |
+| `relocate()` |	Columns |
+| `filter()`   |	Rows |
+| `arrange()`  |	Rows |
+| `slice()`    |	Rows |
+| `group_by()` |	Rows |
+| `summarise()`|	Group of rows |
+
+The functioning of the verbs will be illustrated with `UScereal` in the package `MASS`.
+
+```{r, cereal}
+library (MASS)
+cereal <- tibble (UScereal)
+cereal
+```
+
+The function `select()` allows for extracting one or more columns from a data set. The columns can be names or referred to by index. Using the function `everything()` in conjunction with `select()` is useful to sort or reorder the columns of a data set.
+
+```{r, select}
+dplyr::select (cereal, calories)        # select only column calories
+dplyr::select (cereal, calories, fat)   # select two columns
+dplyr::select (cereal, c(5,7:8))        # select by index
+dplyr::select (cereal, -c(1,9,11))      # select columns to exclude
+dplyr::select (cereal, calories, fibre, everything()) 
+      # reorder with calories first, followed by fibre
+```
+
+The `rename()` function changes one of more column names. The companion function `rename_with()` can be used to apply a function to column headings, such as `tolower()` and `toupper()` to change the case of column headings.
+
+```{r, rename}
+rename (cereal, Manufacturer=mfr)
+rename_with (cereal, toupper, starts_with("F"))
+```
 
 
+New variables can be added or created from existing columns with the function `mutate()`. The newly formed variables are immediately available for creating more variables. Variables can be removed by transforming them to `NULL` or using the `.keep` argument.
 
+```{r, mutate}
+mutate (cereal, fat.vs.pr = fat/protein, mfr=NULL) |>
+     dplyr::select (fat.vs.pr, everything())
+mutate (cereal, fat.vs.pr = fat/protein, 
+                 comb.var = sodium + fat.vs.pr,
+                 new.var=1:nrow(cereal), .keep="used")
+```
+
+Why is it useful to pipe the mutated tibble above to select? In comparison, `relocate()` makes it easy to move blocks of columns.
+
+```{r, relocate}
+relocate (cereal, shelf)
+relocate (cereal, cal=calories, .before = fat)
+relocate(cereal, where(is.factor), .after=last_col())
+```
+
+The `filter()` function select rows from a tibble, based on any operator that evaluates to a column of `TRUE` / `FALSE` values equal to the number of rows.
+
+```{r, filter}
+filter (cereal, fat<1)
+filter (cereal, fat<1, mfr=="K")
+filter (cereal, fat<1 | mfr=="K")
+filter(cereal, between(sugars, 10, 20))
+```
+
+The verb `arrange()` refers to sorting the rows according to the values in one or more columns.
+
+```{r, arrange}
+arrange (cereal, fibre)
+arrange (cereal, -fibre)
+arrange (cereal, fat, desc(mfr))
+```
+
+The function `slice()` also allows for the selection of rows and works with a few helper functions: `slice_head()`, `slice_tail()`, `slice_sample()`, `slice_min()` and `slice_max()` to select the first few, last few, random sample, rows with lowest values or rows with highest values, respectively.
+
+```{r, slice}
+slice (cereal, 10:20)
+slice (cereal, -(10:20))
+slice_tail (cereal, n=3)
+slice_sample (cereal, n=8)
+slice_max (cereal, sodium, n=4)
+```
+
+A grouped object can be formed with the `group_by()` function. At first glance, it appears similar to the ungrouped tibble, but grouping will prove useful further data manipulations.
+
+```{r, groupby}
+cereal.mfr <- group_by(cereal, mfr)
+cereal.mfr          # looks no different
+class(cereal)
+class(cereal.mfr)   # but it is a grouped object
+```
+
+The `summarise()` function allows for the computation of descriptive statistics. Operating on an ungrouped object, the overall statistic is computed, while the grouped object will provide the required statistics by group.
+
+```{r, summarise}
+summarise(cereal.mfr, mean.cal = mean(calories), 
+          median.carbo = median(carbo))
+group_by(cereal, mfr, shelf) |> 
+    summarise(mean.cal = mean(calories))
+summarise(cereal, mean.cal = mean(calories), max.fat = max(fat), 
+          median.carbo = median(carbo), sum.sugar = tibble(fivenum(sugars)))
+```
+
+Since the function `fivenum()` does not return a scalar value, but a vector, the output appears as a tibble above. Alternatively, the function `reframe()` can be used.
+
+```{r, reframe}
+reframe(cereal, mean.cal = mean(calories), max.fat = max(fat), 
+          median.carbo = median(carbo), sum.sugar = fivenum(sugars))
+```
+
+##	Exercise
+
+::: {style="color: #80CC99;"}
+
+1.	Use the `fish_encounters` in package `tidyr` to convert it into a wide format with fish IDs as the row variable and a column for each station. The entries in the cells should be '1' for a fish encounter and '0' otherwise.
+
+2.	The `billboard` data set in package `tidyr` contains song rankings for billboard top 100 in the year 2000 with columns artist, track, date.enter and wk1 - w76 which contains the ranking of the song in each week after it entered the charts.
+
+    (a)	Create a long data set listing the columns wk1 to w76 below each other in a single column called week and the associated rank position in a column called rank. Note that not all songs stayed on the charts for the entire 76 weeks. *Hint*, use `values_drop_na = TRUE`.
+
+    (b)	Use the command `nest()` to create a tibble with one row for each artist-track combination and a rank.hist variable where each cell contains a tibble with 76 rows (one for each week) and a column for each of date.entered, week and rank.
+
+3.	Another form of mutation, is to join together two separate data sets. Study the working of the functions `inner_join()`, `left_join()`, `right_join()` and `full_join()` together with the output of the commands:
+
+```{r, bands, eval = FALSE}
+band_members %>% inner_join(band_instruments)
+band_members %>% left_join(band_instruments)
+band_members %>% right_join(band_instruments)
+band_members %>% full_join(band_instruments)
+band_members %>% full_join(band_instruments2, 
+                              by = c("name" = "artist"))
+```
+
+4.	Use `state.x77` in package `MASS` to create a tibble called `USA.states` with the names of the states in the first column. *Hint*: first convert the matrix to a dataframe to get neater column names.
+
+    (a)	Add the column `state.region`, also from package `MASS`, to USA.states in the second position.
+    
+    (b)	Select only the columns State, Region, Population, Income, Illiteracy, Life Exp and Area, then use the pipe operator to reorder the columns such that Area appears between Region and Population.
+    
+    (c)	Add a column `Pop.Density` for the Population density in number per square miles. Note that the population values in `state.x77` represent 1000's of persons. This column should appear between Population and Income.
+    
+    (d)	In a single command, using the pipe operator, create a tibble called `USA.groups` where you:
+    * select only states with an area < 500 000 square miles;
+    *	order the rows according to decreasing population density;
+    * group by Region
+    
+    (e)	Compute the mean income and median life expectancy per region.
+
+:::
 

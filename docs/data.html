@@ -128,12 +128,7 @@
 <span><span class="co">#&gt; [10] "read.spss"     "read.ssd"      "read.systat"  </span></span>
 <span><span class="co">#&gt; [13] "read.xport"    "write.arff"    "write.dbf"    </span></span>
 <span><span class="co">#&gt; [16] "write.dta"     "write.foreign"</span></span></code></pre></div>
-<p>Study the helpfiles of these functions for reading into R binary data, SAS XPORT format, Weka Attribute-Relation File Format, the Xbase family of database languages dBase, Clipper and FoxPro, Stata, Epi Info and EpiData files, Minitab portable worksheets, Octave text files, data.dump files that were produced in S version 3, SPSS save or export files, SAS data sets to be converted to ssd format and Systat files.</p>
-<div id="ssd-format-footnote" class="section level3" number="9.2.1">
-<h3>
-<span class="header-section-number">9.2.1</span> ssd format footnote<a class="anchor" aria-label="anchor" href="#ssd-format-footnote"><i class="fas fa-link"></i></a>
-</h3>
-</div>
+<p>Study the helpfiles of these functions for reading into R binary data, SAS XPORT format, Weka Attribute-Relation File Format, the Xbase family of database languages dBase, Clipper and FoxPro, Stata, Epi Info and EpiData files, Minitab portable worksheets, Octave text files, data.dump files that were produced in S version 3, SPSS save or export files, SAS data sets to be converted to ssd format<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This function requires SAS to be installed since it creates and run a SASA program that converts the data set to ssd format and uses &lt;code&gt;read.xport()&lt;/code&gt; to obtain a dataframe.&lt;/p&gt;"><sup>1</sup></a> and Systat files.</p>
 </div>
 <div id="sending-output-to-a-file" class="section level2" number="9.3">
 <h2>
@@ -215,9 +210,1363 @@
 <span><span class="co">#&gt; Mean for variable HS Grad     =     53.1080 </span></span>
 <span><span class="co">#&gt; Mean for variable Frost       =    104.4600 </span></span>
 <span><span class="co">#&gt; Mean for variable Area        =  70735.8800</span></span></code></pre></div>
+</div>
+<div id="printing-tables" class="section level2" number="9.9">
+<h2>
+<span class="header-section-number">9.9</span> Printing tables<a class="anchor" aria-label="anchor" href="#printing-tables"><i class="fas fa-link"></i></a>
+</h2>
+<p>Study the example below of how to represent the maximum and minimum value of the variables in the state.x77 data set in a table with the names of the countries corresponding to the values.</p>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">state.x77</span>, <span class="fl">2</span>, <span class="va">min</span><span class="op">)</span></span>
+<span><span class="va">maxs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">state.x77</span>, <span class="fl">2</span>, <span class="va">max</span><span class="op">)</span></span>
+<span><span class="va">min.name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">min.name</span></span>
+<span><span class="co">#&gt; [1] "" "" "" "" "" "" "" ""</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span> <span class="va">min.name</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span><span class="op">[</span><span class="va">state.x77</span><span class="op">[</span>,<span class="va">i</span><span class="op">]</span> <span class="op">==</span> <span class="va">mins</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">max.name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">character</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span> <span class="va">max.name</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">state.x77</span><span class="op">)</span><span class="op">[</span><span class="va">state.x77</span> <span class="op">[</span>,<span class="va">i</span><span class="op">]</span> <span class="op">==</span> <span class="va">maxs</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">my.table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">mins</span>, <span class="va">min.name</span>, <span class="va">maxs</span>, <span class="va">max.name</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span><span class="op">(</span><span class="va">my.table</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">mins</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Minimum"</span>, </span>
+<span>                                         <span class="st">"State with Min"</span>,</span>
+<span>                                         <span class="st">"Maximum"</span>,</span>
+<span>                                         <span class="st">"State with Max"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">my.table</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"     "</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">my.table</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">my.table</span></span>
+<span><span class="co">#&gt;            Minimum State with Min       Maximum</span></span>
+<span><span class="co">#&gt; Population  365.00         Alaska       21198.0</span></span>
+<span><span class="co">#&gt; Income     3098.00    Mississippi        6315.0</span></span>
+<span><span class="co">#&gt; Illiteracy    0.50           Iowa           2.8</span></span>
+<span><span class="co">#&gt; Life Exp     67.96 South Carolina          73.6</span></span>
+<span><span class="co">#&gt; Murder        1.40   North Dakota          15.1</span></span>
+<span><span class="co">#&gt; HS Grad      37.80 South Carolina          67.3</span></span>
+<span><span class="co">#&gt; Frost         0.00         Hawaii         188.0</span></span>
+<span><span class="co">#&gt; Area       1049.00   Rhode Island      566432.0</span></span>
+<span><span class="co">#&gt;            State with Max</span></span>
+<span><span class="co">#&gt; Population     California</span></span>
+<span><span class="co">#&gt; Income             Alaska</span></span>
+<span><span class="co">#&gt; Illiteracy      Louisiana</span></span>
+<span><span class="co">#&gt; Life Exp           Hawaii</span></span>
+<span><span class="co">#&gt; Murder            Alabama</span></span>
+<span><span class="co">#&gt; HS Grad              Utah</span></span>
+<span><span class="co">#&gt; Frost              Nevada</span></span>
+<span><span class="co">#&gt; Area               Alaska</span></span></code></pre></div>
+<p>An alternative version of the above table could be obtained with the following instructions:</p>
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span> <span class="op">(</span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>  <span class="op">(</span><span class="st">" "</span>, <span class="st">"Statistic"</span>, <span class="st">" "</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">mins</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span> <span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span> <span class="op">(</span><span class="st">"  "</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"  "</span>, <span class="st">"Minimum"</span>, <span class="st">" "</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">mins</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span> <span class="op">(</span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>  <span class="op">(</span><span class="st">"State having"</span>, <span class="st">"Minimum"</span>, <span class="st">" "</span>, <span class="va">min.name</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>  <span class="op">(</span><span class="st">"       "</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">" "</span>, <span class="st">"Maximum"</span>, <span class="st">" "</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">maxs</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span> <span class="op">(</span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>  <span class="op">(</span><span class="st">"State having"</span>,<span class="st">"Maximum"</span>, <span class="st">" "</span>, <span class="va">max.name</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>              fill<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                       State having                    State having </span></span>
+<span><span class="co">#&gt; Statistic     Minimum Minimum                Maximum  Maximum      </span></span>
+<span><span class="co">#&gt;                                                                    </span></span>
+<span><span class="co">#&gt; Population     365.00 Alaska                  21198.0 California   </span></span>
+<span><span class="co">#&gt; Income        3098.00 Mississippi              6315.0 Alaska       </span></span>
+<span><span class="co">#&gt; Illiteracy       0.50 Iowa                        2.8 Louisiana    </span></span>
+<span><span class="co">#&gt; Life Exp        67.96 South Carolina             73.6 Hawaii       </span></span>
+<span><span class="co">#&gt; Murder           1.40 North Dakota               15.1 Alabama      </span></span>
+<span><span class="co">#&gt; HS Grad         37.80 South Carolina             67.3 Utah         </span></span>
+<span><span class="co">#&gt; Frost            0.00 Hawaii                    188.0 Nevada       </span></span>
+<span><span class="co">#&gt; Area          1049.00 Rhode Island           566432.0 Alaska</span></span></code></pre></div>
+<p>Make the necessary changes in the above lines of code to improve the column spacing.</p>
+</div>
+<div id="communicating-with-the-operating-system" class="section level2" number="9.10">
+<h2>
+<span class="header-section-number">9.10</span> Communicating with the operating system<a class="anchor" aria-label="anchor" href="#communicating-with-the-operating-system"><i class="fas fa-link"></i></a>
+</h2>
+<p>Study how the function <code><a href="https://rdrr.io/r/base/system.html">system()</a></code> works using the DOS instructions: <em>“time”</em>, <em>“date”</em> and <em>“dir”</em>. <em>Hint</em>: First study the help file of the R function <code><a href="https://rdrr.io/r/base/system.html">system()</a></code> and then the following instructions:</p>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span> <span class="op">(</span><span class="st">"COMSPEC"</span><span class="op">)</span>, <span class="st">"/c"</span>, <span class="st">"time \t"</span><span class="op">)</span>,                      </span>
+<span>         show.output.on.console <span class="op">=</span> <span class="cn">TRUE</span>, invisible <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span> <span class="op">(</span><span class="st">"COMSPEC"</span><span class="op">)</span>, <span class="st">"/c"</span>, <span class="st">"date \t"</span><span class="op">)</span>,                  </span>
+<span>         show.output.on.console <span class="op">=</span> <span class="cn">TRUE</span>, invisible <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span> <span class="op">(</span><span class="st">"COMSPEC"</span><span class="op">)</span>, <span class="st">"/c"</span>, <span class="st">"dir c:\\"</span><span class="op">)</span>,                  </span>
+<span>         show.output.on.console <span class="op">=</span> <span class="cn">TRUE</span>, invisible <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p>The R function <code><a href="https://rdrr.io/r/base/system.html">system()</a></code> can also be used together with Notepad to create a text file during an R session:</p>
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span> <span class="op">(</span><span class="st">"COMSPEC"</span><span class="op">)</span>, <span class="st">"/c"</span>, </span>
+<span>               <span class="st">"notepad c:\\temp\\test.txt"</span><span class="op">)</span>,</span>
+<span>        show.output.on.console <span class="op">=</span> <span class="cn">TRUE</span>, invisible <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>Use <code><a href="https://rdrr.io/r/base/system.html">system()</a></code> to create a text file without terminating the R session.</li>
+<li>Use <code><a href="https://rdrr.io/r/base/system.html">system()</a></code> to write a function <code>myfile.exists()</code> that checks if any specified file exists.</li>
+</ol>
+</div>
+<div id="exercise-14" class="section level2" number="9.11">
+<h2>
+<span class="header-section-number">9.11</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-14"><i class="fas fa-link"></i></a>
+</h2>
+<div style="color: #80CC99;">
+<ol style="list-style-type: decimal">
+<li><p>Construct tables displaying the values of all variables in the state.x77 data set separately for each region as defined in the R object <code>state.region</code>.</p></li>
+<li><p>Print a table from the state.x77 data set such that for each variable, an asterisk is placed after the maximum value for that variable. The numbers must line up correctly.</p></li>
+</ol>
+</div>
+</div>
+<div id="tidyverse" class="section level2" number="9.12">
+<h2>
+<span class="header-section-number">9.12</span> Tidyverse<a class="anchor" aria-label="anchor" href="#tidyverse"><i class="fas fa-link"></i></a>
+</h2>
+<p><em><span style="color:#FF9966">Tidyverse</span></em> is a collection or <em>ecosystem</em> of R packages that use the same data structures for data manipulation and exploration. With the command <code><a href="https://tidyverse.tidyverse.org">library (tidyverse)</a></code>, the core packages listed in Table <a href="data.html#tab:TidyverseCore">9.1</a> will also be loaded. A selection of other packages from the tidyverse collection is given in Table <a href="data.html#tab:TidyverseOther">9.2</a>.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:TidyverseCore">Table 9.1: </span> Additional core tidyverse packages.</caption>
+<colgroup>
+<col width="28%">
+<col width="71%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">Package</span></em></th>
+<th><em><span style="color:#CC99FF">Purpose</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>dplyr</code></td>
+<td>Data manipulation</td>
+</tr>
+<tr class="even">
+<td><code>tidyr</code></td>
+<td>Data tidying</td>
+</tr>
+<tr class="odd">
+<td><code>tibble</code></td>
+<td>Similar to data frames</td>
+</tr>
+<tr class="even">
+<td><code>readr</code></td>
+<td>Data import</td>
+</tr>
+<tr class="odd">
+<td><code>ggplot2</code></td>
+<td>Data visualisation (see Chapter 10)</td>
+</tr>
+<tr class="even">
+<td><code>stringr</code></td>
+<td>String manipulation</td>
+</tr>
+<tr class="odd">
+<td><code>forcats</code></td>
+<td>Factor variable manipulation</td>
+</tr>
+<tr class="even">
+<td><code>purr</code></td>
+<td>Functional programming</td>
+</tr>
+</tbody>
+</table></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:TidyverseOther">Table 9.2: </span> Selection of packages from tidyverse.</caption>
+<colgroup>
+<col width="28%">
+<col width="71%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">Package</span></em></th>
+<th><em><span style="color:#CC99FF">Purpose</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>
+<code>hms</code>, <code>lubridate</code>
+</td>
+<td>Working with date/time vectors</td>
+</tr>
+<tr class="even">
+<td><code>feather</code></td>
+<td>Sharing with Python and other languages</td>
+</tr>
+<tr class="odd">
+<td><code>haven</code></td>
+<td>Importing SPSS, SAS and Stata files</td>
+</tr>
+<tr class="even">
+<td><code>httr</code></td>
+<td>Sharing with web interfaces</td>
+</tr>
+<tr class="odd">
+<td><code>jsonlite</code></td>
+<td>Java script (JSON)</td>
+</tr>
+<tr class="even">
+<td><code>rvest</code></td>
+<td>Web scraping</td>
+</tr>
+<tr class="odd">
+<td><code>readxl</code></td>
+<td>Reading <em><span style="color:#FFB3B3">.xls</span></em> and <em><span style="color:#FFB3B3">.xlsx</span></em> files</td>
+</tr>
+<tr class="even">
+<td><code>xml2</code></td>
+<td>XML</td>
+</tr>
+<tr class="odd">
+<td><code>modelr</code></td>
+<td>Modelling within a pipeline</td>
+</tr>
+<tr class="even">
+<td><code>broom</code></td>
+<td>Turning models into tidy data</td>
+</tr>
+</tbody>
+</table></div>
+<div id="tibbles" class="section level3" number="9.12.1">
+<h3>
+<span class="header-section-number">9.12.1</span> Tibbles<a class="anchor" aria-label="anchor" href="#tibbles"><i class="fas fa-link"></i></a>
+</h3>
+<p>A <em><span style="color:#FF9966">tibble</span></em> is a new version of a dataframe. Tibbles have an enhanced <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> method which makes them easier to use with large datasets containing complex objects. To create a tibble from the dataframe iris, we use the commands:</p>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5</span></span>
+<span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1</span></span>
+<span><span class="co">#&gt; ✔ ggplot2   3.5.2     ✔ tibble    3.3.0</span></span>
+<span><span class="co">#&gt; ✔ lubridate 1.9.4     ✔ tidyr     1.3.1</span></span>
+<span><span class="co">#&gt; ✔ purrr     1.1.0     </span></span>
+<span><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
+<span><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span>
+<span><span class="va">iris.tibble</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+<span><span class="va">iris.tibble</span></span>
+<span><span class="co">#&gt; # A tibble: 150 × 5</span></span>
+<span><span class="co">#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span><span class="co">#&gt;           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  </span></span>
+<span><span class="co">#&gt;  1          5.1         3.5          1.4         0.2 setosa </span></span>
+<span><span class="co">#&gt;  2          4.9         3            1.4         0.2 setosa </span></span>
+<span><span class="co">#&gt;  3          4.7         3.2          1.3         0.2 setosa </span></span>
+<span><span class="co">#&gt;  4          4.6         3.1          1.5         0.2 setosa </span></span>
+<span><span class="co">#&gt;  5          5           3.6          1.4         0.2 setosa </span></span>
+<span><span class="co">#&gt;  6          5.4         3.9          1.7         0.4 setosa </span></span>
+<span><span class="co">#&gt;  7          4.6         3.4          1.4         0.3 setosa </span></span>
+<span><span class="co">#&gt;  8          5           3.4          1.5         0.2 setosa </span></span>
+<span><span class="co">#&gt;  9          4.4         2.9          1.4         0.2 setosa </span></span>
+<span><span class="co">#&gt; 10          4.9         3.1          1.5         0.1 setosa </span></span>
+<span><span class="co">#&gt; # ℹ 140 more rows</span></span></code></pre></div>
+<p>Tibbles can also be formed from vectors automatically creating a column vector.</p>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">fruit</span><span class="op">)</span>   <span class="co"># data set fruit in package stringr</span></span>
+<span><span class="co">#&gt; # A tibble: 80 × 1</span></span>
+<span><span class="co">#&gt;    x           </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;       </span></span>
+<span><span class="co">#&gt;  1 apple       </span></span>
+<span><span class="co">#&gt;  2 apricot     </span></span>
+<span><span class="co">#&gt;  3 avocado     </span></span>
+<span><span class="co">#&gt;  4 banana      </span></span>
+<span><span class="co">#&gt;  5 bell pepper </span></span>
+<span><span class="co">#&gt;  6 bilberry    </span></span>
+<span><span class="co">#&gt;  7 blackberry  </span></span>
+<span><span class="co">#&gt;  8 blackcurrant</span></span>
+<span><span class="co">#&gt;  9 blood orange</span></span>
+<span><span class="co">#&gt; 10 blueberry   </span></span>
+<span><span class="co">#&gt; # ℹ 70 more rows</span></span></code></pre></div>
+<p>Matrices are also easily converted to tibbles.</p>
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>,ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 1</span></span>
+<span><span class="co">#&gt;   X[,1]  [,2]  [,3]</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1     1     5     9</span></span>
+<span><span class="co">#&gt; 2     2     6    10</span></span>
+<span><span class="co">#&gt; 3     3     7    11</span></span>
+<span><span class="co">#&gt; 4     4     8    12</span></span></code></pre></div>
+<p>Even lists can be converted to tibbles.</p>
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, </span>
+<span>                logic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">my.list</span></span>
+<span><span class="co">#&gt; $a</span></span>
+<span><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $beta</span></span>
+<span><span class="co">#&gt; [1]  0.04978707  0.13533528  0.36787944  1.00000000</span></span>
+<span><span class="co">#&gt; [5]  2.71828183  7.38905610 20.08553692</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $logic</span></span>
+<span><span class="co">#&gt; [1]  TRUE FALSE FALSE  TRUE</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span> <span class="op">(</span><span class="va">my.list</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 1</span></span>
+<span><span class="co">#&gt;   my.list     </span></span>
+<span><span class="co">#&gt;   &lt;named list&gt;</span></span>
+<span><span class="co">#&gt; 1 &lt;int [10]&gt;  </span></span>
+<span><span class="co">#&gt; 2 &lt;dbl [7]&gt;   </span></span>
+<span><span class="co">#&gt; 3 &lt;lgl [4]&gt;</span></span></code></pre></div>
+<p>To create a tibble from scratch we can use the command:</p>
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">1</span>, z <span class="op">=</span> <span class="va">y</span> <span class="op">-</span> <span class="va">x</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">my.dat</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
+<span><span class="co">#&gt;       x     y     z</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1     1     0</span></span>
+<span><span class="co">#&gt; 2     2     1    -3</span></span>
+<span><span class="co">#&gt; 3     3     1    -8</span></span>
+<span><span class="co">#&gt; 4     4     1   -15</span></span>
+<span><span class="co">#&gt; 5     5     1   -24</span></span></code></pre></div>
+<p>There are three major differences between tibbles and dataframes.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>As seen above, the print method for tibbles only shows the first 10 rows and uses fonts and colours for emphasis. It also only shows the columns that fit onto the screen and provides a summary of each column type. You can control the default print behaviour by setting options: <code>options(tibble.print_max = n, tibble.print_min = m)</code>. If there are more than <span class="math inline">\(n\)</span> rows, print only <span class="math inline">\(m\)</span> rows. Use <code>options(tibble.print_min = Inf)</code> to always show all rows and <code>options(tibble.width = Inf)</code> to always print all columns, regardless of the width of the screen.</p></li>
+<li><p>Tibbles are stricter with subsetting, always returning another tibble.</p></li>
+</ol>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.dat</span><span class="op">[</span><span class="st">"y"</span><span class="op">]</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 1</span></span>
+<span><span class="co">#&gt;       y</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1</span></span>
+<span><span class="co">#&gt; 2     1</span></span>
+<span><span class="co">#&gt; 3     1</span></span>
+<span><span class="co">#&gt; 4     1</span></span>
+<span><span class="co">#&gt; 5     1</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>To extract a column, there are three options:</p>
+</div>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.dat</span><span class="op">$</span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 1 2 3 4 5</span></span>
+<span><span class="va">my.dat</span><span class="op">[[</span><span class="st">"y"</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1] 1 1 1 1 1</span></span>
+<span><span class="va">my.dat</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; [1]   0  -3  -8 -15 -24</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Tibbles never do partial matching, and will return NULL with a warning if the column does not exist.</p>
+</div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Tibbles are also stricter with recycling, only allowing values of length one to be recycled. The first column with length different to one determines the number of rows in the tibble and conflicts will lead to an error. To create a tibble with zero rows, use the first row to have <span class="math inline">\(0 \neq 1\)</span> rows with the command</li>
+</ol>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">integer</a></span><span class="op">(</span><span class="op">)</span>, b <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 0 × 2</span></span>
+<span><span class="co">#&gt; # ℹ 2 variables: a &lt;int&gt;, b &lt;dbl&gt;</span></span></code></pre></div>
+</div>
+<div id="pipe-operator" class="section level3" number="9.12.2">
+<h3>
+<span class="header-section-number">9.12.2</span> Pipe operator<a class="anchor" aria-label="anchor" href="#pipe-operator"><i class="fas fa-link"></i></a>
+</h3>
+<p>The pipe operator, <code>|&gt;</code>, pipes an object forward into a function or call expression, something like <code>x |&gt; f</code>, rather than <span class="math inline">\(f(x)\)</span>. A simple example to achieve the same result as the three commands with two intermediate objects, <code>car_data</code> and <code>cyl_means</code> created, would be a single call as shown below:</p>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">car_data</span> <span class="op">&lt;-</span> <span class="va">mtcars</span><span class="op">[</span><span class="va">mtcars</span><span class="op">$</span><span class="va">hp</span> <span class="op">&gt;</span> <span class="fl">100</span>,<span class="op">]</span></span>
+<span><span class="va">cyl_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">car_data</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">cyl</span><span class="op">)</span> </span>
+<span>                                  <span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">cyl</span>, <span class="va">mean</span><span class="op">)</span></span>
+<span>                                  <span class="op">}</span>, cyl<span class="op">=</span><span class="va">car_data</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span></span>
+<span><span class="va">cyl_means</span></span>
+<span><span class="co">#&gt;        mpg cyl     disp       hp     drat       wt     qsec</span></span>
+<span><span class="co">#&gt; 4 25.90000   4 108.0500 111.0000 3.940000 2.146500 17.75000</span></span>
+<span><span class="co">#&gt; 6 19.74286   6 183.3143 122.2857 3.585714 3.117143 17.97714</span></span>
+<span><span class="co">#&gt; 8 15.10000   8 353.1000 209.2143 3.229286 3.999214 16.77214</span></span>
+<span><span class="co">#&gt;          vs        am     gear     carb</span></span>
+<span><span class="co">#&gt; 4 1.0000000 1.0000000 4.500000 2.000000</span></span>
+<span><span class="co">#&gt; 6 0.5714286 0.4285714 3.857143 3.428571</span></span>
+<span><span class="co">#&gt; 8 0.0000000 0.1428571 3.285714 3.500000</span></span>
+<span>  </span>
+<span><span class="va">mtcars</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">hp</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 11</span></span>
+<span><span class="co">#&gt;     cyl   mpg  disp    hp  drat    wt  qsec    vs    am</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     4  25.9  108.  111   3.94  2.15  17.8 1     1    </span></span>
+<span><span class="co">#&gt; 2     6  19.7  183.  122.  3.59  3.12  18.0 0.571 0.429</span></span>
+<span><span class="co">#&gt; 3     8  15.1  353.  209.  3.23  4.00  16.8 0     0.143</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></span></code></pre></div>
+<p>The first pipe operator <code>%&gt;%</code> was created in the package <code>magrittr</code>. This package is automatically loaded when <code>tidyverse</code> is attached. The following call with therefore have a similar outcome:</p>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">hp</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 11</span></span>
+<span><span class="co">#&gt;     cyl   mpg  disp    hp  drat    wt  qsec    vs    am</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     4  25.9  108.  111   3.94  2.15  17.8 1     1    </span></span>
+<span><span class="co">#&gt; 2     6  19.7  183.  122.  3.59  3.12  18.0 0.571 0.429</span></span>
+<span><span class="co">#&gt; 3     8  15.1  353.  209.  3.23  4.00  16.8 0     0.143</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></span></code></pre></div>
+<p>From R version 4.1.0 the pipe operator <code>|&gt;</code> is directly built into R and can therefore be used at any time without having to attach another package.</p>
+<p>The dataframe (or tibble) is piped forward to the function <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>, i.e. telling R that the variable <code>hp</code> belongs to <code>mtcars</code> and the sub-tibble with only <code>hp &gt; 100</code> values, is piped forward to the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function.</p>
+</div>
+<div id="tidy-data" class="section level3" number="9.12.3">
+<h3>
+<span class="header-section-number">9.12.3</span> Tidy data<a class="anchor" aria-label="anchor" href="#tidy-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>Tidy data is data where every column represents a single variable, every row is a single observation and in every cell is a single value. The terms ‘variable’ and ‘observation’ are important – a variable contains all values that measure the same feature across units; an observation contains all values on a single unit, across features. For creating a tidy data set there are five main types of operations:</p>
+<div id="pivotting" class="section level4" number="9.12.3.1">
+<h4>
+<span class="header-section-number">9.12.3.1</span> Pivotting<a class="anchor" aria-label="anchor" href="#pivotting"><i class="fas fa-link"></i></a>
+</h4>
+<p>The functions <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> are used to convert data into long or wide format respectively. Consider the long data set Rabbit in package <code>MASS</code>.</p>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'MASS'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:dplyr':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     select</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span> <span class="op">(</span><span class="va">Rabbit</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 60 × 5</span></span>
+<span><span class="co">#&gt;    BPchange   Dose Run   Treatment Animal</span></span>
+<span><span class="co">#&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt; </span></span>
+<span><span class="co">#&gt;  1     0.5    6.25 C1    Control   R1    </span></span>
+<span><span class="co">#&gt;  2     4.5   12.5  C1    Control   R1    </span></span>
+<span><span class="co">#&gt;  3    10     25    C1    Control   R1    </span></span>
+<span><span class="co">#&gt;  4    26     50    C1    Control   R1    </span></span>
+<span><span class="co">#&gt;  5    37    100    C1    Control   R1    </span></span>
+<span><span class="co">#&gt;  6    32    200    C1    Control   R1    </span></span>
+<span><span class="co">#&gt;  7     1      6.25 C2    Control   R2    </span></span>
+<span><span class="co">#&gt;  8     1.25  12.5  C2    Control   R2    </span></span>
+<span><span class="co">#&gt;  9     4     25    C2    Control   R2    </span></span>
+<span><span class="co">#&gt; 10    12     50    C2    Control   R2    </span></span>
+<span><span class="co">#&gt; # ℹ 50 more rows</span></span></code></pre></div>
+<p>The command below, pivots the tibble into a wide format.</p>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rabbit</span> <span class="op">&lt;-</span> <span class="va">Rabbit</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Animal</span>, <span class="va">Treatment</span>, <span class="va">Run</span><span class="op">)</span>, values_from <span class="op">=</span> <span class="va">BPchange</span><span class="op">)</span></span>
+<span><span class="va">rabbit</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 11</span></span>
+<span><span class="co">#&gt;     Dose R1_Control_C1 R2_Control_C2 R3_Control_C3</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1   6.25           0.5          1             0.75</span></span>
+<span><span class="co">#&gt; 2  12.5            4.5          1.25          3   </span></span>
+<span><span class="co">#&gt; 3  25             10            4             3   </span></span>
+<span><span class="co">#&gt; 4  50             26           12            14   </span></span>
+<span><span class="co">#&gt; 5 100             37           27            22   </span></span>
+<span><span class="co">#&gt; 6 200             32           29            24   </span></span>
+<span><span class="co">#&gt; # ℹ 7 more variables: R4_Control_C4 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   R5_Control_C5 &lt;dbl&gt;, R1_MDL_M1 &lt;dbl&gt;, R2_MDL_M2 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   R3_MDL_M3 &lt;dbl&gt;, R4_MDL_M4 &lt;dbl&gt;, R5_MDL_M5 &lt;dbl&gt;</span></span></code></pre></div>
+<p>For the converse, the command below pivots the wide tibble, <code>rabbit</code>, to long format.</p>
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rabbit</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">Dose</span>, names_to <span class="op">=</span> <span class="st">"Treat.comb"</span>, </span>
+<span>                       values_to <span class="op">=</span> <span class="st">"BPchange"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 60 × 3</span></span>
+<span><span class="co">#&gt;     Dose Treat.comb    BPchange</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1  6.25 R1_Control_C1     0.5 </span></span>
+<span><span class="co">#&gt;  2  6.25 R2_Control_C2     1   </span></span>
+<span><span class="co">#&gt;  3  6.25 R3_Control_C3     0.75</span></span>
+<span><span class="co">#&gt;  4  6.25 R4_Control_C4     1.25</span></span>
+<span><span class="co">#&gt;  5  6.25 R5_Control_C5     1.5 </span></span>
+<span><span class="co">#&gt;  6  6.25 R1_MDL_M1         1.25</span></span>
+<span><span class="co">#&gt;  7  6.25 R2_MDL_M2         1.4 </span></span>
+<span><span class="co">#&gt;  8  6.25 R3_MDL_M3         0.75</span></span>
+<span><span class="co">#&gt;  9  6.25 R4_MDL_M4         2.6 </span></span>
+<span><span class="co">#&gt; 10  6.25 R5_MDL_M5         2.4 </span></span>
+<span><span class="co">#&gt; # ℹ 50 more rows</span></span></code></pre></div>
+<p>Note that the column headings now form a single variable. To separate the combination of variables into different columns, we need the following command:</p>
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rabbit</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">Dose</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"animal"</span>,<span class="st">"treatment"</span>,<span class="st">"run"</span><span class="op">)</span>,</span>
+<span>               names_pattern <span class="op">=</span><span class="st">"(.*)_(.*)_(.*)"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"BPchange"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 60 × 5</span></span>
+<span><span class="co">#&gt;     Dose animal treatment run   BPchange</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1  6.25 R1     Control   C1        0.5 </span></span>
+<span><span class="co">#&gt;  2  6.25 R2     Control   C2        1   </span></span>
+<span><span class="co">#&gt;  3  6.25 R3     Control   C3        0.75</span></span>
+<span><span class="co">#&gt;  4  6.25 R4     Control   C4        1.25</span></span>
+<span><span class="co">#&gt;  5  6.25 R5     Control   C5        1.5 </span></span>
+<span><span class="co">#&gt;  6  6.25 R1     MDL       M1        1.25</span></span>
+<span><span class="co">#&gt;  7  6.25 R2     MDL       M2        1.4 </span></span>
+<span><span class="co">#&gt;  8  6.25 R3     MDL       M3        0.75</span></span>
+<span><span class="co">#&gt;  9  6.25 R4     MDL       M4        2.6 </span></span>
+<span><span class="co">#&gt; 10  6.25 R5     MDL       M5        2.4 </span></span>
+<span><span class="co">#&gt; # ℹ 50 more rows</span></span></code></pre></div>
+</div>
+<div id="rectangling" class="section level4" number="9.12.3.2">
+<h4>
+<span class="header-section-number">9.12.3.2</span> Rectangling<a class="anchor" aria-label="anchor" href="#rectangling"><i class="fas fa-link"></i></a>
+</h4>
+<p>Rectangling is used to place lists in clean data rectangular format. Consider the list below:</p>
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  character <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Toothless"</span>, <span class="st">"Dory"</span><span class="op">)</span>,</span>
+<span>  metadata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>      species <span class="op">=</span> <span class="st">"dragon"</span>,</span>
+<span>      color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>      films <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>        <span class="st">"How to Train Your Dragon"</span>,</span>
+<span>        <span class="st">"How to Train Your Dragon 2"</span>,</span>
+<span>        <span class="st">"How to Train Your Dragon: The Hidden World"</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>      species <span class="op">=</span> <span class="st">"blue tang"</span>,</span>
+<span>      color <span class="op">=</span> <span class="st">"blue"</span>,</span>
+<span>      films <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Finding Nemo"</span>, <span class="st">"Finding Dory"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span><span class="co">#&gt;   character metadata        </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;     &lt;list&gt;          </span></span>
+<span><span class="co">#&gt; 1 Toothless &lt;named list [3]&gt;</span></span>
+<span><span class="co">#&gt; 2 Dory      &lt;named list [3]&gt;</span></span></code></pre></div>
+<p>The following command places the two list items of metadata in a tibble with two rows, one for Toothless and one for Dory. Each of the three components – species, color and films – forms a column in the new tibble.</p>
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_auto.html">unnest_auto</a></span><span class="op">(</span><span class="va">metadata</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using `unnest_wider(metadata)`; elements have 3 names in common</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 4</span></span>
+<span><span class="co">#&gt;   character species   color films    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;list&gt;   </span></span>
+<span><span class="co">#&gt; 1 Toothless dragon    black &lt;chr [3]&gt;</span></span>
+<span><span class="co">#&gt; 2 Dory      blue tang blue  &lt;chr [2]&gt;</span></span></code></pre></div>
+<p>In addition to the function <code><a href="https://tidyr.tidyverse.org/reference/unnest_auto.html">unnest_auto()</a></code>, the functions <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code> places the list components into columns or rows respectively. The <code><a href="https://tidyr.tidyverse.org/reference/unnest_auto.html">unnest_auto()</a></code> selects the most appropriate of <code><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html">unnest_wider()</a></code> or <code><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html">unnest_longer()</a></code>. In the first line of the output above, the <code><a href="https://tidyr.tidyverse.org/reference/unnest_auto.html">unnest_auto()</a></code> function states Using <code>'unnest_wider(metadata)'</code>, indicating that the wider application was used for this list.</p>
+<p>The function <code><a href="https://tidyr.tidyverse.org/reference/hoist.html">hoist()</a></code> can be used to reach down multiple layers.</p>
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">hoist</a></span><span class="op">(</span><span class="va">metadata</span>, <span class="st">"species"</span>, </span>
+<span>            first_film <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"films"</span>, <span class="fl">1L</span><span class="op">)</span>,                </span>
+<span>            third_film <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"films"</span>, <span class="fl">3L</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 5</span></span>
+<span><span class="co">#&gt;   character species   first_film     third_film metadata    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;      &lt;list&gt;      </span></span>
+<span><span class="co">#&gt; 1 Toothless dragon    How to Train … How to Tr… &lt;named list&gt;</span></span>
+<span><span class="co">#&gt; 2 Dory      blue tang Finding Nemo   &lt;NA&gt;       &lt;named list&gt;</span></span></code></pre></div>
+<p>Note that <code><a href="https://tidyr.tidyverse.org/reference/hoist.html">hoist()</a></code> also allows us to extract only certain components.</p>
+</div>
+<div id="nesting" class="section level4" number="9.12.3.3">
+<h4>
+<span class="header-section-number">9.12.3.3</span> Nesting<a class="anchor" aria-label="anchor" href="#nesting"><i class="fas fa-link"></i></a>
+</h4>
+<p>In nesting, a tibble of lists are created. In the example below, we create a tibble with three rows – one for each species – and two columns where each element in the second column is a <span class="math inline">\(50 \times 4\)</span> matrix of the four variables measured on <span class="math inline">\(50\)</span> samples from that particular species.</p>
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">nest</a></span><span class="op">(</span>data <span class="op">=</span> <span class="op">!</span><span class="va">Species</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;   Species    data             </span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;      &lt;list&gt;           </span></span>
+<span><span class="co">#&gt; 1 setosa     &lt;tibble [50 × 4]&gt;</span></span>
+<span><span class="co">#&gt; 2 versicolor &lt;tibble [50 × 4]&gt;</span></span>
+<span><span class="co">#&gt; 3 virginica  &lt;tibble [50 × 4]&gt;</span></span></code></pre></div>
+<p>We can also create tibbles with three columns where the data is grouped by ‘Petal’ and ‘Sepal’ in the first instance and by ‘width’ and ‘length’ in the second.</p>
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">nest</a></span><span class="op">(</span>petal <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Petal"</span><span class="op">)</span>, sepal <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Sepal"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
+<span><span class="co">#&gt;   Species    petal             sepal            </span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;      &lt;list&gt;            &lt;list&gt;           </span></span>
+<span><span class="co">#&gt; 1 setosa     &lt;tibble [50 × 2]&gt; &lt;tibble [50 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 2 versicolor &lt;tibble [50 × 2]&gt; &lt;tibble [50 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 3 virginica  &lt;tibble [50 × 2]&gt; &lt;tibble [50 × 2]&gt;</span></span>
+<span><span class="va">iris</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">nest</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"Width"</span><span class="op">)</span>, length <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"Length"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
+<span><span class="co">#&gt;   Species    width             length           </span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;      &lt;list&gt;            &lt;list&gt;           </span></span>
+<span><span class="co">#&gt; 1 setosa     &lt;tibble [50 × 2]&gt; &lt;tibble [50 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 2 versicolor &lt;tibble [50 × 2]&gt; &lt;tibble [50 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 3 virginica  &lt;tibble [50 × 2]&gt; &lt;tibble [50 × 2]&gt;</span></span></code></pre></div>
+<p>The function <code><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest()</a></code> is similar to the functions discussed in <a href="data.html#rectangling">9.12.3.2</a>, and can be used to simultaneously <code>unlist</code> several column from a simple table containing lists.</p>
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>             y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="cn">NULL</span>,</span>
+<span>                      <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                      <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;       x y               </span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;list&gt;          </span></span>
+<span><span class="co">#&gt; 1     1 &lt;NULL&gt;          </span></span>
+<span><span class="co">#&gt; 2     2 &lt;tibble [1 × 2]&gt;</span></span>
+<span><span class="co">#&gt; 3     3 &lt;tibble [3 × 2]&gt;</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
+<span><span class="co">#&gt;       x     a     b</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     2     1     2</span></span>
+<span><span class="co">#&gt; 2     3     1     3</span></span>
+<span><span class="co">#&gt; 3     3     2     2</span></span>
+<span><span class="co">#&gt; 4     3     3     1</span></span>
+<span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest</a></span><span class="op">(</span><span class="va">y</span>, keep_empty <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
+<span><span class="co">#&gt;       x     a     b</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1    NA    NA</span></span>
+<span><span class="co">#&gt; 2     2     1     2</span></span>
+<span><span class="co">#&gt; 3     3     1     3</span></span>
+<span><span class="co">#&gt; 4     3     2     2</span></span>
+<span><span class="co">#&gt; 5     3     3     1</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>, <span class="st">"c"</span><span class="op">)</span>,</span>
+<span>             b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>             c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11</span>, <span class="fl">22</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;   a         b             c</span></span>
+<span><span class="co">#&gt;   &lt;list&gt;    &lt;list&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 &lt;chr [2]&gt; &lt;int [2]&gt;    11</span></span>
+<span><span class="co">#&gt; 2 &lt;chr [1]&gt; &lt;dbl [1]&gt;    22</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
+<span><span class="co">#&gt;   a         b     c</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a         1    11</span></span>
+<span><span class="co">#&gt; 2 b         2    11</span></span>
+<span><span class="co">#&gt; 3 c         3    22</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest</a></span><span class="op">(</span><span class="va">b</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
+<span><span class="co">#&gt;   a         b     c</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 a         1    11</span></span>
+<span><span class="co">#&gt; 2 a         2    11</span></span>
+<span><span class="co">#&gt; 3 b         1    11</span></span>
+<span><span class="co">#&gt; 4 b         2    11</span></span>
+<span><span class="co">#&gt; 5 c         3    22</span></span></code></pre></div>
+</div>
+<div id="splitting-and-combining" class="section level4" number="9.12.3.4">
+<h4>
+<span class="header-section-number">9.12.3.4</span> Splitting and combining<a class="anchor" aria-label="anchor" href="#splitting-and-combining"><i class="fas fa-link"></i></a>
+</h4>
+<p>We use the functions <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/extract.html">extract()</a></code> for separating columns and <code><a href="https://tidyr.tidyverse.org/reference/unite.html">unite()</a></code> to combine columns into a single column. The function <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code> divides the data, while <code><a href="https://tidyr.tidyverse.org/reference/extract.html">extract()</a></code> picks out a part of the data.</p>
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"a.b"</span>, <span class="st">"a.d"</span>, <span class="st">"b.c"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span>  </span>
+<span><span class="co">#&gt;      x</span></span>
+<span><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2  a.b</span></span>
+<span><span class="co">#&gt; 3  a.d</span></span>
+<span><span class="co">#&gt; 4  b.c</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      A    B</span></span>
+<span><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2    a    b</span></span>
+<span><span class="co">#&gt; 3    a    d</span></span>
+<span><span class="co">#&gt; 4    b    c</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      B</span></span>
+<span><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2    b</span></span>
+<span><span class="co">#&gt; 3    d</span></span>
+<span><span class="co">#&gt; 4    c</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/extract.html">extract</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"A"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      A</span></span>
+<span><span class="co">#&gt; 1 &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2    a</span></span>
+<span><span class="co">#&gt; 3    a</span></span>
+<span><span class="co">#&gt; 4    b</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/extract.html">extract</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,<span class="st">"([[:alnum:]]+).([[:alnum:]]+)"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      A    B</span></span>
+<span><span class="co">#&gt; 1 &lt;NA&gt; &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2    a    b</span></span>
+<span><span class="co">#&gt; 3    a    d</span></span>
+<span><span class="co">#&gt; 4    b    c</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="cn">NA</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"b"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 2</span></span>
+<span><span class="co">#&gt;   x     y    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 a     b    </span></span>
+<span><span class="co">#&gt; 2 a     &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 3 &lt;NA&gt;  b    </span></span>
+<span><span class="co">#&gt; 4 &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span>  </span>
+<span>  <span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="st">"z"</span>, <span class="va">x</span><span class="op">:</span><span class="va">y</span>, remove <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
+<span><span class="co">#&gt;   z     x     y    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 a_b   a     b    </span></span>
+<span><span class="co">#&gt; 2 a_NA  a     &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 3 NA_b  &lt;NA&gt;  b    </span></span>
+<span><span class="co">#&gt; 4 NA_NA &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span>  <span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="st">"z"</span>, <span class="va">x</span><span class="op">:</span><span class="va">y</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, remove <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 3</span></span>
+<span><span class="co">#&gt;   z     x     y    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 "a_b" a     b    </span></span>
+<span><span class="co">#&gt; 2 "a"   a     &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 3 "b"   &lt;NA&gt;  b    </span></span>
+<span><span class="co">#&gt; 4 ""    &lt;NA&gt;  &lt;NA&gt;</span></span></code></pre></div>
+</div>
+<div id="dealing-with-missing-values" class="section level4" number="9.12.3.5">
+<h4>
+<span class="header-section-number">9.12.3.5</span> Dealing with missing values<a class="anchor" aria-label="anchor" href="#dealing-with-missing-values"><i class="fas fa-link"></i></a>
+</h4>
+<p>The functions <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code>, <code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code>, <code><a href="https://tidyr.tidyverse.org/reference/fill.html">fill()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/replace_na.html">replace_na()</a></code> are the most important for treatment of missing values.</p>
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>             item_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>             item_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"b"</span><span class="op">)</span>,</span>
+<span>             value1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>             value2 <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 5</span></span>
+<span><span class="co">#&gt;   group item_id item_name value1 value2</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;  &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1     1       1 a              1      4</span></span>
+<span><span class="co">#&gt; 2     2       2 b              2      5</span></span>
+<span><span class="co">#&gt; 3     1       2 b              3      6</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span><span class="va">group</span>, <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand.html">nesting</a></span><span class="op">(</span><span class="va">item_id</span>, <span class="va">item_name</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 5</span></span>
+<span><span class="co">#&gt;   group item_id item_name value1 value2</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;  &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1     1       1 a              1      4</span></span>
+<span><span class="co">#&gt; 2     1       2 b              3      6</span></span>
+<span><span class="co">#&gt; 3     2       1 a             NA     NA</span></span>
+<span><span class="co">#&gt; 4     2       2 b              2      5</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span><span class="va">group</span>, <span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand.html">nesting</a></span><span class="op">(</span><span class="va">item_id</span>, <span class="va">item_name</span><span class="op">)</span>, </span>
+<span>                 fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>value1 <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 5</span></span>
+<span><span class="co">#&gt;   group item_id item_name value1 value2</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;  &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1     1       1 a              1      4</span></span>
+<span><span class="co">#&gt; 2     1       2 b              3      6</span></span>
+<span><span class="co">#&gt; 3     2       1 a              0     NA</span></span>
+<span><span class="co">#&gt; 4     2       2 b              2      5</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="cn">NA</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;       x y    </span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1     1 a    </span></span>
+<span><span class="co">#&gt; 2     2 &lt;NA&gt; </span></span>
+<span><span class="co">#&gt; 3    NA b</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/replace_na.html">replace_na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="st">"unknown"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;       x y      </span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1     1 a      </span></span>
+<span><span class="co">#&gt; 2     2 unknown</span></span>
+<span><span class="co">#&gt; 3     0 b</span></span>
+<span>  </span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 2</span></span>
+<span><span class="co">#&gt;       x y    </span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1     1 a</span></span>
+<span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span><span class="co">#&gt;       x y    </span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1     1 a    </span></span>
+<span><span class="co">#&gt; 2     2 &lt;NA&gt;</span></span></code></pre></div>
+</div>
+</div>
+<div id="package-dplyr" class="section level3" number="9.12.4">
+<h3>
+<span class="header-section-number">9.12.4</span> Package <code>dplyr</code><a class="anchor" aria-label="anchor" href="#package-dplyr"><i class="fas fa-link"></i></a>
+</h3>
+<p>The main data manipulation functions is found in the package <code>dplyr</code>. The functions are referred to as “verbs”, since each performs a particular operation of data manipulation. The verbs are grouped in Table <a href="data.html#tab:dplyr">9.3</a> according to operations on columns, rows or groups of rows.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:dplyr">Table 9.3: </span> Verbs for data manipulation in dplyr.</caption>
+<colgroup>
+<col width="28%">
+<col width="71%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">Verb</span></em></th>
+<th><em><span style="color:#CC99FF">Operates on</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select()</a></code></td>
+<td>Columns</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code></td>
+<td>Columns</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code></td>
+<td>Columns</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code></td>
+<td>Columns</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code></td>
+<td>Rows</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code></td>
+<td>Rows</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice()</a></code></td>
+<td>Rows</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code></td>
+<td>Rows</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></td>
+<td>Group of rows</td>
+</tr>
+</tbody>
+</table></div>
+<p>The functioning of the verbs will be illustrated with <code>UScereal</code> in the package <code>MASS</code>.</p>
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span>
+<span><span class="va">cereal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span> <span class="op">(</span><span class="va">UScereal</span><span class="op">)</span></span>
+<span><span class="va">cereal</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 </span></span>
+<span><span class="co">#&gt;  2 K         212.   12.1   3.03   788. 27.3   21.2  15.2 </span></span>
+<span><span class="co">#&gt;  3 K         100     8     0      280  28     16     0   </span></span>
+<span><span class="co">#&gt;  4 G         147.    2.67  2.67   240   2     14    13.3 </span></span>
+<span><span class="co">#&gt;  5 K         110     2     0      125   1     11    14   </span></span>
+<span><span class="co">#&gt;  6 G         173.    4     2.67   280   2.67  24    10.7 </span></span>
+<span><span class="co">#&gt;  7 R         134.    2.99  1.49   299.  5.97  22.4   8.96</span></span>
+<span><span class="co">#&gt;  8 P         134.    4.48  0      313.  7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  9 Q         160     1.33  2.67   293.  0     16    16   </span></span>
+<span><span class="co">#&gt; 10 G          88     4.8   1.6    232   1.6   13.6   0.8 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span></code></pre></div>
+<p>The function <code><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select()</a></code> allows for extracting one or more columns from a data set. The columns can be names or referred to by index. Using the function <code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> in conjunction with <code><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select()</a></code> is useful to sort or reorder the columns of a data set.</p>
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">calories</span><span class="op">)</span>        <span class="co"># select only column calories</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 1</span></span>
+<span><span class="co">#&gt;    calories</span></span>
+<span><span class="co">#&gt;       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     212.</span></span>
+<span><span class="co">#&gt;  2     212.</span></span>
+<span><span class="co">#&gt;  3     100 </span></span>
+<span><span class="co">#&gt;  4     147.</span></span>
+<span><span class="co">#&gt;  5     110 </span></span>
+<span><span class="co">#&gt;  6     173.</span></span>
+<span><span class="co">#&gt;  7     134.</span></span>
+<span><span class="co">#&gt;  8     134.</span></span>
+<span><span class="co">#&gt;  9     160 </span></span>
+<span><span class="co">#&gt; 10      88 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">calories</span>, <span class="va">fat</span><span class="op">)</span>   <span class="co"># select two columns</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 2</span></span>
+<span><span class="co">#&gt;    calories   fat</span></span>
+<span><span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     212.  3.03</span></span>
+<span><span class="co">#&gt;  2     212.  3.03</span></span>
+<span><span class="co">#&gt;  3     100   0   </span></span>
+<span><span class="co">#&gt;  4     147.  2.67</span></span>
+<span><span class="co">#&gt;  5     110   0   </span></span>
+<span><span class="co">#&gt;  6     173.  2.67</span></span>
+<span><span class="co">#&gt;  7     134.  1.49</span></span>
+<span><span class="co">#&gt;  8     134.  0   </span></span>
+<span><span class="co">#&gt;  9     160   2.67</span></span>
+<span><span class="co">#&gt; 10      88   1.6 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">7</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span>        <span class="co"># select by index</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 3</span></span>
+<span><span class="co">#&gt;    sodium carbo sugars</span></span>
+<span><span class="co">#&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1   394.  15.2  18.2 </span></span>
+<span><span class="co">#&gt;  2   788.  21.2  15.2 </span></span>
+<span><span class="co">#&gt;  3   280   16     0   </span></span>
+<span><span class="co">#&gt;  4   240   14    13.3 </span></span>
+<span><span class="co">#&gt;  5   125   11    14   </span></span>
+<span><span class="co">#&gt;  6   280   24    10.7 </span></span>
+<span><span class="co">#&gt;  7   299.  22.4   8.96</span></span>
+<span><span class="co">#&gt;  8   313.  19.4   7.46</span></span>
+<span><span class="co">#&gt;  9   293.  16    16   </span></span>
+<span><span class="co">#&gt; 10   232   13.6   0.8 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">9</span>,<span class="fl">11</span><span class="op">)</span><span class="op">)</span>      <span class="co"># select columns to exclude</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 8</span></span>
+<span><span class="co">#&gt;    calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     212.   12.1   3.03   394. 30.3   15.2  18.2 </span></span>
+<span><span class="co">#&gt;  2     212.   12.1   3.03   788. 27.3   21.2  15.2 </span></span>
+<span><span class="co">#&gt;  3     100     8     0      280  28     16     0   </span></span>
+<span><span class="co">#&gt;  4     147.    2.67  2.67   240   2     14    13.3 </span></span>
+<span><span class="co">#&gt;  5     110     2     0      125   1     11    14   </span></span>
+<span><span class="co">#&gt;  6     173.    4     2.67   280   2.67  24    10.7 </span></span>
+<span><span class="co">#&gt;  7     134.    2.99  1.49   299.  5.97  22.4   8.96</span></span>
+<span><span class="co">#&gt;  8     134.    4.48  0      313.  7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  9     160     1.33  2.67   293.  0     16    16   </span></span>
+<span><span class="co">#&gt; 10      88     4.8   1.6    232   1.6   13.6   0.8 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 1 more variable: potassium &lt;dbl&gt;</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">calories</span>, <span class="va">fibre</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    calories fibre mfr   protein   fat sodium carbo sugars</span></span>
+<span><span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     212. 30.3  N       12.1   3.03   394.  15.2  18.2 </span></span>
+<span><span class="co">#&gt;  2     212. 27.3  K       12.1   3.03   788.  21.2  15.2 </span></span>
+<span><span class="co">#&gt;  3     100  28    K        8     0      280   16     0   </span></span>
+<span><span class="co">#&gt;  4     147.  2    G        2.67  2.67   240   14    13.3 </span></span>
+<span><span class="co">#&gt;  5     110   1    K        2     0      125   11    14   </span></span>
+<span><span class="co">#&gt;  6     173.  2.67 G        4     2.67   280   24    10.7 </span></span>
+<span><span class="co">#&gt;  7     134.  5.97 R        2.99  1.49   299.  22.4   8.96</span></span>
+<span><span class="co">#&gt;  8     134.  7.46 P        4.48  0      313.  19.4   7.46</span></span>
+<span><span class="co">#&gt;  9     160   0    Q        1.33  2.67   293.  16    16   </span></span>
+<span><span class="co">#&gt; 10      88   1.6  G        4.8   1.6    232   13.6   0.8 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span>      <span class="co"># reorder with calories first, followed by fibre</span></span></code></pre></div>
+<p>The <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> function changes one of more column names. The companion function <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with()</a></code> can be used to apply a function to column headings, such as <code><a href="https://rdrr.io/r/base/chartr.html">tolower()</a></code> and <code><a href="https://rdrr.io/r/base/chartr.html">toupper()</a></code> to change the case of column headings.</p>
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span> <span class="op">(</span><span class="va">cereal</span>, Manufacturer<span class="op">=</span><span class="va">mfr</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    Manufacturer calories protein   fat sodium fibre carbo</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 N                212.   12.1   3.03   394. 30.3   15.2</span></span>
+<span><span class="co">#&gt;  2 K                212.   12.1   3.03   788. 27.3   21.2</span></span>
+<span><span class="co">#&gt;  3 K                100     8     0      280  28     16  </span></span>
+<span><span class="co">#&gt;  4 G                147.    2.67  2.67   240   2     14  </span></span>
+<span><span class="co">#&gt;  5 K                110     2     0      125   1     11  </span></span>
+<span><span class="co">#&gt;  6 G                173.    4     2.67   280   2.67  24  </span></span>
+<span><span class="co">#&gt;  7 R                134.    2.99  1.49   299.  5.97  22.4</span></span>
+<span><span class="co">#&gt;  8 P                134.    4.48  0      313.  7.46  19.4</span></span>
+<span><span class="co">#&gt;  9 Q                160     1.33  2.67   293.  0     16  </span></span>
+<span><span class="co">#&gt; 10 G                 88     4.8   1.6    232   1.6   13.6</span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 4 more variables: sugars &lt;dbl&gt;, shelf &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   potassium &lt;dbl&gt;, vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">toupper</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   FAT sodium FIBRE carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 </span></span>
+<span><span class="co">#&gt;  2 K         212.   12.1   3.03   788. 27.3   21.2  15.2 </span></span>
+<span><span class="co">#&gt;  3 K         100     8     0      280  28     16     0   </span></span>
+<span><span class="co">#&gt;  4 G         147.    2.67  2.67   240   2     14    13.3 </span></span>
+<span><span class="co">#&gt;  5 K         110     2     0      125   1     11    14   </span></span>
+<span><span class="co">#&gt;  6 G         173.    4     2.67   280   2.67  24    10.7 </span></span>
+<span><span class="co">#&gt;  7 R         134.    2.99  1.49   299.  5.97  22.4   8.96</span></span>
+<span><span class="co">#&gt;  8 P         134.    4.48  0      313.  7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  9 Q         160     1.33  2.67   293.  0     16    16   </span></span>
+<span><span class="co">#&gt; 10 G          88     4.8   1.6    232   1.6   13.6   0.8 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span></code></pre></div>
+<p>New variables can be added or created from existing columns with the function <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. The newly formed variables are immediately available for creating more variables. Variables can be removed by transforming them to <code>NULL</code> or using the <code>.keep</code> argument.</p>
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span> <span class="op">(</span><span class="va">cereal</span>, fat.vs.pr <span class="op">=</span> <span class="va">fat</span><span class="op">/</span><span class="va">protein</span>, mfr<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>     <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span> <span class="op">(</span><span class="va">fat.vs.pr</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    fat.vs.pr calories protein   fat sodium fibre carbo</span></span>
+<span><span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     0.250     212.   12.1   3.03   394. 30.3   15.2</span></span>
+<span><span class="co">#&gt;  2     0.250     212.   12.1   3.03   788. 27.3   21.2</span></span>
+<span><span class="co">#&gt;  3     0         100     8     0      280  28     16  </span></span>
+<span><span class="co">#&gt;  4     1         147.    2.67  2.67   240   2     14  </span></span>
+<span><span class="co">#&gt;  5     0         110     2     0      125   1     11  </span></span>
+<span><span class="co">#&gt;  6     0.667     173.    4     2.67   280   2.67  24  </span></span>
+<span><span class="co">#&gt;  7     0.5       134.    2.99  1.49   299.  5.97  22.4</span></span>
+<span><span class="co">#&gt;  8     0         134.    4.48  0      313.  7.46  19.4</span></span>
+<span><span class="co">#&gt;  9     2.00      160     1.33  2.67   293.  0     16  </span></span>
+<span><span class="co">#&gt; 10     0.333      88     4.8   1.6    232   1.6   13.6</span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 4 more variables: sugars &lt;dbl&gt;, shelf &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   potassium &lt;dbl&gt;, vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span> <span class="op">(</span><span class="va">cereal</span>, fat.vs.pr <span class="op">=</span> <span class="va">fat</span><span class="op">/</span><span class="va">protein</span>, </span>
+<span>                 comb.var <span class="op">=</span> <span class="va">sodium</span> <span class="op">+</span> <span class="va">fat.vs.pr</span>,</span>
+<span>                 new.var<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">cereal</span><span class="op">)</span>, .keep<span class="op">=</span><span class="st">"used"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 6</span></span>
+<span><span class="co">#&gt;    protein   fat sodium fat.vs.pr comb.var new.var</span></span>
+<span><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1   12.1   3.03   394.     0.250     394.       1</span></span>
+<span><span class="co">#&gt;  2   12.1   3.03   788.     0.250     788.       2</span></span>
+<span><span class="co">#&gt;  3    8     0      280      0         280        3</span></span>
+<span><span class="co">#&gt;  4    2.67  2.67   240      1         241        4</span></span>
+<span><span class="co">#&gt;  5    2     0      125      0         125        5</span></span>
+<span><span class="co">#&gt;  6    4     2.67   280      0.667     281.       6</span></span>
+<span><span class="co">#&gt;  7    2.99  1.49   299.     0.5       299.       7</span></span>
+<span><span class="co">#&gt;  8    4.48  0      313.     0         313.       8</span></span>
+<span><span class="co">#&gt;  9    1.33  2.67   293.     2.00      295.       9</span></span>
+<span><span class="co">#&gt; 10    4.8   1.6    232      0.333     232.      10</span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span></code></pre></div>
+<p>Why is it useful to pipe the mutated tibble above to select? In comparison, <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> makes it easy to move blocks of columns.</p>
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">shelf</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    shelf mfr   calories protein   fat sodium fibre carbo</span></span>
+<span><span class="co">#&gt;    &lt;int&gt; &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1     3 N         212.   12.1   3.03   394. 30.3   15.2</span></span>
+<span><span class="co">#&gt;  2     3 K         212.   12.1   3.03   788. 27.3   21.2</span></span>
+<span><span class="co">#&gt;  3     3 K         100     8     0      280  28     16  </span></span>
+<span><span class="co">#&gt;  4     1 G         147.    2.67  2.67   240   2     14  </span></span>
+<span><span class="co">#&gt;  5     2 K         110     2     0      125   1     11  </span></span>
+<span><span class="co">#&gt;  6     3 G         173.    4     2.67   280   2.67  24  </span></span>
+<span><span class="co">#&gt;  7     1 R         134.    2.99  1.49   299.  5.97  22.4</span></span>
+<span><span class="co">#&gt;  8     3 P         134.    4.48  0      313.  7.46  19.4</span></span>
+<span><span class="co">#&gt;  9     2 Q         160     1.33  2.67   293.  0     16  </span></span>
+<span><span class="co">#&gt; 10     1 G          88     4.8   1.6    232   1.6   13.6</span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: sugars &lt;dbl&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span> <span class="op">(</span><span class="va">cereal</span>, cal<span class="op">=</span><span class="va">calories</span>, .before <span class="op">=</span> <span class="va">fat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    mfr   protein   cal   fat sodium fibre carbo sugars shelf</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1 N       12.1   212.  3.03   394. 30.3   15.2  18.2      3</span></span>
+<span><span class="co">#&gt;  2 K       12.1   212.  3.03   788. 27.3   21.2  15.2      3</span></span>
+<span><span class="co">#&gt;  3 K        8     100   0      280  28     16     0        3</span></span>
+<span><span class="co">#&gt;  4 G        2.67  147.  2.67   240   2     14    13.3      1</span></span>
+<span><span class="co">#&gt;  5 K        2     110   0      125   1     11    14        2</span></span>
+<span><span class="co">#&gt;  6 G        4     173.  2.67   280   2.67  24    10.7      3</span></span>
+<span><span class="co">#&gt;  7 R        2.99  134.  1.49   299.  5.97  22.4   8.96     1</span></span>
+<span><span class="co">#&gt;  8 P        4.48  134.  0      313.  7.46  19.4   7.46     3</span></span>
+<span><span class="co">#&gt;  9 Q        1.33  160   2.67   293.  0     16    16        2</span></span>
+<span><span class="co">#&gt; 10 G        4.8    88   1.6    232   1.6   13.6   0.8      1</span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: potassium &lt;dbl&gt;, vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">cereal</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.factor</span><span class="op">)</span>, .after<span class="op">=</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">last_col</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    calories protein   fat sodium fibre carbo sugars shelf</span></span>
+<span><span class="co">#&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1     212.   12.1   3.03   394. 30.3   15.2  18.2      3</span></span>
+<span><span class="co">#&gt;  2     212.   12.1   3.03   788. 27.3   21.2  15.2      3</span></span>
+<span><span class="co">#&gt;  3     100     8     0      280  28     16     0        3</span></span>
+<span><span class="co">#&gt;  4     147.    2.67  2.67   240   2     14    13.3      1</span></span>
+<span><span class="co">#&gt;  5     110     2     0      125   1     11    14        2</span></span>
+<span><span class="co">#&gt;  6     173.    4     2.67   280   2.67  24    10.7      3</span></span>
+<span><span class="co">#&gt;  7     134.    2.99  1.49   299.  5.97  22.4   8.96     1</span></span>
+<span><span class="co">#&gt;  8     134.    4.48  0      313.  7.46  19.4   7.46     3</span></span>
+<span><span class="co">#&gt;  9     160     1.33  2.67   293.  0     16    16        2</span></span>
+<span><span class="co">#&gt; 10      88     4.8   1.6    232   1.6   13.6   0.8      1</span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: potassium &lt;dbl&gt;, mfr &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span></code></pre></div>
+<p>The <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function select rows from a tibble, based on any operator that evaluates to a column of <code>TRUE</code> / <code>FALSE</code> values equal to the number of rows.</p>
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">fat</span><span class="op">&lt;</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 23 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 K         100     8        0   280  28     16     0   </span></span>
+<span><span class="co">#&gt;  2 K         110     2        0   125   1     11    14   </span></span>
+<span><span class="co">#&gt;  3 P         134.    4.48     0   313.  7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  4 R         110     2        0   280   0     22     3   </span></span>
+<span><span class="co">#&gt;  5 K         100     2        0   290   1     21     2   </span></span>
+<span><span class="co">#&gt;  6 K         110     1        0    90   1     13    12   </span></span>
+<span><span class="co">#&gt;  7 K         110     2        0   220   1     21     3   </span></span>
+<span><span class="co">#&gt;  8 R         133.    2.67     0   253.  1.33  24     6.67</span></span>
+<span><span class="co">#&gt;  9 K         147.    1.33     0   267.  1.33  18.7  14.7 </span></span>
+<span><span class="co">#&gt; 10 K         125     3.75     0     0   3.75  17.5   8.75</span></span>
+<span><span class="co">#&gt; # ℹ 13 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">fat</span><span class="op">&lt;</span><span class="fl">1</span>, <span class="va">mfr</span><span class="op">==</span><span class="st">"K"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 K         100     8        0   280  28     16     0   </span></span>
+<span><span class="co">#&gt;  2 K         110     2        0   125   1     11    14   </span></span>
+<span><span class="co">#&gt;  3 K         100     2        0   290   1     21     2   </span></span>
+<span><span class="co">#&gt;  4 K         110     1        0    90   1     13    12   </span></span>
+<span><span class="co">#&gt;  5 K         110     2        0   220   1     21     3   </span></span>
+<span><span class="co">#&gt;  6 K         147.    1.33     0   267.  1.33  18.7  14.7 </span></span>
+<span><span class="co">#&gt;  7 K         125     3.75     0     0   3.75  17.5   8.75</span></span>
+<span><span class="co">#&gt;  8 K         179.    4.48     0   358.  7.46  20.9  17.9 </span></span>
+<span><span class="co">#&gt;  9 K         100     3        0   320   1     20     3   </span></span>
+<span><span class="co">#&gt; 10 K         180     4        0     0   4     30    12   </span></span>
+<span><span class="co">#&gt; 11 K         110     2        0   290   0     22     3   </span></span>
+<span><span class="co">#&gt; 12 K         110     6        0   230   1     16     3   </span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">fat</span><span class="op">&lt;</span><span class="fl">1</span> <span class="op">|</span> <span class="va">mfr</span><span class="op">==</span><span class="st">"K"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 32 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 K         212.   12.1   3.03   788. 27.3   21.2  15.2 </span></span>
+<span><span class="co">#&gt;  2 K         100     8     0      280  28     16     0   </span></span>
+<span><span class="co">#&gt;  3 K         110     2     0      125   1     11    14   </span></span>
+<span><span class="co">#&gt;  4 P         134.    4.48  0      313.  7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  5 R         110     2     0      280   0     22     3   </span></span>
+<span><span class="co">#&gt;  6 K         100     2     0      290   1     21     2   </span></span>
+<span><span class="co">#&gt;  7 K         110     1     0       90   1     13    12   </span></span>
+<span><span class="co">#&gt;  8 K         220     6     6      280   8     20    14   </span></span>
+<span><span class="co">#&gt;  9 K         110     2     0      220   1     21     3   </span></span>
+<span><span class="co">#&gt; 10 R         133.    2.67  0      253.  1.33  24     6.67</span></span>
+<span><span class="co">#&gt; # ℹ 22 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cereal</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/between.html">between</a></span><span class="op">(</span><span class="va">sugars</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 38 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 N         212.   12.1   3.03   394. 30.3   15.2   18.2</span></span>
+<span><span class="co">#&gt;  2 K         212.   12.1   3.03   788. 27.3   21.2   15.2</span></span>
+<span><span class="co">#&gt;  3 G         147.    2.67  2.67   240   2     14     13.3</span></span>
+<span><span class="co">#&gt;  4 K         110     2     0      125   1     11     14  </span></span>
+<span><span class="co">#&gt;  5 G         173.    4     2.67   280   2.67  24     10.7</span></span>
+<span><span class="co">#&gt;  6 Q         160     1.33  2.67   293.  0     16     16  </span></span>
+<span><span class="co">#&gt;  7 G         160     1.33  4      280   0     17.3   12  </span></span>
+<span><span class="co">#&gt;  8 G         220     6     4      280   4     26     14  </span></span>
+<span><span class="co">#&gt;  9 G         110     1     1      180   0     12     13  </span></span>
+<span><span class="co">#&gt; 10 K         110     1     0       90   1     13     12  </span></span>
+<span><span class="co">#&gt; # ℹ 28 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span></code></pre></div>
+<p>The verb <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> refers to sorting the rows according to the values in one or more columns.</p>
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">fibre</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Q        160     1.33  2.67   293.      0  16    16   </span></span>
+<span><span class="co">#&gt;  2 G        160     1.33  4      280       0  17.3  12   </span></span>
+<span><span class="co">#&gt;  3 G        110     1     1      180       0  12    13   </span></span>
+<span><span class="co">#&gt;  4 R        110     2     0      280       0  22     3   </span></span>
+<span><span class="co">#&gt;  5 G        110     1     1      180       0  12    13   </span></span>
+<span><span class="co">#&gt;  6 P        147.    1.33  1.33   180       0  17.3  16   </span></span>
+<span><span class="co">#&gt;  7 P        114.    2.27  0       51.1     0  12.5  17.0 </span></span>
+<span><span class="co">#&gt;  8 G        147.    1.33  1.33   373.      0  20    12   </span></span>
+<span><span class="co">#&gt;  9 P         82.7   0.752 0      135.      0  10.5   8.27</span></span>
+<span><span class="co">#&gt; 10 G         73.3   1.33  0.667  173.      0  14     2   </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="op">-</span><span class="va">fibre</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 </span></span>
+<span><span class="co">#&gt;  2 K         100     8     0      280  28     16     0   </span></span>
+<span><span class="co">#&gt;  3 K         212.   12.1   3.03   788. 27.3   21.2  15.2 </span></span>
+<span><span class="co">#&gt;  4 P         440    12     0      680  12     68    12   </span></span>
+<span><span class="co">#&gt;  5 P         364.    9.09  9.09   227.  9.09  39.4  12.1 </span></span>
+<span><span class="co">#&gt;  6 P         179.    4.48  1.49   299.  8.96  16.4  20.9 </span></span>
+<span><span class="co">#&gt;  7 K         220     6     6      280   8     20    14   </span></span>
+<span><span class="co">#&gt;  8 P         134.    4.48  0      313.  7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  9 P         179.    4.48  2.99   239.  7.46  17.9  14.9 </span></span>
+<span><span class="co">#&gt; 10 K         179.    4.48  0      358.  7.46  20.9  17.9 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">fat</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">mfr</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 R        110     2         0  280    0     22     3   </span></span>
+<span><span class="co">#&gt;  2 R        133.    2.67      0  253.   1.33  24     6.67</span></span>
+<span><span class="co">#&gt;  3 R         97.3   0.885     0  212.   0     20.4   1.77</span></span>
+<span><span class="co">#&gt;  4 Q         50     1         0    0    0     13     0   </span></span>
+<span><span class="co">#&gt;  5 P        134.    4.48      0  313.   7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  6 P        114.    2.27      0   51.1  0     12.5  17.0 </span></span>
+<span><span class="co">#&gt;  7 P        440    12         0  680   12     68    12   </span></span>
+<span><span class="co">#&gt;  8 P         82.7   0.752     0  135.   0     10.5   8.27</span></span>
+<span><span class="co">#&gt;  9 N        134.    4.48      0    0    5.97  28.4   0   </span></span>
+<span><span class="co">#&gt; 10 N        134.    4.48      0    0    4.48  29.9   0   </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span></code></pre></div>
+<p>The function <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice()</a></code> also allows for the selection of rows and works with a few helper functions: <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_tail()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max()</a></code> to select the first few, last few, random sample, rows with lowest values or rows with highest values, respectively.</p>
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 11 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 G          88     4.8   1.6    232   1.6   13.6    0.8</span></span>
+<span><span class="co">#&gt;  2 G         160     1.33  4      280   0     17.3   12  </span></span>
+<span><span class="co">#&gt;  3 G         220     6     4      280   4     26     14  </span></span>
+<span><span class="co">#&gt;  4 G         110     1     1      180   0     12     13  </span></span>
+<span><span class="co">#&gt;  5 R         110     2     0      280   0     22      3  </span></span>
+<span><span class="co">#&gt;  6 K         100     2     0      290   1     21      2  </span></span>
+<span><span class="co">#&gt;  7 K         110     1     0       90   1     13     12  </span></span>
+<span><span class="co">#&gt;  8 G         110     1     1      180   0     12     13  </span></span>
+<span><span class="co">#&gt;  9 K         220     6     6      280   8     20     14  </span></span>
+<span><span class="co">#&gt; 10 K         110     2     0      220   1     21      3  </span></span>
+<span><span class="co">#&gt; 11 G         133.    2.67  1.33   187.  2.67  14.7   13.3</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="op">-</span><span class="op">(</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 54 × 11</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 </span></span>
+<span><span class="co">#&gt;  2 K         212.   12.1   3.03   788. 27.3   21.2  15.2 </span></span>
+<span><span class="co">#&gt;  3 K         100     8     0      280  28     16     0   </span></span>
+<span><span class="co">#&gt;  4 G         147.    2.67  2.67   240   2     14    13.3 </span></span>
+<span><span class="co">#&gt;  5 K         110     2     0      125   1     11    14   </span></span>
+<span><span class="co">#&gt;  6 G         173.    4     2.67   280   2.67  24    10.7 </span></span>
+<span><span class="co">#&gt;  7 R         134.    2.99  1.49   299.  5.97  22.4   8.96</span></span>
+<span><span class="co">#&gt;  8 P         134.    4.48  0      313.  7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  9 Q         160     1.33  2.67   293.  0     16    16   </span></span>
+<span><span class="co">#&gt; 10 R         133.    2.67  0      253.  1.33  24     6.67</span></span>
+<span><span class="co">#&gt; # ℹ 44 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_tail</a></span> <span class="op">(</span><span class="va">cereal</span>, n<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 11</span></span>
+<span><span class="co">#&gt;   mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 R         149.    4.48  1.49   343.  4.48  25.4   4.48</span></span>
+<span><span class="co">#&gt; 2 G         100     3     1      200   3     17     3   </span></span>
+<span><span class="co">#&gt; 3 G         147.    2.67  1.33   267.  1.33  21.3  10.7 </span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span> <span class="op">(</span><span class="va">cereal</span>, n<span class="op">=</span><span class="fl">8</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 8 × 11</span></span>
+<span><span class="co">#&gt;   mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 G         147.    2.67  1.33   267.  1.33  21.3  10.7 </span></span>
+<span><span class="co">#&gt; 2 K         110     2     0      125   1     11    14   </span></span>
+<span><span class="co">#&gt; 3 K         125     3.75  0        0   3.75  17.5   8.75</span></span>
+<span><span class="co">#&gt; 4 P         179.    4.48  2.99   239.  7.46  17.9  14.9 </span></span>
+<span><span class="co">#&gt; 5 K         100     3     0      320   1     20     3   </span></span>
+<span><span class="co">#&gt; 6 G         260     6     4      340   3     27    20   </span></span>
+<span><span class="co">#&gt; 7 G         110     1     1      180   0     12    13   </span></span>
+<span><span class="co">#&gt; 8 P         114.    3.41  1.14   159.  3.41  17.0   5.68</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">sodium</span>, n<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 11</span></span>
+<span><span class="co">#&gt;   mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 K         212.   12.1   3.03   788.  27.3  21.2   15.2</span></span>
+<span><span class="co">#&gt; 2 P         440    12     0      680   12    68     12  </span></span>
+<span><span class="co">#&gt; 3 N         212.   12.1   3.03   394.  30.3  15.2   18.2</span></span>
+<span><span class="co">#&gt; 4 G         147.    1.33  1.33   373.   0    20     12  </span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span></code></pre></div>
+<p>A grouped object can be formed with the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function. At first glance, it appears similar to the ungrouped tibble, but grouping will prove useful further data manipulations.</p>
+<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cereal.mfr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cereal</span>, <span class="va">mfr</span><span class="op">)</span></span>
+<span><span class="va">cereal.mfr</span>          <span class="co"># looks no different</span></span>
+<span><span class="co">#&gt; # A tibble: 65 × 11</span></span>
+<span><span class="co">#&gt; # Groups:   mfr [6]</span></span>
+<span><span class="co">#&gt;    mfr   calories protein   fat sodium fibre carbo sugars</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 </span></span>
+<span><span class="co">#&gt;  2 K         212.   12.1   3.03   788. 27.3   21.2  15.2 </span></span>
+<span><span class="co">#&gt;  3 K         100     8     0      280  28     16     0   </span></span>
+<span><span class="co">#&gt;  4 G         147.    2.67  2.67   240   2     14    13.3 </span></span>
+<span><span class="co">#&gt;  5 K         110     2     0      125   1     11    14   </span></span>
+<span><span class="co">#&gt;  6 G         173.    4     2.67   280   2.67  24    10.7 </span></span>
+<span><span class="co">#&gt;  7 R         134.    2.99  1.49   299.  5.97  22.4   8.96</span></span>
+<span><span class="co">#&gt;  8 P         134.    4.48  0      313.  7.46  19.4   7.46</span></span>
+<span><span class="co">#&gt;  9 Q         160     1.33  2.67   293.  0     16    16   </span></span>
+<span><span class="co">#&gt; 10 G          88     4.8   1.6    232   1.6   13.6   0.8 </span></span>
+<span><span class="co">#&gt; # ℹ 55 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cereal</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">cereal.mfr</span><span class="op">)</span>   <span class="co"># but it is a grouped object</span></span>
+<span><span class="co">#&gt; [1] "grouped_df" "tbl_df"     "tbl"        "data.frame"</span></span></code></pre></div>
+<p>The <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> function allows for the computation of descriptive statistics. Operating on an ungrouped object, the overall statistic is computed, while the grouped object will provide the required statistics by group.</p>
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">cereal.mfr</span>, mean.cal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">calories</span><span class="op">)</span>, </span>
+<span>          median.carbo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">carbo</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span><span class="co">#&gt;   mfr   mean.cal median.carbo</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;    &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 G         138.         15.7</span></span>
+<span><span class="co">#&gt; 2 K         150.         20  </span></span>
+<span><span class="co">#&gt; 3 N         160.         28.4</span></span>
+<span><span class="co">#&gt; 4 P         195.         17.3</span></span>
+<span><span class="co">#&gt; 5 Q         136.         16  </span></span>
+<span><span class="co">#&gt; 6 R         125.         22.4</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cereal</span>, <span class="va">mfr</span>, <span class="va">shelf</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean.cal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">calories</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `summarise()` has grouped output by 'mfr'. You can override</span></span>
+<span><span class="co">#&gt; using the `.groups` argument.</span></span>
+<span><span class="co">#&gt; # A tibble: 15 × 3</span></span>
+<span><span class="co">#&gt; # Groups:   mfr [6]</span></span>
+<span><span class="co">#&gt;    mfr   shelf mean.cal</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt; &lt;int&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 G         1    121. </span></span>
+<span><span class="co">#&gt;  2 G         2    117. </span></span>
+<span><span class="co">#&gt;  3 G         3    165. </span></span>
+<span><span class="co">#&gt;  4 K         1    117. </span></span>
+<span><span class="co">#&gt;  5 K         2    134. </span></span>
+<span><span class="co">#&gt;  6 K         3    174. </span></span>
+<span><span class="co">#&gt;  7 N         1    134. </span></span>
+<span><span class="co">#&gt;  8 N         3    212. </span></span>
+<span><span class="co">#&gt;  9 P         1     98.2</span></span>
+<span><span class="co">#&gt; 10 P         2    147. </span></span>
+<span><span class="co">#&gt; 11 P         3    235. </span></span>
+<span><span class="co">#&gt; 12 Q         2    143. </span></span>
+<span><span class="co">#&gt; 13 Q         3    125  </span></span>
+<span><span class="co">#&gt; 14 R         1    123. </span></span>
+<span><span class="co">#&gt; 15 R         3    133.</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">cereal</span>, mean.cal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">calories</span><span class="op">)</span>, max.fat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">fat</span><span class="op">)</span>, </span>
+<span>          median.carbo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">carbo</span><span class="op">)</span>, sum.sugar <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">sugars</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Returning more (or less) than 1 row per `summarise()` group</span></span>
+<span><span class="co">#&gt; was deprecated in dplyr 1.1.0.</span></span>
+<span><span class="co">#&gt; ℹ Please use `reframe()` instead.</span></span>
+<span><span class="co">#&gt; ℹ When switching from `summarise()` to `reframe()`,</span></span>
+<span><span class="co">#&gt;   remember that `reframe()` always returns an ungrouped</span></span>
+<span><span class="co">#&gt;   data frame and adjust accordingly.</span></span>
+<span><span class="co">#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where</span></span>
+<span><span class="co">#&gt; this warning was generated.</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 4</span></span>
+<span><span class="co">#&gt;   mean.cal max.fat median.carbo sum.sugar$`fivenum(sugars)`</span></span>
+<span><span class="co">#&gt;      &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;                       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     149.    9.09         18.7                         0  </span></span>
+<span><span class="co">#&gt; 2     149.    9.09         18.7                         4  </span></span>
+<span><span class="co">#&gt; 3     149.    9.09         18.7                        12  </span></span>
+<span><span class="co">#&gt; 4     149.    9.09         18.7                        14  </span></span>
+<span><span class="co">#&gt; 5     149.    9.09         18.7                        20.9</span></span></code></pre></div>
+<p>Since the function <code><a href="https://rdrr.io/r/stats/fivenum.html">fivenum()</a></code> does not return a scalar value, but a vector, the output appears as a tibble above. Alternatively, the function <code><a href="https://dplyr.tidyverse.org/reference/reframe.html">reframe()</a></code> can be used.</p>
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html">reframe</a></span><span class="op">(</span><span class="va">cereal</span>, mean.cal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">calories</span><span class="op">)</span>, max.fat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">fat</span><span class="op">)</span>, </span>
+<span>          median.carbo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">carbo</span><span class="op">)</span>, sum.sugar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">sugars</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 4</span></span>
+<span><span class="co">#&gt;   mean.cal max.fat median.carbo sum.sugar</span></span>
+<span><span class="co">#&gt;      &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     149.    9.09         18.7       0  </span></span>
+<span><span class="co">#&gt; 2     149.    9.09         18.7       4  </span></span>
+<span><span class="co">#&gt; 3     149.    9.09         18.7      12  </span></span>
+<span><span class="co">#&gt; 4     149.    9.09         18.7      14  </span></span>
+<span><span class="co">#&gt; 5     149.    9.09         18.7      20.9</span></span></code></pre></div>
+</div>
+</div>
+<div id="exercise-15" class="section level2" number="9.13">
+<h2>
+<span class="header-section-number">9.13</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-15"><i class="fas fa-link"></i></a>
+</h2>
+<div style="color: #80CC99;">
+<ol style="list-style-type: decimal">
+<li><p>Use the <code>fish_encounters</code> in package <code>tidyr</code> to convert it into a wide format with fish IDs as the row variable and a column for each station. The entries in the cells should be ‘1’ for a fish encounter and ‘0’ otherwise.</p></li>
+<li>
+<p>The <code>billboard</code> data set in package <code>tidyr</code> contains song rankings for billboard top 100 in the year 2000 with columns artist, track, date.enter and wk1 - w76 which contains the ranking of the song in each week after it entered the charts.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Create a long data set listing the columns wk1 to w76 below each other in a single column called week and the associated rank position in a column called rank. Note that not all songs stayed on the charts for the entire 76 weeks. <em>Hint</em>, use <code>values_drop_na = TRUE</code>.</p></li>
+<li><p>Use the command <code><a href="https://tidyr.tidyverse.org/reference/nest.html">nest()</a></code> to create a tibble with one row for each artist-track combination and a rank.hist variable where each cell contains a tibble with 76 rows (one for each week) and a column for each of date.entered, week and rank.</p></li>
+</ol>
+</li>
+<li><p>Another form of mutation, is to join together two separate data sets. Study the working of the functions <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code> together with the output of the commands:</p></li>
+</ol>
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">band_members</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">band_instruments</span><span class="op">)</span></span>
+<span><span class="va">band_members</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">band_instruments</span><span class="op">)</span></span>
+<span><span class="va">band_members</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join</a></span><span class="op">(</span><span class="va">band_instruments</span><span class="op">)</span></span>
+<span><span class="va">band_members</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">band_instruments</span><span class="op">)</span></span>
+<span><span class="va">band_members</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">band_instruments2</span>, </span>
+<span>                              by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"name"</span> <span class="op">=</span> <span class="st">"artist"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>
+<p>Use <code>state.x77</code> in package <code>MASS</code> to create a tibble called <code>USA.states</code> with the names of the states in the first column. <em>Hint</em>: first convert the matrix to a dataframe to get neater column names.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Add the column <code>state.region</code>, also from package <code>MASS</code>, to USA.states in the second position.</p></li>
+<li><p>Select only the columns State, Region, Population, Income, Illiteracy, Life Exp and Area, then use the pipe operator to reorder the columns such that Area appears between Region and Population.</p></li>
+<li><p>Add a column <code>Pop.Density</code> for the Population density in number per square miles. Note that the population values in <code>state.x77</code> represent 1000’s of persons. This column should appear between Population and Income.</p></li>
+<li><p>In a single command, using the pipe operator, create a tibble called <code>USA.groups</code> where you:</p></li>
+</ol>
+<ul>
+<li>select only states with an area &lt; 500 000 square miles;</li>
+<li>order the rows according to decreasing population density;</li>
+<li>group by Region</li>
+</ul>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Compute the mean income and median life expectancy per region.</li>
+</ol>
+</li>
+</ol>
+</div>
 
 </div>
 </div>
+
   <div class="chapter-nav">
 <div class="prev"><a href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></div>
 <div class="next"><a href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></div>
@@ -226,15 +1575,25 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#data"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
 <li><a class="nav-link" href="#reading-microsoft-excel-files-into-r"><span class="header-section-number">9.1</span> Reading Microsoft Excel files into R</a></li>
-<li>
-<a class="nav-link" href="#reading-other-data-files-into-r"><span class="header-section-number">9.2</span> Reading other data files into R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#ssd-format-footnote"><span class="header-section-number">9.2.1</span> ssd format footnote</a></li></ul>
-</li>
+<li><a class="nav-link" href="#reading-other-data-files-into-r"><span class="header-section-number">9.2</span> Reading other data files into R</a></li>
 <li><a class="nav-link" href="#sending-output-to-a-file"><span class="header-section-number">9.3</span> Sending output to a file</a></li>
 <li><a class="nav-link" href="#writing-r-objects-for-transport"><span class="header-section-number">9.4</span> Writing R objects for transport</a></li>
 <li><a class="nav-link" href="#the-use-of-the-file-.rhistory-and-the-function-history"><span class="header-section-number">9.5</span> The use of the file .Rhistory and the function history()</a></li>
 <li><a class="nav-link" href="#command-re-editing"><span class="header-section-number">9.6</span> Command re-editing</a></li>
 <li><a class="nav-link" href="#customized-printing"><span class="header-section-number">9.7</span> Customized printing</a></li>
 <li><a class="nav-link" href="#formatting-numbers"><span class="header-section-number">9.8</span> Formatting numbers</a></li>
+<li><a class="nav-link" href="#printing-tables"><span class="header-section-number">9.9</span> Printing tables</a></li>
+<li><a class="nav-link" href="#communicating-with-the-operating-system"><span class="header-section-number">9.10</span> Communicating with the operating system</a></li>
+<li><a class="nav-link" href="#exercise-14"><span class="header-section-number">9.11</span> Exercise</a></li>
+<li>
+<a class="nav-link" href="#tidyverse"><span class="header-section-number">9.12</span> Tidyverse</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tibbles"><span class="header-section-number">9.12.1</span> Tibbles</a></li>
+<li><a class="nav-link" href="#pipe-operator"><span class="header-section-number">9.12.2</span> Pipe operator</a></li>
+<li><a class="nav-link" href="#tidy-data"><span class="header-section-number">9.12.3</span> Tidy data</a></li>
+<li><a class="nav-link" href="#package-dplyr"><span class="header-section-number">9.12.4</span> Package dplyr</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#exercise-15"><span class="header-section-number">9.13</span> Exercise</a></li>
 </ul>
 
       <div class="book-extra">

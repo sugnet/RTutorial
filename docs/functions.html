@@ -104,7 +104,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000002a645b23108&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001b596523108&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>This is not very helpful so we give the instruction:</p>
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
@@ -174,7 +174,7 @@
 <span><span class="co">#&gt;             ...)</span></span>
 <span><span class="co">#&gt;     invisible()</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000002a645f48d60&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001b596944d60&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <p>Since our new plotting method is aimed at categorical data we decide rather to take a look at <code>plot.factor</code>. But this is an asterisked function and hence is not visible:</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
@@ -213,7 +213,7 @@
 <span><span class="co">#&gt;         boxplot(y ~ x, ...)</span></span>
 <span><span class="co">#&gt;     else NextMethod("plot")</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000002a6479b0538&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001b5973ae538&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>How are default values assigned to arguments of functions?</p></li>
@@ -235,23 +235,23 @@
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $stats</span></span>
-<span><span class="co">#&gt;             [,1]</span></span>
-<span><span class="co">#&gt; [1,] -2.22365138</span></span>
-<span><span class="co">#&gt; [2,] -0.70645289</span></span>
-<span><span class="co">#&gt; [3,] -0.03704162</span></span>
-<span><span class="co">#&gt; [4,]  0.70074177</span></span>
-<span><span class="co">#&gt; [5,]  1.73666031</span></span>
+<span><span class="co">#&gt;            [,1]</span></span>
+<span><span class="co">#&gt; [1,] -1.8573901</span></span>
+<span><span class="co">#&gt; [2,] -0.4194998</span></span>
+<span><span class="co">#&gt; [3,]  0.1123646</span></span>
+<span><span class="co">#&gt; [4,]  0.6779376</span></span>
+<span><span class="co">#&gt; [5,]  1.8738828</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $conf</span></span>
-<span><span class="co">#&gt;            [,1]</span></span>
-<span><span class="co">#&gt; [1,] -0.2593784</span></span>
-<span><span class="co">#&gt; [2,]  0.1852951</span></span>
+<span><span class="co">#&gt;             [,1]</span></span>
+<span><span class="co">#&gt; [1,] -0.06103053</span></span>
+<span><span class="co">#&gt; [2,]  0.28575969</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $out</span></span>
-<span><span class="co">#&gt; [1] 2.945241 2.861065</span></span>
+<span><span class="co">#&gt; [1] -2.394174  2.453293</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group</span></span>
 <span><span class="co">#&gt; [1] 1 1</span></span>

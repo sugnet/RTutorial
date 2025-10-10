@@ -456,12 +456,14 @@ The `server` function uses the `inputs` – the `cor.val` in this example – to
 
 Table: (\#tab:InputElements) Input elements for shiny apps.
 
-| ------ | ------ | ------ | 
-| `actionButton()`       |	`fileInput()`     | `sliderInput()`    | 
-| `checkboxGroupInput()` |	`numericInput()`  | `submitButton()`   | 
-| `checkboxInput()`      |	`passwordInput()` | `textAreaInput()`  | 
-| `dateInput()`          |	`radioButtons()`  | `textInput()`      | 
-| `dateRangeInput()`     |	`selectInput()`   | `varSelectInput()` |
+|                 |                 |                 | 
+| --------------- | --------------- | --------------- | 
+| `actionButton()`       |	`fileInput()`      | `sliderInput()`    | 
+| `checkboxGroupInput()` |	`numericInput()`   | `submitButton()`   | 
+| `checkboxInput()`      |	`passwordInput()`  | `textAreaInput()`  | 
+| `dateInput()`          |	`radioButtons()`   | `textInput()`      | 
+| `dateRangeInput()`     |	`selectInput()`    | `varSelectInput()` | 
+
 
 ```{r, ShinyExample, eval = FALSE}
 library(shiny)
@@ -556,16 +558,19 @@ Any error that is generated during the execution of a function will record detai
 
 The following is a summary of the most common error tracing facilities in R:
 
-| ------ | ---------------- | 
-| `print()`, `cat()` | The printing of key values within a function is often all that is needed.  |   
-| `traceback()`      | Must be used together with `dump.frames()`.  |   
-| `options(warn=2)`  | Changes warning to an error that causes a dump.  | 
-| `options(error=)`  | Changes the function that is used for the dump action.  |   
-| `last.dump()`      | The object in the *<span style="color:#3399FF">.RData</span>* that contains a list of calls to dump.  |   
-| `debugger()`       | Function to inspect last.dump for an error.  |   
-| `browser()`        | Function that can be used within a function to interrupt the latter’s execution so that variables within the local frame concerned can be inspected.  |   
-| `trace()`          | Places tracing information before or within functions.  Can be used to place calls to the browser at given positions within a function.  |   
-| `untrace()`        | 	Switches all or some of the functions of `trace()` off. |   
+Table: (\#tab:ErrorTracing) Error tracing facilities.
+
+|         |                 | 
+| ------- | --------------- |
+| `print()`, `cat()` | The printing of key values within a function is often all that is needed. | 
+| `traceback()`      | Must be used together with `dump.frames()`. | 
+| `options(warn=2)`  | Changes warning to an error that causes a dump. | 
+| `options(error=)`  | Changes the function that is used for the dump action. |
+| `last.dump()`      | The object in the *<span style="color:#3399FF">.RData</span>* that contains a list of calls to dump. | 
+| `debugger()`       | Function to inspect last.dump for an error. |
+| `browser()`        | Function that can be used within a function to interrupt the latter’s execution so that variables within the local frame concerned can be inspected. |
+| `trace()`          | Places tracing information before or within functions.  Can be used to place calls to the browser at given positions within a function. |
+| `untrace()`        | Switches all or some of the functions of `trace()` off. |
 
 (a)	Study the *R Language Manual Definition Chapter 9: Debugging* for a summary of error tracing facilities in R . Note especially how the functions `print()`, `cat()`, `traceback()`, `browser()`, `trace()`, `untrace()`, `debug()`, `undebug()` and `options(warn=2 or error=)` work.
 

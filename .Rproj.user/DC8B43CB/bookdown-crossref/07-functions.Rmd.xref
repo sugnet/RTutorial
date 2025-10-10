@@ -9,4 +9,8 @@ h2:cleaning-up Cleaning up
 h2:variable-number-of-arguments-argument-... Variable number of arguments: argument 
 h2:retrieving-names-of-arguments-functions-deparse-and-substitute Retrieving names of arguments: functions  and 
 fig:expression Converting text into mathematical expression or mathematical expressions into text.
+h2:operators Operators
+h2:replacement-functions Replacement functions
+h2:default-values-and-lazy-evaluation Default values and lazy evaluation
+h2:the-dynamic-loading-of-external-routines The dynamic loading of external routines
 

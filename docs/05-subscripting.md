@@ -52,8 +52,7 @@ state.x77[ , "Area"] > 80000
 #>          FALSE           TRUE
 ```
 
-
-\includegraphics[width=0.8\linewidth]{pics/matrixSubscripting} 
+<img src="pics/matrixSubscripting.jpg" width="80%" />
 
 
 ``` r
