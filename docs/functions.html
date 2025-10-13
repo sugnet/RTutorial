@@ -104,7 +104,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001b596523108&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001a07b15a108&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>This is not very helpful so we give the instruction:</p>
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
@@ -174,7 +174,7 @@
 <span><span class="co">#&gt;             ...)</span></span>
 <span><span class="co">#&gt;     invisible()</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001b596944d60&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001a080587d60&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <p>Since our new plotting method is aimed at categorical data we decide rather to take a look at <code>plot.factor</code>. But this is an asterisked function and hence is not visible:</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
@@ -213,7 +213,7 @@
 <span><span class="co">#&gt;         boxplot(y ~ x, ...)</span></span>
 <span><span class="co">#&gt;     else NextMethod("plot")</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001b5973ae538&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001a08202a538&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>How are default values assigned to arguments of functions?</p></li>
@@ -236,22 +236,22 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $stats</span></span>
 <span><span class="co">#&gt;            [,1]</span></span>
-<span><span class="co">#&gt; [1,] -1.8573901</span></span>
-<span><span class="co">#&gt; [2,] -0.4194998</span></span>
-<span><span class="co">#&gt; [3,]  0.1123646</span></span>
-<span><span class="co">#&gt; [4,]  0.6779376</span></span>
-<span><span class="co">#&gt; [5,]  1.8738828</span></span>
+<span><span class="co">#&gt; [1,] -2.4679165</span></span>
+<span><span class="co">#&gt; [2,] -0.8083784</span></span>
+<span><span class="co">#&gt; [3,] -0.2636679</span></span>
+<span><span class="co">#&gt; [4,]  0.3707985</span></span>
+<span><span class="co">#&gt; [5,]  1.9585273</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $conf</span></span>
 <span><span class="co">#&gt;             [,1]</span></span>
-<span><span class="co">#&gt; [1,] -0.06103053</span></span>
-<span><span class="co">#&gt; [2,]  0.28575969</span></span>
+<span><span class="co">#&gt; [1,] -0.44997784</span></span>
+<span><span class="co">#&gt; [2,] -0.07735792</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $out</span></span>
-<span><span class="co">#&gt; [1] -2.394174  2.453293</span></span>
+<span><span class="co">#&gt; [1] 2.363569 2.575090</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group</span></span>
 <span><span class="co">#&gt; [1] 1 1</span></span>
@@ -323,9 +323,9 @@
 <h2>
 <span class="header-section-number">7.4</span> Returning multiple values<a class="anchor" aria-label="anchor" href="#returning-multiple-values"><i class="fas fa-link"></i></a>
 </h2>
-<div id="exercise-12" class="section level3" number="7.4.1">
+<div id="exercise-11" class="section level3" number="7.4.1">
 <h3>
-<span class="header-section-number">7.4.1</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-12"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.4.1</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-11"><i class="fas fa-link"></i></a>
 </h3>
 <div style="color: #80CC99;">
 <p>Write an R function that returns the mean, median, variance, minimum, maximum and coefficient of variation of a numeric vector of sample data. The different components must be accessible by name. Test your function with the value of <code>rnorm(1000)</code>. <em>Hint</em>: Use the construct <code>list (mean = ..., median = ..., ...)</code>.</p>
@@ -719,7 +719,7 @@ First an R function is created to compute the matrix product of two matrices:</p
 <li><a class="nav-link" href="#writing-a-new-function"><span class="header-section-number">7.2</span> Writing a new function</a></li>
 <li><a class="nav-link" href="#checking-for-object-name-clashes"><span class="header-section-number">7.3</span> Checking for object name clashes</a></li>
 <li>
-<a class="nav-link" href="#returning-multiple-values"><span class="header-section-number">7.4</span> Returning multiple values</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#exercise-12"><span class="header-section-number">7.4.1</span> Exercise</a></li></ul>
+<a class="nav-link" href="#returning-multiple-values"><span class="header-section-number">7.4</span> Returning multiple values</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#exercise-11"><span class="header-section-number">7.4.1</span> Exercise</a></li></ul>
 </li>
 <li><a class="nav-link" href="#local-variables-and-evaluation-environments"><span class="header-section-number">7.5</span> Local variables and evaluation environments</a></li>
 <li><a class="nav-link" href="#cleaning-up"><span class="header-section-number">7.6</span> Cleaning up</a></li>

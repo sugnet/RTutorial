@@ -470,7 +470,7 @@ df |> drop_na()
 df |> drop_na(x)
 ```
   
-### Package `dplyr`
+### Package `dplyr` {#dplyr}
 
 The main data manipulation functions is found in the package `dplyr`. The functions are referred to as “verbs”, since each performs a particular operation of data manipulation. The verbs are grouped in Table \@ref(tab:dplyr) according to operations on columns, rows or groups of rows.
 

@@ -18,7 +18,7 @@ In general, the purpose of writing a program in R is to address some practical p
 
 (g)	Do not neglect the debugging/optimizing phase of code that succeeds in providing a first round answer.
 
-##	Exercise
+##	Exercise {#Ex6}
 
 ::: {style="color: #80CC99;"}
 

@@ -6,9 +6,9 @@ h2:low-level-plotting-commands Low-level plotting commands
 h2:using-the-plotting-commands Using the plotting commands
 h3:matplot Multiple lines or groups of points on the same graph
 fig:matplotExample Three methods of performing sort.
-h3:multiple-lines-or-groups-of-points-on-the-same-graph-but-the-lines-points-are-not-all-the-same-length-number Multiple lines or groups of points on the same graph but the lines (points) are not all the same length (number)
+h3:multipleLines Multiple lines or groups of points on the same graph but the lines (points) are not all the same length (number)
 fig:diffLengths Plotting multiple lines of different lenghts
-h3:adding-legends-to-a-graph Adding legends to a graph
+h3:Legends Adding legends to a graph
 fig:cargrps Illustrating adding a legend to a plot.
 h3:multAxes Multiple plots with identical axes
 h3:providing-a-single-legend-for-multiple-plots Providing a single legend for multiple plots
@@ -28,4 +28,32 @@ fig:persp Annotated 3D perspective plot.
 h3:diagrams Diagrams
 h3:annotating-graphics-with-special-symbols Annotating graphics with special symbols
 h2:quantile-plots Quantile plots
+h2:density Estimating a density
+fig:histDiffBins Histograms with different bin sizes and bin locations of the same normal mixture data set.
+fig:ASH Average shifted histogram of normal mixture data.
+fig:densityExample Guassian kernel density estimate of the normal mixture data.
+h2:a-coplot-with-two-conditioning-variables A coplot with two conditioning variables
+h2:exact-distances-in-graphics Exact distances in graphics
+h2:multiple-graphics-windows-in-r Multiple graphics windows in R
+h2:more-complex-layouts More complex layouts
+fig:complexLayout A complex graphics layout.
+h2:dynamic-3d-graphics-in-r Dynamic 3D graphics in R
+h2:animation Animation
+h2:Ex10 Exercise
+h2:the-package-ggplot2 The package ggplot2
+fig:ggplotStructure Layer structure of ggplot2 package.
+h3:barplot Barplot
+h3:scatterplot Scatterplot
+h3:dotplot Dotplot
+h3:boxplot Boxplot
+h3:line-plot Line plot
+h3:density-estimates Density estimates
+h3:empirical-cumulative-distribution-function Empirical cumulative distribution function
+h3:mathematical-functions Mathematical functions
+h3:after_stat-function  function
+h3:scales Scales
+h3:coordinates Coordinates
+h3:facets Facets
+h3:themes Themes
+h2:exercise Exercise
 

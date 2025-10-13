@@ -171,6 +171,49 @@
             "publisher-place": "Pacific Grove, CA",
             "title": "An introduction to S and s-plus",
             "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                }
+            ],
+            "container-title": "Journal of Computational and Graphical Statistics",
+            "id": "Wickham2010",
+            "issued": {
+                "date-parts": [
+                    [
+                        2010
+                    ]
+                ]
+            },
+            "page": "3-28",
+            "title": "A layered grammar of graphics",
+            "type": "article-journal",
+            "volume": "19(1)"
+        },
+        {
+            "author": [
+                {
+                    "family": "Wilkenson",
+                    "given": "L"
+                }
+            ],
+            "edition": "2nd",
+            "id": "Wilkenson2005",
+            "issued": {
+                "date-parts": [
+                    [
+                        2005
+                    ]
+                ]
+            },
+            "note": "ISBN 978-0-3872-4544-7",
+            "publisher": "Springer",
+            "publisher-place": "New York",
+            "title": "The grammar of graphics",
+            "type": "book"
         }
     ],
     "project_biblios": [

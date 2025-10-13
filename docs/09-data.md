@@ -871,7 +871,7 @@ df |> drop_na(x)
 #> 2     2 <NA>
 ```
   
-### Package `dplyr`
+### Package `dplyr` {#dplyr}
 
 The main data manipulation functions is found in the package `dplyr`. The functions are referred to as “verbs”, since each performs a particular operation of data manipulation. The verbs are grouped in Table \@ref(tab:dplyr) according to operations on columns, rows or groups of rows.
 
@@ -1320,14 +1320,14 @@ slice_sample (cereal, n=8)
 #> # A tibble: 8 × 11
 #>   mfr   calories protein   fat sodium fibre carbo sugars
 #>   <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
-#> 1 G         147.    2.67  1.33   267.  1.33  21.3  10.7 
-#> 2 K         110     2     0      125   1     11    14   
-#> 3 K         125     3.75  0        0   3.75  17.5   8.75
-#> 4 P         179.    4.48  2.99   239.  7.46  17.9  14.9 
-#> 5 K         100     3     0      320   1     20     3   
-#> 6 G         260     6     4      340   3     27    20   
-#> 7 G         110     1     1      180   0     12    13   
-#> 8 P         114.    3.41  1.14   159.  3.41  17.0   5.68
+#> 1 N         134.    4.48  0        0   4.48  29.9    0  
+#> 2 P         179.    4.48  1.49   299.  8.96  16.4   20.9
+#> 3 G         110     2     1      180   0     12     12  
+#> 4 G         140     3     1      190   4     15     14  
+#> 5 K         100     2     0      290   1     21      2  
+#> 6 K         110     1     0       90   1     13     12  
+#> 7 Q         160     1.33  2.67   293.  0     16     16  
+#> 8 P         147.    1.33  1.33   180   0     17.3   16  
 #> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
 slice_max (cereal, sodium, n=4)

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 12 Hadley’s favourite pie chart | Introduction into R Applications and Programming: A Tutorial</title>
+
+    <meta name="author" content="Niël J le Roux and Sugnet Lubbe" />
+  
+   <meta name="description" content="Textbook for the R block module." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 12 Hadley’s favourite pie chart | Introduction into R Applications and Programming: A Tutorial" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://github.com/sugnet/RTutorial" />
+  <meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg" />
+  <meta property="og:description" content="Textbook for the R block module." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 Hadley’s favourite pie chart | Introduction into R Applications and Programming: A Tutorial" />
+  
+  <meta name="twitter:description" content="Textbook for the R block module." />
+  <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg" />
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.9.0/transition.js"></script>
+    <script src="libs/bs3compat-0.9.0/tabs.js"></script>
+    <script src="libs/bs3compat-0.9.0/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+    <style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+      <link rel="stylesheet" href="style.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction into R Applications and Programming: A Tutorial</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="hadleys-favourite-pie-chart" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Hadley’s favourite pie chart</h1>
+<p>df &lt;- data.frame(
+variable = c(“does not resemble”, “resembles”),
+value = c(20, 80)
+)
+ggplot(df, aes(x = ““, y = value, fill = variable)) +
+geom_col(width = 1) +
+scale_fill_manual(values = c(”red”, “yellow”)) +
+coord_polar(“y”, start = pi / 3) +
+labs(title = “Pac man”)</p>
+<p>To plot the function f(θ)=θ sin⁡(θ),0≤ θ≤□(π/2) we need to following code:
+&gt; theta.vec &lt;- seq(from = 0, to = pi/2, len = 200)
+&gt; my.dat &lt;- tibble (theta = theta.vec,
+r = theta.vec*sin(theta.vec))
+&gt; ggplot (my.dat) +
+geom_line(aes(x = theta, y=r)) +
+coord_polar(theta = “x”)</p>
+<p>As illustrated in Exercise 6.2.10 it is sometimes essential to keep the aspect ratio in the graphic fixed, usually at 1:1. Classical scaling is a method to produce a map from a given matrix of pairwise distances. In the code below, a map (subject to rotation and reflection) of cities in Europe is produce with the function cmdscale(). In order to visually assess intercity distances, it is important to have one unit in the horizontal direction equal to one unit in the vertical direction. This is achieved with coord_fixed (ratio = 1).
+&gt; city.coords &lt;- data.frame(city=attr(eurodist,“Labels”),
+cmdscale(eurodist))
+&gt; colnames(city.coords)[2:3] &lt;- paste(“dim”,1:2,sep=““)
+&gt; city.coords &lt;- tibble(city.coords)
+&gt; ggplot (city.coords, mapping = aes(x = dim1, y = dim2)) +
+geom_text(mapping = aes(label=city)) +
+coord_fixed(ratio = 1)</p>
+<pre><code>Facets</code></pre>
+<p>Facets allows for the grouping of the data set into smaller similar data sets. We can plot the fat vs calories for every manufacturer separately.
+&gt; ggplot(data = cereal,
+mapping = aes(x = calories, y = fat)) +
+geom_point() +
+facet_grid (vars(mfr))</p>
+<blockquote>
+<p>ggplot(data = cereal,
+mapping = aes(x = calories, y = fat)) +
+geom_point() +
+facet_wrap (vars(mfr))
+Although it does not allow for comparison across plots, each plot can have its own axis range while splitting the data according to two variables.
+ggplot(data = cereal,
+mapping = aes(x = calories, y = fat)) +
+geom_point() +
+facet_wrap (vars(mfr, vitamins), scales = “free”)
+Themes
+As mentioned before, themes is disconnected with the data. Themes allow for the formatting of the background, gridlines, titles, etc.
+p3 &lt;- ggplot(data = cereal,
+mapping = aes(y = mfr, fill = vitamins)) +<br />
+geom_bar() +
+facet_wrap(vars(mfr))
+p3
+p3 + theme_classic()
+p3 + theme_minimal()
+p3 + theme(panel.grid.major =
+element_line(“gray”, size = 0.5))
+p3 + theme(axis.text.y = element_text(size = 18))
+p3 + ggtitle(“Heading”) +
+theme(plot.title = element_text(family = “serif”))</p>
+</blockquote>
+<blockquote>
+<p>p4 &lt;- ggplot(data = cereal,
+mapping = aes(x = calories, y = fat)) +
+geom_point(mapping = aes(colour = sugars))
+p4 + guides(colour = guide_colourbar(barwidth = 0.25,
+barheight = 20,
+nbin=100))</p>
+</blockquote>
+<blockquote>
+<p>p4 + guides (col = guide_legend(ncol=2, reverse=TRUE))</p>
+</blockquote>
+<blockquote>
+<p>p4 + scale_x_continuous(breaks =
+seq(from = 50, to = 450, by = 25),
+guide = guide_axis(n.dodge = 2)) +
+guides(y = guide_axis(angle = 90),
+y.sec = guide_axis())</p>
+</blockquote>
+<pre><code>Exercise
+(a) Convert the state.region and state.x77 data into a dataframe USA.states and construct a histogram  of the population. Set the bin widths at 2000 (thousands).</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Make a boxplot of the Income for each region separately.</li>
+<li>A violin plot is based on a boxplot but also show the probability density of the data at different values, usually smoothed by a kernel density estimator. Make violin plots of the Income for each region separately and assign a custom scale to the violin fill values.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li><ol style="list-style-type: lower-alpha">
+<li>Set the seed to 7453 and generate a matrix of 100 values from a n(10,2^2) distribution arranged in two columns of 50 values each. Construct a data frame with numeric variables val1 and val2 containing the coordinates of a convex hull around the data in your matrix by using the function chull(). Now make a plot of the data and add the convex hull with the function geom_polygon(). The convex hull should be in red with no fill. Note that you will need two dataframes or tibbles, one for the data points in the matrix and another for the convex hull.</li>
+<li>Study the code below for the construction of rectangles on a graphic.
+df &lt;- data.frame(x = rep(c(2, 5, 7, 9, 12), 2),
+y = rep(c(1, 2), each = 5),
+z = factor(rep(1:5, each = 2)),
+w = rep(diff(c(0, 4, 6, 8, 10, 14)), 2))
+ggplot(df, aes(x, y)) +
+geom_tile(aes(fill = z), colour = “grey50”)
+ggplot(df, aes(x, y, width = w)) +
+geom_tile(aes(fill = z), colour = “grey50”)
+ggplot(df, aes(xmin = x - w / 2,
+xmax = x + w / 2,
+ymin = y, ymax = y + 1)) +
+geom_rect(aes(fill = z), colour = “grey50”)</li>
+</ol></li>
+<li><ol style="list-style-type: lower-alpha">
+<li>Use the USA.states data from (1) and construct a density plot of the Frost variable. Set the bandwidth bw = 10 to determine the amount of smoothing.</li>
+<li>Next, construct four density plots on the same set of axes for the four regions, using different colours for each.</li>
+</ol></li>
+</ol>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Now, make four separate plots by using the function facet_wrap(). Change the linetype to type 3 and a line width of 1.5.</li>
+<li>Set the random seed to 8359 and generate a vector of length 500 of random values from a n(-1,0.04) distribution. Construct a density plot, with x-axis range (i) in reverse by using function scale_x_reverse() and (ii) from 0 on the left and -2 on the right by using function xlim().</li>
+</ol>
+<ol start="4" style="list-style-type: decimal">
+<li><ol style="list-style-type: lower-alpha">
+<li>The data set fujitopo in the package geomapdata contains a list with three components: lat (latitude), lon (longitude) and z (elevation). Construct a tibble with three columns lat, lon and z and then use the function geom_contour() to construct a contour plot. Since it is a topographic map, ensure that you have an aspect ratio of 1.</li>
+</ol></li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Repeat exercise 10.12.1 using the geom_raster() function and making contour plots instead of 3D plots.
+<ol style="list-style-type: lower-roman">
+<li><pre><code>First make a contour plot of the full data set.</code></pre></li>
+<li>Select a sample of size 500 and make a contour plot.</li>
+<li>Repeat (ii) with geom_raster( , interpolate = TRUE).</li>
+</ol></li>
+</ol>
+<ol start="5" style="list-style-type: decimal">
+<li>The maps package can be used to draw a world map or a map of a specific country or region. The ggplot2 function map_data() converts the data from the maps package in to a data frame suitable for plotting with ggplot(). Study the maps constructed below and comment on the different “projections”.
+crimes &lt;- data.frame(state = tolower(rownames(USArrests)),
+USArrests)
+require(maps)
+states_map &lt;- map_data(“state”)
+pp &lt;- ggplot(crimes, aes(map_id = state)) +
+geom_map(aes(fill = Murder), map = states_map) +
+expand_limits(x = states_map<span class="math inline">\(long,
+                       y = states_map\)</span>lat)
+pp + coord_map()
+pp + coord_map(“azequalarea”)
+pp + coord_map(“orthographic”)</li>
+</ol>
+<p>usamap &lt;- ggplot(states_map, aes(long, lat, group = group)) +
+geom_polygon(fill = “white”, colour = “black”)
+usamap
+usamap + coord_map()
+usamap + coord_map(“azequalarea”)
+usamap + coord_map(“orthographic”)
+usamap + coord_map(“orthographic”, orientation = c(90, 0, 90))
+6. Reproduce the plot created in section 10.4.2 with ggplot().
+7. Reproduce the plot created in section 10.4.3 with ggplot().
+8. Reproduce the left panel of the plot in Figure 10.4.5 with ggplot().</p>
+
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction into R Applications and Programming: A Tutorial</strong>" was written by Niël J le Roux and Sugnet Lubbe. It was last built on 2025.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>

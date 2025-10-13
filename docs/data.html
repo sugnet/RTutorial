@@ -293,9 +293,9 @@
 <li>Use <code><a href="https://rdrr.io/r/base/system.html">system()</a></code> to write a function <code>myfile.exists()</code> that checks if any specified file exists.</li>
 </ol>
 </div>
-<div id="exercise-14" class="section level2" number="9.11">
+<div id="exercise-13" class="section level2" number="9.11">
 <h2>
-<span class="header-section-number">9.11</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-14"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.11</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-13"><i class="fas fa-link"></i></a>
 </h2>
 <div style="color: #80CC99;">
 <ol style="list-style-type: decimal">
@@ -952,9 +952,9 @@
 <span><span class="co">#&gt; 2     2 &lt;NA&gt;</span></span></code></pre></div>
 </div>
 </div>
-<div id="package-dplyr" class="section level3" number="9.12.4">
+<div id="dplyr" class="section level3" number="9.12.4">
 <h3>
-<span class="header-section-number">9.12.4</span> Package <code>dplyr</code><a class="anchor" aria-label="anchor" href="#package-dplyr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.12.4</span> Package <code>dplyr</code><a class="anchor" aria-label="anchor" href="#dplyr"><i class="fas fa-link"></i></a>
 </h3>
 <p>The main data manipulation functions is found in the package <code>dplyr</code>. The functions are referred to as “verbs”, since each performs a particular operation of data manipulation. The verbs are grouped in Table <a href="data.html#tab:dplyr">9.3</a> according to operations on columns, rows or groups of rows.</p>
 <div class="inline-table"><table class="table table-sm">
@@ -1407,14 +1407,14 @@
 <span><span class="co">#&gt; # A tibble: 8 × 11</span></span>
 <span><span class="co">#&gt;   mfr   calories protein   fat sodium fibre carbo sugars</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 G         147.    2.67  1.33   267.  1.33  21.3  10.7 </span></span>
-<span><span class="co">#&gt; 2 K         110     2     0      125   1     11    14   </span></span>
-<span><span class="co">#&gt; 3 K         125     3.75  0        0   3.75  17.5   8.75</span></span>
-<span><span class="co">#&gt; 4 P         179.    4.48  2.99   239.  7.46  17.9  14.9 </span></span>
-<span><span class="co">#&gt; 5 K         100     3     0      320   1     20     3   </span></span>
-<span><span class="co">#&gt; 6 G         260     6     4      340   3     27    20   </span></span>
-<span><span class="co">#&gt; 7 G         110     1     1      180   0     12    13   </span></span>
-<span><span class="co">#&gt; 8 P         114.    3.41  1.14   159.  3.41  17.0   5.68</span></span>
+<span><span class="co">#&gt; 1 N         134.    4.48  0        0   4.48  29.9    0  </span></span>
+<span><span class="co">#&gt; 2 P         179.    4.48  1.49   299.  8.96  16.4   20.9</span></span>
+<span><span class="co">#&gt; 3 G         110     2     1      180   0     12     12  </span></span>
+<span><span class="co">#&gt; 4 G         140     3     1      190   4     15     14  </span></span>
+<span><span class="co">#&gt; 5 K         100     2     0      290   1     21      2  </span></span>
+<span><span class="co">#&gt; 6 K         110     1     0       90   1     13     12  </span></span>
+<span><span class="co">#&gt; 7 Q         160     1.33  2.67   293.  0     16     16  </span></span>
+<span><span class="co">#&gt; 8 P         147.    1.33  1.33   180   0     17.3   16  </span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: shelf &lt;int&gt;, potassium &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   vitamins &lt;fct&gt;</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span> <span class="op">(</span><span class="va">cereal</span>, <span class="va">sodium</span>, n<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
@@ -1520,9 +1520,9 @@
 <span><span class="co">#&gt; 5     149.    9.09         18.7      20.9</span></span></code></pre></div>
 </div>
 </div>
-<div id="exercise-15" class="section level2" number="9.13">
+<div id="exercise-14" class="section level2" number="9.13">
 <h2>
-<span class="header-section-number">9.13</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-15"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.13</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-14"><i class="fas fa-link"></i></a>
 </h2>
 <div style="color: #80CC99;">
 <ol style="list-style-type: decimal">
@@ -1584,16 +1584,16 @@
 <li><a class="nav-link" href="#formatting-numbers"><span class="header-section-number">9.8</span> Formatting numbers</a></li>
 <li><a class="nav-link" href="#printing-tables"><span class="header-section-number">9.9</span> Printing tables</a></li>
 <li><a class="nav-link" href="#communicating-with-the-operating-system"><span class="header-section-number">9.10</span> Communicating with the operating system</a></li>
-<li><a class="nav-link" href="#exercise-14"><span class="header-section-number">9.11</span> Exercise</a></li>
+<li><a class="nav-link" href="#exercise-13"><span class="header-section-number">9.11</span> Exercise</a></li>
 <li>
 <a class="nav-link" href="#tidyverse"><span class="header-section-number">9.12</span> Tidyverse</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#tibbles"><span class="header-section-number">9.12.1</span> Tibbles</a></li>
 <li><a class="nav-link" href="#pipe-operator"><span class="header-section-number">9.12.2</span> Pipe operator</a></li>
 <li><a class="nav-link" href="#tidy-data"><span class="header-section-number">9.12.3</span> Tidy data</a></li>
-<li><a class="nav-link" href="#package-dplyr"><span class="header-section-number">9.12.4</span> Package dplyr</a></li>
+<li><a class="nav-link" href="#dplyr"><span class="header-section-number">9.12.4</span> Package dplyr</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#exercise-15"><span class="header-section-number">9.13</span> Exercise</a></li>
+<li><a class="nav-link" href="#exercise-14"><span class="header-section-number">9.13</span> Exercise</a></li>
 </ul>
 
       <div class="book-extra">
