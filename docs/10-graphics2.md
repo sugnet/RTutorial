@@ -432,7 +432,7 @@ Use R to draw a simple flow diagram.  The diagram must contain at least one rect
 
 Construct a graph of a $normal(0, 1)$ density function. Give as a title to the plot the expression "Density of a normal random variable with $\mu = 0$ and $\sigma^2 = 1$."  *Hint*: Consult the help file of `plotmath()`. Within the plot draw an arrow to the density and label it $\frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2}x^2}$.
 
-## Quantile plots
+## Quantile plots {#qqplot}
 
 Consider the histogram of weight in Figure \@ref(fig:BarHist). Does this variable follow a normal distribution? A normal quantile plot, shows the observations vs the corresponding quantiles of a standard normal distribution. If the observations correspond to a normal distribution, this will approximately form a straight line. Use the `qqline()` function to add a straing line to the plot.
 
@@ -504,7 +504,7 @@ plot(density(x), type="l")
 
 Experiment with different kernel function and different choices of bandwidth (argument bw) for controlling the amount of smoothing.
 
-## A coplot with two conditioning variables
+## A coplot with two conditioning variables {#coplot}
 
 Consider the `state.x77` data set. In section \@ref(highLevelPlotting) the `coplot()` function was used to construct a plot of `Illiteracy` and `Area` conditional on `Income`. This can be expanded to two conditions, for example plotting `Illiteracy` and `Life expectancy` conditional on `Income` and `Area`. Interpret. The number of panels and overlap of given intervals can be controlled with the arguments number and overlap.
 

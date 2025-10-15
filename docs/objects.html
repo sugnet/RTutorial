@@ -81,7 +81,8 @@
 <li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
 <li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
 <li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
-<li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
+<li><a class="" href="data-must-be-sorted-according-to-e-values.html"><span class="header-section-number">12</span> data must be sorted according to E values</a></li>
+<li><a class="" href="optimisation.html"><span class="header-section-number">13</span> Introduction to Optimisation</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -163,9 +164,9 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "aa" "Aa" "bb" "cc" "yy"</span></span>
 <span><span class="va">aa</span></span>
-<span><span class="co">#&gt;  [1]  0.34533079  0.04384229  1.39948445 -0.02657599</span></span>
-<span><span class="co">#&gt;  [5] -2.03566597  0.26312940  0.46569256  1.28005863</span></span>
-<span><span class="co">#&gt;  [9]  0.07282049 -0.53125879</span></span>
+<span><span class="co">#&gt;  [1] -1.05008177  0.76758559 -0.48141044  0.27484154</span></span>
+<span><span class="co">#&gt;  [5]  0.71086231 -0.06299331  1.08499066  0.44551307</span></span>
+<span><span class="co">#&gt;  [9] -0.92539144  1.08684547</span></span>
 <span><span class="va">bb</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
@@ -576,19 +577,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001cf5b688ff0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002397148f060&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.006140538</span></span>
+<span><span class="co">#&gt; [1] -0.006721025</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.006140538</span></span>
+<span><span class="co">#&gt; [1] -0.006721025</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001cf59715530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002396f50d530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -615,19 +616,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001cf59715530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002396f50d530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001cf59715530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002396f50d530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001cf59715530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002396f50d530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">

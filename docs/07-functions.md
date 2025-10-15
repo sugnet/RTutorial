@@ -10,7 +10,7 @@ A good way to learn about functions or to write a new function is to look at exi
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x000001a07b15a108>
+#> <bytecode: 0x0000027164d25108>
 #> <environment: namespace:base>
 ```
 
@@ -88,7 +88,7 @@ plot.default
 #>             ...)
 #>     invisible()
 #> }
-#> <bytecode: 0x000001a080587d60>
+#> <bytecode: 0x0000027166148d80>
 #> <environment: namespace:graphics>
 ```
 
@@ -135,7 +135,7 @@ getAnywhere(plot.factor)
 #>         boxplot(y ~ x, ...)
 #>     else NextMethod("plot")
 #> }
-#> <bytecode: 0x000001a08202a538>
+#> <bytecode: 0x0000027166bb2538>
 #> <environment: namespace:graphics>
 ```
 
@@ -174,26 +174,26 @@ boxplot(rnorm(100), plot = TRUE)
 ``` r
 boxplot(rnorm(100), plot = FALSE)
 #> $stats
-#>            [,1]
-#> [1,] -2.4679165
-#> [2,] -0.8083784
-#> [3,] -0.2636679
-#> [4,]  0.3707985
-#> [5,]  1.9585273
+#>             [,1]
+#> [1,] -2.26815521
+#> [2,] -0.81951349
+#> [3,]  0.01436698
+#> [4,]  0.52755909
+#> [5,]  2.50781656
 #> 
 #> $n
 #> [1] 100
 #> 
 #> $conf
-#>             [,1]
-#> [1,] -0.44997784
-#> [2,] -0.07735792
+#>            [,1]
+#> [1,] -0.1984705
+#> [2,]  0.2272045
 #> 
 #> $out
-#> [1] 2.363569 2.575090
+#> numeric(0)
 #> 
 #> $group
-#> [1] 1 1
+#> numeric(0)
 #> 
 #> $names
 #> [1] "1"

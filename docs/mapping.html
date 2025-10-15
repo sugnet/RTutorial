@@ -81,7 +81,8 @@
 <li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
 <li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
 <li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
-<li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
+<li><a class="" href="data-must-be-sorted-according-to-e-values.html"><span class="header-section-number">12</span> data must be sorted according to E values</a></li>
+<li><a class="" href="optimisation.html"><span class="header-section-number">13</span> Introduction to Optimisation</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -318,14 +319,14 @@
 <span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html">rcauchy</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt;  [1] -2.1286864  0.1059591  0.4776087 -0.3187206 -1.9614456</span></span>
-<span><span class="co">#&gt;  [6] -3.3485586  1.6286547 -0.7433134 -3.5148473  0.7980204</span></span>
+<span><span class="co">#&gt;  [1]  1.7839765  1.3921962  2.4310325  0.2535779 -0.7108909</span></span>
+<span><span class="co">#&gt;  [6] -1.9787274 -1.1414962  0.1417415 -0.6106848  0.3210230</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"mean"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] -0.9005329</span></span>
+<span><span class="co">#&gt; [1] 0.1881748</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"median"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] -0.531017</span></span>
+<span><span class="co">#&gt; [1] 0.1976597</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"trimmed"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] -0.8898921</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.1786804</span></span></code></pre></div>
 <ol start="8" style="list-style-type: lower-alpha">
 <li>The two logical control operators <code>&amp;&amp;</code> and <code>||</code> are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators <code>&amp;</code> and <code>|</code> which operate on vectors/matrices.</li>
 </ol>
@@ -457,7 +458,7 @@
 <div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span>   <span class="co"># called with no arguments</span></span>
 <span><span class="co">#&gt;    user  system elapsed </span></span>
-<span><span class="co">#&gt;    0.85    0.35    9.45</span></span></code></pre></div>
+<span><span class="co">#&gt;    0.59    0.21   10.15</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>
 <code>system.time(expr)</code> calls the function <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code>, evaluates <code>expr</code>, and then calls <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> once more, returning the difference between the two <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> calls:</li>
@@ -466,7 +467,7 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000000</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-mapping_files/figure-html/systemtimeExample-1.png" width="672"></div>
 <pre><code>#&gt;    user  system elapsed 
-#&gt;    0.19    0.02    0.25</code></pre>
+#&gt;    0.07    0.04    0.25</code></pre>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Note that user and system times do not necessarily add up to elapsed time exactly.</p>
 </div>
@@ -533,7 +534,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000027af37259c8&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001e7187259c8&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>The presence of <code>UseMethod("plot")</code> shows that <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> is a <em><span style="color:#FF9966">generic</span></em> function. The <em><span style="color:#FF9966">class</span></em> of an object determines how it will be treated by a generic function i.e. what <em><span style="color:#FF9966">method</span></em> will be applied to it. Function <code><a href="https://rdrr.io/r/methods/setClass.html">setClass()</a></code> is used for setting the class attribute of an object. Function <code><a href="https://rdrr.io/r/utils/methods.html">methods()</a></code> is used to find out (a) what is the repertoire of methods of a generic function and (b) what methods are available for a certain class:</p>
 <div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">

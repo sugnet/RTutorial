@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 11 Statistical modelling with R | Introduction into R Applications and Programming: A Tutorial</title>
+<title>Chapter 12 Statistical modelling with R | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
-<meta name="description" content="Textbook for the R block module.">
+<meta name="description" content="This chapter is an introduction to statistical modelling with R. There are a substantial number of dedicated R modelling packages available. In this chapter only the basics of statistical...">
 <meta name="generator" content="bookdown 0.44 with bs4_book()">
-<meta property="og:title" content="Chapter 11 Statistical modelling with R | Introduction into R Applications and Programming: A Tutorial">
+<meta property="og:title" content="Chapter 12 Statistical modelling with R | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/modelling.html">
 <meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
-<meta property="og:description" content="Textbook for the R block module.">
+<meta property="og:description" content="This chapter is an introduction to statistical modelling with R. There are a substantial number of dedicated R modelling packages available. In this chapter only the basics of statistical...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 11 Statistical modelling with R | Introduction into R Applications and Programming: A Tutorial">
-<meta name="twitter:description" content="Textbook for the R block module.">
+<meta name="twitter:title" content="Chapter 12 Statistical modelling with R | Introduction into R Applications and Programming: A Tutorial">
+<meta name="twitter:description" content="This chapter is an introduction to statistical modelling with R. There are a substantial number of dedicated R modelling packages available. In this chapter only the basics of statistical...">
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -23,29 +23,6 @@
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
-<style type="text/css">
-    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-          margin-bottom: 1em;
-        }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
   </style>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -68,45 +45,1273 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introducing the R System</a></li>
-<li><a class="" href="objects.html"><span class="header-section-number">2</span> Managing objects</a></li>
-<li><a class="" href="operators.html"><span class="header-section-number">3</span> R operators and functions</a></li>
-<li><a class="" href="graphics.html"><span class="header-section-number">4</span> Introducing traditional R graphics</a></li>
-<li><a class="" href="subscripting.html"><span class="header-section-number">5</span> Subscripting</a></li>
-<li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
-<li><a class="" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
-<li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
-<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
-<li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
-<li><a class="active" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
-<li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
-<li><a class="" href="references.html">References</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 12</span> Statistical modelling with R</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/sugnet/RTutorial">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="modelling" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="modelling" class="section level1" number="12">
 <h1>
-<span class="header-section-number">11</span> Statistical modelling with R<a class="anchor" aria-label="anchor" href="#modelling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12</span> Statistical modelling with R<a class="anchor" aria-label="anchor" href="#modelling"><i class="fas fa-link"></i></a>
 </h1>
+<p>This chapter is an introduction to statistical modelling with R. There are a substantial number of dedicated R modelling packages available. In this chapter only the basics of statistical modelling with R are considered. However, a thorough understanding of these principles is an invaluable aid in mastering any of the available R packages on statistical modelling and related topics.</p>
+<div id="introduction" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
+</h2>
+<p>Some of the aims of statistical modelling are: assessing the relative importance of a set of variables in relation to another variable(s); predicting the value of a dependent variable from those of a set of predictor variables; defining a statistical relationship between the dependent and the independent variables.</p>
+<p>Here the following generic functions are considered.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:ModelFuncs">Table 12.1: </span> Generic modelling functions in R.</caption>
+<colgroup>
+<col width="22%">
+<col width="55%">
+<col width="22%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">Function</span></em></th>
+<th><em><span style="color:#CC99FF">Model</span></em></th>
+<th><em><span style="color:#CC99FF">Package</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code></td>
+<td>Linear models</td>
+<td><code>stats</code></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/stats/aov.html">aov()</a></code></td>
+<td>Analysis of variance</td>
+<td><code>stats</code></td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code></td>
+<td>Generalized linear models</td>
+<td><code>stats</code></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam()</a></code></td>
+<td>Generalized additive models</td>
+<td>
+<code>gam</code>, <code>mgcv</code>
+</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/loess.html">loess()</a></code></td>
+<td>Local regression models</td>
+<td><code>stats</code></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/pkg/rpart/man/rpart.html">rpart()</a></code></td>
+<td>Tree-based models</td>
+<td><code>rpart</code></td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/nls.html">nls()</a></code></td>
+<td>Nonlinear models</td>
+<td><code>stats</code></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="data-for-statistical-models" class="section level2" number="12.2">
+<h2>
+<span class="header-section-number">12.2</span> Data for statistical models<a class="anchor" aria-label="anchor" href="#data-for-statistical-models"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Note the difference between <em><span style="color:#FF9966">factors</span></em> (categorical or classification variables), <em><span style="color:#FF9966">regressors</span></em> (continuous or <em><span style="color:#FF9966">numeric</span></em> variables) and frequency data.</p></li>
+<li><p>Why must the data be in the form of a dataframe when statistical modelling is carried out with R?</p></li>
+<li><p>How are the functions <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>, <code><a href="https://rdrr.io/r/base/factor.html">is.factor()</a></code> and <code><a href="https://rdrr.io/r/base/factor.html">is.ordered()</a></code> used to set or determine the class attributes of variables that must behave as factors in further analyses? Note especially the usage of argument <code>'ordered = '</code> of function <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>.</p></li>
+</ol>
+</div>
+<div id="expressing-a-statistical-model-in-r" class="section level2" number="12.3">
+<h2>
+<span class="header-section-number">12.3</span> Expressing a statistical model in R<a class="anchor" aria-label="anchor" href="#expressing-a-statistical-model-in-r"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>What role does the tilde-operator (<code>~</code>) play in statistical models in R?</p></li>
+<li><p>Study how the operators in Table <a href="modelling.html#tab:ModelOperators">12.2</a> work. These operators have a different meaning when they appear in a statistical model.</p></li>
+</ol>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:ModelOperators">Table 12.2: </span> Operators used in model formulae after the <code>~</code>.</caption>
+<colgroup>
+<col width="16%">
+<col width="41%">
+<col width="41%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">Operator</span></em></th>
+<th><em><span style="color:#CC99FF">Algebraic meaning</span></em></th>
+<th><em><span style="color:#CC99FF">Meaning in formula after <code>~</code></span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Addition</td>
+<td>Add a term</td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td>Subtraction</td>
+<td>Remove or exclude a term</td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Multiplication</td>
+<td>Main effects and interactions</td>
+</tr>
+<tr class="even">
+<td><code>/</code></td>
+<td>Division</td>
+<td>Main effect and nesting</td>
+</tr>
+<tr class="odd">
+<td><code>:</code></td>
+<td>Sequence</td>
+<td>Interaction</td>
+</tr>
+<tr class="even">
+<td><code>^</code></td>
+<td>Exponentiation</td>
+<td>Limit depth of interactions</td>
+</tr>
+<tr class="odd">
+<td><code>%in%</code></td>
+<td>Matching</td>
+<td>Nesting</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>In order to ensure that the operators in Table <a href="modelling.html#tab:ModelOperators">12.2</a> have their usual meaning when appearing at the right-hand side of <code>~</code> in a statistical model use the <code><a href="https://rdrr.io/r/base/AsIs.html">I()</a></code> function e.g. <code>I(a+b)</code>.</p></li>
+<li><p>Note how <em><span style="color:#FF9966">regression terms</span></em>, <em><span style="color:#FF9966">main effects</span></em>, <em><span style="color:#FF9966">interaction effects</span></em>, <em><span style="color:#FF9966">higher-order interaction effect</span></em>, <em><span style="color:#FF9966">nested effects</span></em> and <em><span style="color:#FF9966">covariate terms</span></em> are specified.</p></li>
+<li><p>The following summary illustrates the correspondence between the <em><span style="color:#FF9966">model notation</span></em> of R and the <em><span style="color:#FF9966">algebraic notation</span></em> of models for factors <code>a</code> and <code>b</code> with numeric (continuous) variable <code>x</code>:</p></li>
+</ol>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th>Model notation</th>
+<th>Algebraic notation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>y~a+x</code></td>
+<td><span class="math inline">\(y = \mu + \alpha_a + \beta x + \epsilon\)</span></td>
+</tr>
+<tr class="even">
+<td><code>y~a+b+a:b</code></td>
+<td><span class="math inline">\(y = \mu + \alpha_a + \beta_b + \gamma_{ab} + \epsilon\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>y~a+a:x</code></td>
+<td><span class="math inline">\(y = \mu + \alpha_a + \beta_a x + \epsilon\)</span></td>
+</tr>
+<tr class="even">
+<td><code>y~a*x</code></td>
+<td><span class="math inline">\(y = \mu + \alpha_a + \beta x + \gamma_a x + \epsilon\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>y~-1+a/x</code></td>
+<td><span class="math inline">\(y = \alpha_a + \beta_a x + \epsilon\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<ol start="6" style="list-style-type: lower-alpha">
+<li><p>Every numeric variable on the right-hand side of <code>~</code> generates one coefficient to be estimated in a fitted model; each <em><span style="color:#FF9966">level</span></em> of a factor variable generates one coefficient to be estimated in a fitted model. What is an <em><span style="color:#FF9966">estimable function</span></em>?</p></li>
+<li><p>Note how transformation of variables can be achieved and how model formulae are stored as R objects of class <em><span style="color:#FF9966">formula</span></em>.</p></li>
+</ol>
+</div>
+<div id="common-arguments-to-r-modelling-functions" class="section level2" number="12.4">
+<h2>
+<span class="header-section-number">12.4</span> Common arguments to R modelling functions<a class="anchor" aria-label="anchor" href="#common-arguments-to-r-modelling-functions"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>The <em><span style="color:#FF9966">formula</span></em> argument. Study how this argument and the period operator work. If a dataframe is specified as an argument to the modelling function a period on the right-hand side of the <code>~</code> indicates that the additive effects of all the variables in the dataframe (except those used at the left-hand side of the <code>~</code>) are included in the model specification.</p></li>
+<li><p>The <em><span style="color:#FF9966">data</span></em> argument. Study how this argument works. Note that this argument will accept any R expression that evaluates to a dataframe. Important: if a dataframe is specified in the data argument (i) variables may be referred to by their names; (ii) the dataframe is searched first for a name before the global environment and the rest of the search path; (iii) any other existing object can also be used as a variable.</p></li>
+<li><p>The <em><span style="color:#FF9966">subset</span></em> argument. Note how statistical models can be fitted to subsets of data.</p></li>
+<li><p>The <em><span style="color:#FF9966">weights</span></em> argument. Study how this argument works especially when iterative procedures are used.</p></li>
+<li><p>The <em><span style="color:#FF9966">na.action</span></em> argument. This argument controls how missing values are handled.</p></li>
+<li><p>The <em><span style="color:#FF9966">control</span></em> argument. What is the purpose of this argument?</p></li>
+</ol>
+</div>
+<div id="using-the-statistical-modelling-objects" class="section level2" number="12.5">
+<h2>
+<span class="header-section-number">12.5</span> Using the statistical modelling objects<a class="anchor" aria-label="anchor" href="#using-the-statistical-modelling-objects"><i class="fas fa-link"></i></a>
+</h2>
+<p><em>Note</em>: each of the modelling functions returns an object whose class attribute has been set to the name of the function e.g. the value of <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> is set to be of class <code>lm</code>. A set of generic functions are available to provide access to the information contained in them.</p>
+<p>To see what is available for a particular modelling function use <code>methods (class = function)</code> e.g.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/methods.html">methods</a></span> <span class="op">(</span>class <span class="op">=</span> <span class="va">lm</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] add1           alias          anova         </span></span>
+<span><span class="co">#&gt;  [4] case.names     coerce         confint       </span></span>
+<span><span class="co">#&gt;  [7] cooks.distance deviance       dfbeta        </span></span>
+<span><span class="co">#&gt; [10] dfbetas        drop1          dummy.coef    </span></span>
+<span><span class="co">#&gt; [13] effects        extractAIC     family        </span></span>
+<span><span class="co">#&gt; [16] formula        hatvalues      influence     </span></span>
+<span><span class="co">#&gt; [19] initialize     kappa          labels        </span></span>
+<span><span class="co">#&gt; [22] logLik         model.frame    model.matrix  </span></span>
+<span><span class="co">#&gt; [25] nobs           plot           predict       </span></span>
+<span><span class="co">#&gt; [28] print          proj           qr            </span></span>
+<span><span class="co">#&gt; [31] residuals      rstandard      rstudent      </span></span>
+<span><span class="co">#&gt; [34] show           simulate       slotsFromS3   </span></span>
+<span><span class="co">#&gt; [37] summary        variable.names vcov          </span></span>
+<span><span class="co">#&gt; see '?methods' for accessing help and source code</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:ModelObjectFuncs">Table 12.3: </span> Functions for Model Objects.</caption>
+<colgroup>
+<col width="28%">
+<col width="71%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">Function</span></em></th>
+<th><em><span style="color:#CC99FF">Description</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/add1.html">add1()</a></code></td>
+<td>Add all possible single terms in a model</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code></td>
+<td>Return a sequential analysis of variance table or a comparison of two hierarchical models</td>
+</tr>
+<tr class="odd">
+<td>
+<code><a href="https://rdrr.io/r/stats/coef.html">coef()</a></code> or <code><a href="https://rdrr.io/r/stats/coef.html">coefficients()</a></code>
+</td>
+<td>Extract estimated coefficients</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/stats/deviance.html">deviance()</a></code></td>
+<td>Return the deviance</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/df.residual.html">df.residual()</a></code></td>
+<td>Return the residual degrees of freedom</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/stats/add1.html">drop1()</a></code></td>
+<td>Drop all possible single terms in a model</td>
+</tr>
+<tr class="odd">
+<td>
+<code><a href="https://rdrr.io/r/stats/fitted.values.html">fitted()</a></code> or <code><a href="https://rdrr.io/r/stats/fitted.values.html">fitted.values()</a></code>
+</td>
+<td>Extract fitted values</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/stats/formula.html">formula()</a></code></td>
+<td>Extract the formula on which the model is based</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/lm.influence.html">influence()</a></code></td>
+<td>Extract several types of influence measures</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code></td>
+<td>Construct relevant plots</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code></td>
+<td>Calculate predictions (means) optionally with standard errors</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/base/print.html">print()</a></code></td>
+<td>Extract information about the analysis</td>
+</tr>
+<tr class="odd">
+<td>
+<code><a href="https://rdrr.io/r/stats/residuals.html">resid()</a></code> or <code><a href="https://rdrr.io/r/stats/residuals.html">residuals()</a></code>
+</td>
+<td>Extract residuals</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/stats/step.html">step()</a></code></td>
+<td>Stepwise selection of a model using a AIC criterion</td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code></td>
+<td>Extract information about the analysis</td>
+</tr>
+<tr class="even">
+<td><code><a href="https://rdrr.io/r/stats/update.html">update()</a></code></td>
+<td>Modify and/or refit models</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Note</em>: Do not confuse function <code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code> which operates on an <code>lm</code> object with function <code><a href="https://rdrr.io/r/stats/aov.html">aov()</a></code> for fitting an analysis of variance model.</p>
+<p><em>Recall</em>: Asterisked functions are non-visible. Such functions can be accessed using for example</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/getAnywhere.html">getAnywhere</a></span><span class="op">(</span><span class="va">add1.lm</span><span class="op">)</span></span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li><p>Note the use of <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> and <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> to retrieve information about model objects.</p></li>
+<li><p>Study the functions that are used to retrieve information about model objects or to modify them as summed up in Table <a href="modelling.html#tab:ModelObjectFuncs">12.3</a>.</p></li>
+</ol>
+</div>
+<div id="usage-of-the-function-with" class="section level2" number="12.6">
+<h2>
+<span class="header-section-number">12.6</span> Usage of the function <code>with()</code><a class="anchor" aria-label="anchor" href="#usage-of-the-function-with"><i class="fas fa-link"></i></a>
+</h2>
+<p>Study the help file of function <code><a href="https://rdrr.io/r/base/with.html">with()</a></code> and take note specifically of its usage when calling <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>.</p>
+</div>
+<div id="lmAnova" class="section level2" number="12.7">
+<h2>
+<span class="header-section-number">12.7</span> Linear regression and anova<a class="anchor" aria-label="anchor" href="#lmAnova"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Consider the <code>Cars93</code> data set available in package <code>MASS</code>. Use the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function to perform a regression analysis of <code>MPG.city</code> as a function of a constant term, <code>Length</code>, <code>(Rev.per.mile)</code><span class="math inline">\(^{–1}\)</span>, <code>Weight</code>, <code>RPM</code> and <code>(Horsepower)</code><span class="math inline">\({–1}\)</span>. Note how the function <code><a href="https://rdrr.io/r/stats/update.html">update()</a></code> works. Illustrate the use of the functions <code><a href="https://rdrr.io/r/stats/add1.html">drop1()</a></code> and <code><a href="https://rdrr.io/r/stats/add1.html">add1()</a></code>:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span>
+<span><span class="va">lm.city</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">MPG.city</span> <span class="op">~</span> <span class="fl">1</span><span class="op">+</span> <span class="va">Length</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">Rev.per.mile</span><span class="op">)</span><span class="op">+</span> <span class="va">Weight</span> <span class="op">+</span> <span class="va">RPM</span> <span class="op">+</span></span>
+<span>                 <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">Horsepower</span><span class="op">)</span>, data<span class="op">=</span><span class="va">Cars93</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span> <span class="op">(</span><span class="va">lm.city</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = MPG.city ~ 1 + Length + I(1/Rev.per.mile) + Weight + </span></span>
+<span><span class="co">#&gt;     RPM + I(1/Horsepower), data = Cars93)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">#&gt; -5.2344 -1.4863 -0.1570  0.8975 14.0030 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                     Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span><span class="co">#&gt; (Intercept)       -2.913e+00  1.076e+01  -0.271 0.787288</span></span>
+<span><span class="co">#&gt; Length             4.115e-02  3.393e-02   1.213 0.228518</span></span>
+<span><span class="co">#&gt; I(1/Rev.per.mile)  7.439e+03  4.760e+03   1.563 0.121750</span></span>
+<span><span class="co">#&gt; Weight            -3.345e-03  1.221e-03  -2.740 0.007448</span></span>
+<span><span class="co">#&gt; RPM                2.750e-03  7.812e-04   3.521 0.000688</span></span>
+<span><span class="co">#&gt; I(1/Horsepower)    1.287e+03  2.379e+02   5.410 5.48e-07</span></span>
+<span><span class="co">#&gt;                      </span></span>
+<span><span class="co">#&gt; (Intercept)          </span></span>
+<span><span class="co">#&gt; Length               </span></span>
+<span><span class="co">#&gt; I(1/Rev.per.mile)    </span></span>
+<span><span class="co">#&gt; Weight            ** </span></span>
+<span><span class="co">#&gt; RPM               ***</span></span>
+<span><span class="co">#&gt; I(1/Horsepower)   ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 2.677 on 87 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.7855, Adjusted R-squared:  0.7732 </span></span>
+<span><span class="co">#&gt; F-statistic: 63.72 on 5 and 87 DF,  p-value: &lt; 2.2e-16</span></span>
+<span><span class="co"># update() is used here to restrict the model fitted in lm.city to cars with </span></span>
+<span><span class="co"># front wheel drives</span></span>
+<span><span class="va">lm.city.front</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html">update</a></span> <span class="op">(</span><span class="va">lm.city</span>, subset <span class="op">=</span> <span class="va">DriveTrain</span><span class="op">==</span><span class="st">"Front"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span> <span class="op">(</span><span class="va">lm.city.front</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = MPG.city ~ 1 + Length + I(1/Rev.per.mile) + Weight + </span></span>
+<span><span class="co">#&gt;     RPM + I(1/Horsepower), data = Cars93, subset = DriveTrain == </span></span>
+<span><span class="co">#&gt;     "Front")</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">#&gt; -5.6598 -1.4476  0.0102  0.9468 13.7023 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                     Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span><span class="co">#&gt; (Intercept)        1.599e+00  1.418e+01   0.113 0.910571</span></span>
+<span><span class="co">#&gt; Length             2.711e-02  4.875e-02   0.556 0.580093</span></span>
+<span><span class="co">#&gt; I(1/Rev.per.mile)  7.895e+03  6.518e+03   1.211 0.230462</span></span>
+<span><span class="co">#&gt; Weight            -3.808e-03  1.707e-03  -2.230 0.029406</span></span>
+<span><span class="co">#&gt; RPM                2.672e-03  1.016e-03   2.630 0.010784</span></span>
+<span><span class="co">#&gt; I(1/Horsepower)    1.246e+03  3.070e+02   4.058 0.000143</span></span>
+<span><span class="co">#&gt;                      </span></span>
+<span><span class="co">#&gt; (Intercept)          </span></span>
+<span><span class="co">#&gt; Length               </span></span>
+<span><span class="co">#&gt; I(1/Rev.per.mile)    </span></span>
+<span><span class="co">#&gt; Weight            *  </span></span>
+<span><span class="co">#&gt; RPM               *  </span></span>
+<span><span class="co">#&gt; I(1/Horsepower)   ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 2.93 on 61 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.7656, Adjusted R-squared:  0.7464 </span></span>
+<span><span class="co">#&gt; F-statistic: 39.85 on 5 and 61 DF,  p-value: &lt; 2.2e-16</span></span>
+<span></span>
+<span><span class="co"># drop1 (lm object, scope) shows the effect of dropping the Length term from </span></span>
+<span><span class="co"># the fitted model</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/add1.html">drop1</a></span> <span class="op">(</span><span class="va">lm.city</span>, <span class="va">.</span> <span class="op">~</span> <span class="va">Length</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Single term deletions</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Model:</span></span>
+<span><span class="co">#&gt; MPG.city ~ 1 + Length + I(1/Rev.per.mile) + Weight + RPM + I(1/Horsepower)</span></span>
+<span><span class="co">#&gt;        Df Sum of Sq    RSS    AIC</span></span>
+<span><span class="co">#&gt; &lt;none&gt;              623.27 188.92</span></span>
+<span><span class="co">#&gt; Length  1    10.536 633.80 188.48</span></span>
+<span></span>
+<span><span class="co"># Shows the effect of dropping each term in turn from the fitted model </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/add1.html">drop1</a></span> <span class="op">(</span><span class="va">lm.city</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Single term deletions</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Model:</span></span>
+<span><span class="co">#&gt; MPG.city ~ 1 + Length + I(1/Rev.per.mile) + Weight + RPM + I(1/Horsepower)</span></span>
+<span><span class="co">#&gt;                   Df Sum of Sq    RSS    AIC</span></span>
+<span><span class="co">#&gt; &lt;none&gt;                         623.27 188.92</span></span>
+<span><span class="co">#&gt; Length             1    10.536 633.80 188.48</span></span>
+<span><span class="co">#&gt; I(1/Rev.per.mile)  1    17.495 640.76 189.50</span></span>
+<span><span class="co">#&gt; Weight             1    53.796 677.06 194.62</span></span>
+<span><span class="co">#&gt; RPM                1    88.801 712.07 199.31</span></span>
+<span><span class="co">#&gt; I(1/Horsepower)    1   209.659 832.93 213.89</span></span>
+<span></span>
+<span><span class="va">lm.city.const</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">MPG.city</span> <span class="op">~</span> <span class="fl">1</span>, data<span class="op">=</span><span class="va">Cars93</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span> <span class="op">(</span><span class="va">lm.city.const</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Analysis of Variance Table</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Response: MPG.city</span></span>
+<span><span class="co">#&gt;           Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
+<span><span class="co">#&gt; Residuals 92 2905.6  31.582</span></span>
+<span></span>
+<span><span class="co"># add1 (lm object, scope) shows the effect of adding the terms in scope </span></span>
+<span><span class="co"># individually in turn to the model in lm object </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/add1.html">add1</a></span> <span class="op">(</span><span class="va">lm.city.const</span>, <span class="va">.</span> <span class="op">~</span> <span class="va">Length</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">Rev.per.mile</span><span class="op">)</span> <span class="op">+</span> <span class="va">Weight</span> <span class="op">+</span> <span class="va">RPM</span> <span class="op">+</span> </span>
+<span>       <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">Horsepower</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Single term additions</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Model:</span></span>
+<span><span class="co">#&gt; MPG.city ~ 1</span></span>
+<span><span class="co">#&gt;                   Df Sum of Sq     RSS    AIC</span></span>
+<span><span class="co">#&gt; &lt;none&gt;                         2905.57 322.09</span></span>
+<span><span class="co">#&gt; Length             1   1289.71 1615.86 269.52</span></span>
+<span><span class="co">#&gt; I(1/Rev.per.mile)  1   1090.68 1814.89 280.32</span></span>
+<span><span class="co">#&gt; Weight             1   2065.52  840.05 208.68</span></span>
+<span><span class="co">#&gt; RPM                1    382.96 2522.61 310.94</span></span>
+<span><span class="co">#&gt; I(1/Horsepower)    1   1927.30  978.27 222.85</span></span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Is the object <code>a &lt;- as.data.frame(matA)</code> identical with the object <code>a1 &lt;- data.frame(matA)</code>?</p></li>
+<li>
+<p>Once again, consider the <code>Cars93</code> data set: Consider cars manufactured by Buick, Chevrolet, Oldsmobile and Pontiac. Use the median of <code>Weight</code> to create two car weight groups.</p>
+<ul>
+<li>Construct an interaction plot to study the interaction between <code>Manufacturer</code> and <code>Weight</code> with respect to the highway fuel consumption. Interpret the graph.</li>
+<li>Use the function <code><a href="https://rdrr.io/r/stats/aov.html">aov()</a></code> to perform a two-way anova with highway fuel consumption as dependent variable and as independent (explanatory) variables weight-group and manufacturer.</li>
+<li>What do you conclude about the main effects and the interaction effects?</li>
+<li>Repeat the above using lm().</li>
+</ul>
+</li>
+<li><p>Study the help file of the <code>whiteside</code> data set available in package <code>MASS</code>. Plot the gas consumption as a function of the temperature. Use different plotting characters and colours for the two levels of the factor variable <code>Insul</code>. Add the regression lines of gas consumption on the temperature for the two levels of <code>Insul</code> to the graph . What do you conclude? Now test for the parallelism of the two regression lines using <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> with terms for <code>Insul</code>, <code>Temp</code> and <code>Insul:Temp</code>. Discuss the results of the analysis.</p></li>
+</ol>
+</div>
+<div id="regression-diagnostics" class="section level2" number="12.8">
+<h2>
+<span class="header-section-number">12.8</span> Regression diagnostics<a class="anchor" aria-label="anchor" href="#regression-diagnostics"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Study the help file of <code><a href="https://rdrr.io/r/stats/lm.influence.html">lm.influence()</a></code> for information on its return values.</p></li>
+<li><p>Standardized residuals as well as jackknife residuals where <span class="math inline">\(stdres = \frac{\hat{e}_i}{s\sqrt{1-h_{ii}}}\)</span> and <span class="math inline">\(studres = \frac{y_i-\hat{y}_{(i)}}{\sqrt{var(y_i-\hat{y}_{(i)})}}\)</span> can be obtained with the help of the following functions: <code><a href="https://rdrr.io/pkg/MASS/man/stdres.html">stdres()</a></code> and <code><a href="https://rdrr.io/pkg/MASS/man/studres.html">studres()</a></code> available in package <code>MASS</code>. Study the help files of these functions.</p></li>
+<li><p>Study how <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> and <code><a href="https://rdrr.io/r/stats/fitted.values.html">fitted()</a></code> work.</p></li>
+<li><p>Stepwise model selection: study the use of <code><a href="https://rdrr.io/r/stats/step.html">step()</a></code>.</p></li>
+<li><p>What is returned by the function <code><a href="https://rdrr.io/r/stats/influence.measures.html">dfbetas()</a></code>?</p></li>
+<li><p>Discuss the output of</p></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">MPG.highway</span> <span class="op">~</span> <span class="va">Length</span> <span class="op">+</span> <span class="va">Width</span> <span class="op">+</span> <span class="va">Weight</span> <span class="op">+</span> <span class="va">EngineSize</span> <span class="op">+</span> <span class="va">RPM</span> <span class="op">+</span> </span>
+<span>            <span class="va">Rev.per.mile</span>, data <span class="op">=</span> <span class="va">Cars93</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Start:  AIC=210.55</span></span>
+<span><span class="co">#&gt; MPG.highway ~ Length + Width + Weight + EngineSize + RPM + Rev.per.mile</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                Df Sum of Sq     RSS    AIC</span></span>
+<span><span class="co">#&gt; - RPM           1      1.58  771.32 208.74</span></span>
+<span><span class="co">#&gt; - EngineSize    1     10.36  780.10 209.79</span></span>
+<span><span class="co">#&gt; - Width         1     13.91  783.64 210.22</span></span>
+<span><span class="co">#&gt; &lt;none&gt;                       769.74 210.55</span></span>
+<span><span class="co">#&gt; - Rev.per.mile  1     17.66  787.39 210.66</span></span>
+<span><span class="co">#&gt; - Length        1     50.29  820.02 214.44</span></span>
+<span><span class="co">#&gt; - Weight        1    687.78 1457.52 267.93</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Step:  AIC=208.74</span></span>
+<span><span class="co">#&gt; MPG.highway ~ Length + Width + Weight + EngineSize + Rev.per.mile</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                Df Sum of Sq     RSS    AIC</span></span>
+<span><span class="co">#&gt; - EngineSize    1      9.19  780.50 207.84</span></span>
+<span><span class="co">#&gt; - Width         1     12.56  783.87 208.24</span></span>
+<span><span class="co">#&gt; &lt;none&gt;                       771.32 208.74</span></span>
+<span><span class="co">#&gt; - Rev.per.mile  1     18.36  789.67 208.93</span></span>
+<span><span class="co">#&gt; - Length        1     50.39  821.71 212.63</span></span>
+<span><span class="co">#&gt; - Weight        1    699.81 1471.13 266.79</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Step:  AIC=207.84</span></span>
+<span><span class="co">#&gt; MPG.highway ~ Length + Width + Weight + Rev.per.mile</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;                Df Sum of Sq     RSS    AIC</span></span>
+<span><span class="co">#&gt; - Rev.per.mile  1     10.79  791.29 207.12</span></span>
+<span><span class="co">#&gt; &lt;none&gt;                       780.50 207.84</span></span>
+<span><span class="co">#&gt; - Width         1     21.50  802.00 208.37</span></span>
+<span><span class="co">#&gt; - Length        1     56.14  836.64 212.30</span></span>
+<span><span class="co">#&gt; - Weight        1    710.64 1491.14 266.05</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Step:  AIC=207.12</span></span>
+<span><span class="co">#&gt; MPG.highway ~ Length + Width + Weight</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;          Df Sum of Sq     RSS    AIC</span></span>
+<span><span class="co">#&gt; - Width   1     13.71  805.00 206.72</span></span>
+<span><span class="co">#&gt; &lt;none&gt;                 791.29 207.12</span></span>
+<span><span class="co">#&gt; - Length  1     52.31  843.61 211.07</span></span>
+<span><span class="co">#&gt; - Weight  1    749.41 1540.70 267.09</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Step:  AIC=206.72</span></span>
+<span><span class="co">#&gt; MPG.highway ~ Length + Weight</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;          Df Sum of Sq     RSS    AIC</span></span>
+<span><span class="co">#&gt; &lt;none&gt;                 805.00 206.72</span></span>
+<span><span class="co">#&gt; - Length  1     91.62  896.62 214.74</span></span>
+<span><span class="co">#&gt; - Weight  1   1039.48 1844.48 281.82</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = MPG.highway ~ Length + Weight, data = Cars93)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt; (Intercept)       Length       Weight  </span></span>
+<span><span class="co">#&gt;   37.521781     0.115526    -0.009633</span></span></code></pre></div>
+<ol start="7" style="list-style-type: lower-alpha">
+<li><p>Calculate and interpret the <code>dfbetas</code> associated with the object <code>lm.city.front</code> created in Section <a href="modelling.html#lmAnova">12.7</a>.</p></li>
+<li><p>Continuing (f): obtain a graph with the standardized residuals on the y-axis and the fitted y-values on the x-axis and interpret the graph.</p></li>
+<li><p>Continuing (f): obtain a histogram of the studentized residuals. Interpret.</p></li>
+<li><p>Consider the object <code>lm.city</code> created in section <a href="modelling.html#lmAnova">12.7</a>. Verify the assumption of normally distributed residuals with the function <code><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm()</a></code>. See section <a href="graphics2.html#qqplot">11.5</a>.</p></li>
+</ol>
+</div>
+<div id="non-parametric-regression" class="section level2" number="12.9">
+<h2>
+<span class="header-section-number">12.9</span> Non-parametric regression<a class="anchor" aria-label="anchor" href="#non-parametric-regression"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Inspect the help file of the <code>stackloss</code> data set.</p></li>
+<li><p>Execute the following R code:</p></li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stack.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span> <span class="op">(</span><span class="va">stackloss</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span> <span class="op">(</span><span class="va">stack.data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"AirFlow"</span>, <span class="st">"WaterTemp"</span>, <span class="st">"AcidConc"</span>, <span class="st">"Loss"</span><span class="op">)</span></span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>Describe briefly what is understood by a Local regression model using the help file of the function <code><a href="https://rdrr.io/r/stats/loess.html">loess()</a></code>.</p></li>
+<li><p>Execute the following R code:</p></li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stack.loess</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/loess.html">loess</a></span><span class="op">(</span><span class="va">Loss</span> <span class="op">~</span> <span class="va">AirFlow</span> <span class="op">*</span> <span class="va">WaterTemp</span>, data <span class="op">=</span> <span class="va">stack.data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">stack.loess</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; loess(formula = Loss ~ AirFlow * WaterTemp, data = stack.data)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of Observations: 21 </span></span>
+<span><span class="co">#&gt; Equivalent Number of Parameters: 8.86 </span></span>
+<span><span class="co">#&gt; Residual Standard Error: 2.986 </span></span>
+<span><span class="co">#&gt; Trace of smoother matrix: 10.53  (exact)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Control settings:</span></span>
+<span><span class="co">#&gt;   span     :  0.75 </span></span>
+<span><span class="co">#&gt;   degree   :  2 </span></span>
+<span><span class="co">#&gt;   family   :  gaussian</span></span>
+<span><span class="co">#&gt;   surface  :  interpolate      cell = 0.2</span></span>
+<span><span class="co">#&gt;   normalize:  TRUE</span></span>
+<span><span class="co">#&gt;  parametric:  FALSE FALSE</span></span>
+<span><span class="co">#&gt; drop.square:  FALSE FALSE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">stack.loess</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "n"         "fitted"    "residuals" "enp"      </span></span>
+<span><span class="co">#&gt;  [5] "s"         "one.delta" "two.delta" "trace.hat"</span></span>
+<span><span class="co">#&gt;  [9] "divisor"   "robust"    "pars"      "kd"       </span></span>
+<span><span class="co">#&gt; [13] "call"      "terms"     "xnames"    "x"        </span></span>
+<span><span class="co">#&gt; [17] "y"         "weights"</span></span>
+<span></span>
+<span><span class="va">stack.loess</span><span class="op">$</span><span class="va">x</span></span>
+<span><span class="co">#&gt;    AirFlow WaterTemp</span></span>
+<span><span class="co">#&gt; 1       80        27</span></span>
+<span><span class="co">#&gt; 2       80        27</span></span>
+<span><span class="co">#&gt; 3       75        25</span></span>
+<span><span class="co">#&gt; 4       62        24</span></span>
+<span><span class="co">#&gt; 5       62        22</span></span>
+<span><span class="co">#&gt; 6       62        23</span></span>
+<span><span class="co">#&gt; 7       62        24</span></span>
+<span><span class="co">#&gt; 8       62        24</span></span>
+<span><span class="co">#&gt; 9       58        23</span></span>
+<span><span class="co">#&gt; 10      58        18</span></span>
+<span><span class="co">#&gt; 11      58        18</span></span>
+<span><span class="co">#&gt; 12      58        17</span></span>
+<span><span class="co">#&gt; 13      58        18</span></span>
+<span><span class="co">#&gt; 14      58        19</span></span>
+<span><span class="co">#&gt; 15      50        18</span></span>
+<span><span class="co">#&gt; 16      50        18</span></span>
+<span><span class="co">#&gt; 17      50        19</span></span>
+<span><span class="co">#&gt; 18      50        19</span></span>
+<span><span class="co">#&gt; 19      50        20</span></span>
+<span><span class="co">#&gt; 20      56        20</span></span>
+<span><span class="co">#&gt; 21      70        20</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span> <span class="op">(</span><span class="va">stack.loess</span><span class="op">$</span><span class="va">y</span> <span class="op">~</span> <span class="va">stack.loess</span><span class="op">$</span><span class="va">x</span><span class="op">[</span>,<span class="st">"AirFlow"</span><span class="op">]</span> <span class="op">|</span> <span class="va">stack.loess</span><span class="op">$</span><span class="va">x</span><span class="op">[</span>,<span class="st">"WaterTemp"</span><span class="op">]</span>,</span>
+<span>       panel <span class="op">=</span> <span class="va">points</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="11-modelling_files/figure-html/stackloess-1.png" width="672"></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span> <span class="op">(</span><span class="va">stack.loess</span><span class="op">$</span><span class="va">y</span> <span class="op">~</span> <span class="va">stack.loess</span><span class="op">$</span><span class="va">x</span><span class="op">[</span>,<span class="st">"WaterTemp"</span><span class="op">]</span> <span class="op">|</span> <span class="va">stack.loess</span><span class="op">$</span><span class="va">x</span><span class="op">[</span>,<span class="st">"AirFlow"</span><span class="op">]</span>,</span>
+<span>        panel<span class="op">=</span><span class="va">points</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="11-modelling_files/figure-html/stackloess-2.png" width="672"></div>
+<p>Comment on the results.</p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><p>Alternatively, splines can be used to fit a nonparametric regression model. The package <code>splines</code> provides for fitting B-splines with the <code><a href="https://rdrr.io/r/splines/bs.html">bs()</a></code> function and natural cubic splines with the <code><a href="https://rdrr.io/r/splines/ns.html">ns()</a></code> function.</p></li>
+<li><p>Study the help files of the <code><a href="https://rdrr.io/r/splines/bs.html">bs()</a></code> and <code><a href="https://rdrr.io/r/splines/ns.html">ns()</a></code> functions.</p></li>
+<li>
+<p>Inspect the help file of the <code>ethanol</code> data set available in package <code>lattice</code>.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Plot <code>NOx</code> versus <code>E</code>.</p></li>
+<li><p>Use <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> and fit a straight line to the data. Add this line to the plot made above. Why is it necessary to order the observations?</p></li>
+</ol>
+</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">ethanol</span><span class="op">$</span><span class="va">NOx</span> <span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span> <span class="op">(</span><span class="va">ethanol</span><span class="op">$</span><span class="va">E</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">ethanol</span><span class="op">$</span><span class="va">E</span> <span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span> <span class="op">(</span><span class="va">ethanol</span><span class="op">$</span><span class="va">E</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">yhat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="va">x</span>, <span class="va">yhat</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<ol start="3" style="list-style-type: lower-roman">
+<li>Use <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> and fit a third degree polynomial to the data. Also add this line to the plot in (i).</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">yhat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="va">x</span>, <span class="va">yhat</span>, col <span class="op">=</span> <span class="st">"magenta"</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<ol start="4" style="list-style-type: lower-roman">
+<li>Use <code><a href="https://rdrr.io/r/stats/loess.html">loess()</a></code> with a default <code>span = 0.75</code> to fit a local regression function to the data and add this line to the plot.</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">yhat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/loess.html">loess</a></span> <span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="va">x</span>, <span class="va">yhat</span>, col <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<ol start="22" style="list-style-type: lower-alpha">
+<li>Use <code><a href="https://rdrr.io/r/splines/bs.html">bs()</a></code> to fit a B-spline with default <code>degree = 3</code> and <code>knots = NULL</code>. Notice that a third degree polynomial is fitted, similar to (iii).</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">yhat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, degree<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="va">x</span>, <span class="va">yhat</span>, col <span class="op">=</span> <span class="st">"gold"</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<ol start="6" style="list-style-type: lower-roman">
+<li>Use <code><a href="https://rdrr.io/r/splines/bs.html">bs()</a></code> to fit a cubic B-spline with 7 degrees of freedom.</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">yhat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, df<span class="op">=</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="va">x</span>, <span class="va">yhat</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<ol start="7" style="list-style-type: lower-roman">
+<li>Compare the number of knots for the two fits in (v) and (vi).</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"knots"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"Boundary.knots"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, df<span class="op">=</span><span class="fl">7</span><span class="op">)</span>, <span class="st">"knots"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, df<span class="op">=</span><span class="fl">7</span><span class="op">)</span>, <span class="st">"Boundary.knots"</span><span class="op">)</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<ol start="8" style="list-style-type: lower-roman">
+<li>Experiment with different values of the span for the <code><a href="https://rdrr.io/r/stats/loess.html">loess()</a></code> function and the <code>df</code> argument of the <code><a href="https://rdrr.io/r/splines/bs.html">bs()</a></code> function.</li>
+</ol>
+</div>
+<ol start="8" style="list-style-type: lower-alpha">
+<li>
+<p>When producing a coplot (refer to section <a href="graphics2.html#coplot">11.7</a>) it is helpful to draw lines or curves in each of the dependency panels, to make the relationship easier to appreciate. Use the panel argument of <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> to draw in each panel</p>
+<ul>
+<li>a straight line representing the linear regression between the variables;</li>
+<li>a curve representing the polynomial regression;</li>
+<li>a spline using <code><a href="https://rdrr.io/r/stats/smooth.spline.html">smooth.spline()</a></code>.</li>
+</ul>
+</li>
+</ol>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p><em>Hint</em>: Graphical arguments are passed to <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> by writing a suitable panel function as ‘value’ for argument panel of <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code>. Study the examples of panel functions below:</p>
+</div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">panel.straight.line</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">col</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"col"</span><span class="op">)</span>, <span class="va">bg</span> <span class="op">=</span> <span class="cn">NA</span>, </span>
+<span>                                <span class="va">pch</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"pch"</span><span class="op">)</span>, <span class="va">cex</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">col.smooth</span> <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
+<span><span class="op">{</span> <span class="va">datmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span> <span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
+<span>  <span class="va">datmat</span> <span class="op">&lt;-</span> <span class="va">datmat</span> <span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>,  <span class="op">]</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">datmat</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, pch <span class="op">=</span> <span class="va">pch</span>, col <span class="op">=</span> <span class="va">col</span>, bg <span class="op">=</span> <span class="va">bg</span>, cex <span class="op">=</span> <span class="va">cex</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">~</span> <span class="va">datmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">col.smooth</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">panel.poly</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">col</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"col"</span><span class="op">)</span>, <span class="va">bg</span> <span class="op">=</span> <span class="cn">NA</span>, <span class="va">pch</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"pch"</span><span class="op">)</span>, </span>
+<span>                       <span class="va">cex</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">col.smooth</span> <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
+<span><span class="op">{</span> <span class="va">datmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
+<span>  <span class="va">datmat</span> <span class="op">&lt;-</span> <span class="va">datmat</span> <span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>,  <span class="op">]</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">datmat</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, pch <span class="op">=</span> <span class="va">pch</span>, col <span class="op">=</span> <span class="va">col</span>, bg <span class="op">=</span> <span class="va">bg</span>, cex <span class="op">=</span> <span class="va">cex</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/poly.html">poly</a></span> <span class="op">(</span><span class="va">datmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>         col <span class="op">=</span> <span class="va">col.smooth</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span>               </span>
+<span><span class="va">panel.smooth</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">col</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"col"</span><span class="op">)</span>, <span class="va">bg</span> <span class="op">=</span> <span class="cn">NA</span>, <span class="va">pch</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"pch"</span><span class="op">)</span>, </span>
+<span>                          <span class="va">cex</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">col.smooth</span> <span class="op">=</span> <span class="st">"red"</span>, <span class="va">span</span> <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span>, <span class="va">iter</span> <span class="op">=</span> <span class="fl">3</span>, </span>
+<span>                          <span class="va">...</span><span class="op">)</span> </span>
+<span><span class="op">{</span> <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pch <span class="op">=</span> <span class="va">pch</span>, col <span class="op">=</span> <span class="va">col</span>, bg <span class="op">=</span> <span class="va">bg</span>, cex <span class="op">=</span> <span class="va">cex</span><span class="op">)</span></span>
+<span>  <span class="va">ok</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.finite</a></span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.finite</a></span> <span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span> <span class="op">(</span><span class="va">ok</span><span class="op">)</span><span class="op">)</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lowess.html">lowess</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">ok</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span><span class="va">ok</span><span class="op">]</span>, f <span class="op">=</span> <span class="va">span</span>, iter <span class="op">=</span> <span class="va">iter</span><span class="op">)</span>, </span>
+<span>         col <span class="op">=</span> <span class="va">col.smooth</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>An example</p>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span> <span class="op">(</span><span class="va">Illiteracy</span> <span class="op">~</span> <span class="va">Life.Exp</span> <span class="op">|</span> <span class="va">Income</span> <span class="op">*</span> <span class="va">Area</span>, data <span class="op">=</span> <span class="va">state</span>, </span>
+<span>        given <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">co.intervals</a></span> <span class="op">(</span><span class="va">state</span><span class="op">$</span><span class="va">Income</span>, <span class="fl">4</span><span class="op">)</span>, </span>
+<span>                      <span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">co.intervals</a></span> <span class="op">(</span><span class="va">state</span><span class="op">$</span><span class="va">Area</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>        panel <span class="op">=</span> <span class="va">panel.straight.line</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span> <span class="op">(</span><span class="va">Illiteracy</span> <span class="op">~</span> <span class="va">Life.Exp</span> <span class="op">|</span> <span class="va">Income</span> <span class="op">*</span> <span class="va">Area</span>, data <span class="op">=</span> <span class="va">state</span>, </span>
+<span>        given <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">co.intervals</a></span> <span class="op">(</span><span class="va">state</span><span class="op">$</span><span class="va">Income</span>, <span class="fl">4</span><span class="op">)</span>, </span>
+<span>                      <span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">co.intervals</a></span> <span class="op">(</span><span class="va">state</span><span class="op">$</span><span class="va">Area</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>        panel <span class="op">=</span> <span class="va">panel.poly</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span> <span class="op">(</span><span class="va">Illiteracy</span> <span class="op">~</span> <span class="va">Life.Exp</span> <span class="op">|</span> <span class="va">Income</span> <span class="op">*</span> <span class="va">Area</span>, data <span class="op">=</span> <span class="va">state</span>, </span>
+<span>        given <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">co.intervals</a></span> <span class="op">(</span><span class="va">state</span><span class="op">$</span><span class="va">Income</span>, <span class="fl">4</span><span class="op">)</span>, </span>
+<span>                      <span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">co.intervals</a></span> <span class="op">(</span><span class="va">state</span><span class="op">$</span><span class="va">Area</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>        panel <span class="op">=</span> <span class="va">panel.smooth</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="the-function-glm" class="section level2" number="12.10">
+<h2>
+<span class="header-section-number">12.10</span> The function glm()<a class="anchor" aria-label="anchor" href="#the-function-glm"><i class="fas fa-link"></i></a>
+</h2>
+<p>Consider the following data frame treatments</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">TreatA</span></em></th>
+<th><em><span style="color:#CC99FF">TreatB</span></em></th>
+<th><em><span style="color:#CC99FF">Counts</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2</td>
+<td>17</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>3</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>3</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>1</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>3</td>
+<td>12</td>
+</tr>
+</tbody>
+</table></div>
+<p>Why is a two-way anova not appropriate here?</p>
+<p>GLM extends the linear model in two ways: (a) the expected value is replaced by a <em><span style="color:#FF9966">function</span></em> of the expected value, called the link function and (b) the assumption of observations from a Gaussian distribution is extended to include other distributions from the exponential family of probability distributions.</p>
+<p>Use <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> with <code>family = poisson()</code> to fit the following generalized linear models to the data: <code>Counts ~ TreatA + TreatB</code> and <code>Counts ~ TreatA * TreatB</code>.</p>
+<p>What are your conclusions?</p>
+</div>
+<div id="the-function-gam" class="section level2" number="12.11">
+<h2>
+<span class="header-section-number">12.11</span> The function gam()<a class="anchor" aria-label="anchor" href="#the-function-gam"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Describe briefly what is understood by a <em><span style="color:#FF9966">generalized additive model</span></em>.</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va">gam</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; Loading required package: splines</span></span>
+<span><span class="co">#&gt; Loading required package: foreach</span></span>
+<span><span class="co">#&gt; Loaded gam 1.22-6</span></span>
+<span><span class="va">stack.gam</span> <span class="op">&lt;-</span> <span class="fu">gam</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gam/man/gam.html">gam</a></span> <span class="op">(</span><span class="va">Loss</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/gam/man/gam.s.html">s</a></span><span class="op">(</span><span class="va">AirFlow</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/gam/man/gam.s.html">s</a></span><span class="op">(</span><span class="va">WaterTemp</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/gam/man/gam.s.html">s</a></span><span class="op">(</span><span class="va">AcidConc</span><span class="op">)</span>,</span>
+<span>                       control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/gam/man/gam.control.html">gam.control</a></span> <span class="op">(</span>bf.maxit <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">stack.data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">stack.gam</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call: gam::gam(formula = Loss ~ s(AirFlow) + s(WaterTemp) + s(AcidConc), </span></span>
+<span><span class="co">#&gt;     data = stack.data, control = gam.control(bf.maxit = 50))</span></span>
+<span><span class="co">#&gt; Deviance Residuals:</span></span>
+<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">#&gt; -3.0831 -1.6186  0.2447  0.8839  3.9253 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; (Dispersion Parameter for gaussian family taken to be 8.4463)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     Null Deviance: 2069.238 on 20 degrees of freedom</span></span>
+<span><span class="co">#&gt; Residual Deviance: 67.5711 on 8.0001 degrees of freedom</span></span>
+<span><span class="co">#&gt; AIC: 112.1371 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of Local Scoring Iterations: NA </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Anova for Parametric Effects</span></span>
+<span><span class="co">#&gt;                  Df  Sum Sq Mean Sq  F value    Pr(&gt;F)    </span></span>
+<span><span class="co">#&gt; s(AirFlow)   1.0000 1435.95 1435.95 170.0095 1.136e-06 ***</span></span>
+<span><span class="co">#&gt; s(WaterTemp) 1.0000  272.77  272.77  32.2944 0.0004635 ***</span></span>
+<span><span class="co">#&gt; s(AcidConc)  1.0000    8.23    8.23   0.9742 0.3525476    </span></span>
+<span><span class="co">#&gt; Residuals    8.0001   67.57    8.45                       </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Anova for Nonparametric Effects</span></span>
+<span><span class="co">#&gt;              Npar Df Npar F   Pr(F)  </span></span>
+<span><span class="co">#&gt; (Intercept)                          </span></span>
+<span><span class="co">#&gt; s(AirFlow)         3 1.0050 0.43916  </span></span>
+<span><span class="co">#&gt; s(WaterTemp)       3 3.3321 0.07703 .</span></span>
+<span><span class="co">#&gt; s(AcidConc)        3 0.9953 0.44293  </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">stack.gam</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="11-modelling_files/figure-html/gam-1.png" width="672"></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Comment on the results.</p>
+</div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>
+<p>Return to the <code>ethanol</code> data set available in package <code>lattice</code>.</p>
+<ol style="list-style-type: lower-roman">
+<li>Use <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam()</a></code> in package <code>mgcv</code> and fit a B-spline to the data. The following code can be used for that:</li>
+</ol>
+</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/detach.html">detach</a></span> <span class="op">(</span><span class="st">'package:gam'</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va">mgcv</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: nlme</span></span>
+<span><span class="co">#&gt; This is mgcv 1.9-3. For overview type 'help("mgcv-package")'.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="https://lattice.r-forge.r-project.org/">lattice</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va">splines</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">mgcv</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mgcv/man/gam.html">gam</a></span> <span class="op">(</span><span class="va">NOx</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">E</span>, df <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">ethanol</span><span class="op">)</span></span>
+<span><span class="co"># str(out)    # inspect output components</span></span>
+<span></span>
+<span><span class="co"># data must be sorted according to E values</span></span>
+<span><span class="va">data.temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span> <span class="op">(</span><span class="va">ethanol</span> <span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">]</span>, fitted <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">data.ordered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span> <span class="op">(</span><span class="va">data.temp</span>, <span class="va">data.temp</span> <span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">E</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span> <span class="op">(</span><span class="va">data.ordered</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="va">E</span>, y <span class="op">=</span> <span class="va">NOx</span>, pch <span class="op">=</span> <span class="fl">15</span>, col <span class="op">=</span> <span class="st">'blue'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span> <span class="op">(</span><span class="va">data.ordered</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="va">E</span>, y <span class="op">=</span> <span class="va">fitted</span>, col <span class="op">=</span> <span class="st">'red'</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="11-modelling_files/figure-html/mgcv_gam-1.png" width="672"></div>
+<div style="margin-left: 45px; margin-right: 20px;">
+<p>The domain of the predictor is divided by knots and a B-spline generates a set of piecewise polynomials restricted to be continuous at the knots. Execute the following command:</p>
+</div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span> <span class="op">(</span><span class="va">ethanol</span><span class="op">$</span><span class="va">E</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span> <span class="op">(</span><span class="va">ethanol</span><span class="op">$</span><span class="va">E</span>, df <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">)</span></span>
+<span>                              <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>, x <span class="op">=</span> <span class="va">ethanol</span><span class="op">$</span><span class="va">E</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="va">knot.vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span> <span class="op">(</span><span class="va">ethanol</span><span class="op">$</span><span class="va">E</span> <span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span> <span class="op">(</span><span class="va">ethanol</span><span class="op">$</span><span class="va">E</span><span class="op">)</span><span class="op">]</span>, df <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>, <span class="st">"knots"</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">knot.vec</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">i</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:knots"></span>
+<img src="11-modelling_files/figure-html/knots-1.png" alt="Cubic B-spline basis functions with 4 interior knots." width="100%"><p class="caption">
+Figure 12.1: Cubic B-spline basis functions with 4 interior knots.
+</p>
+</div>
+<div style="margin-left: 45px; margin-right: 20px;">
+<p>A set of <span class="math inline">\(7\)</span> basis functions were generated, each a degree <span class="math inline">\(3\)</span> polynomial in an interval with
+<span class="math inline">\(7 - 3 = 4\)</span> interior knots. Experiment with specifying either a different degree for the polynomials, or different numbers of knots. The specific knots can also be specified, e.g. <code>bs (ethanol$E, knots = c (0.7, 0.9, 1.1))</code>.</p>
+</div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<ol start="2" style="list-style-type: lower-roman">
+<li><p>It has been shown that B-splines can exhibit erratic behavior beyond the boundary knots. Repeat the fits and plots above, replacing the B-splines with natural cubic splines with the function <code><a href="https://rdrr.io/r/splines/ns.html">ns()</a></code>. Natural cubic splines constrain the basis functions to be linear beyond the boundary knots. As a result, a natural cubic spline with <span class="math inline">\(K\)</span> knots is represented by <span class="math inline">\(K\)</span> basis functions.</p></li>
+<li><p>Selecting the position and number of knots can be subjective. Smoothing splines solves the knot selection problem by making each observation a knot and controlling the overfitting with a single penalty parameter. Repeat the fits and plots in (i), replacing the B-splines with smoothing splines with the function <code><a href="https://rdrr.io/pkg/mgcv/man/s.html">s()</a></code>, similar to the fit in (a).</p></li>
+</ol>
+</div>
+</div>
+<div id="the-function-rpart" class="section level2" number="12.12">
+<h2>
+<span class="header-section-number">12.12</span> The function rpart()<a class="anchor" aria-label="anchor" href="#the-function-rpart"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Describe briefly what is understood by <em><span style="color:#FF9966">Regression and Classification Trees</span></em> using the help file of the function <code><a href="https://rdrr.io/pkg/rpart/man/rpart.html">rpart()</a></code> in package <code>rpart</code>.</p></li>
+<li><p>Study the help file of the <code>kyphosis</code> data set available in package <code>MASS</code>.</p></li>
+<li><p>Execute the following R code:</p></li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="https://github.com/bethatkinson/rpart">rpart</a></span><span class="op">)</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rpart/man/rpart.html">rpart</a></span><span class="op">(</span><span class="va">Kyphosis</span> <span class="op">~</span> <span class="va">Age</span> <span class="op">+</span> <span class="va">Number</span> <span class="op">+</span> <span class="va">Start</span>, data<span class="op">=</span><span class="va">kyphosis</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">fit</span>, use.n <span class="op">=</span> <span class="cn">TRUE</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="11-modelling_files/figure-html/rpart-1.png" width="672"></div>
+<p>Comment on the results.</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>The package <code>partykit()</code> provides a toolkit for recursive partitioning. A more informative tree diagram compared to (c) can be obtained with the code:</li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="http://partykit.r-forge.r-project.org/partykit/">partykit</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: grid</span></span>
+<span><span class="co">#&gt; Loading required package: libcoin</span></span>
+<span><span class="co">#&gt; Loading required package: mvtnorm</span></span>
+<span><span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/partykit/man/party-coercion.html">as.party</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="11-modelling_files/figure-html/partykit-1.png" width="672"></div>
+</div>
+<div id="nonlinear-regression-and-the-function-nls" class="section level2" number="12.13">
+<h2>
+<span class="header-section-number">12.13</span> Nonlinear regression and the function nls()<a class="anchor" aria-label="anchor" href="#nonlinear-regression-and-the-function-nls"><i class="fas fa-link"></i></a>
+</h2>
+<p>The asymptotic regression model has the form:</p>
+<p><span class="math display">\[
+y = \alpha + \beta e^{\gamma x}.
+\]</span></p>
+<p>When <span class="math inline">\(\alpha &gt; 0\)</span>, <span class="math inline">\(\beta &lt; 0\)</span> and <span class="math inline">\(\gamma &lt; 0\)</span> the above model becomes Mistcherlich’s model of the law of diminishing returns. According to the law of diminishing returns the yield, <span class="math inline">\(y\)</span>, initially increases quickly with increasing values of <span class="math inline">\(x\)</span>, but then the yield slows down and finally levels off just below the value of <span class="math inline">\(\alpha\)</span>. The parameters <span class="math inline">\(\alpha &gt; 0\)</span>, <span class="math inline">\(\beta &lt; 0\)</span> and <span class="math inline">\(\gamma &lt; 0\)</span> have the following meaning:</p>
+<div style="margin-left: 25px; margin-right: 20px;">
+<ul>
+<li><p><span class="math inline">\(\alpha\)</span> represents the upper asymptote for yield</p></li>
+<li><p><span class="math inline">\(\beta\)</span> is the difference between the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x = 0\)</span> and the upper asymptote</p></li>
+</ul>
+</div>
+<p>The asymptotic regression model may be reparameterized such that <span class="math inline">\(\beta\)</span> is replaced by <span class="math inline">\(\delta - \alpha\)</span> where <span class="math inline">\(\delta\)</span> represents the yield when <span class="math inline">\(x = 0\)</span>. A special case of the asymptotic regression model occurs when <span class="math inline">\(\delta = 0\)</span>:</p>
+<p><span class="math display">\[
+y = \alpha - \alpha e^{\gamma x} = \alpha (1 - e^{\gamma x}).
+\]</span></p>
+<p>The asymptotic regression model represents a nonlinear regression model and in general no closed form solution exists for estimating its parameters. The R function <code><a href="https://rdrr.io/r/stats/nls.html">nls()</a></code> can be used to estimate the parameters of the model. When function <code><a href="https://rdrr.io/r/stats/nls.html">nls()</a></code> is employed starting values for the iterative estimating procedure are necessary.</p>
+<div id="choosing-starting-values" class="section level3" number="12.13.1">
+<h3>
+<span class="header-section-number">12.13.1</span> Choosing starting values<a class="anchor" aria-label="anchor" href="#choosing-starting-values"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li><p>A starting value for can be found by looking at a scatterplot of <span class="math inline">\(y\)</span> as a function of <span class="math inline">\(x\)</span> and then chooses as starting value just larger than the largest value of <span class="math inline">\(y\)</span>.</p></li>
+<li><p>is the difference between the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x = 0\)</span> and the upper asymptote. A reasonable starting value is the minimum value of <span class="math inline">\(y - \alpha\)</span>.</p></li>
+<li><p>can be roughly initially estimated by the negative of the slope between two “well separated” points on the plot.</p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Study the help file of <code><a href="https://rdrr.io/r/stats/nls.html">nls()</a></code>. Notice carefully how <code><a href="https://rdrr.io/r/stats/nls.html">nls()</a></code> is called.</p></li>
+<li><p>The data below is the <code>Yield</code> of a product after a chemical treatment of different time duration. Three replicates were made at each treatment time.</p></li>
+</ol>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+</colgroup>
+<thead><tr class="header">
+<th><em><span style="color:#CC99FF">Time (Hrs)</span></em></th>
+<th><em><span style="color:#CC99FF">Rep1</span></em></th>
+<th><em><span style="color:#CC99FF">Rep2</span></em></th>
+<th><em><span style="color:#CC99FF">Rep3</span></em></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.0000</td>
+<td>0.0000</td>
+<td>0.0000</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.0846</td>
+<td>0.0556</td>
+<td>0.0501</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0.1072</td>
+<td>0.0604</td>
+<td>0.0545</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>0.1255</td>
+<td>0.0590</td>
+<td>0.0705</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td>0.1671</td>
+<td>0.0799</td>
+<td>0.0687</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>0.1988</td>
+<td>0.0958</td>
+<td>0.0655</td>
+</tr>
+<tr class="odd">
+<td>48</td>
+<td>0.2927</td>
+<td>0.1739</td>
+<td>0.1075</td>
+</tr>
+<tr class="even">
+<td>72</td>
+<td>0.3713</td>
+<td>0.1910</td>
+<td>0.1418</td>
+</tr>
+<tr class="odd">
+<td>96</td>
+<td>0.4773</td>
+<td>0.2669</td>
+<td>0.1725</td>
+</tr>
+<tr class="even">
+<td>168</td>
+<td>0.6158</td>
+<td>0.3584</td>
+<td>0.3224</td>
+</tr>
+<tr class="odd">
+<td>336</td>
+<td>0.7297</td>
+<td>0.4339</td>
+<td>0.3322</td>
+</tr>
+<tr class="even">
+<td>504</td>
+<td>0.8083</td>
+<td>0.4816</td>
+<td>0.3309</td>
+</tr>
+<tr class="odd">
+<td>672</td>
+<td>0.7019</td>
+<td>0.4497</td>
+<td>0.3798</td>
+</tr>
+<tr class="even">
+<td>840</td>
+<td>0.6038</td>
+<td>0.4851</td>
+<td>0.3757</td>
+</tr>
+<tr class="odd">
+<td>1008</td>
+<td>0.7386</td>
+<td>0.5332</td>
+<td>0.3798</td>
+</tr>
+</tbody>
+</table></div>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Plot the data.</p>
+</div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>The above plot suggests a relationship of the form:</li>
+</ol>
+<p><span class="math display">\[
+y = \alpha - \alpha e^{\gamma x} = \alpha (1 - e^{\gamma x}).
+\]</span></p>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Explain the term: <em><span style="color:#FF9966">nonlinear regression</span></em>. Use <code><a href="https://rdrr.io/r/stats/nls.html">nls()</a></code> to estimate the parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\gamma\)</span> in the above model. What effect does the changing of the start values have on the result of <code><a href="https://rdrr.io/r/stats/nls.html">nls()</a></code>? Experiment with different start values for the parameters. Add the estimated line to the plot in (b) and interpret the graph.</p>
+</div>
+</div>
+</div>
+<div id="detailed-example-analysis-of-variance-and-covariance" class="section level2" number="12.14">
+<h2>
+<span class="header-section-number">12.14</span> Detailed example: Analysis of Variance and Covariance<a class="anchor" aria-label="anchor" href="#detailed-example-analysis-of-variance-and-covariance"><i class="fas fa-link"></i></a>
+</h2>
+<div id="one-way-anova-models" class="section level3" number="12.14.1">
+<h3>
+<span class="header-section-number">12.14.1</span> One-way ANOVA models<a class="anchor" aria-label="anchor" href="#one-way-anova-models"><i class="fas fa-link"></i></a>
+</h3>
+<p>About 90 percent of the ozone in the atmosphere is contained in the stratosphere. Although only a small proportion of atmospheric ozone is found in the troposphere this ozone plays an important role in various climatic phenomena. Research has shown the highest amounts of ozone over the Arctic are found during the spring months of March and April, while the Antarctic has its lowest amounts of ozone during its autumn months of September and October, Atmospheric carbon dioxide not only plays an important role in global warming but its concentration is related to height above sea level and ocean temperature. In order to study relationships between ozone levels, CO_2 concentration, height above sea level, ocean and seasonality a small-scale simulation study has been undertaken. A very simple model was constructed for simulating the data called <code>climate.sim</code>. This simple simulation procedure was performed as described below. Here we show how the <code>climate.sim</code> data were subjected to various, ANOVA, regression and ANCOVA procedures.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5</span></span>
+<span><span class="co">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1</span></span>
+<span><span class="co">#&gt; ✔ ggplot2   3.5.2     ✔ tibble    3.3.0</span></span>
+<span><span class="co">#&gt; ✔ lubridate 1.9.4     ✔ tidyr     1.3.1</span></span>
+<span><span class="co">#&gt; ✔ purrr     1.1.0     </span></span>
+<span><span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">#&gt; ✖ purrr::accumulate() masks foreach::accumulate()</span></span>
+<span><span class="co">#&gt; ✖ dplyr::collapse()   masks nlme::collapse()</span></span>
+<span><span class="co">#&gt; ✖ dplyr::filter()     masks stats::filter()</span></span>
+<span><span class="co">#&gt; ✖ dplyr::lag()        masks stats::lag()</span></span>
+<span><span class="co">#&gt; ✖ dplyr::select()     masks MASS::select()</span></span>
+<span><span class="co">#&gt; ✖ purrr::when()       masks foreach::when()</span></span>
+<span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span> <span class="op">(</span><span class="fl">7343</span><span class="op">)</span></span>
+<span><span class="va">ocean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span> <span class="op">(</span><span class="st">"N-Atlantic"</span>, <span class="fl">20</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span> <span class="op">(</span><span class="st">"S-Atlantic"</span>, <span class="fl">20</span><span class="op">)</span>, </span>
+<span>                    <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span> <span class="op">(</span><span class="st">"Indian"</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">season</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">"summer"</span>, <span class="st">"autumn"</span>, <span class="st">"winter"</span>, <span class="st">"spring"</span><span class="op">)</span>, </span>
+<span>                            each <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">height</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span> <span class="op">(</span><span class="fl">60</span>, <span class="fl">100</span>, <span class="fl">750</span><span class="op">)</span></span>
+<span><span class="va">climate.sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span> <span class="op">(</span><span class="va">ocean</span>, <span class="va">season</span>, <span class="va">height</span><span class="op">)</span></span>
+<span><span class="va">CO2</span> <span class="op">&lt;-</span> <span class="fl">350</span> <span class="op">+</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span> <span class="op">(</span><span class="va">ocean</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span> <span class="op">(</span><span class="va">season</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.8</span> <span class="op">+</span> </span>
+<span>       <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span> <span class="op">(</span><span class="va">ocean</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span> <span class="op">(</span><span class="va">season</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">-</span></span>
+<span>       <span class="fl">0.012</span> <span class="op">*</span> <span class="op">(</span><span class="va">height</span> <span class="op">-</span> <span class="fl">390</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">60</span>, <span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">ozone</span> <span class="op">&lt;-</span> <span class="fl">15</span> <span class="op">+</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span> <span class="op">(</span><span class="va">ocean</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.02</span> <span class="op">*</span> <span class="op">(</span><span class="va">height</span> <span class="op">-</span> <span class="fl">390</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>         <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">60</span>, <span class="fl">0</span>, <span class="fl">0.4</span><span class="op">)</span></span>
+<span><span class="va">climate.sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span> <span class="op">(</span><span class="va">climate.sim</span>, <span class="va">CO2</span>, <span class="va">ozone</span><span class="op">)</span></span></code></pre></div>
+<p>The researcher would like to know whether the CO2 levels are the same in the three oceanic regions. Analysis of variance decomposes the total variance in the dependent variable into a between-groups variance and a within-groups variance (or error variance). The underlying model can be written as</p>
+<p><span class="math display">\[
+Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
+\]</span></p>
+<p>where <span class="math inline">\(Y_{ij}\)</span> represents the value of the numeric dependent variable for observation <span class="math inline">\(j\)</span> coming from population <span class="math inline">\(i\)</span>; <span class="math inline">\(\mu\)</span> is an effect common to all observations; <span class="math inline">\(\alpha_i\)</span> represents an effect found only in population <span class="math inline">\(i\)</span> and <span class="math inline">\(\epsilon_{ij}\)</span> is an effect (e.g. measurement error) that is specific to only observation (<span class="math inline">\(ij\)</span>). It is assumed that the <span class="math inline">\(\epsilon_{ij}\)</span> is normally distributed with a mean of zero and a constant variance <span class="math inline">\(\sigma^2\)</span> (i.e. the variance is the same in each of the populations). The statistical models to be tested is</p>
+<p><span class="math display">\[
+H_0: \alpha_1 = \alpha_2 = \dots = \alpha_k
+\]</span></p>
+<p>where <span class="math inline">\(k\)</span> denotes the number of different populations, versus</p>
+<p><span class="math display">\[
+H_A: \text{At least one of the } \alpha \text{s differs from the rest}.
+\]</span></p>
+<p>In general <span class="math inline">\(\mu, \alpha_1, \dots, \alpha_k\)</span> cannot all be estimated uniquely. In order for a statistical hypothesis to be <em><span style="color:#FF9966">testable</span></em> it must be expressed in terms of <em><span style="color:#FF9966">estimable functions</span></em> of the parameters. A statistical hypothesis can often be expressed in different equivalent forms. The null hypothesis above, for example, is equivalent to the following hypotheses:</p>
+<p><span class="math display">\[
+H_0': \mu+\alpha_1 = \mu+\alpha_2 = \dots = \mu+\alpha_k
+\]</span></p>
+<p><span class="math display">\[
+H_0'': \alpha_1 - \alpha_k = \alpha_2 - \alpha_k = \dots = \alpha_{k-1} - \alpha_k = 0
+\]</span></p>
+<p>The latter two hypotheses are both in terms of <span class="math inline">\(k - 1\)</span> linearly independent estimable functions and hence are testable. The default behaviour of R is to estimate <span class="math inline">\(\mu\)</span> (the intercept) using the data, take (estimate) one of the <span class="math inline">\(\alpha\)</span>s as zero and then estimate the remainder of the <span class="math inline">\(\alpha\)</span>s as deviations from the estimated intercept using the data. Notice, that in doing so the given null hypothesis above can still be tested.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Use <code>str(climate.sim)</code> to inspect the structure of the R object <code>climate.sim</code>. Note that the factor season has 4 levels, with the first two levels “autumn” and “spring”. R automatically order the levels alphabetically. In this case, we want the seasons to follow in the order we observe them, especially when making plots, such as <code>boxplot (CO2 ~ season, data = climate.sim)</code>.</li>
+</ol>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>To change the order of the levels, the R function <code><a href="https://rdrr.io/r/stats/relevel.html">relevel()</a></code> allows putting a specific level first. Sequentially calling this function, allows one to place the levels in any required order. As part of the tidyverse ecosystem, the package <code>forcats</code> is loaded and the following calls allows the user to change the order of the levels in a single call.</p>
+</div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">climate.sim</span><span class="op">$</span><span class="va">season</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel</a></span> <span class="op">(</span><span class="va">climate.sim</span><span class="op">$</span><span class="va">season</span>, </span>
+<span>                                   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"summer"</span>, <span class="st">"autumn"</span>, <span class="st">"winter"</span>, <span class="st">"spring"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">climate.sim</span><span class="op">)</span></span>
+<span><span class="co">#&gt; tibble [60 × 5] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ ocean : Factor w/ 3 levels "Indian","N-Atlantic",..: 2 2 2 2 2 2 2 2 2 2 ...</span></span>
+<span><span class="co">#&gt;  $ season: Factor w/ 4 levels "summer","autumn",..: 1 1 1 1 1 2 2 2 2 2 ...</span></span>
+<span><span class="co">#&gt;  $ height: num [1:60] 534 477 633 256 267 ...</span></span>
+<span><span class="co">#&gt;  $ CO2   : num [1:60] 350 348 347 352 355 ...</span></span>
+<span><span class="co">#&gt;  $ ozone : num [1:60] 17.5 17.1 20.4 12.1 11.9 ...</span></span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Use <code><a href="https://rdrr.io/r/base/with.html">with()</a></code> and <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> to obtain the mean and the standard deviation of CO2 for the different seasons.</p></li>
+<li><p>Test if the effects of the four seasons on CO2 are the same by executing the R command <code>lm (CO2 ~ season, data = climate.sim)</code> and using the commands <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> and <code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code>.</p></li>
+<li><p>Use <code><a href="https://rdrr.io/r/stats/coef.html">coefficients()</a></code> and interpret the estimates referring to (b).</p></li>
+<li><p>Obtain the residuals and plot them against the fitted values. Use different colours for the different seasons. Interpret the plot.</p></li>
+</ol>
+</div>
+<div id="two-way-anova-models-main-effects-and-interaction-effects" class="section level3" number="12.14.2">
+<h3>
+<span class="header-section-number">12.14.2</span> Two-way ANOVA models: main effects and interaction effects<a class="anchor" aria-label="anchor" href="#two-way-anova-models-main-effects-and-interaction-effects"><i class="fas fa-link"></i></a>
+</h3>
+<p>Inspection of the <code>climate.sim</code> data by requesting <code>str(climate.sim)</code> reveals the presence of a second factor variable ocean.</p>
+<p>We are interested in CO2 as a function of the two factor variables season and ocean. In addition to the <em><span style="color:#FF9966">main effects</span></em> of season and ocean, respectively, we also have to consider <em><span style="color:#FF9966">interaction effects</span></em>.</p>
+<p><em><span style="color:#FF9966">Interaction can be defined as the result where the effect of one factor depends on the level of another factor.</span></em></p>
+<p>In order to provide for a second factor together with interaction effects the two-way model is given by</p>
+<p><span class="math display">\[
+Y_{ij} = \mu + \alpha_i + \beta_j + (\alpha\beta)_{ij} + \epsilon_{ij}
+\]</span></p>
+<p>In this model <span class="math inline">\(\alpha\)</span> represents the main effect of season and <span class="math inline">\(\beta\)</span> the main effect of ocean while the interaction effect is represented by <span class="math inline">\((\alpha\beta)_{ij}\)</span>. The first hypothesis to be tested is the null hypothesis that there exist no interaction effects or that the interaction effects are negligible. Symbolically this is the hypothesis</p>
+<p><span class="math display">\[
+H_0: (\alpha\beta)_{11} = (\alpha\beta)_{12} = \dots = (\alpha\beta)_{km}
+\]</span></p>
+<p>where <span class="math inline">\(k\)</span> denotes the number of levels in the first factor variable and <span class="math inline">\(m\)</span> the number of levels in the second factor variable. In order to test for interaction we must have <span class="math inline">\(r &gt; 1\)</span> repetitions (replicates) of each <span class="math inline">\(\alpha_i\beta_j\)</span> combination. The value of <span class="math inline">\(r\)</span> in our example can be found using the following code:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">climate.sim</span>, <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">season</span>, <span class="va">ocean</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         ocean</span></span>
+<span><span class="co">#&gt; season   Indian N-Atlantic S-Atlantic</span></span>
+<span><span class="co">#&gt;   summer      5          5          5</span></span>
+<span><span class="co">#&gt;   autumn      5          5          5</span></span>
+<span><span class="co">#&gt;   winter      5          5          5</span></span>
+<span><span class="co">#&gt;   spring      5          5          5</span></span></code></pre></div>
+<p>From the table above it is clear that all treatment combinations occur exactly the same number of times. Had there been some missing values in the data, the correct solution to the problem is to estimate the missing values by the mean values of the available data in the affected cells. These values are then substituted in place of the missing values to form a complete data set. The ANOVA is then performed on the complete data set but the degrees of freedom for error is reduced with the number of missing values.</p>
+<p>The presence of interaction can be investigated with an interaction plot using the following instruction</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">climate.sim</span>, <span class="fu"><a href="https://rdrr.io/r/stats/interaction.plot.html">interaction.plot</a></span> <span class="op">(</span><span class="va">ocean</span>, <span class="va">season</span>, response <span class="op">=</span> <span class="va">CO2</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:interactionSeasonOcean"></span>
+<img src="11-modelling_files/figure-html/interactionSeasonOcean-1.png" alt="Interaction plot of factors season and ocean associates with the dependent variable CO2" width="100%"><p class="caption">
+Figure 12.2: Interaction plot of factors season and ocean associates with the dependent variable CO2
+</p>
+</div>
+<p>What can be deduced from Figure <a href="modelling.html#fig:interactionSeasonOcean">12.2</a>? Explain in detail.</p>
+<p>The formal ANOVA can be performed with the instruction</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">two.way.anova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">CO2</span> <span class="op">~</span> <span class="va">season</span> <span class="op">+</span> <span class="va">ocean</span> <span class="op">+</span> <span class="va">season</span><span class="op">:</span><span class="va">ocean</span>, data<span class="op">=</span><span class="va">climate.sim</span><span class="op">)</span></span></code></pre></div>
+<p>An analysis-of-variance table can be constructed with the instruction:</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">two.way.anova</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Analysis of Variance Table</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Response: CO2</span></span>
+<span><span class="co">#&gt;              Df Sum Sq Mean Sq F value   Pr(&gt;F)   </span></span>
+<span><span class="co">#&gt; season        3 146.93  48.977  4.9041 0.004718 **</span></span>
+<span><span class="co">#&gt; ocean         2  44.20  22.099  2.2128 0.120437   </span></span>
+<span><span class="co">#&gt; season:ocean  6 170.41  28.401  2.8439 0.018870 * </span></span>
+<span><span class="co">#&gt; Residuals    48 479.37   9.987                    </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
+<p>It is clear from the above table that the null hypothesis of no interaction is to be rejected. This means that it would not make sense to test the main effects of season and ocean. On the other hand, if no significant interaction would have been found then the F-values associated with the two main effects could have been investigated to conclude if none, one or both of the main effects are significant.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Repeat the above analysis using in turn each of the other numeric variables as the response variable.</p></li>
+<li><p>Plot the residuals versus the fitted values and interpret the graphs. What can be concluded regarding the assumptions of the two-way ANOVA model?</p></li>
+</ol>
+<div id="types-of-anova-tables" class="section level4" number="12.14.2.1">
+<h4>
+<span class="header-section-number">12.14.2.1</span> Types of ANOVA tables<a class="anchor" aria-label="anchor" href="#types-of-anova-tables"><i class="fas fa-link"></i></a>
+</h4>
+<p>When fitting a two-way ANOVA model for season and ocean to CO2, there is no statistically significant interaction effect. Notice the difference in the p-values of the following two ANOVA tables.</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">CO2</span> <span class="op">~</span> <span class="va">season</span> <span class="op">+</span> <span class="va">ocean</span>, data <span class="op">=</span> <span class="va">climate.sim</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Analysis of Variance Table</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Response: CO2</span></span>
+<span><span class="co">#&gt;           Df Sum Sq Mean Sq F value  Pr(&gt;F)  </span></span>
+<span><span class="co">#&gt; season     3 146.93  48.977  4.0702 0.01116 *</span></span>
+<span><span class="co">#&gt; ocean      2  44.20  22.099  1.8365 0.16919  </span></span>
+<span><span class="co">#&gt; Residuals 54 649.78  12.033                  </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span> <span class="op">(</span><span class="va">CO2</span> <span class="op">~</span> <span class="va">ocean</span> <span class="op">+</span> <span class="va">season</span>, data <span class="op">=</span> <span class="va">climate.sim</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Analysis of Variance Table</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Response: CO2</span></span>
+<span><span class="co">#&gt;           Df Sum Sq Mean Sq F value  Pr(&gt;F)  </span></span>
+<span><span class="co">#&gt; ocean      2  44.20  22.099  1.8365 0.16919  </span></span>
+<span><span class="co">#&gt; season     3 146.93  48.977  4.0702 0.01116 *</span></span>
+<span><span class="co">#&gt; Residuals 54 649.78  12.033                  </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 
 </div>
+</div>
+</div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></div>
-<div class="next"><a href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#modelling"><span class="header-section-number">11</span> Statistical modelling with R</a></li></ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/sugnet/RTutorial/blob/master/11-modelling.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/sugnet/RTutorial/edit/master/11-modelling.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>

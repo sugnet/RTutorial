@@ -81,7 +81,8 @@
 <li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
 <li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
 <li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
-<li><a class="" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
+<li><a class="" href="data-must-be-sorted-according-to-e-values.html"><span class="header-section-number">12</span> data must be sorted according to E values</a></li>
+<li><a class="" href="optimisation.html"><span class="header-section-number">13</span> Introduction to Optimisation</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -104,7 +105,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001a07b15a108&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x0000027164d25108&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>This is not very helpful so we give the instruction:</p>
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
@@ -174,7 +175,7 @@
 <span><span class="co">#&gt;             ...)</span></span>
 <span><span class="co">#&gt;     invisible()</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001a080587d60&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x0000027166148d80&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <p>Since our new plotting method is aimed at categorical data we decide rather to take a look at <code>plot.factor</code>. But this is an asterisked function and hence is not visible:</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
@@ -213,7 +214,7 @@
 <span><span class="co">#&gt;         boxplot(y ~ x, ...)</span></span>
 <span><span class="co">#&gt;     else NextMethod("plot")</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001a08202a538&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x0000027166bb2538&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>How are default values assigned to arguments of functions?</p></li>
@@ -235,26 +236,26 @@
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $stats</span></span>
-<span><span class="co">#&gt;            [,1]</span></span>
-<span><span class="co">#&gt; [1,] -2.4679165</span></span>
-<span><span class="co">#&gt; [2,] -0.8083784</span></span>
-<span><span class="co">#&gt; [3,] -0.2636679</span></span>
-<span><span class="co">#&gt; [4,]  0.3707985</span></span>
-<span><span class="co">#&gt; [5,]  1.9585273</span></span>
+<span><span class="co">#&gt;             [,1]</span></span>
+<span><span class="co">#&gt; [1,] -2.26815521</span></span>
+<span><span class="co">#&gt; [2,] -0.81951349</span></span>
+<span><span class="co">#&gt; [3,]  0.01436698</span></span>
+<span><span class="co">#&gt; [4,]  0.52755909</span></span>
+<span><span class="co">#&gt; [5,]  2.50781656</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $conf</span></span>
-<span><span class="co">#&gt;             [,1]</span></span>
-<span><span class="co">#&gt; [1,] -0.44997784</span></span>
-<span><span class="co">#&gt; [2,] -0.07735792</span></span>
+<span><span class="co">#&gt;            [,1]</span></span>
+<span><span class="co">#&gt; [1,] -0.1984705</span></span>
+<span><span class="co">#&gt; [2,]  0.2272045</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $out</span></span>
-<span><span class="co">#&gt; [1] 2.363569 2.575090</span></span>
+<span><span class="co">#&gt; numeric(0)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group</span></span>
-<span><span class="co">#&gt; [1] 1 1</span></span>
+<span><span class="co">#&gt; numeric(0)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $names</span></span>
 <span><span class="co">#&gt; [1] "1"</span></span></code></pre></div>

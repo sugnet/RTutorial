@@ -241,14 +241,14 @@ centre <- function(x, type)
 
 x <- rcauchy(10)
 x
-#>  [1] -2.1286864  0.1059591  0.4776087 -0.3187206 -1.9614456
-#>  [6] -3.3485586  1.6286547 -0.7433134 -3.5148473  0.7980204
+#>  [1]  1.7839765  1.3921962  2.4310325  0.2535779 -0.7108909
+#>  [6] -1.9787274 -1.1414962  0.1417415 -0.6106848  0.3210230
 centre(x,"mean")
-#> [1] -0.9005329
+#> [1] 0.1881748
 centre(x,"median")
-#> [1] -0.531017
+#> [1] 0.1976597
 centre(x,"trimmed")
-#> [1] -0.8898921
+#> [1] 0.1786804
 ```
 
 (h)	The two logical control operators `&&` and `||` are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators `&` and `|` which operate on vectors/matrices.
@@ -397,7 +397,7 @@ The functions `system.time()` and `proc.time()` provide information regarding th
 ``` r
 proc.time()   # called with no arguments
 #>    user  system elapsed 
-#>    0.85    0.35    9.45
+#>    0.59    0.21   10.15
 ```
 
 (b) `system.time(expr)` calls the function `proc.time()`, evaluates `expr`, and then calls `proc.time()` once more, returning the difference between the two `proc.time()` calls:
@@ -411,7 +411,7 @@ system.time (hist (rev (sort (rnorm (1000000)))))
 
 ```
 #>    user  system elapsed 
-#>    0.19    0.02    0.25
+#>    0.07    0.04    0.25
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -480,7 +480,7 @@ Suppose we would like to investigate the body of function `plot()`. We know that
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x0000027af37259c8>
+#> <bytecode: 0x000001e7187259c8>
 #> <environment: namespace:base>
 ```
 

@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 11 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial</title>
+<title>Chapter 10 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
 <meta name="description" content="R offers several different types of graphics: grid graphics is contained in package grid; the package lattice contains trellis graphics; the package ggplot2 introduces ggplot graphics to be...">
 <meta name="generator" content="bookdown 0.44 with bs4_book()">
-<meta property="og:title" content="Chapter 11 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial">
+<meta property="og:title" content="Chapter 10 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/graphics2.html">
 <meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <meta property="og:description" content="R offers several different types of graphics: grid graphics is contained in package grid; the package lattice contains trellis graphics; the package ggplot2 introduces ggplot graphics to be...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 11 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial">
+<meta name="twitter:title" content="Chapter 10 R graphics: Round II | Introduction into R Applications and Programming: A Tutorial">
 <meta name="twitter:description" content="R offers several different types of graphics: grid graphics is contained in package grid; the package lattice contains trellis graphics; the package ggplot2 introduces ggplot graphics to be...">
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -68,52 +68,68 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 11</span> R graphics: Round II</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introducing the R System</a></li>
+<li><a class="" href="objects.html"><span class="header-section-number">2</span> Managing objects</a></li>
+<li><a class="" href="operators.html"><span class="header-section-number">3</span> R operators and functions</a></li>
+<li><a class="" href="graphics.html"><span class="header-section-number">4</span> Introducing traditional R graphics</a></li>
+<li><a class="" href="subscripting.html"><span class="header-section-number">5</span> Subscripting</a></li>
+<li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
+<li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
+<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
+<li><a class="active" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
+<li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
+<li><a class="" href="data-must-be-sorted-according-to-e-values.html"><span class="header-section-number">12</span> data must be sorted according to E values</a></li>
+<li><a class="" href="optimisation.html"><span class="header-section-number">13</span> Introduction to Optimisation</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/sugnet/RTutorial">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="graphics2" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="graphics2" class="section level1" number="10">
 <h1>
-<span class="header-section-number">11</span> R graphics: Round II<a class="anchor" aria-label="anchor" href="#graphics2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> R graphics: Round II<a class="anchor" aria-label="anchor" href="#graphics2"><i class="fas fa-link"></i></a>
 </h1>
 <p>R offers several different types of graphics: <em><span style="color:#FF9966">grid</span></em> graphics is contained in package <code>grid</code>; the package <code>lattice</code> contains <em><span style="color:#FF9966">trellis</span></em> graphics; the package <code>ggplot2</code> introduces <em><span style="color:#FF9966">ggplot</span></em> graphics to be implemented by the function <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. In this chapter, further aspects of what is known as <em>traditional R graphics</em> are studied before moving on to ggplot graphics.</p>
-<div id="graphics-parameters" class="section level2" number="11.1">
+<div id="graphics-parameters" class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">11.1</span> Graphics parameters<a class="anchor" aria-label="anchor" href="#graphics-parameters"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Graphics parameters<a class="anchor" aria-label="anchor" href="#graphics-parameters"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: lower-alpha">
 <li><p>Study the help file of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code>. Execute <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> to obtain a list of all the current values of the graphical parameters.</p></li>
 <li><p>How is <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> used to obtain the current setting of a specific graphics parameter e.g. the parameter <code>fin</code>?</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"fin"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 6.999999 4.999999</span></span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li><p>How is <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> used to change a graphics parameter e.g. <code>mfrow</code>?</p></li>
 <li><p>How do you reset the changed values to their original values? Note the <code>no.readonly</code> argument of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code>. <em>Hint</em>: Study the following instructions and there effects carefully:</p></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">'col'</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "black"</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>The current colour for graphics is “black”.</p>
 </div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Change colour for graphics to “blue”.</p>
 </div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">temp</span></span>
 <span><span class="co">#&gt; $col</span></span>
 <span><span class="co">#&gt; [1] "black"</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Temp is a list of parameter(s) <strong>BEFORE</strong> change was made.</p>
 </div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">'col'</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "black"</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -124,31 +140,31 @@
 <li><p>Draw a histogram of variable Ozone in the data set <code>airquality</code> where each class interval is randomly represented by a different colour. What happened to the <code>NA</code> values?</p></li>
 </ol>
 </div>
-<div id="layout-of-graphics" class="section level2" number="11.2">
+<div id="layout-of-graphics" class="section level2" number="10.2">
 <h2>
-<span class="header-section-number">11.2</span> Layout of graphics<a class="anchor" aria-label="anchor" href="#layout-of-graphics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> Layout of graphics<a class="anchor" aria-label="anchor" href="#layout-of-graphics"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: lower-alpha">
-<li><p>Review Figure <a href="#fig:figRegion"><strong>??</strong></a>. Note the parameters that are discussed there.</p></li>
-<li><p>Multiple figures on one page: How do the graphical parameters <code>mfg</code> and <code>mfrow</code> or <code>mfcol</code> differ? What are represented in the R data sets <code>ldeaths</code>, <code>mdeaths</code> and <code>fdeaths</code>? Use <code>mfg</code> and <code>mfrow</code> to obtain Figure <a href="graphics2.html#fig:fmdeaths">11.1</a>. <em>Hint</em>: The graphics parameters <code>mfg</code> and <code>mfrow</code> are used together.</p></li>
+<li><p>Review Figure <a href="graphics.html#fig:figRegion">4.1</a>. Note the parameters that are discussed there.</p></li>
+<li><p>Multiple figures on one page: How do the graphical parameters <code>mfg</code> and <code>mfrow</code> or <code>mfcol</code> differ? What are represented in the R data sets <code>ldeaths</code>, <code>mdeaths</code> and <code>fdeaths</code>? Use <code>mfg</code> and <code>mfrow</code> to obtain Figure <a href="graphics2.html#fig:fmdeaths">10.1</a>. <em>Hint</em>: The graphics parameters <code>mfg</code> and <code>mfrow</code> are used together.</p></li>
 </ol>
 <div class="figure">
 <span style="display:block;" id="fig:fmdeaths"></span>
 <img src="10-graphics2_files/figure-html/fmdeaths-1.png" alt="Plots of the fdeaths and mdeaths data sets" width="100%"><p class="caption">
-Figure 11.1: Plots of the fdeaths and mdeaths data sets
+Figure 10.1: Plots of the fdeaths and mdeaths data sets
 </p>
 </div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span>, mfg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>The <code>mfrow</code> setting reserves three rows and two columns for graphics to be filled row-wise. The <code>mfg</code> setting specifies that the next graph will be placed in the position defined by row one column one. Once this graph has been constructed the instruction</p>
 </div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>mfg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>will result in the next graph to appear in the position defined by row one and column two. Next we need the instruction</p>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>, mfg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>requesting a graph window having three rows and one column with the next graph to appear at position row two (only one column in row two).</p>
@@ -159,12 +175,12 @@ Figure 11.1: Plots of the fdeaths and mdeaths data sets
 <li><p>Study the usage of the function <code><a href="https://rdrr.io/r/graphics/layout.html">layout()</a></code> in detail for more complicated arrangements of the graph window. An example of its usage is deferred until later in the chapter.</p></li>
 </ol>
 </div>
-<div id="low-level-plotting-commands" class="section level2" number="11.3">
+<div id="low-level-plotting-commands" class="section level2" number="10.3">
 <h2>
-<span class="header-section-number">11.3</span> Low-level plotting commands<a class="anchor" aria-label="anchor" href="#low-level-plotting-commands"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3</span> Low-level plotting commands<a class="anchor" aria-label="anchor" href="#low-level-plotting-commands"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li>The functions in Table <a href="graphics2.html#tab:lowlevelPlotFuncs">11.1</a> are used to edit existing graphs.<br>
+<li>The functions in Table <a href="graphics2.html#tab:lowlevelPlotFuncs">10.1</a> are used to edit existing graphs.<br>
 </li>
 <li>Study these functions carefully.</li>
 <li>Study how the right mouse button is used with R graphs.</li>
@@ -172,7 +188,7 @@ Figure 11.1: Plots of the fdeaths and mdeaths data sets
 </ul>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:lowlevelPlotFuncs">Table 11.1: </span> Low-level plotting functions.</caption>
+<span id="tab:lowlevelPlotFuncs">Table 10.1: </span> Low-level plotting functions.</caption>
 <colgroup>
 <col width="28%">
 <col width="71%">
@@ -249,16 +265,16 @@ Figure 11.1: Plots of the fdeaths and mdeaths data sets
 </tbody>
 </table></div>
 </div>
-<div id="using-the-plotting-commands" class="section level2" number="11.4">
+<div id="using-the-plotting-commands" class="section level2" number="10.4">
 <h2>
-<span class="header-section-number">11.4</span> Using the plotting commands<a class="anchor" aria-label="anchor" href="#using-the-plotting-commands"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4</span> Using the plotting commands<a class="anchor" aria-label="anchor" href="#using-the-plotting-commands"><i class="fas fa-link"></i></a>
 </h2>
-<div id="matplot" class="section level3" number="11.4.1">
+<div id="matplot" class="section level3" number="10.4.1">
 <h3>
-<span class="header-section-number">11.4.1</span> Multiple lines or groups of points on the same graph<a class="anchor" aria-label="anchor" href="#matplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.1</span> Multiple lines or groups of points on the same graph<a class="anchor" aria-label="anchor" href="#matplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>Study how the function <code><a href="https://rdrr.io/r/graphics/matplot.html">matplot()</a></code> works. Note the functions <code><a href="https://rdrr.io/r/graphics/matplot.html">matlines()</a></code> and <code><a href="https://rdrr.io/r/graphics/matplot.html">matpoints()</a></code>. Study and execute the following example:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="op">)</span> </span>
 <span><span class="op">{</span> <span class="va">times</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span>,<span class="fl">3</span><span class="op">)</span></span>
 <span>  <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span></span>
@@ -278,16 +294,16 @@ Figure 11.1: Plots of the fdeaths and mdeaths data sets
 <div class="figure">
 <span style="display:block;" id="fig:matplotExample"></span>
 <img src="10-graphics2_files/figure-html/matplotExample-1.png" alt="Three methods of performing sort." width="100%"><p class="caption">
-Figure 11.2: Three methods of performing sort.
+Figure 10.2: Three methods of performing sort.
 </p>
 </div>
 </div>
-<div id="multipleLines" class="section level3" number="11.4.2">
+<div id="multipleLines" class="section level3" number="10.4.2">
 <h3>
-<span class="header-section-number">11.4.2</span> Multiple lines or groups of points on the same graph but the lines (points) are not all the same length (number)<a class="anchor" aria-label="anchor" href="#multipleLines"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.2</span> Multiple lines or groups of points on the same graph but the lines (points) are not all the same length (number)<a class="anchor" aria-label="anchor" href="#multipleLines"><i class="fas fa-link"></i></a>
 </h3>
 <p>What technique must be followed? First study the <code>Cars93</code> data set in package <code>MASS</code>; then study and execute the code below. Experiment with different values of <code>spar</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">spar</span> <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span>
 <span><span class="op">{</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span>                             <span class="co"># What is the effect of require()?</span></span>
 <span>  <span class="va">oldstate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>       <span class="co"># Describe object 'oldstate'</span></span>
@@ -322,13 +338,13 @@ Figure 11.2: Three methods of performing sort.
 <div class="figure">
 <span style="display:block;" id="fig:diffLengths-1"></span>
 <img src="10-graphics2_files/figure-html/diffLengths-1.png" alt="Plotting multiple lines of different lenghts" width="100%"><p class="caption">
-Figure 11.3: Plotting multiple lines of different lenghts
+Figure 10.3: Plotting multiple lines of different lenghts
 </p>
 </div>
 <div class="figure">
 <span style="display:block;" id="fig:diffLengths-2"></span>
 <img src="10-graphics2_files/figure-html/diffLengths-2.png" alt="Plotting multiple lines of different lenghts" width="100%"><p class="caption">
-Figure 11.4: Plotting multiple lines of different lenghts
+Figure 10.4: Plotting multiple lines of different lenghts
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
@@ -336,15 +352,15 @@ Figure 11.4: Plotting multiple lines of different lenghts
 <li><p>What technique can also be followed in the case of point diagrams?</p></li>
 </ol>
 </div>
-<div id="Legends" class="section level3" number="11.4.3">
+<div id="Legends" class="section level3" number="10.4.3">
 <h3>
-<span class="header-section-number">11.4.3</span> Adding legends to a graph<a class="anchor" aria-label="anchor" href="#Legends"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.3</span> Adding legends to a graph<a class="anchor" aria-label="anchor" href="#Legends"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: lower-alpha">
-<li><p>Study how the function <code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code> and the graphical parameter <code>usr</code> work. Study the code used to obtain Figure <a href="graphics2.html#fig:cargrps">11.5</a>. Revise the <code><a href="https://rdrr.io/r/graphics/locator.html">locator()</a></code> function.</p></li>
+<li><p>Study how the function <code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code> and the graphical parameter <code>usr</code> work. Study the code used to obtain Figure <a href="graphics2.html#fig:cargrps">10.5</a>. Revise the <code><a href="https://rdrr.io/r/graphics/locator.html">locator()</a></code> function.</p></li>
 <li><p>Use the facts that one USA gallon of liquid is equal to <span class="math inline">\(0.83267\)</span> UK (imperial) gallon of liquid and one mile is equal to <span class="math inline">\(1.6093\)</span> kilometres to obtain a figure similar to Figure 10.4.1 but with a kilometres per litre scale on the right-hand side that corresponds to the miles per gallon (USA) on highway scale on the left-hand side.</p></li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">{</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span>  </span>
 <span>  <span class="va">oldstate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span>
@@ -365,79 +381,79 @@ Figure 11.4: Plotting multiple lines of different lenghts
 <div class="figure">
 <span style="display:block;" id="fig:cargrps"></span>
 <img src="10-graphics2_files/figure-html/cargrps-1.png" alt="Illustrating adding a legend to a plot." width="100%"><p class="caption">
-Figure 11.5: Illustrating adding a legend to a plot.
+Figure 10.5: Illustrating adding a legend to a plot.
 </p>
 </div>
 </div>
-<div id="multAxes" class="section level3" number="11.4.4">
+<div id="multAxes" class="section level3" number="10.4.4">
 <h3>
-<span class="header-section-number">11.4.4</span> Multiple plots with identical axes<a class="anchor" aria-label="anchor" href="#multAxes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.4</span> Multiple plots with identical axes<a class="anchor" aria-label="anchor" href="#multAxes"><i class="fas fa-link"></i></a>
 </h3>
-<p>How can various graphs with identical axes be obtained? Show how this can be done by graphing the sorting time for the three procedures considered in <a href="graphics2.html#matplot">11.4.1</a> above in three separate plots in the same graph window.</p>
+<p>How can various graphs with identical axes be obtained? Show how this can be done by graphing the sorting time for the three procedures considered in <a href="graphics2.html#matplot">10.4.1</a> above in three separate plots in the same graph window.</p>
 </div>
-<div id="providing-a-single-legend-for-multiple-plots" class="section level3" number="11.4.5">
+<div id="providing-a-single-legend-for-multiple-plots" class="section level3" number="10.4.5">
 <h3>
-<span class="header-section-number">11.4.5</span> Providing a single legend for multiple plots<a class="anchor" aria-label="anchor" href="#providing-a-single-legend-for-multiple-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.5</span> Providing a single legend for multiple plots<a class="anchor" aria-label="anchor" href="#providing-a-single-legend-for-multiple-plots"><i class="fas fa-link"></i></a>
 </h3>
-<p>Suppose there were two sorting methods for each of the three situations described in<a href="graphics2.html#matplot">11.4.1</a> and <a href="graphics2.html#multAxes">11.4.4</a> above. How can the three graphs be provided with a single legend without the legend appearing in one of the graphs? Explain in detail.</p>
+<p>Suppose there were two sorting methods for each of the three situations described in<a href="graphics2.html#matplot">10.4.1</a> and <a href="graphics2.html#multAxes">10.4.4</a> above. How can the three graphs be provided with a single legend without the legend appearing in one of the graphs? Explain in detail.</p>
 </div>
-<div id="changing-the-plotting-character-common-plotting-characters-in-r" class="section level3" number="11.4.6">
+<div id="changing-the-plotting-character-common-plotting-characters-in-r" class="section level3" number="10.4.6">
 <h3>
-<span class="header-section-number">11.4.6</span> Changing the plotting character: common plotting characters in R<a class="anchor" aria-label="anchor" href="#changing-the-plotting-character-common-plotting-characters-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.6</span> Changing the plotting character: common plotting characters in R<a class="anchor" aria-label="anchor" href="#changing-the-plotting-character-common-plotting-characters-in-r"><i class="fas fa-link"></i></a>
 </h3>
-<p>Note the use of graphical parameters <code>pch</code> and <code>mkh</code>. What plotting characters are available? Study the help file of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> and <code><a href="https://rdrr.io/r/graphics/points.html">points()</a></code>. Study the plotting characters displayed in Figure <a href="graphics2.html#fig:pch">11.6</a> and the code used to produce the figure. How can plotting characters be made to appear in legends?</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<p>Note the use of graphical parameters <code>pch</code> and <code>mkh</code>. What plotting characters are available? Study the help file of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> and <code><a href="https://rdrr.io/r/graphics/points.html">points()</a></code>. Study the plotting characters displayed in Figure <a href="graphics2.html#fig:pch">10.6</a> and the code used to produce the figure. How can plotting characters be made to appear in legends?</p>
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">19</span>, cex <span class="op">=</span> <span class="fl">2</span>, </span>
 <span>      pty <span class="op">=</span> <span class="st">"p"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3</span><span class="op">)</span>, xlab <span class="op">=</span> <span class="st">""</span>, ylab <span class="op">=</span> <span class="st">""</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, yaxt <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:pch"></span>
 <img src="10-graphics2_files/figure-html/pch-1.png" alt="Some common plotting characters available in R." width="100%"><p class="caption">
-Figure 11.6: Some common plotting characters available in R.
+Figure 10.6: Some common plotting characters available in R.
 </p>
 </div>
 </div>
-<div id="changing-the-colour-in-plots" class="section level3" number="11.4.7">
+<div id="changing-the-colour-in-plots" class="section level3" number="10.4.7">
 <h3>
-<span class="header-section-number">11.4.7</span> Changing the colour in plots<a class="anchor" aria-label="anchor" href="#changing-the-colour-in-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.7</span> Changing the colour in plots<a class="anchor" aria-label="anchor" href="#changing-the-colour-in-plots"><i class="fas fa-link"></i></a>
 </h3>
-<p>The graphical parameter <code>col</code> allows the user to specify the colour(s) in number format as given in Figure <a href="graphics2.html#fig:col">11.8</a>. The full list of named colours can be obtained with the command <code><a href="https://rdrr.io/r/grDevices/colors.html">colors()</a></code> in the Console.</p>
+<p>The graphical parameter <code>col</code> allows the user to specify the colour(s) in number format as given in Figure <a href="graphics2.html#fig:col">10.8</a>. The full list of named colours can be obtained with the command <code><a href="https://rdrr.io/r/grDevices/colors.html">colors()</a></code> in the Console.</p>
 <p>Alternatively, the colour can be specified by hue, saturation and value with <code>hsv (h = , s = , v = )</code>, hue, chroma and luminance with <code>hcl (h = , c = , l = )</code> or red, green and blue with <code>rgb (red = , green = , blue = )</code>. The <code><a href="https://rdrr.io/r/grDevices/rgb.html">rgb()</a></code> function has an argument <code>maxColorValue</code> with default value <code>1</code> which indicates the range known as the gamma-compressed values. Typically, the red, green and blue values range between 0 and 255 or video display or 8-bit graphics. To select a specific shade of light blue, the following command can be used:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span><span class="va">ldeaths</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html">rgb</a></span> <span class="op">(</span>red <span class="op">=</span> <span class="fl">167</span>, green <span class="op">=</span> <span class="fl">227</span>, blue <span class="op">=</span> <span class="fl">227</span>, </span>
 <span>                          maxColorValue <span class="op">=</span> <span class="fl">255</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:colExample"></span>
 <img src="10-graphics2_files/figure-html/colExample-1.png" alt="Colour selection with rgb()." width="100%"><p class="caption">
-Figure 11.7: Colour selection with rgb().
+Figure 10.7: Colour selection with rgb().
 </p>
 </div>
 <p>The output of the <code><a href="https://rdrr.io/r/grDevices/rgb.html">rgb()</a></code> function is in the hexidemical colour number format, e.g. “#A7E3E3”. The function <code><a href="https://rdrr.io/r/grDevices/col2rgb.html">col2rgb()</a></code> accepts a colour name, hexadecimal colour number format or colour number and provides the red, green and blue values in the 0 to 255 range.</p>
 <div class="figure">
 <span style="display:block;" id="fig:col"></span>
 <img src="10-graphics2_files/figure-html/col-1.png" alt="The default colour palette available in R." width="100%"><p class="caption">
-Figure 11.8: The default colour palette available in R.
+Figure 10.8: The default colour palette available in R.
 </p>
 </div>
-<p>A sequence of <span class="math inline">\(n\)</span> colours can be generated with the function <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette()</a></code>. As an example, the colour vector used for plotting in Figure <a href="graphics2.html#fig:colRamp">11.9</a> were generated with the call <code>colorRampPalette (c ("red", "green", "white", "gold"))(20)</code>. Study how the following instructions generate colour sequences: <code><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">heat.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">topo.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">cm.colors()</a></code>.</p>
+<p>A sequence of <span class="math inline">\(n\)</span> colours can be generated with the function <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette()</a></code>. As an example, the colour vector used for plotting in Figure <a href="graphics2.html#fig:colRamp">10.9</a> were generated with the call <code>colorRampPalette (c ("red", "green", "white", "gold"))(20)</code>. Study how the following instructions generate colour sequences: <code><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">heat.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">topo.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">cm.colors()</a></code>.</p>
 <div class="figure">
 <span style="display:block;" id="fig:colRamp"></span>
 <img src="10-graphics2_files/figure-html/colRamp-1.png" alt="User specified colour sequence with colorRampPalette()." width="100%"><p class="caption">
-Figure 11.9: User specified colour sequence with colorRampPalette().
+Figure 10.9: User specified colour sequence with colorRampPalette().
 </p>
 </div>
 </div>
-<div id="logarithmic-axes" class="section level3" number="11.4.8">
+<div id="logarithmic-axes" class="section level3" number="10.4.8">
 <h3>
-<span class="header-section-number">11.4.8</span> Logarithmic axes<a class="anchor" aria-label="anchor" href="#logarithmic-axes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.8</span> Logarithmic axes<a class="anchor" aria-label="anchor" href="#logarithmic-axes"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> function and the <code>log</code> argument of the <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> function are useful in this regard. The <code>log</code> argument of the <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> function can be specified as <code>log="x"</code>; or <code>log="y"</code>; or <code>log="xy"</code> depending on whether the x-axis, the y-axis, or both axes should be plotted logarithmically.</p>
 </div>
-<div id="graphs-with-character-strings-as-the-scale-on-the-axis" class="section level3" number="11.4.9">
+<div id="graphs-with-character-strings-as-the-scale-on-the-axis" class="section level3" number="10.4.9">
 <h3>
-<span class="header-section-number">11.4.9</span> Graphs with character strings as the ‘scale’ on the axis<a class="anchor" aria-label="anchor" href="#graphs-with-character-strings-as-the-scale-on-the-axis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.9</span> Graphs with character strings as the ‘scale’ on the axis<a class="anchor" aria-label="anchor" href="#graphs-with-character-strings-as-the-scale-on-the-axis"><i class="fas fa-link"></i></a>
 </h3>
-<p>Figure <a href="graphics2.html#fig:catAxis">11.10</a> illustrates how user defined character strings can appear as calibrations on an axis. Furthermore, this figure illustrates several techniques to fine-tune plots. Study the code resulting in Figure <a href="graphics2.html#fig:catAxis">11.10</a> in detail.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<p>Figure <a href="graphics2.html#fig:catAxis">10.10</a> illustrates how user defined character strings can appear as calibrations on an axis. Furthermore, this figure illustrates several techniques to fine-tune plots. Study the code resulting in Figure <a href="graphics2.html#fig:catAxis">10.10</a> in detail.</p>
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">{</span> <span class="va">old.state</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span><span class="va">old.state</span><span class="op">)</span><span class="op">)</span></span>
@@ -470,13 +486,13 @@ Figure 11.9: User specified colour sequence with colorRampPalette().
 <div class="figure">
 <span style="display:block;" id="fig:catAxis"></span>
 <img src="10-graphics2_files/figure-html/catAxis-1.png" alt="Figures with character strings as axis calibrations and other enhancements to plots." width="100%"><p class="caption">
-Figure 11.10: Figures with character strings as axis calibrations and other enhancements to plots.
+Figure 10.10: Figures with character strings as axis calibrations and other enhancements to plots.
 </p>
 </div>
 </div>
-<div id="customizing-bar-charts-and-histograms" class="section level3" number="11.4.10">
+<div id="customizing-bar-charts-and-histograms" class="section level3" number="10.4.10">
 <h3>
-<span class="header-section-number">11.4.10</span> Customizing bar charts and histograms<a class="anchor" aria-label="anchor" href="#customizing-bar-charts-and-histograms"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.10</span> Customizing bar charts and histograms<a class="anchor" aria-label="anchor" href="#customizing-bar-charts-and-histograms"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: lower-alpha">
 <li><p>How can every bar in a bar chart be represented in a different colour and be given separate headings?</p></li>
@@ -484,24 +500,24 @@ Figure 11.10: Figures with character strings as axis calibrations and other enha
 <li><p>How can a probability density function be superimposed on a histogram?</p></li>
 <li><p>How can bar charts be provided with user-defined axes?</p></li>
 </ol>
-<p>Use the <code>Cars93</code> data set to answer the above four questions by constructing a figure similar to the one shown in Figure <a href="graphics2.html#fig:BarHist">11.11</a>. Note: In the Mean MPG plot not all car types are used. If a factor variable is subsetted the original levels will be kept although some of them might not occurr. Hence it might be necessary to create a new factor variable with only the levels that are needed by using <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>.</p>
+<p>Use the <code>Cars93</code> data set to answer the above four questions by constructing a figure similar to the one shown in Figure <a href="graphics2.html#fig:BarHist">10.11</a>. Note: In the Mean MPG plot not all car types are used. If a factor variable is subsetted the original levels will be kept although some of them might not occurr. Hence it might be necessary to create a new factor variable with only the levels that are needed by using <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>.</p>
 <div class="figure">
 <span style="display:block;" id="fig:BarHist"></span>
 <img src="10-graphics2_files/figure-html/BarHist-1.png" alt="Enhanced bar charts and histograms." width="100%"><p class="caption">
-Figure 11.11: Enhanced bar charts and histograms.
+Figure 10.11: Enhanced bar charts and histograms.
 </p>
 </div>
 </div>
-<div id="three-dimensional-graphical-displays" class="section level3" number="11.4.11">
+<div id="three-dimensional-graphical-displays" class="section level3" number="10.4.11">
 <h3>
-<span class="header-section-number">11.4.11</span> Three-dimensional graphical displays<a class="anchor" aria-label="anchor" href="#three-dimensional-graphical-displays"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.11</span> Three-dimensional graphical displays<a class="anchor" aria-label="anchor" href="#three-dimensional-graphical-displays"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: lower-alpha">
 <li><p>Study how the function <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> works.</p></li>
-<li><p>Work through the example code that creates Figure <a href="graphics2.html#fig:persp">11.12</a>. Apart from the arrow that points to the maximum, different colours must be used to highlight the different aspects of the graph.</p></li>
+<li><p>Work through the example code that creates Figure <a href="graphics2.html#fig:persp">10.12</a>. Apart from the arrow that points to the maximum, different colours must be used to highlight the different aspects of the graph.</p></li>
 <li><p>Provide horizontally and vertically rotated views of the 3D plot.</p></li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="op">)</span> </span>
 <span><span class="op">{</span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span>, length<span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
 <span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span></span>
@@ -534,7 +550,7 @@ Figure 11.11: Enhanced bar charts and histograms.
 <div class="figure">
 <span style="display:block;" id="fig:persp"></span>
 <img src="10-graphics2_files/figure-html/persp-1.png" alt="Annotated 3D perspective plot." width="100%"><p class="caption">
-Figure 11.12: Annotated 3D perspective plot.
+Figure 10.12: Annotated 3D perspective plot.
 </p>
 </div>
 <pre><code>#&gt;       [,1]   [,2]   [,3]   [,4]
@@ -544,49 +560,49 @@ Figure 11.12: Annotated 3D perspective plot.
 #&gt; [4,] 0.000 -0.273 -2.890  3.890
 #&gt; [1] 10</code></pre>
 </div>
-<div id="diagrams" class="section level3" number="11.4.12">
+<div id="diagrams" class="section level3" number="10.4.12">
 <h3>
-<span class="header-section-number">11.4.12</span> Diagrams<a class="anchor" aria-label="anchor" href="#diagrams"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.12</span> Diagrams<a class="anchor" aria-label="anchor" href="#diagrams"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use R to draw a simple flow diagram. The diagram must contain at least one rectangle, one square, one circle and one triangle. Furthermore, there must be straight and curved lines as well as text describing the different elements. <em>Hint</em>: Study how the functions <code><a href="https://rdrr.io/r/graphics/arrows.html">arrows()</a></code>, <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code>, <code><a href="https://rdrr.io/r/graphics/text.html">text()</a></code> and <code><a href="https://rdrr.io/r/graphics/symbols.html">symbols()</a></code> work as discussed in their respective help facilities.</p>
 </div>
-<div id="annotating-graphics-with-special-symbols" class="section level3" number="11.4.13">
+<div id="annotating-graphics-with-special-symbols" class="section level3" number="10.4.13">
 <h3>
-<span class="header-section-number">11.4.13</span> Annotating graphics with special symbols<a class="anchor" aria-label="anchor" href="#annotating-graphics-with-special-symbols"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4.13</span> Annotating graphics with special symbols<a class="anchor" aria-label="anchor" href="#annotating-graphics-with-special-symbols"><i class="fas fa-link"></i></a>
 </h3>
 <p>Construct a graph of a <span class="math inline">\(normal(0, 1)\)</span> density function. Give as a title to the plot the expression “Density of a normal random variable with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma^2 = 1\)</span>.” <em>Hint</em>: Consult the help file of <code>plotmath()</code>. Within the plot draw an arrow to the density and label it <span class="math inline">\(\frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2}x^2}\)</span>.</p>
 </div>
 </div>
-<div id="quantile-plots" class="section level2" number="11.5">
+<div id="qqplot" class="section level2" number="10.5">
 <h2>
-<span class="header-section-number">11.5</span> Quantile plots<a class="anchor" aria-label="anchor" href="#quantile-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5</span> Quantile plots<a class="anchor" aria-label="anchor" href="#qqplot"><i class="fas fa-link"></i></a>
 </h2>
-<p>Consider the histogram of weight in Figure <a href="graphics2.html#fig:BarHist">11.11</a>. Does this variable follow a normal distribution? A normal quantile plot, shows the observations vs the corresponding quantiles of a standard normal distribution. If the observations correspond to a normal distribution, this will approximately form a straight line. Use the <code><a href="https://rdrr.io/r/stats/qqnorm.html">qqline()</a></code> function to add a straing line to the plot.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<p>Consider the histogram of weight in Figure <a href="graphics2.html#fig:BarHist">10.11</a>. Does this variable follow a normal distribution? A normal quantile plot, shows the observations vs the corresponding quantiles of a standard normal distribution. If the observations correspond to a normal distribution, this will approximately form a straight line. Use the <code><a href="https://rdrr.io/r/stats/qqnorm.html">qqline()</a></code> function to add a straing line to the plot.</p>
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span> <span class="op">(</span><span class="va">Cars93</span><span class="op">$</span><span class="va">Weight</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span> <span class="op">(</span><span class="va">Cars93</span><span class="op">$</span><span class="va">Weight</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/qq_norm-1.png" width="672"></div>
 <p>In a similar manner, quantile-quantile plots for other probability distributions can be constructed with the function <code><a href="https://rdrr.io/r/stats/qqnorm.html">qqplot()</a></code>.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="fl">200</span>, rate<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqplot</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">qexp</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span> <span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>, rate<span class="op">=</span><span class="fl">4</span><span class="op">)</span>, <span class="va">y</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">y</span>, distribution <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">qexp</a></span><span class="op">(</span><span class="va">p</span>, rate<span class="op">=</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/qq_other-1.png" width="672"></div>
 </div>
-<div id="density" class="section level2" number="11.6">
+<div id="density" class="section level2" number="10.6">
 <h2>
-<span class="header-section-number">11.6</span> Estimating a density<a class="anchor" aria-label="anchor" href="#density"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.6</span> Estimating a density<a class="anchor" aria-label="anchor" href="#density"><i class="fas fa-link"></i></a>
 </h2>
-<p>The histograms in Figure <a href="graphics2.html#fig:histDiffBins">11.13</a> show 200 observations generated, 100 from a <span class="math inline">\(normal (9,2^2)\)</span> and 100 from a <span class="math inline">\(normal (13,1)\)</span> distribution. Histograms are very sensitive to the choice of the number of bins and the starting values of the bins. The wider bins do not show any evidence of a bimodal distribution. Using the smaller bins, the location of the bins can suggest either a bimodal or trimodal distribution.</p>
+<p>The histograms in Figure <a href="graphics2.html#fig:histDiffBins">10.13</a> show 200 observations generated, 100 from a <span class="math inline">\(normal (9,2^2)\)</span> and 100 from a <span class="math inline">\(normal (13,1)\)</span> distribution. Histograms are very sensitive to the choice of the number of bins and the starting values of the bins. The wider bins do not show any evidence of a bimodal distribution. Using the smaller bins, the location of the bins can suggest either a bimodal or trimodal distribution.</p>
 <div class="figure">
 <span style="display:block;" id="fig:histDiffBins"></span>
 <img src="10-graphics2_files/figure-html/histDiffBins-1.png" alt="Histograms with different bin sizes and bin locations of the same normal mixture data set." width="100%"><p class="caption">
-Figure 11.13: Histograms with different bin sizes and bin locations of the same normal mixture data set.
+Figure 10.13: Histograms with different bin sizes and bin locations of the same normal mixture data set.
 </p>
 </div>
 <p>One possible solution to the bin selection problem for histograms is the Average Shifted Histogram (ASH). First we define a <em><span style="color:#FF9966">density histogram</span></em>. Since we aim to estimate the density (which integrates to one) a density histogram is normalised such that the area in the histogram is equal to one.</p>
 <p>Consider a set of bins <span class="math inline">\(B_k=[b_k, b_{(k+1)})\)</span> with fixed bin width <span class="math inline">\(λ=b_{(k+1)}-b_k\)</span> <span class="math inline">\(∀ k\)</span>, then the density histogram is defined as <span class="math inline">\(\hat{f} = \frac{1}{N\lambda} \sum_{i=1}^{N}{I_{[b_k,b_{k+1})}(x_i)}\)</span> for <span class="math inline">\(x∈B_k\)</span>. Consider a collection of <span class="math inline">\(m\)</span> histograms <span class="math inline">\(\hat{f}_1, \hat{f}_2, \dots, \hat{f}_m\)</span> each with bin width <span class="math inline">\(h\)</span>, but with respective bin origins <span class="math inline">\(b_{01}=0, b_{02}=\frac{h}{m}, b_{03}=\frac{2h}{m}, \dots, b_{0m}=\frac{(m-1)h}{m}\)</span>. The <em><span style="color:#FF9966">average shifted histogram</span></em> is defined as <span class="math inline">\(\hat{f}_{ASH} = \frac{1}{m} \sum_{i=1}^{m}{\hat{f}_i}\)</span>.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ASH</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>, <span class="va">b0</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">bk</span> <span class="op">=</span> <span class="fl">15</span>, <span class="va">h</span> <span class="op">=</span> <span class="fl">0.5</span>, <span class="va">m</span> <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="co"># h=lambda</span></span>
 <span><span class="op">{</span></span>
 <span>  <span class="va">Bvec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span> <span class="op">(</span><span class="op">(</span><span class="va">bk</span> <span class="op">-</span> <span class="va">b0</span><span class="op">)</span><span class="op">/</span><span class="va">h</span><span class="op">+</span><span class="fl">2</span>, <span class="st">"list"</span><span class="op">)</span></span>
@@ -603,34 +619,34 @@ Figure 11.13: Histograms with different bin sizes and bin locations of the same 
 <div class="figure">
 <span style="display:block;" id="fig:ASH"></span>
 <img src="10-graphics2_files/figure-html/ASH-1.png" alt="Average shifted histogram of normal mixture data." width="100%"><p class="caption">
-Figure 11.14: Average shifted histogram of normal mixture data.
+Figure 10.14: Average shifted histogram of normal mixture data.
 </p>
 </div>
-<p>The ASH is given in Figure <a href="graphics2.html#fig:ASH">11.14</a> A more sophisticated method for estimating a density is with a kernel density estimate. The density histograms is replaced by a smooth kernel function, leading to a smoother estimate. The R function <code><a href="https://rdrr.io/r/stats/density.html">density()</a></code> provides a variety of kernels. Using the default kernel, a Gaussian distribution, the kernel density estimate is given in Figure <a href="graphics2.html#fig:densityExample">11.15</a>.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<p>The ASH is given in Figure <a href="graphics2.html#fig:ASH">10.14</a> A more sophisticated method for estimating a density is with a kernel density estimate. The density histograms is replaced by a smooth kernel function, leading to a smoother estimate. The R function <code><a href="https://rdrr.io/r/stats/density.html">density()</a></code> provides a variety of kernels. Using the default kernel, a Gaussian distribution, the kernel density estimate is given in Figure <a href="graphics2.html#fig:densityExample">10.15</a>.</p>
+<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:densityExample"></span>
 <img src="10-graphics2_files/figure-html/densityExample-1.png" alt="Guassian kernel density estimate of the normal mixture data." width="100%"><p class="caption">
-Figure 11.15: Guassian kernel density estimate of the normal mixture data.
+Figure 10.15: Guassian kernel density estimate of the normal mixture data.
 </p>
 </div>
 <p>Experiment with different kernel function and different choices of bandwidth (argument bw) for controlling the amount of smoothing.</p>
 </div>
-<div id="a-coplot-with-two-conditioning-variables" class="section level2" number="11.7">
+<div id="coplot" class="section level2" number="10.7">
 <h2>
-<span class="header-section-number">11.7</span> A coplot with two conditioning variables<a class="anchor" aria-label="anchor" href="#a-coplot-with-two-conditioning-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.7</span> A coplot with two conditioning variables<a class="anchor" aria-label="anchor" href="#coplot"><i class="fas fa-link"></i></a>
 </h2>
-<p>Consider the <code>state.x77</code> data set. In section <a href="#highLevelPlotting"><strong>??</strong></a> the <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> function was used to construct a plot of <code>Illiteracy</code> and <code>Area</code> conditional on <code>Income</code>. This can be expanded to two conditions, for example plotting <code>Illiteracy</code> and <code>Life expectancy</code> conditional on <code>Income</code> and <code>Area</code>. Interpret. The number of panels and overlap of given intervals can be controlled with the arguments number and overlap.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<p>Consider the <code>state.x77</code> data set. In section <a href="graphics.html#highLevelPlotting">4.2</a> the <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> function was used to construct a plot of <code>Illiteracy</code> and <code>Area</code> conditional on <code>Income</code>. This can be expanded to two conditions, for example plotting <code>Illiteracy</code> and <code>Life expectancy</code> conditional on <code>Income</code> and <code>Area</code>. Interpret. The number of panels and overlap of given intervals can be controlled with the arguments number and overlap.</p>
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span> <span class="op">(</span><span class="va">state.x77</span> <span class="op">[</span>,<span class="st">"Illiteracy"</span><span class="op">]</span> <span class="op">~</span> <span class="va">state.x77</span> <span class="op">[</span>,<span class="st">"Life Exp"</span><span class="op">]</span> <span class="op">|</span> </span>
 <span>                                   <span class="va">state.x77</span> <span class="op">[</span>,<span class="st">"Income"</span><span class="op">]</span> <span class="op">+</span> <span class="va">state.x77</span> <span class="op">[</span>,<span class="st">"Area"</span><span class="op">]</span>, </span>
 <span>                                number <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">3</span><span class="op">)</span>, overlap<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/condIncomeArea-1.png" width="672"></div>
 </div>
-<div id="exact-distances-in-graphics" class="section level2" number="11.8">
+<div id="exact-distances-in-graphics" class="section level2" number="10.8">
 <h2>
-<span class="header-section-number">11.8</span> Exact distances in graphics<a class="anchor" aria-label="anchor" href="#exact-distances-in-graphics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.8</span> Exact distances in graphics<a class="anchor" aria-label="anchor" href="#exact-distances-in-graphics"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: lower-alpha">
 <li>Obtain a random sample of size 50 from a bivariate normal distribution with <span class="math inline">\(n(50,20)\)</span> marginals and a correlation coefficient of 0.90.</li>
@@ -652,14 +668,14 @@ Figure 11.15: Guassian kernel density estimate of the normal mixture data.
 <li>Use R to make a ruler calibrated in centimetres from zero to 15 cms.</li>
 </ol>
 </div>
-<div id="multiple-graphics-windows-in-r" class="section level2" number="11.9">
+<div id="multiple-graphics-windows-in-r" class="section level2" number="10.9">
 <h2>
-<span class="header-section-number">11.9</span> Multiple graphics windows in R<a class="anchor" aria-label="anchor" href="#multiple-graphics-windows-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.9</span> Multiple graphics windows in R<a class="anchor" aria-label="anchor" href="#multiple-graphics-windows-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: lower-alpha">
 <li>Study how the following instructions work to control multiple graphics windows in R:</li>
 </ol>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.new</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.list</a></span><span class="op">(</span><span class="op">)</span>  </span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.set</a></span><span class="op">(</span><span class="op">)</span>   </span>
@@ -674,12 +690,12 @@ Figure 11.15: Guassian kernel density estimate of the normal mixture data.
 <li>Study the information that R gives via the execution of <code>help.search ("graph")</code>.</li>
 </ol>
 </div>
-<div id="more-complex-layouts" class="section level2" number="11.10">
+<div id="more-complex-layouts" class="section level2" number="10.10">
 <h2>
-<span class="header-section-number">11.10</span> More complex layouts<a class="anchor" aria-label="anchor" href="#more-complex-layouts"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10</span> More complex layouts<a class="anchor" aria-label="anchor" href="#more-complex-layouts"><i class="fas fa-link"></i></a>
 </h2>
-<p>Study the graphical requirements needed for constructing Figure <a href="graphics2.html#fig:complexLayout">11.16</a> and how to code these requirements.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<p>Study the graphical requirements needed for constructing Figure <a href="graphics2.html#fig:complexLayout">10.16</a> and how to code these requirements.</p>
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="op">)</span> </span>
 <span><span class="op">{</span> <span class="va">old.state</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span> <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span><span class="va">old.state</span><span class="op">)</span><span class="op">)</span></span>
@@ -702,13 +718,13 @@ Figure 11.15: Guassian kernel density estimate of the normal mixture data.
 <div class="figure">
 <span style="display:block;" id="fig:complexLayout"></span>
 <img src="10-graphics2_files/figure-html/complexLayout-1.png" alt="A complex graphics layout." width="100%"><p class="caption">
-Figure 11.16: A complex graphics layout.
+Figure 10.16: A complex graphics layout.
 </p>
 </div>
 </div>
-<div id="dynamic-3d-graphics-in-r" class="section level2" number="11.11">
+<div id="dynamic-3d-graphics-in-r" class="section level2" number="10.11">
 <h2>
-<span class="header-section-number">11.11</span> Dynamic 3D graphics in R<a class="anchor" aria-label="anchor" href="#dynamic-3d-graphics-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.11</span> Dynamic 3D graphics in R<a class="anchor" aria-label="anchor" href="#dynamic-3d-graphics-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p>Study the R package <code>rgl</code>.</p></li>
@@ -716,12 +732,12 @@ Figure 11.16: A complex graphics layout.
 <li><p>Next, issue the R command <code>example (surface3d)</code> and interactively explore the 3D figure.</p></li>
 </ul>
 </div>
-<div id="animation" class="section level2" number="11.12">
+<div id="animation" class="section level2" number="10.12">
 <h2>
-<span class="header-section-number">11.12</span> Animation<a class="anchor" aria-label="anchor" href="#animation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.12</span> Animation<a class="anchor" aria-label="anchor" href="#animation"><i class="fas fa-link"></i></a>
 </h2>
 <p>Study the following two functions in detail:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">anim1</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">sleep</span> <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> </span>
 <span> <span class="op">{</span> <span class="co"># Press ESC to end animation</span></span>
 <span>   <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">40</span></span>
@@ -749,17 +765,17 @@ Figure 11.16: A complex graphics layout.
 <span><span class="op">}</span></span></code></pre></div>
 <p>Write an R function to show a wheel with two spokes moving forward with adjustable speed.</p>
 </div>
-<div id="Ex10" class="section level2" number="11.13">
+<div id="Ex10" class="section level2" number="10.13">
 <h2>
-<span class="header-section-number">11.13</span> Exercise<a class="anchor" aria-label="anchor" href="#Ex10"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.13</span> Exercise<a class="anchor" aria-label="anchor" href="#Ex10"><i class="fas fa-link"></i></a>
 </h2>
 <div style="color: #80CC99;">
 <ol style="list-style-type: decimal">
 <li>In many real life situations it is necessary to identify an object when only limited information is available. The following problem how such a problem can be empirically investigated.</li>
 </ol>
 <div style="margin-left: 25px; margin-right: 20px;">
-<p>The function <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> used for constructing Figure <a href="graphics2.html#fig:persp">11.12</a> requires a regular pattern of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates. If such a pattern is not available it is necessary to interpolate e.g. with <code>interp()</code> (available in package <code>akima</code>) using the available values.</p>
-<p>Use the function <code><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid()</a></code> to create a grid of regularly spaced <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> values and evaluate the “sombrero” function of Figure <a href="graphics2.html#fig:persp">11.12</a> at each of these points.</p>
+<p>The function <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> used for constructing Figure <a href="graphics2.html#fig:persp">10.12</a> requires a regular pattern of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates. If such a pattern is not available it is necessary to interpolate e.g. with <code>interp()</code> (available in package <code>akima</code>) using the available values.</p>
+<p>Use the function <code><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid()</a></code> to create a grid of regularly spaced <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> values and evaluate the “sombrero” function of Figure <a href="graphics2.html#fig:persp">10.12</a> at each of these points.</p>
 <p>Now use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> to randomly sample points from that grid and then the <code>interp()</code> function to interpolate the values of z throughout the grid.</p>
 <p>Finally, use <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> to construct a plot of the interpolated values.</p>
 <p>What fraction of data is needed in the sample to get a good representation of the true shape of the data. <em>Hint</em>: since <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> does not accept <code>NA</code>s replace <code>NA</code>s with the minimum of the non-missing z values.</p>
@@ -801,23 +817,23 @@ The scale of the data of Group A must appear on the y-axis on the left-hand side
 </div>
 </div>
 </div>
-<div id="the-package-ggplot2" class="section level2" number="11.14">
+<div id="the-package-ggplot2" class="section level2" number="10.14">
 <h2>
-<span class="header-section-number">11.14</span> The package ggplot2<a class="anchor" aria-label="anchor" href="#the-package-ggplot2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14</span> The package ggplot2<a class="anchor" aria-label="anchor" href="#the-package-ggplot2"><i class="fas fa-link"></i></a>
 </h2>
 <p>The package <code>ggplot2</code> is based on the ideas of <span class="citation">Wickham (<a href="references.html#ref-Wickham2010">2010</a>)</span> as described in the paper “A layered grammar of graphics” and makes use of the The Grammar of Graphics by <span class="citation">Wilkenson (<a href="references.html#ref-Wilkenson2005">2005</a>)</span>.</p>
 <div class="figure">
 <span style="display:block;" id="fig:ggplotStructure"></span>
 <img src="pics/ggplot.jpg" alt="Layer structure of ggplot2 package." width="100%"><p class="caption">
-Figure 11.17: Layer structure of ggplot2 package.
+Figure 10.17: Layer structure of ggplot2 package.
 </p>
 </div>
-<p>In Figure <a href="graphics2.html#fig:ggplotStructure">11.17</a>(a) the components of a <em><span style="color:#FF9966">layer</span></em> is depicted. The first essential component is the <em><span style="color:#FF9966">data</span></em> to be represented in the graphic. Together with the data, there needs to be an <em><span style="color:#FF9966">aesthetic mapping</span></em>, describing which variable is mapped to the x-direction, y-direction, the size, shape, colour, etc. The <em><span style="color:#FF9966">statistics</span></em> component optionally transforms the data to quantities that needs to be plotted. Typically, the transformation is used to summarise the data. It is possible to map aesthetics to these new variables. The <em><span style="color:#FF9966">geometry</span></em> defines how each aesthetic is displayed, as points, lines, boxplots, densities, histograms, etc. Each geometry can only display specific aesthetics, for example a point has position, colour, shape and size. Position adjustment is needed in cases where geometric elements overlap, for example using jitter in scatterplots or placing multiple bars stacked or side-by-side in a barplot.</p>
-<p>A graphic can consist of several layers, as shown in Figure <a href="graphics2.html#fig:ggplotStructure">11.17</a>(b). According to the grammar of graphics, a <em><span style="color:#FF9966">scales</span></em> component needs to be specified. The scales are common across layers and describe the mapping of the data to aesthetic attributes such as which colour is associated with which level of a categorical variable. One scale is needed for each aesthetic property used in the layers. In order to place the geometric objects on the plotting plane, a scale is needed. The most commonly used scale is the Cartesian axes, while others such as polar coordinates is also available.</p>
+<p>In Figure <a href="graphics2.html#fig:ggplotStructure">10.17</a>(a) the components of a <em><span style="color:#FF9966">layer</span></em> is depicted. The first essential component is the <em><span style="color:#FF9966">data</span></em> to be represented in the graphic. Together with the data, there needs to be an <em><span style="color:#FF9966">aesthetic mapping</span></em>, describing which variable is mapped to the x-direction, y-direction, the size, shape, colour, etc. The <em><span style="color:#FF9966">statistics</span></em> component optionally transforms the data to quantities that needs to be plotted. Typically, the transformation is used to summarise the data. It is possible to map aesthetics to these new variables. The <em><span style="color:#FF9966">geometry</span></em> defines how each aesthetic is displayed, as points, lines, boxplots, densities, histograms, etc. Each geometry can only display specific aesthetics, for example a point has position, colour, shape and size. Position adjustment is needed in cases where geometric elements overlap, for example using jitter in scatterplots or placing multiple bars stacked or side-by-side in a barplot.</p>
+<p>A graphic can consist of several layers, as shown in Figure <a href="graphics2.html#fig:ggplotStructure">10.17</a>(b). According to the grammar of graphics, a <em><span style="color:#FF9966">scales</span></em> component needs to be specified. The scales are common across layers and describe the mapping of the data to aesthetic attributes such as which colour is associated with which level of a categorical variable. One scale is needed for each aesthetic property used in the layers. In order to place the geometric objects on the plotting plane, a scale is needed. The most commonly used scale is the Cartesian axes, while others such as polar coordinates is also available.</p>
 <p><em><span style="color:#FF9966">Faceting</span></em> splits the data into small multiples of different subsets of the data set. With this component we identify the variable(s) for splitting and how the splitting should be arranged. <em><span style="color:#FF9966">Themes</span></em> are not linked to the data but provide instructions on aspects such as titles, labels, fonts, background, gridlines, and legends.</p>
 <p>The full specification of all the components in a ggplot, can be very cumbersome. Defaults are specified, for instance for each geometry there is a default statistic and for each statistic a default geometry. We can therefore build our plot stepwise, fine-tuning detailed aspects until the required graphic is obtained.</p>
-<p>We will start with some simple plots and then build more complicated graphics. We will use the <code>cereal</code> tibble created from the <code>UScereal</code> data in package <code>MASS</code> (see section <a href="data.html#dplyr">10.10.4</a>) for illustration.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<p>We will start with some simple plots and then build more complicated graphics. We will use the <code>cereal</code> tibble created from the <code>UScereal</code> data in package <code>MASS</code> (see section <a href="data.html#dplyr">9.12.4</a>) for illustration.</p>
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
@@ -832,60 +848,60 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="co">#&gt; ✖ dplyr::select() masks MASS::select()</span></span>
 <span><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span>
 <span><span class="va">cereal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span> <span class="op">(</span><span class="va">UScereal</span><span class="op">)</span></span></code></pre></div>
-<div id="barplot" class="section level3" number="11.14.1">
+<div id="barplot" class="section level3" number="10.14.1">
 <h3>
-<span class="header-section-number">11.14.1</span> Barplot<a class="anchor" aria-label="anchor" href="#barplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.1</span> Barplot<a class="anchor" aria-label="anchor" href="#barplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>The command</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mfr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>   </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotBarplot-1.png" width="672"></div>
 <p>produces a simple barplot of the <code>cereal</code> data with <code>mfr</code> on the x-axis and counts of each level in the <code>bars</code>. No position adjustments are made, while the default colour for the bars is used to plot the complete data set on Cartesian axes with the default theme.</p>
 <p>We can change the colour of the bars with the command</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mfr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>   </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gold"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotBarplot2-1.png" width="672"></div>
 <p>Now we add an aesthetic for the bars to be coloured according to the vitamin enrichment, while at the same time, changing the orientation. Note that in the previous example, the fill colour was specified outside of the function <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, while here, it is specified as an aesthetic.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">mfr</span>, fill <span class="op">=</span> <span class="va">vitamins</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>   </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotBarplot3-1.png" width="672"></div>
 <p>The default is to stack the bars. In order to position the bars side-by-side we use the function <code><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge()</a></code>.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">mfr</span>, fill <span class="op">=</span> <span class="va">vitamins</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>   </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotBatplot4-1.png" width="672"></div>
 </div>
-<div id="scatterplot" class="section level3" number="11.14.2">
+<div id="scatterplot" class="section level3" number="10.14.2">
 <h3>
-<span class="header-section-number">11.14.2</span> Scatterplot<a class="anchor" aria-label="anchor" href="#scatterplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.2</span> Scatterplot<a class="anchor" aria-label="anchor" href="#scatterplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>The simplest call to produce a scatterplot uses the identity statistical transformation with no position adjustment on the complete data set with default size, shape and colour of the plotting characters.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>        </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter-1.png" width="672"></div>
 <p>The point colours can be specified either according to a categorical variable, or a spectra based on a continuous variable.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">shelf</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter2-1.png" width="672"></div>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter2-2.png" width="672"></div>
 <p>A scatterplot smoother can be added to our plot with the function <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -894,7 +910,7 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="co">#&gt; x'</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter3-1.png" width="672"></div>
 <p>The smooth function can also be a linear regression line.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -902,7 +918,7 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter4-1.png" width="672"></div>
 <p>To add different sizes and shapes according to <code>shelf</code> and <code>mfr</code>, respectively, we need the command</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span>, </span>
@@ -911,7 +927,7 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="co">#&gt; Warning: Using size for a discrete variable is not advised.</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter5-1.png" width="672"></div>
 <p>Finally, since there are multiple observations with zero fat, we want to jitter the observations in the vertical direction with a random amount in the interval <span class="math inline">\(±0.05\)</span>.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span><span class="op">)</span>,</span>
@@ -919,65 +935,65 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span>                              position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitter.html">position_jitter</a></span><span class="op">(</span>height<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter6-1.png" width="672"></div>
 <p>The <code><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label()</a></code> functions are useful to replace plotting characters with sample names or a specified label.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label<span class="op">=</span><span class="va">mfr</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter7-1.png" width="672"></div>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label<span class="op">=</span><span class="va">mfr</span><span class="op">)</span>, check_overlap<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter7-2.png" width="672"></div>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label<span class="op">=</span><span class="va">mfr</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScatter7-3.png" width="672"></div>
 </div>
-<div id="dotplot" class="section level3" number="11.14.3">
+<div id="dotplot" class="section level3" number="10.14.3">
 <h3>
-<span class="header-section-number">11.14.3</span> Dotplot<a class="anchor" aria-label="anchor" href="#dotplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.3</span> Dotplot<a class="anchor" aria-label="anchor" href="#dotplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>Below a simple dotplot of the carbo variable followed by another dotplot with several tweaks in presentation.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carbo</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">)</span>  </span>
 <span><span class="co">#&gt; Bin width defaults to 1/30 of the range of the data. Pick</span></span>
 <span><span class="co">#&gt; better value with `binwidth`.</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotDot-1.png" width="672"></div>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carbo</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">2</span>, stackdir <span class="op">=</span> <span class="st">"center"</span>, </span>
 <span>                     stackratio <span class="op">=</span> <span class="fl">0.8</span>, dotsize <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span>  </span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotDot-2.png" width="672"></div>
 </div>
-<div id="boxplot" class="section level3" number="11.14.4">
+<div id="boxplot" class="section level3" number="10.14.4">
 <h3>
-<span class="header-section-number">11.14.4</span> Boxplot<a class="anchor" aria-label="anchor" href="#boxplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.4</span> Boxplot<a class="anchor" aria-label="anchor" href="#boxplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code> function allows us to make a simple boxplot. However, below we make several boxplots according to vitamin enrichment and overlay the observed data.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>        mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">vitamins</span>, y <span class="op">=</span> <span class="va">sodium</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotBoxplot-1.png" width="672"></div>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>        mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">vitamins</span>, y <span class="op">=</span> <span class="va">sodium</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotBoxplot-2.png" width="672"></div>
 </div>
-<div id="line-plot" class="section level3" number="11.14.5">
+<div id="line-plot" class="section level3" number="10.14.5">
 <h3>
-<span class="header-section-number">11.14.5</span> Line plot<a class="anchor" aria-label="anchor" href="#line-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.5</span> Line plot<a class="anchor" aria-label="anchor" href="#line-plot"><i class="fas fa-link"></i></a>
 </h3>
 <p>To illustrate plotting lines with <code>ggplot2</code> we will create a small data set <span class="math inline">\(y_a=log(x)\)</span>⁡ and <span class="math inline">\(y_b=2log(x)\)</span> with <span class="math inline">\(0 &lt; x&lt; 1\)</span>.</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0.01</span>, to <span class="op">=</span> <span class="fl">0.99</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>   </span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span>
@@ -1003,12 +1019,12 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">z</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotLine-1.png" width="672"></div>
 </div>
-<div id="density-estimates" class="section level3" number="11.14.6">
+<div id="density-estimates" class="section level3" number="10.14.6">
 <h3>
-<span class="header-section-number">11.14.6</span> Density estimates<a class="anchor" aria-label="anchor" href="#density-estimates"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.6</span> Density estimates<a class="anchor" aria-label="anchor" href="#density-estimates"><i class="fas fa-link"></i></a>
 </h3>
-<p>Non-parametric density estimates are useful to summarise the distribution of data. For a single variable, the <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> function produces a density estimate (see section <a href="graphics2.html#density">11.6</a>). Here we illustrate the use of the two-dimensional density estimate with the function <code><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density_2d()</a></code> and the Old Faithful data from package <code>datasets</code>. Note that the call to <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> is written to the object <code>p1</code>. The content of <code>p1</code> is the plot. Assigning the name <code>p1</code> to the plot prevents having to retype the full call for every subsequent execution.</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<p>Non-parametric density estimates are useful to summarise the distribution of data. For a single variable, the <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> function produces a density estimate (see section <a href="graphics2.html#density">10.6</a>). Here we illustrate the use of the two-dimensional density estimate with the function <code><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density_2d()</a></code> and the Old Faithful data from package <code>datasets</code>. Note that the call to <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> is written to the object <code>p1</code>. The content of <code>p1</code> is the plot. Assigning the name <code>p1</code> to the plot prevents having to retype the full call for every subsequent execution.</p>
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span><span class="va">faithful</span>, </span>
 <span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">eruptions</span>, y <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">5</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">40</span>,<span class="fl">110</span><span class="op">)</span></span>
@@ -1017,7 +1033,7 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="co">#&gt; Warning: Removed 3 rows containing missing values or values outside</span></span>
 <span><span class="co">#&gt; the scale range (`geom_point()`).</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotDensity-1.png" width="672"></div>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density_2d</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Removed 3 rows containing non-finite outside the scale</span></span>
 <span><span class="co">#&gt; range (`stat_density2d()`).</span></span>
@@ -1026,33 +1042,33 @@ Figure 11.17: Layer structure of ggplot2 package.
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotDensity-2.png" width="672"></div>
 <p>In the above examples, the geometry is specified, without any specification of statistical transformations. Although not specified explicitly, statistical transformations are performed. For instance in the barplot above, the <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">stat_count()</a></code> is the default for <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> to determine the frequencies plotted on the vertical axis. In most instances, the default <code>stat_xxx()</code> function is appropriate for the particular <code>geom_yyy()</code> function and specifying other statistical transformations could lead to non-sensicle calls. In most calls to <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, the default <code>stat_xxx()</code> is appropriate and not explicitly specified. Below, we look at a few exceptions.</p>
 </div>
-<div id="empirical-cumulative-distribution-function" class="section level3" number="11.14.7">
+<div id="empirical-cumulative-distribution-function" class="section level3" number="10.14.7">
 <h3>
-<span class="header-section-number">11.14.7</span> Empirical cumulative distribution function<a class="anchor" aria-label="anchor" href="#empirical-cumulative-distribution-function"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.7</span> Empirical cumulative distribution function<a class="anchor" aria-label="anchor" href="#empirical-cumulative-distribution-function"><i class="fas fa-link"></i></a>
 </h3>
 <p>The empirical cumulative distribution function also provide details on the shape of the distribution underlying the observations and can be plotted with <code><a href="https://ggplot2.tidyverse.org/reference/stat_ecdf.html">stat_ecdf()</a></code>.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n.1.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">F.4.9</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Fdist.html">rf</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">4</span>,<span class="fl">9</span><span class="op">)</span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">n.1.1</span>,<span class="va">F.4.9</span><span class="op">)</span></span>
 <span><span class="va">dat2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">dat</span>, cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span><span class="va">dat</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">n.1.1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_ecdf.html">stat_ecdf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotEcdf-1.png" width="672"></div>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span><span class="va">dat2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">value</span>, colour <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_ecdf.html">stat_ecdf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotEcdf-2.png" width="672"></div>
 </div>
-<div id="mathematical-functions" class="section level3" number="11.14.8">
+<div id="mathematical-functions" class="section level3" number="10.14.8">
 <h3>
-<span class="header-section-number">11.14.8</span> Mathematical functions<a class="anchor" aria-label="anchor" href="#mathematical-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.8</span> Mathematical functions<a class="anchor" aria-label="anchor" href="#mathematical-functions"><i class="fas fa-link"></i></a>
 </h3>
 <p>Any function <span class="math inline">\(f(x)\)</span> can be plotted, or added to a plot with <code><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function()</a></code>. First we will plot the function <span class="math inline">\(f(x)=2e^xcos⁡(x)\)</span>.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>,<span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">p2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">geom_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotfx-1.png" width="672"></div>
 <p>Next we will compare our empirical cumulative distribution function, to the cumulative distribution functions of a Poisson and normal distribution. (Remember, the normal distribution provides an approximation to the Poisson).</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">dat3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">x3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span><span class="va">dat3</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_ecdf.html">stat_ecdf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1063,19 +1079,19 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span>               col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/gglotfx2-1.png" width="672"></div>
 </div>
-<div id="after_stat-function" class="section level3" number="11.14.9">
+<div id="after_stat-function" class="section level3" number="10.14.9">
 <h3>
-<span class="header-section-number">11.14.9</span> <code>after_stat()</code> function<a class="anchor" aria-label="anchor" href="#after_stat-function"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.9</span> <code>after_stat()</code> function<a class="anchor" aria-label="anchor" href="#after_stat-function"><i class="fas fa-link"></i></a>
 </h3>
 <p>When constructing a histogram, the frequencies appear on the vertical axis. These frequencies are the output of the function <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">stat_bin()</a></code> which means they are not available up front in the data set itself. The <code><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat()</a></code> function allows us to use the computed variables, for instance to scale the histogram to area <span class="math inline">\(=1\)</span> in order to compare the observed distribution to a theoretical probability density function.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">rgamma</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">dat4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">x4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span><span class="va">dat4</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x4</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with</span></span>
 <span><span class="co">#&gt; `binwidth`.</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotAfterstat-1.png" width="672"></div>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  </span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat4</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x4</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, </span>
@@ -1086,40 +1102,40 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="co">#&gt; `binwidth`.</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotAfterstat-2.png" width="672"></div>
 </div>
-<div id="scales" class="section level3" number="11.14.10">
+<div id="scales" class="section level3" number="10.14.10">
 <h3>
-<span class="header-section-number">11.14.10</span> Scales<a class="anchor" aria-label="anchor" href="#scales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.10</span> Scales<a class="anchor" aria-label="anchor" href="#scales"><i class="fas fa-link"></i></a>
 </h3>
 <p>The scales link the aesthetic attributes such as colours, plotting characters, line types, axis scales etc. to the data. Implicitly, in all the calls above, default scales are specified. Should we wish to change the defaults, the scales need to be specified explicitly.</p>
 <p>In the call</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">mfr</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScales-1.png" width="672"></div>
 <p>different colours are assigned to the points, based on the content of <code>mfr</code>. Since <code>mfr</code> is a categorical variable with six levels, the first six default colours are used. The user can specify their own colour selection with the function <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual()</a></code>. However, the Brewer palettes are convenient colour schemes designed by Cynthia Brewer as described at
 <a href="http://colorbrewer2.org" class="uri">http://colorbrewer2.org</a>. Below a qualitative scale is used according to the levels of <code>mfr</code>.</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">mfr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_colour_brewer</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"qual"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScales2-1.png" width="672"></div>
 <p>Next, we will define our own gradient fill scaling for use with the continuous variable <code>sugars</code>. The default scale ranges from light blue to dark blue.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScales3-1.png" width="672"></div>
 <p>The built in colour palettes <code>hcl.colors</code>, <code>hcl.pals</code>, <code>rainbow</code>, <code>heat.colors</code>, <code>terrain.colors</code>, <code>topo.colors</code> and <code>cm.colors</code> can be selected with the function <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_colour_gradientn()</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn()</a></code>.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_colour_gradientn</a></span><span class="op">(</span>colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow</a></span><span class="op">(</span><span class="fl">21</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScales4-1.png" width="672"></div>
 <p>The functions <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_colour_gradient()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient()</a></code> allows the user to specify a two-colour gradient scale while <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_colour_gradient2()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient2()</a></code> allows for specification of a three-colour gradient scale.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
@@ -1127,7 +1143,7 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span>                             high <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScales5-1.png" width="672"></div>
 <p>In a final example of scales we will change the vertical axis to a log scale while changing the axis markers on the horizontal scale.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">sugars</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
@@ -1139,12 +1155,12 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="co">#&gt; transformation introduced infinite values.</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotScales6-1.png" width="672"></div>
 </div>
-<div id="coordinates" class="section level3" number="11.14.11">
+<div id="coordinates" class="section level3" number="10.14.11">
 <h3>
-<span class="header-section-number">11.14.11</span> Coordinates<a class="anchor" aria-label="anchor" href="#coordinates"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.11</span> Coordinates<a class="anchor" aria-label="anchor" href="#coordinates"><i class="fas fa-link"></i></a>
 </h3>
 <p>By default, all the plots we have made are on the Cartesian axes. One alternative would be to use a polar coordinate system.</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Hadley's favourite pie chart</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"does not resemble"</span>, <span class="st">"resembles"</span><span class="op">)</span>,</span>
@@ -1158,15 +1174,15 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pac man"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotCoords-1.png" width="672"></div>
 <p>To plot the function <span class="math inline">\(f(\theta)=\theta sin(\theta)\)</span>, <span class="math inline">\(0 \le \theta \le \frac{\pi}{2}\)</span> we need to following code:</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">theta.vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="va">pi</span><span class="op">/</span><span class="fl">2</span>, len <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span><span class="va">my.dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span> <span class="op">(</span>theta <span class="op">=</span> <span class="va">theta.vec</span>,</span>
 <span>                  r <span class="op">=</span> <span class="va">theta.vec</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">theta.vec</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> <span class="op">(</span><span class="va">my.dat</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">theta</span>, y<span class="op">=</span><span class="va">r</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span>theta <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotCoords2-1.png" width="672"></div>
-<p>As illustrated in Exercise <a href="#Ex6"><strong>??</strong></a> number 10 it is sometimes essential to keep the aspect ratio in the graphic fixed, usually at <span class="math inline">\(1:1\)</span>. Classical scaling is a method to produce a map from a given matrix of pairwise distances. In the code below, a map (subject to rotation and reflection) of cities in Europe is produce with the function <code><a href="https://rdrr.io/r/stats/cmdscale.html">cmdscale()</a></code>. In order to visually assess intercity distances, it is important to have one unit in the horizontal direction equal to one unit in the vertical direction. This is achieved with <code>coord_fixed (ratio = 1)</code>.</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<p>As illustrated in Exercise <a href="revision.html#Ex6">6.2</a> number 10 it is sometimes essential to keep the aspect ratio in the graphic fixed, usually at <span class="math inline">\(1:1\)</span>. Classical scaling is a method to produce a map from a given matrix of pairwise distances. In the code below, a map (subject to rotation and reflection) of cities in Europe is produce with the function <code><a href="https://rdrr.io/r/stats/cmdscale.html">cmdscale()</a></code>. In order to visually assess intercity distances, it is important to have one unit in the horizontal direction equal to one unit in the vertical direction. This is achieved with <code>coord_fixed (ratio = 1)</code>.</p>
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">city.coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>city<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">eurodist</span>,<span class="st">"Labels"</span><span class="op">)</span>,</span>
 <span>                          <span class="fu"><a href="https://rdrr.io/r/stats/cmdscale.html">cmdscale</a></span><span class="op">(</span><span class="va">eurodist</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">city.coords</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"dim"</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
@@ -1176,18 +1192,18 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span>ratio <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>         </span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotCoords3-1.png" width="672"></div>
 </div>
-<div id="facets" class="section level3" number="11.14.12">
+<div id="facets" class="section level3" number="10.14.12">
 <h3>
-<span class="header-section-number">11.14.12</span> Facets<a class="anchor" aria-label="anchor" href="#facets"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.12</span> Facets<a class="anchor" aria-label="anchor" href="#facets"><i class="fas fa-link"></i></a>
 </h3>
 <p>Facets allows for the grouping of the data set into smaller similar data sets. We can plot the <code>fat</code> vs <code>calories</code> for every manufacturer separately.</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span> <span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">mfr</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotFacets-1.png" width="672"></div>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1195,32 +1211,32 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span> <span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">mfr</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotFacets-2.png" width="672"></div>
 <p>Although it does not allow for comparison across plots, each plot can have its own axis range while splitting the data according to two variables.</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span> <span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">mfr</span>, <span class="va">vitamins</span><span class="op">)</span>, scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotFacets2-1.png" width="672"></div>
 </div>
-<div id="themes" class="section level3" number="11.14.13">
+<div id="themes" class="section level3" number="10.14.13">
 <h3>
-<span class="header-section-number">11.14.13</span> Themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.14.13</span> Themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
 </h3>
 <p>As mentioned before, themes is disconnected with the data. Themes allow for the formatting of the background, gridlines, titles, etc.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>      mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">mfr</span>, fill <span class="op">=</span> <span class="va">vitamins</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>   </span>
 <span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">mfr</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">p3</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-1.png" width="672"></div>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-2.png" width="672"></div>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-3.png" width="672"></div>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.grid.major <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span><span class="st">"gray"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: The `size` argument of `element_line()` is deprecated as of</span></span>
 <span><span class="co">#&gt; ggplot2 3.4.0.</span></span>
@@ -1229,13 +1245,13 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="co">#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where</span></span>
 <span><span class="co">#&gt; this warning was generated.</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-4.png" width="672"></div>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-5.png" width="672"></div>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p3</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Heading"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"serif"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-6.png" width="672"></div>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">p4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cereal</span>, </span>
 <span>             mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">calories</span>, y <span class="op">=</span> <span class="va">fat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1243,19 +1259,19 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span><span class="va">p4</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_colourbar.html">guide_colourbar</a></span><span class="op">(</span>barwidth <span class="op">=</span> <span class="fl">0.25</span>, barheight <span class="op">=</span> <span class="fl">20</span>,</span>
 <span>                                        nbin<span class="op">=</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-7.png" width="672"></div>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p4</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span> <span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>ncol<span class="op">=</span><span class="fl">2</span>, reverse<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-8.png" width="672"></div>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p4</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">50</span>, to <span class="op">=</span> <span class="fl">450</span>, by <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>,</span>
 <span>                        guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_axis.html">guide_axis</a></span><span class="op">(</span>n.dodge <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_axis.html">guide_axis</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span>, y.sec <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_axis.html">guide_axis</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotThemes-9.png" width="672"></div>
 </div>
 </div>
-<div id="exercise-11" class="section level2" number="11.15">
+<div id="exercise-15" class="section level2" number="10.15">
 <h2>
-<span class="header-section-number">11.15</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-11"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.15</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-15"><i class="fas fa-link"></i></a>
 </h2>
 <div style="color: #80CC99;">
 <p>1 (a) Convert the <code>state.region</code> and <code>state.x77</code> data into a dataframe <code>USA.states</code> and construct a histogram of the population. Set the bin widths at 2000 (thousands).</p>
@@ -1275,7 +1291,7 @@ Figure 11.17: Layer structure of ggplot2 package.
 <li>Study the code below for the construction of rectangles on a graphic.</li>
 </ol>
 </div>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">9</span>, <span class="fl">12</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>,</span>
 <span>                 y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
 <span>                 z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, each <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -1308,7 +1324,7 @@ Figure 11.17: Layer structure of ggplot2 package.
 <div style="margin-left: 25px; margin-right: 20px;">
 <ol start="2" style="list-style-type: lower-alpha">
 <li>
-<p>Repeat exercise <a href="graphics2.html#Ex10">11.13</a> number 1 using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_raster()</a></code> function and making contour plots instead of 3D plots.</p>
+<p>Repeat exercise <a href="graphics2.html#Ex10">10.13</a> number 1 using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_raster()</a></code> function and making contour plots instead of 3D plots.</p>
 <ul>
 <li>First make a contour plot of the full data set.</li>
 <li>Select a sample of size 500 and make a contour plot.</li>
@@ -1320,7 +1336,7 @@ Figure 11.17: Layer structure of ggplot2 package.
 <ol start="5" style="list-style-type: decimal">
 <li>The maps package can be used to draw a world map or a map of a specific country or region. The <code>ggplot2</code> function <code><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data()</a></code> converts the data from the maps package in to a data frame suitable for plotting with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. Study the maps constructed below and comment on the different “projections”.</li>
 </ol>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">crimes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span><span class="op">)</span>, <span class="va">USArrests</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="https://github.com/adeckmyn/maps">maps</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -1335,49 +1351,99 @@ Figure 11.17: Layer structure of ggplot2 package.
 <span>                           y <span class="op">=</span> <span class="va">states_map</span><span class="op">$</span><span class="va">lat</span><span class="op">)</span> </span>
 <span><span class="va">pp</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotMaps-1.png" width="672"></div>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pp</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="st">"azequalarea"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotMaps-2.png" width="672"></div>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pp</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="st">"orthographic"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotMaps-3.png" width="672"></div>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">usamap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">states_map</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>                 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span>
 <span><span class="va">usamap</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotMaps-4.png" width="672"></div>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">usamap</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotMaps-5.png" width="672"></div>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">usamap</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="st">"azequalarea"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotMaps-6.png" width="672"></div>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">usamap</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="st">"orthographic"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotMaps-7.png" width="672"></div>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">usamap</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="st">"orthographic"</span>, orientation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="10-graphics2_files/figure-html/ggplotMaps-8.png" width="672"></div>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Reproduce the plot created in section <a href="graphics2.html#multipleLines">11.4.2</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
-<li><p>Reproduce the plot created in section <a href="graphics2.html#Legends">11.4.3</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
-<li><p>Reproduce the left panel of the plot in Figure <a href="graphics2.html#fig:catAxis">11.10</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
+<li><p>Reproduce the plot created in section <a href="graphics2.html#multipleLines">10.4.2</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
+<li><p>Reproduce the plot created in section <a href="graphics2.html#Legends">10.4.3</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
+<li><p>Reproduce the left panel of the plot in Figure <a href="graphics2.html#fig:catAxis">10.10</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
 </ol>
 </div>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
+<div class="prev"><a href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></div>
+<div class="next"><a href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#graphics2"><span class="header-section-number">10</span> R graphics: Round II</a></li>
+<li><a class="nav-link" href="#graphics-parameters"><span class="header-section-number">10.1</span> Graphics parameters</a></li>
+<li><a class="nav-link" href="#layout-of-graphics"><span class="header-section-number">10.2</span> Layout of graphics</a></li>
+<li><a class="nav-link" href="#low-level-plotting-commands"><span class="header-section-number">10.3</span> Low-level plotting commands</a></li>
+<li>
+<a class="nav-link" href="#using-the-plotting-commands"><span class="header-section-number">10.4</span> Using the plotting commands</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#matplot"><span class="header-section-number">10.4.1</span> Multiple lines or groups of points on the same graph</a></li>
+<li><a class="nav-link" href="#multipleLines"><span class="header-section-number">10.4.2</span> Multiple lines or groups of points on the same graph but the lines (points) are not all the same length (number)</a></li>
+<li><a class="nav-link" href="#Legends"><span class="header-section-number">10.4.3</span> Adding legends to a graph</a></li>
+<li><a class="nav-link" href="#multAxes"><span class="header-section-number">10.4.4</span> Multiple plots with identical axes</a></li>
+<li><a class="nav-link" href="#providing-a-single-legend-for-multiple-plots"><span class="header-section-number">10.4.5</span> Providing a single legend for multiple plots</a></li>
+<li><a class="nav-link" href="#changing-the-plotting-character-common-plotting-characters-in-r"><span class="header-section-number">10.4.6</span> Changing the plotting character: common plotting characters in R</a></li>
+<li><a class="nav-link" href="#changing-the-colour-in-plots"><span class="header-section-number">10.4.7</span> Changing the colour in plots</a></li>
+<li><a class="nav-link" href="#logarithmic-axes"><span class="header-section-number">10.4.8</span> Logarithmic axes</a></li>
+<li><a class="nav-link" href="#graphs-with-character-strings-as-the-scale-on-the-axis"><span class="header-section-number">10.4.9</span> Graphs with character strings as the ‘scale’ on the axis</a></li>
+<li><a class="nav-link" href="#customizing-bar-charts-and-histograms"><span class="header-section-number">10.4.10</span> Customizing bar charts and histograms</a></li>
+<li><a class="nav-link" href="#three-dimensional-graphical-displays"><span class="header-section-number">10.4.11</span> Three-dimensional graphical displays</a></li>
+<li><a class="nav-link" href="#diagrams"><span class="header-section-number">10.4.12</span> Diagrams</a></li>
+<li><a class="nav-link" href="#annotating-graphics-with-special-symbols"><span class="header-section-number">10.4.13</span> Annotating graphics with special symbols</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#qqplot"><span class="header-section-number">10.5</span> Quantile plots</a></li>
+<li><a class="nav-link" href="#density"><span class="header-section-number">10.6</span> Estimating a density</a></li>
+<li><a class="nav-link" href="#coplot"><span class="header-section-number">10.7</span> A coplot with two conditioning variables</a></li>
+<li><a class="nav-link" href="#exact-distances-in-graphics"><span class="header-section-number">10.8</span> Exact distances in graphics</a></li>
+<li><a class="nav-link" href="#multiple-graphics-windows-in-r"><span class="header-section-number">10.9</span> Multiple graphics windows in R</a></li>
+<li><a class="nav-link" href="#more-complex-layouts"><span class="header-section-number">10.10</span> More complex layouts</a></li>
+<li><a class="nav-link" href="#dynamic-3d-graphics-in-r"><span class="header-section-number">10.11</span> Dynamic 3D graphics in R</a></li>
+<li><a class="nav-link" href="#animation"><span class="header-section-number">10.12</span> Animation</a></li>
+<li><a class="nav-link" href="#Ex10"><span class="header-section-number">10.13</span> Exercise</a></li>
+<li>
+<a class="nav-link" href="#the-package-ggplot2"><span class="header-section-number">10.14</span> The package ggplot2</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#barplot"><span class="header-section-number">10.14.1</span> Barplot</a></li>
+<li><a class="nav-link" href="#scatterplot"><span class="header-section-number">10.14.2</span> Scatterplot</a></li>
+<li><a class="nav-link" href="#dotplot"><span class="header-section-number">10.14.3</span> Dotplot</a></li>
+<li><a class="nav-link" href="#boxplot"><span class="header-section-number">10.14.4</span> Boxplot</a></li>
+<li><a class="nav-link" href="#line-plot"><span class="header-section-number">10.14.5</span> Line plot</a></li>
+<li><a class="nav-link" href="#density-estimates"><span class="header-section-number">10.14.6</span> Density estimates</a></li>
+<li><a class="nav-link" href="#empirical-cumulative-distribution-function"><span class="header-section-number">10.14.7</span> Empirical cumulative distribution function</a></li>
+<li><a class="nav-link" href="#mathematical-functions"><span class="header-section-number">10.14.8</span> Mathematical functions</a></li>
+<li><a class="nav-link" href="#after_stat-function"><span class="header-section-number">10.14.9</span> after_stat() function</a></li>
+<li><a class="nav-link" href="#scales"><span class="header-section-number">10.14.10</span> Scales</a></li>
+<li><a class="nav-link" href="#coordinates"><span class="header-section-number">10.14.11</span> Coordinates</a></li>
+<li><a class="nav-link" href="#facets"><span class="header-section-number">10.14.12</span> Facets</a></li>
+<li><a class="nav-link" href="#themes"><span class="header-section-number">10.14.13</span> Themes</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#exercise-15"><span class="header-section-number">10.15</span> Exercise</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          
+<li><a id="book-source" href="https://github.com/sugnet/RTutorial/blob/master/10-graphics2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/sugnet/RTutorial/edit/master/10-graphics2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

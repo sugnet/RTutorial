@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 12 data must be sorted according to E values | Introduction into R Applications and Programming: A Tutorial</title>
+<meta name="author" content="Niël J le Roux and Sugnet Lubbe">
+<meta name="description" content="data.temp &lt;- data.frame(ethanol[,c(1,3)], fitted = fitted(out)) data.ordered &lt;- with(data.temp, data.temp[order(E),])  with(data.ordered, plot(x=E, y=NOx, pch=15, col=‘blue’) with(data.ordered,...">
+<meta name="generator" content="bookdown 0.44 with bs4_book()">
+<meta property="og:title" content="Chapter 12 data must be sorted according to E values | Introduction into R Applications and Programming: A Tutorial">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://github.com/sugnet/RTutorial/data-must-be-sorted-according-to-e-values.html">
+<meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
+<meta property="og:description" content="data.temp &lt;- data.frame(ethanol[,c(1,3)], fitted = fitted(out)) data.ordered &lt;- with(data.temp, data.temp[order(E),])  with(data.ordered, plot(x=E, y=NOx, pch=15, col=‘blue’) with(data.ordered,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 12 data must be sorted according to E values | Introduction into R Applications and Programming: A Tutorial">
+<meta name="twitter:description" content="data.temp &lt;- data.frame(ethanol[,c(1,3)], fitted = fitted(out)) data.ordered &lt;- with(data.temp, data.temp[order(E),])  with(data.ordered, plot(x=E, y=NOx, pch=15, col=‘blue’) with(data.ordered,...">
+<meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 1em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introduction into R Applications and Programming: A Tutorial</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introducing the R System</a></li>
+<li><a class="" href="objects.html"><span class="header-section-number">2</span> Managing objects</a></li>
+<li><a class="" href="operators.html"><span class="header-section-number">3</span> R operators and functions</a></li>
+<li><a class="" href="graphics.html"><span class="header-section-number">4</span> Introducing traditional R graphics</a></li>
+<li><a class="" href="subscripting.html"><span class="header-section-number">5</span> Subscripting</a></li>
+<li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
+<li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
+<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
+<li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
+<li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
+<li><a class="active" href="data-must-be-sorted-according-to-e-values.html"><span class="header-section-number">12</span> data must be sorted according to E values</a></li>
+<li><a class="" href="optimisation.html"><span class="header-section-number">13</span> Introduction to Optimisation</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/sugnet/RTutorial">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-must-be-sorted-according-to-e-values" class="section level1" number="12">
+<h1>
+<span class="header-section-number">12</span> data must be sorted according to E values<a class="anchor" aria-label="anchor" href="#data-must-be-sorted-according-to-e-values"><i class="fas fa-link"></i></a>
+</h1>
+<blockquote>
+<p>data.temp &lt;- data.frame(ethanol[,c(1,3)],
+fitted = fitted(out))
+data.ordered &lt;- with(data.temp, data.temp[order(E),])</p>
+</blockquote>
+<blockquote>
+<p>with(data.ordered, plot(x=E, y=NOx, pch=15, col=‘blue’)
+with(data.ordered, lines(x=E, y=fitted, col=‘red’, lwd=2)</p>
+</blockquote>
+<p>The domain of the predictor is divided by knots and a B-spline generates a set of piecewise polynomials restricted to be continuous at the knots. Execute the following command:</p>
+<blockquote>
+<p>plot (range(ethanol<span class="math inline">\(E),c(0,1),type="n")
+apply(bs(ethanol\)</span>E, df=7), 2, function(y, x)
+lines(x[order(x)],y[order(x)]), x=ethanol$E)
+knot.vec &lt;- attr(bs(x, df=7), “knots”)
+for (i in knot.vec) lines (rep(i,2),c(0,1),lty=2)</p>
+</blockquote>
+<p>Figure 11.11.1: Cubic B-spline basis functions with 4 interior knots.</p>
+<p>A set of 7 basis functions were generated, each a degree 3 polynomial in an interval with
+7 - 3 = 4 interior knots. Experiment with specifying either a different degree for the polynomials, or different numbers of knots. The specific knots can also be specified, e.g. 
+&gt; bs(ethanol$E, knots=c(0.7, 0.9, 1.1))</p>
+<pre><code>It has been shown that B-splines can exhibit erratic behavior beyond the boundary knots. Repeat the fits and plots above, replacing the B-splines with natural cubic splines with the function ns(). Natural cubic splines constrain the basis functions to be linear beyond the boundary knots. As a result, a natural cubic spline with K knots is represented by K basis functions.
+
+Selecting the position and number of knots can be subjective. Smoothing splines solves the knot selection problem by making each observation a knot and controlling the overfitting with a single penalty parameter. Repeat the fits and plots in (i), replacing the B-splines with smoothing splines with the function s(), similar to the fit in (a).
+
+The function rpart()
+Describe briefly what is understood by Regression and Classification Trees using the help file of the function rpart() in package rpart.
+Study the help file of the kyphosis data set available in package MASS.
+Execute the following R code:</code></pre>
+<blockquote>
+<p>fit &lt;- rpart(Kyphosis ~ Age + Number + Start,<br>
+data=kyphosis)
+plot(fit)
+text(fit, use.n=TRUE,xpd=NA)
+Comment on the results.
+The package partykit() provides a toolkit for recursive partitioning. A more informative tree diagram compared to (c) can be obtained with the code:
+library (partykit)
+fit2 &lt;- as.party(fit)
+plot(fit2)</p>
+</blockquote>
+<pre><code>Nonlinear regression and the function nls()</code></pre>
+<p>The asymptotic regression model has the form:
+y=α+βe^γx
+When  &gt; 0,  &lt; 0 and  &lt; 0 the above model becomes Mistcherlich’s model of the law of diminishing returns. According to the law of diminishing returns the yield, y, initially increases quickly with increasing values of x, but then the yield slows down and finally levels off just below the value of . The parameters  &gt; 0,  &lt; 0 and  &lt; 0 have the following meaning:
+ represents the upper asymptote for yield
+ is the difference between the value of y when x = 0 and the upper asymptote
+The asymptotic regression model may be reparameterized such that  is replaced by  -  where  represents the yield when x = 0. A special case of the asymptotic regression model occurs when  = 0 :
+y=α-αe<sup>γx=α(1-e</sup>γx )
+The asymptotic regression model represents a nonlinear regression model and in general no closed form solution exists for estimating its parameters. The R function nls() can be used to estimate the parameters of the model. When function nls() is employed starting values for the iterative estimating procedure are necessary.
+Choosing starting values
+A starting value for  can be found by looking at a scatterplot of y as a function of x and then chooses as starting value just larger than the largest value of y.
+ is the difference between the value of y when x = 0 and the upper asymptote. A reasonable starting value is the minimum value of y minus .
+ can be roughly initially estimated by the negative of the slope between two “well separated” points on the plot.
+Study the help file of nls(). Notice carefully how nls() is called.
+The data below is the Yield of a product after a chemical treatment of different time duration. Three replicates were made at each treatment time.</p>
+<p>Time (Hrs) Rep1 Rep2 Rep3
+0 0 0 0
+3 0.0846 0.0556 0.0501
+6 0.1072 0.0604 0.0545
+12 0.1255 0.059 0.0705
+18 0.1671 0.0799 0.0687
+24 0.1988 0.0958 0.0655
+48 0.2927 0.1739 0.1075
+72 0.3713 0.1910 0.1418
+96 0.4773 0.2669 0.1725
+168 0.6158 0.3584 0.3224
+336 0.7297 0.4339 0.3322
+504 0.8083 0.4816 0.3309
+672 0.7019 0.4497 0.3798
+840 0.6038 0.4851 0.3757
+1008 0.7386 0.5332 0.3798
+Plot the data.
+The above plot suggests a relationship of the form:
+y=α-αe<sup>γx=α(1-e</sup>γx )
+Explain the term: nonlinear regression. Use nls() to estimate the parameters  and  in the above model. What effect does the changing of the start values have on the result of nls()? Experiment with different start values for the parameters. Add the estimated line to the plot in (b) and interpret the graph.</p>
+
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></div>
+<div class="next"><a href="optimisation.html"><span class="header-section-number">13</span> Introduction to Optimisation</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#data-must-be-sorted-according-to-e-values"><span class="header-section-number">12</span> data must be sorted according to E values</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/sugnet/RTutorial/blob/master/11-modelling.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/sugnet/RTutorial/edit/master/11-modelling.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introduction into R Applications and Programming: A Tutorial</strong>" was written by Niël J le Roux and Sugnet Lubbe. It was last built on 2025.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

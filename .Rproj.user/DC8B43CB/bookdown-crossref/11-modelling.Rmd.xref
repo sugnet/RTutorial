@@ -1,2 +1,17 @@
 h1:modelling Statistical modelling with R
+h2:introduction Introduction
+h2:data-for-statistical-models Data for statistical models
+h2:expressing-a-statistical-model-in-r Expressing a statistical model in R
+h2:common-arguments-to-r-modelling-functions Common arguments to R modelling functions
+h2:using-the-statistical-modelling-objects Using the statistical modelling objects
+h2:usage-of-the-function-with Usage of the function 
+h2:lmAnova Linear regression and anova
+h2:regression-diagnostics Regression diagnostics
+h2:non-parametric-regression Non-parametric regression
+h2:the-function-glm The function glm()
+h2:the-function-gam The function gam()
+fig:knots Cubic B-spline basis functions with 4 interior knots.
+h2:the-function-rpart The function rpart()
+h2:nonlinear-regression-and-the-function-nls Nonlinear regression and the function nls()
+h3:choosing-starting-values Choosing starting values
 

@@ -27,12 +27,12 @@ h3:three-dimensional-graphical-displays Three-dimensional graphical displays
 fig:persp Annotated 3D perspective plot.
 h3:diagrams Diagrams
 h3:annotating-graphics-with-special-symbols Annotating graphics with special symbols
-h2:quantile-plots Quantile plots
+h2:qqplot Quantile plots
 h2:density Estimating a density
 fig:histDiffBins Histograms with different bin sizes and bin locations of the same normal mixture data set.
 fig:ASH Average shifted histogram of normal mixture data.
 fig:densityExample Guassian kernel density estimate of the normal mixture data.
-h2:a-coplot-with-two-conditioning-variables A coplot with two conditioning variables
+h2:coplot A coplot with two conditioning variables
 h2:exact-distances-in-graphics Exact distances in graphics
 h2:multiple-graphics-windows-in-r Multiple graphics windows in R
 h2:more-complex-layouts More complex layouts
