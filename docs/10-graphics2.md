@@ -69,8 +69,8 @@ Shows that the colour for graphics was indeed changed to "blue".
 (b)	Multiple figures on one page:  How do the graphical parameters `mfg` and `mfrow` or `mfcol` differ?  What are represented in the R data sets `ldeaths`, `mdeaths` and `fdeaths`? Use  `mfg` and `mfrow`  to obtain Figure \@ref(fig:fmdeaths). *Hint*: The graphics parameters `mfg` and `mfrow` are used together.
 
 <div class="figure">
-<img src="10-graphics2_files/figure-html/fmdeaths-1.png" alt="Plots of the fdeaths and mdeaths data sets" width="100%" />
-<p class="caption">(\#fig:fmdeaths)Plots of the fdeaths and mdeaths data sets</p>
+<img src="10-graphics2_files/figure-html/fmdeaths-1.png" alt="Plots of the fdeaths and mdeaths data sets." width="100%" />
+<p class="caption">(\#fig:fmdeaths)Plots of the fdeaths and mdeaths data sets.</p>
 </div>
 
 
@@ -248,7 +248,6 @@ my.func ()
 <img src="10-graphics2_files/figure-html/cargrps-1.png" alt="Illustrating adding a legend to a plot." width="100%" />
 <p class="caption">(\#fig:cargrps)Illustrating adding a legend to a plot.</p>
 </div>
-
 
 ### Multiple plots with identical axes {#multAxes}
 

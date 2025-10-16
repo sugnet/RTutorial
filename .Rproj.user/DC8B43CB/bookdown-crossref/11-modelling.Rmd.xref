@@ -14,4 +14,16 @@ fig:knots Cubic B-spline basis functions with 4 interior knots.
 h2:the-function-rpart The function rpart()
 h2:nonlinear-regression-and-the-function-nls Nonlinear regression and the function nls()
 h3:choosing-starting-values Choosing starting values
+h2:detailed-example-analysis-of-variance-and-covariance Detailed example: Analysis of Variance and Covariance
+h3:AnovaOneWay One-way ANOVA models
+h3:two-way-anova-models-main-effects-and-interaction-effects Two-way ANOVA models: main effects and interaction effects
+fig:interactionSeasonOcean Interaction plot of factors season and ocean associates with the dependent variable CO2
+h4:types-of-anova-tables Types of ANOVA tables
+h3:one-way-ancova-models One-way ANCOVA models
+fig:CO2oceanHeight Scatterplot of CO2 vs height with a single regression line.
+fig:CO2seasonHeight Scatterplot of CO2 vs height with a separate regression line for each of the seasons.
+fig:ozoneOceanHeight Scatterplot of ozone vs height with a separate parallel regression lines for each of the different oceanic locations.
+fig:ANCOVA Diagrammatic process flow for a one-way analysis of covariance.
+h3:maize-exercise Maize Exercise
+h3:heart-rate-exercise Heart rate Exercise
 

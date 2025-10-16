@@ -1,3 +1,190 @@
 # Introduction to Optimisation {#optimisation}
 
+Two related topics are briefly discussed in this chapter. First, the focus is on solving the equation $f(x)=0$.  The following two methods are considered (a) the bisection or binary search method and (b) the Newton-Raphson method. In the last two sections some principles underlying optimization are considered by briefly examining the usage of the function `optim()` for general optimization and the packages `lpSolve` and `Rsolnp` for constrained optimization.
+
+## The bisection method for solving $f(x)=0$
+
+The bisection method is based on the *<span style="color:#FF9966">Mean Value Theorem</span>* (MVT):  Let $f(x)$ be a continuous function defined over the interval $x∈[a,b]$ with the property that $f(a)$ and $f(b)$ have opposite signs.  According to the MVT there exists a value $p$ in $(a,b)$ such that $f(p)=0$.  In order to keep arguments simple it is assumed that the root of the equation is unique in this interval. The bisection method consists of
+
+(i)	repeatedly halving subintervals of $[a,b]$ and
+(ii) to determine in each step which half contains $p$.
+
+The process is initialized by setting $a_1=1$ and $b_1=b$.  Let $p_1$ represents the midpoint of $[a_1,b_1 ]$, i.e. $p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}$. Suppose $f(p_1 )=0$ then $p=p_1$ so that we have the root. Suppose $f(p_1) \neq 0$ then $f(p_1)$ has similar sign to either $f(a_1)$ or $f(b_1)$.  If $f(p_1)$ and $f(a_1)$ have similar signs then $p∈(p_1,b_1)$ and we set $a_2=p_1$ and $b_2=b_1$. If $f(p_1)$ and $f(a_1)$ have opposite signs then $p∈(a_1,p_1)$ and we set $a_2=a_1$ and $b_2=p_1$. The whole process is now repeated with the interval $[a_2,b_2]$.   This process is illustrated in Figure \@ref(fig:bisection) and coded in the R function, `Bisection()`, given below.
+
+```{r, bisection, echo=FALSE, warning = FALSE, message = FALSE, fig.cap="Principle underlying the bisection method for finding a root of f(x)=0.", out.width="100%"}
+library(knitr)
+knitr::include_graphics("pics/bisection.jpg")
+```
+
+```{r, bisectionFunc}
+Bisection <- function (a, b, fun, eps=.Machine$double.eps^0.4,  maxiter=100) 
+{ #  This function finds the root of continuous function   
+  #  f(x) = 0 in the interval [a, b] where
+  #  f(a) and f(b) have opposite signs.
+  #  The function f() is given in the form of an R function in the argument fun
+  
+  Iter <- 1
+  while (Iter <= maxiter)
+    { fa <- fun(a)
+      p <- a + (b-a)/2
+      fp <- fun(p)
+      if ((fp == 0) | ((b-a)/2 < eps))
+       { p <- p
+         break   }
+      else
+       { Iter <- Iter + 1
+         if ( fa * fp > 0 )
+           { a <- p
+             fa <- fp   }
+         else b <- p
+       }
+    }
+  
+  if (Iter >= maxiter)
+    stop ("Process has not converged. Try increasing maxiter.\n")
+  p
+}
+```
+
+(a) Use the bisection method to solve the equation for any given $c$ and $n$
+
+$$
+c^2 + x^2 + \frac{2cx}{n-1} = n-2.
+$$
+
+<div style="margin-left: 25px; margin-right: 20px;">
+The function must check whether $b>a$ and whether $f(a)$ and $f(b)$ have opposite signs.
+</div>
+
+(b)	Change the bisection function to provide for `fun` to accept several arguments. Demonstrate your function with the equation given in (a).
+
+(c)	Consider the following data given by @DobsonBarnett2008
+
+```{r, CycloneData, echo = FALSE, warning = FALSE, message = FALSE}
+library (flextable)
+data <- data.frame (season = 1:13,
+                    cyclones = c(6, 5, 4, 6, 6, 3, 12, 7, 4, 2, 6, 7, 4))
+flextable (data) |>
+  delete_part (part = "header") |>
+  add_header (season = "Season", cyclones = "Number of tropical cyclones") |> 
+  theme_alafoli() |>
+  align (align = "center", part = "header")
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+Suppose the number of cyclones can be modelled by a Poisson distribution with parameter $\theta$.
+
+(i) Write down the log-likelihood function for determining the maximum likelihood (m.l.) estimate of $\theta$.
+
+(ii) 	Use the function written in (b) without changing it to obtain the m.l. estimate of $\theta$ as well as the maximum of the log-likelihood.
+
+(iii)	Use the R function `deriv()` to write a function based on the bisection principle for finding the maximum of $f(x,θ)$ with respect to $\theta$. Demonstrate its usage.
+
+</div>
+
+(d)	Study the help file of the R function `uniroot()`. Answer questions (a) and (c) using `uniroot()`.
+
+## The Newton-Raphson method
+
+Consider the following: Let $f(x)$ be a function that is at least twice differentiable over the interval $[a,b]$. The value of $x=p$ such that $f(p)=0$ needs to be found. Let $p_m∈[a,b]$ be an approximate value of $p$ such that $f'(p_m) \neq 0$ and $|p-p_m|$ is “small”.  Consider the Taylor power series expansion of $f(x)$ about $p_m$:
+
+$$
+f(x) = f(p_m) + (x - p_m)f'(p_m) + \frac{(x - p_m)^2}{2}f''(\xi(x))
+$$
+
+where $\xi(x)$ lies between $x$ and $p_m$. Since $f(p)=0$, it follows from the previous equation that
+
+$$
+0 = f(p) = f(p_m) + (p - p_m)f'(p_m) + \frac{(p - p_m)^2}{2}f''(\xi(p))
+$$
+
+but $|p-p_m|$ “small” implies that $(p-p_m )^2$ is much smaller and therefore
+
+$$
+0 \approx f(p_m) + (p - p_m)f'(p_m)
+$$
+
+so that
+
+$$
+p \approx p_m - \frac{f(p_m)}{f'(p_m)}
+$$
+
+From this follows the Newton-Raphson algorithm.  It starts with an initial approximation  $p_0$ and generates a sequence $\{p_m \}$ where
+
+$$
+p_{m+1} \approx p_m - \frac{f(p_m)}{f'(p_m)}
+$$
+
+for $m≥0$. In Figure \@ref(fig:NewtonRaphson) it is illustrated how the approximations are found by consecutive tangent lines.
+
+```{r, NewtonRaphson, echo=FALSE, warning = FALSE, message = FALSE, fig.cap="Principle underlying the Newton-Raphson algorithm.", out.width="100%"}
+library(knitr)
+knitr::include_graphics("pics/bisection.jpg")
+```
+
+(a)	When the Newton-Raphson algorithm is used for finding m.l. estimates the score statistic, $U$, and its derivative viz. $U'$ are needed. The statistic $U'$ can be approximated by $E(U') = -\mathfrak{I} = -var(U)$.  When $U'$ is substituted by $E(U')$ in the Newton-Raphson algorithm the method is known as the *<span style="color:#FF9966">(Fisher) scoring method</span>*.
+
+(b)	Write an R function to implement
+    (i)  the Newton-Raphson algorithm and 
+    (ii)  the scoring method for finding numerically the m.l. estimate of the scale  
+      parameter of the Weibull-distribution
+
+$$
+f(y_1, \dots, y_n) = \prod_{i=1}^{n}{\frac{\lambda y_i^{\lambda-1}}{\theta^\lambda}exp \big[-(\frac{y_i}{\theta})^\lambda \big]}
+$$
+
+<div style="margin-left: 45px; margin-right: 20px;">
+where $y_i>0$. Experiment with various initial values and convergence criteria. The following function serves as an example:
+</div>
+
+```{r, NewtonRaphsonFunc}
+NewtonRaphson <- function(fun1, fun2, initval, maxiter = 20, 
+                          eps = .Machine$double.eps^0.4, ...)
+{ # initval = initial approximation of root
+  # fun1 = function for which root is sought
+  # fun2 = derivative of fun1 or the expected value of the 
+  #                   derivative of the score statistic
+  
+  count <- 1
+  Iter <- count
+  Outvec <- as.vector (initval)
+  Estim <- initval - fun1 (initval,...) /fun2 (initval,...)
+  while (abs (Estim - initval) > eps)
+    { count <- count + 1
+      Iter <- c(Iter, count) 
+      initval <- Estim
+      Estim <- initval - fun1 (initval,...)/fun2 (initval,...)
+      Outvec <- c(Outvec , Estim)
+      if (count > maxiter) 
+      { warning("Max number iterations reached without convergence") 
+        break
+      }
+    }
+  data.frame (IterNo = Iter,  Estim = Outvec)
+}
+```
+
+The Weibull distribution is often used to model the time to failure (i.e. the survival time) of organisms or components. The parameter $\lambda$ determines the shape while $\theta$ is a scale parameter. The following table (from @AndrewsHerzberg1985 Table 29.1) contains the lifetimes of a random sample of pressure vessels:
+
+
+```{r, VesselData, echo = FALSE, warning = FALSE, message = FALSE}
+library (flextable)
+data <- rbind (c(1051, 1337, 1389, 1921, 1942, 2322, 3629, 4006, 4012, 4063),
+               c(4921, 5445, 5620, 5817, 5905, 5956, 6068, 6121, 6473, 7501),
+               c(7886, 8108, 8546, 8666, 8831, 9106, 9711, 9806, 10205, 10396),
+               c(10861, 11026, 11214, 11362, 11604, 11608, 11745, 11762, 11895, 	12044),
+               c(13520, 13670, 14110, 14496, 15395, 16179, 17092, 17568, 17568, NA))
+data <- data.frame (t(data))
+
+flextable (data) |>
+  delete_part (part = "header") |>
+  colformat_num(big.mark = "", digits = 0) |>
+  theme_alafoli() |>
+  hline_bottom(border = officer::fp_border(color = "#333333", width = 0.75))
+```
+
+(c)	Use your implementation of the Newton-Raphson method to obtain the m.l. estimate for $\lambda$ and given $\theta = 2$.
+
+(d)	Change  your Newton-Raphson function  so that the derivative is automatically calculated i.e. the function has only the arguments `fun`, `initval`, `maxiter`, eps`.
 

@@ -611,9 +611,6 @@ What are your conclusions?
 
 ``` r
 library (gam) 
-#> Loading required package: splines
-#> Loading required package: foreach
-#> Loaded gam 1.22-6
 stack.gam <- gam::gam (Loss ~ s(AirFlow) + s(WaterTemp) + s(AcidConc),
                        control = gam.control (bf.maxit = 50), data = stack.data)
 summary(stack.gam)
@@ -669,8 +666,6 @@ Comment on the results.
 ``` r
 detach ('package:gam')
 library (mgcv)
-#> Loading required package: nlme
-#> This is mgcv 1.9-3. For overview type 'help("mgcv-package")'.
 library (lattice)
 library (splines)
 
@@ -741,9 +736,6 @@ Comment on the results.
 
 ``` r
 library (partykit)
-#> Loading required package: grid
-#> Loading required package: libcoin
-#> Loading required package: mvtnorm
 fit2 <- as.party(fit)
 plot(fit2)
 ```
@@ -786,23 +778,12 @@ The asymptotic regression model represents a nonlinear regression model and in g
 
 (b)	The data below is the `Yield` of a product after a chemical treatment of different time duration. Three replicates were made at each treatment time. 
 
-| *<span style="color:#CC99FF">Time (Hrs)</span>* | *<span style="color:#CC99FF">Rep1</span>*  | *<span style="color:#CC99FF">Rep2</span>* | *<span style="color:#CC99FF">Rep3</span>* |
-| ------ | ------  | ------ | ------ |
-| 0      |	0.0000 | 0.0000 | 0.0000 |
-| 3      |	0.0846 | 0.0556 | 0.0501 |
-| 6      |	0.1072 | 0.0604 | 0.0545 |
-| 12     |	0.1255 | 0.0590 | 0.0705 |
-| 18     |	0.1671 | 0.0799 | 0.0687 |
-| 24     |	0.1988 | 0.0958 | 0.0655 |
-| 48     |	0.2927 | 0.1739 | 0.1075 |
-| 72     |	0.3713 | 0.1910 | 0.1418 |
-| 96     |	0.4773 | 0.2669 | 0.1725 |
-| 168    |	0.6158 | 0.3584 | 0.3224 |
-| 336    |	0.7297 | 0.4339 | 0.3322 |
-| 504    |	0.8083 | 0.4816 | 0.3309 |
-| 672    |	0.7019 | 0.4497 | 0.3798 |
-| 840    |	0.6038 | 0.4851 | 0.3757 |
-| 1008   |	0.7386 | 0.5332 | 0.3798 |
+
+```{=html}
+<div class="tabwid"><style>.cl-7d6dc08e{}.cl-7d5ff09e{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-7d65fd2c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-7d65fd40{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-7d6627a2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7d6627ac{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-7d6dc08e'><thead><tr style="overflow-wrap:break-word;"><th class="cl-7d6627a2"><p class="cl-7d65fd2c"><span class="cl-7d5ff09e">Time (Hrs)</span></p></th><th class="cl-7d6627a2"><p class="cl-7d65fd2c"><span class="cl-7d5ff09e">Rep1</span></p></th><th class="cl-7d6627a2"><p class="cl-7d65fd2c"><span class="cl-7d5ff09e">Rep2</span></p></th><th class="cl-7d6627a2"><p class="cl-7d65fd2c"><span class="cl-7d5ff09e">Rep3</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0000</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0000</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0000</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">3</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0846</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0556</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0501</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">6</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1072</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0604</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0545</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">12</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1255</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0590</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0705</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">18</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1671</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0799</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0687</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">24</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1988</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0958</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.0655</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">48</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.2927</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1739</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1075</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">72</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.3713</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1910</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1418</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">96</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.4773</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.2669</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.1725</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">168</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.6158</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.3584</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.3224</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">336</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.7297</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.4339</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.3322</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">504</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.8083</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.4816</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.3309</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">672</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.7019</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.4497</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.3798</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">840</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.6038</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.4851</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.3757</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">1,008</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.7386</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.5332</span></p></td><td class="cl-7d6627ac"><p class="cl-7d65fd40"><span class="cl-7d5ff09e">0.3798</span></p></td></tr></tbody></table></div>
+```
+
+
 
 <div style="margin-left: 25px; margin-right: 20px;">
 Plot the data.
@@ -820,27 +801,13 @@ Explain the term: *<span style="color:#FF9966">nonlinear regression</span>*. Use
 
 ## Detailed example: Analysis of Variance and Covariance
 
-### One-way ANOVA models
+### One-way ANOVA models {#AnovaOneWay}
 
 About 90 percent of the ozone in the atmosphere is contained in the stratosphere. Although only a small proportion of atmospheric ozone is found in the troposphere this ozone plays an important role in various climatic phenomena. Research has shown the highest amounts of ozone over the Arctic are found during the spring months of March and April, while the Antarctic has its lowest amounts of ozone during its autumn months of September and October, Atmospheric carbon dioxide not only plays an important role in global warming but its concentration is related to height above sea level and ocean temperature. In order to study relationships between ozone levels, CO_2 concentration, height above sea level, ocean and seasonality a small-scale simulation study has been undertaken. A very simple model was constructed for simulating the data called `climate.sim`. This simple simulation procedure was performed as described below. Here we show how the `climate.sim` data were subjected to various, ANOVA, regression and ANCOVA procedures.
 
 
 ``` r
 library (tidyverse)
-#> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
-#> ✔ dplyr     1.1.4     ✔ readr     2.1.5
-#> ✔ forcats   1.0.0     ✔ stringr   1.5.1
-#> ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
-#> ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-#> ✔ purrr     1.1.0     
-#> ── Conflicts ────────────────────── tidyverse_conflicts() ──
-#> ✖ purrr::accumulate() masks foreach::accumulate()
-#> ✖ dplyr::collapse()   masks nlme::collapse()
-#> ✖ dplyr::filter()     masks stats::filter()
-#> ✖ dplyr::lag()        masks stats::lag()
-#> ✖ dplyr::select()     masks MASS::select()
-#> ✖ purrr::when()       masks foreach::when()
-#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 set.seed (7343)
 ocean <- factor (c (rep ("N-Atlantic", 20), rep ("S-Atlantic", 20), 
                     rep ("Indian", 20)))
@@ -994,30 +961,472 @@ It is clear from the above table that the null hypothesis of no interaction is t
  
 #### Types of ANOVA tables
 
-When fitting a two-way ANOVA model for season and ocean to CO2, there is no statistically significant interaction effect. Notice the difference in the p-values of the following two ANOVA tables.
+Suppose we want to fit an ANOVA model for the effect of `Origin` and `AirBags` on `Max.Price` in the `Cars93` data set in package `MASS`. Notice the difference in the two ANOVA tables below.
 
 
 ``` r
-anova (lm (CO2 ~ season + ocean, data = climate.sim))
+anova (lm (Max.Price ~ AirBags + Origin, data = Cars93))
 #> Analysis of Variance Table
 #> 
-#> Response: CO2
-#>           Df Sum Sq Mean Sq F value  Pr(>F)  
-#> season     3 146.93  48.977  4.0702 0.01116 *
-#> ocean      2  44.20  22.099  1.8365 0.16919  
-#> Residuals 54 649.78  12.033                  
+#> Response: Max.Price
+#>           Df Sum Sq Mean Sq F value    Pr(>F)    
+#> AirBags    2 3462.5 1731.26 20.6885 4.182e-08 ***
+#> Origin     1  283.5  283.51  3.3879   0.06901 .  
+#> Residuals 89 7447.7   83.68                      
 #> ---
 #> Signif. codes:  
 #> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-anova (lm (CO2 ~ ocean + season, data = climate.sim))
+anova (lm (Max.Price ~ Origin + AirBags, data = Cars93))
 #> Analysis of Variance Table
 #> 
-#> Response: CO2
-#>           Df Sum Sq Mean Sq F value  Pr(>F)  
-#> ocean      2  44.20  22.099  1.8365 0.16919  
-#> season     3 146.93  48.977  4.0702 0.01116 *
-#> Residuals 54 649.78  12.033                  
+#> Response: Max.Price
+#>           Df Sum Sq Mean Sq F value    Pr(>F)    
+#> Origin     1  160.5  160.46  1.9175    0.1696    
+#> AirBags    2 3585.6 1792.78 21.4237 2.539e-08 ***
+#> Residuals 89 7447.7   83.68                      
 #> ---
 #> Signif. codes:  
 #> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
+
+R computes sums of squares for each term, based on the assumption that all terms listed above that particular term in the ANOVA table are already included in the model. The effect is that the order in which terms are specified (specifically for unbalanced data) influences the results.
+
+The R package `car` provides options to specify how sums of squares are computed:
+
+* **Type I**: Sums of squares are computed based on the assumption that all terms specified before the particular term is included in the model.
+
+* **Type II**: Sums of squares are computed according to the principle of marginality, testing each term after all others, except ignoring the term's higher-order interactions.
+
+* **Type III**: Sums of squares are computed testing each term in the model after all the others are included in the model. The computation of these sums of squares violate marginality.
+
+
+``` r
+library (car)
+anova (lm (Max.Price ~ AirBags * Origin, data = Cars93))   # type = "I"
+#> Analysis of Variance Table
+#> 
+#> Response: Max.Price
+#>                Df Sum Sq Mean Sq F value    Pr(>F)    
+#> AirBags         2 3462.5 1731.26 21.4712 2.636e-08 ***
+#> Origin          1  283.5  283.51  3.5161   0.06413 .  
+#> AirBags:Origin  2  432.8  216.38  2.6835   0.07398 .  
+#> Residuals      87 7015.0   80.63                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Anova (lm (Max.Price ~ AirBags * Origin, data = Cars93), type = "II")
+#> Anova Table (Type II tests)
+#> 
+#> Response: Max.Price
+#>                Sum Sq Df F value    Pr(>F)    
+#> AirBags        3585.6  2 22.2342 1.586e-08 ***
+#> Origin          283.5  1  3.5161   0.06413 .  
+#> AirBags:Origin  432.8  2  2.6835   0.07398 .  
+#> Residuals      7015.0 87                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Anova (lm (Max.Price ~ AirBags * Origin, data = Cars93), type = "III")
+#> Anova Table (Type III tests)
+#> 
+#> Response: Max.Price
+#>                Sum Sq Df F value    Pr(>F)    
+#> (Intercept)    6405.3  1 79.4394 6.773e-14 ***
+#> AirBags         855.9  2  5.3078  0.006684 ** 
+#> Origin          574.5  1  7.1253  0.009067 ** 
+#> AirBags:Origin  432.8  2  2.6835  0.073977 .  
+#> Residuals      7015.0 87                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+If we focus on the type II tests, we notice that the sums of squares for interaction (432.8) corresponds to the sums of squares for the last term in the type I table. The sums of squares for `Origin` (283.5) corresponds to the sums of squares value when specifying `Max.Price ~ AirBags + Origin` and the sums of squares for `AirBags` (3585.6) corresponds to the sums of squares when specifying `Max.Price ~ Origin + AirBags`.
+
+In the ANOVA table with type III tests, the interaction sums of squares agrees with the other two tables, but because the marginality principle is violated, the sums of squares for the main effects are different. Care should be taken when testing hypotheses with type III sums of squares.
+
+### One-way ANCOVA models
+
+A scatterplot of CO2 versus height suggests the possibility of a linear relationship between these two numeric variables. Check the above statement.
+
+This means that the ANOVA model is not the correct model to use for the `climate.sim` data. Instead we should consider a one-way ANCOVA model with height as a *<span style="color:#FF9966">concomitant variable</span>*:
+
+$$
+Y_{ij} = \mu + \alpha_i + \beta_i x_{ij} + \epsilon_{ij}
+$$
+
+where $i = 1, 2, \dots, k$; $j = 1, 2, \dots, n_i$.
+
+In this model $x_{ij}$ represents a continuous (or numeric) variable that is measured together with the dependent continuous variable $Y_{ij}$. If variable $x$ has a significant relationship with the dependent (response) variable the values of the latter should be adjusted before performing a one-way ANOVA. The researcher must first ascertain whether the regression coefficients (i.e. the slopes of the regression lines) of the different groups are the same. Therefore, <span style="color:#FF9966">Step I</span> of a covariance analysis investigates
+
+$$
+H_{01}: \beta_1 = \beta_2 = \dots = \beta_k
+$$
+
+and if this is not the case, then the analysis proceeds by (i) estimating the regression parameters $\beta_1, \beta_2, \dots, \beta_k$ for every group/treatment/level individually and (ii) by investigating the differences between the $y$-means of the $k$ groups at specific values of $x$.  On the other hand, if Step I shows that it can be assumed that $\beta_1 = \beta_2 = \dots = \beta_k = (\beta)$ then the $\beta_i$ in the model is replaced by the common $\beta$ and <span style="color:#FF9966">Step II</span> is carried out. Step II then consists of determining whether there is a significant regression relationship, i.e. the null hypothesis
+
+$$
+H_{02}: \beta = 0
+$$
+
+is tested. If it can be assumed that $\beta = 0$, then an ordinary analysis of variance can be carried out. If $\beta \neq 0$, <span style="color:#FF9966">Step III</span> of ANCOVA is executed which first consists of  adjusting the $y_{ij}$-observations for their regression relationship with the $\{x_{ij} \}$. An analysis of variance is then carried out on the adjusted $\{y_{ij} \}$ in order to ascertain whether the levels of the experimental factor have similar effects or not.
+
+As an example we will again make use of the data of the `climate.sim` data set constructed above.
+
+(a)	Obtain a scatterplot of CO2  as a function of height. Use different colours for the three oceans.  What can be deduced from the scatterplot?
+
+(b)	Carry out a one-way ANOVA of CO2 measured in the three different ocean locations. 
+
+(c)	 Perform Step I of a one-way ANCOVA using the commands:
+
+
+``` r
+one.way.ancova.I <- lm (CO2 ~ ocean + height + ocean:height, data = climate.sim)
+Anova(one.way.ancova.I, type = "II")
+#> Anova Table (Type II tests)
+#> 
+#> Response: CO2
+#>              Sum Sq Df F value    Pr(>F)    
+#> ocean         42.94  2  1.8288 0.1704134    
+#> height       156.47  1 13.3290 0.0005907 ***
+#> ocean:height   6.31  2  0.2689 0.7652300    
+#> Residuals    633.93 54                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+coefficients(one.way.ancova.I)
+#>            (Intercept)        oceanN-Atlantic 
+#>          352.451112469            0.822464321 
+#>        oceanS-Atlantic                 height 
+#>            0.155359967           -0.010909055 
+#> oceanN-Atlantic:height oceanS-Atlantic:height 
+#>            0.002428426            0.004214614
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+*Interpretation of the ANOVA table*
+
+First look at interaction effect in the anova table. It provides information on whether the hypothesis $\beta_1 = \beta_2 = \beta_3$ should be rejected. Since the conclusion is that all three β’s are the same (differences are negligent) then (and only then) inspect the line for the concomitant variable height to decide if the common slope $\beta = 0$. This is Step II.  If it can be concluded that the common slope is zero then the ANOVA of section \@ref(AnovaOneWay) is performed. 
+
+In Step II  it is concluded that the common slope is not equal to zero so we perform Step III by calling,  for example,  
+</div>
+
+
+``` r
+one.way.ancova.III <- lm (CO2 ~ ocean + height, data = climate.sim)
+Anova (one.way.ancova.III, type = "II")
+#> Anova Table (Type II tests)
+#> 
+#> Response: CO2
+#>           Sum Sq Df F value    Pr(>F)    
+#> ocean      42.94  2  1.8778 0.1624241    
+#> height    156.47  1 13.6864 0.0004941 ***
+#> Residuals 640.24 56                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+*Note that if you are not using type II sums of squares, but the default `anova()` function in the latter call the numeric concomitant variable MUST PRECEDE the categorical variable on the right-hand side of the tilde because Step III is only carried out on condition that Step II has indicated a significant relationship between the concomitant variable and the response variable.* The line corresponding to the factor variable ocean in the analysis of variance table is then inspected to conclude whether the effects associated with the respective levels of the factor variable are significantly different.
+
+(i) In the example above we conclude that the three β’s in the ANCOVA model are the same and that the hypothesis $\beta = 0$ is rejected. In Step III we conclude that $\alpha_1 = \alpha_2 = \alpha_3$. Obtain the estimated regression equation using the following instructions:
+</div>
+
+
+``` r
+one.way.ancova.final <- lm (CO2 ~ height, data = climate.sim)
+coefficients (one.way.ancova.final)
+#>   (Intercept)        height 
+#> 352.723551558  -0.008562195
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+(ii) Add the regression line to the scatterplot constructed in (a). See Figure \@ref(fig:CO2oceanHeight).
+</div>
+
+<div class="figure">
+<img src="11-modelling_files/figure-html/CO2oceanHeight-1.png" alt="Scatterplot of CO2 vs height with a single regression line." width="100%" />
+<p class="caption">(\#fig:CO2oceanHeight)Scatterplot of CO2 vs height with a single regression line.</p>
+</div>
+
+<div style="margin-left: 25px; margin-right: 20px;">
+(iii)	Inspection of Figure \@ref(fig:CO2oceanHeight) shows a negative relationship between CO2 and height but there is no real difference between the observations from the three different oceanic locations.
+</div>
+
+(d)	Perform Step I of a one-way ANCOVA of CO2 for the different seasons with height as concomitant variable.
+
+
+``` r
+one.way.ancova.I <- lm (CO2 ~ season + height + season:height, 
+                        data = climate.sim)
+Anova(one.way.ancova.I, type = "II")
+#> Anova Table (Type II tests)
+#> 
+#> Response: CO2
+#>               Sum Sq Df F value    Pr(>F)    
+#> season        184.54  3  7.4808 0.0002966 ***
+#> height        195.34  1 23.7559 1.069e-05 ***
+#> season:height  71.04  3  2.8799 0.0446297 *  
+#> Residuals     427.59 52                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+coefficients (one.way.ancova.I)
+#>         (Intercept)        seasonautumn        seasonwinter 
+#>       357.383726918        -9.397968637        -3.706636570 
+#>        seasonspring              height seasonautumn:height 
+#>        -3.832972292        -0.018192410         0.015544922 
+#> seasonwinter:height seasonspring:height 
+#>         0.012766975         0.006214125
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+*Interpretation of the ANOVA table*
+
+First look at the line for interaction. This line provides information on whether the hypothesis $\beta_1 = \beta_2 = \beta_3 = \beta_3$ should be rejected (as is the case here. Why?)  Therefore we cannot proceed to Step II.  
+
+(i)	In the example above we conclude that the three β’s in the ANCOVA model are not the same. Obtain the estimated regression equations for each of the seasons using the following instructions:
+</div>
+
+
+``` r
+one.way.ancova.sep.reglns <- lm (CO2 ~ -1 + season/height, data = climate.sim)
+coefficients (one.way.ancova.sep.reglns)
+#>        seasonsummer        seasonautumn        seasonwinter 
+#>       357.383726918       347.985758281       353.677090348 
+#>        seasonspring seasonsummer:height seasonautumn:height 
+#>       353.550754626        -0.018192410        -0.002647488 
+#> seasonwinter:height seasonspring:height 
+#>        -0.005425435        -0.011978285
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+(ii) Add the regression lines to the scatterplot of CO2 vs height. See Figure \@ref(fig:CO2seasonHeight).
+</div>
+
+
+```
+#> `geom_smooth()` using formula = 'y ~ x'
+```
+
+<div class="figure">
+<img src="11-modelling_files/figure-html/CO2seasonHeight-1.png" alt="Scatterplot of CO2 vs height with a separate regression line for each of the seasons." width="100%" />
+<p class="caption">(\#fig:CO2seasonHeight)Scatterplot of CO2 vs height with a separate regression line for each of the seasons.</p>
+</div>
+
+<div style="margin-left: 25px; margin-right: 20px;">
+(iii)	Inspection of Figure \@ref(fig:CO2seasonHeight) shows that the height has a much smaller effect in autumn and winter than in spring and summer. 
+
+It is clear from Figure \@ref(fig:CO2_season_height) that the outcome of a test of the hypothesis that $\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4$ depends on the value of height where the test is performed. At height = 600 the test that $\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4$ is performed as follows:
+
+First notice that the Residual sum of squares in the ANOVA table above is $RSSE=427.59$ with $52$ degrees of freedom. At height = 600 execute:
+</div>
+
+
+``` r
+Anova (lm (CO2 ~ season:(I(height-600)) , data = climate.sim), type = "II")
+#> Anova Table (Type II tests)
+#> 
+#> Response: CO2
+#>                        Sum Sq Df F value    Pr(>F)    
+#> season:I(height - 600) 318.53  4  8.3841 2.353e-05 ***
+#> Residuals              522.39 55                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+Now calculate
+
+$$
+F_0 = \frac{\frac{522.39 - 427.59}{55-52}}{\frac{427.59}{52}} = 3.8429
+$$
+
+and the corresponding p-value using the instruction 
+</div>
+
+
+``` r
+1 - pf (3.8429, 3, 52)
+#> [1] 0.01468944
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+At height = 400
+</div>
+
+
+``` r
+Anova (lm (CO2 ~ season:(I(height-400)) , data = climate.sim), type = "II")
+#> Anova Table (Type II tests)
+#> 
+#> Response: CO2
+#>                        Sum Sq Df F value    Pr(>F)    
+#> season:I(height - 400) 245.34  4  5.6641 0.0006846 ***
+#> Residuals              595.57 55                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+Now 
+
+$$
+F_0 = \frac{\frac{595.57 - 427.59}{55-52}}{\frac{427.59}{52}} = 6.80945
+$$
+
+and
+</div>
+
+
+``` r
+1 - pf (6.80945, 3, 52)
+#> [1] 0.0005874415
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+What conclusions can be drawn from the tests at heights of 600 and 400 respectively when using a 1% significance level? Conjecture on the conclusions following a multiple testing procedure after a significant anova result. 
+</div>
+
+(e)	Perform Step I of a one-way ANCOVA of ozone for the three oceanic locations with height as concomitant variable.
+
+
+``` r
+one.way.ancova.I <- lm (ozone ~ ocean + height + ocean:height, data = climate.sim)
+Anova(one.way.ancova.I, type = "II")
+#> Anova Table (Type II tests)
+#> 
+#> Response: ozone
+#>              Sum Sq Df   F value Pr(>F)    
+#> ocean         40.28  2  127.6912 <2e-16 ***
+#> height       878.66  1 5571.0063 <2e-16 ***
+#> ocean:height   0.52  2    1.6603 0.1996    
+#> Residuals      8.52 54                     
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+coefficients(one.way.ancova.I)
+#>            (Intercept)        oceanN-Atlantic 
+#>           5.999989e+00           9.596618e-01 
+#>        oceanS-Atlantic                 height 
+#>           2.387163e+00           2.054280e-02 
+#> oceanN-Atlantic:height oceanS-Atlantic:height 
+#>           8.989381e-05          -9.691870e-04
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+*Interpretation of the ANOVA table*
+
+First look at the line for interaction. We conclude that all three β’s are the same (differences are negligible) and then (and only then) inspect the line for continuous variable height to decide if the common slope β=0. This is Step II.  Since it is concluded that the common slope is not zero we proceed to Step III. 
+</div>
+
+
+``` r
+one.way.ancova.III <- lm (ozone ~ ocean + height, data = climate.sim)
+Anova(one.way.ancova.III, type = "II")
+#> Anova Table (Type II tests)
+#> 
+#> Response: ozone
+#>           Sum Sq Df F value    Pr(>F)    
+#> ocean      40.28  2  124.75 < 2.2e-16 ***
+#> height    878.66  1 5442.66 < 2.2e-16 ***
+#> Residuals   9.04 56                      
+#> ---
+#> Signif. codes:  
+#> 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+coefficients(one.way.ancova.I)
+#>            (Intercept)        oceanN-Atlantic 
+#>           5.999989e+00           9.596618e-01 
+#>        oceanS-Atlantic                 height 
+#>           2.387163e+00           2.054280e-02 
+#> oceanN-Atlantic:height oceanS-Atlantic:height 
+#>           8.989381e-05          -9.691870e-04
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+The line corresponding to the factor variable ocean in the analysis of variance table is inspected to conclude if the effects associated with the respective levels of the factor variable are significantly different.
+
+(i)	In the example above we conclude that the three β’s in the ANCOVA model are the same and that the hypothesis β=0 is rejected. In Step III we conclude that the hypothesis $\alpha_1 = \alpha_2 = \alpha_3$ is also rejected. Obtain the estimated regression equations using the following instructions:
+</div>
+
+
+``` r
+one.way.ancova.reglns <- lm (ozone ~ ocean + height, data = climate.sim)
+coefficients(one.way.ancova.reglns)
+#>     (Intercept) oceanN-Atlantic oceanS-Atlantic 
+#>      6.13127497      0.99327355      2.00694355 
+#>          height 
+#>      0.02020925
+```
+
+<div style="margin-left: 25px; margin-right: 20px;">
+(ii)	Obtain a scatterplot of ozone as a function of height. Use different colours for the three oceans. Add a separate regression line for each of the oceans (see Figure \@ref(fig:ozoneOceanHeight)).
+
+(iii)	Inspection of Figure \@ref(fig:ozoneOceanHeight) shows three parallel regression lines, since $\beta_1 = \beta_2 = \beta_3$, with different intercepts. The hypothesis that $\alpha_1 = \alpha_2 = \alpha_3$ is rejected irrespective of the height above sea level.
+</div>
+
+<div class="figure">
+<img src="11-modelling_files/figure-html/ozoneOceanHeight-1.png" alt="Scatterplot of ozone vs height with a separate parallel regression lines for each of the different oceanic locations." width="100%" />
+<p class="caption">(\#fig:ozoneOceanHeight)Scatterplot of ozone vs height with a separate parallel regression lines for each of the different oceanic locations.</p>
+</div>
+
+The steps of a one-way analysis of covariance is illustrated in the diagram in Figure \@ref(fig:ANCOVA).
+ 
+<div class="figure">
+<img src="pics/ANCOVA.jpg" alt="Diagrammatic process flow for a one-way analysis of covariance." width="100%" />
+<p class="caption">(\#fig:ANCOVA)Diagrammatic process flow for a one-way analysis of covariance.</p>
+</div>
+
+### Maize Exercise
+
+::: {style="color: #80CC99;"}
+
+A researcher investigates if three maize varieties give the same yield. The following data are obtained according to the requirements of a linear model: 
+
+
+```{=html}
+<div class="tabwid"><style>.cl-8174ec48{}.cl-8167eba6{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-816cb122{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-816cb136{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-816cda44{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-816cda4e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-816cda4f{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-8174ec48'><thead><tr style="overflow-wrap:break-word;"><th  colspan="6"class="cl-816cda44"><p class="cl-816cb122"><span class="cl-8167eba6">VARIETY</span></p></th></tr><tr style="overflow-wrap:break-word;"><th  colspan="2"class="cl-816cda44"><p class="cl-816cb122"><span class="cl-8167eba6">KB1</span></p></th><th  colspan="2"class="cl-816cda44"><p class="cl-816cb122"><span class="cl-8167eba6">KB2</span></p></th><th  colspan="2"class="cl-816cda44"><p class="cl-816cb122"><span class="cl-8167eba6">KB3</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-816cda4e"><p class="cl-816cb122"><span class="cl-8167eba6">Yield per hectare</span></p></th><th class="cl-816cda4e"><p class="cl-816cb122"><span class="cl-8167eba6">Rainfall</span></p></th><th class="cl-816cda4e"><p class="cl-816cb122"><span class="cl-8167eba6">Yield per hectare</span></p></th><th class="cl-816cda4e"><p class="cl-816cb122"><span class="cl-8167eba6">Rainfall</span></p></th><th class="cl-816cda4e"><p class="cl-816cb122"><span class="cl-8167eba6">Yield per hectare</span></p></th><th class="cl-816cda4e"><p class="cl-816cb122"><span class="cl-8167eba6">Rainfall</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">17.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">95.90</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">37.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">114.10</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">18.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">98.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">45.00</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">116.20</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">42.15</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">119.28</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">13.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">117.60</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">38.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">116.20</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">48.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">121.94</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">52.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">105.28</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">33.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">93.10</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">32.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">97.02</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">17.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">94.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">18.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">81.34</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">53.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">102.90</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">18.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">92.40</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">21.25</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">115.36</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">38.75</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">91.70</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">52.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">110.74</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6"></span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6"></span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">22.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">102.76</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">32.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">105.70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6"></span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6"></span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">17.50</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6">78.54</span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6"></span></p></td><td class="cl-816cda4f"><p class="cl-816cb136"><span class="cl-8167eba6"></span></p></td></tr></tbody></table></div>
+```
+
+
+(a)	Plot the given data as a single scatterplot that distinguishes between the three varieties.	
+(b) What hypotheses and models are of importance when considering a covariance analysis of the given data?
+
+(c) Perform a detailed one-way ANCOVA.  
+
+(d) Obtain estimates for the regression coefficients in the regression equations.
+
+$$
+Y_{ij} = \mu + \beta x_{ij} + \epsilon_{ij}, \hspace{1cm} i = 1, 2, \dots, k; j = 1, 2, \dots, n_i
+$$
+
+$$
+Y_{ij} = \mu + \beta_i x_{ij} + \epsilon_{ij}, \hspace{1cm} i = 1, 2, \dots, k; j = 1, 2, \dots, n_i
+$$
+
+(e) Interpret the results of the analysis of covariance using the output of `lm()`.
+
+:::
+
+### Heart rate Exercise
+
+::: {style="color: #80CC99;"}
+
+@MillikenJohnson2002 discuss an investigation by a sport physiologist of the effect of three exercise programs (EX1, EX2 and EX3) on heart rate (HR) of males between 28 and 35 years of age.  The experiment consists of the random allocation of a subject to one of the programs. The subject then had to follow the exercise program for 8 weeks.  On finishing the program each subject had to complete a 6 minutes run and then had his heart rate (EHR) measured. As a measure of their fitness before entering the experiment each subject had also his resting heart rate (AHR) determined prior to the experiment. The following data were obtained:
+
+
+```{=html}
+<div class="tabwid"><style>.cl-81c3504a{}.cl-81959ace{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-81a12d58{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-81a12d6c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-81a2d180{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81a2d216{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81a2d220{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-81c3504a'><thead><tr style="overflow-wrap:break-word;"><th  colspan="6"class="cl-81a2d180"><p class="cl-81a12d58"><span class="cl-81959ace">EXERCISE PROGRAM</span></p></th></tr><tr style="overflow-wrap:break-word;"><th  colspan="2"class="cl-81a2d180"><p class="cl-81a12d58"><span class="cl-81959ace">EX1</span></p></th><th  colspan="2"class="cl-81a2d180"><p class="cl-81a12d58"><span class="cl-81959ace">EX2</span></p></th><th  colspan="2"class="cl-81a2d180"><p class="cl-81a12d58"><span class="cl-81959ace">EX3</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-81a2d216"><p class="cl-81a12d58"><span class="cl-81959ace">HER</span></p></th><th class="cl-81a2d216"><p class="cl-81a12d58"><span class="cl-81959ace">AHR</span></p></th><th class="cl-81a2d216"><p class="cl-81a12d58"><span class="cl-81959ace">HER</span></p></th><th class="cl-81a2d216"><p class="cl-81a12d58"><span class="cl-81959ace">AHR</span></p></th><th class="cl-81a2d216"><p class="cl-81a12d58"><span class="cl-81959ace">HER</span></p></th><th class="cl-81a2d216"><p class="cl-81a12d58"><span class="cl-81959ace">AHR</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">118</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">56</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">148</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">60</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">153</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">56</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">138</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">59</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">159</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">62</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">150</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">58</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">142</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">62</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">162</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">65</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">158</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">61</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">147</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">68</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">157</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">66</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">152</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">64</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">160</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">71</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">169</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">73</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">160</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">72</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">166</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">76</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">164</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">75</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">154</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">75</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">165</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">83</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">179</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">84</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">155</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">171</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">87</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">177</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">88</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">164</span></p></td><td class="cl-81a2d220"><p class="cl-81a12d6c"><span class="cl-81959ace">86</span></p></td></tr></tbody></table></div>
+```
+
+
+Analyze the data and discuss the results. 
+
+:::

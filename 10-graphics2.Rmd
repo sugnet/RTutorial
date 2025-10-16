@@ -223,7 +223,6 @@ my.func <- function()
 my.func ()
 ```
 
-
 ### Multiple plots with identical axes {#multAxes}
 
 How can various graphs with identical axes be obtained?  Show how this can be done by graphing the sorting time for the three procedures considered in \@ref(matplot) above in three separate plots in the same graph window.

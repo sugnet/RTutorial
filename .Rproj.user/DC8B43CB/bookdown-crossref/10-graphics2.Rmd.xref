@@ -1,7 +1,7 @@
 h1:graphics2 R graphics: Round II
 h2:graphics-parameters Graphics parameters
 h2:layout-of-graphics Layout of graphics
-fig:fmdeaths Plots of the fdeaths and mdeaths data sets
+fig:fmdeaths Plots of the fdeaths and mdeaths data sets.
 h2:low-level-plotting-commands Low-level plotting commands
 h2:using-the-plotting-commands Using the plotting commands
 h3:matplot Multiple lines or groups of points on the same graph

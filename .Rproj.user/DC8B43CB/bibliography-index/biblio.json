@@ -154,6 +154,32 @@
         {
             "author": [
                 {
+                    "family": "Milliken",
+                    "given": "G A"
+                },
+                {
+                    "family": "Johnson",
+                    "given": "D E"
+                }
+            ],
+            "id": "MillikenJohnson2002",
+            "issued": {
+                "date-parts": [
+                    [
+                        2002
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1584880837",
+            "publisher": "Chapman & Hall / CRC press",
+            "publisher-place": "New York",
+            "title": "Analysis of messy data",
+            "type": "book",
+            "volume": "III"
+        },
+        {
+            "author": [
+                {
                     "family": "Spector",
                     "given": "Phil"
                 }
