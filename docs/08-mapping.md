@@ -19,9 +19,14 @@ In this chapter we continue the study the art of R programming. An important top
 
 * What is the result of the instruction `x[ ,!apply(is.na(x), 2,any)]`?
 
+::: {style="color: #80CC99;"}
+
 * Set the random seed to 137921. Obtain a matrix $\mathbf{A}:10 \times 6$ of random $n(0, 1)$ values. Use `apply()` to find the $10\%$ trimmed mean of each row.
+
+:::
+
 </div>    
-    
+
 (c)	The function `sweep()`.
 
     (i)	What arguments are required?
@@ -29,12 +34,13 @@ In this chapter we continue the study the art of R programming. An important top
     (i)	What are the similarities and differences between the arguments of `sweep()` and `apply()`?
 
     (iii)	Normalise the columns of a given matrix to have zero means and unit variances using `scale()`, `apply()` and `sweep()`. Which method is the fastest?
-    
+
 (d)	The function `ifelse()`.
 
 The usage is illustrated in the following diagram.
 
-<img src="pics/ifelse.jpg" width="100%" />
+
+\includegraphics[width=1\linewidth]{pics/ifelse} 
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (i)	Note the difference between the function `ifelse()` and the control statement: `if` - `else`.
@@ -79,7 +85,7 @@ lapply (split (data.frame (state.x77),
                cut (data.frame (state.x77)$Illiteracy, 3)), pairs)
 ```
 
-<img src="08-mapping_files/figure-html/splitExample-1.png" width="672" /><img src="08-mapping_files/figure-html/splitExample-2.png" width="672" /><img src="08-mapping_files/figure-html/splitExample-3.png" width="672" />
+![](08-mapping_files/figure-latex/splitExample-1.pdf)<!-- --> ![](08-mapping_files/figure-latex/splitExample-2.pdf)<!-- --> ![](08-mapping_files/figure-latex/splitExample-3.pdf)<!-- --> 
 
 ```
 #> $`(0.498,1.27]`
@@ -105,7 +111,11 @@ par(ask=TRUE)
 before calling the function `lapply()`.
 </div>    
 
+::: {style="color: #80CC99;"}
+
 (c)	Use `lapply()` to produce histograms of each of the variables in the `state.x77` data set such that each histogram has as title the correct variable name. The $x$- and $y$-axis must also be labelled correctly.
+
+:::
 
 ## The functions: `mapply()`, `rapply()` and `Vectorize()`
 
@@ -128,9 +138,13 @@ mapply (function(x,y,z) { list (min (c(x,y,z)), max (c(x,y,z))) },
 
 (a)	Study the arguments of `tapply()`.
 
+::: {style="color: #80CC99;"}
+
 (b)	Consider the `LifeCycleSavings` data set. Create an object `ddpigrp` that groups the `LifeCycleSavings` data into four groups G1, G2, G3 and G4 such that G1 members have `ddpi` within $(0, 2.0]$, G2 members have `ddpi` within $(2.0, 3.5]$,  G3 members have `ddpi` within $(3.5, 5.0]$, and G4 members have `ddpi`  larger than $5.0$. Use  `tapply()` to obtain the mean aggregate personal savings of each of  the groups defined by `ddpigrp`.
 
 (c)	If it is needed to break down a vector by more than one categorical variable, a list containing the grouping variables is used as the second argument to `tapply()`. Illustrate this by finding the mean aggregate personal savings of the groups in `ddpigrp` broken down by the `pop15` rating.
+
+:::
 
 (d)	In order to use `tapply()` on more than one variable simultaneously `apply()` can be used to map `tapply()` to each of the variables in turn. Study the following command and its output carefully:
 
@@ -241,15 +255,15 @@ centre <- function(x, type)
 
 x <- rcauchy(10)
 x
-#>  [1] -1.80200491 -2.65459314 -4.50564590  0.64702874
-#>  [5]  0.15695586  0.30853981  0.07360041 -9.63620378
-#>  [9]  4.65920079  0.94245515
+#>  [1]  -3.57418193  -4.79099735 -79.33502520  -0.56487078
+#>  [5]  -2.26986973   0.10738869   0.39858952   0.04250825
+#>  [9]  -0.14499379   1.45061262
 centre(x,"mean")
-#> [1] -1.181067
+#> [1] -8.868084
 centre(x,"median")
-#> [1] 0.1152781
+#> [1] -0.3549323
 centre(x,"trimmed")
-#> [1] -0.854208
+#> [1] -1.349553
 ```
 
 (h)	The two logical control operators `&&` and `||` are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators `&` and `|` which operate on vectors/matrices.
@@ -398,7 +412,7 @@ The functions `system.time()` and `proc.time()` provide information regarding th
 ``` r
 proc.time()   # called with no arguments
 #>    user  system elapsed 
-#>    1.25    0.20    6.36
+#>    0.57    0.04    3.01
 ```
 
 (b) `system.time(expr)` calls the function `proc.time()`, evaluates `expr`, and then calls `proc.time()` once more, returning the difference between the two `proc.time()` calls:
@@ -408,16 +422,18 @@ proc.time()   # called with no arguments
 system.time (hist (rev (sort (rnorm (1000000)))))
 ```
 
-<img src="08-mapping_files/figure-html/systemtimeExample-1.png" width="672" />
+![](08-mapping_files/figure-latex/systemtimeExample-1.pdf)<!-- --> 
 
 ```
 #>    user  system elapsed 
-#>    0.16    0.01    0.18
+#>    0.18    0.00    0.20
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
 Note that user and system times do not necessarily add up to elapsed time exactly.
 </div>   
+
+::: {style="color: #80CC99;"}
 
 (c)	Write the necessary code using `proc.time()` directly to obtain the execution time of `hist (rev (sort (rnorm (1000000))))`.
 
@@ -432,7 +448,9 @@ Note that user and system times do not necessarily add up to elapsed time exactl
 <div style="margin-left: 25px; margin-right: 20px;">
 Use `var()` and `rnorm()` to compute covariance matrices of different sizes $p$ from samples varying in size $n$. Study the role of $n$ and $p$ in the effectiveness (economy in execution time) of the above three methods. Display the results graphically. Remember that for valid comparisons the three methods must be executed with identical samples.
 </div>   
-   
+
+:::
+
 ## The calling of functions with argument lists
 
 (a)	The function `do.call()` provides an alternative to the usual method of calling  functions by name. It allows specifying the name of the function with its arguments in the form of a list:
@@ -481,7 +499,7 @@ Suppose we would like to investigate the body of function `plot()`. We know that
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x00000209a0d689c8>
+#> <bytecode: 0x000001ecea12a8f0>
 #> <environment: namespace:base>
 ```
 
@@ -501,11 +519,10 @@ methods(plot) # repertoire of methods for FUNCTION plot()
 #> [17] plot.mlm*           plot.ppr*          
 #> [19] plot.prcomp*        plot.princomp*     
 #> [21] plot.profile*       plot.profile.nls*  
-#> [23] plot.R6*            plot.raster*       
-#> [25] plot.spec*          plot.stepfun       
-#> [27] plot.stl*           plot.table*        
-#> [29] plot.ts             plot.tskernel*     
-#> [31] plot.TukeyHSD*     
+#> [23] plot.raster*        plot.spec*         
+#> [25] plot.stepfun        plot.stl*          
+#> [27] plot.table*         plot.ts            
+#> [29] plot.tskernel*      plot.TukeyHSD*     
 #> see '?methods' for accessing help and source code
 methods(class="lm")  # what methods are available for CLASS lm
 #>  [1] add1           alias          anova         
@@ -589,12 +606,15 @@ unique (questdata, MARGIN = 2)
 #> [10,] "b" "c" "a" "d"
 ```
 
-
 (ii)	Examine Table \@ref(tab:MatrixFunc) and carefully describe the behaviour of the functions `duplicated()` and `unique()`.
+
+::: {style="color: #80CC99;"}
 
 (iii)	Write an R function, say `full2resp` to obtain the response pattern representation of questionnaire data like those given above. Test your function on `questdata`.
 
 (iv)	Write an R function, say `resp2full` to obtain the full data set given its response pattern representation.  Test your function on the response pattern representation of the `questdata`.
+
+:::
 </div>    
 
 ## Recursion
@@ -690,15 +710,19 @@ Recursiontest(6)
 #> NULL
 ```
 
+::: {style="color: #80CC99;"}
+
 (c)	Use recursion and the function `Recall()` to write an R function to calculate $x!$.
 
 (d)	Use recursion to write an R function that generates a matrix  whose rows contain subsets of size $r$  of the first $n$ elements of the vector `v`.   Ignore the possibility of repeated values in `v` and give this vector the default value of `1:n`.
+
+:::
 
 ##	Environments in R
 
 Study the following parts from the *R Language definition Manual*:  § 3.5 Scope of variables; Chapter 4:  *Functions*.
 
-Consider an R function `xx(argument)`.  Write an R function to add a constant to the correct object (i.e. the object in the correct environment) that corresponds to `argument`.  In order to answer this question, you must determine in which environment `argument` exists and evaluation must take place in this environment.  Possible candidates to consider are the *<span style="color:#3399FF">parent frame</span>*, the *<span style="color:#3399FF">global environment</span>* and the search list.   Assume that only the first data basis on the search list is not read-only so that in cases where argument can be found anywhere in the search list it can be assigned to the first data basis. *Hint*:  Study how the following functions work: `assign()`, `deparse()`, `invisible()`, `exists()`, `substitute()`, `sys.parent()`. 
+Consider an R function `xx(argument)`.  Write an R function to add a constant to the correct object (i.e. the object in the correct *<span style="color:#3399FF">environment</span>*) that corresponds to `argument`.  In order to answer this question, you must determine in which *<span style="color:#3399FF">environment</span>* `argument` exists and evaluation must take place in this *<span style="color:#3399FF">environment</span>*.  Possible candidates to consider are the *<span style="color:#3399FF">parent frame</span>*, the *<span style="color:#3399FF">global environment</span>* and the search list.   Assume that only the first data basis on the search list is not read-only so that in cases where argument can be found anywhere in the search list it can be assigned to the first data basis. *Hint*:  Study how the following functions work: `assign()`, `deparse()`, `invisible()`, `exists()`, `substitute()`, `sys.parent()`. 
 
 ## “Computing on the language”
 
@@ -768,6 +792,8 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
+::: {style="color: #80CC99;"}
+
 Adjust the shiny app above by adding three more input sources:
 
 i.	The number of observations to be generated.
@@ -780,6 +806,8 @@ ii.	Selecting the mean vector for the bivariate normal from the following option
 * $\mathbf{\mu}' = [8, 207]$
 
 iii.	Having a series of radio buttons to choose the colour for the observations in the plot.
+
+:::
 
 ## Exercise
 

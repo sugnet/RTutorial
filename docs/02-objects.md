@@ -81,8 +81,9 @@ cc
 objects()
 #> [1] "aa" "Aa" "bb" "cc" "yy"
 aa
-#>  [1]  0.4021181  1.1233729 -0.2290611 -2.0273101 -0.4104113
-#>  [6]  0.7055209  0.4064425 -0.7636759 -1.5502007 -0.3507999
+#>  [1] -1.30237657  1.35234865 -0.32712077  0.32666819
+#>  [5]  0.12642658 -0.39484180 -0.72774624  0.09173947
+#>  [9]  0.83248656  0.49906948
 bb
 #> [1] "a" "b" "c"
 objects()[3]
@@ -214,13 +215,13 @@ mode(y)
 
 (f)	Objects in R are *<span style="color:#FF9966">vectors</span>*,  *<span style="color:#FF9966">functions</span>* or *<span style="color:#FF9966">lists</span>*.  There are no scalars - instead vectors of length one are used. In addition to the above three types, there are several other types of objects.
 
-(g)	Objects that are created during a session are permanently stored in the <span style="color:#FFB3B3">.RData</span> file in the folder containing the workspace (unless not saved at termination).
+(g)	Objects that are created during a session are permanently stored in the *<span style="color:#FF9696">.RData</span>* file in the folder containing the *<span style="color:#3399FF">workspace</span>* (unless not saved at termination).
 
 (h)	Objects that are created within a function exist only for as long as the function is being executed. 
 
-(i)	Use of `rm()` and `rm(list = ListOfNames)` to remove objects from the workspace.
+(i)	Use of `rm()` and `rm(list = ListOfNames)` to remove objects from the *<span style="color:#3399FF">workspace</span>*.
 
-(j)	Use of `objects()` or equivalently `ls()` to obtain a list of object names in a data base (by default the workspace). Note the optional arguments `pos`, `all.names` and `pattern` to specify which database to be considered and what object names to include. 
+(j)	Use of `objects()` or equivalently `ls()` to obtain a list of object names in a data base (by default the *<span style="color:#3399FF">workspace</span>*). Note the optional arguments `pos`, `all.names` and `pattern` to specify which database to be considered and what object names to include. 
 
 (k)	How can an object be printed to the screen?
 
@@ -453,7 +454,7 @@ In order to understand how objects are found by R it is necessary to have some u
 *	Parent environment 
 *	Inheritance.
 
-The mechanism that R uses to organize objects is based on frames and environments. A *<span style="color:#FF9966">frame</span>* is a collection of named objects and an *<span style="color:#FF9966">environment</span>* consists of a frame together with a pointer or reference to another environment called the *<span style="color:#FF9966">parent environment</span>*. Environments are nested so that the *<span style="color:#FF9966">parent environment</span>* is the environment that directly contains the current environment. At the start of an R session a *<span style="color:#3399FF">workspace</span>* is created which always has an associate environment, the *<span style="color:#FF9966">global environment</span>*. The global environment occupies the first position on the *<span style="color:#FF9966">search path</span>* and is accessed by a call to `globalenv()`. Packages and databases can be added to the search path by a call to `attach()` and removed from the search path by a call to `detach()`. 
+The mechanism that R uses to organize objects is based on frames and environments. A *<span style="color:#FF9966">frame</span>* is a collection of named objects and an *<span style="color:#FF9966">environment</span>* consists of a frame together with a pointer or reference to another environment called the *<span style="color:#FF9966">parent environment</span>*. Environments are nested so that the *<span style="color:#3399FF">parent environment</span>* is the environment that directly contains the current *<span style="color:#3399FF">environment</span>*. At the start of an R session a *<span style="color:#3399FF">workspace</span>* is created which always has an associated environment, the *<span style="color:#3399FF">global environment</span>*. The global environment occupies the first position on the *<span style="color:#FF9966">search path</span>* and is accessed by a call to `globalenv()`. Packages and databases can be added to the search path by a call to `attach()` and removed from the search path by a call to `detach()`. 
 
 *	What is an R *<span style="color:#FF9966">package</span>*?  What is the difference between *<span style="color:#FF9966">installing</span>* and *<span style="color:#FF9966">loading</span>* a package?
 *	Work through the following example:
@@ -526,7 +527,7 @@ environmentName(parent.env(parent.env(parent.env(.GlobalEnv))))
 #> [1] "package:grDevices"
 ```
 
-When the R evaluator looks for an object and it cannot find the name in the global environment it will search the parent of the global environment. It will carry on the search along the search path until the first occurrence of the name.  If the name is not found it will return the message `Error: object 'xx' not found`. The usage of the double colon `::` and the triple colon `:::` is to access the intended object when more than one object with the same name exist on the search path.  These two operators use the *<span style="color:#FF9966">namespace</span>* facility of R packages. The namespace of a package allow the creator of a package to hide functions and data that are meant only for internal use; it provides a way through the operators `::` and `:::` to an object within a particular package. Thus a namespace prevent functions from breaking down when a user selects a name that clashes with one in the package. The double-colon operator `::` selects objects from a particular namespace. Only functions that are exported from the package can be retrieved in this way.  The triple-colon operator `:::` acts like the double-colon operator but also allows access to hidden objects. Packages are often inter-dependent, and loading one may cause others to be automatically loaded. Such automatically loaded packages are not added to the search list. 
+When the R evaluator looks for an object and it cannot find the name in the global environment it will search the parent of the global environment. It will carry on the search along the search path until the first occurrence of the name.  If the name is not found it will return the message `Error: object 'xx' not found`. The usage of the double colon `::` and the triple colon `:::` is to access the intended object when more than one object with the same name exist on the search path.  These two operators use the *<span style="color:#3399FF">namespace</span>* facility of R packages. The *<span style="color:#FF9966">namespace</span>* of a package allow the creator of a package to hide functions and data that are meant only for internal use; it provides a way through the operators `::` and `:::` to an object within a particular package. Thus a namespace prevent functions from breaking down when a user selects a name that clashes with one in the package. The double-colon operator `::` selects objects from a particular namespace. Only functions that are exported from the package can be retrieved in this way.  The triple-colon operator `:::` acts like the double-colon operator but also allows access to hidden objects. Packages are often inter-dependent, and loading one may cause others to be automatically loaded. Such automatically loaded packages are not added to the search list. 
 
 We note that the *<span style="color:#FF9966">function</span>* call `getAnywhere()`, which searches multiple packages can be used for finding hidden objects. When a function is called, R creates a new (temporary) environment which is enclosed in the current (calling) environment. Objects created in the new environment are not available in the parent environment and dies with it when the function terminates. Objects in the calling environment are available for use in the new environment created when a function is called. 
 
@@ -588,19 +589,19 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x000001c0c0298028>
+#> <bytecode: 0x0000020531c4c990>
 #> <environment: namespace:base>
 mean <- mean (rnorm (1000))
 get (mean)
 #> Error in get(mean): invalid first argument
 get ("mean") 
-#> [1] 0.07778594
+#> [1] -0.02192818
 get ("mean", pos = 1) 
-#> [1] 0.07778594
+#> [1] -0.02192818
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001c0c0d15530>
+#> <bytecode: 0x0000020529b13530>
 #> <environment: namespace:base>
 rm (mean)
 ```
@@ -631,7 +632,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001c0c0d15530>
+#> <bytecode: 0x0000020529b13530>
 #> <environment: namespace:base>
 ```
 
@@ -642,12 +643,12 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001c0c0d15530>
+#> <bytecode: 0x0000020529b13530>
 #> <environment: namespace:base>
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001c0c0d15530>
+#> <bytecode: 0x0000020529b13530>
 #> <environment: namespace:base>
 ```
 

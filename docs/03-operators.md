@@ -17,7 +17,7 @@ In this chapter we take a closer look at the behaviour of some of the most commo
 
 Table: (\#tab:ArithOperators) Arithmetic operators.
 
-| *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>* |
+| *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>* |
 | ------ | --------------- | ------ | --------------- |
 | `+`   |	Addition              | `^`   | Exponentiation |
 | `-`   |	Subtraction           | `%/%` | Integer divide |
@@ -209,7 +209,7 @@ What is meant by a control logical operator?
 
 Table: (\#tab:LogicOperators) Logical operators.
 
-| *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>*  |
+| *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>*  |
 | ------ | --------------- | 
 | `>`   |	Greater than |
 | `<`   |	Less than |
@@ -289,7 +289,7 @@ The correct way of extracting the fifth element of a sequence like 1:20 is
 
 Table: (\#tab:Precedence) Precedence rules.
 
-| *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">What it does</span>*  |
+| *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">What it does</span>*  |
 | ------ | --------------- |
 | `$`                | List and dataframe subscripting |
 | `[]`, `[[]]`       | Vector and matrix subscripting; list subscripting |
@@ -327,7 +327,7 @@ See Table \@ref(tab:TrigFunc).
 
 Table: (\#tab:TrigFunc) Trigonometric functions.
 
-| *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>*  | | *<span style="color:#CC99FF">Operator</span>* | *<span style="color:#CC99FF">Function</span>* |
+| *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>*  | | *<span style="color:#F7CE21">Operator</span>* | *<span style="color:#F7CE21">Function</span>* |
 | ------ | --------------- |------ | --------------- |
 | `cos()`  | cosine             | `acos()`  | arc cosine  |
 | `sin()`  | sine               | `asin()`  | arc sine    |
@@ -351,7 +351,7 @@ Two other functions that play an important role in matrix calculations are the f
 
 Table: (\#tab:MatrixFunc) Functions for matrices.
 
-| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  | 
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | 
 | ------ | --------------- |
 | `chol()`  | Cholesky decomposition       | 
 | `crossprod()`  | Matrix crossproduct     | 
@@ -442,6 +442,7 @@ Explain the use of the argument `list=objects(2)`. To summarize: The constructio
 :::
 
 ###	Sorting functions
+
 Note the use of the functions `sort()`, `order()` and `rank()`. First construct `MatX`  using the functions `scan()` and  `matrix()`.  Explain in detail what `order()` does by sorting all the columns of `MatX`  according to the values in the first column of the matrix.
 
 $$
@@ -463,7 +464,7 @@ Study the functions in Table \@ref(tab:DataManipulation).
 
 Table: (\#tab:DataManipulation) Functions for data manipulation.
 
-| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  | 
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | 
 | ------ | --------------- |
 | `append()`     | Combine vectors; more flexibility than `c()`  | 
 | `c()`          | Create vectors  | 
@@ -503,7 +504,7 @@ Study the functions in detail in  Table \@ref(tab:StatFunc).
 
 Table: (\#tab:StatFunc) Basic statistical functions.
 
-| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  | *<span style="color:#CC99FF">Comments</span>*  | 
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  | *<span style="color:#F7CE21">Comments</span>*  | 
 | ------ | --------------- | --------------- |
 | `cor()`      | Correlation  | One or two arguments |
 | `cumsum()`   | Cumulative sum of elements of a vector |   |
@@ -526,7 +527,7 @@ Note also the functions `pmax()` and `pmin()`.
 
 (a)	Find the average Life Expectancy of the states in the `state.x77` data set.
 (b)	Find the 5% trimmed mean for Illiteracy of the states in the `state.x77` data set.
-(c)	Find the correlation between the Illiteracy and the `Income` of the states in the `state.x77` data set.
+(c)	Find the correlation between the Illiteracy and the Income of the states in the `state.x77` data set.
 (d)	Find the covariance matrix of all the variables in the `state.x77` data set.
 (e)	Find the range for Murder in the `state.x77` data set.
 (f)	Obtain the details of a random sample of 10 states in the `state.x77` data set.
@@ -549,14 +550,15 @@ help.search("distribution")
 to obtain a list of available statistical distributions in R.  Each distribution has an identifying name preceded by one of the letters *<span style="color:#FF9966">d</span>*, *<span style="color:#FF9966">p</span>*, *<span style="color:#FF9966">q</span>* or *<span style="color:#FF9966">r</span>*.  In the case of an F-distribution, for example, the identifier is just the letter `f` and for a normal distribution the identifier is `norm`.  Preceding the distribution’s identifier by one of the letters `d`, `p`, `q` or `r` returns a density value, a probability, a quantile or a random sample for the specified distribution (probability density function or probability mass function). See Figure \@ref(fig:Fdist) for an explanation. 
 
 
-<div class="figure">
-<img src="pics/F-distribution.png" alt="Meaning of the letters d, p and q when preceding an R distribution identifier." width="100%" />
-<p class="caption">(\#fig:Fdist)Meaning of the letters d, p and q when preceding an R distribution identifier.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{pics/F-distribution} \caption{Meaning of the letters d, p and q when preceding an R distribution identifier.}(\#fig:Fdist)
+\end{figure}
 
 ### Functions for categorical variables { #areagrp }
 
 Apart from being *<span style="color:#FF9966">numeric</span>* or *<span style="color:#FF9966">logical</span>*, data in R can also be *<span style="color:#FF9966">categorical</span>* (*<span style="color:#FF9966">factor</span>* in R) or character strings. Study in detail the functions operating on factor data in Table \@ref(tab:CatFunc).
+
+::: {style="color: #80CC99;"}
 
 (a)	Use `cut()` to create an object `areagrp` to divide the `state.x77` data set into three groups representing the states with area within the intervals $(0, 10 000]$,$(10 000, 100 000]$ and $(100 000, Inf]$, respectively. *Hint*: First study the arguments of `cut()`.
 
@@ -572,9 +574,11 @@ Apart from being *<span style="color:#FF9966">numeric</span>* or *<span style="c
 
 (g)	Obtain a two-way table of the `state.x77` data set according to `areagrp` and `illitgrp`.
 
+:::
+
 Table: (\#tab:CatFunc) Basic functions for categorical variables.
 
-| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  |
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  |
 | ------ | --------------- |
 | `cut()`      | Creates categories out of a continuous variable |
 | `factor()`   | Encodes a vector as a **_nominal_** categorical variable  |
@@ -592,7 +596,7 @@ Study the functions in Table \@ref(tab:CharFunc) in detail.
 
 Table: (\#tab:CharFunc) Basic functions for character manipulation.
 
-| *<span style="color:#CC99FF">Function</span>* | *<span style="color:#CC99FF">What it does</span>*  |
+| *<span style="color:#F7CE21">Function</span>* | *<span style="color:#F7CE21">What it does</span>*  |
 | ------ | --------------- |
 | `abbreviate()` | Generates abbreviations of character values |
 | `cat()`        | Display,messages and/or values on screen or send to file  |

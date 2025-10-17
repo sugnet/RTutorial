@@ -4,14 +4,13 @@
 
 The following three ways can be used to read an Excel file into R as an object:
 
-(a)	The file can be stored as a *<span style="color:#FFB3B3">.txt</span>*  or *<span style="color:#FFB3B3">.csv</span>* file and then `read.table()`, `scan()` or `read.csv()` can be used to read the file into R.
+(a)	The file can be stored as a *<span style="color:#BE99FF">.txt</span>*  or *<span style="color:#BE99FF">.csv</span>* file and then `read.table()`, `scan()` or `read.csv()` can be used to read the file into R.
 
-(b)	Directly read the *<span style="color:#FFB3B3">.xlsx</span>* file into R with the `readxl` package. List the sheet names with `excel_sheets()`. Specify a worksheet by name or number with a command like `objectname <- read_excel(xlsx_example, sheet = "Sheet1")`.
+(b)	Directly read the *<span style="color:#BE99FF">.xlsx</span>* file into R with the `readxl` package. List the sheet names with `excel_sheets()`. Specify a worksheet by name or number with a command like `objectname <- read_excel(xlsx_example, sheet = "Sheet1")`.
 
-(c)	The *<span style="color:#FFB3B3">.xlsx</span>* file can also be read into R with the `xlsx` package. The R functions `read.xlsx()` and `read.xlsx2()` can be used to read the contents of an Excel worksheet into an R data.frame. The difference between these two functions is that `read.xlsx()` preserves the data type. It tries to guess the class type of the variable corresponding to each column in the worksheet. Note that, the `read.xlsx()` function is slow for large data sets (worksheet with more than 100 000 cells). The `read.xlsx2()` function is faster on big files compared to `read.xlsx()` function. The commands have the following format: `objectname <- read.xlsx (file, sheetIndex, header = TRUE,             colClasses=NA)` and `objectname <- read.xlsx2 (file, sheetIndex, header = TRUE, colClasses="character")`.
+(c)	The *<span style="color:#BE99FF">.xlsx</span>* file can also be read into R with the `xlsx` package. The R functions `read.xlsx()` and `read.xlsx2()` can be used to read the contents of an Excel worksheet into an R data.frame. The difference between these two functions is that `read.xlsx()` preserves the data type. It tries to guess the class type of the variable corresponding to each column in the worksheet. Note that, the `read.xlsx()` function is slow for large data sets (worksheet with more than 100 000 cells). The `read.xlsx2()` function is faster on big files compared to `read.xlsx()` function. The commands have the following format: `objectname <- read.xlsx (file, sheetIndex, header = TRUE,  colClasses=NA)` and `objectname <- read.xlsx2 (file, sheetIndex, header = TRUE, colClasses="character")`.
 
-(d)	Select the data in Excel (Data can also be selected in any other application such as Word or a text editor). Copy the selected range. In R: 
-`objectname <- read.table (file = "clipboard")`. *Hint*: Be careful with empty cells in Excel: some preparation of the Excel file might be needed.
+(d)	Select the data in *<span style="color:#BE99FF">Excel</span>* (Data can also be selected in any other application such as *<span style="color:#BE99FF">Word</span>* or a text editor). Copy the selected range. In R: `objectname <- read.table (file = "clipboard")`. *Hint*: Be careful with empty cells in *<span style="color:#BE99FF">Excel</span>*: some preparation of the *<span style="color:#BE99FF">Excel</span>* file might be needed.
 
 (e)	To avoid problems with end-of-file characters that can occur when using the method in (d), the package `clipr` can be used.
 
@@ -41,7 +40,7 @@ objects(name="package:foreign")
 #> [16] "write.dta"     "write.foreign"
 ```
 
-Study the helpfiles of these functions for reading into R binary data, SAS XPORT format, Weka Attribute-Relation File Format, the Xbase family of database languages dBase, Clipper and FoxPro, Stata, Epi Info and EpiData files, Minitab portable worksheets, Octave text files, data.dump files that were produced in S version 3, SPSS save or export files, SAS data sets to be converted to ssd format^[This function requires SAS to be installed since it creates and run a SASA program that converts the data set to ssd format and uses `read.xport()` to obtain a dataframe.] and Systat files.
+Study the helpfiles of these functions for reading into R binary data, *<span style="color:#BE99FF">SAS</span>* XPORT format, *<span style="color:#BE99FF">Weka</span>* Attribute-Relation File Format, the Xbase family of database languages *<span style="color:#BE99FF">dBase</span>*, *<span style="color:#BE99FF">Clipper</span>* and *<span style="color:#BE99FF">FoxPro</span>*, *<span style="color:#BE99FF">Stata</span>*, *<span style="color:#BE99FF">Epi</span>* Info and Data files, *<span style="color:#BE99FF">Minitab</span>* portable worksheets, *<span style="color:#BE99FF">Octave</span>* text files, data.dump files that were produced in *<span style="color:#BE99FF">S</span>* version 3, *<span style="color:#BE99FF">SPSS</span>* save or export files, *<span style="color:#BE99FF">SAS</span>* data sets to be converted to *<span style="color:#BE99FF">.ssd</span>* format^[This function requires SAS to be installed since it creates and run a SAS program that converts the data set to .ssd format and uses `read.xport()` to obtain a dataframe.] and *<span style="color:#BE99FF">Systat</span>* files.
 
 ## Sending output to a file
 
@@ -57,7 +56,7 @@ The functions `saveRDS (object = , file = )` and `object.name <- readRDS (file =
 
 ## The use of the file .Rhistory and the function `history()`
 
-The file *<span style="color:#FFB3B3">.Rhistory</span>* is created in the same folder where the *<span style="color:#FFB3B3">.Rdata</span>* exists. It can be inspected with any text editor or with MS Word and as such provides an exact record of all activity in the R console (commands window).
+The file *<span style="color:#FF9696">.Rhistory</span>* is created in the same folder where the *<span style="color:#FF9696">.Rdata</span>* exists. It can be inspected with any text editor or with *<span style="color:#BE99FF">MS Word</span>* and as such provides an exact record of all activity in the R console (commands window).
 
 Study the help file of the function  `history()`.
 
@@ -195,7 +194,7 @@ Make the necessary changes in the above lines of code to improve the column spac
 
 ## Communicating with the operating system
 
-Study how the function `system()` works using the DOS instructions:  *“time”*,  *“date”* and *“dir”*.  *Hint*:  First study the help file of the R function `system()` and then the following instructions:
+Study how the function `system()` works using the instructions:  *“time”*,  *“date”* and *“dir”*.  *Hint*:  First study the help file of the R function `system()` and then the following instructions:
 
 
 ``` r
@@ -235,7 +234,7 @@ system (paste (Sys.getenv ("COMSPEC"), "/c",
 
 Table: (\#tab:TidyverseCore) Additional core tidyverse packages.
 
-| *<span style="color:#CC99FF">Package</span>* | *<span style="color:#CC99FF">Purpose</span>*  |
+| *<span style="color:#F7CE21">Package</span>* | *<span style="color:#F7CE21">Purpose</span>*  |
 | ------ | --------------- | 
 | `dplyr`   |	Data manipulation |
 | `tidyr`   |	Data tidying |
@@ -248,16 +247,16 @@ Table: (\#tab:TidyverseCore) Additional core tidyverse packages.
 
 Table: (\#tab:TidyverseOther) Selection of packages from tidyverse.
 
-| *<span style="color:#CC99FF">Package</span>* | *<span style="color:#CC99FF">Purpose</span>*  |
+| *<span style="color:#F7CE21">Package</span>* | *<span style="color:#F7CE21">Purpose</span>*  |
 | ------ | --------------- | 
 | `hms`, `lubridate` |	Working with date/time vectors |
-| `feather`          |	Sharing with Python and other languages |
-| `haven`            |	Importing SPSS, SAS and Stata files |
+| `feather`          |	Sharing with *<span style="color:#BE99FF">Python</span>* and other languages |
+| `haven`            |	Importing *<span style="color:#BE99FF">SPSS</span>*, *<span style="color:#BE99FF">SAS</span>* and *<span style="color:#BE99FF">Stata</span>* files |
 | `httr`             |	Sharing with web interfaces |
-| `jsonlite`         |	Java script (JSON) |
+| `jsonlite`         |	*<span style="color:#BE99FF">Java</span>* script (JSON) |
 | `rvest`            |	Web scraping |
-| `readxl`           |	Reading *<span style="color:#FFB3B3">.xls</span>* and *<span style="color:#FFB3B3">.xlsx</span>* files |
-| `xml2`             |	XML |
+| `readxl`           |	Reading *<span style="color:#BE99FF">.xls</span>* and *<span style="color:#BE99FF">.xlsx</span>* files |
+| `xml2`             |	*<span style="color:#BE99FF">XML</span>* |
 | `modelr`           |	Modelling within a pipeline |
 | `broom`            |	Turning models into tidy data |
 
@@ -269,19 +268,9 @@ A *<span style="color:#FF9966">tibble</span>* is a new version of a dataframe. T
 
 ``` r
 library ("tidyverse")
-#> ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
-#> ✔ dplyr     1.1.4     ✔ readr     2.1.5
-#> ✔ forcats   1.0.0     ✔ stringr   1.5.1
-#> ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
-#> ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-#> ✔ purrr     1.1.0     
-#> ── Conflicts ────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 iris.tibble <- tibble(iris)
 iris.tibble
-#> # A tibble: 150 × 5
+#> # A tibble: 150 x 5
 #>    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #>           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
 #>  1          5.1         3.5          1.4         0.2 setosa 
@@ -294,7 +283,7 @@ iris.tibble
 #>  8          5           3.4          1.5         0.2 setosa 
 #>  9          4.4         2.9          1.4         0.2 setosa 
 #> 10          4.9         3.1          1.5         0.1 setosa 
-#> # ℹ 140 more rows
+#> # i 140 more rows
 ```
 
 Tibbles can also be formed from vectors automatically creating a column vector.
@@ -302,7 +291,7 @@ Tibbles can also be formed from vectors automatically creating a column vector.
 
 ``` r
 tibble(x = fruit)   # data set fruit in package stringr
-#> # A tibble: 80 × 1
+#> # A tibble: 80 x 1
 #>    x           
 #>    <chr>       
 #>  1 apple       
@@ -315,7 +304,7 @@ tibble(x = fruit)   # data set fruit in package stringr
 #>  8 blackcurrant
 #>  9 blood orange
 #> 10 blueberry   
-#> # ℹ 70 more rows
+#> # i 70 more rows
 ```
 
 Matrices are also easily converted to tibbles.
@@ -324,7 +313,7 @@ Matrices are also easily converted to tibbles.
 ``` r
 X <- matrix (1:12,ncol=3)
 tibble(X)
-#> # A tibble: 4 × 1
+#> # A tibble: 4 x 1
 #>   X[,1]  [,2]  [,3]
 #>   <int> <int> <int>
 #> 1     1     5     9
@@ -351,7 +340,7 @@ my.list
 #> $logic
 #> [1]  TRUE FALSE FALSE  TRUE
 tibble (my.list)
-#> # A tibble: 3 × 1
+#> # A tibble: 3 x 1
 #>   my.list     
 #>   <named list>
 #> 1 <int [10]>  
@@ -365,7 +354,7 @@ To create a tibble from scratch we can use the command:
 ``` r
 my.dat <- tibble(x = 1:5, y = 1, z = y - x ^ 2)
 my.dat
-#> # A tibble: 5 × 3
+#> # A tibble: 5 x 3
 #>       x     y     z
 #>   <int> <dbl> <dbl>
 #> 1     1     1     0
@@ -384,7 +373,7 @@ There are three major differences between tibbles and dataframes.
 
 ``` r
 my.dat["y"]
-#> # A tibble: 5 × 1
+#> # A tibble: 5 x 1
 #>       y
 #>   <dbl>
 #> 1     1
@@ -417,8 +406,8 @@ Tibbles never do partial matching, and will return NULL with a warning if the co
 
 ``` r
 tibble(a = integer(), b = 1)
-#> # A tibble: 0 × 2
-#> # ℹ 2 variables: a <int>, b <dbl>
+#> # A tibble: 0 x 2
+#> # i 2 variables: a <int>, b <dbl>
 ```
 
 ### Pipe operator
@@ -445,13 +434,13 @@ mtcars |>
   filter(hp > 100) |>
   group_by(cyl) |>
   summarise(across(everything(), mean))
-#> # A tibble: 3 × 11
+#> # A tibble: 3 x 11
 #>     cyl   mpg  disp    hp  drat    wt  qsec    vs    am
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1     4  25.9  108.  111   3.94  2.15  17.8 1     1    
 #> 2     6  19.7  183.  122.  3.59  3.12  18.0 0.571 0.429
 #> 3     8  15.1  353.  209.  3.23  4.00  16.8 0     0.143
-#> # ℹ 2 more variables: gear <dbl>, carb <dbl>
+#> # i 2 more variables: gear <dbl>, carb <dbl>
 ```
 
 The first pipe operator `%>%` was created in the package `magrittr`. This package is automatically loaded when `tidyverse` is attached. The following call with therefore have a similar outcome:
@@ -462,13 +451,13 @@ mtcars %>%
   filter(hp > 100) %>%
   group_by(cyl) %>%
   summarise(across(everything(), mean))
-#> # A tibble: 3 × 11
+#> # A tibble: 3 x 11
 #>     cyl   mpg  disp    hp  drat    wt  qsec    vs    am
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1     4  25.9  108.  111   3.94  2.15  17.8 1     1    
 #> 2     6  19.7  183.  122.  3.59  3.12  18.0 0.571 0.429
 #> 3     8  15.1  353.  209.  3.23  4.00  16.8 0     0.143
-#> # ℹ 2 more variables: gear <dbl>, carb <dbl>
+#> # i 2 more variables: gear <dbl>, carb <dbl>
 ```
 
 From R version 4.1.0 the pipe operator `|>` is directly built into R and can therefore be used at any time without having to attach another package.
@@ -492,7 +481,7 @@ library (MASS)
 #> 
 #>     select
 tibble (Rabbit)
-#> # A tibble: 60 × 5
+#> # A tibble: 60 x 5
 #>    BPchange   Dose Run   Treatment Animal
 #>       <dbl>  <dbl> <fct> <fct>     <fct> 
 #>  1     0.5    6.25 C1    Control   R1    
@@ -505,7 +494,7 @@ tibble (Rabbit)
 #>  8     1.25  12.5  C2    Control   R2    
 #>  9     4     25    C2    Control   R2    
 #> 10    12     50    C2    Control   R2    
-#> # ℹ 50 more rows
+#> # i 50 more rows
 ```
 
 The command below, pivots the tibble into a wide format.
@@ -515,7 +504,7 @@ The command below, pivots the tibble into a wide format.
 rabbit <- Rabbit |> 
   pivot_wider(names_from = c(Animal, Treatment, Run), values_from = BPchange)
 rabbit
-#> # A tibble: 6 × 11
+#> # A tibble: 6 x 11
 #>     Dose R1_Control_C1 R2_Control_C2 R3_Control_C3
 #>    <dbl>         <dbl>         <dbl>         <dbl>
 #> 1   6.25           0.5          1             0.75
@@ -524,7 +513,7 @@ rabbit
 #> 4  50             26           12            14   
 #> 5 100             37           27            22   
 #> 6 200             32           29            24   
-#> # ℹ 7 more variables: R4_Control_C4 <dbl>,
+#> # i 7 more variables: R4_Control_C4 <dbl>,
 #> #   R5_Control_C5 <dbl>, R1_MDL_M1 <dbl>, R2_MDL_M2 <dbl>,
 #> #   R3_MDL_M3 <dbl>, R4_MDL_M4 <dbl>, R5_MDL_M5 <dbl>
 ```
@@ -535,7 +524,7 @@ For the converse, the command below pivots the wide tibble, `rabbit`, to long fo
 ``` r
 rabbit |> pivot_longer(cols = -Dose, names_to = "Treat.comb", 
                        values_to = "BPchange")
-#> # A tibble: 60 × 3
+#> # A tibble: 60 x 3
 #>     Dose Treat.comb    BPchange
 #>    <dbl> <chr>            <dbl>
 #>  1  6.25 R1_Control_C1     0.5 
@@ -548,7 +537,7 @@ rabbit |> pivot_longer(cols = -Dose, names_to = "Treat.comb",
 #>  8  6.25 R3_MDL_M3         0.75
 #>  9  6.25 R4_MDL_M4         2.6 
 #> 10  6.25 R5_MDL_M5         2.4 
-#> # ℹ 50 more rows
+#> # i 50 more rows
 ```
 
 Note that the column headings now form a single variable. To separate the combination of variables into different columns, we need the following command:
@@ -560,7 +549,7 @@ rabbit |>
                names_to = c("animal","treatment","run"),
                names_pattern ="(.*)_(.*)_(.*)",
                values_to = "BPchange")
-#> # A tibble: 60 × 5
+#> # A tibble: 60 x 5
 #>     Dose animal treatment run   BPchange
 #>    <dbl> <chr>  <chr>     <chr>    <dbl>
 #>  1  6.25 R1     Control   C1        0.5 
@@ -573,7 +562,7 @@ rabbit |>
 #>  8  6.25 R3     MDL       M3        0.75
 #>  9  6.25 R4     MDL       M4        2.6 
 #> 10  6.25 R5     MDL       M5        2.4 
-#> # ℹ 50 more rows
+#> # i 50 more rows
 ```
 
 #### Rectangling {#rectangling}
@@ -602,7 +591,7 @@ df <- tibble(
   )
 )
 df
-#> # A tibble: 2 × 2
+#> # A tibble: 2 x 2
 #>   character metadata        
 #>   <chr>     <list>          
 #> 1 Toothless <named list [3]>
@@ -615,7 +604,7 @@ The following command places the two list items of metadata in a tibble with two
 ``` r
 df |> unnest_auto(metadata)
 #> Using `unnest_wider(metadata)`; elements have 3 names in common
-#> # A tibble: 2 × 4
+#> # A tibble: 2 x 4
 #>   character species   color films    
 #>   <chr>     <chr>     <chr> <list>   
 #> 1 Toothless dragon    black <chr [3]>
@@ -631,10 +620,10 @@ The function `hoist()` can be used to reach down multiple layers.
 df |> hoist(metadata, "species", 
             first_film = list("films", 1L),                
             third_film = list("films", 3L))
-#> # A tibble: 2 × 5
+#> # A tibble: 2 x 5
 #>   character species   first_film     third_film metadata    
 #>   <chr>     <chr>     <chr>          <chr>      <list>      
-#> 1 Toothless dragon    How to Train … How to Tr… <named list>
+#> 1 Toothless dragon    How to Train ~ How to Tr~ <named list>
 #> 2 Dory      blue tang Finding Nemo   <NA>       <named list>
 ```
 
@@ -647,12 +636,12 @@ In nesting, a tibble of lists are created. In the example below, we create a tib
 
 ``` r
 iris |> nest(data = !Species)
-#> # A tibble: 3 × 2
+#> # A tibble: 3 x 2
 #>   Species    data             
 #>   <fct>      <list>           
-#> 1 setosa     <tibble [50 × 4]>
-#> 2 versicolor <tibble [50 × 4]>
-#> 3 virginica  <tibble [50 × 4]>
+#> 1 setosa     <tibble [50 x 4]>
+#> 2 versicolor <tibble [50 x 4]>
+#> 3 virginica  <tibble [50 x 4]>
 ```
 
 We can also create tibbles with three columns where the data is grouped by ‘Petal’ and ‘Sepal’ in the first instance and by ‘width’ and ‘length’ in the second.
@@ -660,19 +649,20 @@ We can also create tibbles with three columns where the data is grouped by ‘Pe
 
 ``` r
 iris |> nest(petal = starts_with("Petal"), sepal = starts_with("Sepal"))
-#> # A tibble: 3 × 3
+#> # A tibble: 3 x 3
 #>   Species    petal             sepal            
 #>   <fct>      <list>            <list>           
-#> 1 setosa     <tibble [50 × 2]> <tibble [50 × 2]>
-#> 2 versicolor <tibble [50 × 2]> <tibble [50 × 2]>
-#> 3 virginica  <tibble [50 × 2]> <tibble [50 × 2]>
+#> 1 setosa     <tibble [50 x 2]> <tibble [50 x 2]>
+#> 2 versicolor <tibble [50 x 2]> <tibble [50 x 2]>
+#> 3 virginica  <tibble [50 x 2]> <tibble [50 x 2]>
+
 iris |> nest(width = contains("Width"), length = contains("Length"))
-#> # A tibble: 3 × 3
+#> # A tibble: 3 x 3
 #>   Species    width             length           
 #>   <fct>      <list>            <list>           
-#> 1 setosa     <tibble [50 × 2]> <tibble [50 × 2]>
-#> 2 versicolor <tibble [50 × 2]> <tibble [50 × 2]>
-#> 3 virginica  <tibble [50 × 2]> <tibble [50 × 2]>
+#> 1 setosa     <tibble [50 x 2]> <tibble [50 x 2]>
+#> 2 versicolor <tibble [50 x 2]> <tibble [50 x 2]>
+#> 3 virginica  <tibble [50 x 2]> <tibble [50 x 2]>
 ```
 
 The function `unnest()` is similar to the functions discussed in \@ref(rectangling), and can be used to simultaneously `unlist` several column from a simple table containing lists.
@@ -684,23 +674,24 @@ df <- tibble(x = 1:3,
                       tibble(a = 1, b = 2),
                       tibble(a = 1:3, b = 3:1)))
 df
-#> # A tibble: 3 × 2
+#> # A tibble: 3 x 2
 #>       x y               
 #>   <int> <list>          
 #> 1     1 <NULL>          
-#> 2     2 <tibble [1 × 2]>
-#> 3     3 <tibble [3 × 2]>
+#> 2     2 <tibble [1 x 2]>
+#> 3     3 <tibble [3 x 2]>
   
 df |> unnest(y)
-#> # A tibble: 4 × 3
+#> # A tibble: 4 x 3
 #>       x     a     b
 #>   <int> <dbl> <dbl>
 #> 1     2     1     2
 #> 2     3     1     3
 #> 3     3     2     2
 #> 4     3     3     1
+
 df %>% unnest(y, keep_empty = TRUE)
-#> # A tibble: 5 × 3
+#> # A tibble: 5 x 3
 #>       x     a     b
 #>   <int> <dbl> <dbl>
 #> 1     1    NA    NA
@@ -713,21 +704,22 @@ df <- tibble(a = list(c("a", "b"), "c"),
              b = list(1:2, 3),
              c = c(11, 22))
 df
-#> # A tibble: 2 × 3
+#> # A tibble: 2 x 3
 #>   a         b             c
 #>   <list>    <list>    <dbl>
 #> 1 <chr [2]> <int [2]>    11
 #> 2 <chr [1]> <dbl [1]>    22
   
 df |> unnest(c(a, b))
-#> # A tibble: 3 × 3
+#> # A tibble: 3 x 3
 #>   a         b     c
 #>   <chr> <dbl> <dbl>
 #> 1 a         1    11
 #> 2 b         2    11
 #> 3 c         3    22
+
 df |> unnest(a) %>% unnest(b)
-#> # A tibble: 5 × 3
+#> # A tibble: 5 x 3
 #>   a         b     c
 #>   <chr> <dbl> <dbl>
 #> 1 a         1    11
@@ -757,6 +749,7 @@ df |> separate(x, c("A", "B"))
 #> 2    a    b
 #> 3    a    d
 #> 4    b    c
+
 df |> separate(x, c(NA, "B"))
 #>      B
 #> 1 <NA>
@@ -770,6 +763,7 @@ df |> extract(x, "A")
 #> 2    a
 #> 3    a
 #> 4    b
+
 df |> extract(x, c("A", "B"),"([[:alnum:]]+).([[:alnum:]]+)")
 #>      A    B
 #> 1 <NA> <NA>
@@ -779,7 +773,7 @@ df |> extract(x, c("A", "B"),"([[:alnum:]]+).([[:alnum:]]+)")
   
 df <- expand_grid(x = c("a", NA), y = c("b", NA))
 df
-#> # A tibble: 4 × 2
+#> # A tibble: 4 x 2
 #>   x     y    
 #>   <chr> <chr>
 #> 1 a     b    
@@ -787,16 +781,17 @@ df
 #> 3 <NA>  b    
 #> 4 <NA>  <NA>
   
-  df |> unite("z", x:y, remove = FALSE)
-#> # A tibble: 4 × 3
+df |> unite("z", x:y, remove = FALSE)
+#> # A tibble: 4 x 3
 #>   z     x     y    
 #>   <chr> <chr> <chr>
 #> 1 a_b   a     b    
 #> 2 a_NA  a     <NA> 
 #> 3 NA_b  <NA>  b    
 #> 4 NA_NA <NA>  <NA>
-  df |> unite("z", x:y, na.rm = TRUE, remove = FALSE)
-#> # A tibble: 4 × 3
+
+df |> unite("z", x:y, na.rm = TRUE, remove = FALSE)
+#> # A tibble: 4 x 3
 #>   z     x     y    
 #>   <chr> <chr> <chr>
 #> 1 "a_b" a     b    
@@ -817,7 +812,7 @@ df <- tibble(group = c(1:2, 1),
              value1 = 1:3,
              value2 = 4:6)
 df
-#> # A tibble: 3 × 5
+#> # A tibble: 3 x 5
 #>   group item_id item_name value1 value2
 #>   <dbl>   <dbl> <chr>      <int>  <int>
 #> 1     1       1 a              1      4
@@ -825,25 +820,27 @@ df
 #> 3     1       2 b              3      6
   
 df |> complete(group, nesting(item_id, item_name))
-#> # A tibble: 4 × 5
+#> # A tibble: 4 x 5
 #>   group item_id item_name value1 value2
 #>   <dbl>   <dbl> <chr>      <int>  <int>
 #> 1     1       1 a              1      4
 #> 2     1       2 b              3      6
 #> 3     2       1 a             NA     NA
 #> 4     2       2 b              2      5
+
 df |> complete(group, nesting(item_id, item_name), 
                  fill = list(value1 = 0))
-#> # A tibble: 4 × 5
+#> # A tibble: 4 x 5
 #>   group item_id item_name value1 value2
 #>   <dbl>   <dbl> <chr>      <int>  <int>
 #> 1     1       1 a              1      4
 #> 2     1       2 b              3      6
 #> 3     2       1 a              0     NA
 #> 4     2       2 b              2      5
+
 df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
 df
-#> # A tibble: 3 × 2
+#> # A tibble: 3 x 2
 #>       x y    
 #>   <dbl> <chr>
 #> 1     1 a    
@@ -851,7 +848,7 @@ df
 #> 3    NA b
   
 df |> replace_na(list(x = 0, y = "unknown"))
-#> # A tibble: 3 × 2
+#> # A tibble: 3 x 2
 #>       x y      
 #>   <dbl> <chr>  
 #> 1     1 a      
@@ -859,12 +856,13 @@ df |> replace_na(list(x = 0, y = "unknown"))
 #> 3     0 b
   
 df |> drop_na()
-#> # A tibble: 1 × 2
+#> # A tibble: 1 x 2
 #>       x y    
 #>   <dbl> <chr>
 #> 1     1 a
+
 df |> drop_na(x)
-#> # A tibble: 2 × 2
+#> # A tibble: 2 x 2
 #>       x y    
 #>   <dbl> <chr>
 #> 1     1 a    
@@ -877,7 +875,7 @@ The main data manipulation functions is found in the package `dplyr`. The functi
 
 Table: (\#tab:dplyr) Verbs for data manipulation in dplyr.
 
-| *<span style="color:#CC99FF">Verb</span>* | *<span style="color:#CC99FF">Operates on</span>*  |
+| *<span style="color:#F7CE21">Verb</span>* | *<span style="color:#F7CE21">Operates on</span>*  |
 | ------ | --------------- | 
 | `select()`   |	Columns |
 | `rename()`   |	Columns |
@@ -896,7 +894,7 @@ The functioning of the verbs will be illustrated with `UScereal` in the package 
 library (MASS)
 cereal <- tibble (UScereal)
 cereal
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 
@@ -909,8 +907,8 @@ cereal
 #>  8 P         134.    4.48  0      313.  7.46  19.4   7.46
 #>  9 Q         160     1.33  2.67   293.  0     16    16   
 #> 10 G          88     4.8   1.6    232   1.6   13.6   0.8 
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 55 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
 ```
 
@@ -919,7 +917,7 @@ The function `select()` allows for extracting one or more columns from a data se
 
 ``` r
 dplyr::select (cereal, calories)        # select only column calories
-#> # A tibble: 65 × 1
+#> # A tibble: 65 x 1
 #>    calories
 #>       <dbl>
 #>  1     212.
@@ -932,9 +930,10 @@ dplyr::select (cereal, calories)        # select only column calories
 #>  8     134.
 #>  9     160 
 #> 10      88 
-#> # ℹ 55 more rows
+#> # i 55 more rows
+
 dplyr::select (cereal, calories, fat)   # select two columns
-#> # A tibble: 65 × 2
+#> # A tibble: 65 x 2
 #>    calories   fat
 #>       <dbl> <dbl>
 #>  1     212.  3.03
@@ -947,9 +946,10 @@ dplyr::select (cereal, calories, fat)   # select two columns
 #>  8     134.  0   
 #>  9     160   2.67
 #> 10      88   1.6 
-#> # ℹ 55 more rows
+#> # i 55 more rows
+
 dplyr::select (cereal, c(5,7:8))        # select by index
-#> # A tibble: 65 × 3
+#> # A tibble: 65 x 3
 #>    sodium carbo sugars
 #>     <dbl> <dbl>  <dbl>
 #>  1   394.  15.2  18.2 
@@ -962,9 +962,10 @@ dplyr::select (cereal, c(5,7:8))        # select by index
 #>  8   313.  19.4   7.46
 #>  9   293.  16    16   
 #> 10   232   13.6   0.8 
-#> # ℹ 55 more rows
+#> # i 55 more rows
+
 dplyr::select (cereal, -c(1,9,11))      # select columns to exclude
-#> # A tibble: 65 × 8
+#> # A tibble: 65 x 8
 #>    calories protein   fat sodium fibre carbo sugars
 #>       <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1     212.   12.1   3.03   394. 30.3   15.2  18.2 
@@ -977,10 +978,12 @@ dplyr::select (cereal, -c(1,9,11))      # select columns to exclude
 #>  8     134.    4.48  0      313.  7.46  19.4   7.46
 #>  9     160     1.33  2.67   293.  0     16    16   
 #> 10      88     4.8   1.6    232   1.6   13.6   0.8 
-#> # ℹ 55 more rows
-#> # ℹ 1 more variable: potassium <dbl>
+#> # i 55 more rows
+#> # i 1 more variable: potassium <dbl>
+
+                   # reorder with calories first, followed by fibre
 dplyr::select (cereal, calories, fibre, everything()) 
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    calories fibre mfr   protein   fat sodium carbo sugars
 #>       <dbl> <dbl> <fct>   <dbl> <dbl>  <dbl> <dbl>  <dbl>
 #>  1     212. 30.3  N       12.1   3.03   394.  15.2  18.2 
@@ -993,10 +996,9 @@ dplyr::select (cereal, calories, fibre, everything())
 #>  8     134.  7.46 P        4.48  0      313.  19.4   7.46
 #>  9     160   0    Q        1.33  2.67   293.  16    16   
 #> 10      88   1.6  G        4.8   1.6    232   13.6   0.8 
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 55 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
-      # reorder with calories first, followed by fibre
 ```
 
 The `rename()` function changes one of more column names. The companion function `rename_with()` can be used to apply a function to column headings, such as `tolower()` and `toupper()` to change the case of column headings.
@@ -1004,7 +1006,7 @@ The `rename()` function changes one of more column names. The companion function
 
 ``` r
 rename (cereal, Manufacturer=mfr)
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    Manufacturer calories protein   fat sodium fibre carbo
 #>    <fct>           <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>
 #>  1 N                212.   12.1   3.03   394. 30.3   15.2
@@ -1017,11 +1019,12 @@ rename (cereal, Manufacturer=mfr)
 #>  8 P                134.    4.48  0      313.  7.46  19.4
 #>  9 Q                160     1.33  2.67   293.  0     16  
 #> 10 G                 88     4.8   1.6    232   1.6   13.6
-#> # ℹ 55 more rows
-#> # ℹ 4 more variables: sugars <dbl>, shelf <int>,
+#> # i 55 more rows
+#> # i 4 more variables: sugars <dbl>, shelf <int>,
 #> #   potassium <dbl>, vitamins <fct>
+
 rename_with (cereal, toupper, starts_with("F"))
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    mfr   calories protein   FAT sodium FIBRE carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 
@@ -1034,11 +1037,10 @@ rename_with (cereal, toupper, starts_with("F"))
 #>  8 P         134.    4.48  0      313.  7.46  19.4   7.46
 #>  9 Q         160     1.33  2.67   293.  0     16    16   
 #> 10 G          88     4.8   1.6    232   1.6   13.6   0.8 
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 55 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
 ```
-
 
 New variables can be added or created from existing columns with the function `mutate()`. The newly formed variables are immediately available for creating more variables. Variables can be removed by transforming them to `NULL` or using the `.keep` argument.
 
@@ -1046,7 +1048,7 @@ New variables can be added or created from existing columns with the function `m
 ``` r
 mutate (cereal, fat.vs.pr = fat/protein, mfr=NULL) |>
      dplyr::select (fat.vs.pr, everything())
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    fat.vs.pr calories protein   fat sodium fibre carbo
 #>        <dbl>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>
 #>  1     0.250     212.   12.1   3.03   394. 30.3   15.2
@@ -1059,13 +1061,14 @@ mutate (cereal, fat.vs.pr = fat/protein, mfr=NULL) |>
 #>  8     0         134.    4.48  0      313.  7.46  19.4
 #>  9     2.00      160     1.33  2.67   293.  0     16  
 #> 10     0.333      88     4.8   1.6    232   1.6   13.6
-#> # ℹ 55 more rows
-#> # ℹ 4 more variables: sugars <dbl>, shelf <int>,
+#> # i 55 more rows
+#> # i 4 more variables: sugars <dbl>, shelf <int>,
 #> #   potassium <dbl>, vitamins <fct>
+
 mutate (cereal, fat.vs.pr = fat/protein, 
                  comb.var = sodium + fat.vs.pr,
                  new.var=1:nrow(cereal), .keep="used")
-#> # A tibble: 65 × 6
+#> # A tibble: 65 x 6
 #>    protein   fat sodium fat.vs.pr comb.var new.var
 #>      <dbl> <dbl>  <dbl>     <dbl>    <dbl>   <int>
 #>  1   12.1   3.03   394.     0.250     394.       1
@@ -1078,7 +1081,7 @@ mutate (cereal, fat.vs.pr = fat/protein,
 #>  8    4.48  0      313.     0         313.       8
 #>  9    1.33  2.67   293.     2.00      295.       9
 #> 10    4.8   1.6    232      0.333     232.      10
-#> # ℹ 55 more rows
+#> # i 55 more rows
 ```
 
 Why is it useful to pipe the mutated tibble above to select? In comparison, `relocate()` makes it easy to move blocks of columns.
@@ -1086,7 +1089,7 @@ Why is it useful to pipe the mutated tibble above to select? In comparison, `rel
 
 ``` r
 relocate (cereal, shelf)
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    shelf mfr   calories protein   fat sodium fibre carbo
 #>    <int> <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>
 #>  1     3 N         212.   12.1   3.03   394. 30.3   15.2
@@ -1099,11 +1102,12 @@ relocate (cereal, shelf)
 #>  8     3 P         134.    4.48  0      313.  7.46  19.4
 #>  9     2 Q         160     1.33  2.67   293.  0     16  
 #> 10     1 G          88     4.8   1.6    232   1.6   13.6
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: sugars <dbl>, potassium <dbl>,
+#> # i 55 more rows
+#> # i 3 more variables: sugars <dbl>, potassium <dbl>,
 #> #   vitamins <fct>
+
 relocate (cereal, cal=calories, .before = fat)
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    mfr   protein   cal   fat sodium fibre carbo sugars shelf
 #>    <fct>   <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl> <int>
 #>  1 N       12.1   212.  3.03   394. 30.3   15.2  18.2      3
@@ -1116,10 +1120,11 @@ relocate (cereal, cal=calories, .before = fat)
 #>  8 P        4.48  134.  0      313.  7.46  19.4   7.46     3
 #>  9 Q        1.33  160   2.67   293.  0     16    16        2
 #> 10 G        4.8    88   1.6    232   1.6   13.6   0.8      1
-#> # ℹ 55 more rows
-#> # ℹ 2 more variables: potassium <dbl>, vitamins <fct>
+#> # i 55 more rows
+#> # i 2 more variables: potassium <dbl>, vitamins <fct>
+
 relocate(cereal, where(is.factor), .after=last_col())
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    calories protein   fat sodium fibre carbo sugars shelf
 #>       <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl> <int>
 #>  1     212.   12.1   3.03   394. 30.3   15.2  18.2      3
@@ -1132,8 +1137,8 @@ relocate(cereal, where(is.factor), .after=last_col())
 #>  8     134.    4.48  0      313.  7.46  19.4   7.46     3
 #>  9     160     1.33  2.67   293.  0     16    16        2
 #> 10      88     4.8   1.6    232   1.6   13.6   0.8      1
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: potassium <dbl>, mfr <fct>,
+#> # i 55 more rows
+#> # i 3 more variables: potassium <dbl>, mfr <fct>,
 #> #   vitamins <fct>
 ```
 
@@ -1142,7 +1147,7 @@ The `filter()` function select rows from a tibble, based on any operator that ev
 
 ``` r
 filter (cereal, fat<1)
-#> # A tibble: 23 × 11
+#> # A tibble: 23 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 K         100     8        0   280  28     16     0   
@@ -1155,11 +1160,12 @@ filter (cereal, fat<1)
 #>  8 R         133.    2.67     0   253.  1.33  24     6.67
 #>  9 K         147.    1.33     0   267.  1.33  18.7  14.7 
 #> 10 K         125     3.75     0     0   3.75  17.5   8.75
-#> # ℹ 13 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 13 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 filter (cereal, fat<1, mfr=="K")
-#> # A tibble: 12 × 11
+#> # A tibble: 12 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 K         100     8        0   280  28     16     0   
@@ -1174,10 +1180,11 @@ filter (cereal, fat<1, mfr=="K")
 #> 10 K         180     4        0     0   4     30    12   
 #> 11 K         110     2        0   290   0     22     3   
 #> 12 K         110     6        0   230   1     16     3   
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 filter (cereal, fat<1 | mfr=="K")
-#> # A tibble: 32 × 11
+#> # A tibble: 32 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 K         212.   12.1   3.03   788. 27.3   21.2  15.2 
@@ -1190,11 +1197,12 @@ filter (cereal, fat<1 | mfr=="K")
 #>  8 K         220     6     6      280   8     20    14   
 #>  9 K         110     2     0      220   1     21     3   
 #> 10 R         133.    2.67  0      253.  1.33  24     6.67
-#> # ℹ 22 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 22 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 filter(cereal, between(sugars, 10, 20))
-#> # A tibble: 38 × 11
+#> # A tibble: 38 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 N         212.   12.1   3.03   394. 30.3   15.2   18.2
@@ -1207,8 +1215,8 @@ filter(cereal, between(sugars, 10, 20))
 #>  8 G         220     6     4      280   4     26     14  
 #>  9 G         110     1     1      180   0     12     13  
 #> 10 K         110     1     0       90   1     13     12  
-#> # ℹ 28 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 28 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
 ```
 
@@ -1217,7 +1225,7 @@ The verb `arrange()` refers to sorting the rows according to the values in one o
 
 ``` r
 arrange (cereal, fibre)
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 Q        160     1.33  2.67   293.      0  16    16   
@@ -1230,11 +1238,12 @@ arrange (cereal, fibre)
 #>  8 G        147.    1.33  1.33   373.      0  20    12   
 #>  9 P         82.7   0.752 0      135.      0  10.5   8.27
 #> 10 G         73.3   1.33  0.667  173.      0  14     2   
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 55 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 arrange (cereal, -fibre)
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 
@@ -1247,11 +1256,12 @@ arrange (cereal, -fibre)
 #>  8 P         134.    4.48  0      313.  7.46  19.4   7.46
 #>  9 P         179.    4.48  2.99   239.  7.46  17.9  14.9 
 #> 10 K         179.    4.48  0      358.  7.46  20.9  17.9 
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 55 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 arrange (cereal, fat, desc(mfr))
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 R        110     2         0  280    0     22     3   
@@ -1264,8 +1274,8 @@ arrange (cereal, fat, desc(mfr))
 #>  8 P         82.7   0.752     0  135.   0     10.5   8.27
 #>  9 N        134.    4.48      0    0    5.97  28.4   0   
 #> 10 N        134.    4.48      0    0    4.48  29.9   0   
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 55 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
 ```
 
@@ -1274,7 +1284,7 @@ The function `slice()` also allows for the selection of rows and works with a fe
 
 ``` r
 slice (cereal, 10:20)
-#> # A tibble: 11 × 11
+#> # A tibble: 11 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 G          88     4.8   1.6    232   1.6   13.6    0.8
@@ -1288,10 +1298,11 @@ slice (cereal, 10:20)
 #>  9 K         220     6     6      280   8     20     14  
 #> 10 K         110     2     0      220   1     21      3  
 #> 11 G         133.    2.67  1.33   187.  2.67  14.7   13.3
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 slice (cereal, -(10:20))
-#> # A tibble: 54 × 11
+#> # A tibble: 54 x 11
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #>  1 N         212.   12.1   3.03   394. 30.3   15.2  18.2 
@@ -1304,41 +1315,44 @@ slice (cereal, -(10:20))
 #>  8 P         134.    4.48  0      313.  7.46  19.4   7.46
 #>  9 Q         160     1.33  2.67   293.  0     16    16   
 #> 10 R         133.    2.67  0      253.  1.33  24     6.67
-#> # ℹ 44 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 44 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 slice_tail (cereal, n=3)
-#> # A tibble: 3 × 11
+#> # A tibble: 3 x 11
 #>   mfr   calories protein   fat sodium fibre carbo sugars
 #>   <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #> 1 R         149.    4.48  1.49   343.  4.48  25.4   4.48
 #> 2 G         100     3     1      200   3     17     3   
 #> 3 G         147.    2.67  1.33   267.  1.33  21.3  10.7 
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 slice_sample (cereal, n=8)
-#> # A tibble: 8 × 11
+#> # A tibble: 8 x 11
 #>   mfr   calories protein   fat sodium fibre carbo sugars
 #>   <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
-#> 1 P         114.    3.41  1.14  159.   3.41  17.0   5.68
-#> 2 K         147.    2.67  1.33   93.3  1.33  12    20   
-#> 3 G         140     3     1     190    4     15    14   
-#> 4 G         160     1.33  4     280    0     17.3  12   
-#> 5 P         147.    1.33  1.33  180    0     17.3  16   
-#> 6 P         364.    9.09  9.09  227.   9.09  39.4  12.1 
-#> 7 G         100     3     1     200    3     17     3   
-#> 8 K         125     3.75  0       0    3.75  17.5   8.75
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> 1 G         110     1     1     140    0     13    12   
+#> 2 Q         200     8     2     270    4     28    12   
+#> 3 K         212.   12.1   3.03  788.  27.3   21.2  15.2 
+#> 4 Q         149.    5.97  2.99  224.   2.99  17.9   8.96
+#> 5 R         133.    2.67  0     253.   1.33  24     6.67
+#> 6 K         147.    1.33  0     267.   1.33  18.7  14.7 
+#> 7 K         147.    2.67  1.33   93.3  1.33  12    20   
+#> 8 G         173.    4     2.67  280    2.67  24    10.7 
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 slice_max (cereal, sodium, n=4)
-#> # A tibble: 4 × 11
+#> # A tibble: 4 x 11
 #>   mfr   calories protein   fat sodium fibre carbo sugars
 #>   <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 #> 1 K         212.   12.1   3.03   788.  27.3  21.2   15.2
 #> 2 P         440    12     0      680   12    68     12  
 #> 3 N         212.   12.1   3.03   394.  30.3  15.2   18.2
 #> 4 G         147.    1.33  1.33   373.   0    20     12  
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
 ```
 
@@ -1347,8 +1361,9 @@ A grouped object can be formed with the `group_by()` function. At first glance, 
 
 ``` r
 cereal.mfr <- group_by(cereal, mfr)
+
 cereal.mfr          # looks no different
-#> # A tibble: 65 × 11
+#> # A tibble: 65 x 11
 #> # Groups:   mfr [6]
 #>    mfr   calories protein   fat sodium fibre carbo sugars
 #>    <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
@@ -1362,11 +1377,13 @@ cereal.mfr          # looks no different
 #>  8 P         134.    4.48  0      313.  7.46  19.4   7.46
 #>  9 Q         160     1.33  2.67   293.  0     16    16   
 #> 10 G          88     4.8   1.6    232   1.6   13.6   0.8 
-#> # ℹ 55 more rows
-#> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
+#> # i 55 more rows
+#> # i 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
+
 class(cereal)
 #> [1] "tbl_df"     "tbl"        "data.frame"
+
 class(cereal.mfr)   # but it is a grouped object
 #> [1] "grouped_df" "tbl_df"     "tbl"        "data.frame"
 ```
@@ -1377,7 +1394,7 @@ The `summarise()` function allows for the computation of descriptive statistics.
 ``` r
 summarise(cereal.mfr, mean.cal = mean(calories), 
           median.carbo = median(carbo))
-#> # A tibble: 6 × 3
+#> # A tibble: 6 x 3
 #>   mfr   mean.cal median.carbo
 #>   <fct>    <dbl>        <dbl>
 #> 1 G         138.         15.7
@@ -1386,11 +1403,12 @@ summarise(cereal.mfr, mean.cal = mean(calories),
 #> 4 P         195.         17.3
 #> 5 Q         136.         16  
 #> 6 R         125.         22.4
+
 group_by(cereal, mfr, shelf) |> 
     summarise(mean.cal = mean(calories))
 #> `summarise()` has grouped output by 'mfr'. You can override
 #> using the `.groups` argument.
-#> # A tibble: 15 × 3
+#> # A tibble: 15 x 3
 #> # Groups:   mfr [6]
 #>    mfr   shelf mean.cal
 #>    <fct> <int>    <dbl>
@@ -1409,17 +1427,18 @@ group_by(cereal, mfr, shelf) |>
 #> 13 Q         3    125  
 #> 14 R         1    123. 
 #> 15 R         3    133.
+
 summarise(cereal, mean.cal = mean(calories), max.fat = max(fat), 
           median.carbo = median(carbo), sum.sugar = tibble(fivenum(sugars)))
 #> Warning: Returning more (or less) than 1 row per `summarise()` group
 #> was deprecated in dplyr 1.1.0.
-#> ℹ Please use `reframe()` instead.
-#> ℹ When switching from `summarise()` to `reframe()`,
+#> i Please use `reframe()` instead.
+#> i When switching from `summarise()` to `reframe()`,
 #>   remember that `reframe()` always returns an ungrouped
 #>   data frame and adjust accordingly.
 #> Call `lifecycle::last_lifecycle_warnings()` to see where
 #> this warning was generated.
-#> # A tibble: 5 × 4
+#> # A tibble: 5 x 4
 #>   mean.cal max.fat median.carbo sum.sugar$`fivenum(sugars)`
 #>      <dbl>   <dbl>        <dbl>                       <dbl>
 #> 1     149.    9.09         18.7                         0  
@@ -1435,7 +1454,7 @@ Since the function `fivenum()` does not return a scalar value, but a vector, the
 ``` r
 reframe(cereal, mean.cal = mean(calories), max.fat = max(fat), 
           median.carbo = median(carbo), sum.sugar = fivenum(sugars))
-#> # A tibble: 5 × 4
+#> # A tibble: 5 x 4
 #>   mean.cal max.fat median.carbo sum.sugar
 #>      <dbl>   <dbl>        <dbl>     <dbl>
 #> 1     149.    9.09         18.7       0  

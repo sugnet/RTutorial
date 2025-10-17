@@ -115,8 +115,12 @@
 <li><p>What is the result of the instruction <code>apply(is.na(x),2,all)</code>?</p></li>
 <li><p>What is the result of the instruction <code>x[ ,!apply(is.na(x), 2,all)]</code>?</p></li>
 <li><p>What is the result of the instruction <code>x[ ,!apply(is.na(x), 2,any)]</code>?</p></li>
-<li><p>Set the random seed to 137921. Obtain a matrix <span class="math inline">\(\mathbf{A}:10 \times 6\)</span> of random <span class="math inline">\(n(0, 1)\)</span> values. Use <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> to find the <span class="math inline">\(10\%\)</span> trimmed mean of each row.</p></li>
 </ul>
+<div style="color: #80CC99;">
+<ul>
+<li>Set the random seed to 137921. Obtain a matrix <span class="math inline">\(\mathbf{A}:10 \times 6\)</span> of random <span class="math inline">\(n(0, 1)\)</span> values. Use <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> to find the <span class="math inline">\(10\%\)</span> trimmed mean of each row.</li>
+</ul>
+</div>
 </div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>
@@ -189,9 +193,11 @@
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>before calling the function <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>.</p>
 </div>
+<div style="color: #80CC99;">
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Use <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> to produce histograms of each of the variables in the <code>state.x77</code> data set such that each histogram has as title the correct variable name. The <span class="math inline">\(x\)</span>- and <span class="math inline">\(y\)</span>-axis must also be labelled correctly.</li>
 </ol>
+</div>
 </div>
 <div id="the-functions-mapply-rapply-and-vectorize" class="section level2" number="8.3">
 <h2>
@@ -217,10 +223,16 @@
 <span class="header-section-number">8.4</span> The mapping function tapply() for grouped data<a class="anchor" aria-label="anchor" href="#the-mapping-function-tapply-for-grouped-data"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: lower-alpha">
-<li><p>Study the arguments of <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>.</p></li>
+<li>Study the arguments of <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>.</li>
+</ol>
+<div style="color: #80CC99;">
+<ol start="2" style="list-style-type: lower-alpha">
 <li><p>Consider the <code>LifeCycleSavings</code> data set. Create an object <code>ddpigrp</code> that groups the <code>LifeCycleSavings</code> data into four groups G1, G2, G3 and G4 such that G1 members have <code>ddpi</code> within <span class="math inline">\((0, 2.0]\)</span>, G2 members have <code>ddpi</code> within <span class="math inline">\((2.0, 3.5]\)</span>, G3 members have <code>ddpi</code> within <span class="math inline">\((3.5, 5.0]\)</span>, and G4 members have <code>ddpi</code> larger than <span class="math inline">\(5.0\)</span>. Use <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> to obtain the mean aggregate personal savings of each of the groups defined by <code>ddpigrp</code>.</p></li>
 <li><p>If it is needed to break down a vector by more than one categorical variable, a list containing the grouping variables is used as the second argument to <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>. Illustrate this by finding the mean aggregate personal savings of the groups in <code>ddpigrp</code> broken down by the <code>pop15</code> rating.</p></li>
-<li><p>In order to use <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> on more than one variable simultaneously <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> can be used to map <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> to each of the variables in turn. Study the following command and its output carefully:</p></li>
+</ol>
+</div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>In order to use <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> on more than one variable simultaneously <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> can be used to map <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code> to each of the variables in turn. Study the following command and its output carefully:</li>
 </ol>
 <div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ddpigrp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span> <span class="op">(</span><span class="va">LifeCycleSavings</span><span class="op">$</span><span class="va">ddpi</span>, </span>
@@ -319,15 +331,14 @@
 <span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html">rcauchy</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt;  [1] -1.80200491 -2.65459314 -4.50564590  0.64702874</span></span>
-<span><span class="co">#&gt;  [5]  0.15695586  0.30853981  0.07360041 -9.63620378</span></span>
-<span><span class="co">#&gt;  [9]  4.65920079  0.94245515</span></span>
+<span><span class="co">#&gt;  [1]  1.1635436  6.9863068 18.0860699 -0.8680130 -0.5510174</span></span>
+<span><span class="co">#&gt;  [6] -3.0174778  0.8568361  2.5904959 -0.3044374  0.1168243</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"mean"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] -1.181067</span></span>
+<span><span class="co">#&gt; [1] 2.505913</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"median"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.1152781</span></span>
+<span><span class="co">#&gt; [1] 0.4868302</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"trimmed"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] -0.854208</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1.248817</span></span></code></pre></div>
 <ol start="8" style="list-style-type: lower-alpha">
 <li>The two logical control operators <code>&amp;&amp;</code> and <code>||</code> are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators <code>&amp;</code> and <code>|</code> which operate on vectors/matrices.</li>
 </ol>
@@ -459,7 +470,7 @@
 <div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span>   <span class="co"># called with no arguments</span></span>
 <span><span class="co">#&gt;    user  system elapsed </span></span>
-<span><span class="co">#&gt;    1.25    0.20    6.36</span></span></code></pre></div>
+<span><span class="co">#&gt;    1.15    0.25    6.23</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>
 <code>system.time(expr)</code> calls the function <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code>, evaluates <code>expr</code>, and then calls <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> once more, returning the difference between the two <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> calls:</li>
@@ -468,10 +479,11 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000000</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-mapping_files/figure-html/systemtimeExample-1.png" width="672"></div>
 <pre><code>#&gt;    user  system elapsed 
-#&gt;    0.16    0.01    0.18</code></pre>
+#&gt;    0.13    0.00    0.16</code></pre>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Note that user and system times do not necessarily add up to elapsed time exactly.</p>
 </div>
+<div style="color: #80CC99;">
 <ol start="3" style="list-style-type: lower-alpha">
 <li><p>Write the necessary code using <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> directly to obtain the execution time of <code>hist (rev (sort (rnorm (1000000))))</code>.</p></li>
 <li>
@@ -485,6 +497,7 @@
 </ol>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Use <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> and <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> to compute covariance matrices of different sizes <span class="math inline">\(p\)</span> from samples varying in size <span class="math inline">\(n\)</span>. Study the role of <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> in the effectiveness (economy in execution time) of the above three methods. Display the results graphically. Remember that for valid comparisons the three methods must be executed with identical samples.</p>
+</div>
 </div>
 </div>
 <div id="the-calling-of-functions-with-argument-lists" class="section level2" number="8.8">
@@ -535,7 +548,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000209a0d689c8&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000002915dd30068&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>The presence of <code>UseMethod("plot")</code> shows that <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> is a <em><span style="color:#FF9966">generic</span></em> function. The <em><span style="color:#FF9966">class</span></em> of an object determines how it will be treated by a generic function i.e. what <em><span style="color:#FF9966">method</span></em> will be applied to it. Function <code><a href="https://rdrr.io/r/methods/setClass.html">setClass()</a></code> is used for setting the class attribute of an object. Function <code><a href="https://rdrr.io/r/utils/methods.html">methods()</a></code> is used to find out (a) what is the repertoire of methods of a generic function and (b) what methods are available for a certain class:</p>
 <div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
@@ -631,10 +644,14 @@
 <span><span class="co">#&gt;  [9,] "c" "b" "a" "e"</span></span>
 <span><span class="co">#&gt; [10,] "b" "c" "a" "d"</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-roman">
-<li><p>Examine Table <a href="operators.html#tab:MatrixFunc">3.5</a> and carefully describe the behaviour of the functions <code><a href="https://rdrr.io/r/base/duplicated.html">duplicated()</a></code> and <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code>.</p></li>
+<li>Examine Table <a href="operators.html#tab:MatrixFunc">3.5</a> and carefully describe the behaviour of the functions <code><a href="https://rdrr.io/r/base/duplicated.html">duplicated()</a></code> and <code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code>.</li>
+</ol>
+<div style="color: #80CC99;">
+<ol start="3" style="list-style-type: lower-roman">
 <li><p>Write an R function, say <code>full2resp</code> to obtain the response pattern representation of questionnaire data like those given above. Test your function on <code>questdata</code>.</p></li>
 <li><p>Write an R function, say <code>resp2full</code> to obtain the full data set given its response pattern representation. Test your function on the response pattern representation of the <code>questdata</code>.</p></li>
 </ol>
+</div>
 </div>
 </div>
 <div id="recursion" class="section level2" number="8.11">
@@ -726,17 +743,19 @@
 <span><span class="co">#&gt; Write =  2 </span></span>
 <span><span class="co">#&gt; Write =  1</span></span>
 <span><span class="co">#&gt; NULL</span></span></code></pre></div>
+<div style="color: #80CC99;">
 <ol start="3" style="list-style-type: lower-alpha">
 <li><p>Use recursion and the function <code><a href="https://rdrr.io/r/base/Recall.html">Recall()</a></code> to write an R function to calculate <span class="math inline">\(x!\)</span>.</p></li>
 <li><p>Use recursion to write an R function that generates a matrix whose rows contain subsets of size <span class="math inline">\(r\)</span> of the first <span class="math inline">\(n\)</span> elements of the vector <code>v</code>. Ignore the possibility of repeated values in <code>v</code> and give this vector the default value of <code>1:n</code>.</p></li>
 </ol>
+</div>
 </div>
 <div id="environments-in-r" class="section level2" number="8.12">
 <h2>
 <span class="header-section-number">8.12</span> Environments in R<a class="anchor" aria-label="anchor" href="#environments-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>Study the following parts from the <em>R Language definition Manual</em>: § 3.5 Scope of variables; Chapter 4: <em>Functions</em>.</p>
-<p>Consider an R function <code>xx(argument)</code>. Write an R function to add a constant to the correct object (i.e. the object in the correct environment) that corresponds to <code>argument</code>. In order to answer this question, you must determine in which environment <code>argument</code> exists and evaluation must take place in this environment. Possible candidates to consider are the <em><span style="color:#3399FF">parent frame</span></em>, the <em><span style="color:#3399FF">global environment</span></em> and the search list. Assume that only the first data basis on the search list is not read-only so that in cases where argument can be found anywhere in the search list it can be assigned to the first data basis. <em>Hint</em>: Study how the following functions work: <code><a href="https://rdrr.io/r/base/assign.html">assign()</a></code>, <code><a href="https://rdrr.io/r/base/deparse.html">deparse()</a></code>, <code><a href="https://rdrr.io/r/base/invisible.html">invisible()</a></code>, <code><a href="https://rdrr.io/r/base/exists.html">exists()</a></code>, <code><a href="https://rdrr.io/r/base/substitute.html">substitute()</a></code>, <code><a href="https://rdrr.io/r/base/sys.parent.html">sys.parent()</a></code>.</p>
+<p>Consider an R function <code>xx(argument)</code>. Write an R function to add a constant to the correct object (i.e. the object in the correct <em><span style="color:#3399FF">environment</span></em>) that corresponds to <code>argument</code>. In order to answer this question, you must determine in which <em><span style="color:#3399FF">environment</span></em> <code>argument</code> exists and evaluation must take place in this <em><span style="color:#3399FF">environment</span></em>. Possible candidates to consider are the <em><span style="color:#3399FF">parent frame</span></em>, the <em><span style="color:#3399FF">global environment</span></em> and the search list. Assume that only the first data basis on the search list is not read-only so that in cases where argument can be found anywhere in the search list it can be assigned to the first data basis. <em>Hint</em>: Study how the following functions work: <code><a href="https://rdrr.io/r/base/assign.html">assign()</a></code>, <code><a href="https://rdrr.io/r/base/deparse.html">deparse()</a></code>, <code><a href="https://rdrr.io/r/base/invisible.html">invisible()</a></code>, <code><a href="https://rdrr.io/r/base/exists.html">exists()</a></code>, <code><a href="https://rdrr.io/r/base/substitute.html">substitute()</a></code>, <code><a href="https://rdrr.io/r/base/sys.parent.html">sys.parent()</a></code>.</p>
 </div>
 <div id="computing-on-the-language" class="section level2" number="8.13">
 <h2>
@@ -824,6 +843,7 @@
 <span>      <span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+<div style="color: #80CC99;">
 <p>Adjust the shiny app above by adding three more input sources:</p>
 <ol style="list-style-type: lower-roman">
 <li><p>The number of observations to be generated.</p></li>
@@ -838,6 +858,7 @@
 <ol start="3" style="list-style-type: lower-roman">
 <li>Having a series of radio buttons to choose the colour for the observations in the plot.</li>
 </ol>
+</div>
 </div>
 <div id="exercise-12" class="section level2" number="8.15">
 <h2>

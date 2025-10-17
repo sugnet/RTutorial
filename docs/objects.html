@@ -164,8 +164,8 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "aa" "Aa" "bb" "cc" "yy"</span></span>
 <span><span class="va">aa</span></span>
-<span><span class="co">#&gt;  [1]  0.4021181  1.1233729 -0.2290611 -2.0273101 -0.4104113</span></span>
-<span><span class="co">#&gt;  [6]  0.7055209  0.4064425 -0.7636759 -1.5502007 -0.3507999</span></span>
+<span><span class="co">#&gt;  [1]  0.3952646 -0.1718518 -0.5129222  1.6969852 -0.4740080</span></span>
+<span><span class="co">#&gt;  [6] -0.6612237 -0.4578432  0.8773180  1.0487614  0.7215942</span></span>
 <span><span class="va">bb</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
@@ -290,10 +290,10 @@
 <span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
 <ol start="6" style="list-style-type: lower-alpha">
 <li><p>Objects in R are <em><span style="color:#FF9966">vectors</span></em>, <em><span style="color:#FF9966">functions</span></em> or <em><span style="color:#FF9966">lists</span></em>. There are no scalars - instead vectors of length one are used. In addition to the above three types, there are several other types of objects.</p></li>
-<li><p>Objects that are created during a session are permanently stored in the <span style="color:#FFB3B3">.RData</span> file in the folder containing the workspace (unless not saved at termination).</p></li>
+<li><p>Objects that are created during a session are permanently stored in the <em><span style="color:#FF9696">.RData</span></em> file in the folder containing the <em><span style="color:#3399FF">workspace</span></em> (unless not saved at termination).</p></li>
 <li><p>Objects that are created within a function exist only for as long as the function is being executed.</p></li>
-<li><p>Use of <code><a href="https://rdrr.io/r/base/rm.html">rm()</a></code> and <code>rm(list = ListOfNames)</code> to remove objects from the workspace.</p></li>
-<li><p>Use of <code><a href="https://rdrr.io/r/base/ls.html">objects()</a></code> or equivalently <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> to obtain a list of object names in a data base (by default the workspace). Note the optional arguments <code>pos</code>, <code>all.names</code> and <code>pattern</code> to specify which database to be considered and what object names to include.</p></li>
+<li><p>Use of <code><a href="https://rdrr.io/r/base/rm.html">rm()</a></code> and <code>rm(list = ListOfNames)</code> to remove objects from the <em><span style="color:#3399FF">workspace</span></em>.</p></li>
+<li><p>Use of <code><a href="https://rdrr.io/r/base/ls.html">objects()</a></code> or equivalently <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> to obtain a list of object names in a data base (by default the <em><span style="color:#3399FF">workspace</span></em>). Note the optional arguments <code>pos</code>, <code>all.names</code> and <code>pattern</code> to specify which database to be considered and what object names to include.</p></li>
 <li><p>How can an object be printed to the screen?</p></li>
 <li><p><em><span style="color:#FF9966">Warning:</span></em> If a new object is assigned to a name that already exists in the working directory the old object is overwritten without warning and it cannot be retrieved again.</p></li>
 </ol>
@@ -467,7 +467,7 @@ What is the usage of the following function:</p>
 <li>Parent environment</li>
 <li>Inheritance.</li>
 </ul>
-<p>The mechanism that R uses to organize objects is based on frames and environments. A <em><span style="color:#FF9966">frame</span></em> is a collection of named objects and an <em><span style="color:#FF9966">environment</span></em> consists of a frame together with a pointer or reference to another environment called the <em><span style="color:#FF9966">parent environment</span></em>. Environments are nested so that the <em><span style="color:#FF9966">parent environment</span></em> is the environment that directly contains the current environment. At the start of an R session a <em><span style="color:#3399FF">workspace</span></em> is created which always has an associate environment, the <em><span style="color:#FF9966">global environment</span></em>. The global environment occupies the first position on the <em><span style="color:#FF9966">search path</span></em> and is accessed by a call to <code><a href="https://rdrr.io/r/base/environment.html">globalenv()</a></code>. Packages and databases can be added to the search path by a call to <code><a href="https://rdrr.io/r/base/attach.html">attach()</a></code> and removed from the search path by a call to <code><a href="https://rdrr.io/r/base/detach.html">detach()</a></code>.</p>
+<p>The mechanism that R uses to organize objects is based on frames and environments. A <em><span style="color:#FF9966">frame</span></em> is a collection of named objects and an <em><span style="color:#FF9966">environment</span></em> consists of a frame together with a pointer or reference to another environment called the <em><span style="color:#FF9966">parent environment</span></em>. Environments are nested so that the <em><span style="color:#3399FF">parent environment</span></em> is the environment that directly contains the current <em><span style="color:#3399FF">environment</span></em>. At the start of an R session a <em><span style="color:#3399FF">workspace</span></em> is created which always has an associated environment, the <em><span style="color:#3399FF">global environment</span></em>. The global environment occupies the first position on the <em><span style="color:#FF9966">search path</span></em> and is accessed by a call to <code><a href="https://rdrr.io/r/base/environment.html">globalenv()</a></code>. Packages and databases can be added to the search path by a call to <code><a href="https://rdrr.io/r/base/attach.html">attach()</a></code> and removed from the search path by a call to <code><a href="https://rdrr.io/r/base/detach.html">detach()</a></code>.</p>
 <ul>
 <li>What is an R <em><span style="color:#FF9966">package</span></em>? What is the difference between <em><span style="color:#FF9966">installing</span></em> and <em><span style="color:#FF9966">loading</span></em> a package?</li>
 <li>Work through the following example:</li>
@@ -521,7 +521,7 @@ What is the usage of the following function:</p>
 <span><span class="co">#&gt; [1] "C:/Program Files/R/R-4.5.1/library/grDevices"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environmentName</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">.GlobalEnv</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "package:grDevices"</span></span></code></pre></div>
-<p>When the R evaluator looks for an object and it cannot find the name in the global environment it will search the parent of the global environment. It will carry on the search along the search path until the first occurrence of the name. If the name is not found it will return the message <code>Error: object 'xx' not found</code>. The usage of the double colon <code>::</code> and the triple colon <code>:::</code> is to access the intended object when more than one object with the same name exist on the search path. These two operators use the <em><span style="color:#FF9966">namespace</span></em> facility of R packages. The namespace of a package allow the creator of a package to hide functions and data that are meant only for internal use; it provides a way through the operators <code>::</code> and <code>:::</code> to an object within a particular package. Thus a namespace prevent functions from breaking down when a user selects a name that clashes with one in the package. The double-colon operator <code>::</code> selects objects from a particular namespace. Only functions that are exported from the package can be retrieved in this way. The triple-colon operator <code>:::</code> acts like the double-colon operator but also allows access to hidden objects. Packages are often inter-dependent, and loading one may cause others to be automatically loaded. Such automatically loaded packages are not added to the search list.</p>
+<p>When the R evaluator looks for an object and it cannot find the name in the global environment it will search the parent of the global environment. It will carry on the search along the search path until the first occurrence of the name. If the name is not found it will return the message <code>Error: object 'xx' not found</code>. The usage of the double colon <code>::</code> and the triple colon <code>:::</code> is to access the intended object when more than one object with the same name exist on the search path. These two operators use the <em><span style="color:#3399FF">namespace</span></em> facility of R packages. The <em><span style="color:#FF9966">namespace</span></em> of a package allow the creator of a package to hide functions and data that are meant only for internal use; it provides a way through the operators <code>::</code> and <code>:::</code> to an object within a particular package. Thus a namespace prevent functions from breaking down when a user selects a name that clashes with one in the package. The double-colon operator <code>::</code> selects objects from a particular namespace. Only functions that are exported from the package can be retrieved in this way. The triple-colon operator <code>:::</code> acts like the double-colon operator but also allows access to hidden objects. Packages are often inter-dependent, and loading one may cause others to be automatically loaded. Such automatically loaded packages are not added to the search list.</p>
 <p>We note that the <em><span style="color:#FF9966">function</span></em> call <code><a href="https://rdrr.io/r/utils/getAnywhere.html">getAnywhere()</a></code>, which searches multiple packages can be used for finding hidden objects. When a function is called, R creates a new (temporary) environment which is enclosed in the current (calling) environment. Objects created in the new environment are not available in the parent environment and dies with it when the function terminates. Objects in the calling environment are available for use in the new environment created when a function is called.</p>
 <p>Similarly, when an <em><span style="color:#FF9966">expression</span></em> is evaluated a hierarchy of environments is created. Search for objects continue up this hierarchy and if necessary to the global environment and from there up onto the search path.</p>
 <ul>
@@ -576,19 +576,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001c0c0298028&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000219b789ddf8&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] 0.07778594</span></span>
+<span><span class="co">#&gt; [1] 0.04658197</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] 0.07778594</span></span>
+<span><span class="co">#&gt; [1] 0.04658197</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001c0c0d15530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000219b590f530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -615,19 +615,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001c0c0d15530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000219b590f530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001c0c0d15530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000219b590f530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001c0c0d15530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000219b590f530&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">

@@ -103,7 +103,7 @@
 <p>Study the graphical parameters by requesting</p>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">par</span></span></code></pre></div>
-<p>In Figure <a href="graphics.html#fig:figRegion">4.1</a> the main components of a graph window are illustrated. Study this figure in detail. The <em><span style="color:#FF9966">Plot Region</span></em> together with the<em><span style="color:#FF9966">Margins</span></em> is called the <em><span style="color:#FF9966">Figure Region</span></em>.</p>
+<p>In Figure <a href="graphics.html#fig:figRegion">4.1</a> the main components of a graph window are illustrated. Study this figure in detail. The <em><span style="color:#FF9966">Plot Region</span></em> together with the <em><span style="color:#FF9966">Margins</span></em> is called the <em><span style="color:#FF9966">Figure Region</span></em>.</p>
 <div class="figure">
 <span style="display:block;" id="fig:figRegion"></span>
 <img src="pics/figMargins.jpg" alt="The main components of a graph window and the parameters for controlling their sizes.  The parameter mai is a numerical vector of the form c(bottom, left, top, right) specifying the margins in inches while the parameter mar has a similar form specifying the respective margins as the number of lines. The default of mar is c(5, 4, 4, 2) + 0.1." width="100%"><p class="caption">
@@ -207,6 +207,7 @@ Figure 4.1: The main components of a graph window and the parameters for control
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Interpret the above instructions and the resulting plot.</p>
 </div>
+<div style="color: #80CC99;">
 <ol start="13" style="list-style-type: lower-alpha">
 <li><p>Use the function <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> to plot <span class="math inline">\(sin (\theta)\)</span> as <span class="math inline">\(\theta\)</span> varies from <span class="math inline">\(–\pi\)</span> to <span class="math inline">\(\pi\)</span>.</p></li>
 <li><p>Could you explain the different graphs resulting from the two calls in (l) and (m) to the <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> function above?</p></li>
@@ -223,6 +224,7 @@ Figure 4.1: The main components of a graph window and the parameters for control
 <ol start="18" style="list-style-type: lower-alpha">
 <li>Use function <code><a href="https://rdrr.io/r/stats/ts.plot.html">ts.plot()</a></code> to construct a time series plot of the sunspots data set.</li>
 </ol>
+</div>
 </div>
 <div id="interactive-communication-with-graphs" class="section level2" number="4.3">
 <h2>
@@ -254,14 +256,18 @@ Figure 4.1: The main components of a graph window and the parameters for control
 <li>Illustrate the usage of <code><a href="https://rdrr.io/r/graphics/locator.html">locator()</a></code> by:</li>
 </ol>
 <div style="margin-left: 25px; margin-right: 20px;">
-<p><em>Joining <span class="math inline">\(5\)</span> user defined points on a graph interactively with straight lines</em></p>
+<ol style="list-style-type: lower-roman">
+<li>Joining <span class="math inline">\(5\)</span> user defined points on a graph interactively with straight lines.</li>
+</ol>
 </div>
 <div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="va">state.x77</span><span class="op">[</span>,<span class="st">'Life Exp'</span><span class="op">]</span>, y <span class="op">=</span> <span class="va">state.x77</span><span class="op">[</span>,<span class="st">'Income'</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/locator.html">locator</a></span><span class="op">(</span><span class="fl">5</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span> </span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Use mouse and select the five points on the graph. What happened on the graph? What happened in the commands window?</p>
-<p><em>Writing text interactively at a specified position on an existing graph</em></p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Writing text interactively at a specified position on an existing graph.</li>
+</ol>
 </div>
 <div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="va">state.x77</span><span class="op">[</span>,<span class="st">'Life Exp'</span><span class="op">]</span>, y <span class="op">=</span> <span class="va">state.x77</span><span class="op">[</span>,<span class="st">'Income'</span><span class="op">]</span><span class="op">)</span></span>

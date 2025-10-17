@@ -136,9 +136,13 @@
 <p>Shows that the colour for graphics was indeed changed to “blue”.</p>
 </div>
 <ol start="5" style="list-style-type: lower-alpha">
-<li><p>It is sometimes useful to use <code>par (ask = TRUE)</code> to instruct R to ask you whether an existing graph should be replaced by a new one.</p></li>
-<li><p>Draw a histogram of variable Ozone in the data set <code>airquality</code> where each class interval is randomly represented by a different colour. What happened to the <code>NA</code> values?</p></li>
+<li>It is sometimes useful to use <code>par (ask = TRUE)</code> to instruct R to ask you whether an existing graph should be replaced by a new one.</li>
 </ol>
+<div style="color: #80CC99;">
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Draw a histogram of variable Ozone in the data set <code>airquality</code> where each class interval is randomly represented by a different colour. What happened to the <code>NA</code> values?</li>
+</ol>
+</div>
 </div>
 <div id="layout-of-graphics" class="section level2" number="10.2">
 <h2>
@@ -194,8 +198,8 @@ Figure 10.1: Plots of the fdeaths and mdeaths data sets.
 <col width="71%">
 </colgroup>
 <thead><tr class="header">
-<th><em><span style="color:#CC99FF">Function</span></em></th>
-<th><em><span style="color:#CC99FF">Description</span></em></th>
+<th><em><span style="color:#F7CE21">Function</span></em></th>
+<th><em><span style="color:#F7CE21">Description</span></em></th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -308,13 +312,14 @@ Figure 10.2: Three methods of performing sort.
 <span><span class="op">{</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span> <span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span>                             <span class="co"># What is the effect of require()?</span></span>
 <span>  <span class="va">oldstate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>       <span class="co"># Describe object 'oldstate'</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span><span class="va">oldstate</span><span class="op">)</span><span class="op">)</span>                   <span class="co"># Of what use is on.exit()?</span></span>
-<span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
 <span>  <span class="va">cargrp</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"Type"</span><span class="op">]</span></span>
 <span>  <span class="va">price</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"Price"</span><span class="op">]</span></span>
 <span>  <span class="va">mpg.city</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"MPG.city"</span><span class="op">]</span></span>
 <span>  <span class="va">mpg.highway</span> <span class="op">&lt;-</span> <span class="va">Cars93</span><span class="op">[</span> , <span class="st">"MPG.highway"</span><span class="op">]</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">price</span>, <span class="va">mpg.city</span>, type <span class="op">=</span> <span class="st">"n"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">mpg.city</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>       main <span class="op">=</span> <span class="st">"Fuel Consumption vs Price for City Drive"</span>, xlab <span class="op">=</span> <span class="st">"Price"</span>, </span>
+<span>       main <span class="op">=</span> <span class="st">"Fuel Con. vs Price for City"</span>, xlab <span class="op">=</span> <span class="st">"Price"</span>, </span>
 <span>       ylab <span class="op">=</span> <span class="st">"Miles per Gallon in City"</span><span class="op">)</span></span>
 <span>  <span class="va">jj</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span>  <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">cargrp</span><span class="op">)</span><span class="op">)</span></span>
@@ -323,7 +328,7 @@ Figure 10.2: Three methods of performing sort.
 <span>              lty <span class="op">=</span> <span class="va">jj</span>, col <span class="op">=</span> <span class="va">jj</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">price</span>, <span class="va">mpg.highway</span>, type <span class="op">=</span> <span class="st">"n"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">mpg.highway</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>       main <span class="op">=</span> <span class="st">"Fuel Consumption vs Price for Highway Drive"</span>, xlab <span class="op">=</span> <span class="st">"Price"</span>, </span>
+<span>       main <span class="op">=</span> <span class="st">"Fuel Con. vs Price for Highway"</span>, xlab <span class="op">=</span> <span class="st">"Price"</span>, </span>
 <span>       ylab <span class="op">=</span> <span class="st">"Miles per Gallon on Highway"</span><span class="op">)</span></span>
 <span>  <span class="va">jj</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span>  <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">cargrp</span><span class="op">)</span><span class="op">)</span></span>
@@ -333,18 +338,12 @@ Figure 10.2: Three methods of performing sort.
 <span>              lty <span class="op">=</span> <span class="va">jj</span>, col <span class="op">=</span> <span class="va">jj</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu">my.func</span> <span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">my.func</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: MASS</span></span></code></pre></div>
 <div class="figure">
-<span style="display:block;" id="fig:diffLengths-1"></span>
+<span style="display:block;" id="fig:diffLengths"></span>
 <img src="10-graphics2_files/figure-html/diffLengths-1.png" alt="Plotting multiple lines of different lenghts" width="100%"><p class="caption">
 Figure 10.3: Plotting multiple lines of different lenghts
-</p>
-</div>
-<div class="figure">
-<span style="display:block;" id="fig:diffLengths-2"></span>
-<img src="10-graphics2_files/figure-html/diffLengths-2.png" alt="Plotting multiple lines of different lenghts" width="100%"><p class="caption">
-Figure 10.4: Plotting multiple lines of different lenghts
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
@@ -357,8 +356,8 @@ Figure 10.4: Plotting multiple lines of different lenghts
 <span class="header-section-number">10.4.3</span> Adding legends to a graph<a class="anchor" aria-label="anchor" href="#Legends"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: lower-alpha">
-<li><p>Study how the function <code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code> and the graphical parameter <code>usr</code> work. Study the code used to obtain Figure <a href="graphics2.html#fig:cargrps">10.5</a>. Revise the <code><a href="https://rdrr.io/r/graphics/locator.html">locator()</a></code> function.</p></li>
-<li><p>Use the facts that one USA gallon of liquid is equal to <span class="math inline">\(0.83267\)</span> UK (imperial) gallon of liquid and one mile is equal to <span class="math inline">\(1.6093\)</span> kilometres to obtain a figure similar to Figure 10.4.1 but with a kilometres per litre scale on the right-hand side that corresponds to the miles per gallon (USA) on highway scale on the left-hand side.</p></li>
+<li><p>Study how the function <code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code> and the graphical parameter <code>usr</code> work. Study the code used to obtain Figure <a href="graphics2.html#fig:cargrps">10.4</a>. Revise the <code><a href="https://rdrr.io/r/graphics/locator.html">locator()</a></code> function.</p></li>
+<li><p>Use the facts that one USA gallon of liquid is equal to <span class="math inline">\(0.83267\)</span> UK (imperial) gallon of liquid and one mile is equal to <span class="math inline">\(1.6093\)</span> kilometres to obtain a figure similar to Figure <a href="graphics2.html#fig:diffLengths">10.3</a> but with a kilometres per litre scale on the right-hand side that corresponds to the miles per gallon (USA) on highway scale on the left-hand side.</p></li>
 </ol>
 <div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span></span>
@@ -381,7 +380,7 @@ Figure 10.4: Plotting multiple lines of different lenghts
 <div class="figure">
 <span style="display:block;" id="fig:cargrps"></span>
 <img src="10-graphics2_files/figure-html/cargrps-1.png" alt="Illustrating adding a legend to a plot." width="100%"><p class="caption">
-Figure 10.5: Illustrating adding a legend to a plot.
+Figure 10.4: Illustrating adding a legend to a plot.
 </p>
 </div>
 </div>
@@ -389,7 +388,7 @@ Figure 10.5: Illustrating adding a legend to a plot.
 <h3>
 <span class="header-section-number">10.4.4</span> Multiple plots with identical axes<a class="anchor" aria-label="anchor" href="#multAxes"><i class="fas fa-link"></i></a>
 </h3>
-<p>How can various graphs with identical axes be obtained? Show how this can be done by graphing the sorting time for the three procedures considered in <a href="graphics2.html#matplot">10.4.1</a> above in three separate plots in the same graph window.</p>
+<p>How can various graphs with identical axes be obtained? Show how this can be done by graphing the sorting time for the three procedures considered in section <a href="graphics2.html#matplot">10.4.1</a> above in three separate plots in the same graph window.</p>
 </div>
 <div id="providing-a-single-legend-for-multiple-plots" class="section level3" number="10.4.5">
 <h3>
@@ -401,14 +400,14 @@ Figure 10.5: Illustrating adding a legend to a plot.
 <h3>
 <span class="header-section-number">10.4.6</span> Changing the plotting character: common plotting characters in R<a class="anchor" aria-label="anchor" href="#changing-the-plotting-character-common-plotting-characters-in-r"><i class="fas fa-link"></i></a>
 </h3>
-<p>Note the use of graphical parameters <code>pch</code> and <code>mkh</code>. What plotting characters are available? Study the help file of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> and <code><a href="https://rdrr.io/r/graphics/points.html">points()</a></code>. Study the plotting characters displayed in Figure <a href="graphics2.html#fig:pch">10.6</a> and the code used to produce the figure. How can plotting characters be made to appear in legends?</p>
+<p>Note the use of graphical parameters <code>pch</code> and <code>mkh</code>. What plotting characters are available? Study the help file of <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> and <code><a href="https://rdrr.io/r/graphics/points.html">points()</a></code>. Study the plotting characters displayed in Figure <a href="graphics2.html#fig:pch">10.5</a> and the code used to produce the figure. How can plotting characters be made to appear in legends?</p>
 <div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">19</span>, cex <span class="op">=</span> <span class="fl">2</span>, </span>
 <span>      pty <span class="op">=</span> <span class="st">"p"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3</span><span class="op">)</span>, xlab <span class="op">=</span> <span class="st">""</span>, ylab <span class="op">=</span> <span class="st">""</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, yaxt <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:pch"></span>
 <img src="10-graphics2_files/figure-html/pch-1.png" alt="Some common plotting characters available in R." width="100%"><p class="caption">
-Figure 10.6: Some common plotting characters available in R.
+Figure 10.5: Some common plotting characters available in R.
 </p>
 </div>
 </div>
@@ -416,7 +415,7 @@ Figure 10.6: Some common plotting characters available in R.
 <h3>
 <span class="header-section-number">10.4.7</span> Changing the colour in plots<a class="anchor" aria-label="anchor" href="#changing-the-colour-in-plots"><i class="fas fa-link"></i></a>
 </h3>
-<p>The graphical parameter <code>col</code> allows the user to specify the colour(s) in number format as given in Figure <a href="graphics2.html#fig:col">10.8</a>. The full list of named colours can be obtained with the command <code><a href="https://rdrr.io/r/grDevices/colors.html">colors()</a></code> in the Console.</p>
+<p>The graphical parameter <code>col</code> allows the user to specify the colour(s) in number format as given in Figure <a href="graphics2.html#fig:col">10.7</a>. The full list of named colours can be obtained with the command <code><a href="https://rdrr.io/r/grDevices/colors.html">colors()</a></code> in the Console.</p>
 <p>Alternatively, the colour can be specified by hue, saturation and value with <code>hsv (h = , s = , v = )</code>, hue, chroma and luminance with <code>hcl (h = , c = , l = )</code> or red, green and blue with <code>rgb (red = , green = , blue = )</code>. The <code><a href="https://rdrr.io/r/grDevices/rgb.html">rgb()</a></code> function has an argument <code>maxColorValue</code> with default value <code>1</code> which indicates the range known as the gamma-compressed values. Typically, the red, green and blue values range between 0 and 255 or video display or 8-bit graphics. To select a specific shade of light blue, the following command can be used:</p>
 <div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span> <span class="op">(</span><span class="va">ldeaths</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html">rgb</a></span> <span class="op">(</span>red <span class="op">=</span> <span class="fl">167</span>, green <span class="op">=</span> <span class="fl">227</span>, blue <span class="op">=</span> <span class="fl">227</span>, </span>
@@ -424,21 +423,21 @@ Figure 10.6: Some common plotting characters available in R.
 <div class="figure">
 <span style="display:block;" id="fig:colExample"></span>
 <img src="10-graphics2_files/figure-html/colExample-1.png" alt="Colour selection with rgb()." width="100%"><p class="caption">
-Figure 10.7: Colour selection with rgb().
+Figure 10.6: Colour selection with rgb().
 </p>
 </div>
 <p>The output of the <code><a href="https://rdrr.io/r/grDevices/rgb.html">rgb()</a></code> function is in the hexidemical colour number format, e.g. “#A7E3E3”. The function <code><a href="https://rdrr.io/r/grDevices/col2rgb.html">col2rgb()</a></code> accepts a colour name, hexadecimal colour number format or colour number and provides the red, green and blue values in the 0 to 255 range.</p>
 <div class="figure">
 <span style="display:block;" id="fig:col"></span>
 <img src="10-graphics2_files/figure-html/col-1.png" alt="The default colour palette available in R." width="100%"><p class="caption">
-Figure 10.8: The default colour palette available in R.
+Figure 10.7: The default colour palette available in R.
 </p>
 </div>
-<p>A sequence of <span class="math inline">\(n\)</span> colours can be generated with the function <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette()</a></code>. As an example, the colour vector used for plotting in Figure <a href="graphics2.html#fig:colRamp">10.9</a> were generated with the call <code>colorRampPalette (c ("red", "green", "white", "gold"))(20)</code>. Study how the following instructions generate colour sequences: <code><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">heat.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">topo.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">cm.colors()</a></code>.</p>
+<p>A sequence of <span class="math inline">\(n\)</span> colours can be generated with the function <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette()</a></code>. As an example, the colour vector used for plotting in Figure <a href="graphics2.html#fig:colRamp">10.8</a> were generated with the call <code>colorRampPalette (c ("red", "green", "white", "gold"))(20)</code>. Study how the following instructions generate colour sequences: <code><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">heat.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">topo.colors()</a></code>, <code><a href="https://rdrr.io/r/grDevices/palettes.html">cm.colors()</a></code>.</p>
 <div class="figure">
 <span style="display:block;" id="fig:colRamp"></span>
 <img src="10-graphics2_files/figure-html/colRamp-1.png" alt="User specified colour sequence with colorRampPalette()." width="100%"><p class="caption">
-Figure 10.9: User specified colour sequence with colorRampPalette().
+Figure 10.8: User specified colour sequence with colorRampPalette().
 </p>
 </div>
 </div>
@@ -452,7 +451,7 @@ Figure 10.9: User specified colour sequence with colorRampPalette().
 <h3>
 <span class="header-section-number">10.4.9</span> Graphs with character strings as the ‘scale’ on the axis<a class="anchor" aria-label="anchor" href="#graphs-with-character-strings-as-the-scale-on-the-axis"><i class="fas fa-link"></i></a>
 </h3>
-<p>Figure <a href="graphics2.html#fig:catAxis">10.10</a> illustrates how user defined character strings can appear as calibrations on an axis. Furthermore, this figure illustrates several techniques to fine-tune plots. Study the code resulting in Figure <a href="graphics2.html#fig:catAxis">10.10</a> in detail.</p>
+<p>Figure <a href="graphics2.html#fig:catAxis">10.9</a> illustrates how user defined character strings can appear as calibrations on an axis. Furthermore, this figure illustrates several techniques to fine-tune plots. Study the code resulting in Figure <a href="graphics2.html#fig:catAxis">10.9</a> in detail.</p>
 <div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">{</span> <span class="va">old.state</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -486,7 +485,7 @@ Figure 10.9: User specified colour sequence with colorRampPalette().
 <div class="figure">
 <span style="display:block;" id="fig:catAxis"></span>
 <img src="10-graphics2_files/figure-html/catAxis-1.png" alt="Figures with character strings as axis calibrations and other enhancements to plots." width="100%"><p class="caption">
-Figure 10.10: Figures with character strings as axis calibrations and other enhancements to plots.
+Figure 10.9: Figures with character strings as axis calibrations and other enhancements to plots.
 </p>
 </div>
 </div>
@@ -500,11 +499,11 @@ Figure 10.10: Figures with character strings as axis calibrations and other enha
 <li><p>How can a probability density function be superimposed on a histogram?</p></li>
 <li><p>How can bar charts be provided with user-defined axes?</p></li>
 </ol>
-<p>Use the <code>Cars93</code> data set to answer the above four questions by constructing a figure similar to the one shown in Figure <a href="graphics2.html#fig:BarHist">10.11</a>. Note: In the Mean MPG plot not all car types are used. If a factor variable is subsetted the original levels will be kept although some of them might not occurr. Hence it might be necessary to create a new factor variable with only the levels that are needed by using <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>.</p>
+<p>Use the <code>Cars93</code> data set to answer the above four questions by constructing a figure similar to the one shown in Figure <a href="graphics2.html#fig:BarHist">10.10</a>. Note: In the Mean MPG plot not all car types are used. If a factor variable is subsetted the original levels will be kept although some of them might not occurr. Hence it might be necessary to create a new factor variable with only the levels that are needed by using <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>.</p>
 <div class="figure">
 <span style="display:block;" id="fig:BarHist"></span>
 <img src="10-graphics2_files/figure-html/BarHist-1.png" alt="Enhanced bar charts and histograms." width="100%"><p class="caption">
-Figure 10.11: Enhanced bar charts and histograms.
+Figure 10.10: Enhanced bar charts and histograms.
 </p>
 </div>
 </div>
@@ -514,7 +513,7 @@ Figure 10.11: Enhanced bar charts and histograms.
 </h3>
 <ol style="list-style-type: lower-alpha">
 <li><p>Study how the function <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> works.</p></li>
-<li><p>Work through the example code that creates Figure <a href="graphics2.html#fig:persp">10.12</a>. Apart from the arrow that points to the maximum, different colours must be used to highlight the different aspects of the graph.</p></li>
+<li><p>Work through the example code that creates Figure <a href="graphics2.html#fig:persp">10.11</a>. Apart from the arrow that points to the maximum, different colours must be used to highlight the different aspects of the graph.</p></li>
 <li><p>Provide horizontally and vertically rotated views of the 3D plot.</p></li>
 </ol>
 <div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
@@ -550,7 +549,7 @@ Figure 10.11: Enhanced bar charts and histograms.
 <div class="figure">
 <span style="display:block;" id="fig:persp"></span>
 <img src="10-graphics2_files/figure-html/persp-1.png" alt="Annotated 3D perspective plot." width="100%"><p class="caption">
-Figure 10.12: Annotated 3D perspective plot.
+Figure 10.11: Annotated 3D perspective plot.
 </p>
 </div>
 <pre><code>#&gt;       [,1]   [,2]   [,3]   [,4]
@@ -577,7 +576,7 @@ Figure 10.12: Annotated 3D perspective plot.
 <h2>
 <span class="header-section-number">10.5</span> Quantile plots<a class="anchor" aria-label="anchor" href="#qqplot"><i class="fas fa-link"></i></a>
 </h2>
-<p>Consider the histogram of weight in Figure <a href="graphics2.html#fig:BarHist">10.11</a>. Does this variable follow a normal distribution? A normal quantile plot, shows the observations vs the corresponding quantiles of a standard normal distribution. If the observations correspond to a normal distribution, this will approximately form a straight line. Use the <code><a href="https://rdrr.io/r/stats/qqnorm.html">qqline()</a></code> function to add a straing line to the plot.</p>
+<p>Consider the histogram of weight in Figure <a href="graphics2.html#fig:BarHist">10.10</a>. Does this variable follow a normal distribution? A normal quantile plot, shows the observations vs the corresponding quantiles of a standard normal distribution. If the observations correspond to a normal distribution, this will approximately form a straight line. Use the <code><a href="https://rdrr.io/r/stats/qqnorm.html">qqline()</a></code> function to add a straing line to the plot.</p>
 <div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span> <span class="op">(</span><span class="va">Cars93</span><span class="op">$</span><span class="va">Weight</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span> <span class="op">(</span><span class="va">Cars93</span><span class="op">$</span><span class="va">Weight</span><span class="op">)</span></span></code></pre></div>
@@ -593,11 +592,11 @@ Figure 10.12: Annotated 3D perspective plot.
 <h2>
 <span class="header-section-number">10.6</span> Estimating a density<a class="anchor" aria-label="anchor" href="#density"><i class="fas fa-link"></i></a>
 </h2>
-<p>The histograms in Figure <a href="graphics2.html#fig:histDiffBins">10.13</a> show 200 observations generated, 100 from a <span class="math inline">\(normal (9,2^2)\)</span> and 100 from a <span class="math inline">\(normal (13,1)\)</span> distribution. Histograms are very sensitive to the choice of the number of bins and the starting values of the bins. The wider bins do not show any evidence of a bimodal distribution. Using the smaller bins, the location of the bins can suggest either a bimodal or trimodal distribution.</p>
+<p>The histograms in Figure <a href="graphics2.html#fig:histDiffBins">10.12</a> show 200 observations generated, 100 from a <span class="math inline">\(normal (9,2^2)\)</span> and 100 from a <span class="math inline">\(normal (13,1)\)</span> distribution. Histograms are very sensitive to the choice of the number of bins and the starting values of the bins. The wider bins do not show any evidence of a bimodal distribution. Using the smaller bins, the location of the bins can suggest either a bimodal or trimodal distribution.</p>
 <div class="figure">
 <span style="display:block;" id="fig:histDiffBins"></span>
 <img src="10-graphics2_files/figure-html/histDiffBins-1.png" alt="Histograms with different bin sizes and bin locations of the same normal mixture data set." width="100%"><p class="caption">
-Figure 10.13: Histograms with different bin sizes and bin locations of the same normal mixture data set.
+Figure 10.12: Histograms with different bin sizes and bin locations of the same normal mixture data set.
 </p>
 </div>
 <p>One possible solution to the bin selection problem for histograms is the Average Shifted Histogram (ASH). First we define a <em><span style="color:#FF9966">density histogram</span></em>. Since we aim to estimate the density (which integrates to one) a density histogram is normalised such that the area in the histogram is equal to one.</p>
@@ -619,16 +618,16 @@ Figure 10.13: Histograms with different bin sizes and bin locations of the same 
 <div class="figure">
 <span style="display:block;" id="fig:ASH"></span>
 <img src="10-graphics2_files/figure-html/ASH-1.png" alt="Average shifted histogram of normal mixture data." width="100%"><p class="caption">
-Figure 10.14: Average shifted histogram of normal mixture data.
+Figure 10.13: Average shifted histogram of normal mixture data.
 </p>
 </div>
-<p>The ASH is given in Figure <a href="graphics2.html#fig:ASH">10.14</a> A more sophisticated method for estimating a density is with a kernel density estimate. The density histograms is replaced by a smooth kernel function, leading to a smoother estimate. The R function <code><a href="https://rdrr.io/r/stats/density.html">density()</a></code> provides a variety of kernels. Using the default kernel, a Gaussian distribution, the kernel density estimate is given in Figure <a href="graphics2.html#fig:densityExample">10.15</a>.</p>
+<p>The ASH is given in Figure <a href="graphics2.html#fig:ASH">10.13</a> A more sophisticated method for estimating a density is with a kernel density estimate. The density histograms is replaced by a smooth kernel function, leading to a smoother estimate. The R function <code><a href="https://rdrr.io/r/stats/density.html">density()</a></code> provides a variety of kernels. Using the default kernel, a Gaussian distribution, the kernel density estimate is given in Figure <a href="graphics2.html#fig:densityExample">10.14</a>.</p>
 <div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:densityExample"></span>
 <img src="10-graphics2_files/figure-html/densityExample-1.png" alt="Guassian kernel density estimate of the normal mixture data." width="100%"><p class="caption">
-Figure 10.15: Guassian kernel density estimate of the normal mixture data.
+Figure 10.14: Guassian kernel density estimate of the normal mixture data.
 </p>
 </div>
 <p>Experiment with different kernel function and different choices of bandwidth (argument bw) for controlling the amount of smoothing.</p>
@@ -694,7 +693,7 @@ Figure 10.15: Guassian kernel density estimate of the normal mixture data.
 <h2>
 <span class="header-section-number">10.10</span> More complex layouts<a class="anchor" aria-label="anchor" href="#more-complex-layouts"><i class="fas fa-link"></i></a>
 </h2>
-<p>Study the graphical requirements needed for constructing Figure <a href="graphics2.html#fig:complexLayout">10.16</a> and how to code these requirements.</p>
+<p>Study the graphical requirements needed for constructing Figure <a href="graphics2.html#fig:complexLayout">10.15</a> and how to code these requirements.</p>
 <div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.func</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="op">)</span> </span>
 <span><span class="op">{</span> <span class="va">old.state</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span> <span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -718,7 +717,7 @@ Figure 10.15: Guassian kernel density estimate of the normal mixture data.
 <div class="figure">
 <span style="display:block;" id="fig:complexLayout"></span>
 <img src="10-graphics2_files/figure-html/complexLayout-1.png" alt="A complex graphics layout." width="100%"><p class="caption">
-Figure 10.16: A complex graphics layout.
+Figure 10.15: A complex graphics layout.
 </p>
 </div>
 </div>
@@ -774,8 +773,8 @@ Figure 10.16: A complex graphics layout.
 <li>In many real life situations it is necessary to identify an object when only limited information is available. The following problem how such a problem can be empirically investigated.</li>
 </ol>
 <div style="margin-left: 25px; margin-right: 20px;">
-<p>The function <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> used for constructing Figure <a href="graphics2.html#fig:persp">10.12</a> requires a regular pattern of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates. If such a pattern is not available it is necessary to interpolate e.g. with <code>interp()</code> (available in package <code>akima</code>) using the available values.</p>
-<p>Use the function <code><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid()</a></code> to create a grid of regularly spaced <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> values and evaluate the “sombrero” function of Figure <a href="graphics2.html#fig:persp">10.12</a> at each of these points.</p>
+<p>The function <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> used for constructing Figure <a href="graphics2.html#fig:persp">10.11</a> requires a regular pattern of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates. If such a pattern is not available it is necessary to interpolate e.g. with <code>interp()</code> (available in package <code>akima</code>) using the available values.</p>
+<p>Use the function <code><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid()</a></code> to create a grid of regularly spaced <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> values and evaluate the “sombrero” function of Figure <a href="graphics2.html#fig:persp">10.11</a> at each of these points.</p>
 <p>Now use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> to randomly sample points from that grid and then the <code>interp()</code> function to interpolate the values of z throughout the grid.</p>
 <p>Finally, use <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> to construct a plot of the interpolated values.</p>
 <p>What fraction of data is needed in the sample to get a good representation of the true shape of the data. <em>Hint</em>: since <code><a href="https://rdrr.io/r/graphics/persp.html">persp()</a></code> does not accept <code>NA</code>s replace <code>NA</code>s with the minimum of the non-missing z values.</p>
@@ -825,11 +824,11 @@ The scale of the data of Group A must appear on the y-axis on the left-hand side
 <div class="figure">
 <span style="display:block;" id="fig:ggplotStructure"></span>
 <img src="pics/ggplot.jpg" alt="Layer structure of ggplot2 package." width="100%"><p class="caption">
-Figure 10.17: Layer structure of ggplot2 package.
+Figure 10.16: Layer structure of ggplot2 package.
 </p>
 </div>
-<p>In Figure <a href="graphics2.html#fig:ggplotStructure">10.17</a>(a) the components of a <em><span style="color:#FF9966">layer</span></em> is depicted. The first essential component is the <em><span style="color:#FF9966">data</span></em> to be represented in the graphic. Together with the data, there needs to be an <em><span style="color:#FF9966">aesthetic mapping</span></em>, describing which variable is mapped to the x-direction, y-direction, the size, shape, colour, etc. The <em><span style="color:#FF9966">statistics</span></em> component optionally transforms the data to quantities that needs to be plotted. Typically, the transformation is used to summarise the data. It is possible to map aesthetics to these new variables. The <em><span style="color:#FF9966">geometry</span></em> defines how each aesthetic is displayed, as points, lines, boxplots, densities, histograms, etc. Each geometry can only display specific aesthetics, for example a point has position, colour, shape and size. Position adjustment is needed in cases where geometric elements overlap, for example using jitter in scatterplots or placing multiple bars stacked or side-by-side in a barplot.</p>
-<p>A graphic can consist of several layers, as shown in Figure <a href="graphics2.html#fig:ggplotStructure">10.17</a>(b). According to the grammar of graphics, a <em><span style="color:#FF9966">scales</span></em> component needs to be specified. The scales are common across layers and describe the mapping of the data to aesthetic attributes such as which colour is associated with which level of a categorical variable. One scale is needed for each aesthetic property used in the layers. In order to place the geometric objects on the plotting plane, a scale is needed. The most commonly used scale is the Cartesian axes, while others such as polar coordinates is also available.</p>
+<p>In Figure <a href="graphics2.html#fig:ggplotStructure">10.16</a>(a) the components of a <em><span style="color:#FF9966">layer</span></em> is depicted. The first essential component is the <em><span style="color:#FF9966">data</span></em> to be represented in the graphic. Together with the data, there needs to be an <em><span style="color:#FF9966">aesthetic mapping</span></em>, describing which variable is mapped to the x-direction, y-direction, the size, shape, colour, etc. The <em><span style="color:#FF9966">statistics</span></em> component optionally transforms the data to quantities that needs to be plotted. Typically, the transformation is used to summarise the data. It is possible to map aesthetics to these new variables. The <em><span style="color:#FF9966">geometry</span></em> defines how each aesthetic is displayed, as points, lines, boxplots, densities, histograms, etc. Each geometry can only display specific aesthetics, for example a point has position, colour, shape and size. Position adjustment is needed in cases where geometric elements overlap, for example using jitter in scatterplots or placing multiple bars stacked or side-by-side in a barplot.</p>
+<p>A graphic can consist of several layers, as shown in Figure <a href="graphics2.html#fig:ggplotStructure">10.16</a>(b). According to the grammar of graphics, a <em><span style="color:#FF9966">scales</span></em> component needs to be specified. The scales are common across layers and describe the mapping of the data to aesthetic attributes such as which colour is associated with which level of a categorical variable. One scale is needed for each aesthetic property used in the layers. In order to place the geometric objects on the plotting plane, a scale is needed. The most commonly used scale is the Cartesian axes, while others such as polar coordinates is also available.</p>
 <p><em><span style="color:#FF9966">Faceting</span></em> splits the data into small multiples of different subsets of the data set. With this component we identify the variable(s) for splitting and how the splitting should be arranged. <em><span style="color:#FF9966">Themes</span></em> are not linked to the data but provide instructions on aspects such as titles, labels, fonts, background, gridlines, and legends.</p>
 <p>The full specification of all the components in a ggplot, can be very cumbersome. Defaults are specified, for instance for each geometry there is a default statistic and for each statistic a default geometry. We can therefore build our plot stepwise, fine-tuning detailed aspects until the required graphic is obtained.</p>
 <p>We will start with some simple plots and then build more complicated graphics. We will use the <code>cereal</code> tibble created from the <code>UScereal</code> data in package <code>MASS</code> (see section <a href="data.html#dplyr">9.12.4</a>) for illustration.</p>
@@ -1378,7 +1377,7 @@ Figure 10.17: Layer structure of ggplot2 package.
 <ol start="6" style="list-style-type: decimal">
 <li><p>Reproduce the plot created in section <a href="graphics2.html#multipleLines">10.4.2</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
 <li><p>Reproduce the plot created in section <a href="graphics2.html#Legends">10.4.3</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
-<li><p>Reproduce the left panel of the plot in Figure <a href="graphics2.html#fig:catAxis">10.10</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
+<li><p>Reproduce the left panel of the plot in Figure <a href="graphics2.html#fig:catAxis">10.9</a> with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p></li>
 </ol>
 </div>
 

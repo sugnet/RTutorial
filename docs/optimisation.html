@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 13 Introduction to Optimisation | Introduction into R Applications and Programming: A Tutorial</title>
+<title>Chapter 12 Introduction to Optimisation | Introduction into R Applications and Programming: A Tutorial</title>
 <meta name="author" content="Niël J le Roux and Sugnet Lubbe">
 <meta name="description" content="Two related topics are briefly discussed in this chapter. First, the focus is on solving the equation \(f(x)=0\). The following two methods are considered (a) the bisection or binary search method...">
 <meta name="generator" content="bookdown 0.44 with bs4_book()">
-<meta property="og:title" content="Chapter 13 Introduction to Optimisation | Introduction into R Applications and Programming: A Tutorial">
+<meta property="og:title" content="Chapter 12 Introduction to Optimisation | Introduction into R Applications and Programming: A Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/sugnet/RTutorial/optimisation.html">
 <meta property="og:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <meta property="og:description" content="Two related topics are briefly discussed in this chapter. First, the focus is on solving the equation \(f(x)=0\). The following two methods are considered (a) the bisection or binary search method...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 13 Introduction to Optimisation | Introduction into R Applications and Programming: A Tutorial">
+<meta name="twitter:title" content="Chapter 12 Introduction to Optimisation | Introduction into R Applications and Programming: A Tutorial">
 <meta name="twitter:description" content="Two related topics are briefly discussed in this chapter. First, the focus is on solving the equation \(f(x)=0\). The following two methods are considered (a) the bisection or binary search method...">
 <meta name="twitter:image" content="https://github.com/sugnet/RTutorial/frontcover.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,35 +69,50 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 13</span> Introduction to Optimisation</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introducing the R System</a></li>
+<li><a class="" href="objects.html"><span class="header-section-number">2</span> Managing objects</a></li>
+<li><a class="" href="operators.html"><span class="header-section-number">3</span> R operators and functions</a></li>
+<li><a class="" href="graphics.html"><span class="header-section-number">4</span> Introducing traditional R graphics</a></li>
+<li><a class="" href="subscripting.html"><span class="header-section-number">5</span> Subscripting</a></li>
+<li><a class="" href="revision.html"><span class="header-section-number">6</span> Revision tasks</a></li>
+<li><a class="" href="functions.html"><span class="header-section-number">7</span> Writing functions in R</a></li>
+<li><a class="" href="mapping.html"><span class="header-section-number">8</span> Vectorized programming and mapping functions</a></li>
+<li><a class="" href="data.html"><span class="header-section-number">9</span> Reading data files into R, formatting and printing</a></li>
+<li><a class="" href="graphics2.html"><span class="header-section-number">10</span> R graphics: Round II</a></li>
+<li><a class="" href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></li>
+<li><a class="active" href="optimisation.html"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/sugnet/RTutorial">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="optimisation" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="optimisation" class="section level1" number="12">
 <h1>
-<span class="header-section-number">13</span> Introduction to Optimisation<a class="anchor" aria-label="anchor" href="#optimisation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12</span> Introduction to Optimisation<a class="anchor" aria-label="anchor" href="#optimisation"><i class="fas fa-link"></i></a>
 </h1>
 <p>Two related topics are briefly discussed in this chapter. First, the focus is on solving the equation <span class="math inline">\(f(x)=0\)</span>. The following two methods are considered (a) the bisection or binary search method and (b) the Newton-Raphson method. In the last two sections some principles underlying optimization are considered by briefly examining the usage of the function <code><a href="https://rdrr.io/r/stats/optim.html">optim()</a></code> for general optimization and the packages <code>lpSolve</code> and <code>Rsolnp</code> for constrained optimization.</p>
-<div id="the-bisection-method-for-solving-fx0" class="section level2" number="13.1">
+<div id="the-bisection-method-for-solving-fx0" class="section level2" number="12.1">
 <h2>
-<span class="header-section-number">13.1</span> The bisection method for solving <span class="math inline">\(f(x)=0\)</span><a class="anchor" aria-label="anchor" href="#the-bisection-method-for-solving-fx0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1</span> The bisection method for solving <span class="math inline">\(f(x)=0\)</span><a class="anchor" aria-label="anchor" href="#the-bisection-method-for-solving-fx0"><i class="fas fa-link"></i></a>
 </h2>
 <p>The bisection method is based on the <em><span style="color:#FF9966">Mean Value Theorem</span></em> (MVT): Let <span class="math inline">\(f(x)\)</span> be a continuous function defined over the interval <span class="math inline">\(x∈[a,b]\)</span> with the property that <span class="math inline">\(f(a)\)</span> and <span class="math inline">\(f(b)\)</span> have opposite signs. According to the MVT there exists a value <span class="math inline">\(p\)</span> in <span class="math inline">\((a,b)\)</span> such that <span class="math inline">\(f(p)=0\)</span>. In order to keep arguments simple it is assumed that the root of the equation is unique in this interval. The bisection method consists of</p>
 <ol style="list-style-type: lower-roman">
 <li>repeatedly halving subintervals of <span class="math inline">\([a,b]\)</span> and</li>
 <li>to determine in each step which half contains <span class="math inline">\(p\)</span>.</li>
 </ol>
-<p>The process is initialized by setting <span class="math inline">\(a_1=1\)</span> and <span class="math inline">\(b_1=b\)</span>. Let <span class="math inline">\(p_1\)</span> represents the midpoint of <span class="math inline">\([a_1,b_1 ]\)</span>, i.e. <span class="math inline">\(p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}\)</span>. Suppose <span class="math inline">\(f(p_1 )=0\)</span> then <span class="math inline">\(p=p_1\)</span> so that we have the root. Suppose <span class="math inline">\(f(p_1) \neq 0\)</span> then <span class="math inline">\(f(p_1)\)</span> has similar sign to either <span class="math inline">\(f(a_1)\)</span> or <span class="math inline">\(f(b_1)\)</span>. If <span class="math inline">\(f(p_1)\)</span> and <span class="math inline">\(f(a_1)\)</span> have similar signs then <span class="math inline">\(p∈(p_1,b_1)\)</span> and we set <span class="math inline">\(a_2=p_1\)</span> and <span class="math inline">\(b_2=b_1\)</span>. If <span class="math inline">\(f(p_1)\)</span> and <span class="math inline">\(f(a_1)\)</span> have opposite signs then <span class="math inline">\(p∈(a_1,p_1)\)</span> and we set <span class="math inline">\(a_2=a_1\)</span> and <span class="math inline">\(b_2=p_1\)</span>. The whole process is now repeated with the interval <span class="math inline">\([a_2,b_2]\)</span>. This process is illustrated in Figure <a href="optimisation.html#fig:bisection">13.1</a> and coded in the R function, <code>Bisection()</code>, given below.</p>
+<p>The process is initialized by setting <span class="math inline">\(a_1=1\)</span> and <span class="math inline">\(b_1=b\)</span>. Let <span class="math inline">\(p_1\)</span> represents the midpoint of <span class="math inline">\([a_1,b_1 ]\)</span>, i.e. <span class="math inline">\(p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}\)</span>. Suppose <span class="math inline">\(f(p_1 )=0\)</span> then <span class="math inline">\(p=p_1\)</span> so that we have the root. Suppose <span class="math inline">\(f(p_1) \neq 0\)</span> then <span class="math inline">\(f(p_1)\)</span> has similar sign to either <span class="math inline">\(f(a_1)\)</span> or <span class="math inline">\(f(b_1)\)</span>. If <span class="math inline">\(f(p_1)\)</span> and <span class="math inline">\(f(a_1)\)</span> have similar signs then <span class="math inline">\(p∈(p_1,b_1)\)</span> and we set <span class="math inline">\(a_2=p_1\)</span> and <span class="math inline">\(b_2=b_1\)</span>. If <span class="math inline">\(f(p_1)\)</span> and <span class="math inline">\(f(a_1)\)</span> have opposite signs then <span class="math inline">\(p∈(a_1,p_1)\)</span> and we set <span class="math inline">\(a_2=a_1\)</span> and <span class="math inline">\(b_2=p_1\)</span>. The whole process is now repeated with the interval <span class="math inline">\([a_2,b_2]\)</span>. This process is illustrated in Figure <a href="optimisation.html#fig:bisection">12.1</a> and coded in the R function, <code>Bisection()</code>, given below.</p>
 <div class="figure">
 <span style="display:block;" id="fig:bisection"></span>
 <img src="pics/bisection.jpg" alt="Principle underlying the bisection method for finding a root of f(x)=0." width="100%"><p class="caption">
-Figure 13.1: Principle underlying the bisection method for finding a root of f(x)=0.
+Figure 12.1: Principle underlying the bisection method for finding a root of f(x)=0.
 </p>
 </div>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Bisection</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">fun</span>, <span class="va">eps</span><span class="op">=</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">^</span><span class="fl">0.4</span>,  <span class="va">maxiter</span><span class="op">=</span><span class="fl">100</span><span class="op">)</span> </span>
 <span><span class="op">{</span> <span class="co">#  This function finds the root of continuous function   </span></span>
 <span>  <span class="co">#  f(x) = 0 in the interval [a, b] where</span></span>
@@ -140,83 +155,87 @@ c^2 + x^2 + \frac{2cx}{n-1} = n-2.
 <li><p>Consider the following data given by <span class="citation">Dobson &amp; Barnett (<a href="references.html#ref-DobsonBarnett2008">2008</a>)</span></p></li>
 </ol>
 <div class="tabwid">
-<style>.cl-dbdff660{}.cl-dbd3e6fe{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-dbd903b4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-dbd903be{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-dbd92b32{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dbd92b3c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<div class="inline-table"><table data-quarto-disable-processing="true" class="cl-dbdff660">
+<style>.cl-ada061ea{}.cl-ad93fb08{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-ad99284e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-ad992858{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-ad99547c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad995486{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<div class="inline-table"><table data-quarto-disable-processing="true" class="cl-ada061ea">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-dbd92b32"><p class="cl-dbd903b4"><span class="cl-dbd3e6fe">Season</span></p></th>
-<th class="cl-dbd92b32"><p class="cl-dbd903b4"><span class="cl-dbd3e6fe">Number of tropical cyclones</span></p></th>
+<th class="cl-ad99547c"><p class="cl-ad99284e"><span class="cl-ad93fb08">Season</span></p></th>
+<th class="cl-ad99547c"><p class="cl-ad99284e"><span class="cl-ad93fb08">Number of tropical cyclones</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">1</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">6</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">1</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">6</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">2</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">5</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">2</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">3</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">4</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">3</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">4</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">4</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">6</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">4</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">6</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">5</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">6</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">5</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">6</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">6</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">3</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">6</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">3</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">7</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">12</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">7</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">12</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">8</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">7</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">8</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">7</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">9</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">4</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">9</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">4</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">10</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">2</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">10</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">2</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">11</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">6</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">11</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">6</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">12</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">7</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">12</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">7</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">13</span></p></td>
-<td class="cl-dbd92b3c"><p class="cl-dbd903be"><span class="cl-dbd3e6fe">4</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">13</span></p></td>
+<td class="cl-ad995486"><p class="cl-ad992858"><span class="cl-ad93fb08">4</span></p></td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Suppose the number of cyclones can be modelled by a Poisson distribution with parameter <span class="math inline">\(\theta\)</span>.</p>
+<div style="color: #80CC99;">
 <ol style="list-style-type: lower-roman">
 <li><p>Write down the log-likelihood function for determining the maximum likelihood (m.l.) estimate of <span class="math inline">\(\theta\)</span>.</p></li>
 <li><p>Use the function written in (b) without changing it to obtain the m.l. estimate of <span class="math inline">\(\theta\)</span> as well as the maximum of the log-likelihood.</p></li>
 <li><p>Use the R function <code><a href="https://rdrr.io/r/stats/deriv.html">deriv()</a></code> to write a function based on the bisection principle for finding the maximum of <span class="math inline">\(f(x,θ)\)</span> with respect to <span class="math inline">\(\theta\)</span>. Demonstrate its usage.</p></li>
 </ol>
 </div>
+</div>
+<div style="color: #80CC99;">
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Study the help file of the R function <code><a href="https://rdrr.io/r/stats/uniroot.html">uniroot()</a></code>. Answer questions (a) and (c) using <code><a href="https://rdrr.io/r/stats/uniroot.html">uniroot()</a></code>.</li>
 </ol>
 </div>
-<div id="the-newton-raphson-method" class="section level2" number="13.2">
+</div>
+<div id="the-newton-raphson-method" class="section level2" number="12.2">
 <h2>
-<span class="header-section-number">13.2</span> The Newton-Raphson method<a class="anchor" aria-label="anchor" href="#the-newton-raphson-method"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2</span> The Newton-Raphson method<a class="anchor" aria-label="anchor" href="#the-newton-raphson-method"><i class="fas fa-link"></i></a>
 </h2>
 <p>Consider the following: Let <span class="math inline">\(f(x)\)</span> be a function that is at least twice differentiable over the interval <span class="math inline">\([a,b]\)</span>. The value of <span class="math inline">\(x=p\)</span> such that <span class="math inline">\(f(p)=0\)</span> needs to be found. Let <span class="math inline">\(p_m∈[a,b]\)</span> be an approximate value of <span class="math inline">\(p\)</span> such that <span class="math inline">\(f'(p_m) \neq 0\)</span> and <span class="math inline">\(|p-p_m|\)</span> is “small”. Consider the Taylor power series expansion of <span class="math inline">\(f(x)\)</span> about <span class="math inline">\(p_m\)</span>:</p>
 <p><span class="math display">\[
@@ -238,11 +257,11 @@ p \approx p_m - \frac{f(p_m)}{f'(p_m)}
 <p><span class="math display">\[
 p_{m+1} \approx p_m - \frac{f(p_m)}{f'(p_m)}
 \]</span></p>
-<p>for <span class="math inline">\(m≥0\)</span>. In Figure <a href="optimisation.html#fig:NewtonRaphson">13.2</a> it is illustrated how the approximations are found by consecutive tangent lines.</p>
+<p>for <span class="math inline">\(m≥0\)</span>. In Figure <a href="optimisation.html#fig:NewtonRaphson">12.2</a> it is illustrated how the approximations are found by consecutive tangent lines.</p>
 <div class="figure">
 <span style="display:block;" id="fig:NewtonRaphson"></span>
-<img src="pics/bisection.jpg" alt="Principle underlying the Newton-Raphson algorithm." width="100%"><p class="caption">
-Figure 13.2: Principle underlying the Newton-Raphson algorithm.
+<img src="pics/NewtonRaphson.jpg" alt="Principle underlying the Newton-Raphson algorithm." width="100%"><p class="caption">
+Figure 12.2: Principle underlying the Newton-Raphson algorithm.
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
@@ -262,7 +281,7 @@ f(y_1, \dots, y_n) = \prod_{i=1}^{n}{\frac{\lambda y_i^{\lambda-1}}{\theta^\lamb
 <div style="margin-left: 45px; margin-right: 20px;">
 <p>where <span class="math inline">\(y_i&gt;0\)</span>. Experiment with various initial values and convergence criteria. The following function serves as an example:</p>
 </div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NewtonRaphson</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fun1</span>, <span class="va">fun2</span>, <span class="va">initval</span>, <span class="va">maxiter</span> <span class="op">=</span> <span class="fl">20</span>, </span>
 <span>                          <span class="va">eps</span> <span class="op">=</span> <span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">^</span><span class="fl">0.4</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="op">{</span> <span class="co"># initval = initial approximation of root</span></span>
@@ -287,79 +306,80 @@ f(y_1, \dots, y_n) = \prod_{i=1}^{n}{\frac{\lambda y_i^{\lambda-1}}{\theta^\lamb
 <span>    <span class="op">}</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span> <span class="op">(</span>IterNo <span class="op">=</span> <span class="va">Iter</span>,  Estim <span class="op">=</span> <span class="va">Outvec</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
+<div style="color: #80CC99;">
 <p>The Weibull distribution is often used to model the time to failure (i.e. the survival time) of organisms or components. The parameter <span class="math inline">\(\lambda\)</span> determines the shape while <span class="math inline">\(\theta\)</span> is a scale parameter. The following table (from <span class="citation">Andrews &amp; Herzberg (<a href="references.html#ref-AndrewsHerzberg1985">1985</a>)</span> Table 29.1) contains the lifetimes of a random sample of pressure vessels:</p>
 <div class="tabwid">
-<style>.cl-dc14406e{}.cl-dc06f1ca{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-dc0c0674{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-dc0c2f82{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc0c2f8c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc0c2f96{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<div class="inline-table"><table data-quarto-disable-processing="true" class="cl-dc14406e"><tbody>
+<style>.cl-add37cec{}.cl-adc7e35a{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-adcbf968{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-adcc1fd8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-adcc1fe2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-adcc1fe3{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<div class="inline-table"><table data-quarto-disable-processing="true" class="cl-add37cec"><tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f82"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">1051</span></p></td>
-<td class="cl-dc0c2f82"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">4921</span></p></td>
-<td class="cl-dc0c2f82"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">7886</span></p></td>
-<td class="cl-dc0c2f82"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">10861</span></p></td>
-<td class="cl-dc0c2f82"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">13520</span></p></td>
+<td class="cl-adcc1fd8"><p class="cl-adcbf968"><span class="cl-adc7e35a">1051</span></p></td>
+<td class="cl-adcc1fd8"><p class="cl-adcbf968"><span class="cl-adc7e35a">4921</span></p></td>
+<td class="cl-adcc1fd8"><p class="cl-adcbf968"><span class="cl-adc7e35a">7886</span></p></td>
+<td class="cl-adcc1fd8"><p class="cl-adcbf968"><span class="cl-adc7e35a">10861</span></p></td>
+<td class="cl-adcc1fd8"><p class="cl-adcbf968"><span class="cl-adc7e35a">13520</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">1337</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">5445</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">8108</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">11026</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">13670</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">1337</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">5445</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">8108</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">11026</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">13670</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">1389</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">5620</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">8546</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">11214</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">14110</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">1389</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">5620</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">8546</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">11214</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">14110</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">1921</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">5817</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">8666</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">11362</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">14496</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">1921</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">5817</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">8666</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">11362</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">14496</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">1942</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">5905</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">8831</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">11604</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">15395</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">1942</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">5905</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">8831</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">11604</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">15395</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">2322</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">5956</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">9106</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">11608</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">16179</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">2322</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">5956</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">9106</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">11608</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">16179</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">3629</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">6068</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">9711</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">11745</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">17092</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">3629</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">6068</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">9711</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">11745</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">17092</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">4006</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">6121</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">9806</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">11762</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">17568</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">4006</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">6121</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">9806</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">11762</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">17568</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">4012</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">6473</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">10205</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">11895</span></p></td>
-<td class="cl-dc0c2f8c"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">17568</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">4012</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">6473</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">10205</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">11895</span></p></td>
+<td class="cl-adcc1fe2"><p class="cl-adcbf968"><span class="cl-adc7e35a">17568</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-dc0c2f96"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">4063</span></p></td>
-<td class="cl-dc0c2f96"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">7501</span></p></td>
-<td class="cl-dc0c2f96"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">10396</span></p></td>
-<td class="cl-dc0c2f96"><p class="cl-dc0c0674"><span class="cl-dc06f1ca">12044</span></p></td>
-<td class="cl-dc0c2f96"><p class="cl-dc0c0674"><span class="cl-dc06f1ca"></span></p></td>
+<td class="cl-adcc1fe3"><p class="cl-adcbf968"><span class="cl-adc7e35a">4063</span></p></td>
+<td class="cl-adcc1fe3"><p class="cl-adcbf968"><span class="cl-adc7e35a">7501</span></p></td>
+<td class="cl-adcc1fe3"><p class="cl-adcbf968"><span class="cl-adc7e35a">10396</span></p></td>
+<td class="cl-adcc1fe3"><p class="cl-adcbf968"><span class="cl-adc7e35a">12044</span></p></td>
+<td class="cl-adcc1fe3"><p class="cl-adcbf968"><span class="cl-adc7e35a"></span></p></td>
 </tr>
 </tbody></table></div>
 </div>
@@ -369,16 +389,352 @@ f(y_1, \dots, y_n) = \prod_{i=1}^{n}{\frac{\lambda y_i^{\lambda-1}}{\theta^\lamb
 </ol>
 </div>
 </div>
+<div id="the-r-functions-optim-and-constroptim" class="section level2" number="12.3">
+<h2>
+<span class="header-section-number">12.3</span> The R functions <code>optim()</code> and <code>constrOptim()</code><a class="anchor" aria-label="anchor" href="#the-r-functions-optim-and-constroptim"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li>In many cases closed form expressions do not exist for the maximum likelihood estimates of parameters. In such cases iterative procedures must be used to maximize the likelihood function. The functions <code><a href="https://rdrr.io/r/stats/optim.html">optim()</a></code> and <code><a href="https://rdrr.io/r/stats/constrOptim.html">constrOptim()</a></code> in the package <code>stats</code> are useful in this regard. Study the help files of these two functions.</li>
+</ol>
+<div style="color: #80CC99;">
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>It follows from (a) that argument <code>par</code> of <code><a href="https://rdrr.io/r/stats/optim.html">optim()</a></code> contains the initial values for the parameters to be estimated; its second argument, <code>fn</code> is the function to be minimized. The first argument of function <code>fn</code> is a vector representing the parameters to be estimated while its second argument provides for the sample data for evaluating the function. Use the function <code><a href="https://rdrr.io/r/stats/optim.html">optim()</a></code> to find the maximum of the likelihood function as well as the maximum likelihood estimates for the parameters in the case of a random sample of size 100 from a <span class="math inline">\(beta(4,2)\)</span>-distribution. Investigate the role of different starting values as well as of changing the sample size.</p></li>
+<li>
+<p>Consider the <code>state.x77</code> data set.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Center and scale the data.</p></li>
+<li><p>Use the function <code><a href="https://rdrr.io/r/stats/dist.html">dist()</a></code> to obtain a distance matrix for the 50 states. Let the computed distance between states <span class="math inline">\(r\)</span> and <span class="math inline">\(s\)</span> be given by <span class="math inline">\(\delta_{rs}\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(\mathbf{X}: 50 \times 2\)</span> is an (unknown) matrix giving the coordinates of the companies in a two- dimensional display space such that the Euclidean distances <span class="math inline">\(\{d_{rs} \}\)</span> derived from <span class="math inline">\(\mathbf{X}\)</span> are the best approximations of the <span class="math inline">\(\{\delta_{rs} \}\)</span> in the sense that the following objective function is minimized:</p></li>
+</ol>
+</li>
+</ol>
+<p><span class="math display">\[
+stress = \frac{1}{\sum_{r&lt;s}{\delta_{rs}}} \sum_{r,s=1;r&lt;s}^{n}{\frac{(d_{rs}-\delta_{rs})^2}{\delta_{rs}}}
+\]</span></p>
+<div style="margin-left: 25px; margin-right: 20px;">
+<p>Use <code><a href="https://rdrr.io/r/stats/optim.html">optim()</a></code> to find <span class="math inline">\(\mathbf{X}\)</span>.</p>
+<ol start="22" style="list-style-type: lower-alpha">
+<li>Plot the 50 states as points in two dimensions such that the inter-state distances <span class="math inline">\(\{d_{rs} \}\)</span> are the best approximations of the true distances <span class="math inline">\(\{\delta_{rs} \}\)</span> in the full space. Calculate the value of <span class="math inline">\(stress\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="packages-quadprog-lpsolve-and-rsolnp-for-constrained-optimization" class="section level2" number="12.4">
+<h2>
+<span class="header-section-number">12.4</span> Packages <code>quadprog</code>, <code>lpSolve</code> and <code>Rsolnp</code> for constrained optimization<a class="anchor" aria-label="anchor" href="#packages-quadprog-lpsolve-and-rsolnp-for-constrained-optimization"><i class="fas fa-link"></i></a>
+</h2>
+<p>The R data set <code>Boston</code> in package <code>MASS</code> contains 13 variables influencing house prices in Boston and the variable <code>medv</code> of median value of owner-occupied homes in thousands of dollar.</p>
+<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></span>
+<span><span class="va">Price.median</span> <span class="op">&lt;-</span> <span class="va">Boston</span><span class="op">$</span><span class="va">medv</span></span>
+<span><span class="va">Boston.vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span> <span class="op">(</span><span class="va">Boston</span><span class="op">[</span>,<span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">Boston</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">Boston.vars</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">Boston.vars</span><span class="op">)</span></span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>Obtain the correlation between <code>Price.median</code> and each of the 13 variables. Discuss the results.</li>
+</ol>
+<p>Our challenge is to form a single composite function of the 13 variables that is the best indicator of the median price of 506 regions. The weights of this composite function are constrained to be non-negative and they must sum to one. The performance of the composite measure is judged according to the following criteria, each subjected to the constraints above:</p>
+<ul>
+<li>Minimum sum of squared differences</li>
+<li>Minimum of the sum of the absolute differences</li>
+<li>Minimum median of the differences</li>
+</ul>
+<ol style="list-style-type: lower-roman">
+<li>Minimum of squared differences</li>
+</ol>
+<p>The objective function to be minimized can be written in the form</p>
+<p><span class="math display">\[
+min_\mathbf{b} \left( -\mathbf{d'b} + \frac{1}{2}\mathbf{b'Db} \right)
+\]</span></p>
+<p>subject to <span class="math inline">\(\mathbf{A'b} \ge \mathbf{0}\)</span>.</p>
+<ul>
+<li>Motivate the form of the above objective function in detail.</li>
+<li>Study the helpfile of the function <code><a href="https://rdrr.io/pkg/quadprog/man/solve.QP.html">solve.QP()</a></code> in package <code>quadprog</code>.</li>
+</ul>
+<p>The minimisation can be accomplished by the following instructions:</p>
+<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va">quadprog</span><span class="op">)</span></span>
+<span><span class="va">H</span> <span class="op">&lt;-</span> <span class="va">Boston.vars</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">Price.median</span></span>
+<span><span class="va">Dmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">H</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">H</span></span>
+<span><span class="va">dvec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">H</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span></span>
+<span><span class="va">Amat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">bvec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/quadprog/man/solve.QP.html">solve.QP</a></span> <span class="op">(</span>Dmat <span class="op">=</span> <span class="va">Dmat</span>, dvec <span class="op">=</span> <span class="va">dvec</span>, <span class="va">Amat</span>, <span class="va">bvec</span>, meq <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $solution</span></span>
+<span><span class="co">#&gt;  [1] -1.854286e-17  1.016929e-01  6.431830e-17  1.607547e-15</span></span>
+<span><span class="co">#&gt;  [5]  8.409484e-15  8.544939e-01  8.673617e-19 -1.075230e-16</span></span>
+<span><span class="co">#&gt;  [9] -1.163240e-17 -1.175671e-19 -1.088444e-16  4.381328e-02</span></span>
+<span><span class="co">#&gt; [13] -8.943855e-17</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $value</span></span>
+<span><span class="co">#&gt; [1] -133751.2</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $unconstrained.solution</span></span>
+<span><span class="co">#&gt;  [1] -0.092896517  0.048714955 -0.004059980  2.853998820</span></span>
+<span><span class="co">#&gt;  [5] -2.868436370  5.928147779 -0.007269335 -0.968514157</span></span>
+<span><span class="co">#&gt;  [9]  0.171151128 -0.009396215 -0.392190926  0.014905610</span></span>
+<span><span class="co">#&gt; [13] -0.416304471</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $iterations</span></span>
+<span><span class="co">#&gt; [1] 12  0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $Lagrangian</span></span>
+<span><span class="co">#&gt;  [1]  2820.144  8310.769     0.000  5944.070  2619.163</span></span>
+<span><span class="co">#&gt;  [6]  2772.206     0.000  2112.962  2692.829  4793.832</span></span>
+<span><span class="co">#&gt; [11] 62260.753  2353.034     0.000 14711.444</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $iact</span></span>
+<span><span class="co">#&gt;  [1]  6  1  5  9 14 12  4  2 10 11  8</span></span></code></pre></div>
+<ul>
+<li><p>Motivate the use of the above instructions.</p></li>
+<li><p>Discuss the solution obtained.</p></li>
+</ul>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Minimum of the sum of the absolute differences</li>
+</ol>
+<p>The objective function can be written as</p>
+<p><span class="math display">\[
+min_\mathbf{a} \left( |y_1-\mathbf{m}_1'\mathbf{a}| + |y_2-\mathbf{m}_2'\mathbf{a}| + \dots + |y_n-\mathbf{m}_n'\mathbf{a}|    \right)
+\]</span></p>
+<p>subject to</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{ll}
+\sum_{j=1}^{p}{a_j} = 1\\
+a_j \ge 0 \text{ for all } j
+\end{array}
+\right.
+\]</span></p>
+<p>The following algorithm can be used.</p>
+<p><em>Step 1</em>: Replace every absolute term <span class="math inline">\(|y_i-\mathbf{m}_i'\mathbf{a}|\)</span> with a new variable <span class="math inline">\(u_i\)</span>.</p>
+<p><em>Step 2</em>: Add the following two constraints for every new variable <em>u_i</em>:</p>
+<p><span class="math display">\[
+y_i - \mathbf{m}_i'\mathbf{a} \le u_i
+\]</span></p>
+<p><span class="math display">\[
+-y_i + \mathbf{m}_i'\mathbf{a} \le u_i
+\]</span></p>
+<p><em>Step 3</em>: Minimize <span class="math inline">\(min_\mathbf{u}(u_1+u_2+\dots+u_n)\)</span> subject to</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{ll}
+\sum_{j=1}^{p}{a_j} = 1\\
+a_j \ge 0 \text{ for all } j\\
+y_i - \mathbf{m}_i'\mathbf{a} \le u_i\\
+-y_i + \mathbf{m}_i'\mathbf{a} \le u_i
+\end{array}
+\right.
+\Leftrightarrow
+\left\{
+\begin{array}{ll}
+\sum_{j=1}^{p}{a_j} = 1\\
+a_j \ge 0 \text{ for all } j\\
+\mathbf{m}_i'\mathbf{a} + u_i \ge y_i\\
+\mathbf{m}_i'\mathbf{a} - u_i \ge y_i
+\end{array}
+\right.
+\]</span></p>
+<p>Note that variables must be non-negative. Let <span class="math inline">\(\mathbf{y}:n×1=\)</span> <code>Price.median</code> <span class="math inline">\(&gt;0\)</span> and
+<span class="math inline">\(\mathbf{M}:n×p=\)</span> <code>Boston.vars</code> <span class="math inline">\(&gt;0\)</span>. Minimising the sum of the absolute differences is equivalent to</p>
+<p><span class="math display">\[
+min_{\mathbf{a},\mathbf{u}} \left(0a_1 + \dots + 0a_p + u_1 + \dots + u_n \right) \text{ subject to }
+\left\{
+\begin{array}{ll}
+\sum_{j=1}^{p}{a_j} = 1\\
+a_j \ge 0 \text{ for all } j\\
+\mathbf{m}_i'\mathbf{a} + u_i \ge y_i\\
+\mathbf{m}_i'\mathbf{a} - u_i \ge y_i
+\end{array}
+\right.
+\]</span></p>
+<p>Study the helpfile of the function <code><a href="https://rdrr.io/pkg/lpSolve/man/lp.html">lp()</a></code> in the package <code>lpSolve</code>. The code below illustrates the usage of <code><a href="https://rdrr.io/pkg/lpSolve/man/lp.html">lp()</a></code>.</p>
+<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y.vec</span> <span class="op">&lt;-</span> <span class="va">Price.median</span></span>
+<span><span class="va">temp1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span> <span class="op">(</span><span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span> <span class="op">(</span><span class="fl">0</span>, nrow <span class="op">=</span> <span class="va">p</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">temp3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span> <span class="op">(</span><span class="va">Boston.vars</span>, <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span> <span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">temp4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span> <span class="op">(</span><span class="va">Boston.vars</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span> <span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">temp3</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">temp4</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="https://github.com/gaborcsardi/lpSolve">lpSolve</a></span><span class="op">)</span></span>
+<span><span class="va">Cmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span> <span class="op">(</span><span class="va">temp1</span>, <span class="va">temp2</span>, <span class="va">temp3</span>, <span class="va">temp4</span><span class="op">)</span></span>
+<span><span class="va">const.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"="</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"&gt;="</span>, <span class="va">p</span><span class="op">+</span><span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"&lt;="</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">const.rhs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">objective.in</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lpSolve/man/lp.html">lp</a></span> <span class="op">(</span>direction <span class="op">=</span> <span class="st">"min"</span>, <span class="va">objective.in</span>, const.mat <span class="op">=</span> <span class="va">Cmat</span>,</span>
+<span>           <span class="va">const.dir</span>, <span class="va">const.rhs</span><span class="op">)</span></span>
+<span><span class="co"># str(out)</span></span>
+<span><span class="va">a.vec</span> <span class="op">&lt;-</span> <span class="va">out</span><span class="op">$</span><span class="va">solution</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span> <span class="op">(</span><span class="va">out</span><span class="op">$</span><span class="va">solution</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">1</span> <span class="op">+</span> <span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">^</span><span class="fl">0.4</span><span class="op">]</span></span>
+<span><span class="va">a.vec</span></span>
+<span><span class="co">#&gt;  [1] 0.0000000000 0.0000000000 0.0000000000 0.0434198358</span></span>
+<span><span class="co">#&gt;  [5] 0.8844619125 0.0325904194 0.0000000000 0.0337958420</span></span>
+<span><span class="co">#&gt;  [9] 0.0000000000 0.0000000000 0.0055044408 0.0002275495</span></span>
+<span><span class="co">#&gt; [13] 0.0000000000</span></span></code></pre></div>
+<p><code>out$solution</code> is a vector of <span class="math inline">\(p+n\)</span> values. The first <span class="math inline">\(p\)</span> are the elements of <span class="math inline">\(\mathbf{a}\)</span> that sum to one and are all non-negative.</p>
+<p><code>out$objval</code> is the minimum of the objective function attained by the solution above. Use <code>str(out)</code> to find the solution. Discuss the solution found.</p>
+<p>A standardized version of the objective function</p>
+<p><span class="math display">\[
+min_\mathbf{a} \left( |y_1-\mathbf{m}_1'\mathbf{a}| + |y_2-\mathbf{m}_2'\mathbf{a}| + \dots + |y_n-\mathbf{m}_n'\mathbf{a}|    \right)
+\]</span></p>
+<p>is the function</p>
+<p><span class="math display">\[
+min_\mathbf{a} \left( \frac{|y_1-\mathbf{m}_1'\mathbf{a}|}{y_1} + \frac{|y_2-\mathbf{m}_2'\mathbf{a}|}{y_2} + \dots + \frac{|y_n-\mathbf{m}_n'\mathbf{a}|}{y_n}    \right)
+\]</span></p>
+<p><span class="math display">\[
+= min_\mathbf{a} \left( \left|1 - \frac{\mathbf{m}_1'\mathbf{a}}{y_1} \right| + \left|1 - \frac{\mathbf{m}_2'\mathbf{a}}{y_2} \right| + \dots + |1 - \frac{\mathbf{m}_n'\mathbf{a}}{y_n}|    \right)
+\]</span></p>
+<p>for all positive <span class="math inline">\(y_i\)</span> subject to</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{ll}
+\sum_{j=1}^{p}{a_j} = 1\\
+a_j \ge 0 \text{ for all } j
+\end{array}
+\right.
+\]</span></p>
+<p>The following modifications are now needed:</p>
+<p><em>Step 1</em>: Replace every absolute term <span class="math inline">\(\left|1 - \frac{\mathbf{m}_i'\mathbf{a}}{y_i} \right|\)</span> with a new variable <span class="math inline">\(u_i\)</span>.</p>
+<p><em>Step 2</em>: Add the following two constraints for every new variable <span class="math inline">\(u_i\)</span>:</p>
+<p><span class="math display">\[
+1 - \frac{\mathbf{m}_i'\mathbf{a}}{y_i} \le u_i
+\]</span></p>
+<p><span class="math display">\[
+-1 + \frac{\mathbf{m}_i'\mathbf{a}}{y_i} \le u_i
+\]</span></p>
+<p><em>Step 3</em>: Minimize <span class="math inline">\(min_\mathbf{u}(u_1+u_2+\dots+u_n)\)</span> subject to</p>
+<p><span class="math display">\[
+\left\{
+\begin{array}{ll}
+\sum_{j=1}^{p}{a_j} = 1\\
+a_j \ge 0 \text{ for all } j\\
+1 - \frac{\mathbf{m}_i'\mathbf{a}}{y_i} \le u_i\\
+-1 + \frac{\mathbf{m}_i'\mathbf{a}}{y_i} \le u_i
+\end{array}
+\right.
+\Leftrightarrow
+\left\{
+\begin{array}{ll}
+\sum_{j=1}^{p}{a_j} = 1\\
+a_j \ge 0 \text{ for all } j\\
+\frac{\mathbf{m}_i'\mathbf{a}}{y_i} + u_i \ge 1\\
+\frac{\mathbf{m}_i'\mathbf{a}}{y_i} - u_i \ge 1
+\end{array}
+\right.
+\]</span></p>
+<p>As an example, consider the following R instructions:</p>
+<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y.vec</span> <span class="op">&lt;-</span> <span class="va">Price.median</span></span>
+<span><span class="va">B.star</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sweep.html">sweep</a></span> <span class="op">(</span><span class="va">Boston.vars</span>, <span class="fl">1</span>, <span class="va">y.vec</span>, <span class="st">"/"</span><span class="op">)</span></span>
+<span><span class="va">temp1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, nrow <span class="op">=</span> <span class="va">p</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">temp3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">B.star</span>, <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span> <span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">temp4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">B.star</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span> <span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">temp3</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">temp4</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> <span class="op">(</span><span class="va"><a href="https://github.com/gaborcsardi/lpSolve">lpSolve</a></span><span class="op">)</span></span>
+<span><span class="va">Cmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">temp1</span>, <span class="va">temp2</span>, <span class="va">temp3</span>, <span class="va">temp4</span><span class="op">)</span></span>
+<span><span class="va">const.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"="</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"&gt;="</span>, <span class="va">p</span><span class="op">+</span><span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"&lt;="</span>,<span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">const.rhs</span> <span class="op">&lt;-</span>   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">objective.in</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lpSolve/man/lp.html">lp</a></span> <span class="op">(</span>direction <span class="op">=</span> <span class="st">"min"</span>, <span class="va">objective.in</span>, const.mat <span class="op">=</span> <span class="va">Cmat</span>, </span>
+<span>           <span class="va">const.dir</span>, <span class="va">const.rhs</span><span class="op">)</span></span>
+<span><span class="va">a.vec</span> <span class="op">&lt;-</span> <span class="va">out</span><span class="op">$</span><span class="va">solution</span> <span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span> <span class="op">(</span><span class="va">out</span><span class="op">$</span><span class="va">solution</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">1</span> <span class="op">+</span> <span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">^</span><span class="fl">0.4</span><span class="op">]</span></span>
+<span><span class="va">a.vec</span></span>
+<span><span class="co">#&gt;  [1] 0.00000000 0.10268625 0.00000000 0.00000000 0.00000000</span></span>
+<span><span class="co">#&gt;  [6] 0.79538107 0.00000000 0.00000000 0.00000000 0.00000000</span></span>
+<span><span class="co">#&gt; [11] 0.06785568 0.03407700 0.00000000</span></span></code></pre></div>
+<p>Discuss the solution by comparing it to solution found for the non-standardized objective function.</p>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Minimum median of the differences</li>
+</ol>
+<p>In general this minimization requires starting values for the iterative scheme. The choice of starting values may lead to a local optimum so that the global optimum is not found. One approach is to repeat the iterative algorithm for many random starts and to choose the best result from these.</p>
+<p>Study the help file of function <code>gosolnp()</code> in package <code>Rsolnp</code>. Note how to specify the random starts. The functions <code>MinMed()</code> and <code>MinMed2()</code> implement <code>gosolnp()</code> for finding the solution for finding the minimum median of the differences.</p>
+<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">MinMed</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">yvec</span>, <span class="va">xmat</span>, <span class="va">restarts</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="op">{</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span> <span class="op">(</span><span class="va">yvec</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span> <span class="op">(</span><span class="va">xmat</span><span class="op">)</span><span class="op">)</span> </span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Number of elements of yvec must equal number of   rows of xmat \n"</span><span class="op">)</span></span>
+<span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">xmat</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># fun1: objective function that will be minimized</span></span>
+<span>  <span class="va">fun1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">y</span>, <span class="va">mat</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span> <span class="op">(</span><span class="va">y</span><span class="op">-</span><span class="va">mat</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">a</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span>  <span class="co"># eqff and eqBB specify the equality constraint</span></span>
+<span>  <span class="va">eqff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">y</span>, <span class="va">mat</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
+<span>  <span class="va">eqBB</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span></span>
+<span>  <span class="co"># ineqff, ineqLBB and ineqUBB specify the inequality constraints</span></span>
+<span>  <span class="va">ineqff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">y</span>, <span class="va">mat</span><span class="op">)</span> <span class="va">a</span></span>
+<span>  <span class="va">ineqLBB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span></span>
+<span>  <span class="va">ineqUBB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">p</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># function gosolnp of package Rsolnp used for executing the optimization</span></span>
+<span>  <span class="fu">gosolnp</span><span class="op">(</span>fun <span class="op">=</span> <span class="va">fun1</span>, eqfun <span class="op">=</span> <span class="va">eqff</span>, eqB  <span class="op">=</span> <span class="va">eqBB</span>, ineqfun <span class="op">=</span> <span class="va">ineqff</span>, </span>
+<span>          ineqLB <span class="op">=</span> <span class="va">ineqLBB</span>, ineqUB <span class="op">=</span> <span class="va">ineqUBB</span>, LB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">p</span><span class="op">)</span>, UB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="va">p</span><span class="op">)</span>, </span>
+<span>          n.restarts <span class="op">=</span> <span class="va">restarts</span>, y <span class="op">=</span> <span class="va">yvec</span>, mat <span class="op">=</span> <span class="va">xmat</span><span class="op">)</span>  </span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">MinMed2</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">yvec</span>, <span class="va">xmat</span>, <span class="va">startvals</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">xmat</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">xmat</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>                     <span class="va">control</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span>tol <span class="op">=</span> <span class="fl">1.0e-7</span>, delta <span class="op">=</span> <span class="fl">1.0e-8</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="op">{</span> <span class="co"># Similar to function MinMed but objective function in standardized form</span></span>
+<span>  <span class="co"># and with specified starting values i.e. no random starts</span></span>
+<span>  <span class="co"># The default startvalues is equal probs. </span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span> <span class="op">(</span><span class="va">yvec</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span> <span class="op">(</span><span class="va">xmat</span><span class="op">)</span><span class="op">)</span> </span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Number of elements of yvec must equal number of rows of xmat \n"</span><span class="op">)</span></span>
+<span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">xmat</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># fun1: objective function that will be minimized</span></span>
+<span>  <span class="va">fun1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">y</span>, <span class="va">mat</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">y</span><span class="op">-</span><span class="va">mat</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">a</span><span class="op">)</span><span class="op">/</span><span class="va">y</span><span class="op">)</span> </span>
+<span></span>
+<span>  <span class="co"># eqff and eqBB specify the equality constraint</span></span>
+<span>  <span class="va">eqff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">y</span>, <span class="va">mat</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span>
+<span>  <span class="va">eqBB</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span>  </span>
+<span>  <span class="co"># ineqff, ineqLBB and ineqUBB specify the inequality constraints</span></span>
+<span>  <span class="va">ineqff</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">y</span>, <span class="va">mat</span><span class="op">)</span> <span class="va">a</span></span>
+<span>  <span class="va">ineqLBB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">p</span><span class="op">)</span></span>
+<span>  <span class="va">ineqUBB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">p</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># function gosolnp of package Rsolnp used for executing the optimization</span></span>
+<span>  <span class="fu">solnp</span> <span class="op">(</span>pars <span class="op">=</span> <span class="va">startvals</span>, fun <span class="op">=</span> <span class="va">fun1</span>, eqfun <span class="op">=</span> <span class="va">eqff</span>, eqB  <span class="op">=</span> <span class="va">eqBB</span>, </span>
+<span>         ineqfun <span class="op">=</span> <span class="va">ineqff</span>, ineqLB <span class="op">=</span> <span class="va">ineqLBB</span>, ineqUB <span class="op">=</span> <span class="va">ineqUBB</span>, LB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">p</span><span class="op">)</span>, </span>
+<span>         UB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="va">p</span><span class="op">)</span>, control <span class="op">=</span> <span class="va">control</span>,y <span class="op">=</span> <span class="va">yvec</span>, mat <span class="op">=</span> <span class="va">xmat</span><span class="op">)</span>  </span>
+<span>  <span class="op">}</span></span></code></pre></div>
+<div style="color: #80CC99;">
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Call <code>MinMed()</code> with arguments <code>yvec = Price.median</code>, and <code>xmat = Boston.vars</code>, using 25 random starts.</li>
+</ol>
+<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">MinMed</span> <span class="op">(</span>yvec <span class="op">=</span> <span class="va">Price.median</span>, xmat <span class="op">=</span> <span class="va">Boston.vars</span>, restarts <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Call <code>MinMed2()</code> with arguments <code>yvec = Price.median</code>, and <code>xmat = B.star</code>, using the default start values. Repeat the call using as start values the result of the last call to
+<code>lp (direction = "min", objective.in, const.mat = Cmat, const.dir, const.rhs)</code> above.</li>
+</ol>
+<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">MinMed2</span> <span class="op">(</span>yvec <span class="op">=</span> <span class="va">Price.median</span>, xmat <span class="op">=</span> <span class="va">B.star</span><span class="op">)</span></span>
+<span><span class="fu">MinMed2</span> <span class="op">(</span>yvec <span class="op">=</span> <span class="va">Price.median</span>, xmat <span class="op">=</span> <span class="va">B.star</span>, startvals <span class="op">=</span> <span class="va">a.vec</span><span class="op">)</span> </span></code></pre></div>
+</div>
+
+</div>
+</div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
+<div class="prev"><a href="modelling.html"><span class="header-section-number">11</span> Statistical modelling with R</a></div>
+<div class="next"><a href="references.html">References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#optimisation"><span class="header-section-number">12</span> Introduction to Optimisation</a></li>
+<li><a class="nav-link" href="#the-bisection-method-for-solving-fx0"><span class="header-section-number">12.1</span> The bisection method for solving \(f(x)=0\)</a></li>
+<li><a class="nav-link" href="#the-newton-raphson-method"><span class="header-section-number">12.2</span> The Newton-Raphson method</a></li>
+<li><a class="nav-link" href="#the-r-functions-optim-and-constroptim"><span class="header-section-number">12.3</span> The R functions optim() and constrOptim()</a></li>
+<li><a class="nav-link" href="#packages-quadprog-lpsolve-and-rsolnp-for-constrained-optimization"><span class="header-section-number">12.4</span> Packages quadprog, lpSolve and Rsolnp for constrained optimization</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          
+<li><a id="book-source" href="https://github.com/sugnet/RTutorial/blob/master/12-optimisation.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/sugnet/RTutorial/edit/master/12-optimisation.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

@@ -19,9 +19,14 @@ In this chapter we continue the study the art of R programming. An important top
 
 * What is the result of the instruction `x[ ,!apply(is.na(x), 2,any)]`?
 
+::: {style="color: #80CC99;"}
+
 * Set the random seed to 137921. Obtain a matrix $\mathbf{A}:10 \times 6$ of random $n(0, 1)$ values. Use `apply()` to find the $10\%$ trimmed mean of each row.
+
+:::
+
 </div>    
-    
+
 (c)	The function `sweep()`.
 
     (i)	What arguments are required?
@@ -29,7 +34,7 @@ In this chapter we continue the study the art of R programming. An important top
     (i)	What are the similarities and differences between the arguments of `sweep()` and `apply()`?
 
     (iii)	Normalise the columns of a given matrix to have zero means and unit variances using `scale()`, `apply()` and `sweep()`. Which method is the fastest?
-    
+
 (d)	The function `ifelse()`.
 
 The usage is illustrated in the following diagram.
@@ -93,7 +98,11 @@ par(ask=TRUE)
 before calling the function `lapply()`.
 </div>    
 
+::: {style="color: #80CC99;"}
+
 (c)	Use `lapply()` to produce histograms of each of the variables in the `state.x77` data set such that each histogram has as title the correct variable name. The $x$- and $y$-axis must also be labelled correctly.
+
+:::
 
 ## The functions: `mapply()`, `rapply()` and `Vectorize()`
 
@@ -111,9 +120,13 @@ mapply (function(x,y,z) { list (min (c(x,y,z)), max (c(x,y,z))) },
 
 (a)	Study the arguments of `tapply()`.
 
+::: {style="color: #80CC99;"}
+
 (b)	Consider the `LifeCycleSavings` data set. Create an object `ddpigrp` that groups the `LifeCycleSavings` data into four groups G1, G2, G3 and G4 such that G1 members have `ddpi` within $(0, 2.0]$, G2 members have `ddpi` within $(2.0, 3.5]$,  G3 members have `ddpi` within $(3.5, 5.0]$, and G4 members have `ddpi`  larger than $5.0$. Use  `tapply()` to obtain the mean aggregate personal savings of each of  the groups defined by `ddpigrp`.
 
 (c)	If it is needed to break down a vector by more than one categorical variable, a list containing the grouping variables is used as the second argument to `tapply()`. Illustrate this by finding the mean aggregate personal savings of the groups in `ddpigrp` broken down by the `pop15` rating.
+
+:::
 
 (d)	In order to use `tapply()` on more than one variable simultaneously `apply()` can be used to map `tapply()` to each of the variables in turn. Study the following command and its output carefully:
 
@@ -289,6 +302,8 @@ system.time (hist (rev (sort (rnorm (1000000)))))
 Note that user and system times do not necessarily add up to elapsed time exactly.
 </div>   
 
+::: {style="color: #80CC99;"}
+
 (c)	Write the necessary code using `proc.time()` directly to obtain the execution time of `hist (rev (sort (rnorm (1000000))))`.
 
 (d)	As an application of `system.time()` and `proc.time()` perform the following simulation study: Given a covariance matrix $\mathbf{S}:p \times p$ the task is to compute the corresponding correlation matrix. The execution times of the following three methods are to be compared:
@@ -302,7 +317,9 @@ Note that user and system times do not necessarily add up to elapsed time exactl
 <div style="margin-left: 25px; margin-right: 20px;">
 Use `var()` and `rnorm()` to compute covariance matrices of different sizes $p$ from samples varying in size $n$. Study the role of $n$ and $p$ in the effectiveness (economy in execution time) of the above three methods. Display the results graphically. Remember that for valid comparisons the three methods must be executed with identical samples.
 </div>   
-   
+
+:::
+
 ## The calling of functions with argument lists
 
 (a)	The function `do.call()` provides an alternative to the usual method of calling  functions by name. It allows specifying the name of the function with its arguments in the form of a list:
@@ -385,12 +402,15 @@ unique (questdata, MARGIN = 1)
 unique (questdata, MARGIN = 2)
 ```
 
-
 (ii)	Examine Table \@ref(tab:MatrixFunc) and carefully describe the behaviour of the functions `duplicated()` and `unique()`.
+
+::: {style="color: #80CC99;"}
 
 (iii)	Write an R function, say `full2resp` to obtain the response pattern representation of questionnaire data like those given above. Test your function on `questdata`.
 
 (iv)	Write an R function, say `resp2full` to obtain the full data set given its response pattern representation.  Test your function on the response pattern representation of the `questdata`.
+
+:::
 </div>    
 
 ## Recursion
@@ -432,15 +452,19 @@ Recursiontest(5)
 Recursiontest(6)
 ```
 
+::: {style="color: #80CC99;"}
+
 (c)	Use recursion and the function `Recall()` to write an R function to calculate $x!$.
 
 (d)	Use recursion to write an R function that generates a matrix  whose rows contain subsets of size $r$  of the first $n$ elements of the vector `v`.   Ignore the possibility of repeated values in `v` and give this vector the default value of `1:n`.
+
+:::
 
 ##	Environments in R
 
 Study the following parts from the *R Language definition Manual*:  § 3.5 Scope of variables; Chapter 4:  *Functions*.
 
-Consider an R function `xx(argument)`.  Write an R function to add a constant to the correct object (i.e. the object in the correct environment) that corresponds to `argument`.  In order to answer this question, you must determine in which environment `argument` exists and evaluation must take place in this environment.  Possible candidates to consider are the *<span style="color:#3399FF">parent frame</span>*, the *<span style="color:#3399FF">global environment</span>* and the search list.   Assume that only the first data basis on the search list is not read-only so that in cases where argument can be found anywhere in the search list it can be assigned to the first data basis. *Hint*:  Study how the following functions work: `assign()`, `deparse()`, `invisible()`, `exists()`, `substitute()`, `sys.parent()`. 
+Consider an R function `xx(argument)`.  Write an R function to add a constant to the correct object (i.e. the object in the correct *<span style="color:#3399FF">environment</span>*) that corresponds to `argument`.  In order to answer this question, you must determine in which *<span style="color:#3399FF">environment</span>* `argument` exists and evaluation must take place in this *<span style="color:#3399FF">environment</span>*.  Possible candidates to consider are the *<span style="color:#3399FF">parent frame</span>*, the *<span style="color:#3399FF">global environment</span>* and the search list.   Assume that only the first data basis on the search list is not read-only so that in cases where argument can be found anywhere in the search list it can be assigned to the first data basis. *Hint*:  Study how the following functions work: `assign()`, `deparse()`, `invisible()`, `exists()`, `substitute()`, `sys.parent()`. 
 
 ## “Computing on the language”
 
@@ -509,6 +533,8 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
+::: {style="color: #80CC99;"}
+
 Adjust the shiny app above by adding three more input sources:
 
 i.	The number of observations to be generated.
@@ -521,6 +547,8 @@ ii.	Selecting the mean vector for the bivariate normal from the following option
 * $\mathbf{\mu}' = [8, 207]$
 
 iii.	Having a series of radio buttons to choose the colour for the observations in the plot.
+
+:::
 
 ## Exercise
 

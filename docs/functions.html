@@ -105,7 +105,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001d533723108&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001a1e2767fb8&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>This is not very helpful so we give the instruction:</p>
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
@@ -175,7 +175,7 @@
 <span><span class="co">#&gt;             ...)</span></span>
 <span><span class="co">#&gt;     invisible()</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001d533b4ad60&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001a1e2b8dc80&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <p>Since our new plotting method is aimed at categorical data we decide rather to take a look at <code>plot.factor</code>. But this is an asterisked function and hence is not visible:</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
@@ -214,7 +214,7 @@
 <span><span class="co">#&gt;         boxplot(y ~ x, ...)</span></span>
 <span><span class="co">#&gt;     else NextMethod("plot")</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001d5355ac538&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001a1e4630490&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>How are default values assigned to arguments of functions?</p></li>
@@ -237,25 +237,25 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $stats</span></span>
 <span><span class="co">#&gt;            [,1]</span></span>
-<span><span class="co">#&gt; [1,] -2.5305689</span></span>
-<span><span class="co">#&gt; [2,] -0.5280629</span></span>
-<span><span class="co">#&gt; [3,]  0.1525966</span></span>
-<span><span class="co">#&gt; [4,]  0.8736962</span></span>
-<span><span class="co">#&gt; [5,]  2.5842329</span></span>
+<span><span class="co">#&gt; [1,] -2.1940263</span></span>
+<span><span class="co">#&gt; [2,] -0.4938361</span></span>
+<span><span class="co">#&gt; [3,]  0.1375280</span></span>
+<span><span class="co">#&gt; [4,]  0.7715521</span></span>
+<span><span class="co">#&gt; [5,]  2.1455278</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $conf</span></span>
-<span><span class="co">#&gt;            [,1]</span></span>
-<span><span class="co">#&gt; [1,] -0.0688813</span></span>
-<span><span class="co">#&gt; [2,]  0.3740746</span></span>
+<span><span class="co">#&gt;             [,1]</span></span>
+<span><span class="co">#&gt; [1,] -0.06240336</span></span>
+<span><span class="co">#&gt; [2,]  0.33745930</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $out</span></span>
-<span><span class="co">#&gt; numeric(0)</span></span>
+<span><span class="co">#&gt; [1] 2.791669</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group</span></span>
-<span><span class="co">#&gt; numeric(0)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $names</span></span>
 <span><span class="co">#&gt; [1] "1"</span></span></code></pre></div>
@@ -340,7 +340,7 @@
 <ol style="list-style-type: lower-alpha">
 <li><p>Where is an object stored that is created by a script or <code><a href="https://rdrr.io/r/utils/fix.html">fix()</a></code>?</p></li>
 <li><p>Where are local objects (objects that are created during the execution of a function) stored?</p></li>
-<li><p>Explain how the evaluation environment works.</p></li>
+<li><p>Explain how the <em><span style="color:#3399FF">evaluation environment</span></em> works.</p></li>
 <li><p>What is understood by the <em><span style="color:#3399FF">global environment</span></em>?</p></li>
 <li><p>Study the R help-file w.r.t. the operator <code>&lt;&lt;-</code>. When is it useful to use this operator? What are the dangers inherent to this operator?</p></li>
 <li><p>What is understood by the scope of an expression or function?</p></li>
@@ -371,7 +371,7 @@
 <span class="header-section-number">7.7</span> Variable number of arguments: argument <code>...</code><a class="anchor" aria-label="anchor" href="#variable-number-of-arguments-argument-..."><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: lower-alpha">
-<li>Consider the following situation: You want to write a function for a complex task. At a particular stage a graph of some intermediate results is to be constructed. This requires the calling function to contain a call to the hist function. Here is an example of a chunk of code for executing this task:</li>
+<li>Consider the following situation: You want to write a function for a complex task. At a particular stage a graph of some intermediate results is to be constructed. This requires the calling function to contain a call to the <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> function. Here is an example of a chunk of code for executing this task:</li>
 </ol>
 <div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">complexfun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">datmat</span>,<span class="va">colgraph</span><span class="op">)</span></span>
@@ -436,9 +436,11 @@
 Figure 7.1: Converting text into mathematical expression or mathematical expressions into text.
 </p>
 </div>
+<div style="color: #80CC99;">
 <ul>
 <li>Task: write an R function that will plot two vectors using as axis labels the names of the objects passed as arguments to the function.</li>
 </ul>
+</div>
 <p>It follows from Figure <a href="functions.html#fig:expression">7.1</a> that the function <code><a href="https://rdrr.io/r/base/substitute.html">substitute()</a></code> takes an expression as argument and returns it unevaluated. In order to evaluate the return value of <code><a href="https://rdrr.io/r/base/substitute.html">substitute()</a></code> the function <code><a href="https://rdrr.io/r/base/eval.html">eval()</a></code> must be used. The function <code><a href="https://rdrr.io/r/base/deparse.html">deparse()</a></code> takes as argument an unevaluated expression and converts it into a character string. Now we are ready to write the following function:</p>
 <div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">labplot</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span> </span>
@@ -477,9 +479,14 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <span><span class="co">#&gt; [31] "::"</span></span></code></pre></div>
 <p>in order to obtain some examples of operators available in R.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p><em><span style="color:#FF9966">Operators are special R functions.</span></em> Discuss this statement. In what respects do operators differ from ordinary R functions?</p></li>
-<li><p>Write an operator <code>%E%</code> to determine the Euclidean distance between two vectors and give an example of its usage. <em>Hint</em>: when creating operators with <code><a href="https://rdrr.io/r/utils/fix.html">fix()</a></code> or using scripts the name must be given as a character string e.g. <code>fix("%E%")</code>.</p></li>
+<li>
+<em><span style="color:#FF9966">Operators are special R functions.</span></em> Discuss this statement. In what respects do operators differ from ordinary R functions?</li>
 </ol>
+<div style="color: #80CC99;">
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Write an operator <code>%E%</code> to determine the Euclidean distance between two vectors and give an example of its usage. <em>Hint</em>: when creating operators with <code><a href="https://rdrr.io/r/utils/fix.html">fix()</a></code> or using scripts the name must be given as a character string e.g. <code>fix("%E%")</code>.</li>
+</ol>
+</div>
 </div>
 <div id="replacement-functions" class="section level2" number="7.10">
 <h2>
@@ -652,8 +659,8 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <h2>
 <span class="header-section-number">7.12</span> The dynamic loading of external routines<a class="anchor" aria-label="anchor" href="#the-dynamic-loading-of-external-routines"><i class="fas fa-link"></i></a>
 </h2>
-<p>Compiled code can run in some instances much faster than corresponding code in R. The functions <code><a href="https://rdrr.io/r/base/Foreign.html">.C()</a></code> and <code><a href="https://rdrr.io/r/base/Foreign.html">.Fortran()</a></code> allow users to make use of programs written in <em><span style="color:#3399FF">C</span></em> or <em><span style="color:#3399FF">Fortran</span></em> in their R functions. How this is done is illustrated below. Study this example carefully and consult the help files for more details when needed.
-First an R function is created to compute the matrix product of two matrices:</p>
+<p>Compiled code can run in some instances much faster than corresponding code in R. The functions <code><a href="https://rdrr.io/r/base/Foreign.html">.C()</a></code> and <code><a href="https://rdrr.io/r/base/Foreign.html">.Fortran()</a></code> allow users to make use of programs written in <em><span style="color:#BE99ff">C</span></em> or <em><span style="color:#BE99ff">Fortran</span></em> in their R functions. How this is done is illustrated below. Study this example carefully and consult the help files for more details when needed.</p>
+<p>First an R function is created to compute the matrix product of two matrices:</p>
 <div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">matmult</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">A</span>,<span class="va">B</span><span class="op">)</span> </span>
 <span> <span class="op">{</span> <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"A and B not conformable with                 </span></span>
@@ -666,7 +673,7 @@ First an R function is created to compute the matrix product of two matrices:</p
 <span>      <span class="op">}</span></span>
 <span>  <span class="va">Cmat</span></span>
 <span>  <span class="op">}</span></span></code></pre></div>
-<p>Next a Fortran subroutine is written for performing matrix multiplication. The Fortran code for this subroutine is given below:</p>
+<p>Next a <em><span style="color:#BE99ff">Fortran</span></em> subroutine is written for performing matrix multiplication. The <em><span style="color:#BE99ff">Fortran</span></em> code for this subroutine is given below:</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb184-1"><a href="functions.html#cb184-1" tabindex="-1"></a>      SUBROUTINE MATM (A1, A2B1, B2, A, B, OUT)</span>
 <span id="cb184-2"><a href="functions.html#cb184-2" tabindex="-1"></a>C     This subroutine performs matrix multiplication.</span>
 <span id="cb184-3"><a href="functions.html#cb184-3" tabindex="-1"></a>C     This should be improved with optimized code (such as </span>
@@ -685,8 +692,8 @@ First an R function is created to compute the matrix product of two matrices:</p
 <span id="cb184-16"><a href="functions.html#cb184-16" tabindex="-1"></a>200   CONTINUE</span>
 <span id="cb184-17"><a href="functions.html#cb184-17" tabindex="-1"></a>300   CONTINUE</span>
 <span id="cb184-18"><a href="functions.html#cb184-18" tabindex="-1"></a>      END</span></code></pre></div>
-<p>Next a dynamic link library (<em><span style="color:#3399FF">.dll</span></em>) is made from the Fortran subroutine. The easiest way to do this is to use the command <code>R CMD SHLIB matm.f</code> from the <em><span style="color:#3399FF">Command Prompt</span></em>. The dll is available as <code>C:\matm64.dll</code>.</p>
-<p>Now an R function is to be written where the Fortran code is called:</p>
+<p>Next a dynamic link library (<em><span style="color:#BE99ff">.dll</span></em>) is made from the <em><span style="color:#BE99ff">Fortran</span></em> subroutine. The easiest way to do this is to use the command <code>R CMD SHLIB matm.f</code> from the <em><span style="color:#BE99ff">Command Prompt</span></em>. The <em><span style="color:#BE99ff">.dll</span></em> is available as <em><span style="color:#BE99ff">C:64.dll</span></em>.</p>
+<p>Now an R function is to be written where the <em><span style="color:#BE99ff">Fortran</span></em> code is called:</p>
 <div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">matmult.Fortran</span> <span class="op">&lt;-</span><span class="kw">function</span> <span class="op">(</span><span class="va">A</span>,<span class="va">B</span><span class="op">)</span> </span>
 <span> <span class="op">{</span> <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"A and B not conformable with </span></span>
@@ -701,11 +708,11 @@ First an R function is created to compute the matrix product of two matrices:</p
 <span>    <span class="va">value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Foreign.html">.Fortran</a></span><span class="op">(</span><span class="st">"matm"</span>, <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span>, </span>
 <span>                          <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">q</span><span class="op">)</span>, <span class="va">A</span>, <span class="va">B</span>, matprod<span class="op">=</span><span class="va">Cmat</span><span class="op">)</span></span>
 <span>    <span class="va">value</span><span class="op">$</span><span class="va">matprod</span>        <span class="op">}</span></span></code></pre></div>
-<p>In order to use <code>matmult.Fortran()</code> the correct dll must be loaded into the current folder using the function <code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>:</p>
+<p>In order to use <code>matmult.Fortran()</code> the correct <em><span style="color:#BE99ff">.dll</span></em> must be loaded into the current folder using the function <code><a href="https://rdrr.io/r/base/dynload.html">dyn.load()</a></code>:</p>
 <div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dynload.html">dyn.load</a></span><span class="op">(</span><span class="st">"full path\\matm64.dll"</span><span class="op">)</span></span></code></pre></div>
 <p>Compare the answers and execution time of <code>matmult()</code> and <code>matmult.Fortran()</code> for different sized matrices.</p>
-<p>The <code>Rcpp</code> package has made the inclusion of <em><span style="color:#3399FF">C++</span></em> code into R considerably easier and more robust. For a detailed description of the package see <a href="https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf">Rcpp vignette intro</a>.</p>
+<p>The <code>Rcpp</code> package has made the inclusion of <em><span style="color:#BE99ff">C++</span></em> code into R considerably easier and more robust. For a detailed description of the package see <a href="https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf">Rcpp vignette intro</a>.</p>
 
 </div>
 </div>

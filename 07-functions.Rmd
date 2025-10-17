@@ -132,7 +132,7 @@ Write an R function that returns the mean, median, variance, minimum, maximum an
 
 (b)	Where are local objects (objects that are created during the execution of a function) stored?
 
-(c)	Explain how the evaluation environment works.
+(c)	Explain how the *<span style="color:#3399FF">evaluation environment</span>* works.
 
 (d)	What is understood by the *<span style="color:#3399FF">global environment</span>*?
 
@@ -165,7 +165,7 @@ If the following function call is made from the prompt in the working directory 
 
 ##	Variable number of arguments: argument `...`
 
-(a)	Consider the following situation: You want to write a function for a complex task. At a particular stage a graph of some intermediate results is to be constructed.  This requires the calling function to contain a call to the hist function. Here is an example of  a chunk of code for executing this task:
+(a)	Consider the following situation: You want to write a function for a complex task. At a particular stage a graph of some intermediate results is to be constructed.  This requires the calling function to contain a call to the `hist()` function. Here is an example of a chunk of code for executing this task:
 
 ```{r, eval = FALSE}
 complexfun <- function(datmat,colgraph)
@@ -220,7 +220,11 @@ library(knitr)
 knitr::include_graphics("pics/expressions.jpg")
 ```
 
+::: {style="color: #80CC99;"}
+
 * Task:  write an R function that will plot two vectors using as axis labels the names of the objects passed as arguments to the function. 
+
+:::
 
 It follows from Figure \@ref(fig:expression) that the function `substitute()` takes an expression as argument and returns it unevaluated. In order to evaluate the return value of `substitute()` the function `eval()` must be used. The function `deparse()` takes as argument an unevaluated expression and converts it into a character string.  Now we are ready to write the following function:
 
@@ -249,7 +253,11 @@ in order to obtain some examples of operators available in R.
 
 (a)	*<span style="color:#FF9966">Operators are special R functions.</span>* Discuss this statement. In what respects do operators differ from ordinary R functions? 
 
+::: {style="color: #80CC99;"}
+
 (b)	Write an operator `%E%` to determine the Euclidean distance between two vectors and give an example of its usage. *Hint*: when creating operators with `fix()` or using scripts the name must be given as a character string e.g. `fix("%E%")`.
+
+:::
 
 ## Replacement functions
 
@@ -315,7 +323,8 @@ choice("xx")
 
 ## The dynamic loading of external routines
 
-Compiled code can run in some instances much faster than corresponding code in R. The functions `.C()` and `.Fortran()` allow users to make use of programs written in *<span style="color:#3399FF">C</span>* or *<span style="color:#3399FF">Fortran</span>* in their R functions. How this is done is illustrated below. Study this example carefully and consult the help files for more details when needed.
+Compiled code can run in some instances much faster than corresponding code in R. The functions `.C()` and `.Fortran()` allow users to make use of programs written in *<span style="color:#BE99ff">C</span>* or *<span style="color:#BE99ff">Fortran</span>* in their R functions. How this is done is illustrated below. Study this example carefully and consult the help files for more details when needed.
+
 First an R function is created to compute the matrix product of two matrices:
 
 ```{r, eval = FALSE}
@@ -332,7 +341,7 @@ matmult <- function (A,B)
   }
 ```
 
-Next a Fortran subroutine is written for performing matrix multiplication. The Fortran code  for this subroutine is given below:
+Next a *<span style="color:#BE99ff">Fortran</span>* subroutine is written for performing matrix multiplication. The *<span style="color:#BE99ff">Fortran</span>* code  for this subroutine is given below:
 
 ````{verbatim}
       SUBROUTINE MATM (A1, A2B1, B2, A, B, OUT)
@@ -355,9 +364,9 @@ C     DUMMIES
       END
 ````
 
-Next a dynamic link library (*<span style="color:#3399FF">.dll</span>*) is made from the Fortran subroutine. The easiest way to do this is to use the command `R CMD SHLIB matm.f` from the *<span style="color:#3399FF">Command Prompt</span>*. The dll is available as `C:\matm64.dll`.
+Next a dynamic link library (*<span style="color:#BE99ff">.dll</span>*) is made from the *<span style="color:#BE99ff">Fortran</span>* subroutine. The easiest way to do this is to use the command `R CMD SHLIB matm.f` from the *<span style="color:#BE99ff">Command Prompt</span>*. The *<span style="color:#BE99ff">.dll</span>* is available as *<span style="color:#BE99ff">C:\matm64.dll</span>*.
 
-Now an R function is to be written where the Fortran code is called:
+Now an R function is to be written where the *<span style="color:#BE99ff">Fortran</span>* code is called:
 
 ```{r, eval = FALSE}
 matmult.Fortran <-function (A,B) 
@@ -375,7 +384,7 @@ matmult.Fortran <-function (A,B)
     value$matprod        }
 ```
 
-In order to use `matmult.Fortran()` the correct dll must be loaded into the current folder using the function `dyn.load()`:
+In order to use `matmult.Fortran()` the correct *<span style="color:#BE99ff">.dll</span>* must be loaded into the current folder using the function `dyn.load()`:
 
 ```{r, eval = FALSE}
 dyn.load("full path\\matm64.dll")
@@ -383,5 +392,5 @@ dyn.load("full path\\matm64.dll")
 
 Compare the answers and execution time of `matmult()` and  `matmult.Fortran()` for different sized matrices.
 
-The `Rcpp` package has made the inclusion of *<span style="color:#3399FF">C++</span>* code into R considerably easier and more robust. For a detailed description of the package see [Rcpp vignette intro](https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf).
+The `Rcpp` package has made the inclusion of *<span style="color:#BE99ff">C++</span>* code into R considerably easier and more robust. For a detailed description of the package see [Rcpp vignette intro](https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf).
 

@@ -11,13 +11,12 @@ Study the graphical parameters by requesting
 ?par
 ```
 
-In Figure \@ref(fig:figRegion) the main components of a graph window are illustrated. Study this figure in detail. The *<span style="color:#FF9966">Plot Region</span>* together with the*<span style="color:#FF9966">Margins</span>*  is called the *<span style="color:#FF9966">Figure Region</span>*.
+In Figure \@ref(fig:figRegion) the main components of a graph window are illustrated. Study this figure in detail. The *<span style="color:#FF9966">Plot Region</span>* together with the *<span style="color:#FF9966">Margins</span>*  is called the *<span style="color:#FF9966">Figure Region</span>*.
 
 
-<div class="figure">
-<img src="pics/figMargins.jpg" alt="The main components of a graph window and the parameters for controlling their sizes.  The parameter mai is a numerical vector of the form c(bottom, left, top, right) specifying the margins in inches while the parameter mar has a similar form specifying the respective margins as the number of lines. The default of mar is c(5, 4, 4, 2) + 0.1." width="100%" />
-<p class="caption">(\#fig:figRegion)The main components of a graph window and the parameters for controlling their sizes.  The parameter mai is a numerical vector of the form c(bottom, left, top, right) specifying the margins in inches while the parameter mar has a similar form specifying the respective margins as the number of lines. The default of mar is c(5, 4, 4, 2) + 0.1.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{pics/figMargins} \caption{The main components of a graph window and the parameters for controlling their sizes.  The parameter mai is a numerical vector of the form c(bottom, left, top, right) specifying the margins in inches while the parameter mar has a similar form specifying the respective margins as the number of lines. The default of mar is c(5, 4, 4, 2) + 0.1.}(\#fig:figRegion)
+\end{figure}
 
 
 (a)	What is the difference between high-level and low-level plotting instructions?
@@ -99,7 +98,7 @@ dotchart (table.out,
           factor(row(table.out), labels = levels(lifgroup)))
 ```
 
-<img src="04-graphics_files/figure-html/dotchart-1.png" width="672" />
+![](04-graphics_files/figure-latex/dotchart-1.pdf)<!-- --> 
 
 <div style="margin-left: 25px; margin-right: 20px;">
 Complete the graph by adding a label to the x-axis and a heading for the graph.
@@ -148,6 +147,8 @@ plot(hclust(distmat.west), labels = rownames(state.x77)[west.rows])
 Interpret the above instructions and the resulting plot.
 </div>
 
+::: {style="color: #80CC99;"}
+
 (m)	Use the function `plot()` to plot $sin (\theta)$ as $\theta$ varies from  $–\pi$  to $\pi$.
 
 (n)	Could you explain the different graphs resulting from the two calls in (l) and (m) to the `plot()` function above?
@@ -168,6 +169,8 @@ qqplot(state.income[[1]], state.income[[2]], xlab="Income for small states",
 ```
 
 (r) Use function `ts.plot()` to construct a time series plot of the sunspots data set.
+
+:::
 
 ##	Interactive communication with graphs
 
@@ -208,7 +211,7 @@ Explain what has happened.
 (c)	Illustrate the usage of `locator()` by:
 
 <div style="margin-left: 25px; margin-right: 20px;">
-*Joining $5$ user defined points on a graph interactively with straight lines*
+(i) Joining $5$ user defined points on a graph interactively with straight lines.
 </div>
     
 
@@ -220,7 +223,7 @@ locator(5, type = "l")
 <div style="margin-left: 25px; margin-right: 20px;">
 Use mouse and select the five points on the graph. What happened on the graph? What happened in the commands window?
 
-*Writing text interactively at a specified position on an existing graph*
+(ii) Writing text interactively at a specified position on an existing graph.
 </div>
 
 

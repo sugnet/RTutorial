@@ -30,6 +30,31 @@
         {
             "author": [
                 {
+                    "family": "Andrews",
+                    "given": "D F"
+                },
+                {
+                    "family": "Herzberg",
+                    "given": "A M"
+                }
+            ],
+            "id": "AndrewsHerzberg1985",
+            "issued": {
+                "date-parts": [
+                    [
+                        1985
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1-4612-9563-1",
+            "publisher": "Springer-Verlag",
+            "publisher-place": "New York",
+            "title": "Data",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
                     "family": "Becker",
                     "given": "Richard A."
                 },
@@ -128,6 +153,31 @@
         {
             "author": [
                 {
+                    "family": "Dobson",
+                    "given": "A J"
+                },
+                {
+                    "family": "Barnett",
+                    "given": "A G"
+                }
+            ],
+            "id": "DobsonBarnett2008",
+            "issued": {
+                "date-parts": [
+                    [
+                        2008
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1-58488-950-2",
+            "publisher": "CRC press",
+            "publisher-place": "Boca Raton",
+            "title": "An introduction to generalized linear models",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
                     "family": "Ihaka",
                     "given": "Ross"
                 },
@@ -170,7 +220,7 @@
                     ]
                 ]
             },
-            "note": "ISBN 978-1584880837",
+            "note": "ISBN 978-1-58488-083-7",
             "publisher": "Chapman & Hall / CRC press",
             "publisher-place": "New York",
             "title": "Analysis of messy data",

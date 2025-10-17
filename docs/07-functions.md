@@ -10,7 +10,7 @@ A good way to learn about functions or to write a new function is to look at exi
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x000001d533723108>
+#> <bytecode: 0x000002039c1332c8>
 #> <environment: namespace:base>
 ```
 
@@ -30,11 +30,10 @@ methods(plot)
 #> [17] plot.mlm*           plot.ppr*          
 #> [19] plot.prcomp*        plot.princomp*     
 #> [21] plot.profile*       plot.profile.nls*  
-#> [23] plot.R6*            plot.raster*       
-#> [25] plot.spec*          plot.stepfun       
-#> [27] plot.stl*           plot.table*        
-#> [29] plot.ts             plot.tskernel*     
-#> [31] plot.TukeyHSD*     
+#> [23] plot.raster*        plot.spec*         
+#> [25] plot.stepfun        plot.stl*          
+#> [27] plot.table*         plot.ts            
+#> [29] plot.tskernel*      plot.TukeyHSD*     
 #> see '?methods' for accessing help and source code
 ```
 
@@ -88,7 +87,7 @@ plot.default
 #>             ...)
 #>     invisible()
 #> }
-#> <bytecode: 0x000001d533b4ad60>
+#> <bytecode: 0x000002039cb3f028>
 #> <environment: namespace:graphics>
 ```
 
@@ -135,7 +134,7 @@ getAnywhere(plot.factor)
 #>         boxplot(y ~ x, ...)
 #>     else NextMethod("plot")
 #> }
-#> <bytecode: 0x000001d5355ac538>
+#> <bytecode: 0x000002039bd9f3e0>
 #> <environment: namespace:graphics>
 ```
 
@@ -169,31 +168,31 @@ getAnywhere(plot.factor)
 boxplot(rnorm(100), plot = TRUE)
 ```
 
-<img src="07-functions_files/figure-html/invisibleExamples-1.png" width="672" />
+![](07-functions_files/figure-latex/invisibleExamples-1.pdf)<!-- --> 
 
 ``` r
 boxplot(rnorm(100), plot = FALSE)
 #> $stats
-#>            [,1]
-#> [1,] -2.5305689
-#> [2,] -0.5280629
-#> [3,]  0.1525966
-#> [4,]  0.8736962
-#> [5,]  2.5842329
+#>             [,1]
+#> [1,] -2.13673866
+#> [2,] -0.47854052
+#> [3,]  0.07906728
+#> [4,]  0.79507583
+#> [5,]  2.08596468
 #> 
 #> $n
 #> [1] 100
 #> 
 #> $conf
 #>            [,1]
-#> [1,] -0.0688813
-#> [2,]  0.3740746
+#> [1,] -0.1221641
+#> [2,]  0.2802987
 #> 
 #> $out
-#> numeric(0)
+#> [1]  3.271010 -2.674717
 #> 
 #> $group
-#> numeric(0)
+#> [1] 1 1
 #> 
 #> $names
 #> [1] "1"
@@ -281,7 +280,7 @@ Write an R function that returns the mean, median, variance, minimum, maximum an
 
 (b)	Where are local objects (objects that are created during the execution of a function) stored?
 
-(c)	Explain how the evaluation environment works.
+(c)	Explain how the *<span style="color:#3399FF">evaluation environment</span>* works.
 
 (d)	What is understood by the *<span style="color:#3399FF">global environment</span>*?
 
@@ -315,7 +314,7 @@ If the following function call is made from the prompt in the working directory 
 
 ##	Variable number of arguments: argument `...`
 
-(a)	Consider the following situation: You want to write a function for a complex task. At a particular stage a graph of some intermediate results is to be constructed.  This requires the calling function to contain a call to the hist function. Here is an example of  a chunk of code for executing this task:
+(a)	Consider the following situation: You want to write a function for a complex task. At a particular stage a graph of some intermediate results is to be constructed.  This requires the calling function to contain a call to the `hist()` function. Here is an example of a chunk of code for executing this task:
 
 
 ``` r
@@ -389,12 +388,15 @@ maxlen(mode.use="character", 1:10, 1:15, 1:3, letters)
 
 There are many practical situations requiring the conversion of mathematical expressions into character strings (text) or, conversely, requiring the conversion of text into mathematical expressions. The tools (functions) provided in R for achieving such conversions are summarized in Figure \@ref(fig:expression).
 
-<div class="figure">
-<img src="pics/expressions.jpg" alt="Converting text into mathematical expression or mathematical expressions into text." width="80%" />
-<p class="caption">(\#fig:expression)Converting text into mathematical expression or mathematical expressions into text.</p>
-</div>
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{pics/expressions} \caption{Converting text into mathematical expression or mathematical expressions into text.}(\#fig:expression)
+\end{figure}
+
+::: {style="color: #80CC99;"}
 
 * Task:  write an R function that will plot two vectors using as axis labels the names of the objects passed as arguments to the function. 
+
+:::
 
 It follows from Figure \@ref(fig:expression) that the function `substitute()` takes an expression as argument and returns it unevaluated. In order to evaluate the return value of `substitute()` the function `eval()` must be used. The function `deparse()` takes as argument an unevaluated expression and converts it into a character string.  Now we are ready to write the following function:
 
@@ -441,7 +443,11 @@ in order to obtain some examples of operators available in R.
 
 (a)	*<span style="color:#FF9966">Operators are special R functions.</span>* Discuss this statement. In what respects do operators differ from ordinary R functions? 
 
+::: {style="color: #80CC99;"}
+
 (b)	Write an operator `%E%` to determine the Euclidean distance between two vectors and give an example of its usage. *Hint*: when creating operators with `fix()` or using scripts the name must be given as a character string e.g. `fix("%E%")`.
+
+:::
 
 ## Replacement functions
 
@@ -571,15 +577,15 @@ getAnywhere('diag')
 #> 2 differing objects matching 'diag' were found
 #> in the following places
 #>   package:base
-#>   namespace:base
 #>   namespace:Matrix
+#>   namespace:base
 #> Use [] to view one of them
 getAnywhere('diag<-')
 #> 2 differing objects matching 'diag<-' were found
 #> in the following places
 #>   package:base
-#>   namespace:base
 #>   namespace:Matrix
+#>   namespace:base
 #> Use [] to view one of them
 ```
 
@@ -628,7 +634,8 @@ choice("xx")
 
 ## The dynamic loading of external routines
 
-Compiled code can run in some instances much faster than corresponding code in R. The functions `.C()` and `.Fortran()` allow users to make use of programs written in *<span style="color:#3399FF">C</span>* or *<span style="color:#3399FF">Fortran</span>* in their R functions. How this is done is illustrated below. Study this example carefully and consult the help files for more details when needed.
+Compiled code can run in some instances much faster than corresponding code in R. The functions `.C()` and `.Fortran()` allow users to make use of programs written in *<span style="color:#BE99ff">C</span>* or *<span style="color:#BE99ff">Fortran</span>* in their R functions. How this is done is illustrated below. Study this example carefully and consult the help files for more details when needed.
+
 First an R function is created to compute the matrix product of two matrices:
 
 
@@ -646,7 +653,7 @@ matmult <- function (A,B)
   }
 ```
 
-Next a Fortran subroutine is written for performing matrix multiplication. The Fortran code  for this subroutine is given below:
+Next a *<span style="color:#BE99ff">Fortran</span>* subroutine is written for performing matrix multiplication. The *<span style="color:#BE99ff">Fortran</span>* code  for this subroutine is given below:
 
 
 ``` default
@@ -670,9 +677,9 @@ C     DUMMIES
       END
 ```
 
-Next a dynamic link library (*<span style="color:#3399FF">.dll</span>*) is made from the Fortran subroutine. The easiest way to do this is to use the command `R CMD SHLIB matm.f` from the *<span style="color:#3399FF">Command Prompt</span>*. The dll is available as `C:\matm64.dll`.
+Next a dynamic link library (*<span style="color:#BE99ff">.dll</span>*) is made from the *<span style="color:#BE99ff">Fortran</span>* subroutine. The easiest way to do this is to use the command `R CMD SHLIB matm.f` from the *<span style="color:#BE99ff">Command Prompt</span>*. The *<span style="color:#BE99ff">.dll</span>* is available as *<span style="color:#BE99ff">C:\matm64.dll</span>*.
 
-Now an R function is to be written where the Fortran code is called:
+Now an R function is to be written where the *<span style="color:#BE99ff">Fortran</span>* code is called:
 
 
 ``` r
@@ -691,7 +698,7 @@ matmult.Fortran <-function (A,B)
     value$matprod        }
 ```
 
-In order to use `matmult.Fortran()` the correct dll must be loaded into the current folder using the function `dyn.load()`:
+In order to use `matmult.Fortran()` the correct *<span style="color:#BE99ff">.dll</span>* must be loaded into the current folder using the function `dyn.load()`:
 
 
 ``` r
@@ -700,5 +707,5 @@ dyn.load("full path\\matm64.dll")
 
 Compare the answers and execution time of `matmult()` and  `matmult.Fortran()` for different sized matrices.
 
-The `Rcpp` package has made the inclusion of *<span style="color:#3399FF">C++</span>* code into R considerably easier and more robust. For a detailed description of the package see [Rcpp vignette intro](https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf).
+The `Rcpp` package has made the inclusion of *<span style="color:#BE99ff">C++</span>* code into R considerably easier and more robust. For a detailed description of the package see [Rcpp vignette intro](https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf).
 

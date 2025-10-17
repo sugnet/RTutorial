@@ -11,7 +11,7 @@ The different types of subscripting with vectors are summarized in Table \@ref(t
 
 Table: (\#tab:SubscriptVectorTypes) Different types of subscripting vectors.
 
-| *<span style="color:#CC99FF">Type</span>* | *<span style="color:#CC99FF">Effect</span>* | *<span style="color:#CC99FF">Example</span>* | 
+| *<span style="color:#F7CE21">Type</span>* | *<span style="color:#F7CE21">Effect</span>* | *<span style="color:#F7CE21">Example</span>* | 
 | ------ | -------------------- | ----------- | 
 | empty              |	Extract all values  | `x[ ]` | 
 | integer, positive  |	Extract all values specified by the subscript | `x[c(2:5,8,12) ]` | 
@@ -52,7 +52,8 @@ state.x77[ , "Area"] > 80000
 #>          FALSE           TRUE
 ```
 
-<img src="pics/matrixSubscripting.jpg" width="80%" />
+
+\includegraphics[width=0.8\linewidth]{pics/matrixSubscripting} 
 
 
 ``` r
@@ -172,9 +173,13 @@ testmat.a[10] 	# One index matrix reference
 #> [1] 37
 ```
 
+::: {style="color: #80CC99;"}
+
 (e) Write a function to convert a one-index to a two-index matrix reference. Give an example of the usage of your function.
 
 (f)	Write a function to convert a two-index to a one-index matrix reference. Give an example of the usage of your function.
+
+:::
 
 (g)	Consider the following example to form submatrices:
 
