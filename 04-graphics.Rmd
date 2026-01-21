@@ -238,7 +238,7 @@ rgl.example <- function (size = 0.1, col = "green", alpha.3d = 0.6)
       answer2 <- readline("Save another 3D graph as a .png file? Y/N \n")
       if (answer2 == "Y" | answer2 == "y") next else break
     }
-  else seted (device.ID)
+  else set3d (device.ID)
 }
 ```
 
