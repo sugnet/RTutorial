@@ -468,7 +468,8 @@ conf.int (x = sleep[,1])
 ```
 
 
-(l)	If you want to create and run the function `conf.int` in a script window then add the instruction `conf.func (x = sleep[,1])` as the last line in the script window. Now, select only this line and run it. Check the R console.
+(l)	If you want to create and run the function `conf.int` in a script window then add the instruction `conf.int (x = sleep[,1])` as the last line in the script window. Now, select only this line and run it. Check the R console.
+
 (m)	What will happen if a syntax error is made in the script window? Change the code in the script file as follows, deliberately deleting the last closing parenthesis in the last line of the function.  
 
 ```{r, eval = FALSE}

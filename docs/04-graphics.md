@@ -14,9 +14,10 @@ Study the graphical parameters by requesting
 In Figure \@ref(fig:figRegion) the main components of a graph window are illustrated. Study this figure in detail. The *<span style="color:#FF9966">Plot Region</span>* together with the *<span style="color:#FF9966">Margins</span>*  is called the *<span style="color:#FF9966">Figure Region</span>*.
 
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{pics/figMargins} \caption{The main components of a graph window and the parameters for controlling their sizes.  The parameter mai is a numerical vector of the form c(bottom, left, top, right) specifying the margins in inches while the parameter mar has a similar form specifying the respective margins as the number of lines. The default of mar is c(5, 4, 4, 2) + 0.1.}(\#fig:figRegion)
-\end{figure}
+<div class="figure">
+<img src="pics/figMargins.jpg" alt="The main components of a graph window and the parameters for controlling their sizes.  The parameter mai is a numerical vector of the form c(bottom, left, top, right) specifying the margins in inches while the parameter mar has a similar form specifying the respective margins as the number of lines. The default of mar is c(5, 4, 4, 2) + 0.1." width="100%" />
+<p class="caption">(\#fig:figRegion)The main components of a graph window and the parameters for controlling their sizes.  The parameter mai is a numerical vector of the form c(bottom, left, top, right) specifying the margins in inches while the parameter mar has a similar form specifying the respective margins as the number of lines. The default of mar is c(5, 4, 4, 2) + 0.1.</p>
+</div>
 
 
 (a)	What is the difference between high-level and low-level plotting instructions?
@@ -98,7 +99,7 @@ dotchart (table.out,
           factor(row(table.out), labels = levels(lifgroup)))
 ```
 
-![](04-graphics_files/figure-latex/dotchart-1.pdf)<!-- --> 
+<img src="04-graphics_files/figure-html/dotchart-1.png" width="672" />
 
 <div style="margin-left: 25px; margin-right: 20px;">
 Complete the graph by adding a label to the x-axis and a heading for the graph.
@@ -259,7 +260,7 @@ rgl.example <- function (size = 0.1, col = "green", alpha.3d = 0.6)
       answer2 <- readline("Save another 3D graph as a .png file? Y/N \n")
       if (answer2 == "Y" | answer2 == "y") next else break
     }
-  else rgl.set (device.ID)
+  else seted (device.ID)
 }
 ```
 
@@ -352,7 +353,7 @@ Explain carefully what `eval()` is doing.
 
 ``` r
 persp (x = pts, y = pts, z = zz, theta = 0, phi = 15, ticktype = "detailed", 
-       main = paste("Persp plot of `"fun2,"`",sep=""))
+       main = paste("Persp plot of `fun2,`",sep=""))
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">

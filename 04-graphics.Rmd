@@ -238,7 +238,7 @@ rgl.example <- function (size = 0.1, col = "green", alpha.3d = 0.6)
       answer2 <- readline("Save another 3D graph as a .png file? Y/N \n")
       if (answer2 == "Y" | answer2 == "y") next else break
     }
-  else rgl.set (device.ID)
+  else seted (device.ID)
 }
 ```
 
@@ -312,7 +312,7 @@ Explain carefully what `eval()` is doing.
 
 ```{r, eval = FALSE}
 persp (x = pts, y = pts, z = zz, theta = 0, phi = 15, ticktype = "detailed", 
-       main = paste("Persp plot of `"fun2,"`",sep=""))
+       main = paste("Persp plot of `fun2,`",sep=""))
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">

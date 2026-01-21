@@ -62,6 +62,7 @@ The function must check whether $b>a$ and whether $f(a)$ and $f(b)$ have opposit
 
 ```{r, CycloneData, echo = FALSE, warning = FALSE, message = FALSE}
 library (flextable)
+set_flextable_defaults(fonts_ignore = TRUE)
 data <- data.frame (season = 1:13,
                     cyclones = c(6, 5, 4, 6, 6, 3, 12, 7, 4, 2, 6, 7, 4))
 flextable (data) |>
@@ -180,6 +181,7 @@ The Weibull distribution is often used to model the time to failure (i.e. the su
 
 ```{r, VesselData, echo = FALSE, warning = FALSE, message = FALSE}
 library (flextable)
+set_flextable_defaults(fonts_ignore = TRUE)
 data <- rbind (c(1051, 1337, 1389, 1921, 1942, 2322, 3629, 4006, 4012, 4063),
                c(4921, 5445, 5620, 5817, 5905, 5956, 6068, 6121, 6473, 7501),
                c(7886, 8108, 8546, 8666, 8831, 9106, 9711, 9806, 10205, 10396),

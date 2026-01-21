@@ -138,7 +138,7 @@
 <code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span></code></pre></div>
 <p>Assigning numeric vector to name “aa”. Assignment takes place in global environment.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">1</span>,to <span class="op">=</span> <span class="fl">10</span>,by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>; <span class="va">yy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">aa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">1</span>,to <span class="op">=</span> <span class="fl">10</span>,by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>; <span class="va">yy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">bb</span> </span></code></pre></div>
 <p>Assigning character vector to name “bb”.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
@@ -162,27 +162,27 @@
 </ul>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "aa" "Aa" "bb" "cc" "yy"</span></span>
+<span><span class="co">#&gt; [1] "aa" "bb" "cc" "yy"</span></span>
 <span><span class="va">aa</span></span>
-<span><span class="co">#&gt;  [1]  0.3952646 -0.1718518 -0.5129222  1.6969852 -0.4740080</span></span>
-<span><span class="co">#&gt;  [6] -0.6612237 -0.4578432  0.8773180  1.0487614  0.7215942</span></span>
+<span><span class="co">#&gt;  [1]  0.4780918  0.9092444 -2.2407797  0.8453539  0.4835953</span></span>
+<span><span class="co">#&gt;  [6]  0.7257825  2.0491010 -1.8930121 -0.3519887  1.0968490</span></span>
 <span><span class="va">bb</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="co">#&gt; [1] "bb"</span></span>
+<span><span class="co">#&gt; [1] "cc"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/parse.html">parse</a></span><span class="op">(</span>text<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; expression(bb)</span></span>
+<span><span class="co">#&gt; expression(cc)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/eval.html">eval</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/parse.html">parse</a></span><span class="op">(</span>text<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
+<span><span class="co">#&gt; [1] "u"     "v"     "'w'"   "\"x\"" "\"y\"" "z"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in rm(a, b): object 'a' not found</span></span>
 <span><span class="co">#&gt; Warning in rm(a, b): object 'b' not found</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">aa</span>,<span class="va">bb</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Aa" "cc" "yy"</span></span>
+<span><span class="co">#&gt; [1] "cc" "yy"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="st">"cc"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Aa" "yy"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "yy"</span></span></code></pre></div>
 </div>
 </div>
 <div id="objects-in-r" class="section level3" number="2.1.2">
@@ -576,19 +576,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000219b789ddf8&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000204aed7b580&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] 0.04658197</span></span>
+<span><span class="co">#&gt; [1] -0.0169389</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] 0.04658197</span></span>
+<span><span class="co">#&gt; [1] -0.0169389</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000219b590f530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000204a9e3fc78&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -615,19 +615,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000219b590f530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000204a9e3fc78&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000219b590f530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000204a9e3fc78&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000219b590f530&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000204a9e3fc78&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
@@ -841,7 +841,7 @@ Repeat the whole study with a success probability of <span class="math inline">\
 <span class="header-section-number">2.10.4</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-7"><i class="fas fa-link"></i></a>
 </h3>
 <p>Execute the instruction <code>set.seed(101023)</code>.</p>
-<p>Next, obtain <span class="math inline">\(400\)</span> random <span class="math inline">\(normal (0; 1)\)</span> values and arrange them in a matrix with <span class="math inline">\(20\)</span> rows and <span class="math inline">\(20\)</span> columns. Finally, write an R function to calculate and return (i) the sum of all the elements in the matrix, (ii) the eigenvalues of the matrix, (iii) the inverse of the matrix as well as (iv) the rank of the matrix <span style="text-decoration:underline">making use of the eigenvalues</span>. <em>Hint</em>: Read the help of the functions <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> and <code><a href="https://rdrr.io/r/base/solve.html">solve()</a></code>.)</p>
+<p>Next, obtain <span class="math inline">\(400\)</span> random <span class="math inline">\(normal (0; 1)\)</span> values and arrange them in a matrix with <span class="math inline">\(20\)</span> rows and <span class="math inline">\(20\)</span> columns. Finally, write an R function to calculate and return (i) the sum of all the elements in the matrix, (ii) the eigenvalues of the matrix, (iii) the inverse of the matrix ( Only provide the first three rows and first three columns, e.g. <code>my.inv [1:3, 1:3]</code>) as well as (iv) the rank of the matrix <span style="text-decoration:underline">making use of the eigenvalues</span>.. <em>Hint</em>: Read the help of the functions <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> and <code><a href="https://rdrr.io/r/base/solve.html">solve()</a></code>.)</p>
 </div>
 </div>
 

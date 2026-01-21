@@ -39,7 +39,7 @@ Assigning numeric vector to name "aa".  Assignment takes place in global environ
 
 
 ``` r
-Aa <- seq(from = 1,to = 10,by = 0.01); yy <- c("a","b","c")
+aa <- seq(from = 1,to = 10,by = 0.01); yy <- c("a","b","c")
 c("a","b","c") -> bb 
 ```
 
@@ -79,28 +79,27 @@ cc
 
 ``` r
 objects()
-#> [1] "aa" "Aa" "bb" "cc" "yy"
+#> [1] "aa" "bb" "cc" "yy"
 aa
-#>  [1] -1.30237657  1.35234865 -0.32712077  0.32666819
-#>  [5]  0.12642658 -0.39484180 -0.72774624  0.09173947
-#>  [9]  0.83248656  0.49906948
+#>  [1]  0.4780918  0.9092444 -2.2407797  0.8453539  0.4835953
+#>  [6]  0.7257825  2.0491010 -1.8930121 -0.3519887  1.0968490
 bb
 #> [1] "a" "b" "c"
 objects()[3]
-#> [1] "bb"
+#> [1] "cc"
 parse(text=objects()[3])
-#> expression(bb)
+#> expression(cc)
 eval(parse(text=objects()[3]))
-#> [1] "a" "b" "c"
+#> [1] "u"     "v"     "'w'"   "\"x\"" "\"y\"" "z"
 rm(a,b)
 #> Warning in rm(a, b): object 'a' not found
 #> Warning in rm(a, b): object 'b' not found
 rm(aa,bb)
 objects()
-#> [1] "Aa" "cc" "yy"
+#> [1] "cc" "yy"
 rm("cc")
 objects()
-#> [1] "Aa" "yy"
+#> [1] "yy"
 ```
 
 ###	Objects in R
@@ -589,19 +588,19 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x0000020531c4c990>
+#> <bytecode: 0x00000204aed7b580>
 #> <environment: namespace:base>
 mean <- mean (rnorm (1000))
 get (mean)
 #> Error in get(mean): invalid first argument
 get ("mean") 
-#> [1] -0.02192818
+#> [1] -0.0169389
 get ("mean", pos = 1) 
-#> [1] -0.02192818
+#> [1] -0.0169389
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x0000020529b13530>
+#> <bytecode: 0x00000204a9e3fc78>
 #> <environment: namespace:base>
 rm (mean)
 ```
@@ -632,7 +631,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x0000020529b13530>
+#> <bytecode: 0x00000204a9e3fc78>
 #> <environment: namespace:base>
 ```
 
@@ -643,12 +642,12 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x0000020529b13530>
+#> <bytecode: 0x00000204a9e3fc78>
 #> <environment: namespace:base>
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x0000020529b13530>
+#> <bytecode: 0x00000204a9e3fc78>
 #> <environment: namespace:base>
 ```
 
@@ -866,7 +865,7 @@ Generate a random sample of size $50$ from a multivariate normal distribution wi
 
 Execute the instruction `set.seed(101023)`.
 
-Next, obtain $400$ random $normal (0; 1)$ values and arrange them in a matrix with $20$ rows and $20$ columns. Finally, write an R function to calculate and return (i) the sum of all the elements in the matrix, (ii) the eigenvalues of the matrix, (iii) the inverse of the matrix as well as (iv) the rank of the matrix <span style="text-decoration:underline">making use of the eigenvalues</span>. *Hint*: Read the help of the functions `eigen()` and `solve()`.)
+Next, obtain $400$ random $normal (0; 1)$ values and arrange them in a matrix with $20$ rows and $20$ columns. Finally, write an R function to calculate and return (i) the sum of all the elements in the matrix, (ii) the eigenvalues of the matrix, (iii) the inverse of the matrix ( Only provide the first three rows and first three columns, e.g. `my.inv [1:3, 1:3]`) as well as (iv) the rank of the matrix <span style="text-decoration:underline">making use of the eigenvalues</span>.. *Hint*: Read the help of the functions `eigen()` and `solve()`.)
 
 :::
 

@@ -438,14 +438,14 @@ coplot (stack.loess$y ~ stack.loess$x[,"AirFlow"] | stack.loess$x[,"WaterTemp"],
        panel = points)
 ```
 
-![](11-modelling_files/figure-latex/stackloess-1.pdf)<!-- --> 
+<img src="11-modelling_files/figure-html/stackloess-1.png" width="672" />
 
 ``` r
 coplot (stack.loess$y ~ stack.loess$x[,"WaterTemp"] | stack.loess$x[,"AirFlow"],
         panel=points)
 ```
 
-![](11-modelling_files/figure-latex/stackloess-2.pdf)<!-- --> 
+<img src="11-modelling_files/figure-html/stackloess-2.png" width="672" />
 
 Comment on the results.
 
@@ -537,25 +537,32 @@ attr(bs(x, df=7), "Boundary.knots")
 
 ``` r
 panel.straight.line <- function(x, y, col = par("col"), bg = NA, 
-                                pch = par("pch"), cex = 1, col.smooth = "red")
+                                pch = par("pch"), cex = 1, 
+                                col.smooth = "red")
 { datmat <- cbind (x, y)
   datmat <- datmat [order (datmat[, 1]),  ]
-  points (datmat[, 1], datmat[, 2], pch = pch, col = col, bg = bg, cex = cex)
-  lines (datmat[, 1], fitted (lm (datmat[, 2] ~ datmat[, 1])), col = col.smooth)
+  points (datmat[, 1], datmat[, 2], pch = pch, col = col, bg = bg, 
+          cex = cex)
+  lines (datmat[, 1], fitted (lm (datmat[, 2] ~ datmat[, 1])), 
+         col = col.smooth)
 }
 
-panel.poly <- function(x, y, col = par("col"), bg = NA, pch = par("pch"), 
-                       cex = 1, col.smooth = "red")
+panel.poly <- function(x, y, col = par("col"), bg = NA, 
+                       pch = par("pch"), cex = 1, 
+                       col.smooth = "red")
 { datmat <- cbind(x, y)
   datmat <- datmat [order (datmat[, 1]),  ]
-  points (datmat[, 1], datmat[, 2], pch = pch, col = col, bg = bg, cex = cex)
-  lines (datmat[, 1], fitted (lm (datmat[, 2] ~ poly (datmat[, 1], 2))), 
+  points (datmat[, 1], datmat[, 2], pch = pch, col = col, 
+          bg = bg, cex = cex)
+  lines (datmat[, 1], fitted (lm (datmat[, 2] ~ 
+                                        poly (datmat[, 1], 2))), 
          col = col.smooth)
 }
                
-panel.smooth <- function (x, y, col = par("col"), bg = NA, pch = par("pch"), 
-                          cex = 1, col.smooth = "red", span = 2/3, iter = 3, 
-                          ...) 
+panel.smooth <- function (x, y, col = par("col"), bg = NA, 
+                          pch = par("pch"), cex = 1, 
+                          col.smooth = "red", span = 2/3, 
+                          iter = 3, ...) 
 { points(x, y, pch = pch, col = col, bg = bg, cex = cex)
   ok <- is.finite (x) & is.finite (y)
   if (any (ok)) 
@@ -586,119 +593,14 @@ coplot (Illiteracy ~ Life.Exp | Income * Area, data = state,
 
 ## The function glm()
 
-Consider the following dataframe treatments
+Consider the following dataframe `treatments`.
 
 
-```{=latex}
-\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
-
-\global\setlength{\Oldtabcolsep}{\tabcolsep}
-
-\setlength{\tabcolsep}{2pt}
-
-\renewcommand*{\arraystretch}{1.5}
-
-
-
-\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
-
-\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}}
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{TreatA}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{TreatB}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Counts}}}} \\
-
-\ascline{0.75pt}{666666}{1-3}\endfirsthead 
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{TreatA}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{TreatB}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Counts}}}} \\
-
-\ascline{0.75pt}{666666}{1-3}\endhead
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{18}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{17}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{15}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{20}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{10}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{20}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{25}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{13}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{12}}}} \\
-
-\ascline{0.75pt}{333333}{1-3}
-
-
-
-\end{longtable}
-
-
-
-\arrayrulecolor[HTML]{000000}
-
-\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
-
-\global\setlength{\tabcolsep}{\Oldtabcolsep}
-
-\renewcommand*{\arraystretch}{1}
+```{=html}
+<div class="tabwid"><style>.cl-d4002b22{}.cl-d3f4430c{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-d3f85bcc{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-d3f87d00{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d3f87d0a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d3f87d14{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-d4002b22'><thead><tr style="overflow-wrap:break-word;"><th class="cl-d3f87d00"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">TreatA</span></p></th><th class="cl-d3f87d00"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">TreatB</span></p></th><th class="cl-d3f87d00"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">Counts</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">1</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">1</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">1</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">2</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">17</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">1</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">3</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">2</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">1</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">20</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">2</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">2</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">2</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">3</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">20</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">3</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">1</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">25</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">3</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">2</span></p></td><td class="cl-d3f87d0a"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">13</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d3f87d14"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">3</span></p></td><td class="cl-d3f87d14"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">3</span></p></td><td class="cl-d3f87d14"><p class="cl-d3f85bcc"><span class="cl-d3f4430c">12</span></p></td></tr></tbody></table></div>
 ```
 
 
-Why is a two-way anova not appropriate here?  
-
-GLM extends the linear model in two ways: (a) the expected value is replaced by a *<span style="color:#FF9966">function</span>* of the expected value, called the link function and (b) the assumption of observations from a Gaussian distribution is extended to include other distributions from the exponential family of probability distributions.
-
-::: {style="color: #80CC99;"}
-
-Use `glm()` with `family = poisson()` to fit the following generalized linear models to the data: `Counts ~ TreatA + TreatB` and `Counts ~ TreatA * TreatB`.
-
-What are your conclusions?
-
-:::
 
 ## The function gam()
 
@@ -748,7 +650,7 @@ par(mfrow=c(3,1))
 plot(stack.gam)
 ```
 
-![](11-modelling_files/figure-latex/gam-1.pdf)<!-- --> 
+<img src="11-modelling_files/figure-html/gam-1.png" width="672" />
 
 <div style="margin-left: 25px; margin-right: 20px;">
 Comment on the results.
@@ -775,7 +677,7 @@ with (data.ordered, plot (x = E, y = NOx, pch = 15, col = 'blue'))
 with (data.ordered, lines (x = E, y = fitted, col = 'red', lwd = 2))
 ```
 
-![](11-modelling_files/figure-latex/mgcv_gam-1.pdf)<!-- --> 
+<img src="11-modelling_files/figure-html/mgcv_gam-1.png" width="672" />
 
 <div style="margin-left: 45px; margin-right: 20px;">
 The domain of the predictor is divided by knots and a B-spline generates a set of piecewise polynomials restricted to be continuous at the knots. Execute the following command:
@@ -791,9 +693,10 @@ knot.vec <- attr (bs (ethanol$E [order (ethanol$E)], df = 7), "knots")
 for (i in knot.vec) lines (rep(i,2), c(0,1), lty = 2)
 ```
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{11-modelling_files/figure-latex/knots-1} \caption{Cubic B-spline basis functions with 4 interior knots.}(\#fig:knots)
-\end{figure}
+<div class="figure">
+<img src="11-modelling_files/figure-html/knots-1.png" alt="Cubic B-spline basis functions with 4 interior knots." width="100%" />
+<p class="caption">(\#fig:knots)Cubic B-spline basis functions with 4 interior knots.</p>
+</div>
 
 <div style="margin-left: 45px; margin-right: 20px;">
 A set of $7$ basis functions were generated, each a degree $3$ polynomial in an interval with 
@@ -822,7 +725,7 @@ plot(fit)
 text(fit, use.n = TRUE, xpd = NA)
 ```
 
-![](11-modelling_files/figure-latex/rpart-1.pdf)<!-- --> 
+<img src="11-modelling_files/figure-html/rpart-1.png" width="672" />
 
 Comment on the results.
 
@@ -835,7 +738,7 @@ fit2 <- as.party(fit)
 plot(fit2)
 ```
 
-![](11-modelling_files/figure-latex/partykit-1.pdf)<!-- --> 
+<img src="11-modelling_files/figure-html/partykit-1.png" width="672" />
 
 ## Nonlinear regression and the function nls()
 
@@ -876,138 +779,8 @@ The asymptotic regression model represents a nonlinear regression model and in g
 (b)	The data below is the `Yield` of a product after a chemical treatment of different time duration. Three replicates were made at each treatment time. 
 
 
-```{=latex}
-\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
-
-\global\setlength{\Oldtabcolsep}{\tabcolsep}
-
-\setlength{\tabcolsep}{2pt}
-
-\renewcommand*{\arraystretch}{1.5}
-
-
-
-\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
-
-\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Time\ (Hrs)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rep1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rep2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rep3}}}} \\
-
-\ascline{0.75pt}{666666}{1-4}\endfirsthead 
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Time\ (Hrs)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rep1}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rep2}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rep3}}}} \\
-
-\ascline{0.75pt}{666666}{1-4}\endhead
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0000}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0846}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0556}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0501}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{6}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1072}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0604}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0545}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{12}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1255}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0590}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0705}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{18}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1671}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0799}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0687}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{24}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1988}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0958}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.0655}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{48}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.2927}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1739}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1075}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{72}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3713}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1910}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1418}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{96}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4773}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.2669}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.1725}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{168}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.6158}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3584}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3224}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{336}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.7297}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4339}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3322}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{504}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.8083}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4816}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3309}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{672}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.7019}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4497}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3798}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{840}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.6038}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.4851}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3757}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1,008}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.7386}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.5332}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.3798}}}} \\
-
-\ascline{0.75pt}{333333}{1-4}
-
-
-
-\end{longtable}
-
-
-
-\arrayrulecolor[HTML]{000000}
-
-\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
-
-\global\setlength{\tabcolsep}{\Oldtabcolsep}
-
-\renewcommand*{\arraystretch}{1}
+```{=html}
+<div class="tabwid"><style>.cl-d6e07c66{}.cl-d6cf846a{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-d6d62a2c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-d6d676e4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d6d676ee{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d6d676f8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-d6e07c66'><thead><tr style="overflow-wrap:break-word;"><th class="cl-d6d676e4"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">Time (Hrs)</span></p></th><th class="cl-d6d676e4"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">Rep1</span></p></th><th class="cl-d6d676e4"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">Rep2</span></p></th><th class="cl-d6d676e4"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">Rep3</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0000</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0000</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0000</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">3</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0846</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0556</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0501</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">6</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1072</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0604</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0545</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">12</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1255</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0590</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0705</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">18</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1671</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0799</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0687</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">24</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1988</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0958</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.0655</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">48</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.2927</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1739</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1075</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">72</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.3713</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1910</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1418</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">96</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.4773</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.2669</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.1725</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">168</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.6158</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.3584</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.3224</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">336</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.7297</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.4339</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.3322</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">504</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.8083</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.4816</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.3309</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">672</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.7019</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.4497</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.3798</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">840</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.6038</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.4851</span></p></td><td class="cl-d6d676ee"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.3757</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d6d676f8"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">1,008</span></p></td><td class="cl-d6d676f8"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.7386</span></p></td><td class="cl-d6d676f8"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.5332</span></p></td><td class="cl-d6d676f8"><p class="cl-d6d62a2c"><span class="cl-d6cf846a">0.3798</span></p></td></tr></tbody></table></div>
 ```
 
 
@@ -1093,7 +866,7 @@ To change the order of the levels, the R function `relevel()` allows putting a s
 climate.sim$season <- fct_relevel (climate.sim$season, 
                                    c("summer", "autumn", "winter", "spring"))
 str(climate.sim)
-#> tibble [60 x 5] (S3: tbl_df/tbl/data.frame)
+#> tibble [60 × 5] (S3: tbl_df/tbl/data.frame)
 #>  $ ocean : Factor w/ 3 levels "Indian","N-Atlantic",..: 2 2 2 2 2 2 2 2 2 2 ...
 #>  $ season: Factor w/ 4 levels "summer","autumn",..: 1 1 1 1 1 2 2 2 2 2 ...
 #>  $ height: num [1:60] 534 477 633 256 267 ...
@@ -1151,9 +924,10 @@ The presence of interaction can be investigated with an interaction plot using t
 with(climate.sim, interaction.plot (ocean, season, response = CO2)) 
 ```
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{11-modelling_files/figure-latex/interactionSeasonOcean-1} \caption{Interaction plot of factors season and ocean associates with the dependent variable CO2}(\#fig:interactionSeasonOcean)
-\end{figure}
+<div class="figure">
+<img src="11-modelling_files/figure-html/interactionSeasonOcean-1.png" alt="Interaction plot of factors season and ocean associates with the dependent variable CO2" width="100%" />
+<p class="caption">(\#fig:interactionSeasonOcean)Interaction plot of factors season and ocean associates with the dependent variable CO2</p>
+</div>
 
 What can be deduced from Figure \@ref(fig:interactionSeasonOcean)? Explain in detail.
 
@@ -1375,9 +1149,10 @@ coefficients (one.way.ancova.final)
 (ii) Add the regression line to the scatterplot constructed in (a). See Figure \@ref(fig:CO2oceanHeight).
 </div>
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{11-modelling_files/figure-latex/CO2oceanHeight-1} \caption{Scatterplot of CO2 vs height with a single regression line.}(\#fig:CO2oceanHeight)
-\end{figure}
+<div class="figure">
+<img src="11-modelling_files/figure-html/CO2oceanHeight-1.png" alt="Scatterplot of CO2 vs height with a single regression line." width="100%" />
+<p class="caption">(\#fig:CO2oceanHeight)Scatterplot of CO2 vs height with a single regression line.</p>
+</div>
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (iii)	Inspection of Figure \@ref(fig:CO2oceanHeight) shows a negative relationship between CO2 and height but there is no real difference between the observations from the three different oceanic locations.
@@ -1435,9 +1210,10 @@ coefficients (one.way.ancova.sep.reglns)
 (ii) Add the regression lines to the scatterplot of CO2 vs height. See Figure \@ref(fig:CO2seasonHeight).
 </div>
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{11-modelling_files/figure-latex/CO2seasonHeight-1} \caption{Scatterplot of CO2 vs height with a separate regression line for each of the seasons.}(\#fig:CO2seasonHeight)
-\end{figure}
+<div class="figure">
+<img src="11-modelling_files/figure-html/CO2seasonHeight-1.png" alt="Scatterplot of CO2 vs height with a separate regression line for each of the seasons." width="100%" />
+<p class="caption">(\#fig:CO2seasonHeight)Scatterplot of CO2 vs height with a separate regression line for each of the seasons.</p>
+</div>
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (iii)	Inspection of Figure \@ref(fig:CO2seasonHeight) shows that the height has a much smaller effect in autumn and winter than in spring and summer. 
@@ -1595,15 +1371,17 @@ coefficients(one.way.ancova.reglns)
 (iii)	Inspection of Figure \@ref(fig:ozoneOceanHeight) shows three parallel regression lines, since $\beta_1 = \beta_2 = \beta_3$, with different intercepts. The hypothesis that $\alpha_1 = \alpha_2 = \alpha_3$ is rejected irrespective of the height above sea level.
 </div>
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{11-modelling_files/figure-latex/ozoneOceanHeight-1} \caption{Scatterplot of ozone vs height with a separate parallel regression lines for each of the different oceanic locations.}(\#fig:ozoneOceanHeight)
-\end{figure}
+<div class="figure">
+<img src="11-modelling_files/figure-html/ozoneOceanHeight-1.png" alt="Scatterplot of ozone vs height with a separate parallel regression lines for each of the different oceanic locations." width="100%" />
+<p class="caption">(\#fig:ozoneOceanHeight)Scatterplot of ozone vs height with a separate parallel regression lines for each of the different oceanic locations.</p>
+</div>
 
 The steps of a one-way analysis of covariance is illustrated in the diagram in Figure \@ref(fig:ANCOVA).
  
-\begin{figure}
-\includegraphics[width=1\linewidth]{pics/ANCOVA} \caption{Diagrammatic process flow for a one-way analysis of covariance.}(\#fig:ANCOVA)
-\end{figure}
+<div class="figure">
+<img src="pics/ANCOVA.jpg" alt="Diagrammatic process flow for a one-way analysis of covariance." width="100%" />
+<p class="caption">(\#fig:ANCOVA)Diagrammatic process flow for a one-way analysis of covariance.</p>
+</div>
 
 ### Maize Exercise
 
@@ -1612,120 +1390,8 @@ The steps of a one-way analysis of covariance is illustrated in the diagram in F
 A researcher investigates if three maize varieties give the same yield. The following data are obtained according to the requirements of a linear model: 
 
 
-```{=latex}
-\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
-
-\global\setlength{\Oldtabcolsep}{\tabcolsep}
-
-\setlength{\tabcolsep}{2pt}
-
-\renewcommand*{\arraystretch}{1.5}
-
-
-
-\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
-
-\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
-
-
-
-
-
-\multicolumn{6}{>{\centering}m{\dimexpr 4.5in+10\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{VARIETY}}}} \\
-
-
-
-
-
-\multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{KB1}}}} & \multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{KB2}}}} & \multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{KB3}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Yield\ per\ hectare}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rainfall}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Yield\ per\ hectare}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rainfall}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Yield\ per\ hectare}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rainfall}}}} \\
-
-\ascline{0.75pt}{666666}{1-6}\endfirsthead 
-
-
-
-\multicolumn{6}{>{\centering}m{\dimexpr 4.5in+10\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{VARIETY}}}} \\
-
-
-
-
-
-\multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{KB1}}}} & \multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{KB2}}}} & \multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{KB3}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Yield\ per\ hectare}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rainfall}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Yield\ per\ hectare}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rainfall}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Yield\ per\ hectare}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Rainfall}}}} \\
-
-\ascline{0.75pt}{666666}{1-6}\endhead
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{17.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{95.90}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{37.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{114.10}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{18.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{98.00}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{45.00}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{116.20}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{42.15}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{119.28}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{13.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{117.60}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{38.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{116.20}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{48.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{121.94}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{52.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{105.28}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{33.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{93.10}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{32.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{97.02}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{17.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{94.50}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{18.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{81.34}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{53.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{102.90}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{18.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{92.40}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{21.25}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{115.36}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{38.75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{91.70}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{52.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{110.74}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{22.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{102.76}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{32.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{105.70}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{17.50}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{78.54}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{}}}} \\
-
-\ascline{0.75pt}{333333}{1-6}
-
-
-
-\end{longtable}
-
-
-
-\arrayrulecolor[HTML]{000000}
-
-\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
-
-\global\setlength{\tabcolsep}{\Oldtabcolsep}
-
-\renewcommand*{\arraystretch}{1}
+```{=html}
+<div class="tabwid"><style>.cl-de0f2ff0{}.cl-de0232d2{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-de074c54{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-de074c68{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-de078534{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-de078548{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-de078552{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-de07855c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-de0f2ff0'><thead><tr style="overflow-wrap:break-word;"><th  colspan="6"class="cl-de078534"><p class="cl-de074c54"><span class="cl-de0232d2">VARIETY</span></p></th></tr><tr style="overflow-wrap:break-word;"><th  colspan="2"class="cl-de078534"><p class="cl-de074c54"><span class="cl-de0232d2">KB1</span></p></th><th  colspan="2"class="cl-de078534"><p class="cl-de074c54"><span class="cl-de0232d2">KB2</span></p></th><th  colspan="2"class="cl-de078534"><p class="cl-de074c54"><span class="cl-de0232d2">KB3</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-de078548"><p class="cl-de074c54"><span class="cl-de0232d2">Yield per hectare</span></p></th><th class="cl-de078548"><p class="cl-de074c54"><span class="cl-de0232d2">Rainfall</span></p></th><th class="cl-de078548"><p class="cl-de074c54"><span class="cl-de0232d2">Yield per hectare</span></p></th><th class="cl-de078548"><p class="cl-de074c54"><span class="cl-de0232d2">Rainfall</span></p></th><th class="cl-de078548"><p class="cl-de074c54"><span class="cl-de0232d2">Yield per hectare</span></p></th><th class="cl-de078548"><p class="cl-de074c54"><span class="cl-de0232d2">Rainfall</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">17.50</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">95.90</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">37.50</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">114.10</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">18.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">98.00</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">45.00</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">116.20</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">42.15</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">119.28</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">13.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">117.60</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">38.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">116.20</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">48.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">121.94</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">52.50</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">105.28</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">33.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">93.10</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">32.50</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">97.02</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">17.50</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">94.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">18.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">81.34</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">53.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">102.90</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">18.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">92.40</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">21.25</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">115.36</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">38.75</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">91.70</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">52.50</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">110.74</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2"></span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2"></span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">22.50</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">102.76</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">32.50</span></p></td><td class="cl-de078552"><p class="cl-de074c68"><span class="cl-de0232d2">105.70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de07855c"><p class="cl-de074c68"><span class="cl-de0232d2"></span></p></td><td class="cl-de07855c"><p class="cl-de074c68"><span class="cl-de0232d2"></span></p></td><td class="cl-de07855c"><p class="cl-de074c68"><span class="cl-de0232d2">17.50</span></p></td><td class="cl-de07855c"><p class="cl-de074c68"><span class="cl-de0232d2">78.54</span></p></td><td class="cl-de07855c"><p class="cl-de074c68"><span class="cl-de0232d2"></span></p></td><td class="cl-de07855c"><p class="cl-de074c68"><span class="cl-de0232d2"></span></p></td></tr></tbody></table></div>
 ```
 
 
@@ -1755,120 +1421,8 @@ $$
 @MillikenJohnson2002 discuss an investigation by a sport physiologist of the effect of three exercise programs (EX1, EX2 and EX3) on heart rate (HR) of males between 28 and 35 years of age.  The experiment consists of the random allocation of a subject to one of the programs. The subject then had to follow the exercise program for 8 weeks.  On finishing the program each subject had to complete a 6 minutes run and then had his heart rate (EHR) measured. As a measure of their fitness before entering the experiment each subject had also his resting heart rate (AHR) determined prior to the experiment. The following data were obtained:
 
 
-```{=latex}
-\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
-
-\global\setlength{\Oldtabcolsep}{\tabcolsep}
-
-\setlength{\tabcolsep}{2pt}
-
-\renewcommand*{\arraystretch}{1.5}
-
-
-
-\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
-
-\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
-
-
-
-
-
-\multicolumn{6}{>{\centering}m{\dimexpr 4.5in+10\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{EXERCISE\ PROGRAM}}}} \\
-
-
-
-
-
-\multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{EX1}}}} & \multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{EX2}}}} & \multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{EX3}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{HER}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{AHR}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{HER}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{AHR}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{HER}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{AHR}}}} \\
-
-\ascline{0.75pt}{666666}{1-6}\endfirsthead 
-
-
-
-\multicolumn{6}{>{\centering}m{\dimexpr 4.5in+10\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{EXERCISE\ PROGRAM}}}} \\
-
-
-
-
-
-\multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{EX1}}}} & \multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{EX2}}}} & \multicolumn{2}{>{\centering}m{\dimexpr 1.5in+2\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{EX3}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{HER}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{AHR}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{HER}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{AHR}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{HER}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{AHR}}}} \\
-
-\ascline{0.75pt}{666666}{1-6}\endhead
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{118}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{56}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{148}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{60}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{153}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{56}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{138}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{59}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{159}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{62}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{150}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{58}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{142}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{62}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{162}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{65}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{158}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{61}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{147}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{68}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{157}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{66}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{152}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{64}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{160}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{71}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{169}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{73}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{160}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{72}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{166}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{76}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{164}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{75}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{154}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{75}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{165}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{83}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{179}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{84}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{155}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{82}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{171}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{87}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{177}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{88}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{164}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{86}}}} \\
-
-\ascline{0.75pt}{333333}{1-6}
-
-
-
-\end{longtable}
-
-
-
-\arrayrulecolor[HTML]{000000}
-
-\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
-
-\global\setlength{\tabcolsep}{\Oldtabcolsep}
-
-\renewcommand*{\arraystretch}{1}
+```{=html}
+<div class="tabwid"><style>.cl-de3d6fa0{}.cl-de3195d6{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-de35d5a6{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-de35d5ba{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-de3609cc{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-de3609d6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-de3609e0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-de3609ea{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-de3d6fa0'><thead><tr style="overflow-wrap:break-word;"><th  colspan="6"class="cl-de3609cc"><p class="cl-de35d5a6"><span class="cl-de3195d6">EXERCISE PROGRAM</span></p></th></tr><tr style="overflow-wrap:break-word;"><th  colspan="2"class="cl-de3609cc"><p class="cl-de35d5a6"><span class="cl-de3195d6">EX1</span></p></th><th  colspan="2"class="cl-de3609cc"><p class="cl-de35d5a6"><span class="cl-de3195d6">EX2</span></p></th><th  colspan="2"class="cl-de3609cc"><p class="cl-de35d5a6"><span class="cl-de3195d6">EX3</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-de3609d6"><p class="cl-de35d5a6"><span class="cl-de3195d6">HER</span></p></th><th class="cl-de3609d6"><p class="cl-de35d5a6"><span class="cl-de3195d6">AHR</span></p></th><th class="cl-de3609d6"><p class="cl-de35d5a6"><span class="cl-de3195d6">HER</span></p></th><th class="cl-de3609d6"><p class="cl-de35d5a6"><span class="cl-de3195d6">AHR</span></p></th><th class="cl-de3609d6"><p class="cl-de35d5a6"><span class="cl-de3195d6">HER</span></p></th><th class="cl-de3609d6"><p class="cl-de35d5a6"><span class="cl-de3195d6">AHR</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">118</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">56</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">148</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">60</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">153</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">56</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">138</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">59</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">159</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">62</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">150</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">58</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">142</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">62</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">162</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">65</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">158</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">61</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">147</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">68</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">157</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">66</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">152</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">64</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">160</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">71</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">169</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">73</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">160</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">72</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">166</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">76</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">164</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">75</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">154</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">75</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">165</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">83</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">179</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">84</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">155</span></p></td><td class="cl-de3609e0"><p class="cl-de35d5ba"><span class="cl-de3195d6">82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-de3609ea"><p class="cl-de35d5ba"><span class="cl-de3195d6">171</span></p></td><td class="cl-de3609ea"><p class="cl-de35d5ba"><span class="cl-de3195d6">87</span></p></td><td class="cl-de3609ea"><p class="cl-de35d5ba"><span class="cl-de3195d6">177</span></p></td><td class="cl-de3609ea"><p class="cl-de35d5ba"><span class="cl-de3195d6">88</span></p></td><td class="cl-de3609ea"><p class="cl-de35d5ba"><span class="cl-de3195d6">164</span></p></td><td class="cl-de3609ea"><p class="cl-de35d5ba"><span class="cl-de3195d6">86</span></p></td></tr></tbody></table></div>
 ```
 
 

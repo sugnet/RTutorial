@@ -10,7 +10,7 @@ A good way to learn about functions or to write a new function is to look at exi
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x000002039c1332c8>
+#> <bytecode: 0x0000022545a7a690>
 #> <environment: namespace:base>
 ```
 
@@ -30,10 +30,11 @@ methods(plot)
 #> [17] plot.mlm*           plot.ppr*          
 #> [19] plot.prcomp*        plot.princomp*     
 #> [21] plot.profile*       plot.profile.nls*  
-#> [23] plot.raster*        plot.spec*         
-#> [25] plot.stepfun        plot.stl*          
-#> [27] plot.table*         plot.ts            
-#> [29] plot.tskernel*      plot.TukeyHSD*     
+#> [23] plot.R6*            plot.raster*       
+#> [25] plot.spec*          plot.stepfun       
+#> [27] plot.stl*           plot.table*        
+#> [29] plot.ts             plot.tskernel*     
+#> [31] plot.TukeyHSD*     
 #> see '?methods' for accessing help and source code
 ```
 
@@ -87,7 +88,7 @@ plot.default
 #>             ...)
 #>     invisible()
 #> }
-#> <bytecode: 0x000002039cb3f028>
+#> <bytecode: 0x0000022545eae3c0>
 #> <environment: namespace:graphics>
 ```
 
@@ -134,7 +135,7 @@ getAnywhere(plot.factor)
 #>         boxplot(y ~ x, ...)
 #>     else NextMethod("plot")
 #> }
-#> <bytecode: 0x000002039bd9f3e0>
+#> <bytecode: 0x0000022547932b68>
 #> <environment: namespace:graphics>
 ```
 
@@ -168,31 +169,31 @@ getAnywhere(plot.factor)
 boxplot(rnorm(100), plot = TRUE)
 ```
 
-![](07-functions_files/figure-latex/invisibleExamples-1.pdf)<!-- --> 
+<img src="07-functions_files/figure-html/invisibleExamples-1.png" width="672" />
 
 ``` r
 boxplot(rnorm(100), plot = FALSE)
 #> $stats
 #>             [,1]
-#> [1,] -2.13673866
-#> [2,] -0.47854052
-#> [3,]  0.07906728
-#> [4,]  0.79507583
-#> [5,]  2.08596468
+#> [1,] -2.08784885
+#> [2,] -0.50570218
+#> [3,]  0.05253931
+#> [4,]  0.71111036
+#> [5,]  2.42144142
 #> 
 #> $n
 #> [1] 100
 #> 
 #> $conf
 #>            [,1]
-#> [1,] -0.1221641
-#> [2,]  0.2802987
+#> [1,] -0.1397171
+#> [2,]  0.2447957
 #> 
 #> $out
-#> [1]  3.271010 -2.674717
+#> numeric(0)
 #> 
 #> $group
-#> [1] 1 1
+#> numeric(0)
 #> 
 #> $names
 #> [1] "1"
@@ -388,9 +389,10 @@ maxlen(mode.use="character", 1:10, 1:15, 1:3, letters)
 
 There are many practical situations requiring the conversion of mathematical expressions into character strings (text) or, conversely, requiring the conversion of text into mathematical expressions. The tools (functions) provided in R for achieving such conversions are summarized in Figure \@ref(fig:expression).
 
-\begin{figure}
-\includegraphics[width=0.8\linewidth]{pics/expressions} \caption{Converting text into mathematical expression or mathematical expressions into text.}(\#fig:expression)
-\end{figure}
+<div class="figure">
+<img src="pics/expressions.jpg" alt="Converting text into mathematical expression or mathematical expressions into text." width="80%" />
+<p class="caption">(\#fig:expression)Converting text into mathematical expression or mathematical expressions into text.</p>
+</div>
 
 ::: {style="color: #80CC99;"}
 
@@ -577,15 +579,15 @@ getAnywhere('diag')
 #> 2 differing objects matching 'diag' were found
 #> in the following places
 #>   package:base
-#>   namespace:Matrix
 #>   namespace:base
+#>   namespace:Matrix
 #> Use [] to view one of them
 getAnywhere('diag<-')
 #> 2 differing objects matching 'diag<-' were found
 #> in the following places
 #>   package:base
-#>   namespace:Matrix
 #>   namespace:base
+#>   namespace:Matrix
 #> Use [] to view one of them
 ```
 
@@ -677,7 +679,7 @@ C     DUMMIES
       END
 ```
 
-Next a dynamic link library (*<span style="color:#BE99ff">.dll</span>*) is made from the *<span style="color:#BE99ff">Fortran</span>* subroutine. The easiest way to do this is to use the command `R CMD SHLIB matm.f` from the *<span style="color:#BE99ff">Command Prompt</span>*. The *<span style="color:#BE99ff">.dll</span>* is available as *<span style="color:#BE99ff">C:\matm64.dll</span>*.
+Next a dynamic link library (*<span style="color:#BE99ff">.dll</span>*) is made from the *<span style="color:#BE99ff">Fortran</span>* subroutine. The easiest way to do this is to use the command `R CMD SHLIB matm.f` from the *<span style="color:#BE99ff">Command Prompt</span>*. The *<span style="color:#BE99ff">.dll</span>* is available as *<span style="color:#BE99ff">C:\\matm64.dll</span>*.
 
 Now an R function is to be written where the *<span style="color:#BE99ff">Fortran</span>* code is called:
 
@@ -708,4 +710,5 @@ dyn.load("full path\\matm64.dll")
 Compare the answers and execution time of `matmult()` and  `matmult.Fortran()` for different sized matrices.
 
 The `Rcpp` package has made the inclusion of *<span style="color:#BE99ff">C++</span>* code into R considerably easier and more robust. For a detailed description of the package see [Rcpp vignette intro](https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf).
+
 

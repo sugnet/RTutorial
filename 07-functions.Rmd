@@ -364,7 +364,7 @@ C     DUMMIES
       END
 ````
 
-Next a dynamic link library (*<span style="color:#BE99ff">.dll</span>*) is made from the *<span style="color:#BE99ff">Fortran</span>* subroutine. The easiest way to do this is to use the command `R CMD SHLIB matm.f` from the *<span style="color:#BE99ff">Command Prompt</span>*. The *<span style="color:#BE99ff">.dll</span>* is available as *<span style="color:#BE99ff">C:\matm64.dll</span>*.
+Next a dynamic link library (*<span style="color:#BE99ff">.dll</span>*) is made from the *<span style="color:#BE99ff">Fortran</span>* subroutine. The easiest way to do this is to use the command `R CMD SHLIB matm.f` from the *<span style="color:#BE99ff">Command Prompt</span>*. The *<span style="color:#BE99ff">.dll</span>* is available as *<span style="color:#BE99ff">C:\\matm64.dll</span>*.
 
 Now an R function is to be written where the *<span style="color:#BE99ff">Fortran</span>* code is called:
 
@@ -393,4 +393,5 @@ dyn.load("full path\\matm64.dll")
 Compare the answers and execution time of `matmult()` and  `matmult.Fortran()` for different sized matrices.
 
 The `Rcpp` package has made the inclusion of *<span style="color:#BE99ff">C++</span>* code into R considerably easier and more robust. For a detailed description of the package see [Rcpp vignette intro](https://cran.r-project.org/web/packages/Rcpp/vignettes/Rcpp-introduction.pdf).
+
 

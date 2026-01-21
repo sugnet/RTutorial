@@ -113,9 +113,10 @@ $$
 We are going to investigate the effect of the aspect ratio on graphs by writing our own function for drawing a circle. In agreement with section \@ref(guidelines) we will start our project by reviewing some basic concepts regarding coordinates for graphical purposes. Figure \@ref(fig:coordinates) summarizes how to reference a point in geometric space by using (a) Cartesian coordinates and (b) polar coordinates.
 </div>
   
-\begin{figure}
-\includegraphics[width=1\linewidth]{pics/coordinates} \caption{Cartesian and polar coordinates for referencing a point on a graph.}(\#fig:coordinates)
-\end{figure}
+<div class="figure">
+<img src="pics/coordinates.jpg" alt="Cartesian and polar coordinates for referencing a point on a graph." width="100%" />
+<p class="caption">(\#fig:coordinates)Cartesian and polar coordinates for referencing a point on a graph.</p>
+</div>
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (i)	Consider the following function for drawing a circle with a specified radius and centred at the origin:

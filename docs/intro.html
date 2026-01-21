@@ -177,7 +177,7 @@
 </ol>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">yy</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] 50.09905</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 44.44551</span></span></code></pre></div>
 <div style="margin-left: 25px; margin-right: 20px;">
 <p>Note that the prompt appear followed by the mean of object <code>yy</code>.</p>
 </div>
@@ -624,8 +624,8 @@ Communication with the R evaluator takes place through a set of instructions cal
 <span><span class="co">#&gt; $upper</span></span>
 <span><span class="co">#&gt; [1] 2.484416</span></span></code></pre></div>
 <ol start="12" style="list-style-type: lower-alpha">
-<li>If you want to create and run the function <code>conf.int</code> in a script window then add the instruction <code>conf.func (x = sleep[,1])</code> as the last line in the script window. Now, select only this line and run it. Check the R console.</li>
-<li>What will happen if a syntax error is made in the script window? Change the code in the script file as follows, deliberately deleting the last closing parenthesis in the last line of the function.</li>
+<li><p>If you want to create and run the function <code>conf.int</code> in a script window then add the instruction <code>conf.int (x = sleep[,1])</code> as the last line in the script window. Now, select only this line and run it. Check the R console.</p></li>
+<li><p>What will happen if a syntax error is made in the script window? Change the code in the script file as follows, deliberately deleting the last closing parenthesis in the last line of the function.</p></li>
 </ol>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="intro.html#cb29-1" tabindex="-1"></a>conf.int <span class="ot">&lt;-</span> <span class="cf">function</span> (<span class="at">x =</span> sleep[,<span class="dv">1</span>])</span>
 <span id="cb29-2"><a href="intro.html#cb29-2" tabindex="-1"></a>{</span>

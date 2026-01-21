@@ -1,8 +1,0 @@
-h1:optimisation Introduction to Optimisation
-h2:the-bisection-method-for-solving-fx0 The bisection method for solving 
-fig:bisection Principle underlying the bisection method for finding a root of f(x)=0.
-h2:the-newton-raphson-method The Newton-Raphson method
-fig:NewtonRaphson Principle underlying the Newton-Raphson algorithm.
-h2:the-r-functions-optim-and-constroptim The R functions  and 
-h2:packages-quadprog-lpsolve-and-rsolnp-for-constrained-optimization Packages ,  and  for constrained optimization
-

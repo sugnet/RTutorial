@@ -105,7 +105,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001a1e2767fb8&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x0000022545a7a690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>This is not very helpful so we give the instruction:</p>
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
@@ -175,7 +175,7 @@
 <span><span class="co">#&gt;             ...)</span></span>
 <span><span class="co">#&gt;     invisible()</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001a1e2b8dc80&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x0000022545eae3c0&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <p>Since our new plotting method is aimed at categorical data we decide rather to take a look at <code>plot.factor</code>. But this is an asterisked function and hence is not visible:</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
@@ -214,7 +214,7 @@
 <span><span class="co">#&gt;         boxplot(y ~ x, ...)</span></span>
 <span><span class="co">#&gt;     else NextMethod("plot")</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001a1e4630490&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x0000022547932b68&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>How are default values assigned to arguments of functions?</p></li>
@@ -236,26 +236,26 @@
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $stats</span></span>
-<span><span class="co">#&gt;            [,1]</span></span>
-<span><span class="co">#&gt; [1,] -2.1940263</span></span>
-<span><span class="co">#&gt; [2,] -0.4938361</span></span>
-<span><span class="co">#&gt; [3,]  0.1375280</span></span>
-<span><span class="co">#&gt; [4,]  0.7715521</span></span>
-<span><span class="co">#&gt; [5,]  2.1455278</span></span>
+<span><span class="co">#&gt;             [,1]</span></span>
+<span><span class="co">#&gt; [1,] -2.08784885</span></span>
+<span><span class="co">#&gt; [2,] -0.50570218</span></span>
+<span><span class="co">#&gt; [3,]  0.05253931</span></span>
+<span><span class="co">#&gt; [4,]  0.71111036</span></span>
+<span><span class="co">#&gt; [5,]  2.42144142</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $conf</span></span>
-<span><span class="co">#&gt;             [,1]</span></span>
-<span><span class="co">#&gt; [1,] -0.06240336</span></span>
-<span><span class="co">#&gt; [2,]  0.33745930</span></span>
+<span><span class="co">#&gt;            [,1]</span></span>
+<span><span class="co">#&gt; [1,] -0.1397171</span></span>
+<span><span class="co">#&gt; [2,]  0.2447957</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $out</span></span>
-<span><span class="co">#&gt; [1] 2.791669</span></span>
+<span><span class="co">#&gt; numeric(0)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group</span></span>
-<span><span class="co">#&gt; [1] 1</span></span>
+<span><span class="co">#&gt; numeric(0)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $names</span></span>
 <span><span class="co">#&gt; [1] "1"</span></span></code></pre></div>
@@ -692,7 +692,7 @@ Figure 7.1: Converting text into mathematical expression or mathematical express
 <span id="cb184-16"><a href="functions.html#cb184-16" tabindex="-1"></a>200   CONTINUE</span>
 <span id="cb184-17"><a href="functions.html#cb184-17" tabindex="-1"></a>300   CONTINUE</span>
 <span id="cb184-18"><a href="functions.html#cb184-18" tabindex="-1"></a>      END</span></code></pre></div>
-<p>Next a dynamic link library (<em><span style="color:#BE99ff">.dll</span></em>) is made from the <em><span style="color:#BE99ff">Fortran</span></em> subroutine. The easiest way to do this is to use the command <code>R CMD SHLIB matm.f</code> from the <em><span style="color:#BE99ff">Command Prompt</span></em>. The <em><span style="color:#BE99ff">.dll</span></em> is available as <em><span style="color:#BE99ff">C:64.dll</span></em>.</p>
+<p>Next a dynamic link library (<em><span style="color:#BE99ff">.dll</span></em>) is made from the <em><span style="color:#BE99ff">Fortran</span></em> subroutine. The easiest way to do this is to use the command <code>R CMD SHLIB matm.f</code> from the <em><span style="color:#BE99ff">Command Prompt</span></em>. The <em><span style="color:#BE99ff">.dll</span></em> is available as <em><span style="color:#BE99ff">C:\matm64.dll</span></em>.</p>
 <p>Now an R function is to be written where the <em><span style="color:#BE99ff">Fortran</span></em> code is called:</p>
 <div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">matmult.Fortran</span> <span class="op">&lt;-</span><span class="kw">function</span> <span class="op">(</span><span class="va">A</span>,<span class="va">B</span><span class="op">)</span> </span>

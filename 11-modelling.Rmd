@@ -307,25 +307,32 @@ attr(bs(x, df=7), "Boundary.knots")
 
 ```{r, panelFunctions, eval = FALSE}
 panel.straight.line <- function(x, y, col = par("col"), bg = NA, 
-                                pch = par("pch"), cex = 1, col.smooth = "red")
+                                pch = par("pch"), cex = 1, 
+                                col.smooth = "red")
 { datmat <- cbind (x, y)
   datmat <- datmat [order (datmat[, 1]),  ]
-  points (datmat[, 1], datmat[, 2], pch = pch, col = col, bg = bg, cex = cex)
-  lines (datmat[, 1], fitted (lm (datmat[, 2] ~ datmat[, 1])), col = col.smooth)
+  points (datmat[, 1], datmat[, 2], pch = pch, col = col, bg = bg, 
+          cex = cex)
+  lines (datmat[, 1], fitted (lm (datmat[, 2] ~ datmat[, 1])), 
+         col = col.smooth)
 }
 
-panel.poly <- function(x, y, col = par("col"), bg = NA, pch = par("pch"), 
-                       cex = 1, col.smooth = "red")
+panel.poly <- function(x, y, col = par("col"), bg = NA, 
+                       pch = par("pch"), cex = 1, 
+                       col.smooth = "red")
 { datmat <- cbind(x, y)
   datmat <- datmat [order (datmat[, 1]),  ]
-  points (datmat[, 1], datmat[, 2], pch = pch, col = col, bg = bg, cex = cex)
-  lines (datmat[, 1], fitted (lm (datmat[, 2] ~ poly (datmat[, 1], 2))), 
+  points (datmat[, 1], datmat[, 2], pch = pch, col = col, 
+          bg = bg, cex = cex)
+  lines (datmat[, 1], fitted (lm (datmat[, 2] ~ 
+                                        poly (datmat[, 1], 2))), 
          col = col.smooth)
 }
                
-panel.smooth <- function (x, y, col = par("col"), bg = NA, pch = par("pch"), 
-                          cex = 1, col.smooth = "red", span = 2/3, iter = 3, 
-                          ...) 
+panel.smooth <- function (x, y, col = par("col"), bg = NA, 
+                          pch = par("pch"), cex = 1, 
+                          col.smooth = "red", span = 2/3, 
+                          iter = 3, ...) 
 { points(x, y, pch = pch, col = col, bg = bg, cex = cex)
   ok <- is.finite (x) & is.finite (y)
   if (any (ok)) 
@@ -355,10 +362,11 @@ coplot (Illiteracy ~ Life.Exp | Income * Area, data = state,
 
 ## The function glm()
 
-Consider the following dataframe treatments
+Consider the following dataframe `treatments`.
 
 ```{r, TreatmentData, echo = FALSE, warning = FALSE, message = FALSE}
 library (flextable)
+set_flextable_defaults(fonts_ignore = TRUE)
 data <- data.frame (TreatA = rep (1:3, each = 3),
                     TreatB = rep (1:3, 3),
                     Counts = c(18, 17, 15, 20, 10, 20, 25, 13, 12))
@@ -367,17 +375,6 @@ flextable (data) |>
   hline_bottom(border = officer::fp_border(color = "#333333", width = 0.75))
 ```
 
-Why is a two-way anova not appropriate here?  
-
-GLM extends the linear model in two ways: (a) the expected value is replaced by a *<span style="color:#FF9966">function</span>* of the expected value, called the link function and (b) the assumption of observations from a Gaussian distribution is extended to include other distributions from the exponential family of probability distributions.
-
-::: {style="color: #80CC99;"}
-
-Use `glm()` with `family = poisson()` to fit the following generalized linear models to the data: `Counts ~ TreatA + TreatB` and `Counts ~ TreatA * TreatB`.
-
-What are your conclusions?
-
-:::
 
 ## The function gam()
 
@@ -504,6 +501,7 @@ The asymptotic regression model represents a nonlinear regression model and in g
 
 ```{r, ChemData, echo = FALSE, warning = FALSE, message = FALSE}
 library (flextable)
+set_flextable_defaults(fonts_ignore = TRUE)
 data <- data.frame (Time = c(0, 3, 6, 12, 18, 24, 48, 72, 96, 168, 336, 504, 672, 840, 1008),
                     Rep1 = c(0, 0.0846, 0.1072, 0.1255, 0.1671, 0.1988, 0.2927, 0.3713,
                               0.4773, 0.6158, 0.7297, 0.8083, 0.7019, 0.6038, 0.7386),
@@ -922,6 +920,7 @@ A researcher investigates if three maize varieties give the same yield. The foll
 
 ```{r, MaizeData, echo = FALSE, warning = FALSE, message = FALSE}
 library (flextable)
+set_flextable_defaults(fonts_ignore = TRUE)
 data <- data.frame (Yield1 = c(17.50, 45.00, 38.75, 33.75, 18.75, 21.25, NA, NA),
                     Rain1 =  c(95.90, 116.20, 116.20, 93.10, 81.34, 115.36, NA, NA),
                     Yield2 = c(37.50, 42.15, 48.75, 32.50, 53.75, 38.75, 22.50, 17.50),
@@ -967,6 +966,7 @@ $$
 
 ```{r, HearRateData, echo = FALSE, warning = FALSE, message = FALSE}
 library (flextable)
+set_flextable_defaults(fonts_ignore = TRUE)
 data <- data.frame (HER1 = c(118, 138, 142, 147, 160, 166, 165, 171),
                     AHR1 = c(56, 59, 62, 68, 71, 76, 83, 87),
                     HER2 = c(148, 159, 162, 157, 169, 164, 179, 177),

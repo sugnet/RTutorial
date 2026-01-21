@@ -39,8 +39,7 @@ In this chapter we continue the study the art of R programming. An important top
 
 The usage is illustrated in the following diagram.
 
-
-\includegraphics[width=1\linewidth]{pics/ifelse} 
+<img src="pics/ifelse.jpg" width="100%" />
 
 <div style="margin-left: 25px; margin-right: 20px;">
 (i)	Note the difference between the function `ifelse()` and the control statement: `if` - `else`.
@@ -85,7 +84,7 @@ lapply (split (data.frame (state.x77),
                cut (data.frame (state.x77)$Illiteracy, 3)), pairs)
 ```
 
-![](08-mapping_files/figure-latex/splitExample-1.pdf)<!-- --> ![](08-mapping_files/figure-latex/splitExample-2.pdf)<!-- --> ![](08-mapping_files/figure-latex/splitExample-3.pdf)<!-- --> 
+<img src="08-mapping_files/figure-html/splitExample-1.png" width="672" /><img src="08-mapping_files/figure-html/splitExample-2.png" width="672" /><img src="08-mapping_files/figure-html/splitExample-3.png" width="672" />
 
 ```
 #> $`(0.498,1.27]`
@@ -255,15 +254,15 @@ centre <- function(x, type)
 
 x <- rcauchy(10)
 x
-#>  [1]  -3.57418193  -4.79099735 -79.33502520  -0.56487078
-#>  [5]  -2.26986973   0.10738869   0.39858952   0.04250825
-#>  [9]  -0.14499379   1.45061262
+#>  [1]  0.18042629  0.43771943 -0.05625383 -0.79783920
+#>  [5]  0.56455242 -0.43339047  0.36877716  1.34630353
+#>  [9]  0.13206247 -0.25027801
 centre(x,"mean")
-#> [1] -8.868084
+#> [1] 0.149208
 centre(x,"median")
-#> [1] -0.3549323
+#> [1] 0.1562444
 centre(x,"trimmed")
-#> [1] -1.349553
+#> [1] 0.1179519
 ```
 
 (h)	The two logical control operators `&&` and `||` are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators `&` and `|` which operate on vectors/matrices.
@@ -412,7 +411,7 @@ The functions `system.time()` and `proc.time()` provide information regarding th
 ``` r
 proc.time()   # called with no arguments
 #>    user  system elapsed 
-#>    0.57    0.04    3.01
+#>    1.29    0.48   10.12
 ```
 
 (b) `system.time(expr)` calls the function `proc.time()`, evaluates `expr`, and then calls `proc.time()` once more, returning the difference between the two `proc.time()` calls:
@@ -422,11 +421,11 @@ proc.time()   # called with no arguments
 system.time (hist (rev (sort (rnorm (1000000)))))
 ```
 
-![](08-mapping_files/figure-latex/systemtimeExample-1.pdf)<!-- --> 
+<img src="08-mapping_files/figure-html/systemtimeExample-1.png" width="672" />
 
 ```
 #>    user  system elapsed 
-#>    0.18    0.00    0.20
+#>    0.08    0.00    0.09
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">
@@ -499,7 +498,7 @@ Suppose we would like to investigate the body of function `plot()`. We know that
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x000001ecea12a8f0>
+#> <bytecode: 0x000001ea912b9ee0>
 #> <environment: namespace:base>
 ```
 
@@ -519,10 +518,11 @@ methods(plot) # repertoire of methods for FUNCTION plot()
 #> [17] plot.mlm*           plot.ppr*          
 #> [19] plot.prcomp*        plot.princomp*     
 #> [21] plot.profile*       plot.profile.nls*  
-#> [23] plot.raster*        plot.spec*         
-#> [25] plot.stepfun        plot.stl*          
-#> [27] plot.table*         plot.ts            
-#> [29] plot.tskernel*      plot.TukeyHSD*     
+#> [23] plot.R6*            plot.raster*       
+#> [25] plot.spec*          plot.stepfun       
+#> [27] plot.stl*           plot.table*        
+#> [29] plot.ts             plot.tskernel*     
+#> [31] plot.TukeyHSD*     
 #> see '?methods' for accessing help and source code
 methods(class="lm")  # what methods are available for CLASS lm
 #>  [1] add1           alias          anova         
