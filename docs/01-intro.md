@@ -30,7 +30,7 @@ To download R to your own computer: Navigate to *.../bin/windows/base* and save 
 
 ![](pics\Rlogo.jpg)
 
-The core R system that is installed includes several *<span style="color:#FF9966">packages</span>*. Apart from these installed packages several thousands of dedicated *<span style="color:#FF9966">contributed packages</span>* are available to be downloaded by users in need of any of them.
+The core R system that is installed includes several *<span style="color:#FF9966">packages</span>*.  Apart from these installed packages several thousands of dedicated *<span style="color:#FF9966">contributed packages</span>* are available to be downloaded by users in need of any of them.
 
 ##	A quick sample R session {#QuickSample}
 
@@ -101,7 +101,7 @@ The above example shows that <span style="color:#FF9966">when the name of an R o
 
 ``` r
 mean(yy) 
-#> [1] 44.44551
+#> [1] 50.58547
 ```
 
 <div style="margin-left: 25px; margin-right: 20px;">

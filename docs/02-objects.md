@@ -81,8 +81,9 @@ cc
 objects()
 #> [1] "aa" "bb" "cc" "yy"
 aa
-#>  [1]  0.4780918  0.9092444 -2.2407797  0.8453539  0.4835953
-#>  [6]  0.7257825  2.0491010 -1.8930121 -0.3519887  1.0968490
+#>  [1]  0.20663799 -0.77950412  0.05874471 -0.02964170
+#>  [5]  0.87236852 -1.52918050  0.49611116 -0.20426321
+#>  [9]  0.86263960  0.16504031
 bb
 #> [1] "a" "b" "c"
 objects()[3]
@@ -588,19 +589,19 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x00000204aed7b580>
+#> <bytecode: 0x000001f278e3c388>
 #> <environment: namespace:base>
 mean <- mean (rnorm (1000))
 get (mean)
 #> Error in get(mean): invalid first argument
 get ("mean") 
-#> [1] -0.0169389
+#> [1] -0.0442949
 get ("mean", pos = 1) 
-#> [1] -0.0169389
+#> [1] -0.0442949
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000204a9e3fc78>
+#> <bytecode: 0x000001f274e3d690>
 #> <environment: namespace:base>
 rm (mean)
 ```
@@ -631,7 +632,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000204a9e3fc78>
+#> <bytecode: 0x000001f274e3d690>
 #> <environment: namespace:base>
 ```
 
@@ -642,12 +643,12 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000204a9e3fc78>
+#> <bytecode: 0x000001f274e3d690>
 #> <environment: namespace:base>
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x00000204a9e3fc78>
+#> <bytecode: 0x000001f274e3d690>
 #> <environment: namespace:base>
 ```
 
@@ -835,8 +836,8 @@ levels(cars)
 
 According to the central limit theorem (CLT) the distribution of the sum (or mean) of independently, identically distributed stochastic variables converges to a normal distribution with an increase in the number variables. The binomial distribution can be expressed as the sum of independently, identically distributed Bernoulli stochastic variables and therefore converges in distribution to the normal distribution. The lognormal distribution in contrast cannot be expressed as a sum.
 
-Make use of the function `rbinom()` to generate a sample of size 10 from a binomial distribution modelling 20 coin flips with a probability of $0.4$ for returning “heads”. Use the function `hist()` to graph the results. Repeat with sample sizes $50$, $100$, $1000$, $10000$ and $100000$. 
-Repeat the whole study with a success probability of $0.5$, $0.3$, $0.1$ and $0.05$. Discuss your findings.
+Make use of the function `rbinom()` to generate a sample of size 10 from a binomial distribution modelling 20 coin flips with a probability of $0.4$ for returning “heads”. Use the function `hist( , breaks=(0:21)-0.5)` to graph the results. Repeat with sample sizes $50$, $100$, $1000$, $10000$ and $500000$. 
+Repeat the whole study with a success probability of $0.5$, $0.25$ and $0.1$. Discuss your findings.
 
 Now repeat the same exercise using (a) the lognormal distribution with the function `rlnorm()` and (b) the uniform distribution over the interval $[10; 25]$ with the function `runif(min = 10, max = 25)`. Comment on your findings.
 

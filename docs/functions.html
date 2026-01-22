@@ -105,7 +105,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000022545a7a690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000233c8a89770&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>This is not very helpful so we give the instruction:</p>
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
@@ -175,7 +175,7 @@
 <span><span class="co">#&gt;             ...)</span></span>
 <span><span class="co">#&gt;     invisible()</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000022545eae3c0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000233c8ea8510&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <p>Since our new plotting method is aimed at categorical data we decide rather to take a look at <code>plot.factor</code>. But this is an asterisked function and hence is not visible:</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
@@ -214,7 +214,7 @@
 <span><span class="co">#&gt;         boxplot(y ~ x, ...)</span></span>
 <span><span class="co">#&gt;     else NextMethod("plot")</span></span>
 <span><span class="co">#&gt; }</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000022547932b68&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000233ca95cb28&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:graphics&gt;</span></span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>How are default values assigned to arguments of functions?</p></li>
@@ -237,25 +237,25 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $stats</span></span>
 <span><span class="co">#&gt;             [,1]</span></span>
-<span><span class="co">#&gt; [1,] -2.08784885</span></span>
-<span><span class="co">#&gt; [2,] -0.50570218</span></span>
-<span><span class="co">#&gt; [3,]  0.05253931</span></span>
-<span><span class="co">#&gt; [4,]  0.71111036</span></span>
-<span><span class="co">#&gt; [5,]  2.42144142</span></span>
+<span><span class="co">#&gt; [1,] -1.99298058</span></span>
+<span><span class="co">#&gt; [2,] -0.63048322</span></span>
+<span><span class="co">#&gt; [3,] -0.08641973</span></span>
+<span><span class="co">#&gt; [4,]  0.46186253</span></span>
+<span><span class="co">#&gt; [5,]  1.98374688</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $n</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $conf</span></span>
 <span><span class="co">#&gt;            [,1]</span></span>
-<span><span class="co">#&gt; [1,] -0.1397171</span></span>
-<span><span class="co">#&gt; [2,]  0.2447957</span></span>
+<span><span class="co">#&gt; [1,] -0.2590104</span></span>
+<span><span class="co">#&gt; [2,]  0.0861709</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $out</span></span>
-<span><span class="co">#&gt; numeric(0)</span></span>
+<span><span class="co">#&gt; [1] -2.483729  2.128151 -2.296040</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group</span></span>
-<span><span class="co">#&gt; numeric(0)</span></span>
+<span><span class="co">#&gt; [1] 1 1 1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $names</span></span>
 <span><span class="co">#&gt; [1] "1"</span></span></code></pre></div>

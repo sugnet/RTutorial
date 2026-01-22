@@ -164,8 +164,9 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "aa" "bb" "cc" "yy"</span></span>
 <span><span class="va">aa</span></span>
-<span><span class="co">#&gt;  [1]  0.4780918  0.9092444 -2.2407797  0.8453539  0.4835953</span></span>
-<span><span class="co">#&gt;  [6]  0.7257825  2.0491010 -1.8930121 -0.3519887  1.0968490</span></span>
+<span><span class="co">#&gt;  [1]  0.20663799 -0.77950412  0.05874471 -0.02964170</span></span>
+<span><span class="co">#&gt;  [5]  0.87236852 -1.52918050  0.49611116 -0.20426321</span></span>
+<span><span class="co">#&gt;  [9]  0.86263960  0.16504031</span></span>
 <span><span class="va">bb</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
@@ -576,19 +577,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000204aed7b580&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001f278e3c388&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.0169389</span></span>
+<span><span class="co">#&gt; [1] -0.0442949</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.0169389</span></span>
+<span><span class="co">#&gt; [1] -0.0442949</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000204a9e3fc78&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001f274e3d690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -615,19 +616,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000204a9e3fc78&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001f274e3d690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000204a9e3fc78&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001f274e3d690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x00000204a9e3fc78&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001f274e3d690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
@@ -808,8 +809,8 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span class="header-section-number">2.10.1</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-4"><i class="fas fa-link"></i></a>
 </h3>
 <p>According to the central limit theorem (CLT) the distribution of the sum (or mean) of independently, identically distributed stochastic variables converges to a normal distribution with an increase in the number variables. The binomial distribution can be expressed as the sum of independently, identically distributed Bernoulli stochastic variables and therefore converges in distribution to the normal distribution. The lognormal distribution in contrast cannot be expressed as a sum.</p>
-<p>Make use of the function <code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code> to generate a sample of size 10 from a binomial distribution modelling 20 coin flips with a probability of <span class="math inline">\(0.4\)</span> for returning “heads”. Use the function <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> to graph the results. Repeat with sample sizes <span class="math inline">\(50\)</span>, <span class="math inline">\(100\)</span>, <span class="math inline">\(1000\)</span>, <span class="math inline">\(10000\)</span> and <span class="math inline">\(100000\)</span>.
-Repeat the whole study with a success probability of <span class="math inline">\(0.5\)</span>, <span class="math inline">\(0.3\)</span>, <span class="math inline">\(0.1\)</span> and <span class="math inline">\(0.05\)</span>. Discuss your findings.</p>
+<p>Make use of the function <code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code> to generate a sample of size 10 from a binomial distribution modelling 20 coin flips with a probability of <span class="math inline">\(0.4\)</span> for returning “heads”. Use the function <code>hist( , breaks=(0:21)-0.5)</code> to graph the results. Repeat with sample sizes <span class="math inline">\(50\)</span>, <span class="math inline">\(100\)</span>, <span class="math inline">\(1000\)</span>, <span class="math inline">\(10000\)</span> and <span class="math inline">\(500000\)</span>.
+Repeat the whole study with a success probability of <span class="math inline">\(0.5\)</span>, <span class="math inline">\(0.25\)</span> and <span class="math inline">\(0.1\)</span>. Discuss your findings.</p>
 <p>Now repeat the same exercise using (a) the lognormal distribution with the function <code><a href="https://rdrr.io/r/stats/Lognormal.html">rlnorm()</a></code> and (b) the uniform distribution over the interval <span class="math inline">\([10; 25]\)</span> with the function <code>runif(min = 10, max = 25)</code>. Comment on your findings.</p>
 </div>
 <div id="exercise-5" class="section level3" number="2.10.2">

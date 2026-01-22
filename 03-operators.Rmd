@@ -148,7 +148,7 @@ x[is.nan(x)] <- 0
 What are the consequences of the above code? Also take note of the functions `any()` and `all()`.  These two functions are useful when combining logical objects. Give the necessary instructions to carry out the following tasks:
 
 ::: {style="color: #80CC99;"}
-(a)	Check if any of the states in the `state.x77` data set have populations with an illiteracy rate that is not larger than $1.6$ and a Murder rate of more than $10.0$. 
+(a)	Check which (if any) of the states in the `state.x77` data set have populations with an illiteracy rate that is not larger than $1.6$ and a Murder rate of more than $10.0$. 
 (b)	Check if there is at least one state with income greater than $\$5000$ and life expectancy less than $70.0$ years.
 (c)	Check if all states with an income of more than $\$5000$ has an illiteracy of below $2.0$.
 :::
@@ -447,7 +447,7 @@ Note also the functions `pmax()` and `pmin()`.
 ::: {style="color: #80CC99;"}
 
 (a)	Find the average Life Expectancy of the states in the `state.x77` data set.
-(b)	Find the 5% trimmed mean for Illiteracy of the states in the `state.x77` data set.
+(b)	Find the 5% trimmed mean for Illiteracy of the states in the `state.x77` data set. *Hint*: `?mean` provides help for the function `mean()`.
 (c)	Find the correlation between the Illiteracy and the Income of the states in the `state.x77` data set.
 (d)	Find the covariance matrix of all the variables in the `state.x77` data set.
 (e)	Find the range for Murder in the `state.x77` data set.

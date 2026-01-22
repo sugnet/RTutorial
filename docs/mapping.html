@@ -331,15 +331,14 @@
 <span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html">rcauchy</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt;  [1]  0.18042629  0.43771943 -0.05625383 -0.79783920</span></span>
-<span><span class="co">#&gt;  [5]  0.56455242 -0.43339047  0.36877716  1.34630353</span></span>
-<span><span class="co">#&gt;  [9]  0.13206247 -0.25027801</span></span>
+<span><span class="co">#&gt;  [1]  1.5091135 -0.9593831  0.6140611  1.9082128 -0.1972176</span></span>
+<span><span class="co">#&gt;  [6] -1.3101082  0.8509940  5.0267642 -0.9513430  2.2580287</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"mean"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.149208</span></span>
+<span><span class="co">#&gt; [1] 0.8749122</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"median"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.1562444</span></span>
+<span><span class="co">#&gt; [1] 0.7325275</span></span>
 <span><span class="fu">centre</span><span class="op">(</span><span class="va">x</span>,<span class="st">"trimmed"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.1179519</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.6290583</span></span></code></pre></div>
 <ol start="8" style="list-style-type: lower-alpha">
 <li>The two logical control operators <code>&amp;&amp;</code> and <code>||</code> are useful when using if-else statements. These two operators operate on logical expressions in contrast to the operators <code>&amp;</code> and <code>|</code> which operate on vectors/matrices.</li>
 </ol>
@@ -471,7 +470,7 @@
 <div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span><span class="op">(</span><span class="op">)</span>   <span class="co"># called with no arguments</span></span>
 <span><span class="co">#&gt;    user  system elapsed </span></span>
-<span><span class="co">#&gt;    1.29    0.48   10.12</span></span></code></pre></div>
+<span><span class="co">#&gt;    1.29    0.25   10.67</span></span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>
 <code>system.time(expr)</code> calls the function <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code>, evaluates <code>expr</code>, and then calls <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> once more, returning the difference between the two <code><a href="https://rdrr.io/r/base/proc.time.html">proc.time()</a></code> calls:</li>
@@ -549,7 +548,7 @@
 <code class="sourceCode R"><span><span class="va">plot</span></span>
 <span><span class="co">#&gt; function (x, y, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("plot")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001ea912b9ee0&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001985e294f90&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>The presence of <code>UseMethod("plot")</code> shows that <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> is a <em><span style="color:#FF9966">generic</span></em> function. The <em><span style="color:#FF9966">class</span></em> of an object determines how it will be treated by a generic function i.e. what <em><span style="color:#FF9966">method</span></em> will be applied to it. Function <code><a href="https://rdrr.io/r/methods/setClass.html">setClass()</a></code> is used for setting the class attribute of an object. Function <code><a href="https://rdrr.io/r/utils/methods.html">methods()</a></code> is used to find out (a) what is the repertoire of methods of a generic function and (b) what methods are available for a certain class:</p>
 <div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">

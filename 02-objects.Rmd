@@ -533,8 +533,8 @@ levels(cars)
 
 According to the central limit theorem (CLT) the distribution of the sum (or mean) of independently, identically distributed stochastic variables converges to a normal distribution with an increase in the number variables. The binomial distribution can be expressed as the sum of independently, identically distributed Bernoulli stochastic variables and therefore converges in distribution to the normal distribution. The lognormal distribution in contrast cannot be expressed as a sum.
 
-Make use of the function `rbinom()` to generate a sample of size 10 from a binomial distribution modelling 20 coin flips with a probability of $0.4$ for returning “heads”. Use the function `hist()` to graph the results. Repeat with sample sizes $50$, $100$, $1000$, $10000$ and $100000$. 
-Repeat the whole study with a success probability of $0.5$, $0.3$, $0.1$ and $0.05$. Discuss your findings.
+Make use of the function `rbinom()` to generate a sample of size 10 from a binomial distribution modelling 20 coin flips with a probability of $0.4$ for returning “heads”. Use the function `hist( , breaks=(0:21)-0.5)` to graph the results. Repeat with sample sizes $50$, $100$, $1000$, $10000$ and $500000$. 
+Repeat the whole study with a success probability of $0.5$, $0.25$ and $0.1$. Discuss your findings.
 
 Now repeat the same exercise using (a) the lognormal distribution with the function `rlnorm()` and (b) the uniform distribution over the interval $[10; 25]$ with the function `runif(min = 10, max = 25)`. Comment on your findings.
 

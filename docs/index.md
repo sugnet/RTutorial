@@ -12,9 +12,6 @@ description: |
 biblio-style: apalike
 csl: harvard-stellenbosch-university.csl
 link-citations: yes
-# zetero.org/style for csl files
-# The framework allows for easy customization of colors and fonts via the bslib R package
-
 ---
 
 # Preface {-}
