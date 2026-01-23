@@ -164,9 +164,9 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "aa" "bb" "cc" "yy"</span></span>
 <span><span class="va">aa</span></span>
-<span><span class="co">#&gt;  [1]  0.20663799 -0.77950412  0.05874471 -0.02964170</span></span>
-<span><span class="co">#&gt;  [5]  0.87236852 -1.52918050  0.49611116 -0.20426321</span></span>
-<span><span class="co">#&gt;  [9]  0.86263960  0.16504031</span></span>
+<span><span class="co">#&gt;  [1] -0.04025852  0.66342356  0.09798095 -0.69573456</span></span>
+<span><span class="co">#&gt;  [5]  0.75402631 -0.32034150 -1.19247742 -0.97351331</span></span>
+<span><span class="co">#&gt;  [9] -0.50324066  0.44083222</span></span>
 <span><span class="va">bb</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
@@ -577,19 +577,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001f278e3c388&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001e32ce383c0&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.0442949</span></span>
+<span><span class="co">#&gt; [1] -0.003768702</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.0442949</span></span>
+<span><span class="co">#&gt; [1] -0.003768702</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001f274e3d690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001e328e2d690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -616,19 +616,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001f274e3d690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001e328e2d690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001f274e3d690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001e328e2d690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x000001f274e3d690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001e328e2d690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
@@ -817,9 +817,9 @@ Repeat the whole study with a success probability of <span class="math inline">\
 <h3>
 <span class="header-section-number">2.10.2</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise-5"><i class="fas fa-link"></i></a>
 </h3>
-<p>Assume that a random sample of size <span class="math inline">\(n\)</span> is available from a certain distribution. A bootstrap sample is obtained by sampling with replacement a sample of size <span class="math inline">\(n\)</span> from the given sample. One of the uses of the bootstrap is to obtain an estimate of the standard error of a statistic. For example, a bootstrap estimate of the standard error of <span class="math inline">\(\bar{X}\)</span> can be obtained as follows:</p>
+<p>Assume that a random sample of size <span class="math inline">\(n\)</span> is available from a certain distribution. A bootstrap sample is obtained by sampling, with replacement, a sample of size <span class="math inline">\(n\)</span> from the given sample. One of the uses of the bootstrap is to obtain an estimate of the standard error of a statistic. For example, a bootstrap estimate of the standard error of <span class="math inline">\(\bar{X}\)</span> can be obtained as follows:</p>
 <ul>
-<li>Generate independently of each other <span class="math inline">\(B\)</span> bootstrap samples.</li>
+<li>Generate <span class="math inline">\(B\)</span> bootstrap samples independent of each other.</li>
 <li>Calculate the mean of the B bootstrap samples, i.e. calculate <span class="math inline">\(\bar{x}_1^*, \bar{x}_2^*, \dots, \bar{x}_B^*\)</span>.</li>
 <li>Calculate <span class="math inline">\(\bar{\bar{x}} = \frac{1}{B} \sum_{i=1}^{B}{\bar{x}_i^*}\)</span>.</li>
 <li>Calculate <span class="math inline">\(\hat{se}(b) = \sqrt{\frac{1}{B-1} \sum_{i=1}^{B}{(\bar{x}_i^*-\bar{\bar{x}})^2}}\)</span>.</li>

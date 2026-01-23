@@ -81,9 +81,9 @@ cc
 objects()
 #> [1] "aa" "bb" "cc" "yy"
 aa
-#>  [1]  0.20663799 -0.77950412  0.05874471 -0.02964170
-#>  [5]  0.87236852 -1.52918050  0.49611116 -0.20426321
-#>  [9]  0.86263960  0.16504031
+#>  [1] -0.04025852  0.66342356  0.09798095 -0.69573456
+#>  [5]  0.75402631 -0.32034150 -1.19247742 -0.97351331
+#>  [9] -0.50324066  0.44083222
 bb
 #> [1] "a" "b" "c"
 objects()[3]
@@ -589,19 +589,19 @@ The function `get()` takes as its first argument the name of an object as a char
 get ("%o%") 
 #> function (X, Y) 
 #> outer(X, Y)
-#> <bytecode: 0x000001f278e3c388>
+#> <bytecode: 0x000001e32ce383c0>
 #> <environment: namespace:base>
 mean <- mean (rnorm (1000))
 get (mean)
 #> Error in get(mean): invalid first argument
 get ("mean") 
-#> [1] -0.0442949
+#> [1] -0.003768702
 get ("mean", pos = 1) 
-#> [1] -0.0442949
+#> [1] -0.003768702
 get ("mean", pos = 2)
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001f274e3d690>
+#> <bytecode: 0x000001e328e2d690>
 #> <environment: namespace:base>
 rm (mean)
 ```
@@ -632,7 +632,7 @@ my.list
 #> $name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001f274e3d690>
+#> <bytecode: 0x000001e328e2d690>
 #> <environment: namespace:base>
 ```
 
@@ -643,12 +643,12 @@ and elements are retrieved using the instruction
 my.list[[2]]
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001f274e3d690>
+#> <bytecode: 0x000001e328e2d690>
 #> <environment: namespace:base>
 my.list$name2
 #> function (x, ...) 
 #> UseMethod("mean")
-#> <bytecode: 0x000001f274e3d690>
+#> <bytecode: 0x000001e328e2d690>
 #> <environment: namespace:base>
 ```
 
@@ -843,9 +843,9 @@ Now repeat the same exercise using (a) the lognormal distribution with the funct
 
 ### Exercise
 
-Assume that a random sample of size $n$ is available from a certain distribution. A bootstrap sample is obtained by sampling with replacement a sample of size $n$ from the given sample. One of the uses of the bootstrap is to obtain an estimate of the standard error of a statistic. For example, a bootstrap estimate of the standard error of $\bar{X}$ can be obtained as follows:
+Assume that a random sample of size $n$ is available from a certain distribution. A bootstrap sample is obtained by sampling, with replacement, a sample of size $n$ from the given sample. One of the uses of the bootstrap is to obtain an estimate of the standard error of a statistic. For example, a bootstrap estimate of the standard error of $\bar{X}$ can be obtained as follows:
 
-*	Generate independently of each other $B$ bootstrap samples.
+*	Generate $B$ bootstrap samples independent of each other.
 *	Calculate the mean of the B bootstrap samples, i.e. calculate $\bar{x}_1^*, \bar{x}_2^*, \dots, \bar{x}_B^*$.
 *	Calculate $\bar{\bar{x}} = \frac{1}{B} \sum_{i=1}^{B}{\bar{x}_i^*}$.
 *	Calculate $\hat{se}(b) = \sqrt{\frac{1}{B-1} \sum_{i=1}^{B}{(\bar{x}_i^*-\bar{\bar{x}})^2}}$.

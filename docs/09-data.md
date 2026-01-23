@@ -243,7 +243,7 @@ Table: (\#tab:TidyverseCore) Additional core tidyverse packages.
 | `ggplot2` |	Data visualisation (see Chapter 10) |
 | `stringr` |	String manipulation |
 | `forcats` |	Factor variable manipulation |
-| `purr`    |	Functional programming |
+| `purrr`    |	Functional programming |
 
 Table: (\#tab:TidyverseOther) Selection of packages from tidyverse.
 
@@ -1333,14 +1333,14 @@ slice_sample (cereal, n=8)
 #> # A tibble: 8 × 11
 #>   mfr   calories protein   fat sodium fibre carbo sugars
 #>   <fct>    <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
-#> 1 K         110     1     0       90   1     13    12   
-#> 2 G         200     6     4      280   5     21    16   
-#> 3 G         100     3     1      200   3     16     3   
-#> 4 P         179.    4.48  2.99   239.  7.46  17.9  14.9 
-#> 5 K         110     2     0      220   1     21     3   
-#> 6 G         110     2     1      180   0     12    12   
-#> 7 P         114.    3.41  1.14   159.  3.41  17.0   5.68
-#> 8 K         110     2     1      125   1     11    13   
+#> 1 G         147.    2.67  1.33  333.   0     28      4  
+#> 2 P         114.    2.27  0      51.1  0     12.5   17.0
+#> 3 Q         200     8     2     270    4     28     12  
+#> 4 N         134.    4.48  0       0    4.48  29.9    0  
+#> 5 K         147.    2.67  1.33   93.3  1.33  12     20  
+#> 6 K         110     2     1     125    1     11     13  
+#> 7 G         173.    4     2.67  280    2.67  24     10.7
+#> 8 K         187.    4     1.33  227.   2.67  26.7   12  
 #> # ℹ 3 more variables: shelf <int>, potassium <dbl>,
 #> #   vitamins <fct>
 

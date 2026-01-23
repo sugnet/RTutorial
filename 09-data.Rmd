@@ -187,7 +187,7 @@ Table: (\#tab:TidyverseCore) Additional core tidyverse packages.
 | `ggplot2` |	Data visualisation (see Chapter 10) |
 | `stringr` |	String manipulation |
 | `forcats` |	Factor variable manipulation |
-| `purr`    |	Functional programming |
+| `purrr`    |	Functional programming |
 
 Table: (\#tab:TidyverseOther) Selection of packages from tidyverse.
 

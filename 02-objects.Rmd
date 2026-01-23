@@ -540,9 +540,9 @@ Now repeat the same exercise using (a) the lognormal distribution with the funct
 
 ### Exercise
 
-Assume that a random sample of size $n$ is available from a certain distribution. A bootstrap sample is obtained by sampling with replacement a sample of size $n$ from the given sample. One of the uses of the bootstrap is to obtain an estimate of the standard error of a statistic. For example, a bootstrap estimate of the standard error of $\bar{X}$ can be obtained as follows:
+Assume that a random sample of size $n$ is available from a certain distribution. A bootstrap sample is obtained by sampling, with replacement, a sample of size $n$ from the given sample. One of the uses of the bootstrap is to obtain an estimate of the standard error of a statistic. For example, a bootstrap estimate of the standard error of $\bar{X}$ can be obtained as follows:
 
-*	Generate independently of each other $B$ bootstrap samples.
+*	Generate $B$ bootstrap samples independent of each other.
 *	Calculate the mean of the B bootstrap samples, i.e. calculate $\bar{x}_1^*, \bar{x}_2^*, \dots, \bar{x}_B^*$.
 *	Calculate $\bar{\bar{x}} = \frac{1}{B} \sum_{i=1}^{B}{\bar{x}_i^*}$.
 *	Calculate $\hat{se}(b) = \sqrt{\frac{1}{B-1} \sum_{i=1}^{B}{(\bar{x}_i^*-\bar{\bar{x}})^2}}$.

@@ -10,7 +10,7 @@ A good way to learn about functions or to write a new function is to look at exi
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x00000233c8a89770>
+#> <bytecode: 0x000001c2a2aab770>
 #> <environment: namespace:base>
 ```
 
@@ -88,7 +88,7 @@ plot.default
 #>             ...)
 #>     invisible()
 #> }
-#> <bytecode: 0x00000233c8ea8510>
+#> <bytecode: 0x000001c2a2ea6510>
 #> <environment: namespace:graphics>
 ```
 
@@ -135,7 +135,7 @@ getAnywhere(plot.factor)
 #>         boxplot(y ~ x, ...)
 #>     else NextMethod("plot")
 #> }
-#> <bytecode: 0x00000233ca95cb28>
+#> <bytecode: 0x000001c2a496eb28>
 #> <environment: namespace:graphics>
 ```
 
@@ -174,26 +174,26 @@ boxplot(rnorm(100), plot = TRUE)
 ``` r
 boxplot(rnorm(100), plot = FALSE)
 #> $stats
-#>             [,1]
-#> [1,] -1.99298058
-#> [2,] -0.63048322
-#> [3,] -0.08641973
-#> [4,]  0.46186253
-#> [5,]  1.98374688
+#>            [,1]
+#> [1,] -1.8907607
+#> [2,] -0.6217966
+#> [3,] -0.1029856
+#> [4,]  0.8065061
+#> [5,]  2.6981406
 #> 
 #> $n
 #> [1] 100
 #> 
 #> $conf
 #>            [,1]
-#> [1,] -0.2590104
-#> [2,]  0.0861709
+#> [1,] -0.3286574
+#> [2,]  0.1226862
 #> 
 #> $out
-#> [1] -2.483729  2.128151 -2.296040
+#> [1] 3.662271
 #> 
 #> $group
-#> [1] 1 1 1
+#> [1] 1
 #> 
 #> $names
 #> [1] "1"
