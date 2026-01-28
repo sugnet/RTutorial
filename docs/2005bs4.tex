@@ -304,7 +304,7 @@ The above example shows that {when the name of an R object is entered at the pro
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{mean}\NormalTok{(yy) }
-\CommentTok{\#\textgreater{} [1] 48.9478}
+\CommentTok{\#\textgreater{} [1] 49.78277}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1325,8 +1325,9 @@ Note the use of the argument \texttt{pos}, '' '' or ' ' are used for characters.
 \FunctionTok{objects}\NormalTok{()}
 \CommentTok{\#\textgreater{} [1] "aa" "bb" "cc" "yy"}
 \NormalTok{aa}
-\CommentTok{\#\textgreater{}  [1] {-}0.9171069 {-}0.7820622 {-}0.7516437 {-}0.1846830 {-}1.6036416}
-\CommentTok{\#\textgreater{}  [6] {-}1.5245569  0.1471740 {-}1.1750937 {-}0.2006151 {-}0.3231751}
+\CommentTok{\#\textgreater{}  [1] {-}1.09280708 {-}0.02202904  0.33859022 {-}0.34777245}
+\CommentTok{\#\textgreater{}  [5]  0.14958144 {-}0.07471002  1.02517918 {-}0.66236986}
+\CommentTok{\#\textgreater{}  [9]  0.70338384  0.87797082}
 \NormalTok{bb}
 \CommentTok{\#\textgreater{} [1] "a" "b" "c"}
 \FunctionTok{objects}\NormalTok{()[}\DecValTok{3}\NormalTok{]}
@@ -1934,19 +1935,19 @@ Similarly, when an \emph{{expression}} is evaluated a hierarchy of environments 
 \FunctionTok{get}\NormalTok{ (}\StringTok{"\%o\%"}\NormalTok{) }
 \CommentTok{\#\textgreater{} function (X, Y) }
 \CommentTok{\#\textgreater{} outer(X, Y)}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001c38d615620\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe475bf620\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \NormalTok{mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{ (}\FunctionTok{rnorm}\NormalTok{ (}\DecValTok{1000}\NormalTok{))}
 \FunctionTok{get}\NormalTok{ (mean)}
 \CommentTok{\#\textgreater{} Error in get(mean): invalid first argument}
 \FunctionTok{get}\NormalTok{ (}\StringTok{"mean"}\NormalTok{) }
-\CommentTok{\#\textgreater{} [1] {-}0.02156164}
+\CommentTok{\#\textgreater{} [1] {-}0.003164599}
 \FunctionTok{get}\NormalTok{ (}\StringTok{"mean"}\NormalTok{, }\AttributeTok{pos =} \DecValTok{1}\NormalTok{) }
-\CommentTok{\#\textgreater{} [1] {-}0.02156164}
+\CommentTok{\#\textgreater{} [1] {-}0.003164599}
 \FunctionTok{get}\NormalTok{ (}\StringTok{"mean"}\NormalTok{, }\AttributeTok{pos =} \DecValTok{2}\NormalTok{)}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001c382e3b690\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe3ce3b690\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \FunctionTok{rm}\NormalTok{ (mean)}
 \end{Highlighting}
@@ -1983,7 +1984,7 @@ A \emph{{list}} is created with the function \texttt{list()}. A list is the basi
 \CommentTok{\#\textgreater{} $name2}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001c382e3b690\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe3ce3b690\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -1995,12 +1996,12 @@ and elements are retrieved using the instruction
 \NormalTok{my.list[[}\DecValTok{2}\NormalTok{]]}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001c382e3b690\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe3ce3b690\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \NormalTok{my.list}\SpecialCharTok{$}\NormalTok{name2}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001c382e3b690\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe3ce3b690\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -4684,7 +4685,7 @@ A good way to learn about functions or to write a new function is to look at exi
 \NormalTok{plot}
 \CommentTok{\#\textgreater{} function (x, y, ...) }
 \CommentTok{\#\textgreater{} UseMethod("plot")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001a9c90395e8\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000022a6f0095e8\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -4763,7 +4764,7 @@ If we decide to take a look at \texttt{plot.default} we can do so by
 \CommentTok{\#\textgreater{}             ...)}
 \CommentTok{\#\textgreater{}     invisible()}
 \CommentTok{\#\textgreater{} \}}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001a9c9a77740\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000022a6fa81740\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:graphics\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -4812,7 +4813,7 @@ Asterisked functions can be inspected using the following method:
 \CommentTok{\#\textgreater{}         boxplot(y \textasciitilde{} x, ...)}
 \CommentTok{\#\textgreater{}     else NextMethod("plot")}
 \CommentTok{\#\textgreater{} \}}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001a9c8db2f90\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000022a6ed88f90\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:graphics\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -4857,20 +4858,20 @@ Asterisked functions can be inspected using the following method:
 \begin{Highlighting}[]
 \FunctionTok{boxplot}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{), }\AttributeTok{plot =} \ConstantTok{FALSE}\NormalTok{)}
 \CommentTok{\#\textgreater{} $stats}
-\CommentTok{\#\textgreater{}             [,1]}
-\CommentTok{\#\textgreater{} [1,] {-}2.70583440}
-\CommentTok{\#\textgreater{} [2,] {-}0.76729243}
-\CommentTok{\#\textgreater{} [3,]  0.05366197}
-\CommentTok{\#\textgreater{} [4,]  0.72510366}
-\CommentTok{\#\textgreater{} [5,]  2.68701656}
+\CommentTok{\#\textgreater{}            [,1]}
+\CommentTok{\#\textgreater{} [1,] {-}2.2653176}
+\CommentTok{\#\textgreater{} [2,] {-}0.6295650}
+\CommentTok{\#\textgreater{} [3,]  0.2206210}
+\CommentTok{\#\textgreater{} [4,]  0.8215252}
+\CommentTok{\#\textgreater{} [5,]  2.8938814}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $n}
 \CommentTok{\#\textgreater{} [1] 100}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $conf}
-\CommentTok{\#\textgreater{}            [,1]}
-\CommentTok{\#\textgreater{} [1,] {-}0.1821366}
-\CommentTok{\#\textgreater{} [2,]  0.2894606}
+\CommentTok{\#\textgreater{}              [,1]}
+\CommentTok{\#\textgreater{} [1,] {-}0.008651262}
+\CommentTok{\#\textgreater{} [2,]  0.449893241}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $out}
 \CommentTok{\#\textgreater{} numeric(0)}
@@ -5832,15 +5833,15 @@ before calling the function \texttt{lapply()}.
 
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{rcauchy}\NormalTok{(}\DecValTok{10}\NormalTok{)}
 \NormalTok{x}
-\CommentTok{\#\textgreater{}  [1]  {-}21.84125538  {-}23.96939387 {-}187.14875531   {-}1.42550249}
-\CommentTok{\#\textgreater{}  [5]   {-}0.04478754    1.03850671   {-}1.91150998    0.77057725}
-\CommentTok{\#\textgreater{}  [9]    6.73719348   {-}0.84419641}
+\CommentTok{\#\textgreater{}  [1] {-}0.48235711 {-}2.37649652  0.29493504  0.06516457}
+\CommentTok{\#\textgreater{}  [5] {-}1.93683397 {-}4.29077353 52.22038153  0.98588421}
+\CommentTok{\#\textgreater{}  [9]  0.11694043 {-}2.93725124}
 \FunctionTok{centre}\NormalTok{(x,}\StringTok{"mean"}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] {-}22.86391}
+\CommentTok{\#\textgreater{} [1] 4.165959}
 \FunctionTok{centre}\NormalTok{(x,}\StringTok{"median"}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] {-}1.134849}
+\CommentTok{\#\textgreater{} [1] {-}0.2085963}
 \FunctionTok{centre}\NormalTok{(x,}\StringTok{"trimmed"}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] {-}6.028445}
+\CommentTok{\#\textgreater{} [1] {-}0.7837518}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6024,7 +6025,7 @@ The functions \texttt{system.time()} and \texttt{proc.time()} provide informatio
 \begin{Highlighting}[]
 \FunctionTok{proc.time}\NormalTok{()   }\CommentTok{\# called with no arguments}
 \CommentTok{\#\textgreater{}    user  system elapsed }
-\CommentTok{\#\textgreater{}    0.64    0.25    4.82}
+\CommentTok{\#\textgreater{}    2.67    0.76    9.01}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6046,7 +6047,7 @@ The functions \texttt{system.time()} and \texttt{proc.time()} provide informatio
 
 \begin{verbatim}
 #>    user  system elapsed 
-#>    0.08    0.00    0.09
+#>    0.33    0.03    0.41
 \end{verbatim}
 
 Note that user and system times do not necessarily add up to elapsed time exactly.
@@ -6136,7 +6137,7 @@ Suppose we would like to investigate the body of function \texttt{plot()}. We kn
 \NormalTok{plot}
 \CommentTok{\#\textgreater{} function (x, y, ...) }
 \CommentTok{\#\textgreater{} UseMethod("plot")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001e4eae72268\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000019c8ce68268\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -8107,14 +8108,14 @@ The function \texttt{slice()} also allows for the selection of rows and works wi
 \CommentTok{\#\textgreater{} \# A tibble: 8 x 11}
 \CommentTok{\#\textgreater{}   mfr   calories protein   fat sodium fibre carbo sugars}
 \CommentTok{\#\textgreater{}   \textless{}fct\textgreater{}    \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{} 1 G         147.    2.67  1.33   267.  1.33  21.3   10.7}
-\CommentTok{\#\textgreater{} 2 K         100     2     0      290   1     21      2  }
-\CommentTok{\#\textgreater{} 3 Q         120     1     2      220   1     12     11  }
-\CommentTok{\#\textgreater{} 4 G         110     2     1      200   0     21      3  }
-\CommentTok{\#\textgreater{} 5 G         100     3     1      200   3     16      3  }
-\CommentTok{\#\textgreater{} 6 G         147.    1.33  1.33   373.  0     20     12  }
-\CommentTok{\#\textgreater{} 7 G         133.    2.67  1.33   187.  2.67  14.7   13.3}
-\CommentTok{\#\textgreater{} 8 Q          50     1     0        0   0     13      0  }
+\CommentTok{\#\textgreater{} 1 P         364.    9.09  9.09   227.  9.09  39.4   12.1}
+\CommentTok{\#\textgreater{} 2 G         110     1     1      180   0     12     13  }
+\CommentTok{\#\textgreater{} 3 G         110     1     1      180   0     12     13  }
+\CommentTok{\#\textgreater{} 4 Q         160     1.33  2.67   293.  0     16     16  }
+\CommentTok{\#\textgreater{} 5 K         110     6     0      230   1     16      3  }
+\CommentTok{\#\textgreater{} 6 Q          50     1     0        0   0     13      0  }
+\CommentTok{\#\textgreater{} 7 G         160     1.33  4      280   0     17.3   12  }
+\CommentTok{\#\textgreater{} 8 Q         120     1     2      220   1     12     11  }
 \CommentTok{\#\textgreater{} \# i 3 more variables: shelf \textless{}int\textgreater{}, potassium \textless{}dbl\textgreater{},}
 \CommentTok{\#\textgreater{} \#   vitamins \textless{}fct\textgreater{}}
 
@@ -10231,7 +10232,7 @@ Study the help file of function \texttt{with()} and take note specifically of it
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Consider the \texttt{Cars93} data set available in package \texttt{MASS}. Use the \texttt{lm()} function to perform a regression analysis of \texttt{MPG.city} as a function of a constant term, \texttt{Length}, \texttt{(Rev.per.mile)}\(^{–1}\), \texttt{Weight}, \texttt{RPM} and \texttt{(Horsepower)}\({–1}\). Note how the function \texttt{update()} works. Illustrate the use of the functions \texttt{drop1()} and \texttt{add1()}:
+  Consider the \texttt{Cars93} data set available in package \texttt{MASS}. Use the \texttt{lm()} function to perform a regression analysis of \texttt{MPG.city} as a function of a constant term, \texttt{Length}, \texttt{(Rev.per.mile)}\(^{–1}\), \texttt{Weight}, \texttt{RPM} and \texttt{(Horsepower)}\(^{–1}\). Note how the function \texttt{update()} works. Illustrate the use of the functions \texttt{drop1()} and \texttt{add1()}:
 \end{enumerate}
 
 \begin{Shaded}
@@ -10864,6 +10865,15 @@ Consider the following dataframe \texttt{treatments}.
 \global\setlength{\tabcolsep}{\Oldtabcolsep}
 
 \renewcommand*{\arraystretch}{1}
+
+Why is a two-way anova not appropriate here?
+
+GLM extends the linear model in two ways: (a) the expected value is replaced by a \emph{{function}} of the expected value, called the link function and (b) the assumption of observations from a Gaussian distribution is extended to include other distributions from the exponential family of probability distributions.
+
+Use \texttt{glm()} with \texttt{family\ =\ poisson()} to fit the following generalized linear models to
+the data: \texttt{Counts\ \textasciitilde{}\ TreatA\ +\ TreatB} and \texttt{Counts\ \textasciitilde{}\ TreatA\ *\ TreatB}.
+
+What are your conclusions?
 
 \section{The function gam()}\label{the-function-gam}
 

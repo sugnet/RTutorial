@@ -11,10 +11,9 @@ The bisection method is based on the *<span style="color:#FF9966">Mean Value The
 
 The process is initialized by setting $a_1=1$ and $b_1=b$.  Let $p_1$ represents the midpoint of $[a_1,b_1 ]$, i.e. $p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}$. Suppose $f(p_1 )=0$ then $p=p_1$ so that we have the root. Suppose $f(p_1) \neq 0$ then $f(p_1)$ has similar sign to either $f(a_1)$ or $f(b_1)$.  If $f(p_1)$ and $f(a_1)$ have similar signs then $p∈(p_1,b_1)$ and we set $a_2=p_1$ and $b_2=b_1$. If $f(p_1)$ and $f(a_1)$ have opposite signs then $p∈(a_1,p_1)$ and we set $a_2=a_1$ and $b_2=p_1$. The whole process is now repeated with the interval $[a_2,b_2]$.   This process is illustrated in Figure \@ref(fig:bisection) and coded in the R function, `Bisection()`, given below.
 
-<div class="figure">
-<img src="pics/bisection.jpg" alt="Principle underlying the bisection method for finding a root of f(x)=0." width="100%" />
-<p class="caption">(\#fig:bisection)Principle underlying the bisection method for finding a root of f(x)=0.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{pics/bisection} \caption{Principle underlying the bisection method for finding a root of f(x)=0.}(\#fig:bisection)
+\end{figure}
 
 
 ``` r
@@ -62,8 +61,126 @@ The function must check whether $b>a$ and whether $f(a)$ and $f(b)$ have opposit
 (c)	Consider the following data given by @DobsonBarnett2008
 
 
-```{=html}
-<div class="tabwid"><style>.cl-c85175ca{}.cl-c84be7c2{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-c84ea99e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-c84ea9a8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-c84ec104{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c84ec105{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-c85175ca'><thead><tr style="overflow-wrap:break-word;"><th class="cl-c84ec104"><p class="cl-c84ea99e"><span class="cl-c84be7c2">Season</span></p></th><th class="cl-c84ec104"><p class="cl-c84ea99e"><span class="cl-c84be7c2">Number of tropical cyclones</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">1</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">2</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">3</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">4</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">5</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">6</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">7</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">12</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">8</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">9</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">10</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">11</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">6</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">12</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">13</span></p></td><td class="cl-c84ec105"><p class="cl-c84ea9a8"><span class="cl-c84be7c2">4</span></p></td></tr></tbody></table></div>
+```{=latex}
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{0.75in}|p{0.75in}}
+
+
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{Season}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{Number\ of\ tropical\ cyclones}}} \\
+
+\ascline{0.75pt}{666666}{1-2}\endfirsthead 
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{Season}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{Number\ of\ tropical\ cyclones}}} \\
+
+\ascline{0.75pt}{666666}{1-2}\endhead
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{1}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{6}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{2}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{5}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{3}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{4}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{4}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{6}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{5}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{6}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{6}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{3}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{7}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{12}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{8}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{7}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{9}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{4}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{10}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{2}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{6}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{12}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{7}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{13}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{4}}} \\
+
+
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
 ```
 
 
@@ -122,10 +239,9 @@ $$
 
 for $m≥0$. In Figure \@ref(fig:NewtonRaphson) it is illustrated how the approximations are found by consecutive tangent lines.
 
-<div class="figure">
-<img src="pics/NewtonRaphson.jpg" alt="Principle underlying the Newton-Raphson algorithm." width="100%" />
-<p class="caption">(\#fig:NewtonRaphson)Principle underlying the Newton-Raphson algorithm.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{pics/NewtonRaphson} \caption{Principle underlying the Newton-Raphson algorithm.}(\#fig:NewtonRaphson)
+\end{figure}
 
 (a)	When the Newton-Raphson algorithm is used for finding m.l. estimates the score statistic, $U$, and its derivative viz. $U'$ are needed. The statistic $U'$ can be approximated by $E(U') = -\mathfrak{I} = -var(U)$.  When $U'$ is substituted by $E(U')$ in the Newton-Raphson algorithm the method is known as the *<span style="color:#FF9966">(Fisher) scoring method</span>*.
 
@@ -176,8 +292,96 @@ The Weibull distribution is often used to model the time to failure (i.e. the su
 
 
 
-```{=html}
-<div class="tabwid"><style>.cl-c8718fae{}.cl-c86c5d18{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(102, 102, 102, 1.00);background-color:transparent;}.cl-c86e7a9e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-c86e8b1a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c86e8b1b{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c86e8b1c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(51, 51, 51, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-c8718fae'><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1a"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">1051</span></p></td><td class="cl-c86e8b1a"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">4921</span></p></td><td class="cl-c86e8b1a"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">7886</span></p></td><td class="cl-c86e8b1a"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">10861</span></p></td><td class="cl-c86e8b1a"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">13520</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">1337</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">5445</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">8108</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">11026</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">13670</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">1389</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">5620</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">8546</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">11214</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">14110</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">1921</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">5817</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">8666</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">11362</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">14496</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">1942</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">5905</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">8831</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">11604</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">15395</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">2322</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">5956</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">9106</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">11608</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">16179</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">3629</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">6068</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">9711</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">11745</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">17092</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">4006</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">6121</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">9806</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">11762</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">17568</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">4012</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">6473</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">10205</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">11895</span></p></td><td class="cl-c86e8b1b"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">17568</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c86e8b1c"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">4063</span></p></td><td class="cl-c86e8b1c"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">7501</span></p></td><td class="cl-c86e8b1c"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">10396</span></p></td><td class="cl-c86e8b1c"><p class="cl-c86e7a9e"><span class="cl-c86c5d18">12044</span></p></td><td class="cl-c86e8b1c"><p class="cl-c86e7a9e"><span class="cl-c86c5d18"></span></p></td></tr></tbody></table></div>
+```{=latex}
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
+
+
+
+\ascline{0.75pt}{666666}{1-5}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{1051}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{4921}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{7886}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{10861}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{13520}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{1337}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{5445}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{8108}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11026}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{13670}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{1389}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{5620}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{8546}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11214}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{14110}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{1921}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{5817}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{8666}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11362}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{14496}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{1942}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{5905}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{8831}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11604}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{15395}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{2322}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{5956}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{9106}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11608}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{16179}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{3629}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{6068}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{9711}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11745}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{17092}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{4006}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{6121}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{9806}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11762}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{17568}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{4012}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{6473}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{10205}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{11895}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{17568}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{4063}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{7501}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{10396}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{12044}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{666666}{\fontsize{11}{11}\selectfont{}}} \\
+
+\ascline{0.75pt}{333333}{1-5}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
 ```
 
 

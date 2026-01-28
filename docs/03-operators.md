@@ -550,10 +550,9 @@ help.search("distribution")
 to obtain a list of available statistical distributions in R.  Each distribution has an identifying name preceded by one of the letters *<span style="color:#FF9966">d</span>*, *<span style="color:#FF9966">p</span>*, *<span style="color:#FF9966">q</span>* or *<span style="color:#FF9966">r</span>*.  In the case of an F-distribution, for example, the identifier is just the letter `f` and for a normal distribution the identifier is `norm`.  Preceding the distribution’s identifier by one of the letters `d`, `p`, `q` or `r` returns a density value, a probability, a quantile or a random sample for the specified distribution (probability density function or probability mass function). See Figure \@ref(fig:Fdist) for an explanation. 
 
 
-<div class="figure">
-<img src="pics/F-distribution.png" alt="Meaning of the letters d, p and q when preceding an R distribution identifier." width="100%" />
-<p class="caption">(\#fig:Fdist)Meaning of the letters d, p and q when preceding an R distribution identifier.</p>
-</div>
+\begin{figure}
+\includegraphics[width=1\linewidth]{pics/F-distribution} \caption{Meaning of the letters d, p and q when preceding an R distribution identifier.}(\#fig:Fdist)
+\end{figure}
 
 ### Functions for categorical variables { #areagrp }
 

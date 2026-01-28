@@ -127,7 +127,7 @@ Study the help file of function `with()` and take note specifically of its usage
 
 ## Linear regression and anova {#lmAnova}
 
-(a) Consider the `Cars93` data set available in package `MASS`.  Use the `lm()` function to perform a regression analysis of `MPG.city` as a function of  a constant term,  `Length`, `(Rev.per.mile)`$^{–1}$, `Weight`, `RPM`  and `(Horsepower)`${–1}$.  Note how the function `update()` works. Illustrate the use of the functions `drop1()` and `add1()`:
+(a) Consider the `Cars93` data set available in package `MASS`.  Use the `lm()` function to perform a regression analysis of `MPG.city` as a function of  a constant term,  `Length`, `(Rev.per.mile)`$^{–1}$, `Weight`, `RPM`  and `(Horsepower)`$^{–1}$.  Note how the function `update()` works. Illustrate the use of the functions `drop1()` and `add1()`:
 
 ```{r, lmCars93, warning = FALSE, message = FALSE}
 library (MASS)
@@ -375,6 +375,14 @@ flextable (data) |>
   hline_bottom(border = officer::fp_border(color = "#333333", width = 0.75))
 ```
 
+Why is a two-way anova not appropriate here?
+
+GLM extends the linear model in two ways: (a) the expected value is replaced by a *<span style="color:#FF9966">function</span>* of the expected value, called the link function and (b) the assumption of observations from a Gaussian distribution is extended to include other distributions from the exponential family of probability distributions.
+
+Use `glm()` with `family = poisson()` to fit the following generalized linear models to
+the data: `Counts ~ TreatA + TreatB` and `Counts ~ TreatA * TreatB`. 
+
+What are your conclusions?
 
 ## The function gam()
 

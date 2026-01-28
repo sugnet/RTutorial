@@ -10,7 +10,7 @@ A good way to learn about functions or to write a new function is to look at exi
 plot
 #> function (x, y, ...) 
 #> UseMethod("plot")
-#> <bytecode: 0x000001c2a2aab770>
+#> <bytecode: 0x0000022a6f0095e8>
 #> <environment: namespace:base>
 ```
 
@@ -30,11 +30,10 @@ methods(plot)
 #> [17] plot.mlm*           plot.ppr*          
 #> [19] plot.prcomp*        plot.princomp*     
 #> [21] plot.profile*       plot.profile.nls*  
-#> [23] plot.R6*            plot.raster*       
-#> [25] plot.spec*          plot.stepfun       
-#> [27] plot.stl*           plot.table*        
-#> [29] plot.ts             plot.tskernel*     
-#> [31] plot.TukeyHSD*     
+#> [23] plot.raster*        plot.spec*         
+#> [25] plot.stepfun        plot.stl*          
+#> [27] plot.table*         plot.ts            
+#> [29] plot.tskernel*      plot.TukeyHSD*     
 #> see '?methods' for accessing help and source code
 ```
 
@@ -88,7 +87,7 @@ plot.default
 #>             ...)
 #>     invisible()
 #> }
-#> <bytecode: 0x000001c2a2ea6510>
+#> <bytecode: 0x0000022a6fa81740>
 #> <environment: namespace:graphics>
 ```
 
@@ -135,7 +134,7 @@ getAnywhere(plot.factor)
 #>         boxplot(y ~ x, ...)
 #>     else NextMethod("plot")
 #> }
-#> <bytecode: 0x000001c2a496eb28>
+#> <bytecode: 0x0000022a6ed88f90>
 #> <environment: namespace:graphics>
 ```
 
@@ -169,31 +168,31 @@ getAnywhere(plot.factor)
 boxplot(rnorm(100), plot = TRUE)
 ```
 
-<img src="07-functions_files/figure-html/invisibleExamples-1.png" width="672" />
+![](07-functions_files/figure-latex/invisibleExamples-1.pdf)<!-- --> 
 
 ``` r
 boxplot(rnorm(100), plot = FALSE)
 #> $stats
 #>            [,1]
-#> [1,] -1.8907607
-#> [2,] -0.6217966
-#> [3,] -0.1029856
-#> [4,]  0.8065061
-#> [5,]  2.6981406
+#> [1,] -2.2653176
+#> [2,] -0.6295650
+#> [3,]  0.2206210
+#> [4,]  0.8215252
+#> [5,]  2.8938814
 #> 
 #> $n
 #> [1] 100
 #> 
 #> $conf
-#>            [,1]
-#> [1,] -0.3286574
-#> [2,]  0.1226862
+#>              [,1]
+#> [1,] -0.008651262
+#> [2,]  0.449893241
 #> 
 #> $out
-#> [1] 3.662271
+#> numeric(0)
 #> 
 #> $group
-#> [1] 1
+#> numeric(0)
 #> 
 #> $names
 #> [1] "1"
@@ -389,10 +388,9 @@ maxlen(mode.use="character", 1:10, 1:15, 1:3, letters)
 
 There are many practical situations requiring the conversion of mathematical expressions into character strings (text) or, conversely, requiring the conversion of text into mathematical expressions. The tools (functions) provided in R for achieving such conversions are summarized in Figure \@ref(fig:expression).
 
-<div class="figure">
-<img src="pics/expressions.jpg" alt="Converting text into mathematical expression or mathematical expressions into text." width="80%" />
-<p class="caption">(\#fig:expression)Converting text into mathematical expression or mathematical expressions into text.</p>
-</div>
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{pics/expressions} \caption{Converting text into mathematical expression or mathematical expressions into text.}(\#fig:expression)
+\end{figure}
 
 ::: {style="color: #80CC99;"}
 
@@ -579,15 +577,15 @@ getAnywhere('diag')
 #> 2 differing objects matching 'diag' were found
 #> in the following places
 #>   package:base
-#>   namespace:base
 #>   namespace:Matrix
+#>   namespace:base
 #> Use [] to view one of them
 getAnywhere('diag<-')
 #> 2 differing objects matching 'diag<-' were found
 #> in the following places
 #>   package:base
-#>   namespace:base
 #>   namespace:Matrix
+#>   namespace:base
 #> Use [] to view one of them
 ```
 
