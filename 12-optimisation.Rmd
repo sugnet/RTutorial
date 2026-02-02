@@ -515,7 +515,7 @@ MinMed2 <- function (yvec, xmat, startvals = rep(1/ncol(xmat), ncol(xmat)),
   ineqUBB <- rep(1, p)
 
   # function gosolnp of package Rsolnp used for executing the optimization
-  solnp (pars = startvals, fun = fun1, eqfun = eqff, eqB  = eqBB, 
+  gosolnp (pars = startvals, fun = fun1, eqfun = eqff, eqB  = eqBB, 
          ineqfun = ineqff, ineqLB = ineqLBB, ineqUB = ineqUBB, LB = rep(0,p), 
          UB = rep(1,p), control = control,y = yvec, mat = xmat)  
   }

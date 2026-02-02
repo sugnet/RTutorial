@@ -304,7 +304,7 @@ The above example shows that {when the name of an R object is entered at the pro
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{mean}\NormalTok{(yy) }
-\CommentTok{\#\textgreater{} [1] 49.78277}
+\CommentTok{\#\textgreater{} [1] 44.00249}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1325,9 +1325,9 @@ Note the use of the argument \texttt{pos}, '' '' or ' ' are used for characters.
 \FunctionTok{objects}\NormalTok{()}
 \CommentTok{\#\textgreater{} [1] "aa" "bb" "cc" "yy"}
 \NormalTok{aa}
-\CommentTok{\#\textgreater{}  [1] {-}1.09280708 {-}0.02202904  0.33859022 {-}0.34777245}
-\CommentTok{\#\textgreater{}  [5]  0.14958144 {-}0.07471002  1.02517918 {-}0.66236986}
-\CommentTok{\#\textgreater{}  [9]  0.70338384  0.87797082}
+\CommentTok{\#\textgreater{}  [1]  0.68714438  1.32613063  1.32978575  2.62893014}
+\CommentTok{\#\textgreater{}  [5] {-}0.68132735 {-}1.31915335  1.28397628  0.03910806}
+\CommentTok{\#\textgreater{}  [9] {-}1.49096486 {-}0.27934468}
 \NormalTok{bb}
 \CommentTok{\#\textgreater{} [1] "a" "b" "c"}
 \FunctionTok{objects}\NormalTok{()[}\DecValTok{3}\NormalTok{]}
@@ -1935,19 +1935,19 @@ Similarly, when an \emph{{expression}} is evaluated a hierarchy of environments 
 \FunctionTok{get}\NormalTok{ (}\StringTok{"\%o\%"}\NormalTok{) }
 \CommentTok{\#\textgreater{} function (X, Y) }
 \CommentTok{\#\textgreater{} outer(X, Y)}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe475bf620\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000026a1b5a7620\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \NormalTok{mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{ (}\FunctionTok{rnorm}\NormalTok{ (}\DecValTok{1000}\NormalTok{))}
 \FunctionTok{get}\NormalTok{ (mean)}
 \CommentTok{\#\textgreater{} Error in get(mean): invalid first argument}
 \FunctionTok{get}\NormalTok{ (}\StringTok{"mean"}\NormalTok{) }
-\CommentTok{\#\textgreater{} [1] {-}0.003164599}
+\CommentTok{\#\textgreater{} [1] 0.006669454}
 \FunctionTok{get}\NormalTok{ (}\StringTok{"mean"}\NormalTok{, }\AttributeTok{pos =} \DecValTok{1}\NormalTok{) }
-\CommentTok{\#\textgreater{} [1] {-}0.003164599}
+\CommentTok{\#\textgreater{} [1] 0.006669454}
 \FunctionTok{get}\NormalTok{ (}\StringTok{"mean"}\NormalTok{, }\AttributeTok{pos =} \DecValTok{2}\NormalTok{)}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe3ce3b690\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000026a10e1f690\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \FunctionTok{rm}\NormalTok{ (mean)}
 \end{Highlighting}
@@ -1984,7 +1984,7 @@ A \emph{{list}} is created with the function \texttt{list()}. A list is the basi
 \CommentTok{\#\textgreater{} $name2}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe3ce3b690\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000026a10e1f690\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -1996,12 +1996,12 @@ and elements are retrieved using the instruction
 \NormalTok{my.list[[}\DecValTok{2}\NormalTok{]]}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe3ce3b690\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000026a10e1f690\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \NormalTok{my.list}\SpecialCharTok{$}\NormalTok{name2}
 \CommentTok{\#\textgreater{} function (x, ...) }
 \CommentTok{\#\textgreater{} UseMethod("mean")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001fe3ce3b690\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000026a10e1f690\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -4685,7 +4685,7 @@ A good way to learn about functions or to write a new function is to look at exi
 \NormalTok{plot}
 \CommentTok{\#\textgreater{} function (x, y, ...) }
 \CommentTok{\#\textgreater{} UseMethod("plot")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000022a6f0095e8\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x00000259940235e8\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -4764,7 +4764,7 @@ If we decide to take a look at \texttt{plot.default} we can do so by
 \CommentTok{\#\textgreater{}             ...)}
 \CommentTok{\#\textgreater{}     invisible()}
 \CommentTok{\#\textgreater{} \}}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000022a6fa81740\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000025994a7b740\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:graphics\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -4813,7 +4813,7 @@ Asterisked functions can be inspected using the following method:
 \CommentTok{\#\textgreater{}         boxplot(y \textasciitilde{} x, ...)}
 \CommentTok{\#\textgreater{}     else NextMethod("plot")}
 \CommentTok{\#\textgreater{} \}}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000022a6ed88f90\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000025993d9cf90\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:graphics\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -4859,25 +4859,25 @@ Asterisked functions can be inspected using the following method:
 \FunctionTok{boxplot}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{), }\AttributeTok{plot =} \ConstantTok{FALSE}\NormalTok{)}
 \CommentTok{\#\textgreater{} $stats}
 \CommentTok{\#\textgreater{}            [,1]}
-\CommentTok{\#\textgreater{} [1,] {-}2.2653176}
-\CommentTok{\#\textgreater{} [2,] {-}0.6295650}
-\CommentTok{\#\textgreater{} [3,]  0.2206210}
-\CommentTok{\#\textgreater{} [4,]  0.8215252}
-\CommentTok{\#\textgreater{} [5,]  2.8938814}
+\CommentTok{\#\textgreater{} [1,] {-}2.5725737}
+\CommentTok{\#\textgreater{} [2,] {-}0.9054230}
+\CommentTok{\#\textgreater{} [3,] {-}0.3608132}
+\CommentTok{\#\textgreater{} [4,]  0.4244286}
+\CommentTok{\#\textgreater{} [5,]  1.9382076}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $n}
 \CommentTok{\#\textgreater{} [1] 100}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $conf}
-\CommentTok{\#\textgreater{}              [,1]}
-\CommentTok{\#\textgreater{} [1,] {-}0.008651262}
-\CommentTok{\#\textgreater{} [2,]  0.449893241}
+\CommentTok{\#\textgreater{}            [,1]}
+\CommentTok{\#\textgreater{} [1,] {-}0.5709297}
+\CommentTok{\#\textgreater{} [2,] {-}0.1506966}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $out}
-\CommentTok{\#\textgreater{} numeric(0)}
+\CommentTok{\#\textgreater{} [1] {-}2.935759}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $group}
-\CommentTok{\#\textgreater{} numeric(0)}
+\CommentTok{\#\textgreater{} [1] 1}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $names}
 \CommentTok{\#\textgreater{} [1] "1"}
@@ -5833,15 +5833,15 @@ before calling the function \texttt{lapply()}.
 
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{rcauchy}\NormalTok{(}\DecValTok{10}\NormalTok{)}
 \NormalTok{x}
-\CommentTok{\#\textgreater{}  [1] {-}0.48235711 {-}2.37649652  0.29493504  0.06516457}
-\CommentTok{\#\textgreater{}  [5] {-}1.93683397 {-}4.29077353 52.22038153  0.98588421}
-\CommentTok{\#\textgreater{}  [9]  0.11694043 {-}2.93725124}
+\CommentTok{\#\textgreater{}  [1] {-}0.39278935  2.65033076  0.03818759 26.24851841}
+\CommentTok{\#\textgreater{}  [5]  1.20821409 {-}0.82932965  1.42576074 {-}0.95552997}
+\CommentTok{\#\textgreater{}  [9]  1.02827808 {-}1.00729650}
 \FunctionTok{centre}\NormalTok{(x,}\StringTok{"mean"}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 4.165959}
+\CommentTok{\#\textgreater{} [1] 2.941434}
 \FunctionTok{centre}\NormalTok{(x,}\StringTok{"median"}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] {-}0.2085963}
+\CommentTok{\#\textgreater{} [1] 0.5332328}
 \FunctionTok{centre}\NormalTok{(x,}\StringTok{"trimmed"}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] {-}0.7837518}
+\CommentTok{\#\textgreater{} [1] 0.5216403}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6025,7 +6025,7 @@ The functions \texttt{system.time()} and \texttt{proc.time()} provide informatio
 \begin{Highlighting}[]
 \FunctionTok{proc.time}\NormalTok{()   }\CommentTok{\# called with no arguments}
 \CommentTok{\#\textgreater{}    user  system elapsed }
-\CommentTok{\#\textgreater{}    2.67    0.76    9.01}
+\CommentTok{\#\textgreater{}    1.28    0.42    5.04}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6047,7 +6047,7 @@ The functions \texttt{system.time()} and \texttt{proc.time()} provide informatio
 
 \begin{verbatim}
 #>    user  system elapsed 
-#>    0.33    0.03    0.41
+#>    0.17    0.03    0.19
 \end{verbatim}
 
 Note that user and system times do not necessarily add up to elapsed time exactly.
@@ -6137,7 +6137,7 @@ Suppose we would like to investigate the body of function \texttt{plot()}. We kn
 \NormalTok{plot}
 \CommentTok{\#\textgreater{} function (x, y, ...) }
 \CommentTok{\#\textgreater{} UseMethod("plot")}
-\CommentTok{\#\textgreater{} \textless{}bytecode: 0x0000019c8ce68268\textgreater{}}
+\CommentTok{\#\textgreater{} \textless{}bytecode: 0x000001c99fe5e268\textgreater{}}
 \CommentTok{\#\textgreater{} \textless{}environment: namespace:base\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -8108,14 +8108,14 @@ The function \texttt{slice()} also allows for the selection of rows and works wi
 \CommentTok{\#\textgreater{} \# A tibble: 8 x 11}
 \CommentTok{\#\textgreater{}   mfr   calories protein   fat sodium fibre carbo sugars}
 \CommentTok{\#\textgreater{}   \textless{}fct\textgreater{}    \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{}}
-\CommentTok{\#\textgreater{} 1 P         364.    9.09  9.09   227.  9.09  39.4   12.1}
-\CommentTok{\#\textgreater{} 2 G         110     1     1      180   0     12     13  }
-\CommentTok{\#\textgreater{} 3 G         110     1     1      180   0     12     13  }
-\CommentTok{\#\textgreater{} 4 Q         160     1.33  2.67   293.  0     16     16  }
-\CommentTok{\#\textgreater{} 5 K         110     6     0      230   1     16      3  }
-\CommentTok{\#\textgreater{} 6 Q          50     1     0        0   0     13      0  }
-\CommentTok{\#\textgreater{} 7 G         160     1.33  4      280   0     17.3   12  }
-\CommentTok{\#\textgreater{} 8 Q         120     1     2      220   1     12     11  }
+\CommentTok{\#\textgreater{} 1 K         110     2     0     125    1     11       14}
+\CommentTok{\#\textgreater{} 2 G         220     6     4     280    4     26       14}
+\CommentTok{\#\textgreater{} 3 G         110     2     1     200    0     21        3}
+\CommentTok{\#\textgreater{} 4 P         147.    1.33  1.33  180    0     17.3     16}
+\CommentTok{\#\textgreater{} 5 N         134.    4.48  0       0    4.48  29.9      0}
+\CommentTok{\#\textgreater{} 6 K         220     6     6     280    8     20       14}
+\CommentTok{\#\textgreater{} 7 P         440    12     0     680   12     68       12}
+\CommentTok{\#\textgreater{} 8 K         147.    2.67  1.33   93.3  1.33  12       20}
 \CommentTok{\#\textgreater{} \# i 3 more variables: shelf \textless{}int\textgreater{}, potassium \textless{}dbl\textgreater{},}
 \CommentTok{\#\textgreater{} \#   vitamins \textless{}fct\textgreater{}}
 
@@ -11602,7 +11602,7 @@ In Step II it is concluded that the common slope is not equal to zero so we perf
 \def\labelenumi{(\roman{enumi})}
 \tightlist
 \item
-  In the example above we conclude that the three β's in the ANCOVA model are the same and that the hypothesis \(\beta = 0\) is rejected. In Step III we conclude that \(\alpha_1 = \alpha_2 = \alpha_3\). Obtain the estimated regression equation using the following instructions:
+  In the example above we conclude that the three \(\beta\)'s in the ANCOVA model are the same and that the hypothesis \(\beta = 0\) is rejected. In Step III we conclude that \(\alpha_1 = \alpha_2 = \alpha_3\). Obtain the estimated regression equation using the following instructions:
 \end{enumerate}
 
 \begin{Shaded}
@@ -11677,7 +11677,7 @@ First look at the line for interaction. This line provides information on whethe
 \def\labelenumi{(\roman{enumi})}
 \tightlist
 \item
-  In the example above we conclude that the three β's in the ANCOVA model are not the same. Obtain the estimated regression equations for each of the seasons using the following instructions:
+  In the example above we conclude that the three \(\beta\)'s in the ANCOVA model are not the same. Obtain the estimated regression equations for each of the seasons using the following instructions:
 \end{enumerate}
 
 \begin{Shaded}
@@ -11713,7 +11713,7 @@ First look at the line for interaction. This line provides information on whethe
   Inspection of Figure \ref{fig:CO2seasonHeight} shows that the height has a much smaller effect in autumn and winter than in spring and summer.
 \end{enumerate}
 
-It is clear from Figure @ref(fig:CO2\_season\_height) that the outcome of a test of the hypothesis that \(\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4\) depends on the value of height where the test is performed. At height = 600 the test that \(\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4\) is performed as follows:
+It is clear from Figure \ref{fig:CO2seasonHeight} that the outcome of a test of the hypothesis that \(\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4\) depends on the value of height where the test is performed. At height = 600 the test that \(\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4\) is performed as follows:
 
 First notice that the Residual sum of squares in the ANOVA table above is \(RSSE=427.59\) with \(52\) degrees of freedom. At height = 600 execute:
 
@@ -11851,7 +11851,7 @@ The line corresponding to the factor variable ocean in the analysis of variance 
 \def\labelenumi{(\roman{enumi})}
 \tightlist
 \item
-  In the example above we conclude that the three β's in the ANCOVA model are the same and that the hypothesis β=0 is rejected. In Step III we conclude that the hypothesis \(\alpha_1 = \alpha_2 = \alpha_3\) is also rejected. Obtain the estimated regression equations using the following instructions:
+  In the example above we conclude that the three \(\beta\)'s in the ANCOVA model are the same and that the hypothesis β=0 is rejected. In Step III we conclude that the hypothesis \(\alpha_1 = \alpha_2 = \alpha_3\) is also rejected. Obtain the estimated regression equations using the following instructions:
 \end{enumerate}
 
 \begin{Shaded}
@@ -12964,7 +12964,7 @@ Study the help file of function \texttt{gosolnp()} in package \texttt{Rsolnp}. N
 \NormalTok{  ineqUBB }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, p)}
 
   \CommentTok{\# function gosolnp of package Rsolnp used for executing the optimization}
-  \FunctionTok{solnp}\NormalTok{ (}\AttributeTok{pars =}\NormalTok{ startvals, }\AttributeTok{fun =}\NormalTok{ fun1, }\AttributeTok{eqfun =}\NormalTok{ eqff, }\AttributeTok{eqB  =}\NormalTok{ eqBB, }
+  \FunctionTok{gosolnp}\NormalTok{ (}\AttributeTok{pars =}\NormalTok{ startvals, }\AttributeTok{fun =}\NormalTok{ fun1, }\AttributeTok{eqfun =}\NormalTok{ eqff, }\AttributeTok{eqB  =}\NormalTok{ eqBB, }
          \AttributeTok{ineqfun =}\NormalTok{ ineqff, }\AttributeTok{ineqLB =}\NormalTok{ ineqLBB, }\AttributeTok{ineqUB =}\NormalTok{ ineqUBB, }\AttributeTok{LB =} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{,p), }
          \AttributeTok{UB =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,p), }\AttributeTok{control =}\NormalTok{ control,}\AttributeTok{y =}\NormalTok{ yvec, }\AttributeTok{mat =}\NormalTok{ xmat)  }
 \NormalTok{  \}}

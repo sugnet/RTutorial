@@ -1364,7 +1364,7 @@ Anova (one.way.ancova.III, type = "II")
 <div style="margin-left: 25px; margin-right: 20px;">
 *Note that if you are not using type II sums of squares, but the default `anova()` function in the latter call the numeric concomitant variable MUST PRECEDE the categorical variable on the right-hand side of the tilde because Step III is only carried out on condition that Step II has indicated a significant relationship between the concomitant variable and the response variable.* The line corresponding to the factor variable ocean in the analysis of variance table is then inspected to conclude whether the effects associated with the respective levels of the factor variable are significantly different.
 
-(i) In the example above we conclude that the three β’s in the ANCOVA model are the same and that the hypothesis $\beta = 0$ is rejected. In Step III we conclude that $\alpha_1 = \alpha_2 = \alpha_3$. Obtain the estimated regression equation using the following instructions:
+(i) In the example above we conclude that the three $\beta$’s in the ANCOVA model are the same and that the hypothesis $\beta = 0$ is rejected. In Step III we conclude that $\alpha_1 = \alpha_2 = \alpha_3$. Obtain the estimated regression equation using the following instructions:
 </div>
 
 
@@ -1420,7 +1420,7 @@ coefficients (one.way.ancova.I)
 
 First look at the line for interaction. This line provides information on whether the hypothesis $\beta_1 = \beta_2 = \beta_3 = \beta_3$ should be rejected (as is the case here. Why?)  Therefore we cannot proceed to Step II.  
 
-(i)	In the example above we conclude that the three β’s in the ANCOVA model are not the same. Obtain the estimated regression equations for each of the seasons using the following instructions:
+(i)	In the example above we conclude that the three $\beta$’s in the ANCOVA model are not the same. Obtain the estimated regression equations for each of the seasons using the following instructions:
 </div>
 
 
@@ -1446,7 +1446,7 @@ coefficients (one.way.ancova.sep.reglns)
 <div style="margin-left: 25px; margin-right: 20px;">
 (iii)	Inspection of Figure \@ref(fig:CO2seasonHeight) shows that the height has a much smaller effect in autumn and winter than in spring and summer. 
 
-It is clear from Figure \@ref(fig:CO2_season_height) that the outcome of a test of the hypothesis that $\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4$ depends on the value of height where the test is performed. At height = 600 the test that $\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4$ is performed as follows:
+It is clear from Figure \@ref(fig:CO2seasonHeight) that the outcome of a test of the hypothesis that $\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4$ depends on the value of height where the test is performed. At height = 600 the test that $\alpha_1 = \alpha_2 = \alpha_3 = \alpha_4$ is performed as follows:
 
 First notice that the Residual sum of squares in the ANOVA table above is $RSSE=427.59$ with $52$ degrees of freedom. At height = 600 execute:
 </div>
@@ -1580,7 +1580,7 @@ coefficients(one.way.ancova.I)
 <div style="margin-left: 25px; margin-right: 20px;">
 The line corresponding to the factor variable ocean in the analysis of variance table is inspected to conclude if the effects associated with the respective levels of the factor variable are significantly different.
 
-(i)	In the example above we conclude that the three β’s in the ANCOVA model are the same and that the hypothesis β=0 is rejected. In Step III we conclude that the hypothesis $\alpha_1 = \alpha_2 = \alpha_3$ is also rejected. Obtain the estimated regression equations using the following instructions:
+(i)	In the example above we conclude that the three $\beta$’s in the ANCOVA model are the same and that the hypothesis β=0 is rejected. In Step III we conclude that the hypothesis $\alpha_1 = \alpha_2 = \alpha_3$ is also rejected. Obtain the estimated regression equations using the following instructions:
 </div>
 
 

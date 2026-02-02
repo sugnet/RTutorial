@@ -164,9 +164,9 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "aa" "bb" "cc" "yy"</span></span>
 <span><span class="va">aa</span></span>
-<span><span class="co">#&gt;  [1]  0.96631343  0.47744765  1.29256205  0.59872360</span></span>
-<span><span class="co">#&gt;  [5]  1.62719388  1.48729187 -1.04187750  0.65243270</span></span>
-<span><span class="co">#&gt;  [9]  0.00699693 -1.72381357</span></span>
+<span><span class="co">#&gt;  [1] -0.65270169 -0.06649772 -0.06404992  1.38392856</span></span>
+<span><span class="co">#&gt;  [5] -0.02826091 -1.66957813 -1.17069797  0.57756219</span></span>
+<span><span class="co">#&gt;  [9] -1.69320139  1.06013809</span></span>
 <span><span class="va">bb</span></span>
 <span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
@@ -577,19 +577,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"%o%"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; function (X, Y) </span></span>
 <span><span class="co">#&gt; outer(X, Y)</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000022376e24388&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001c273e28388&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span> <span class="op">(</span><span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in get(mean): invalid first argument</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.005336101</span></span>
+<span><span class="co">#&gt; [1] 0.03052263</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; [1] -0.005336101</span></span>
+<span><span class="co">#&gt; [1] 0.03052263</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span> <span class="op">(</span><span class="st">"mean"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000022372e2b690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001c26ee11690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span> <span class="op">(</span><span class="va">mean</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -616,19 +616,19 @@ The function <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> ta
 <span><span class="co">#&gt; $name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000022372e2b690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001c26ee11690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>and elements are retrieved using the instruction</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000022372e2b690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001c26ee11690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span>
 <span><span class="va">my.list</span><span class="op">$</span><span class="va">name2</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("mean")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000022372e2b690&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x000001c26ee11690&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>A <em><span style="color:#FF9966">matrix</span></em> in R is a rectangular collection of data, all of the same mode (e.g. numeric, character/text or logical). It is formed with the construction</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
